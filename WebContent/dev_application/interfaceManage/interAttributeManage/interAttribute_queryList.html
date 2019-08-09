@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+</head>
+<body>
+<div class="ecitic-inquire ecitic-inquire-sec lessSearch"  id="ecitic-inquire">
+	<div class="ecitic-table" id="ecitic-table">
+		<form id="InterAttrQuerytForm">
+			<table id="InterAttrQuery" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">属性ID:</td>
+					<td><input type="text" id="attr_id" name="attr_id"/></td>
+					<td class="ecitic-right">属性名称:</td>
+					<td><input id="attr_name" class="citic-sele-ast" name="attr_name"></td>
+					<td class="ecitic-right">属性类型:</td>
+					<td>					
+					    <select name="attr_type" id="attr_type" style="width:100%;"></select>
+					</td>
+				</tr>				
+			</table>
+		</form>	
+	</div>
+	<ul class="ecitic-btn-all">
+		<li><button class="btn btn-ecitic" id="queryInterAttr">查询</button></li>
+		<li><button class="btn btn-ecitic" id="resetInterAttr">重置</button></li>
+	</ul>
+</div>
+<div class="main_iframe_con">
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="interAttr_add" >新增</button>
+		<button class="btn btn-ecitic" id="interAttr_update" >修改</button>
+		<button class="btn btn-ecitic" id="interAttr_delete" >删除</button>
+		<!-- <button class="btn-gray" type="button" id="synchronizationUser">同步OA用户</button> -->
+	</div>
+	<div class="ecitic-new">
+		<table id="IInterAttrTableInfo" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_application/interfaceManage/interAttributeManage/interAttribute_queryList.js"></script>
+</html>
+

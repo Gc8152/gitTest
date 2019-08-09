@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>详情</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+</head>
+<body>
+	<div class="ecitic-inquire ecitic-inquire-sec lessSearch">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="configManageQueryForm">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">不符合项状态：</td>
+						<td>
+							<select id="Q_status_name" name="status_name" diccode="P_DIC_QUALITY_STATUS"></select>
+						</td>
+						<td class="ecitic-right">不符合等级：</td>
+						<td><select id="Q_grade_name" name="grade_name" diccode="P_DIC_QUALITY_GRADE"></select></td>
+						<td class="ecitic-right">不符合项描述：</td>
+						<td><input type="text" id="Q_descr" name="descr"/></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="querynoconfigManageQuery">查询</button></li>
+			<li><button class="btn btn-ecitic" id="resetnoconfigManageQuery">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<!--  
+		<button class="btn btn-ecitic my" id="noconfig_add">提出</button>
+		<button class="btn btn-ecitic my" id="noconfig_update">修改</button>
+		<button class="btn btn-ecitic my" id="noconfig_validate">验证</button>
+		<button class="btn btn-ecitic my" id="noconfig_delete">删除</button>
+		-->
+		<button class="btn btn-ecitic my" id="noconfig_accept">受理</button>
+		<button class="btn btn-ecitic my" id="noconfig_handle">处理</button>
+		<button class="btn btn-ecitic" id="noconfigManageQuery_info">查看详情</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover" id="noconfigManageQueryTab1"></table>
+	</div> 
+</body>
+<script type="text/javascript" src="dev_project/projectManage/myProject/projectConfig/projectConfig_queryList.js"></script>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>T-B-7  信息科技基础设施情况表</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link rel="stylesheet" href="dev_report/supervise/superviseReport.css" />
+</head>
+<body>  
+		<div class="table-title">T-B-7  信息科技基础设施情况表</div>
+        <table class="table_base table table-bordered myExcelTable" align="center">
+            <tr>
+            	<td class="titleSub" colspan="10" border = '0'>  
+                  	<span>填报部门：<input value="企管软件事业部"></span><i></i>
+                  	<span>填报人：<input value="刘明明"></span><i></i>     
+                  	<span>联系电话 ：<input value="16889095652"></span><i></i>            
+                  	<span>责任人：<input value="李明"></span><i></i>             
+                  	<span>填表日期：<input value="2018/02/18"></span>             
+               </td> 
+            </tr> 
+            <tr>  
+                <td><b>模式</b></td>  
+                <td colspan="8"><b>内容</b></td>  
+                <td><b>备注</b></td> 
+            </tr>  
+            <tr>  
+               <td class="projectT"><b>基础设施灾备模式</b></td>  
+               <td class="content" colspan="8" align="left">
+			          一主一备 ：一个生产中心对应一个备份中心</br>	
+				一主多备：一个生产中心对应多个备份中心	</br>
+				多主多备：多个生产中心对应多个备份中心	</br>
+				多主一备：多个生产中心共用一个备份中心	</br>
+				互为备份：两个或多个生产中心两时运行，且互相备份</br>	
+				无灾备</br>
+				</td>
+               <td>备注</td>   
+            </tr>  
+            <tr>   
+               <td colspan="10"></td>   
+            </tr> 
+            
+            
+            <tr>    
+               <td colspan="10" align="left"><b>数据 （灾备） 中心机房名称：</b></td>
+            </tr>
+            <tr>    
+               <td colspan="2" rowspan="13"><b>基本信息</b></td>
+            </tr> 
+            
+            <tr>
+            <td colspan="3">1</td>
+            <td colspan="3">供电</td>
+            <td colspan="3"></td>
+            </tr>
+            <tr>
+            <td colspan="3">2</td>
+            <td colspan="3">门禁与监控</td>
+            <td colspan="3"></td>
+            </tr>
+            <tr>
+            <td colspan="3">3</td>
+            <td colspan="3">电磁屏蔽</td>
+            <td colspan="3" class="content" align="left">
+            	全屏蔽：
+            	<input name="xxkj_zm" type="radio" value="是" checked/>是
+				<input name="f_zm" type="radio" value="否" />否，
+				电磁屏蔽区域：<input />；
+            </td>
+            </tr>
+            <tr>
+            <td colspan="3">4</td>
+            <td colspan="3">防雷设施</td>
+            <td colspan="3" class="content" align="left">
+            	是否具备：
+            	<input name="xxkj_zm1" type="radio" value="是" checked/>是
+				<input name="f_zm1" type="radio" value="否" />否；
+            </td>
+            </tr>
+            <tr>
+            <td colspan="3">5</td>
+            <td colspan="3">防水</td>
+            <td colspan="3" class="content" align="left">
+            	是否具备：
+            	<input name="xxkj_zm2" type="radio" value="是" checked/>是
+				<input name="f_zm2" type="radio" value="否" />否；
+            </td>
+            </tr>
+            <tr>
+            <td colspan="3">6</td>
+            <td colspan="3">空调</td>
+            <td colspan="3" class="content" align="left">
+            	
+            </td>
+            </tr>
+            <tr>
+            <td colspan="3">7</td>
+            <td colspan="3">消防</td>
+            <td colspan="3" class="content" align="left">
+            	
+            </td>
+            </tr>
+            <tr>
+            <td colspan="3">8</td>
+            <td colspan="3">巡检</td>
+            <td colspan="3" class="content" align="left">
+            	巡检频度：<input />次／天；
+            </td>
+            </tr>
+            <tr>   
+               <td colspan="9"></td>   
+            </tr> 
+            <tr>
+            <td colspan="3" rowspan="3">9</td>
+            <td colspan="6">灾备具体情况（仅在中心类型包台 灾备中心或承担灾备功能时填写）</td>
+            </tr>
+            <tr>
+            <td colspan="2">备份生产中心名称</td>
+            <td colspan="2">区域</td>
+            <td colspan="2">与生产中心距离 （公里）</td>
+            </tr>
+            <tr>
+            <td colspan="2">
+            <input name="xxkj_zm1" type="radio" value="同城" checked/>同城
+			<input name="f_zm1" type="radio" value="异地" />异地
+            </td>
+            <td colspan="2"></td>
+            <td colspan="2"></td>
+            </tr>
+        </table>  
+        <div class="ecitic-save">
+			<input type="button" class="btn btn-ecitic" value="数据获取"/>
+			<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  id="save" value="保存"/>
+		</div>	
+    </body>  
+</html>

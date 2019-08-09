@@ -1,0 +1,36 @@
+<!-- 合同模态框 -->
+<div id="myModal_contractInfo" class="modal hide fade" style="top: 50%;margin-top: -300px;width: 780px" tabindex="-1" data-backdrop="static" >
+	<div class="modal-header">
+		<button type="button" class="close" id="modalClose" title="点击关闭">×</button>
+		<h5 id="myModalLabel">合同查询页面</h5>
+	</div>
+	<form action="" class="form-inline">
+		<div class="row">
+			<div class="span6 h50">
+				<label class="pl60">合同编号&nbsp;&nbsp;</label>
+				<input type="text" id="contractInfo_pop_contract_code" style="width:190px;" name="contractInfo_pop_contract_code"/>
+			</div>
+			<div class="span6 h50">
+				<label class="pl60">合同类型&nbsp;&nbsp;</label>
+				<select name="contractInfo_pop_contract_type" style="width:190px;" id="contractInfo_pop_contract_type"></select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span6 h50">
+				<label class="pl60">合同状态&nbsp;&nbsp;</label>
+				<select name="contractInfo_pop_contract_state" style="width:190px;" id="contractInfo_pop_contract_state"></select>
+			</div>
+			<div class="span6 h50">
+			</div>
+		</div>
+	</form>
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="查询" id="pop_contractInfoSearch" type="button" />
+		<input class="btn btn-ecitic" value="重置" id="pop_contractInfoReset" type="button" />
+	</div>
+	<div class="ecitic-new">
+		<div style="padding:1px;margin:1px;">
+			<table id="pop_contractInfoTable" title="双击选择一条数据"></table>
+		</div>
+	</div>
+</div>

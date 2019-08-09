@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>问题受理</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" >
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="main_iframe_con">
+	  <form action=""  class="form-inline" id="questionAcceptForm">
+	      <div class="ecitic-inquire" id="ecitic-inquire">
+			 <div class="ecitic-table" id="ecitic-inquire">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				
+					<tr>
+					   <td class="ecitic-right">问题名称：</td>
+						<td>
+						  <input type="text" id="qA_risk_name" name="qA_risk_name" />
+						</td>
+					    <!-- <td class="ecitic-right">问题描述：</td>
+						<td>
+						   <input type="text" id="risk_desc" name="risk_desc" />
+						</td> -->
+						<td class="ecitic-right">问题状态：</td>
+						<td>
+						  <select id="qA_risk_status" name="qA_risk_status" diccode="P_DIC_RISK_STATUS" style="width:100%"></select>
+						</td>
+						  <td class="ecitic-right">问题级别：</td>
+						<td>
+						  <select id="qA_risk_grade" name="qA_risk_grade" diccode="P_DIC_RISK_LEVEL" style="width:100%"></select>
+						</td>
+					</tr>
+					<tr>
+						<!-- <td class="ecitic-right">项目编号：</td>
+						<td>
+						  <input type="text" id="project_num" name="project_num" />
+						</td> -->
+						<td class="ecitic-right">项目名称：</td>
+						<td>
+						   <input type="text" id="qA_project_name" name="qA_project_name" /></td>
+						   
+					<td class="ecitic-right">问题严重程度：</td>
+						<td>
+						   <select  id="qA_ponderance" name="qA_ponderance" diccode="P_DIC_RISK_SERIOUS" style="width:100%"></select>
+						</td>
+						<td class="ecitic-right">问题分类：</td>
+						<td>
+						   <select id="qA_first_classify" name="qA_first_classify" diccode="P_DIC_RISK_TYPE1" style="width:100%"></select>
+						</td>
+						<!-- <td class="ecitic-right">应用名称：</td>
+						<td>
+						   <input type="text" id="system_name" name="system_name" />
+						</td> -->
+					</tr>
+					<tr>
+					   <td class="ecitic-right">提出人：</td>
+						<td>
+						  <input type="text" id="qA_present_user_id_name" name="qA_present_user_id_name" />
+						</td>
+						 <td class="ecitic-right">责任人：</td>
+						<td>
+						  <input type="text" id="qA_duty_user_id_name" name="qA_duty_user_id_name" />
+						</td>
+						<!--  <td class="ecitic-right">处理人：</td>
+						<td>
+						  <input type="text" id="qA_handle_user_id_name" name="qA_handle_user_id_name" />
+						</td> -->
+						 <td class="ecitic-right">提出日期：</td>
+						<td>
+						<div class="dateSelectZ">
+							<input type="text" id="qA_present_time" name="qA_present_time" class="requirement-ele-width"  onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'qA_present_time\',{d:0});}'})" placeHolder="点击选择"   readonly/>
+						</div>
+						</td>
+					</tr>
+					<!-- <tr>
+						 <td class="ecitic-right">提出日期：</td>
+						<td>
+						<div class="dateSelectZ">
+							<input type="text" id="qA_risk_raise_time" name="qA_risk_raise_time" class="requirement-ele-width"  onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'qA_risk_raise_time\',{d:0});}'})" placeHolder="点击选择"   readonly/>
+						</div>
+						</td>
+						<td class="ecitic-right"></td>
+						<td></td>
+						<td class="ecitic-right"></td>
+						<td></td>
+					</tr> -->
+					
+				</table>
+		   </div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="query_questionAcceptList" value="查询"></li>
+			<li><input type="reset" class="btn btn-ecitic" id="reset_qestionAcceptList" value="重置"></li>
+		</ul>
+	  </div>	
+	</form>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="questionAccept_accept">受理问题</button>
+		<button class="btn btn-ecitic" id="questionAccept_detail">问题详情</button>
+	</div>
+
+	<div class="ecitic-new">
+		<table id="questionAcceptTable" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="dev_project/questionManage/questionAccept/questionAccept_queryList.js"></script>
+</html>

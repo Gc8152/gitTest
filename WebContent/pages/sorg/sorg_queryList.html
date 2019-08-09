@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>  
+<script src="js/commons/commons.js"></script>
+<script src="pages/sorg/sorg_queryList.js"></script>
+<script src="pages/suser/suserPop.js"></script>
+</head>
+<body>
+<div class="container-fluid" id="org_mm" style="position:relative;">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="span6 citic-tree">
+				<div class="widget-box">
+					<div class="widget-title">
+						<span class="icon"><i class="icon-align-justify"></i></span>
+						<h5>机构管理</h5>
+						<button type="button" id="addOrg" class="btn btn-ecitic">创建机构</button>
+					</div>
+					<div class="controlsOverFlow" id="orgTreeDiv">
+						<ul id="treeOrg" class="ztree"></ul>
+					</div>
+				</div>
+			</div>
+			<div class="span6 citic-add">
+				<div class="widget-box">
+					<div class="widget-content nopadding">
+						<div class="control-group">
+							<div class="controls">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#org_info" data-toggle="tab">机构基本信息</a></li>
+									<li><a href="#org_position_div" data-toggle="tab">岗位基本信息</a></li>
+									<li><a href="#user_position_div" data-toggle="tab" >人员信息</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="org_info">
+										<div class="widget-content nopadding">
+											<form id="org_from" action="#" method="get" class="org_from">
+												<div class="ecitic-title-table">
+													<table width="100%" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+														<tr>
+															<td class="ecitic-right">机构编号:</td>
+															<td>
+																<input type="text" name="O.org_code" id="org_code" placeholder="机构编号 " validate="v.required" valititle="该项为必填项" class="citic-ast" />
+																<input type="hidden" name="O.old_org_code" id="old_org_code"/>
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">机构名称:</td>
+															<td>
+																<input type="text" name="O.org_name" id="org_name" placeholder="机构名称" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">上级机构名称:</td>
+															<td>
+																<input type="text" name="O.suporg_name" id="suporg_name" placeholder="上级机构名称" class="citic-ast" />
+																<input type="hidden" name="O.suporg_code" id="suporg_code" />
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">设立日期:</td>
+															<td>
+																<input type="text" name="O.launch_date" id="launch_date" placeholder="设立日期" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">负责人:</td>
+															<td>
+																<input type="text" name="O.org_manager_name" id="org_manager_name" placeholder="部门经理" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+																<input type="hidden" name="O.org_manager_code"  id="org_manager_code" />
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">分管领导:</td>
+															<td>
+																<input type="text"  name="O.org_vpname" id="org_vpname" placeholder="分管领导" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+																<input type="hidden" name="O.org_vp"  id="org_vp" />
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">序号:</td>
+															<td>
+																<input type="text" name="O.order_no" placeholder="序号" class="citic-ast" />
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">地址:</td>
+															<td>
+																<textarea name="O.org_address" placeholder="地址" class="citic-ast citic-textarea" /></textarea>
+															</td>
+														</tr>
+													</table>
+												</div>
+												<div class="ecitic-save">
+													<input type="button" class="btn btn-ecitic" value="保存" id="updateOrg" />
+													<input type="button" class="btn btn-ecitic" value="重置" id="resetOrg" />
+													<input type="button" class="btn btn-ecitic" value="删除" id="delOrg" />
+												</div>
+											</form>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="org_position_div">
+										<button type="button" id="addPosition" class="btn btn-ecitic btn-new-mb5" style="display:none;">新增</button>
+										<table id="orgPositionTable"></table>
+									</div>
+									<div class="tab-pane fade" id="user_position_div" >
+										<button type="button" id="queryUser" class="btn btn-ecitic btn-new-mb5" style="display:none;" >查看详情</button>
+										<table id="orgUserTable"></table> 
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 弹出框 -->
+<div id="myModalOrgPosition" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">提示</h3>
+	</div>
+	<div class="modal-body">
+		<p id="org_position_context">One fine body…</p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" id="cancel" style="display:none;" aria-hidden="true">取消</button>
+		<button class="btn btn-ecitic" data-dismiss="modal" id="org_position_sure" aria-hidden="true">确定</button>
+	</div>
+</div>
+<!-- 查询人员POP框 -->
+<div id="userOrgDivPop"></div>
+</body>
+</html>

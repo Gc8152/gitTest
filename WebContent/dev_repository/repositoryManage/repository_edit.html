@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>知识修改</title>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script src="dev_repository/repositoryManage/repository_edit.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title-table" id="repositorySaveDiv">
+		<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table"><!-- table-bor-paw-->
+				<tr >
+					<td class="table-text" style="width:15%">类别：</td>
+					<td>
+						<!-- <select id="category_code"  class="requirement-ele-width" name="REP.CATEGORY_CODE"  style="width: 100%"></select> -->
+						<input type="hidden" name="REP.INTELL_ID">
+						<input type="hidden" id='category_code' name="REP.CATEGORY_CODE"/>
+						<input type="text" id='category_name' name="REP.CATEGORY_NAME" validate="v.required"/>
+						<input type="hidden" id='all_category_name'  name="REP.ALL_CATEGORY_NAME"/>
+						<input type="hidden" id='version_code'  name="REP.VERSION_CODE"/>
+						
+					</td>
+					<td class="table-text" style="width:15%">标题：</td>
+					<td>
+						<input type="text"  id="title" name="REP.TITLE" class="requirement-ele-width" validate="v.required" valititle="该项为必填项" />
+					</td>
+				</tr>
+				<tr class="table-text" style="display:none" id=updateTR>
+					<td class="table-text" >更新说明：</td>
+					<td colspan="3">
+						<textarea cols="90" rows="3" name="REP.UPDATE_EXPLAIN" placeholder="请填写更新说明" class="requirement-ele-width"></textarea>
+					</td>
+				</tr>
+				
+				<tr>
+					<td class="table-text" >内容：</td>
+					<td colspan="3">
+						<textarea cols="90" rows="3" name="REP.CONTENT" placeholder="请填写内容" class="requirement-ele-width"></textarea>
+					</td>
+				</tr>
+		</table>
+	</div>
+</div>
+<!-- 文件上传-->
+	<div class="tab-pane " id="upFileDiv">
+		<div class="ecitic-title">
+			<span>相关附件<em></em></span>
+			<input id="file_id" name="REP.FILE_ID" type="hidden" />
+			<i></i>
+		</div>
+		<div>
+			<div class="ecitic-operation">
+				<button class="btn btn-ecitic" id="add_file" >添加</button>
+				<button class="btn btn-ecitic" id="delete_file" >删除</button>
+				<!-- <a href="sfile/downloadFTPFile.asp?id=m_022" class="file_template_style">部署手册模版</a> 
+				<a href="sfile/downloadFTPFile.asp?id=m_023" class="file_template_style"></a>-->
+			</div>
+			<div class="ecitic-title-table ecitic-new">
+				<table id="table_file" class="table table-bordered table-hover">
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	<div class="ecitic-save" >
+		<input type="button"  name="repository_edit" class="btn btn-ecitic" btn="saveRepositoryInfo" value="保存"/>
+		<!-- <input type="button"  name="repositry_edit" class="btn btn-ecitic" btn="submitRepositoryInfo" value="提交"/> -->
+	 	<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+    </div>
+
+ <!--附件模态框 -->
+	<div id="file_modal"></div>
+	<div id="fileview_modal"></div>
+</body>
+
+</html>

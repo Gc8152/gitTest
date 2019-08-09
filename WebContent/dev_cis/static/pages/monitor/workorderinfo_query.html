@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+<link rel="stylesheet" href="../../css/bootstrap-table.min.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/select2.css"/>
+<link rel="stylesheet" href="../../css/public.css" />
+<link rel="stylesheet" href="../../css/form.css" />
+<link rel="stylesheet" type="text/css" href="../../css/zebra_dialog.css"/>
+<link rel="stylesheet" href="../../css/style.css" />
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../../js/select2.min.js"></script>
+<script type="text/javascript" src="../../js/Math.uuid.js"></script>
+<script type="text/javascript" src="../../js/commons.js"></script>
+<script type="text/javascript" src="../../js/alertAndConfirm.js"></script>
+<script type="text/javascript" src="../../js/zebra_dialog.js"></script>
+<!-- <script type="text/javascript" src="evnConfig_query.js"></script> -->
+</head> 
+
+<body style="overflow:auto;">
+	<div class="main_iframe_con">
+		<div class="yourLocation">
+			<i></i><span>您所在的位置：监控管理》工单执行列表</span>
+		</div>
+		
+		<form id="query_form" class="form-inline">
+			<div class="ecitic-inquire" id="ecitic-inquire">
+				<div class="ecitic-table" id="ecitic-table">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad requirement-table" >
+						<tr>
+						    <td class="ecitic-right" >工单号：</td>
+							<td>
+								<input type="text" name="code" id="code">
+							</td>
+							<td class="ecitic-right">需求编号：</td>
+							<td>
+								<input type="text" name="reqSubCode" id="reqSubCode">
+							</td >
+							<td class="ecitic-right" >需求名称：</td>
+                            <td>
+                                <input type="text" name="reqSubName" id="reqSubName">
+                            </td>
+					    </tr>
+						<tr>
+						    <td class="ecitic-right" >执行状态：</td>
+                            <td >
+                                <select id="workOrderStatus" name="workOrderStatus" validate="v.required" valititle="该项必选">
+                                    <option value=" ">请选择</option>
+                                    <option value="00">未开始</option>
+                                    <option value="01">开始执行</option>
+                                    <option value="02">执行中</option>
+                                    <option value="03">执行完成</option>
+                                    <option value="04">停止执行</option>
+                                    <option value="05">执行异常</option>
+                                </select>
+                            </td>
+							<td colspan="4" class="ecitic-right" ></td>
+						</tr>
+					</table>
+				</div>
+				<ul class="ecitic-btn-all">
+					<li><input type="button" class="btn btn-ecitic" id="query" value="查询"/></li>
+					<li><input type="reset" class="btn btn-ecitic" id="reset" value="重置"/></li>
+				</ul>
+			</div>
+		</form>
+		
+		<div class="ecitic-operation">
+            <button class="btn btn-ecitic" id="add">新增工单</button>
+            <button class="btn btn-ecitic" id="stop">停用工单</button>
+            <button class="btn btn-ecitic" id="detail">查看构建情况</button>
+            <!-- <button class="btn btn-ecitic" id="pause">暂停</button> -->
+        </div>
+        
+		<div class="ecitic-new">
+			<table id="workOrderInfo_table" class="table table-bordered table-hover" ></table>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="workOrderInfo_query.js"></script>
+</body>
+</html>

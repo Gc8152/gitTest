@@ -1,0 +1,54 @@
+<style>
+.btn_ftp {float:none;}
+</style>
+<div id="modal" class="modal hide fade" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="">文件上传</h5>
+	</div>
+	<div class="ecitic-title-table modal-body" id="docm_fileupload_div" >
+		<table class="table table-striped table-hover table-bordered tablr-input-text">
+			<tbody>
+			<tr>
+					<td class="table-text" width="15%">需求点编号：</td>
+					<td width="35%">
+						 <input  type="text" id="doc_sub_req_code" name="doc_sub_req_code" placeholder="点击选择"  validate="v.required" valititle="请选择需求点编号" readonly UNSELECTABLE ='on'/>
+						  <input  type="hidden" id="doc_sub_req_id" name="doc_sub_req_id" />
+						   <input  type="hidden" id="doc_req_task_id" name="doc_req_task_id" />
+						    <input  type="hidden" id="doc_req_task_code" name="doc_req_task_code" />
+						     <input  type="hidden" id="doc_system_name" name="doc_system_name"/>
+						     <input  type="hidden" id="doc_req_name" name="doc_req_name"/>
+						     <input  type="hidden" id="doc_req_code" name="doc_req_code"/>
+						     
+						     <!--  <input  type="hidden" id="doc_req_task_state" name="doc_req_task_state"/> -->
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text" width="15%">需求点名称：</td>
+					<td width="35%">
+						
+						 <input type="text" id="doc_sub_req_name" name="doc_sub_req_name" placeholder="点击选择"  validate="v.required" valititle="请选择需求点名称" readonly/>
+					</td>
+				</tr>
+				<!-- <tr>
+					<td class="table-text" width="15%">文档类型：</td>
+					<td width="35%">
+						<select id="doc_file_type" name="doc_file_type" diccode="P_DIC_PROJECT_STATUS" validate="v.required"></select>
+					</td>
+				</tr> -->
+				<tr>
+					<td class="table-text" width="15%">任务阶段：</td>
+					<td width="35%">
+						<select id="doc_task_state" name="doc_task_state" diccode="G_DIC_REQTASK_STATE" validate="v.required"></select>
+					</td>
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
+	<div class="ecitic-save">	
+		<button class="btn btn-ecitic" id="docm_sure">确定</button>
+		<button class="btn btn-ecitic" data-dismiss="modal">关闭</button>
+	</div>
+	<div class="modal-footer"></div>
+</div>

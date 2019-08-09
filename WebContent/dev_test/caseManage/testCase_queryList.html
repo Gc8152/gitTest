@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>案例库管理</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link href="css/form.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main_iframe_con">
+        <div class="ecitic-inquire" id="ecitic-inquire">
+            <div class="ecitic-table" id="ecitic-table">
+                <form id="defectForm">
+                    <table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+                        <tr>
+                            <td class="ecitic-right">案例编号：</td>
+                            <td>
+                                <input type="text" name="case_num" />
+                            </td>
+                            <td class="ecitic-right">案例名称：</td>
+                            <td>
+                                <input type="text" name="case_name" />
+                            </td>
+                            <td class="ecitic-right">应用名称：</td>
+                            <td>
+                                <input type="text" name="system_name" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ecitic-right">模块名称：</td>
+                            <td>
+                                <!-- <select></select> -->
+                                <input type="text" name="module_name" />
+                            </td>
+                            <td class="ecitic-right">功能点名称：</td>
+                            <td>
+                                <input type="text" name="func_name" />
+                            </td>
+                            <td class="ecitic-right">测试要点：</td>
+                            <td>
+                                 <input type="text" name="testpoint_name" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <ul class="ecitic-btn-all">
+                <li><input type="button" class="btn btn-ecitic" id="queryDefect" name="queryDefect" value="查询" /></li>
+                <li><input type="button" class="btn btn-ecitic" name="resetDefect" value="重置" /></li>
+            </ul>
+        </div>
+        <div class="ecitic-operation">
+            <button class="btn btn-ecitic" name="testCase_import">导入</button>
+            <button class="btn btn-ecitic" name="testCase_details">查看详情</button>
+        </div>
+        <div class="ecitic-new">
+            <table tb="testCase" class="table table-bordered table-hover table-text-show"></table>
+        </div>
+    </div>
+</body>
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_test/caseManage/testCase_queryList.js"></script>
+
+</html>

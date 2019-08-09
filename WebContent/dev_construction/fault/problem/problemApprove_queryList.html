@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>问题审批列表</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire" >
+		<div class="ecitic-table" >
+		<form id="problemApprove_commit_form">
+			<table id="problemApprove_committable" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">问题单流水号：</td>
+					<td><input type="text" name="SERNO"/></td>
+					<td class="ecitic-right">问题来源：</td>
+					<td><input type="text" id="" name="PROBLEMORIGIN"/></td>
+					<td class="ecitic-right">当前环节：</td>
+					<td>
+						<select style="width:100%;"  name="APPROVE_NODE"  diccode="G_DIC_PROBLEM_TACHE">
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">问题发生日期 ：</td>
+                    <td>
+                        <span class="ecitic-time">
+                            <input type="text" name="" id="plan_onlinetime_st" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                        <span class="ecitic-to"> 至 </span>
+                        <span class="ecitic-time">
+                            <input type="text" name="" id="plan_onlinetime_et" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                    </td>
+					
+				</tr>
+			</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="problemApprove_commit">查询</button></li>
+			<li><button class="btn btn-ecitic" id="problemApprove_reset">重置</button></li>
+			
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="problemApprove_Info">查看</button>
+		<button class="btn btn-ecitic" id="problemApprove_approve">审批</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover" id="problem_InfoTable">
+			
+		</table>
+	</div>
+	
+	
+	
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/fault/problem/problemApprove_queryList.js"></script>
+</body>
+</html>

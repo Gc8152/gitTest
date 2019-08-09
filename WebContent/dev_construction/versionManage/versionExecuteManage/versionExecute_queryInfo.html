@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>版本计划清单</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="ecitic-inquire" id="ecitic-inquire">
+	<div  class="ecitic-table" id="ecitic-table">
+		<table id="version_infoTable" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+			<tr>
+				<td class="ecitic-right">版本名称：</td>
+				<td >
+					<input type="text" name="version_name" readonly="readonly"/>
+				</td>
+				<td class="ecitic-right">版本类型：</td>
+				<td >
+					<input type="text" name="version_type" readonly="readonly">
+				</td >
+				<td class="ecitic-right">版本状态：</td>
+				<td >
+					<input type="text" name="version_status" readonly="readonly"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="ecitic-right">任务编号：</td>
+				<td>
+					<input type="text" name="req_task_code" />
+				</td>
+				<td class="ecitic-right">任务名称：</td>
+				<td>
+					<input type="text" name="task_name" />
+				</td>
+				<td class="ecitic-right">应用名称：</td>
+				<td>
+					<input type="text" name="system_name" />
+				</td>
+			</tr>
+			
+		</table>
+	</div>
+	
+<ul class="ecitic-btn-all">
+		<li><button class="btn btn-ecitic" id="query_versionExecute">查询</button></li>
+		<li><button class="btn btn-ecitic" id="reset_versionExecute">重置</button></li>
+	</ul>
+</div>
+<div class="main_iframeFormW">
+	<div class="tab-pane fade in active">
+		<div class="main_iframe_con">
+			<div class="ecitic-title">
+				<span>版本任务详情<em></em></span>
+				
+			</div>
+			<div>
+				<div class="ecitic-new tab-content bootstrapTabsCont">
+					<table class="table table-bordered table-hover" id="table_versionExecutePlan">
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<div class="ecitic-save">
+		<button class="btn btn-ecitic" id="close_back">返回</button>
+	</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="dev_construction/versionManage/versionExecuteManage/versionExecute_queryInfo.js"></script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<script src="js/commons/commons.js"></script>
+<script src="pages/suser/suser_updatePass.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+		<span>用户密码修改<em></em></span>
+	</div>
+	<form action="" class="form-inline" id="updatePass_form">
+		<div class="ecitic-title-table">
+			<table id="updateuser_table" style="width:50%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered tablr-input-text table-bor-paw">
+				<tr>
+					<td width="5%" class="table-text">用户编号：</td>
+					<td width="22.333%">
+						<input type="text" name="Us.user_no" id="user_no_op" readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">用户名称：</td>
+					<td>
+						<input type="text" name="Us.user_name" id="user_name_op" readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">旧密码：</td>
+					<td>
+						<input type="password" name="Us.old_password" id="old_password" validate="v.required" valititle="该项为必填项"/>
+					</td>
+				</tr>
+					<tr>
+					<td class="table-text">新密码：</td>
+					<td>
+						<input type="password" name="Us.new_password" id="new_password" validate="v.passwordFp" valititle="该项为必填项" style="display:none"/>
+						<input type="text" name="new_password_str" id="new_password_str"  placeholder="请输入以字母开头并至少包含一个数字且长度为8-18位的密码"/>
+					</td>
+				</tr>
+					<tr>
+					<td class="table-text">再次输入新密码：</td>
+					<td>
+						<input type="password" name="Us.password" id="Uspassword"  validate="v.required" valititle="该项为必填项"/>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+	<div class="ecitic-save" style="width:50%">
+		<input type="button" class="btn btn-ecitic" value="保存"  id="savePassword">
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+	</div>
+  </div>
+</body>
+</html>
+<script type="text/javascript">
+	initVlidate($("#updatePass_form"));
+</script>

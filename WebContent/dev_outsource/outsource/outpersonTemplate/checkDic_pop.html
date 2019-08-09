@@ -1,0 +1,28 @@
+
+<div id="myModal_checkdic" class="modal hide fade in" style="top: 50%;margin-top: -250px;width: 780px" tabindex="-1" data-backdrop="static">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="myModalLabel">考核项目列表信息</h5>
+	</div>
+	<form action="" class="form-inline" id="opsHoliday_popForm">
+		<div class="row">
+			<div class="span6 h50">
+				<label class="pl60">指标编号：</label>
+				<input type="text" name="query_diccode" id="query_diccode" >
+			</div>
+			<div class="span6 h50">
+				<label class="pl60">指标名称：</label>
+				<input type="text" name="query_itemname" id="query_itemname"/>
+			</div>
+		</div>
+	</form>
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="查询" id="pop_opsSearch" type="button" />
+		<input class="btn btn-ecitic" value="重置" id="pop_opsReset" type="button" />
+	</div>
+	<div class="ecitic-title-table modal-body ecitic-new">
+		<table id="pop_checkDicTable" title="双击选择一条数据" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+	<div class="modal-footer"></div>
+</div>
+

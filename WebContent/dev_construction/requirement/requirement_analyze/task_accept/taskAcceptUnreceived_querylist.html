@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>任务列表查询>></title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<!-- 字体图标 -->
+</head>
+<body>
+<div  class="main_iframe_con">
+ <form action=""  class="form-inline" id="taskAcceptQuery">
+  <div class="ecitic-inquire" id="ecitic-inquire">
+	<div class="ecitic-table" id="ecitic-table">
+		<table style=" border:1px; cellspacing:0px; cellpadding:0px"
+			class="table table-bordered table-bor-pad requirement-table">
+			<tr>
+				<td class="ecitic-right" style="width:12%">任务编号：</td>
+				<td style="width:20%">
+				  <input type="text" id="req_task_codeTQ" name="req_task_code"class="requirement-ele-width" />
+				</td>
+				<td class="ecitic-right" style="width:10%">任务名称：</td>
+				<td style="width:20%">
+				  <input type="text" id="req_task_nameTQ" name="req_task_name" class="requirement-ele-width" />
+				</td>
+				<td class="ecitic-right" style="width:10%">需求名称：</td>
+				<td style="width:20%">
+				  <input type="text" id="req_nameTQ" name="req_name" class="requirement-ele-width" />
+			    </td>
+			 </tr>
+			 <tr>
+				<td class="ecitic-right">从属关系：</td>
+				<td style="width:24%">
+				   <select id="req_task_relationTQ" name="req_task_relation" class="requirement-ele-width" diccode="G_DIC_TASK_RELATION" style="width:100%;"></select>
+				</td>
+				<!--<td class="ecitic-right" >申请纳入版本：</td>
+				<td><input type="text" id="version_nameTQ" class="requirement-ele-width"name="version_name"  placeholder="点击选择 " readonly/>
+				    <input type="hidden" id="version_idTQ" name="version_id" />
+				</td>-->
+				<td class="ecitic-right" >应用名称：</td>
+				<td>
+				    <input type="text"  class="requirement-ele-width" id="system_nameTQ" name="system_name"  placeholder="点击选择" readonly/>
+				    <input type="hidden" id="system_noTQ" name="system_no" />
+				</td>
+				<!--<td class="ecitic-right" >计划投产日期：</td>
+				<td >
+				<div style="float:left;width:45%;">
+				<input type="text" id="plan_onlinetimeTQ" name="plan_onlinetime" onClick="WdatePicker({});" placeHolder="点击选择" class="requirement-ele-width"  readonly/>
+				</div>
+				<div style="float:left; width:10%;line-height:26px;">&nbsp至&nbsp</div>	
+				<div style="float:left;width:45%;">
+				<input type="text" id="plan_onlinetimeTQ1" name="plan_onlinetime1" class="requirement-ele-width" onClick="WdatePicker({});" placeHolder="点击选择"  readonly/>
+				</div>
+				</td>-->
+				<td class="ecitic-right" >任务状态：</td>
+				<td style="width:24%">
+				   <select id="req_task_stateTQ" name="req_task_state" class="requirement-ele-width" diccode="G_DIC_REQTASK_STATE" style="width:100%;"></select>
+				</td>
+			</tr>
+			<tr>
+			   <td class="ecitic-right" >任务来源：</td>
+		       <td>
+		         <select id="req_task_typeTQ" name="req_task_type" diccode="G_DIC_REQTASK_COME" class="requirement-ele-width" style="width:100%"></select>
+		       </td>
+			</tr>
+		</table>
+	</div>
+	<ul class="ecitic-btn-all">
+		<li><input type="button" class="btn btn-ecitic" id="serach_acTaskQuery" value="查询"/></li>
+		<li><input type="reset" class="btn btn-ecitic" id="reset_acTaskQuery" value="重置"/></li>
+		<li class="ecitic-more"></li>
+	</ul>
+  </div>
+ </form>
+ <div class="ecitic-operation">
+	<button class="btn btn-ecitic" id="req_taskAccept">任务受理</button>
+	<!--<button class="btn btn-ecitic" id="reqtask_assess">工作量评估</button>-->
+	<button class="btn btn-ecitic" id="req_taskDetail">查看详情</button>
+	<!-- <button class="btn btn-ecitic" id="req_portTaskIntoversion">接口任务入版</button> -->
+ </div>
+  <div class="ecitic-new">
+	<table id="gReqTaskTableForAccept" class="table table-bordered table-hover table-text-show"></table>
+  </div>
+</div>	
+	<div id="tqsystem_pop"></div><!-- 加载应用pop -->
+	<div id="tqversion_pop"></div><!-- 加载版本pop -->
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_analyze/task_accept/taskAcceptUnreceived_querylist.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_intoVersion/taskVersion_pop.js"></script>
+<script type="text/javascript" src="dev_application/System_pop.js"></script>
+</html>

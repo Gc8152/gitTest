@@ -1,0 +1,39 @@
+.ilshA {
+	border-radius:3px;
+	display: inline-block;
+	cursor: pointer;
+	height: 28px;
+	line-height: 28px;
+	padding: 0 0 0 14px;
+	font-size: 14px;
+	color: #red;
+	width: 30px;
+	cursor: pointer;
+	background-image:url(../images/9.png) !important;
+	background-position:5px 8px !important;
+	background-repeat:no-repeat !important;
+}
+.ilshA:hover {
+	background-image:url(../images/9.png) !important;
+	background-position:5px 8px !important;
+}
+.moreIlshBg {
+	background-image:url(../images/10.png)!important;
+	background-position:5px 8px !important;
+	background-repeat:no-repeat !important;
+}
+.moreIlshBg:hover {
+	background-image:url(../images/10.png) !important;
+	background-position:5px 8px !important;
+}
+.seniorQuery {
+	display: inline-block;
+    height: 17px !important;
+    width: 19px;
+    background-image: url(../img/glyphicons-halflings-white.png);
+	padding: 0 !important;
+	background-position: -408px 65px;
+}
+.seniorQuerySub{
+	background-position: -433px 65px;
+}

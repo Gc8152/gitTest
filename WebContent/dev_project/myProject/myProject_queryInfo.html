@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>我的项目详细信息</title>
+<link rel="stylesheet" type="text/css" href="dev_planwork/wbs/wbsPlan_public.css"/>
+</head>
+<body>
+<div class="main_iframeFormW">	
+	<ul id="empInfoTab" class="nav nav-tabs bootstrapTabs">
+	    <li id="projectInfo" class="active"><a href="#home" data-toggle="tab">项目基本信息</a></li>
+	    <li id="ProjectManInt_li"><a href="#tab2" data-toggle="tab">项目人员信息</a></li>
+	    <li id="wbsPlan"><a href="#tab3" data-toggle="tab">项目 WBS</a></li>
+	    <li id="Risk_manager"><a href="#tab4" data-toggle="tab">项目风险问题</a></li>
+	    <li id="quality_manager"><a href="#tab5" data-toggle="tab">项目质量管理</a></li>
+	    <li id="config_manager"><a href="#tab6" data-toggle="tab">项目配置管理</a></li>
+	    <li id="project_change_li"><a href="#tab7" data-toggle="tab">项目变更</a></li>
+	    <li id="project_end_li"><a href="#tab8" data-toggle="tab">项目结项申请</a></li>
+	    <li ><a class="on-back" id="back_problemInfo">返回</a></input></li>
+	    <li id="wbsPlanSelect_li">
+	    	<select id="wbsPlan_view">
+				<option value="01">编辑视图</option>
+				<option value="02">跟踪视图</option>
+				<option value="03">查看视图</option>
+				<option value="04">里程碑视图</option>
+			</select>
+	    </li>
+	</ul>
+	<div id="outempInfo_Table" class="tab-content bootstrapTabsCont">
+	    <div class="tab-pane fade in active" id="home">
+	    	<div class="tableTitleArea">
+				<b><span>项目编号：</span><span id="PROJECT_NUM"></span></b>
+				<i></i>
+				<span>项目名称：</span><span id="PROJECT_NAME"></span>
+			</div>
+	    	<form id="problem_basic_table" class="main_iframeFormW">
+				<div class="ecitic-title-table"  >
+					
+					<table class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+						<tr>
+							<td width="14%" class="table-text">项目编号：</td>
+							<td width="19.333%">
+								<div name="PROJECT_NUM" ></div>
+								<input type="hidden" id="PROJECT_ID"/>
+							</td>
+							<td width="14%" class="table-text">项目名称：</td>
+							<td width="19.333%"><div name="PROJECT_NAME" ></div></td>
+						</tr>
+						<tr>
+							<td class="table-text">项目类型：</td>
+							<td ><div name="PROJECT_TYPE" ></div></td>
+							<td class="table-text">版本名称：</td>
+							<td ><div name="" ></div></td>
+						</tr>
+						<tr>
+							<td class="table-text">版本状态：</td>
+							<td colspan="3">
+								<div name="" ></div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text">版本冻结时间：</td>
+							<td ><div name=""></div></td>
+							<td class="table-text">投产窗口时间：</td>
+							<td ><div name="" ></div></td>
+						</tr>
+						<tr>
+							<td class="table-text">所属应用：</td>
+							<td ><input type="hidden" name="SYSTEM_ID"/><div name="SYSTEM_NAME"></div></td>
+							<td class="table-text">是否测试剥离：</td>
+							<td ><div name="" ></div></td>
+						</tr>
+						<tr>
+							<td class="table-text">关联应用：</td>
+							<td colspan="3"><div name="" ></div></td>
+							
+						</tr>
+						<tr>
+							<td class="table-text">归属部门：</td>
+							<td ><input type="hidden" name="ORGAN_ID"/><div name="ORGAN_NAME" ></div></td>
+							<td class="table-text">项目经理：</td>
+							<td >
+								<div name="PROJECT_MAN_NAME" ></div>
+								<input type="hidden" name="PROJECT_MAN_ID">
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text">项目开始时间：</td>
+							<td ><div name="START_TIME" ></div></td>
+							<td class="table-text">项目预计结束时间：</td>
+							<td ><div name="EXPECT_END_TIME" ></div></td>
+						</tr>
+						<tr>
+							<td class="table-text">项目状态：</td>
+							<td ><div name="STATUS_NAME" ></div></td>
+							<td class="table-text">项目阶段：</td>
+							<td ><div name="PROJECT_STAGE_NAME" ></div></td>
+						</tr>
+						<tr>
+							<td class="table-text">SPI：</td>
+							<td ><div name="CPI_VAL" ></div></td>
+							<td class="table-text">CPI：</td>
+							<td ><div name="SPI_VAL" ></div></td>
+						</tr>
+						<tr>
+							<td class="table-text">入版需求点数：</td>
+							<td ><div name="" ></div></td>
+							<td class="table-text">预估工作量（需求分析）：</td>
+							<td ><div name="" ></div></td>
+						</tr>
+					</table>
+				</div>
+			</form>
+				<div class="ecitic-title-table">
+					<div class="ecitic-save">
+						<input type="button" class="btn btn-ecitic" id="save_close" name="closePageTabConfirm"  value="关闭"/>
+					</div>
+		 		</div>
+	    </div>
+	   <!--项目人员信息 -->
+	    <div class="tab-pane fade" id="tab2"  >
+	    	<!-- <div class="tableTitleArea">
+				<b><span>项目编号：</span><span id="PROJECT_NUM"></span></b>
+				<i></i>
+				<span>项目名称：</span><span id="PROJECT_NAME"></span>
+			</div> -->
+		<div class="main_iframeFormW">
+			<div class="tab-pane fade in active">
+				<div class="main_iframe_con">
+					<div class="ecitic-title">
+						<span>项目组成员<em></em></span>
+						<i></i>
+					</div>
+					<div>
+					<div class="ecitic-operation">
+						<button class="btn btn-ecitic" id="addProjectMan">新增项目组成员</button>
+						<button class="btn btn-ecitic" id="deleteProjectMan">删除项目组成员</button>
+						<button class="btn btn-ecitic" id="project_authorization">项目授权</button>
+					</div>
+					<div class="ecitic-new tab-content bootstrapTabsCont">
+						<table class="table table-bordered table-hover" id="table_projectManInfo">
+						</table>
+					</div>
+					</div>
+				</div>
+				<div class="ecitic-title-table">
+					<div class="ecitic-title">
+						<span>项目干系人<em></em></span>
+						<i></i>
+					</div>
+					<div>
+					<div class="ecitic-operation">
+						<button class="btn btn-ecitic" id="add_responsibility">添加项目干系人</button>
+						<button class="btn btn-ecitic" id="update_responsibility">修改项目干系人</button>
+						<button class="btn btn-ecitic" id="delete_responsibility">删除项目干系人</button>
+					</div>
+					<div class="ecitic-new tab-content bootstrapTabsCont">
+						<table id="responsibility_table" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover">
+						</table>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class="ecitic-save">
+				<input type="button" class="btn btn-ecitic" id="projectMan_save"  value="保存"/>
+				<input type="button" class="btn btn-ecitic" id="projectMan_close"  value="返回"/>
+			</div>
+		
+		<!--项目干系人  -->
+		<div id="myModal_responsibility" class="modal hide fade modal-big-table" tabindex="-1">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+				<h3 id="">添加干系人</h3>
+			</div>
+			<div class="ecitic-title-table modal-body">
+			<form  class="main_iframeFormW" id="responsibility_add">
+				<table border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+					<tr>
+						<td class="table-text">干系人名称：</td>
+						<td><input type="text" id="r_user_name" validate="v.required" valititle="该项为必填项"/></td>
+						<td class="table-text">单位名称：</td>
+						<td><input type="text" id="r_company_name" validate="v.required" valititle="该项为必填项"/></td>
+					</tr>
+					<tr>
+						<td class="table-text">职位：</td>
+						<td><input type="text" id="r_user_post" validate="v.required" valititle="该项为必填项"/></td>	
+						<td class="table-text">邮箱：</td>
+						<td><input type="text" name="R.USER_MAIL" id="r_user_mail" validate="v.email" valititle="该项为必填项" /></td>
+					</tr>
+					<tr>
+						<td class="table-text">联系电话：</td>
+						<td><input type="text" name="R.USER_MOBILE" id="r_user_mobile" validate="v.mobile" valititle="该项为必填项" /></td>
+						<td><input type="hidden" name="R.USER_NO" id="r_user_no" value=0/></td><td></td>
+					</tr>
+				</table>
+			</form>
+			</div>
+			<div class="ecitic-save">	
+				<input class="btn btn-ecitic" value="保存" id="save_responsibility" type="button" />
+				<input class="btn btn-ecitic" value="关闭" data-dismiss="modal" type="button" />
+			</div>
+			<div class="modal-footer"></div>
+		</div>
+		<div id="setProjectManModal" class="modal hide fade" tabindex="-1">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">分配项目组成员</h3>
+			</div>
+			<div class="modal-body">
+				<div id="ms_context">
+					<table width="100%" border="0" collspacing="0" cellpadding="0" class="ecitic-current">
+						<tr>
+							<td>
+								当前项目名称 : <span class="mr50" id="setProject_name"></span><br>
+								当前项目编号 : <span id="setProject_no"></span>
+							</td>
+						</tr>
+					</table>
+					<table width="100%" border="0" collspacing="0" cellpadding="0">
+						<tr>
+							<td class="ecitic-role role-pr0 textalignC">
+								<fieldset class="fieldset">
+									<legend class="legend">未分配人员 </legend>
+									<select id="unselected" class="noselect2" name="unselected" multiple="" size="12" ondblclick="shift('addselected');"style=" margin-top: 31px;height:250px"></select>
+								</fieldset>
+							</td>
+							<td class="ecitic-role-btn">
+								<div class="exchangeDiv">
+								<button type="button" onclick="shift('addselected');" class="btn">&gt;&gt;</button>
+								<button type="button" onclick="shift('rmselected');" class="btn">&lt;&lt;</button>
+								</div>
+							</td>
+							<td class="ecitic-role textalignC">
+								<fieldset class="fieldset">
+									<legend class="legend">已分配人员 </legend>
+									<select id="selected" class="noselect2" name="selected" multiple="" size="12" ondblclick="shift('rmselected');"style=" margin-top: 31px;height:250px"></select>
+								</fieldset>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="ecitic-save">
+				<button class="btn btn-ecitic" id="save_ProjectMan">保存</button>
+				<button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+			</div>
+			<div class="modal-footer"></div>
+		</div>
+		<div id="setProjectAuthorization" class="modal hide fade modal-big-table" tabindex="-1">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">项目授权</h3>
+			</div>
+			<div class="ecitic-title-table modal-body">
+				<form class="main_iframeFormW" id="set_authorization">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+						<tr>
+							<td class="table-text">项目编号：</td>
+							<td><span name="PROJECT_NUM"></span></td>
+							<td class="table-text">项目名称：</td>
+							<td><span name="PROJECT_NAME"></span></td>
+						</tr>
+						<tr>
+							<td class="table-text" width="20%">当前项目经理：</td>
+							<td><span name="PROJECT_MAN_NAME"></span></td>
+							<td class="table-text" width="20%">授权时间：</td>
+							<td><span name="PROJECT_TIME"></span></td>
+						</tr>
+						<tr>
+							<td class="table-text">项目负责人：</td>
+							<td colspan="3">
+								<input id="choicePerson" name="choiceProMan" type="text" placeholder="选择人员" readonly="readonly" class="citic-ast" validate="v.required" valititle="请选择项目授权人" />
+								<input type="hidden" id="choiceProMan_id"/>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<div class="ecitic-save">
+				<button class="btn btn-ecitic" id="save_ProjectAuthorization">保存</button>
+				<button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+			</div>
+			<div class="modal-footer"></div>
+		</div>	
+			<!--选择人员 -->
+			<div id="myModal_choiceProjectMan" class="modal hide fade" tabindex="-1">
+				<div class="modal-header">
+					<button type="button" id="colse_modal" class="close" title="点击关闭">×</button>
+					<h5 id="ModalLabel">选择人员</h5>
+				</div>
+				<div class="modal-body ecitic-title-table">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+						<tr>
+							<td width="13.333%" class="table-text">人员编号：</td>
+							<td width="20%"><input type="text" name="MAN_ID"/></td>
+							<td width="13.333%" class="table-text">人员名称：</td>
+							<td width="20%"><input type="text" name="MAN_NAME"/></td>
+							<td>
+								<button class="btn btn-ecitic" id="select_projectMan">查询</button>
+							</td>
+							<td>
+								<button class="btn btn-ecitic" id="reset_projectMan">重置</button>
+							</td>
+						</tr>
+					</table>
+					<div class="ecitic-new">
+						<table id="table_projectManChoice" class="table table-bordered table-hover"></table>
+					</div>
+				</div>	
+				<div class="modal-footer"></div>
+			</div>
+	    </div>
+		<!--项目里程碑计划 -->
+	    <div class="tab-pane fade" id="tab3"  >
+	    
+	    	<!-- <div class="ecitic-title">
+				<span>编辑项目WBS计划<em></em></span>
+				<i></i>
+			</div> 
+			    数据网格  
+			<table id="treegridTab_add" title=""   
+			    style="width:100%;height:auto;margin:0 auto;">  
+			</table> 
+			导入wbs计划，上传文件
+			<form id="fileForm" action="" enctype="multipart/form-data" method="post" target="upload">  
+			<input type="file" id="importFile" name="importFile" onchange="getFilePath()"   
+			            style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;"/>
+			<input type="hidden" name="project_id" value=""/>
+			<input type="hidden" name="plan_id" value=""/>
+			<input type="submit" id="submitFile" name="Submit" value="提交" style="display: none"> 
+			</form>
+			<iframe name="upload" style="display:none"></iframe>
+			
+			获取人员的POP
+			<input type="hidden" id="duty_man"/>
+			<input type="hidden" id="duty_man_name"/>
+			<div id="duty_man_pop"></div>
+	    	 -->
+	    </div>
+		<!--项目里程碑计划 -->
+	    <div class="tab-pane fade" id="tab4"  >
+    		<div class="ecitic-inquire ecitic-moreNo">
+				<div class="ecitic-table" id="ecitic-table">
+					<form id="riskQuestionManage_query">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+							<tr>
+								<td class="ecitic-right">风险问题描述：</td>
+								<td><input type="text" name="RISK_DESC"/></td>
+								<td class="ecitic-right">风险问题状态：</td>
+								<td><select name="RISK_STATUS" diccode="P_DIC_RISK_STATUS"></select></td>
+								<td class="ecitic-right">优先级：</td>
+								<td><select name="PRIORITY" diccode="P_DIC_RISK_PRIORITY"></select></td>
+							</tr>
+							<tr>
+								<td class="ecitic-right">一级分类：</td>
+								<td><select name="FIRST_CLASSIFY" diccode="P_DIC_RISK_TYPE1"></select></td>
+								<td class="ecitic-right">二级分类：</td>
+								<td><select name="SECOND_CLASSIFY" diccode="P_DIC_RISK_TYPE2"></select></td>
+								<td></td><td></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+				<ul class="ecitic-btn-all">
+					<li><button class="btn btn-ecitic" id="commit">查询</button></li>
+					<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+				</ul>
+			</div>
+			<div class="ecitic-operation">
+				<button class="btn btn-ecitic" id="riskManage_add">新建</button>
+				<button class="btn btn-ecitic" id="riskManage_follow">跟踪</button>
+				<button class="btn btn-ecitic" id="riskManage_validate">验证</button>
+				<button class="btn btn-ecitic" id="riskManage_queryInfo">详情</button>
+			</div>
+			<!-- table开始 -->
+			<div class="ecitic-new">
+				<table class="table table-bordered table-hover" id="riskQuestionManage_table"></table>
+			 </div>
+		</div>
+	     <!-- 质量不符合项管理 -->
+	    <div class="tab-pane fade" id="tab5">
+		    	<div class="ecitic-inquire ecitic-inquire-sec ecitic-moreNo lessSearch">
+					<div class="ecitic-table" id="ecitic-table">
+						<form id="qualityManage_query">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+								<tr>
+									<td class="ecitic-right">不符合项状态：</td>
+									<td>
+										<select name="STATUS" diccode="P_DIC_QUALITY_STATUS"></select>
+									</td>
+									<td class="ecitic-right">不符合项分类：</td>
+									<td>
+										<select name="TYP" diccode="P_DIC_QUALITY_TYP"></select>
+									</td>
+									<td class="ecitic-right">发现日期：</td>
+									<td>
+										<input type="text" onClick="WdatePicker()" name="FIND_DATE" readonly UNSELECTABLE ='on'/>
+										<input type="hidden" name="PROJECT_ID"/>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+					<ul class="ecitic-btn-all">
+						<li><button class="btn btn-ecitic" id="commit">查询</button></li>
+						<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+					</ul>
+				</div>
+				<div class="ecitic-operation">
+					<!-- <button class="btn btn-ecitic" id="qualityManage_import">导入</button> -->
+					<button class="btn btn-ecitic" id="qualityManage_add">新增</button>
+					<button class="btn btn-ecitic" id="qualityManage_update">修改</button>
+					<button class="btn btn-ecitic" id="qualityManage_delete">删除</button>
+					<button class="btn btn-ecitic" id="qualityManage_accept">受理</button>
+					<button class="btn btn-ecitic" id="qualityManage_handle">处理</button>
+					<button class="btn btn-ecitic" id="qualityManage_validate">验证</button>
+					<button class="btn btn-ecitic" id="qualityManage_detail">详情</button>
+				</div>
+				<div class="ecitic-new">
+					<table class="table table-bordered table-hover" id="qualityManage_table"></table>
+				</div>
+			   </div>
+			     <!-- 项目配置管理-->
+			    <div class="tab-pane fade" id="tab6">
+					<div class="ecitic-inquire ecitic-inquire-sec ecitic-moreNo lessSearch">
+						<div class="ecitic-table">
+							<form id="configManage_query">
+								<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+									<tr>
+										<td class="ecitic-right">不符合项描述：</td>
+										<td><input type="text" name="DESCR"/></td>
+										<td class="ecitic-right">不符合项状态：</td>
+										<td>
+											<select name="STATUS_NAME" diccode="P_DIC_QUALITY_STATUS"></select>
+										</td>
+										<td class="ecitic-right">不符合等级：</td>
+										<td><select  name="GRADE_NAME" diccode="P_DIC_QUALITY_GRADE"></select></td>
+									</tr>
+								</table>
+							</form>
+						</div>
+						<ul class="ecitic-btn-all">
+							<li><button class="btn btn-ecitic" id="commit">查询</button></li>
+							<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+						</ul>
+					</div>
+					<div class="ecitic-operation">
+						<!-- <button class="btn btn-ecitic" id="configManage_import">导入</button> -->
+						<button class="btn btn-ecitic" id="configManage_add">新增</button>
+						<button class="btn btn-ecitic" id="configManage_update">修改</button>
+						<button class="btn btn-ecitic" id="configManage_delete">删除</button>
+						<button class="btn btn-ecitic" id="configManage_accept">受理</button>
+						<button class="btn btn-ecitic" id="configManage_handle">处理</button>
+						<button class="btn btn-ecitic" id="configManage_validate">验证</button>
+						<button class="btn btn-ecitic" id="configManage_info">详情</button>
+						<button class="btn btn-ecitic" id="configManage_back">返回</button>
+					</div>
+					<div class="ecitic-new">
+				
+				<table class="table table-bordered table-hover" id="configManage_table"/>
+				
+			</div> 
+	   </div>
+	    <!-- 项目结项申请-->
+		<div class="tab-pane fade" id="tab8">
+			<div class="main_iframeFormW main_iframe_con">
+				<div class="ecitic-title">
+					<span>项目基本信息<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-title-table">
+					<table id="apply_select" class="table table-striped table-hover table-bordered tablr-input-text">
+						<tr>
+							<td width="13.33%" class="table-text">项目编号：</td>
+							<td width="20%" class="textalignL">
+								<div name="PROJECT_NUM"></div>
+								<input type="hidden" name="END_ID" />
+							</td>
+							<td width="13.33%" class="table-text">项目名称：</td>
+							<td width="20%" class="textalignL">
+								<div name="PROJECT_NAME"></div>
+							</td>
+							<td width="13.33%" class="table-text">项目类型：</td>
+							<td width="20%" class="textalignL">
+								<div name="PROJECT_TYPE_NAME"></div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text">应用名称：</td>
+							<td class="textalignL">
+								<div name="SYSTEM_NAME"></div>
+							</td>
+							<td class="table-text">所属处室：</td>
+							<td class="textalignL">
+								<div name="ORGAN_NAME"></div>
+							</td>
+							<td class="table-text">投产时间：</td>
+							<td class="textalignL">
+								<div name="PRJ_SEND_TIME"></div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text">项目经理：</td>
+							<td class="textalignL">
+								<div name="PROJECT_MAN_NAME"></div>
+							</td>	
+							<td class="table-text">所属项目组：</td>
+							<td class="textalignL">
+								<div name="BELONG_PRO_GROUP_NAME"></div>
+							</td>	
+							<td class="table-text">所属供应商：</td>
+							<td class="textalignL">
+								<div name="BELONG_SUPPLIER_NAME"></div>
+							</td>	
+						</tr>
+						<tr>
+							<td class="table-text">项目经理备注：</td>
+							<td colspan="5" class="textalignL">
+								<textarea class="writer" name="PROJECT_DESC"  validate="v.required"></textarea>
+								<input type="hidden" name="END_ID" />
+							</td>	
+						</tr>
+					</table>
+				</div>
+				<div class="ecitic-title">
+					<span>相关附件<em></em></span>
+					<i></i>
+				</div>
+				<div>
+					<div class="ecitic-operation">
+						<button class="btn btn-ecitic" hid="apply_hide" id="add_file" >添加</button>
+						<button class="btn btn-ecitic" hid="apply_hide" id="delete_file" >删除</button>
+					</div>
+					<div class="ecitic-new ecitic-title-table">
+						<table id="table_file" class="table table-bordered table-hover">
+						</table>
+					</div>
+				</div>
+				<div class="ecitic-save" >
+					<input type="button" class="btn btn-ecitic" hid="apply_hide" id="save_Apply" value="保存"/>
+				 	<input type="button" class="btn btn-ecitic" hid="apply_hide" id="submit_Apply" value="保存&提交审批"/>
+				 	<input type="button" class="btn btn-ecitic" hid="apply_hide" id="back_Apply"  value="返回"/>
+			    </div>
+			</div>
+			<!--附件模态框 -->
+			<div id="file_modal" class="modal hide fade" tabindex="-1">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+					<h5 id="">资质证书</h5>
+				</div>
+				<div class="ecitic-title-table modal-body" id="" >
+					<table class="table table-striped table-hover table-bordered">
+						<tbody>
+							<tr>
+								<td class="table-text">文档名称：</td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td class="table-text">文档类型：</td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td class="table-text">附件：</td>
+								<td>
+									<div class="upload-checkfile-all" >
+										<input  class="input-txt" type="text">
+										<input value="上传"  class="input-btn" type="button">
+										<input name="file" class="input-file"  type="file">
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="ecitic-save">	
+					<button class="btn btn-ecitic" data-dismiss="modal">保存</button>
+					<button class="btn btn-ecitic" id="">重置</button>
+					<button class="btn btn-ecitic" data-dismiss="modal">关闭</button>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		
+		</div>
+	 	<!-- 项目结项申请-->
+		<div class="tab-pane fade" id="tab7">
+			<div class="ecitic-inquire ecitic-moreNo" >
+				<div class="ecitic-table" >
+					<form id="proChange">
+						<table id="table_select" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+							<tr>
+								<td class="ecitic-right">需求编号：</td>
+								<td>
+									<input type="text" name=""/>
+								</td>
+								<td class="ecitic-right">需求名称：</td>
+								<td>
+									<input type="text" name=""/>
+								</td>
+								<td class="ecitic-right">变更类型：</td>
+								<td><select name="CHANGE_TYPE" diccode="P_DIC_CHANGE_CATEGORY"></select></td>
+							</tr>
+							<tr>
+								<td class="ecitic-right">变更状态：</td>
+								<td>
+									<select name="APP_STATUS" diccode="P_DIC_APP_STATUS">
+										
+									</select>
+									<input type="hidden" name="PROJECT_NUM"/>
+									<input type="hidden" name="PROJECT_NAME"/>
+								</td>
+								
+									
+								
+							</tr>
+						</table>
+					</form>
+				</div>
+				<ul class="ecitic-btn-all">
+					<li><button class="btn btn-ecitic" id="select">查询</button></li>
+					<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+				</ul>
+			</div>
+			<div class="ecitic-operation">
+				<button id="add_proChange" class="btn btn-ecitic">发起变更</button>
+				<button id="update_proChange" class="btn btn-ecitic">修改变更</button>
+				<button id="delete_proChange" class="btn btn-ecitic">删除变更</button>
+				<button id="follow_proChange" class="btn btn-ecitic">变更跟踪</button>
+				<button id="view_proChange" class="btn btn-ecitic">查看变更</button>
+				<button id="approved" class="btn btn-ecitic">审批通过</button>
+			</div>
+			<div class="ecitic-new">
+				<table id="table_proChange" class="table table-bordered table-hover">
+					
+				</table>
+			</div>	
+		</div>
+	</div><!-- 分页结束 -->
+</div>
+
+<!--相关附件模态框  -->
+<script type="text/javascript" src="dev_project/myProject/myProject_queryInfo.js"></script>
+<script src="pages/suser/suserPop.js"></script>
+<script type="text/javascript">
+	initVlidate($("#problem_plan_solution"));
+</script>
+</body>
+</html>

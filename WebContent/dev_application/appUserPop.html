@@ -1,0 +1,41 @@
+<!-- 用户模态框 -->
+<div id="app_userPop" class="modal hide fade" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="myModalLabel">用户查询页面</h5>
+	</div>
+	<form action="" class="form-inline">
+		<div class="row">
+			<!-- <div class="span6 h30">
+				<label class="pl60">用户编号：</label>
+				<input type="text" id="app_userCode" name="user" placeholder=" " />
+			</div> -->
+			<div class="span6 h30">
+				<label class="pl60">用户姓名：</label>
+				<input type="text" id="app_username" name="user" placeholder=" " />
+			</div>
+			<div class="span6 h30">
+				<label class="pl60">登录名：</label>
+				<input type="text" id="app_userLoginName" name="user" placeholder=" " />
+			</div>
+		</div>
+		<div class="row">
+			<div class="span6 h30">
+				<label class="pl60">所在部门 ：</label>
+				<input type="text" id="app_user_org_name" name="org" onfocus="javascript:return false;" placeholder="点击选择部门 " readonly />
+				<input type="hidden" id="app_user_org_code" name="org" />
+			</div>
+		</div>
+	</form>
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="查询" id="app_userSearch" type="button" />
+		<input class="btn btn-ecitic" value="重置" id="app_userReset" type="button" />
+	</div>
+	<div class="ecitic-title-table modal-body ecitic-new">
+		<div class="tz_btn" style="display:none;">
+			<button class="btn btn-ecitic" type="button" id="userPOPSureSelected">确认选择</button>
+		</div>
+		<table id="pop_appUserTable" title="双击选择一条数据"></table>
+	</div>
+<div class="modal-footer"></div>
+</div>

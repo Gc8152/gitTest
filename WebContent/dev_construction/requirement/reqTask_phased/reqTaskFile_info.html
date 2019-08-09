@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>任务入版页面</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="main_iframeFormW">
+	<div class="main_iframe_con" >
+   		<div class="ecitic-title">
+			<span>任务信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+				<tr>
+				    <td class="table-text">任务编号：</td>
+				    <td>
+				    <div id="req_task_code" name="req_task_code"></div>
+				    </td>
+					<td class="table-text">任务名称：</td>
+					<td>
+					<div id="req_task_name" type="text" name="req_task_name"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">需求点编号：</td>
+					<td><div id="sub_req_code" ></div>
+					</td>
+					<td  class="table-text">需求点名称：</td>
+					<td><div id="sub_req_name" name="sub_req_name"></div></td>
+				</tr>
+				<tr>
+					<td class="table-text">需求点计划投产时间：</td>
+					<td><div id="plan_onlinetime" name="plan_onlinetime"></div></td>
+					<td class="table-text">业务需求编号：</td>
+					<td><div id="req_code" ></div></td>
+				</tr>
+				<tr>
+					<td class="table-text">业务需求名称：</td>
+					<td><div id="req_name" type="text" name="req_name"></div></td>
+					<td class="table-text">提出部门：</td>
+					<td>
+					<div id="req_put_dept_display" name="req_put_dept_display"></div>	
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">任务从属关系：</td>
+					<td>
+					<div id="req_task_relation_name" name="req_task_relation_name"></div> 
+					<td class="table-text">任务状态：</td>
+					<td ><div id="req_task_state_display" name="req_task_state_display"></div></td>
+				</tr>
+				<tr>
+					<td class="table-text">任务来源：</td>
+					<td><div id="req_task_type" name="req_task_type"  ></div></td>
+					<td class="table-text">任务项目经理：</td>
+					<td><div id="p_owner_name"name="p_owner_name"></div></td>
+				</tr>
+				<tr>
+					<td class="table-text">应用负责人：</td>
+					<td><div id="project_man_name"name="project_man_name"></div></td>
+					<td class="table-text">应用名称：</td>
+					<td ><div id="system_name" name="system_name"></div></td>
+					
+				</tr>
+			</table>
+		</div>
+		
+		<div id="sitCase_fileup" style="display: none;">
+			<div class="ecitic-title">
+				<span>测试案例<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table id="tableTestCaseInfo" class="aa table table-bordered table-hover table-text-show"></table>
+			</div>
+		</div>
+		<div class="ecitic-title">
+			<input name="FILE_ID" type="hidden" value=""/>
+			<span>文档列表信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table id="table_file" class="aa table table-bordered table-hover table-text-show"></table>
+		</div>
+	</div>
+	<!--上传附件模态框  -->
+	<div id="file_modal"></div>
+	<div id="file_view_modal"></div>
+	<div class="ecitic-save">
+		 <input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭" />
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="bootstrap/js/select2.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_phased/reqTaskFile_info.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_intoVersion/taskVersion_pop.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_phased/task_phased_jury.js"></script>
+<script type="text/javascript">
+	initVlidate($("#g_reqtask_joinVersion"));
+</script>
+</html>

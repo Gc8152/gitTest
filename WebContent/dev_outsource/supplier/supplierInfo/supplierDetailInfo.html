@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>供应商信息维护</title>
+		<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/form.css" />
+	</head>
+	<body class="">
+		<div class="tabbable"> <!-- Only required for left/right tabs -->
+		  <ul class="nav nav-tabs" style="font-size:13px;">
+		    <li class="active"><a href="#tab1" data-toggle="tab"><i class="icon-home"></i>基础信息</a></li>
+		    <li ><a href="#tab8" data-toggle="tab"><i class="icon-home"></i>联系人信息</a></li>
+		    <li ><a href="#tab9" data-toggle="tab"><i class="icon-home"></i>股权结构</a></li>
+		    <li ><a href="#tab10" data-toggle="tab"><i class="icon-home"></i>财务信息</a></li>
+		    <li><a href="#tab2" data-toggle="tab"><i class="icon-folder-open"></i>资质文件信息</a></li>
+		    <li><a href="#tab3" data-toggle="tab"><i class="icon-user"></i>主要客户签约情况</a></li>
+		  </ul>
+		  <div class="tab-content" style="overflow-x:hidden ">
+		  	<!-- tab1内容开始 -->
+		    <div class="tab-pane active" id="tab1" style="padding: 0 20px 0 20px">
+	    	  <div class="ecitic-title">
+				<span>基本信息<em></em></span>
+				<i></i>
+			  </div>
+			  <div class="ecitic-title-table">
+			      <table class="table table-bordered tablr-input-text ecitic-title-table" style="font-size: 14px">
+						<tbody>
+						    <tr>
+								<td width="15%" class="table-text"><span>供应商名称</span></td>
+								<td colspan="3"><span name="SD.sup_name" id="sup_name"></span></td>
+								<td width="13.333%" class="table-text"><span>供应商简称</span></td>
+								<td width="20%"><span name="SD.sup_simp_name"></span></td>
+							</tr>
+							<tr>
+								<td width="13.333%" class="table-text"><span>组织机构代码</span></td>
+								<td width="20%"><span name="SD.sup_num" id=""></span></td>
+								<td width="13.333%" class="table-text"><span>成立时间</span></td>
+								<td width="20%"><span name="SD.establish_time"></span></td>
+								<td width="13.333%" class="table-text"><span>注册资金</span></td>
+								<td width="20%"><span name="SD.register_money"></span></td>
+							</tr>
+							<tr>
+								<td width="15%" class="table-text"><span>注册地址</span></td>
+								<td colspan="3"><span name="SD.registered_addr" id=""></span></td>
+								<td width="15%" class="table-text"><span>所属区域</span></td>
+								<td colspan="3"><span name="SD.address" id=""></span></td>
+							</tr>
+							<tr>
+								<td width="15%" class="table-text"><span>通讯地址</span></td>
+								<td colspan="3"><span name="SD.company_address" id=""></span></td>
+								<td width="13.333%" class="table-text"><span>法人代表</span></td>
+								<td width="20%"><span name="SD.representative" id=""></span></td>
+							</tr>
+							<tr>
+								<td width="15%" class="table-text"><span>税务登记地址</span></td>
+								<td colspan="3"><span name="SD.tax_registration_addr" id=""></span></td>
+								<td width="13.333%" class="table-text"><span>增值纳税规模</span></td>
+								<td width="20%"><span name="SD.ordinary_vat_payr" id=""></span></td>
+							</tr>
+							<tr>
+								<td width="13.333%" class="table-text"><span>营业纳税人</span></td>
+								<td width="20%"><span name="SD.is_payer"></span></td>
+								<td width="13.333%" class="table-text"><span>公司网址</span></td>
+								<td width="20%"><span name="SD.sup_url" id=""></span></td>
+								<td width="13.333%" class="table-text"><span>客服电话</span></td>
+								<td width="20%"><span name="SD.tel" id=""></span></td>
+							</tr>
+							<tr>
+								<td width="13.333%" class="table-text"><span>是否上市</span></td>
+								<td width="20%"><span name="SD.is_listed"></span></td>
+								<td width="13.333%" class="table-text"><span>上市地点</span></td>
+								<td width="20%"><span name="SD.listed_addr"></span></td>
+								<td width="13.333%" class="table-text"><span>股票代码</span></td>
+								<td width="20%"><span name="SD.stock_code"></span></td>
+							</tr>
+							<tr>
+								<td class="table-text"><span>分支机构数量</span></td>
+								<td width="20%" ><span name="SD.sub_org_num"></span></td>
+								<td width="13.333%" class="table-text"><span>所属行业</span></td>
+								<td width="20%"><span name="SD.industry" id=""></span></td>
+								<td width="13.333%" class="table-text"><span>工商登记号</span></td>
+								<td width="20%"><span name="SD.business_registraion_num"></span></td>
+							</tr>
+							<tr>
+								<td width="13.333%" class="table-text"><span>是否为集团</span></td>
+								<td width="20%"><span name="SD.group_company" id=""></span></td>
+								<td width="13.333%" class="table-text"><span>企业性质</span></td>
+								<td width="20%"><span name="SD.nature_business"></span></td>
+								<td width="13.333%" class="table-text"><span>领取薪酬员工人数</span></td>
+								<td width="20%"><span name="SD.emp_num"></span></td>
+							</tr>
+							<tr>
+								<td width="13.333%" class="table-text"><span>签约三年以上专业及技术人员</span></td>
+								<td width="20%"><span name="SD.three_emp_num" id=""></span></td>
+								<td width="13.333%" class="table-text"><span>供应商级别</span></td>
+								<td width="20%"><span name="SD.sup_level" id=""></span></td>
+								<td width="13.333%" class="table-text"><span>准入日期</span></td>
+								<td width="20%"><span name="SD.entry_date" id=""></span></td>
+							</tr>
+							<tr>
+								<td class="table-text"><span>供应商分类</span></td>
+								<td colspan="5"><span name="SD.sup_sort_one"></span></td>
+							</tr>
+							<tr>
+								<td width="13.333%" class="table-text"><span>主营范围</span></td>
+								<td colspan="5"><span name="SD.business_scope" id=""></span></td>
+							</tr>
+							<tr>
+								<td width="13.333%" class="table-text"><span>核心业务或产品</span></td>
+								<td colspan="5"><span name="SD.core_business"></span></td>
+							</tr>
+							<tr>
+								<td width="15%" class="table-text"><span>行业地位/市场份额</span></td>
+								<td colspan="5"><span name="SD.market_share" id=""></span></td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>	
+		    <!-- tab1结束 -->
+				<!-- 联络人信息表格开始 -->
+				<div class="tab-pane " id="tab8" style="padding: 0 20px 0 20px">
+					<div class="ecitic-title">
+					 	<span>联系人信息<em></em></span>
+						<i></i>
+				    </div>
+					<div class="ecitic-title-table">
+				      	<table id="DetailLinkmanTable" class="table table-bordered table-hover">
+						</table>
+					</div>
+				</div>
+				<!-- 联络人信息表格结束 -->
+				<!-- 股权结构信息表格开始-->
+				<div class="tab-pane " id="tab9" style="padding: 0 20px 0 20px">
+					<div class="ecitic-title">
+						<span>股权结构<em></em></span>
+						<i></i>
+				  	</div>
+					<div class="ecitic-title-table">
+				      	<table id="DetailOwnershipStructureTable" class="table table-bordered table-hover">
+						</table>
+					</div>
+				</div>
+				<!-- 股权结构信息表格结束 -->	  
+				<!-- 财务信息信息表格开始-->
+				<div class="tab-pane " id="tab10" style="padding: 0 20px 0 20px">
+					<div class="ecitic-title">
+						<span>财务信息<em></em></span>
+						<i></i>
+				  	</div>
+					<div class="ecitic-title-table">
+				      	<table id="DetailFinancialInfoTable" class="table table-bordered table-hover">
+						</table>
+					</div>
+				</div>
+					<!-- 财务信息信息表格结束-->    	
+
+		    
+			<!-- tab2开始 -->
+		  <!--  资质文件信息  -->
+		    <div class="tab-pane " id="tab2" style="padding: 0 20px 0 20px">
+		    	<div class="ecitic-title">
+					<span>资质文件信息<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-title-table">
+			      	<table id="DetailEnclInfoTable" class="table table-bordered table-hover">
+					</table>
+				</div>	      	
+		    </div>
+		    <!-- tab2结束 -->
+			<!-- tab3开始 -->
+		  <!--  主要客户签约情况  -->
+		    <div class="tab-pane" id="tab3" style="padding: 0 20px 0 20px">
+		    	<div class="ecitic-title">
+					<span>主要客户签约情况<em></em></span>
+					<i></i>
+				</div> 
+				<div class="ecitic-title-table">
+			      	<table id="DetailSignInfoTable" class="table table-bordered table-hover">
+					</table>
+				</div>	      	
+		    </div>
+		    <!-- tab3结束 -->
+		    
+		  </div>
+		</div>
+		<div class="ecitic-save">
+			<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+		</div>
+		<!-- 约谈及扣款pop -->
+		<div id="TalkMsg_pop" class="modal hide fade" tabindex="-1">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<h3>约谈及扣款详情</h3>
+				</div>
+				<div class="modal-body">
+					<table id="TalkMsg_popTable" class="table table-bordered table-center table-th tablr-input-text" >
+					<tr>
+						<td  class="table-text" width="13.3%">供应商名称</td>
+						<td width="20%">
+							<div id="TCP_sup_name"></div>
+						</td>
+						<td  class="table-text" width="13.3%">供应商级别</td>
+						<td width="20%">
+						   	<div id="TCP_suplevel"></div>
+						</td>
+						<td  class="table-text" width="13.3%">供应商类别</td>
+						<td width="20%">
+							<div id="TCP_supcategory"></div>
+						</td>
+					</tr>
+					<tr>
+						<td  class="table-text" width="13.3%">供应商负责人</td>
+						<td width="20%">
+							<div id="TCP_suplinkman"></div>
+						</td>
+						<td  class="table-text" width="13.3%">联系电话</td>
+						<td width="20%">
+							<div id="TCP_suplinktel"></div>
+						</td>
+						<td  class="table-text" width="13.3%">联系邮箱</td>
+						<td width="20%">
+							<div id="TCP_suplinkemail"></div>
+						</td>
+					</tr>
+					<tr>
+						<td  class="table-text" width="13.3%">约谈事项</td>
+						<td width="20%">
+							<div id="TCP_question_items"></div>
+						</td>
+						<td  class="table-text" width="13.3%">约谈时间</td>
+						<td width="20%">
+							<div id="TCP_question_time"></div>
+						</td>
+						<td  class="table-text" width="13.3%">约谈人</td>
+						<td width="20%">
+							<div id="TCP_questioner"></div>
+						</td>
+					</tr>
+					<tr>
+						<td  class="table-text" width="13.3%">投诉建议人</td>
+						<td width="20%">
+							<div id="TCP_opt_person"></div>
+						</td>
+						<td  class="table-text" width="13.3%">被约谈人</td>
+						<td width="20%">
+							<div id="TCP_by_questioner"></div>
+						</td>
+						<td  class="table-text adviceway" width="13.3%">被约谈人电话</td>
+						<td class="adviceway" width="20%">
+							<div id="TCP_by_questioner"></div>
+						</td>
+					</tr>
+					<tr>
+						<td  class="table-text" width="13.3%">约谈事件类别</td>
+						<td width="20%">
+							<div id="TCP_events_level_name"></div>
+						</td>
+						<td  class="table-text" width="13.3%">造成影响</td>
+						<td width="20%">
+							<div id="TCP_impact"></div>
+						</td>
+						<td  class="table-text adviceway" width="13.3%">影响程度</td>
+						<td class="adviceway" width="20%">
+							<div id="TCP_incidence_degree"></div>
+						</td>
+					</tr>
+					<tr>
+						<td  class="table-text" width="13.3%">造成损失</td>
+						<td width="20%">
+							<div id="TCP_losses_caused"></div>
+						</td>
+						<td  class="table-text" width="13.3%">是否挽回</td>
+						<td width="20%">
+							<div id="TCP_is_redeem_name"></div>
+						</td>
+						<td  class="table-text adviceway" width="13.3%">挽回情况</td>
+						<td class="redeem_status" width="20%">
+							<div id="TCP_redeem_status"></div>
+						</td>
+					</tr>
+					<tr>
+						<td  class="table-text" width="13.3%">是否扣款</td>
+						<td width="20%">
+							<div id="TCP_is_cut_payment_name" name="T.is_cut_payment_name"></div>
+						</td>
+						<td  class="table-text" width="13.3%">合同/订单</td>
+						<td width="20%">
+							<div id="TCP_order_or_contract"></div>
+						</td>
+						<td  class="table-text adviceway" width="13.3%">处罚权重系数</td>
+						<td class="adviceway" width="20%">
+							<div id="TCP_punish_weight_coefficient"></div>
+						</td>
+					</tr>
+					<tr>
+						<td  class="table-text" width="13.3%">处罚比例</td>
+						<td width="20%">
+							<div id="TCP_punish_ratio"></div>
+						</td>
+						<td  class="table-text" width="13.3%">扣款金额</td>
+						<td width="20%">
+							<div id="TCP_cut_payment"></div>
+						</td>
+						<td  class="" width="13.3%"></td>
+						<td  width="20%">
+							<div ></div>
+						</td>
+					</tr>
+					<tr>
+						<td  class="table-text">扣款原因</td>
+						<td colspan="5" width="85%">
+							<div id="TCP_cut_payment_reason"></div>
+						</td>
+					</tr>
+					<tr>
+						<td  class="table-text">备注</td>
+						<td colspan="5" width="85%">
+							<div name="memo" id="TCP_memo"></div>
+						</td>
+					</tr>
+					</table>
+				</div>
+				<div class="modal-footer" style="text-align:center">
+					<button class="btn" aria-hidden="true"  data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+			<script src="dev_outsource/supplier/supplierInfo/supplierDetailInfo.js"></script>
+	</body>
+</html>

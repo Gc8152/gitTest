@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>流申请列表</title>
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">	
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+		<form id="StreamApplyQuerytForm">
+			<table id="StreamApplyQuery" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">应用名称:</td>
+					<td><input type="text" id="system_name" name="system_name"></td>
+					<td class="ecitic-right">版本名称:</td>
+					<td><input type="text" id="versions_name" name="versions_name" /></td>					
+					<td class="ecitic-right">流名称:</td>
+					<td><input type="text" id="stream_name" name="stream_name" /></td>	
+				</tr>	
+				<tr>
+					<td class="ecitic-right">任务名称:</td>
+					<td><input type="text" id="req_task_name" name="req_task_name" /></td>
+					<td class="ecitic-right">任务编号:</td>
+					<td><input type="text" id="req_task_code" name="req_task_code" /></td>
+					<td class="ecitic-right">任务来源:</td>
+					<td>					
+					    <select name="req_task_type" id="req_task_type"  class="requirement-ele-width" diccode="G_DIC_REQTASK_COME"  style="width:100%;"></select>
+					</td>	
+				</tr>			
+			</table>
+		</form>	
+	</div>
+	<ul class="ecitic-btn-all">
+		<li><button class="btn btn-ecitic" id="queryStreamApply">查询</button></li>
+		<li><button class="btn btn-ecitic" id="resetStreamApply">重置</button></li>
+	</ul>
+</div>
+<div class="main_iframe_con">
+	<div class="ecitic-new">
+		<table id="StreamApplySureTableInfo" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+</div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_resourceManage/streamApplySure/versionStream_queryList.js"></script>
+</html>
+

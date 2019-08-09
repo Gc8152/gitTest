@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../css/select2.css"/>
+<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+<link rel="stylesheet" href="../../css/bootstrap-table.min.css"/>
+<link rel="stylesheet" href="../../css/zebra_dialog.css" />
+<link rel="stylesheet" href="../../css/public.css" />
+<link rel="stylesheet" href="../../css/style.css" />
+<link rel="stylesheet" href="../../css/form.css" />
+
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../../js/select2.min.js"></script>
+<script type="text/javascript" src="../../js/zebra_dialog.js"></script>
+<script type="text/javascript" src="../../js/alertAndConfirm.js"></script>
+<script type="text/javascript" src="../../js/Math.uuid.js"></script>
+<script type="text/javascript" src="../../js/commons.js"></script>
+</head>
+
+<body style="overflow:auto;">
+	<div class="main_iframe_con">
+		<div class="yourLocation">
+					<i></i><span>您所在的位置：服务器配置》应用服务器》服务器信息编辑</span>
+				</div>
+		<div class="ecitic-title">			
+			<span>服务器信息编辑<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<form id="serverInfoForm" method="post" onsubmit="return false;">
+				<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table"><!-- table-bor-paw-->
+					<tr>
+						<td width="14%" class="table-text">服务器类型</td>
+						<td width="35%">
+							<input type="hidden" name="id"/>
+							<input type="hidden" name="serverUseType" value="03"/>
+							<select id="serverType" name="serverType" validate="v.required" valititle="该项必选">
+								<option value=" ">请选择</option>
+								<option value="01">ap服务器</option>
+								<option value="02">db服务器</option>
+								<!-- <option value="03">缓存服务器</option>
+								<option value="03">其它服务器</option> -->
+							</select>
+						</td>
+						<td width="14%" class="table-text">服务器ip地址</td>
+						<td width="35%">
+							<input type="text" name="serverIp" validate="v.ip" valititle="该项必填，格式为191.168.1.1"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">操作系统</td>
+						<td>
+							<select id="serverOs" name="serverOs" validate="v.required" valititle="该项必选">
+								<option value=" ">请选择</option>
+								<option value="01">unix</option>
+								<option value="02">linux</option>
+								<option value="03">windows</option>
+							</select>
+						</td>
+						<td class="table-text">版本号</td>
+						<td>
+							<select id="serverVersion" name="serverVersion" validate="v.required" valititle="该项必选">
+								<option value=" ">请选择</option>
+								<option value="01">version 1</option>
+								<option value="02">version 2</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">用户名</td>
+						<td>
+							<input type="text" name="serverUsername" validate="v.required" valititle="该项必填"/>
+						</td>
+						<td class="table-text">密码</td>
+						<td>
+							<input type="text" name="serverPassword" validate="v.required" valititle="该项必填"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">服务器状态</td>
+						<td>
+							<select id="serverStatus" name="serverStatus" validate="v.required" valititle="该项必选">
+								<option value="00">启用</option>
+								<option value="01">停用</option>
+							</select>
+						</td>
+						<td class="table-text">所属应用</td>
+						<td>
+							<!-- <select id="serverBelong" name="serverBelong" validate="v.required" valititle="该项必选">
+								<option value=" ">请选择</option>
+								<option value="00">行政部</option>
+								<option value="01">测试部</option>
+								<option value="02">开发一部</option>
+								<option value="03">开发二部</option>
+							</select> -->
+					    <input type="hidden" id="serverSystem"  name="serverSystem"/>
+						<input type="text" id="serverSystemName"  name="systemInfo.systemName" readonly="readonly"/>
+						</td >
+					</tr>
+					
+					<tr id="serverTypeDbRow1">
+						<td class="table-text">数据库类型</td>
+						<td>
+							<select id="dbType" name="serverinfoAdditional.dbType" validate="v.required" valititle="该项必选" style="width:100%">
+								<option value=" ">请选择</option>
+								<option value="00">oracle</option>
+								<option value="01">Db2</option>
+								<option value="02">mysql</option>
+							</select>
+						</td>
+						<td class="table-text">数据库实例名</td>
+						<td>
+							<input type="text" name="serverinfoAdditional.instanceName" validate="v.required" valititle="该项必填"/>
+						</td>
+					</tr>
+					<tr id="serverTypeDbRow2">
+						<td class="table-text">数据库用户名</td>
+						<td>
+							<input type="text" name="serverinfoAdditional.username" validate="v.required" valititle="该项必填"/>
+						</td>
+						<td class="table-text">数据库密码</td>
+						<td>
+							<input type="text" name="serverinfoAdditional.password" validate="v.required" valititle="该项必填"/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div class="ecitic-operation ecitic-operation-bg" style="text-align: center;">
+				<button class="btn btn-ecitic" id="save">保存</button>
+				<button class="btn btn-ecitic" id="close">关闭</button>
+		</div>
+	</div>
+			<!-- modal of 应用流程  -->
+	    <div id="SSystemSelect_modal" class="modal hide fade" style="top: 50%;margin-top: -285px;width:900px;" z-index="980" tabindex="-1" >
+	        <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+	            <h3 class="header-h3">应用选择</h3>
+	        </div>
+	        <div class="modal-body" style="max-height:400px;">
+	            <form action="" class="form-inline" id="query_form_server">
+	                <div class="ecitic-title-table tab-content bootstrapTabsCont" id="ecitic-table">
+	                    <table id="planOutter" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text planOutter">
+	                        <tr>
+	                            <td class="table-text">应用名称：</td>
+	                            <td>
+	                                <div class="planOutter_form_add_position"><input name="systemName" id="systemNamepop" value=""/></div>
+	                            </td>
+	                            <td class="table-text">应用简称：</td>
+	                            <td>
+	                                <div class="planOutter_form_add_position"><input name="systemShort" id="systemShortpop" value=""/></div>
+	                            </td>
+	                            <td class="table-text">
+	                                <input type="button" id="querySystem" value="查询"/>
+	                            </td>
+	                        </tr>
+	                     </table>   
+	                 </div>
+	            </form>
+	            <div class="ecitic-new">
+	                <table id="SSystemSelectTable" class="table table-bordered table-hover"></table>
+	            </div>
+	            <div class="ecitic-save">
+	                <button class="btn btn-ecitic"  id="SSystemSelectSure">确定</button>
+	                <button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+	            </div>
+	        </div>
+	        <div class="modal-footer"></div>
+	    </div>
+	    <!-- end of modal -->
+	<script type="text/javascript" src="app_server.js"></script>
+</body>
+</html>

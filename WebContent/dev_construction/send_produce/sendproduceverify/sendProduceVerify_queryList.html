@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>投产申请列表</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table id="queryCondition" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">需求点编号：</td>
+					<td><input type="text" name="SUB_REQ_CODE"/></td>
+					<td class="ecitic-right">需求点名称：</td>
+					<td><input type="text" name="SUB_REQ_NAME"/></td>
+					<td class="ecitic-right">所属应用:</td>
+					<td><input type="text" name="SYSTEM_NAME"/></td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">确认结果：</td>
+					<td>
+						<select id="VERIFY_RESULT" name="VERIFY_RESULT"></select>
+					</td>
+					<td class="ecitic-right">是否提交：</td>
+					<td>
+						<select id="IS_COMMIT" name="IS_COMMIT"></select>
+					</td>
+					<td></td><td></td>
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="query">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="produce_verify">业务验证</button>
+		<button class="btn btn-ecitic" id="verify_detail">查看</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover table-text-show" id="produceVerifyTable">
+		</table>
+	</div>
+	
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/send_produce/sendproduceverify/sendProduceVerify_queryList.js"></script>
+</html>

@@ -1,0 +1,91 @@
+@CHARSET "UTF-8";
+
+/*div大小浮动  */
+.div-size-float {
+	/* border : 2px solid #AE0A29; */
+	color: #8A8A8A;
+	text-align: left;
+	line-height: 15px;
+	margin-top: 15px;
+	float: left;
+	width: 33.3%;
+	height: 30px;
+	font-size: 14px;
+	cursor: not-allowed;
+	text-indent: 2em;
+}
+.div-size-float i{
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background:#8A8A8A;
+    border-radius: 50%;
+    margin-right: 4px;
+    margin-bottom: 2px;
+    }
+    
+/*div固定不可点击 */
+.div-size-square {
+	color: #8A8A8A;
+    text-align: left;
+    line-height: 30px;
+    float: left;
+    width: 200px;
+    height: 30px;
+    font-size: 14px;cursor: not-allowed;
+   
+}
+.div-size-square i{
+	width: 8px;
+    height: 8px;background:#8A8A8A;border-radius: 50%;
+    margin-right: 4px;
+    margin-bottom: 2px;
+}
+
+/*div固定可点击 */
+.div-size-square-click {
+	 color: #000;
+    text-align: left;
+    line-height: 30px;
+    float: left;
+    width: 200px;
+    height: 30px;
+    font-size: 14px;cursor: not-allowed;
+	cursor: pointer;
+   
+}
+.div-size-square-click i{
+	width: 8px;
+    height: 8px;
+    background-color: red;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+/*可操作 */
+.tag-blue {
+	/* background-color: #AE0A29; */
+	color: #000;
+	cursor: pointer;
+}
+.tag-blue i{display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    border-radius: 50%;
+    margin-right: 4px;
+    margin-bottom: 2px;}
+.tag-blue:hover {
+	text-decoration: underline;
+}
+.ecitic-title-table-myTask{
+	border: 1px solid #ddd;
+    padding-bottom: 15px;}
+    
+.div-size-float-text{
+	margin-top: -17px;
+	margin-left: 42px;
+	text-indent: 0em;
+	text-align: left;
+	/* background-color: antiquewhite; */
+	line-height: 16px;
+}

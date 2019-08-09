@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>不符合项目管理（配置）</title>
+</head>
+<body>
+	<div class="ecitic-inquire ecitic-inquire-sec ecitic-moreNo lessSearch">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="qualityManage_query">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">不符合项状态：</td>
+						<td>
+							<select name="STATUS" diccode="P_DIC_QUALITY_STATUS" style="width:100%;"></select>
+						</td>
+						<td class="ecitic-right">不符合项分类：</td>
+						<td>
+							<select name="TYP" diccode="P_DIC_QUALITY_TYP" style="width:100%;"></select>
+						</td>
+						<td class="ecitic-right">发现日期：</td>
+						<td>
+							<input type="text" onClick="WdatePicker()" name="FIND_DATE" readonly UNSELECTABLE ='on'  placeholder="请选择"/>
+							<input type="hidden" name="PROJECT_ID"/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="commit">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<!-- <button class="btn btn-ecitic" id="qualityManage_import">导入</button> -->
+		<button class="btn btn-ecitic" id="qualityManage_add">新增</button>
+		<button class="btn btn-ecitic" id="qualityManage_update">修改</button>
+		<button class="btn btn-ecitic" id="qualityManage_delete">删除</button>
+		<button class="btn btn-ecitic" id="qualityManage_accept">受理</button>
+		<button class="btn btn-ecitic" id="qualityManage_handle">处理</button>
+		<button class="btn btn-ecitic" id="qualityManage_validate">验证</button>
+		<button class="btn btn-ecitic" id="qualityManage_detail">详情</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover" id="qualityManage_table"></table>
+	</div>
+	<script type="text/javascript" src="dev_project/myProject/qualityManage/qualityManage_queryList.js"></script>
+</body>
+</html>

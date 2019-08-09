@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<script src="reportJsp/report_turnpage.js"></script>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="pages/suser/suserPop.js"></script>
+<script src="pages/srole/srolePop.js"></script>
+<script src="pages/sorg/sorgPop.js"></script>
+<script src="dev_test/defectManagement/query/systemPop.js"></script>
+
+</head>
+<body>
+	<script type="text/javascript">
+		function reportOpenUserPop(callback){
+			if($("#reportDivUserinfo").length==0){
+				$("div[menu_page]").append('<div id="reportDivUserinfo"></div>');
+			}
+			openUserPop("reportDivUserinfo",callback);
+		}
+		function reportOpenSOrgPop(callback){
+			if($("#reportDivOrginfo").length==0){
+				$("div[menu_page]").append('<div id="reportDivOrginfo"></div>');
+			}
+			openSOrgPop("reportDivOrginfo",callback);
+		}
+		function systemPop(callback){
+			if($("#systemPop").length==0){
+				$("div[page='menu_defect_report']").append('<div id="systemPop"></div>');
+			}
+			openSystemPop("systemPop",callback);
+		}
+	</script>
+</body>
+</html>

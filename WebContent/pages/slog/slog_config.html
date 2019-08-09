@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link  href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="pages/slog/slog_config.js"></script>
+</head>
+<body>
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>日志配置<em></em></span>
+	    </div>
+		<form action="" class="form-inline" id="logConfigForm">
+			<table style="width:100%;border:0;cellspacing:0;cellpadding:0;" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">是否生成登录日志</td>
+					<td><select id="loginlog_state" name="loginlog_state"></select></td>
+					<td class="ecitic-right">登陆日志清理期限（天）</td>
+					<td><input type="text" id="loginlog_timelimit" name="loginlog_timelimit"/></td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">是否生成操作日志</td>
+					<td><select id="optlog_state" name="optlog_state"></select></td>
+					<td class="ecitic-right">操作日志清理期限（天）</td>
+					<td><input type="text" id="optlog_timelimit" name="optlog_timelimit"/></td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">是否生成异常日志</td>
+					<td><select id="errorlog_state" name="errorlog_state"></select></td>
+					<td class="ecitic-right">异常日志清理期限（天）</td>
+					<td><input type="text" id="errorlog_timelimit" name="errorlog_timelimit"/></td>
+				</tr>
+				 <tr>
+					<td class="ecitic-right">是否生成发送日志</td>
+					<td><select id="sendlog_state" name="sendlog_state"></select></td>
+					<td class="ecitic-right">发送日志清理期限（天）</td>
+					<td><input type="text" id="sendlog_timelimit" name="sendlog_timelimit"/></td>
+				</tr> 
+				<tr>
+					<td class="ecitic-right">最后修改人</td>
+					<td><input type="text" id="last_opt_person" name="last_opt_person" readonly="readonly"/></td>
+					<td class="ecitic-right">最后修改时间</td>
+					<td><input type="text" id="last_opt_time" name="last_opt_time" readonly="readonly"/></td>
+				</tr>
+			</table>
+	    </form>
+    	<div class="ecitic-save">
+			<input type="button" class="btn btn-ecitic" value="保存" id="saveConfig" />
+			<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+		</div>
+    </div>
+</body>
+</html>

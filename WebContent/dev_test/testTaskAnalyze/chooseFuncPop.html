@@ -1,0 +1,35 @@
+<div id="chooseFuncPoint_Pop" class="modal hide fade pb20" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">选择功能点</h3>
+	</div>
+	<div class="modal-body">
+		<div id="ms_context">
+			<table width="100%" border="0" collspacing="0" cellpadding="0">
+				<tr>
+					<td class="ecitic-org">
+						<fieldset>
+							<legend style="text-align:left">待选功能点</legend>
+							<ul id="treeFuncPoint" class="ztree"></ul>
+						</fieldset>
+					</td>
+					<td class="ecitic-role-btn">
+						<button type="button" onclick="funcMove('add');" class="btn">&gt;&gt;</button>
+						<button type="button" onclick="funcMove('remove');" class="btn">&lt;&lt;</button>
+					</td>
+					<td class="ecitic-role">
+						<fieldset>
+							<legend style="text-align:left">已选功能点 </legend>
+							<select id="selected" class="noselect2" name="selected" multiple="" size="12" ondblclick="move('rmselected');"></select>
+						</fieldset>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="ecitic-save">
+		<button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+		<button class="btn btn-ecitic" btn="savvFunc">保存</button>
+	</div>
+	<div class="modal-footer"></div>
+</div>

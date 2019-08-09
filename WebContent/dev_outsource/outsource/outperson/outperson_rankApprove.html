@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>外包人员基本信息</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link href="pages/approvalflow/afcommons.css" rel="stylesheet">
+</head>
+
+<body >
+<div class="main_iframeFormW main_ifme_con">
+<ul class="nav nav-tabs bootstrapTabs" style="font-size:13px;">
+		<li id="bascInfo">
+			<a href="#basic_info2" data-toggle="tab">基本信息</a>
+		</li>
+		<li class="active">
+			<a href="#outperson_rank_approve" data-toggle="tab" > 
+			审批信息</a>
+		</li>
+	</ul> 
+	<div id="myTabContenttt" class="tab-content bootstrapTabsCont">
+		<div class="tab-pane" id="basic_info2">
+				<div class="ecitic-title">
+			<span>申请信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table class="table table-bordered tablr-input-text" id="OptRankTable">
+				<tr>
+					<td width="11%" class="table-text">申请职能组</td>
+					<td>
+						<div type="text" name="ADD.apply_group" id="apply_group" validate="v.required" valititle="申请职能组为必填项"  ></div>
+					</td>
+					<td width="11%" class="table-text">申请人</td>
+					<td width="22.333%">
+						<div type="text" name="ADD.opt_manager" id="opt_manager" validate="v.required" valititle="申请人为必填项"  ></div>
+					</td>
+					<td width="11%" class="table-text">申请时间</td>
+					<td>
+						<div type="text" name="ADD.rank_apply_time"  id="rank_apply_time" onClick="WdatePicker({})" readonly validate="v.required" valititle="申请时间为必填项" ></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">申请原因</td>
+					<td colspan="5">
+						<div class="citic-text-ast" name="ADD.apply_reason" id="apply_reason" validate="v.required"
+							valititle="任务目标及工作概述为必填项"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="ecitic-title">
+			<span>拟引入人员情况<em></em></span> <i></i>
+		</div>
+		<div class="ecitic-new" id="perInfoDiv">
+			<div class="ecitic-title-table">
+				<table id="outpersonRankDetailTable" class="table table-bordered table-hover">
+					<tr>
+						<th width="8%">人员姓名</th>
+						<th width="8%">特长</th>
+						<!-- <th width="5%">笔试/面试成绩</th> -->
+						<th width="5%">开发方向</th>
+						<th width="8%">人员级别</th>
+						<th width="8%">试用期</th>
+						<th width="15%">公司名称</th>
+						<th width="8%">评定日期</th>
+<!-- 						<th width="14%">人员简历</th> -->
+<!-- 						<th width="13%">S/E级说明文档</th> -->
+						<th width="8%">实际报到时间</th>
+<!-- 						<th width="5%" style="text-align:center">操作</th> -->
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="ecitic-new" id="perInfoDiv2">
+			<div class="ecitic-title-table">
+				<table id="outpersonRankDetailTable" class="table table-bordered table-hover">
+					<tr>
+						<th width="8%">人员姓名</th>
+						<!-- <th width="8%">所在项目</th> -->
+						<th width="8%">所属应用</th>
+						<!-- <th width="5%">考核分数</th> -->
+						<th width="5%">开发方向</th>
+						<th width="5%">原有级别</th>
+						<th width="8%">人员级别</th>
+						<th width="15%">公司名称</th>
+						<th width="8%">评定日期</th>
+<!-- 						<th width="14%">人员简历</th> -->
+<!-- 						<th width="13%">S级说明文档</th> -->
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+		<div class="ecitic-new" id="fileSonDiv">
+			<div class="ecitic-title">
+				<span>人员简历<em></em></span> <i></i>
+			</div>
+			<div class="ecitic-new">
+				<div class="ecitic-title-table">
+					<table class="table table-bordered tablr-input-text">
+<!-- 						<tr> -->
+<!-- 							<td width="11%" class="table-text">附件</td> -->
+<!-- 							<td colspan="5"> -->
+<!-- 								<input type="button" value="上传" id="file_button_son" class="btn btn-ecitic" /> -->
+<!-- 								<input type="hidden" name="ADD.file_id_son" id="file_id_son" /> -->
+<!-- 							</td> -->
+<!-- 						</tr> -->
+						
+						<tr>
+						<td width="11%" class="table-text">附件</td>
+						<td colspan="5">
+							<div class="upload-file" id="ORD_file_id_son"></div>
+						</td>
+					</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		<div class="ecitic-new" id="fileStateDiv">
+			<div class="ecitic-title">
+				<span>人员情况说明文档<em></em></span> <i></i>
+			</div>
+			<div class="ecitic-new">
+				<div class="ecitic-title-table">
+					<table class="table table-bordered tablr-input-text">
+<!-- 						<tr> -->
+<!-- 							<td width="11%" class="table-text">附件</td> -->
+<!-- 							<td colspan="5"> -->
+<!-- 								<input type="button" value="上传" id="file_button_state" class="btn btn-ecitic" /> -->
+<!-- 								<input type="hidden" name="ADD.file_id_state" id="file_id_state" /> -->
+<!-- 							</td> -->
+<!-- 						</tr> -->
+						
+						<tr>
+						<td width="11%" class="table-text">附件</td>
+						<td colspan="5">
+							<div class="upload-file" id="ORD_file_id_state"></div>
+						</td>
+					</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+<!-- 		<div class="ecitic-title">
+			<span>S/E级说明文档<em></em></span> <i></i>
+		</div>
+		<div class="ecitic-new">
+			<div class="ecitic-title-table">
+				<table class="table table-bordered tablr-input-text">
+					<tr>
+						<td width="11%" class="table-text">附件</td>
+						<td colspan="5">
+							<input type="button" value="上传" id="file_button_SE" class="btn btn-ecitic" />
+							<input type="hidden" name="ADD.file_id_SE" id="file_id_SE" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11%" class="table-text">附件</td>
+						<td colspan="5">
+							<div class="upload-file" id="ORD_file_id_SE"></div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			</div> -->
+		</div>
+		<!-- <div id="opModal_resourceApprove" class="modal hide fade in" style="top: 50%;margin-top: -300px;width: 780px" data-backdrop="static"> -->
+		<div class="tab-pane fade in active"  id="outperson_rank_approve">
+		 <!--  	<div id="apptitlePop"></div>
+		  	<div id="apphistoryPop"></div>-->
+			<div id="appOptPop"></div> 
+			<div class="ecitic-title">
+				<span>流程审批列表<em></em></span>
+			</div>
+			<div class="ecitic-new">
+				<table id="AFApprovalTableInfo" class="table table-bordered table-hover"></table>
+			</div>	
+		</div>
+		<div class="ecitic-save">
+			<input type="button" class="btn btn-ecitic" name="closeCurrentPageTab" value="关闭"/>
+		</div>
+</div>
+</div>
+</body>
+	<script src="bootstrap/js/bootstrap-table.min.js"></script>
+	<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+	<script type="text/javascript" src="dev_outsource/outsource/outperson/outperson_rankApproval.js"></script> 
+	<!-- <script src="workflow/workFlowList.js"></script> -->
+	<script src="pages/approvalflow/approval_title.js"></script>
+	<script src="pages/approvalflow/approval_content.js"></script>
+	<script src="pages/approvalflow/afcommons.js"></script>
+	<script src="upload/uploadFileInfo.js"></script>
+</html>

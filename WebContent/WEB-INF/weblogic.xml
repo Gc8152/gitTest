@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE weblogic-web-app PUBLIC "-//BEA Systems, Inc.//DTD Web Application 8.1//EN" "http://www.bea.com/servers/wls810/dtd/weblogic810-web-jar.dtd">
+ 
+<weblogic-web-app>
+	<jsp-descriptor>  
+    <jsp-param>  
+      <param-name>encoding</param-name>  
+      <param-value>GBK</param-value>  
+    </jsp-param>  
+    <jsp-param>  
+      <param-name>pageCheckSeconds</param-name>  
+      <param-value>-1</param-value>  
+    </jsp-param>  
+    <jsp-param>  
+      <param-name>compilerSupportsEncoding</param-name>  
+      <param-value>true</param-value>  
+    </jsp-param>  
+    <jsp-param>  
+      <param-name>verbose</param-name>  
+      <param-value>false</param-value>  
+    </jsp-param>  
+  </jsp-descriptor>  
+  
+  <container-descriptor> 
+  	<show-archived-real-path-enabled>true</show-archived-real-path-enabled> 
+    <servlet-reload-check-secs>-1</servlet-reload-check-secs>  
+    <resource-reload-check-secs>30</resource-reload-check-secs>  
+    <single-threaded-servlet-pool-size>100</single-threaded-servlet-pool-size>  
+  </container-descriptor>
+  
+
+  <context-root>/yfglpt</context-root>
+
+</weblogic-web-app>

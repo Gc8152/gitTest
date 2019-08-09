@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script src="dev_application/interfaceInfo/serInterfaceUse_queryList.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	
+		<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+			<form id="serInterfaceUse_queryList_form">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td width="11%" class="ecitic-right">接口编号：</td>
+						<td width="22.333%"><input type="text" name="interuse_no" id="interuse_no"/></td>
+						<td width="11%" class="ecitic-right">接口名称：</td>
+						<td width="22.333%"><input type="text" name="interuse_name" id="interuse_name"/></td>
+						<td width="11%" class="ecitic-right">接口状态：</td>
+						<td width="22.333%">
+						<select id="interuse_status" name="interuse_status" style="width:100%;"></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">服务方应用名称：</td>
+						<td><input type="text" name="ser_system_name" id="ser_system_name" readonly/></td>
+						<td class="ecitic-right">消费方应用名称：</td>
+						<td><input type="text" name="custe_system_name" id="custe_system_name" readonly/></td>
+						<td class="ecitic-right">接口描述：</td>
+						<td><input type="text" name="interuse_descr" id="interuse_descr"/></td>
+					</tr>
+					<tr>
+						<td width="11%" class="ecitic-right">接口交易码：</td>
+						<td width="22.333%"><input type="text" name="tradeuse_code" id="tradeuse_code"/></td>
+					</tr>
+				</table>
+				</form>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" id="interuseQuery" value="查询"/></li>
+				<li><input type="button" class="btn btn-ecitic" id="interuseReset" value="重置"/></li>
+			</ul>
+		</div>
+	<div class="ecitic-new">
+	     
+		<table id="serInterfaceTableInfo" class="table table-bordered table-hover table-text-show">
+		</table>
+	</div>
+	<div mod="systemPop"></div>
+</div>
+<!--上传附件模态框  -->
+<div id="add_fileview_modal"></div>
+<div id="sorgDivPermiss"></div>
+</body>
+<script src="dev_application/useInterfaceApply/useInterfaceApply_systemPop.js"></script>
+</html>

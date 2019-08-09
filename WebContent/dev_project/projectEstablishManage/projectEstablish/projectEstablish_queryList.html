@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>项目立项申请（项目办）</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+	<div class="ecitic-inquire queny_workHight" >
+		<div class="ecitic-table" >
+			<form id="projectEstablish">
+				<table id="table_select" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad requirement-table">
+					<tr>
+						<td class="ecitic-right" style="width: 11%;">项目名称：</td>
+						<td style="width: 22%;">
+							<input type="text" name="PROJECT_NAME"/>
+						</td>
+						
+						<!-- <td class="ecitic-right" style="width: 12%;">项目类型：</td>
+						<td style="width: 22%;">
+							<select name="PROJECT_TYPE" diccode="SYS_DIC_MILESTONE_PROJECT_TYPE" style="width:100%;"></select>
+						</td> -->
+						<!-- <td class="ecitic-right" style="width: 11%;">状态：</td>
+						<td style="width: 22%;">
+							<select name="STATUS" style="width:100%;"></select>
+						</td> -->
+						<td class="ecitic-right" style="width: 11%;">项目经理：</td>
+						<td style="width: 22%;">
+							<input type="text" name="PM_NAME" style="width:100%;" />
+							<input type="hidden" name="PM_ID" id="PM_ID"/>
+						</td>
+						<td class="ecitic-right" style="width: 12%;">业务部门：</td>
+						<td style="width: 22%;">
+							<input type="hidden" name="BUSINESS_DEP_ID" id="BUSINESS_DEP_ID"/>
+							<input type="text" name="BUSINESS_DEP_NAME" id="BUSINESS_DEP_NAME" readonly/>
+						</td>
+					</tr>
+					<!-- <td>
+						<div class="ecitic-input-all" style="position: static;">
+							<input type="hidden" name="FD.op_office" id="op_office"/>
+							<input type="text" placeholder="点击选择行内归属部门" name="FD.a" id="FD_op_office" readonly/>
+						</div>
+					</td> -->
+					<tr>
+						<td class="ecitic-right" style="width: 11%;">实施部门：</td>
+						<td style="width: 22%;">
+							<input type="hidden" name="IMPL_DEP_ID" id="IMPL_DEP_ID"/>
+							<input type="text" name="IMPL_DEP_NAME" id="IMPL_DEP_NAME" readonly/>
+						</td>
+						
+						<td class="ecitic-right" style="width: 11%;">开始时间：</td>
+						<td style="width: 22%;">
+							<input type="text" name="START_TIME" id="START_TIME" onclick="checkTimeSupCompare()"/>
+						</td>
+						<td class="ecitic-right" style="width: 12%;">结束时间：</td>
+						<td style="width: 22%;">
+							<input type="text" name="END_TIME" id="END_TIME" onclick="checkTimeSupCompare()"/>
+						</td>
+					</tr>
+					
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="select_project">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset_project">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="add_project">创建项目</button>
+		<button class="btn btn-ecitic" id="update_project">修改</button>
+		<button class="btn btn-ecitic" id="delete_project">删除</button>
+		<button class="btn btn-ecitic" id="view_project">查看详情</button>
+		<!-- <button class="btn btn-ecitic" id="submit_project">提交</button> -->
+	</div>
+	<div class="ecitic-new">
+		<table id="table_project" class="table table-bordered table-hover"></table>
+	</div>
+<div id="choosePm"></div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>  
+<script type="text/javascript" src="dev_project/projectEstablishManage/projectEstablish/pmInfoPop.js"></script>
+<script type="text/javascript" src="dev_project/projectEstablishManage/projectEstablish/projectEstablish_queryList.js"></script>
+</html>

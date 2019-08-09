@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>外包人员基本信息</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+
+<body style="overflow:auto;">
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>外包人员基本信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table class="table table-bordered tablr-input-text"><!-- table-bor-paw-->
+				<tr>
+					<td width="11%" class="table-text">姓名</td>
+					<td width="22.333%">
+						<div id="OPDT_OP_NAME"></div>
+					</td>
+					<td width="11%" class="table-text">身份证</td>
+					<td width="22.333%">
+						<div id="OPDT_IDCARD_NO"></div>
+					</td>
+					<td width="11%" class="table-text">性别</td>
+					<td width="22.333%">
+						<div id="OPDT_SEX_NAME"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">出生年月</td>
+					<td>
+						<div id="OPDT_OP_BIRTHDAY"></div>
+					</td>
+					<td class="table-text">手机号</td>
+					<td>
+						<div id="OPDT_OP_PHONE"></div>
+					</td>
+					<td class="table-text">最高学历</td>
+					<td>
+						<div id="OPDT_EDUCATION_NAME" ></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">毕业院校</td>
+					<td>
+						<div id="OPDT_GRADUATE_COLLEGE"></div>
+					</td>
+					<td class="table-text">所学专业</td>
+					<td>
+						<div id="OPDT_OP_SPECIAL"></div>
+					</td>
+					<td class="table-text">专业分类</td>
+					<td>
+						<div id="OPDT_OP_SPECIALTYPE_NAME"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">技术特长</td>
+					<td>
+						<div id="OPDT_OP_SKILLS_NAME"></div>
+					</td>
+					<td class="table-text">参加工作时间</td>
+					<td>
+						<div id="OPDT_START_WORKTIME" ></div>
+					</td>
+					<td class="table-text">入本行时间</td>
+					<td>
+						<div id="OPDT_JOIN_BANK_TIME"></div>
+					</td> 
+				</tr>
+				<tr>
+					<td class="table-text">金融领域工作年限</td>
+					<td>
+						<div id="OPDT_YEAR_WORK_FINANCE" ></div>
+					</td>
+					<td class="table-text">工作年限(年)</td>
+					<td>
+						<div id="OPDT_YEAR_WORK" ></div>
+					</td>
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<td width="11%" class="table-text">供应商</td>
+					<td width="22.333%">
+						<div id="OPDT_SUPPLIER_NAME"></div>
+					</td>				
+					<td width="11%" class="table-text">所属公司负责人</td>
+					<td width="22.333%">
+						<div id="OPDT_SUPCONTACT_MAN"></div>
+					</td>
+					<td width="11%" class="table-text">所属公司联系方式</td>
+					<td width="22.333%">
+						<div id="OPDT_SUPCONTACT_NUM"></div>
+					</td>				
+				</tr>
+				<tr>
+					<td class="table-text">人员采购类型</td>
+					<td>
+						<div id="OPDT_PURCH_TYPE_NAME"></div>
+					</td>
+					<td class="table-text">开发方向</td>
+					<td>
+						<div id="OPDT_DEV_DIRECTION_NAME" ></div>
+					</td>
+					<td class="table-text">人员级别</td>
+					<td>
+						<div id="OPDT_DEV_GRADE_NAME" ></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">所属应用</td>
+					<td style="position:relative;">
+						<div  id="OPDT_OP_BELONGSYSTEM"></div>
+					</td>
+					<td class="table-text">行内归属部门</td>
+					<td style="position:relative;">
+						<div  id="OPDT_SSBM"></div>
+					</td>
+					<td class="table-text">行内项目经理</td>
+					<td>
+						<div id="OPDT_OP_STAFF_NAME"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">备注</td>
+					<td colspan="5">
+						<div id="OPDT_MEMO"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<!--  -->
+			<!-- <div class="ecitic-title">
+				<span>教育信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table" >
+				<table id="eduinfo_table_detail" class="mytable-view" width="100%"></table>
+			</div>
+			
+			<div class="ecitic-title">
+				<span>工作履历信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table" >
+				<table id="workInfo_table_detail" class="mytable-view" width="100%"></table>
+			</div>
+			
+			<div class="ecitic-title" >
+				<span>相关资质证书<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table" >
+				<table id="qualificate_info_table_detail" class="mytable-view" width="100%"></table>
+			</div>
+			
+			<div class="ecitic-title" >
+				<span>相关技能信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table id="skill_info_table_detail" class="mytable-view" width="100%"></table>
+			</div>
+			
+			<div class="ecitic-title" >
+				<span>项目经历信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table id="projrct_info_table_detail" class="mytable-view" width="100%"></table>
+			</div>
+			
+			<div class="ecitic-title">
+				<span>资质级别信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table" >
+				<table id="quali_level_table_detail" class="mytable-view" width="100%"></table>
+			</div>
+			
+			<div class="ecitic-title">
+				<span>资源池信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table" >
+				<table id="resource_pool_table_detail" class="mytable-view" width="100%"></table>
+			</div> -->
+<!-- 			<div class="ecitic-title" id="af_title">
+				<span>流程审批列表<em></em></span>
+			</div>
+			<div class="ecitic-new">
+				<table id="AFApprovalTableInfo" class="table table-bordered table-hover"></table>
+			</div>	 -->
+		<div class="ecitic-save">
+			<input type="button" class="btn btn-ecitic" name="closeCurrentPageTab" value="关闭"/>
+		</div>
+	</div>
+	<script src="bootstrap/js/bootstrap-table.min.js"></script>
+	<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+	<script type="text/javascript" src="dev_outsource/outsource/outperson/outperson_detail.js"></script>
+	<!-- 查看流程 -->
+	<script src="pages/approvalflow/approval_title.js"></script>
+	<script src="pages/approvalflow/approval_content.js"></script>
+	<script src="pages/approvalflow/afcommons.js"></script>
+</body>
+</html>

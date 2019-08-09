@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.ApprovalDao">
+	<!-- 查询信息操作 -->
+	
+	<!-- 查询所有待审批列表清单 -->
+	<select id="queryApprovalList" parameterType="java.util.Map" resultType="java.util.Map">
+		select ap.instance_id,t.p_id,r.r_name appr_name,r.r_exp appr_exp,
+	    ap.n_name,ap.app_person,su.actorname,
+	    m.r_name m_name,m.r_exp m_exp,af.af_name,
+	    (select sd.item_name from s_dic_item sd where sd.dic_code = 'AF_DIC_NODE_TYPE' and sd.item_code = n.n_type) n_type_name,
+	    (select sd.item_name from s_dic_item sd where sd.dic_code = 'AF_DIC_SYSTEM' and sd.item_code = af.af_sys_name) a_sys_name,
+	    ap.n_id,af.af_id,af.af_sys_name
+	    from af_app_process ap
+	    left join af_instance t on t.instance_id = ap.instance_id
+	    left join af_info af on af.af_id = t.af_id 
+	    left join af_process pr on pr.p_id = t.p_id and pr.n_id = ap.n_id
+	    left join af_rule r on r.r_id = pr.r_id
+	    left join (
+	         select m.m_id,mr.r_name,mr.r_exp from af_rule mr
+	         left join af_matrix m on m.r_id = mr.r_id
+	         group by m.m_id,mr.r_name,mr.r_exp
+	    ) m on m.m_id = pr.m_id
+	    left join af_node_info n on n.n_id = ap.n_id
+	    left join s_user su on ap.app_person = su.actorno
+	    where 1 = 1
+	    <if test="p_name!=null and p_name!=''">
+ 			and r.r_name like #{p_name}
+ 		</if>
+ 		<if test="af_sys_name!=null and af_sys_name!=''">
+ 			and af.af_sys_name = #{af_sys_name}
+ 		</if>
+ 		<if test="p_id!=null and p_id!=''">
+ 			and t.p_id = #{p_id}
+ 		</if>
+ 		<if test="n_id!=null and n_id!=''">
+ 			and ap.n_id = #{n_id}
+ 		</if>
+ 		<if test="app_person!=null and app_person!=''">
+ 			and ap.app_person = #{app_person}
+ 		</if>
+ 		order by ap.instance_id,pr.p_id,pr.order_id
+ 	</select>
+
+	<!-- 修改操作 -->
+	
+ 	<!--修改流程实例节点审批人 -->
+	<update id="updateApprovalPerson" parameterType="java.util.Map">
+		update af_app_process ap set ap.app_person = #{ud_app_person}
+		where ap.instance_id = #{instance_id}
+		and ap.n_id = #{n_id}
+		and ap.app_person = #{app_person}
+	</update>
+</mapper>

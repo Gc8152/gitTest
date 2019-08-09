@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>供应商尽职调查模板配置</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="ecitic-inquire" id="ecitic-inquire">
+	<div class="ecitic-table" id="ecitic-table">
+		<form action="" id="supplierConfigList">
+			<table class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">供应商分类</td>
+					<td>
+						<select name="query_category" id="query_category" class="citic-ast"></select>
+					</td>
+					<td class="ecitic-right">重要程度</td>
+					<td>
+						<select name="query_importdegree" id="query_importdegree" class="citic-ast"></select>
+					</td>
+
+					<td class="ecitic-right">创建人</td>
+					<td>
+						<input type="text" name="query_createman" id="query_createman" class="input-txt" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<ul class="ecitic-btn-all">
+		<li><button type="button" class="btn btn-ecitic" id="queryAllSupplierConfigList">查询</button></li>
+		<li><button type="button" class="btn btn-ecitic" id="reset_supplierConfigList">重置</button></li>
+<!-- 		<li class="ecitic-more"></li> -->
+	</ul>
+</div>
+<div class="ecitic-operation">
+	<button type="button" class="btn btn-ecitic" id="addSupplierConfig">新增</button>
+	<button type="button" class="btn btn-ecitic" id="updateSupplierConfig">修改</button>
+	<button type="button" class="btn btn-ecitic" id="deleteSupplierConfig">删除</button>
+	<button type="button" class="btn btn-ecitic" id="detailSupplierConfig">查看</button>
+	<button type="button" class="btn btn-ecitic" id="createSupplierMode">生成模板</button>
+</div>
+<div class="ecitic-new">
+	<table class="table table-bordered table-hover" id="detailSupplierConfigTable"></table>
+</div>
+
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_outsource/resources/optCheckConfig/optCheck_modelConfig.js"></script>
+</body>
+</html>

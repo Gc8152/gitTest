@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>变更管理</title> 
+    <!--  
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css"/>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>	
+	<link rel="stylesheet" type="text/css" href="css/form.css"/>
+	
+	-->
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css">
+	<link rel="stylesheet" type="text/css" href="css/form.css"/>
+
+	<script src="bootstrap/js/bootstrap-table.min.js"></script>
+	<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+	<script type="text/javascript" src="dev_project/proReqChange/approve/reqChangeAll_queryList.js"></script>
+	<script type="text/javascript" src="dev_project/proReqChange/approve/reqChange_approve.js"></script>
+	<script src="pages/suser/suserPop.js"></script>
+	<script type="text/javascript" src="dev_project/proReqChange/approve/approval_content.js"></script>
+	<script src="pages/approvalflow/afcommons.js"></script>
+	<script src="pages/approvalflow/approval_content.js"></script>
+	</head>
+<body>
+	<div class="ecitic-inquire ecitic-moreNo"  id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+		<form id="changeQuery">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<!-- 
+					<td class="ecitic-right">变更编码:</td>
+					<td><input type="text" id="change_code" name="G.change_code"/>
+					</td>
+					 -->
+					<td class="ecitic-right">变更类型：</td>
+					<td>
+						<select id="change_subtype" class="citic-sele-ast" name="G.change_subtype">
+						</select>	
+					</td>
+					<td class="ecitic-right">变更状态：</td>
+					<td>
+						<select name="G.change_state" id="change_state" class="citic-sele-ast">
+							
+						</select>
+					</td>
+					<td class="ecitic-right">申请日期：</td>
+						<td><input type="text" id="create_time" name="G.create_time" onFocus="WdatePicker({})"  placeHolder="点击选择"  readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">应用名称：</td>
+					<td>
+						<input id="system_name" type="text" name="G.system_name"/>
+					</td>
+					<td class="ecitic-right">版本名称：</td>
+					<td>
+						<input id="version_name" type="text" name="G.version_name"/>
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="queryAppInfoChange">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="changegReq_nahui">拿回</button>
+		<button class="btn btn-ecitic" id="changeReq_appinfo">变更查看</button>
+	</div>
+	
+	<div class="ecitic-new">
+		<table id="changeReqTableInfo" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+	
+	<div id="queryDivExpert"></div>
+	<div id="appOptPop"></div>
+</body>
+
+
+</html>

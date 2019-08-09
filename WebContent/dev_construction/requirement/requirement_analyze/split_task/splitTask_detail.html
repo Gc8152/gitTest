@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>需求任务拆分查看详情</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="main_ifme_con">
+  <form class="form_inline" id="g_requirement_accept">
+	       <div class="ecitic-title">
+				<span>查看详情<em></em></span>
+			        <i></i>
+			</div>
+			 <div class="ecitic-title-table">
+			  <table style="width: 100%" class="table table-striped table-hover table-bordered tablr-input-text">
+			    <tr>
+			     <td class="table-text" width="12.5%" >需求点编号：</td>
+			     <td width="20%">
+			       <span  id="STDsub_req_code" name="STD.sub_req_code" ></span>
+			       <input type="hidden" id="STDsub_req_id" name="STD.sub_req_id">
+			     </td>
+			     <td class="table-text" width="12.5%">需求点名称：</td>
+			     <td  colspan="3">
+			       <span  id="STDsub_req_name" name="STD.sub_req_name" ></span>
+			     </td>
+			    </tr>
+			    <tr >
+			     <td class="table-text" >需求编号：</td>
+			     
+			     <td>
+			     	<a id="STDreq_code" style="color:blue;" onclick="viewReqDetail();"></a>
+			         <input type="hidden" id="STDreq_id" name="STD.req_id">
+			           <input type="hidden" id="STDreq_acc_classify" name="STD.req_acc_classify">
+			     </td>
+			     
+			     <td class="table-text" >需求名称：</td>
+			     <td width="20%">
+			     <span type="text" id="STDreq_name" name="STD.req_name" ></span>
+			     </td>
+			     <td class="table-text" width="15%">计划投产时间:</td>
+			     <td width="20%">
+			     <span type="text" id="STDplan_onlinetime" name="STD.plan_onlinetime"></span>
+			     </td>
+			    </tr>
+			     <tr>
+	     		<td class="table-text" width="12.5%"  >是否有数据库表结构变更：</td>
+	     		<td width="20%">
+	     		 <select  id="STDis_change" disabled style="width:100%"  name="STD.is_change"  dic_code="S_DIC_YN">	
+				 </select>
+	     		</td>
+	     		<td colspan="5" id="supply_style">
+	     		</td>
+	     		<td class="table-text" width="12.5%" id="is_involve" style="display:none;">涉及应用：</td>
+	     		<td  colspan="3" id="is_involve1" style="display:none;">
+	     		<select disabled  id="STDinvolve_app" name="STDinvolve_app" class="form-control"  multiple="multiple"  style="width:100%"></select>
+	       			<!-- <input type="text" id="STsub_req_name" name="ST.sub_req_name"  readonly> -->
+	     		</td>
+	    		</tr>
+			    
+			    <tr>
+			     <td class="table-text">需求点描述：</td>
+			     <td colspan="5">
+			       <span  id="STDsub_req_content" name="STD.sub_req_content" STDyle="height:90px;display:block;" ></span>
+			     </td>
+			    </tr>
+			   </table>
+			  </div>
+			  <div class="ecitic-title">
+			    <span>需求任务列表<em></em></span>
+			      <i></i> 
+			  </div>
+		    <div class="ecitic-title-table">
+			  <table id="gReqTaskDetailTable"  style="width:100%" class="table table-bordered " >
+			  </table>
+			</div>
+		</form>
+	 <div class="ecitic-save">
+			 <input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭" />
+	</div>
+	
+</div>	 
+</body>
+<script type="text/javascript" src="bootstrap/js/select2.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+
+<script type="text/javascript" src="dev_construction/requirement/requirement_analyze/split_task/splitTask_detail.js"></script>
+</html>

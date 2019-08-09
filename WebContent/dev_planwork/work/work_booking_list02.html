@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="pages/approvalflow/afcommons.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+<style type="text/css">
+ /* #add_projectModelForm tbody tr td{position: relative;} */
+</style>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+		<span id="modelSpan">待审批任务列表<em></em></span>
+	</div>
+	<!-- 模板信息 -->
+	<div class="ecitic-operation">
+		<!-- <button class="btn btn-ecitic" id="add" onclick="pageDispatchSRole(this,'SRoleAdd','')">全选</button> -->
+		<button class="btn btn-ecitic" id="taskPassThough">通过</button>
+		<button class="btn btn-ecitic" id="taskBeatBack">打回</button>
+	 </div>
+	<form action=""  class="form-inline" id="">
+	<div class="ecitic-title-table">
+		<table class='table table-bordered table-hover table-text-show'id="pop_workBookingTable"></table>
+	</div>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+	</div>
+	</form>
+</div>
+</body>
+<script src="dev_planwork/work/work_booking_list02.js"></script>
+
+</html>

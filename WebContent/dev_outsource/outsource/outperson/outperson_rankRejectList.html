@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>外包人员职级评定列表页面</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<form action="" id="staffInfoList_rank">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">申请职能组</td>
+					<td>
+						<input type="text" name="RE.apply_group" id="re_apply_group"/>
+					</td>
+					<td class="ecitic-right">申请人</td>
+					<td>
+						<div class="ecitic-input-all">
+							<input type="text"  name="RE.opt_manager" id="re_opt_manager"/>
+						</div>
+					</td>
+					<td class="ecitic-right" style="width:11%;">申请时间_从</td>
+					<td style="width:22.333%;">
+						 <span class="ecitic-time">
+							<input type="text"  id="re_apply_starttime"  onclick="checkTimeSupCompare_common('apply_starttime','apply_endtime');"
+							class="citic-ast" class="input" placeholder="点击选择" name="RE.apply_starttime" readonly/>
+						</span>
+						<span class="ecitic-to">至</span>
+						<span class="ecitic-time">
+							<input type="text"  id="re_apply_endtime"  onclick="checkTimeSupCompare_common('apply_starttime','apply_endtime');"
+							class="citic-ast" class="input" placeholder="点击选择" name="RE.apply_endtime" readonly/>
+						</span> 
+					</td>
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button type="button" class="btn btn-ecitic" id="re_queryOutPersonInfoRank">查询</button></li>
+			<li><button type="button" class="btn btn-ecitic" id="re_resetOutPersonInfoRank">重置</button></li>
+		</ul>
+	</div>
+</form>
+	<div class="ecitic-operation">
+	<!-- 	<button type="button" class="btn btn-ecitic" id="outpersonRank_Add">级别评定申请</button> -->
+		<button type="button" class="btn btn-ecitic" id="outpersonRank_UpGrade">重定级申请</button>
+		<button type="button" class="btn btn-ecitic" id="outpersonRank_Del">删除</button>
+		<button type="button" class="btn btn-ecitic" id="outpersonRank_Info">查看</button>
+		<button type="button" class="btn btn-ecitic" id="outpersonRank_Print">打印</button>
+<!-- 		<button type="button" class="btn btn-ecitic" id="outpersonRank_AddPrint">级别评定打印</button>
+		<button type="button" class="btn btn-ecitic" id="outpersonRank_UpGradePrint">重定级打印</button> -->
+<!-- 		<button type="button" class="btn btn-ecitic" id="applypersonLevel">发起申请</button> -->
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover" id="outpersonTableInfoRanks"></table>
+	</div>
+	<script src="bootstrap/js/bootstrap-table.min.js"></script>
+	<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+	<script type="text/javascript" src="js/commons/commons.js"></script>
+	<script src="dev_outsource/outsource/outperson/outperson_rankRejectList.js"></script>
+	<script type="text/javascript" src="js/commons/print.js"></script>
+</body>
+</html>

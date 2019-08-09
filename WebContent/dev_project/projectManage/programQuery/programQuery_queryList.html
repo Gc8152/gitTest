@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>项目群查询</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" >
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+	<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+</head>
+<body><br/>
+	<div class="ecitic-inquire ecitic-inquire-sec lessSearch">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="Program_form">
+				<table id="infotable" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">项目群名称：</td>
+						<td><input type="text" name="VERSIONS_NAME"/></td> <!-- maxlength="50" -->						
+						<td class="ecitic-right">项目群状态：</td>
+						<td>
+							<select name="VERSIONS_STATUS" diccode="P_DIC_VERSIONS_STATUS" ></select>
+						</td><td></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="query_Program">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset_Program">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="ProgramPanoramicView">项目群全景视图</button>
+	</div>
+	<!-- table开始 -->
+	<div class="ecitic-new">
+		<table id="ProgramQuarytable" class="table table-bordered table-hover table-text-show" ></table>
+	</div>
+</body>
+<script type="text/javascript" src="dev_project/projectManage/programQuery/programQuery_queryList.js"></script>
+</html>

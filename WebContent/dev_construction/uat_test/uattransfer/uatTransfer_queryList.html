@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>UAT移交列表</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table id="reqTaskTerm" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">任务编号：</td>
+					<td><input type="text" id="" name="req_task_code"/></td>
+					<td class="ecitic-right">任务名称：</td>
+					<td><input type="text" id="" name="req_task_name"/></td>
+					<td class="ecitic-right">任务状态：</td>
+					<td><select id="" name="req_task_state"></select></td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">申请纳入版本：</td>
+					<td><input type="text" id="" name="versions_name"/></td>
+					<td class="ecitic-right">实施应用：</td>
+					<td><input type="text" id="" name="system_name"/></td>
+					<td class="ecitic-right">计划投产日期：</td>
+                    <td>
+                        <span class="ecitic-time">
+                            <input type="text" name="plan_onlinetime_st" id="plan_onlinetime_st" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                        <span class="ecitic-to">至</span>
+                        <span class="ecitic-time">
+                            <input type="text" name="plan_onlinetime_et" id="plan_onlinetime_et" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                    </td>
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="queryReqTask">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+			<!-- <li class="ecitic-more"></li> -->
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="submitUat">UAT移交</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table-text-show table table-bordered table-hover" id="reqTaskInfoTable">
+			
+		</table>
+	</div>
+	
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="js/commons/ajaxfileupload.js"></script>
+<script type="text/javascript" src="dev_construction/uat_test/uattransfer/uatTransfer_queryList.js"></script>
+</html>

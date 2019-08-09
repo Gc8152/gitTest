@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/public.css"/>
+</head>
+<style>
+<!--
+/* .select2-container{
+margin-left:4px;
+margin-right:1px;
+} */
+-->
+</style>
+<body>
+<div class="main_iframe_con">
+<form id="messstrategy_queryList_form" action=""  class="form-inline">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">类别编号：</td>
+					<td><input type="text" name="ASS.assortmark" id="assortmark"/></td>
+					<td class="ecitic-right">类别名称：</td>
+					<td><input type="text" name="ASS.assortname" id="assortname"/></td>
+					<td class="ecitic-right">状态：</td>
+					<td><select id="assortment_flag" name="ASS.flag"></select></td>
+				</tr>
+			</table>	
+	</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="assortmentQueryList" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" id="assortmentReset" value="重置"/></li>
+		</ul>
+	</div>
+</form>
+
+<div class="ecitic-operation">
+	<button class="btn btn-ecitic" type="button" id="assortment_add" >新增</button>
+	<button class="btn btn-ecitic" type="button" id="assortment_update" >修改</button>
+	<button class="btn btn-ecitic" type="button" id="assortment_delete" >删除</button>
+	<button class="btn btn-ecitic" type="button" id="assortment_cfg" >模型配置</button>		
+</div>
+<div class="ecitic-new">
+	<table id="assortment_Table"></table>
+</div>	
+</div>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="supervision/assortment/assortment_queryList.js"></script>
+</body>
+</html>

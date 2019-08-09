@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="pages/apiUpdate/apiUpdate_queryList.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<form action="" class="form-inline">
+		<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">申请编号：</td>
+						<td><input type="text" name="S.user_no" id="user_no"/></td>
+						<td class="ecitic-right">申请人：</td>
+						<td><input type="text" name="S.user_name" id="user_name"/></td>
+						<td class="ecitic-right">申请状态：</td>
+						<td><input type="text" name="S.login_name" id="login_name"/></td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">消费方应用名称：</td>
+						<td><input type="text" name="" id=""/></td>
+						<td class="ecitic-right">服务方应用名称：</td>
+						<td><input type="text" name="" id=""/></td>
+					</tr>
+				</table>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" id="queryUser" value="查询"/></li>
+			</ul>
+		</div>
+	</form>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="iMaddApply" >填写申请</button>
+		<button class="btn btn-ecitic" id="updateUser">修改申请</button>
+		<button class="btn btn-ecitic" id="delteUser">删除申请</button>
+		<button class="btn btn-ecitic" id="setUserRule">提交申请</button>
+		<button class="btn btn-ecitic" id="permissionUser">查看申请</button>
+		<button class="btn btn-ecitic" id="permissionUser">取消申请</button>
+		<!-- <button class="btn-gray" type="button" id="synchronizationUser">同步OA用户</button> -->
+	</div>
+	<div class="ecitic-new">
+		<table id="SUserTableInfo" class="table table-bordered table-hover"></table>
+	</div>
+</div>
+</body>
+</html>
+

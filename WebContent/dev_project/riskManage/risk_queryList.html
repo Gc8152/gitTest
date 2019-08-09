@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>风险管理</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" >
+</head>
+<body>
+	<div class="ecitic-inquire ecitic-moreNo">
+		<div class="ecitic-table">
+			<form id="riskManage_form">
+				<table width="100%" border="0" cellspacing="0"
+					cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">风险出处：</td>
+						<td><input id="risk_int" type="text" name="" /></td>
+						<td class="ecitic-right">风险名称：</td>
+						<td><input id="risk_name" type="text" name="" /></td>
+						<td class="ecitic-right">风险可能性：</td>
+						<td><select id="risk_possible" name="" dic_code="G_DIC_SYSTEM_STATUS"></select> </td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">风险级别：</td>
+						<td><select id="risk_level" name="" dic_code:"P_DIC_RISK_LEVEL"></select></td>
+						<td class="ecitic-right">风险影响程度：</td>
+						<td><select id="risk_effect" name="" dic_code:"P_DIC_RISK_EFFECT"></select>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="query_riskList">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset_riskForm">重置</button></li>
+		</ul>
+	</div>
+	
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="risk_present">提出</button>
+		<button class="btn btn-ecitic" id="risk_track">跟踪</button>
+		<button class="btn btn-ecitic" id="risk_close">风险关闭</button>
+		<button class="btn btn-ecitic" id="turn_question">转问题</button>
+	</div>
+	
+	<div class="ecitic-new">
+		<table id="riskManageTable" class="table table-bordered table-hover" ></table>
+	</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="dev_project/riskManage/risk_queryList.js"></script>
+</html>

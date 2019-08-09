@@ -1,0 +1,41 @@
+<div id="myPop_fileUpload" class="modal hide fade" style="top: 50%; margin-top: -200px; width: 780px; height: 400px" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" onclick="closefileUploadPop();"
+			title="点击关闭">×</button>
+		<h5 id="myModalLabel">附件上传界面</h5>
+	</div>
+	<form action="" id="file_form">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+			<tr>
+				<td class="ecitic-right">文档类型</td>
+				<td><select name="file_type" id="file_type" style="width：100%" validate="v.required"></select></td>
+				<td class="ecitic-right">版本</td>
+				<td><input type="text" name="file_version" id="file_version" validate="v.required"/></td>
+			</tr>
+			<tr>
+				<td class="ecitic-right">选择附件</td>
+				<td>
+				    <input id="file_namel" validate="v.required"/>
+				</td>
+				<td>
+					<div class="uploadPicture-btns">
+						<span class="btn btn-ecitic">浏览</span> 
+						<input id="notice_file" name="file" type="file" />
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="ecitic-right">文档名称</td>
+				<td><input id="file_name" name="file_name"/></td>
+			</tr>
+			<tr>
+			    <td class="ecitic-right">备注</td>
+			    <td colspan="3"><textarea  id="file_memo" name="file_memo"></textarea></td>
+			</tr>
+		</table>
+	</form>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="确定" id="ok" />
+		<input type="button" class="btn btn-ecitic" value="取消" id="cancel" />
+	</div>
+</div>

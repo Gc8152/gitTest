@@ -1,0 +1,352 @@
+
+/******************表单样式********************/
+.row label{
+	width:105px;
+	padding-left: 60px;
+}
+.row textarea{
+	height:60px;
+	width: 400px;
+	resize: none;
+}
+.h50{
+	height:50px;
+	font-size:0;
+}
+.h50 .select2-container {font-size:14px;}
+.iframe{
+	padding: 8px 24px 18px 28px;
+}
+.form-inline{
+	margin-bottom: 15px;
+}
+.main_btn{
+	margin-left:19%;
+}
+.main_btn button{
+	margin: 10px 80px;
+}
+.btn-primary{
+	padding:6px 50px;
+}
+
+.btn-primary.active,
+{
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.btn-primary {
+  padding:6px 50px;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #0081e9;
+  *background-color: #006dcc;
+  background-image: -moz-linear-gradient(top, #0081e9, #006dcc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0081e9), to(#006dcc));
+  background-image: -webkit-linear-gradient(top, #0081e9, #006dcc);
+  background-image: -o-linear-gradient(top, #0081e9, #006dcc);
+  background-image: linear-gradient(to bottom, #0081e9, #006dcc);
+  background-repeat: repeat-x;
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0081e9', endColorstr='#ff006dcc', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+  color: #ffffff;
+  background-color: #006dcc;
+  *background-color: #006dcc;
+}
+
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #003399 \9;
+}
+
+.tz_btn {
+    height: 33.5px;
+    line-height: 35px;
+    width: 100%;
+    padding-top: 6.5px;
+    margin: 10px 0 5px 0;
+}
+
+.tz_btn button{
+	margin-top:0px;
+}
+
+.widget-title button{
+    margin-top: 1.3px;
+}
+.btn-gray{
+	padding: 2px 14px;
+    margin-left: 5px;
+    margin-top: 9px;
+    border: none;
+    background-color: #c9161d;
+    color: #fff;
+    font-size: 14px;
+    /* border-radius: 4px; */
+    vertical-align: top;
+    height: 27px;
+}
+
+.btn-gray:hover{
+	border: none;
+    background-color: #a80e15;
+    color: #fff;
+}
+
+.header-h3{
+	/* border-bottom: 1px solid #ccc; */
+  	line-height: 40px;
+  	font-size: 20px;
+ 	margin-bottom: 16px;
+  	text-indent: 10px;
+  	background-color: #f0f8ff;
+}
+.header-h3 .leftImg{
+	float:left;
+	height:40px;	
+}
+
+.hero-unit{
+	background:#f4f4f4;
+	padding:30px 30px 10px 0;
+	margin-bottom:5px;
+}
+
+/*********提示样式*************/
+.tag-position{
+	position: fixed;
+	/*left:368px;**/
+	/*bottom:30px;**/
+	z-index: 100;
+	margin-top: -30px;
+    width: 180px;
+}
+.tag-position-absolute{
+	position: absolute;
+	/*left:368px;**/
+	/*bottom:30px;**/
+	z-index: 100;
+	margin-top: -30px;
+    width: 180px;
+}
+.tag-icon{
+	float: left;
+	_border-style:dashed solid dashed dashed;
+	border-right-color:#ffc0cb;
+	border-top-color:transparent;
+	border-bottom-color:transparent;
+	border-left-color:transparent;
+	width:0;
+	height:0;
+	border-width:8px;
+	border-style:solid;
+	position: relative;
+	top:3px;
+	overflow:hidden;
+	line-height:0;
+}
+/*.tag-content{
+	float: left;
+	padding: 5px;
+	width: 150px;
+	border: 1px #ffc0cb solid;
+	line-height:18px;
+	border-radius: 5px;
+	font-size: 12px;
+	background-color:rgb(255, 255, 204);
+	color:rgb(0, 0, 0);
+}*/
+.high{
+	color:red;
+	line-height:44px;
+}
+.controls .high{
+	line-height:30px;
+}
+.main_btn .ml240{margin-left:240px;}
+
+.fileInfo{
+	width: 100px;
+	float: left;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.fileInfo130{
+	width: 145px;
+	float: left;
+}
+div[menu_page='task_update'] #normalTaskSub .fileInfo130{
+	margin-left: -40px;
+}
+div[menu_page='task_update'] #assistTaskSub .fileInfo130{
+	margin-left: -40px;
+}
+div[menu_page='taskchanage_page'] #showNormalFileinfo .fileInfo130{
+	margin-left: -40px;
+}
+div[menu_page='task_accept'] #normalTaskSub .fileInfo130{
+	margin-left: -40px;
+}
+div[menu_page='task_accept'] #assistTaskSub .fileInfo130{
+	margin-left: -40px;
+}
+div[menu_page='task_create'] #normalTask .fileInfo130{
+	margin-left: -40px;
+}
+div[menu_page='task_update'] #showTOUUFileinfo .fileInfo130{
+	margin-left: -40px;
+}
+div[menu_page='task_create'] #assistTask .fileInfo130{
+	margin-left: -40px;
+}
+div[menu_page='task_update'] #normalUpdateTask .fileInfo130{
+	margin-left: -40px;
+}
+div[menu_page='task_update'] #updateAssistTask .fileInfo130{
+	margin-left: -40px;
+}
+
+.fileInfo a{
+	cursor: pointer;
+	color:#08f;	
+}
+
+.fileInfo130 img{
+	margin-top: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+.fileInfo150{
+	width: 150px;
+	float: left;
+}
+.fileInfo150 img{
+	margin-top: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+.moreFileInfo{
+	/* margin-top: 30px; */
+	margin-left: 100px;
+    position: absolute;
+    background-color: white;
+    max-height: 100px;
+    height: auto;
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px #ffc0cb solid;
+    overflow-y: auto;
+    display:none;
+    padding-left: 4px;
+    line-height: 25px;
+    z-index:99;
+}
+#tsf_files .moreFileInfo{
+	margin-left: 0px;
+}
+
+.moreFileInfo a{
+	cursor: pointer;
+	color:#08f;	
+}
+.btnheight{
+	height:100%;
+}
+
+.datagrid-mask{
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background:rgb(0, 0, 0);
+	opacity:0.3;
+	filter:alpha(opacity=30);
+	display:none;
+}
+.datagrid-mask-msg{
+	position:absolute;
+	top:50%;
+	margin-top:-20px;
+	width:auto;
+	height:16px;
+	padding:12px 5px 10px 30px;
+	background:#fff url('../images/pagination_loading.gif') no-repeat scroll 5px 10px;
+	border:2px solid #6593CF;
+	color:#222;
+	display:none;
+}
+
+.taskfeedback:hover{
+	background-color: white;
+}
+.taskfeedback .td1{
+    height: 100px;
+    width: 125px;
+    border-right: 1px solid #cdcdcd;
+    text-align: left;
+    padding-top: 15px;
+}
+.taskfeedback .contentTd2{
+	height: 100px;
+    margin-top: -5px;
+    overflow-y: auto;
+}
+.taskfeedback .contentTd2 pre{
+	border:none;
+	font-size:14px;
+}
+.taskfeedback .optinfoTd2{
+	color: red;
+	margin-bottom: -15px;
+    padding-right:50px;
+}
+.taskfeedback .optinfoTime{
+	float:right;
+	color: black;
+}
+.feedFlist .fileInfo130{
+    width: 144px;
+}
+
+element.style {
+    min-height: 70px;
+}
+.taskfeedback .contentTd2 pre {
+    border: none;
+    background-color: none;
+}
+.detailTask{
+	color: #0088cc;
+	cursor: pointer;
+}
+.controls button{
+	margin-top:0;
+}
+.feedback_pname{
+	margin-left: 22px;
+    width: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#taskDetailModal .taskInfo{
+	margin-top:5px;
+}
+.h30{height:30px;}
+
+/* 新增频率页面单选按钮样式调整*/
+#MTRis_sendmessageTD  label,#MTRis_sendmailTD label,#MTRis_holiday label{display:inline-block;margin-right:5px;}

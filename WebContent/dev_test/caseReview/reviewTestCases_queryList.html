@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>测试案例评审</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<!-- 字体图标 -->
+</head>
+<body>
+ <div class="main_iframe_con">
+	<form action=""  class="form-inline" id="reviewTestCaseFrom">
+			<div class="ecitic-inquire"  id="ecitic-inquire">
+				<div class="ecitic-table" id="ecitic-table">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad requirement-table" id="analyzeQuery">
+					 <tr>
+                            <td class="ecitic-right">项目编号：</td>
+                            <td>
+                                <input type="text" name="PROJECT_NUM" />
+                            </td>
+                            <td class="ecitic-right">项目名称：</td>
+                            <td>
+                                <input type="text" name="PROJECT_NAME" />
+                            </td>
+                            <!-- <td class="ecitic-right">应用名称：</td>
+                            <td>
+                                <input type="text" name="SYSTEM_NAME" />
+                            </td> -->
+                         <td class="ecitic-right">文档上传状态：</td>
+		                  <td>
+		                    <select id="review_state" name="CASE_FILE_ID" diccode="G_DIC_UPLOAD_STATE" style="width:100%"></select>
+		                  </td>
+                        </tr>
+		              <!--  <tr>
+		                    <td class="ecitic-right">项目状态：</td>
+                           	<td colspan="1">
+                           		<select name="ACCEPT_STATE"  diccode="TM_DIC_ACCEPT_STATE" class="requirement-ele-width" style="width: 100%" validate="v.required" ></select>
+                           	</td>
+		               </tr> -->
+					</table>
+				</div>
+				
+				<ul class="ecitic-btn-all">
+					<li><input type="button" class="btn btn-ecitic" name="queryCases" value="查询"/></li>
+					<li><input type="reset" class="btn btn-ecitic" id="resetReview" value="重置"/></li>
+				</ul>
+			</div>
+		</form>
+		<div class="ecitic-operation">
+			<button type="button" class="btn btn-ecitic" id="importReviewDoc" >上传评审报告</button>
+		</div>
+		<div class="ecitic-new">
+			<table id="reviewTestCaseTable" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+		<!-- 系统应用pop -->
+		<div id="tansystem_pop"></div>
+		<!-- 未受理协办任务pop -->
+		<div id="jointask_pop"></div>
+	</div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/ajaxfileupload.js"></script>
+<script src="js/commons/importExcelUtil.js"></script>
+<script src="dev_test/caseReview/reviewTestCases_queryList.js"></script>
+
+</html>

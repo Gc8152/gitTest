@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>合同基本信息维护</title>
+		<link rel="stylesheet" type="text/css" href="css/form.css" />
+		<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<form id="contractInfoListForm" action="">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad" style="table-layout:fixed;width:100%">
+						<tr>
+							<td class="ecitic-right" style="width:11%;">合同编号</td>
+							<td style="width:22.333%;">
+								<input type="text" id="contract_code" name="FC.contract_code"/>
+							</td>
+							<td class="ecitic-right" style="width:11%;">合同名称</td>
+							<td style="width:22.333%;">
+								<input type="text" id="contract_name" name="FC.contract_name"/>
+							</td>
+							<td class="ecitic-right" style="width:11%;">供应商</td>
+							<td style="width:22.333%;">
+								<input type="text" id="supplier_name" name="FC.supplier_name" readonly="readonly" placeholder="点击选择"/>
+								<input type="hidden" id="supplier_ids" name="FC.supplier_ids"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="ecitic-right" style="width:11%;">签约时间</td>
+							<td style="width:22.333%;">
+								<span class="ecitic-time">
+								<input type="text" id="sign_time_from" onclick="checkTimeSupCompare_common('sign_time_from','sign_time_to');"
+								readonly="readonly"  name="FC.sign_time_from" placeholder="请选择"/>
+								</span>
+								<span class="ecitic-to">至</span>
+								<span class="ecitic-time">
+								<input type="text" id="sign_time_to"  onclick="checkTimeSupCompare_common('sign_time_from','sign_time_to');" 
+								readonly="readonly" placeholder="请选择" name="FC.sign_time_to"/>
+								</span>
+							</td>
+							<td class="ecitic-right" style="width:11%;">责任一级部门</td>
+							<td style="width:22.333%;">
+								<input type="hidden" id="responsibility_deptno_one" name="FC.responsibility_deptno_one"/>
+								<input type="text" placeholder="点击选择责任一级部门" name="FC.responsibility_deptname_one" id="responsibility_deptname_one"  class="requirement-ele-width" readonly/>
+							</td>
+						    <td class="ecitic-right" style="width:11%;">需求一级部门</td>
+							<td style="width:22.333%;">
+								<input type="hidden" id="demand_deptno_one" name="FC.demand_deptno_one"/>
+								<input type="text" placeholder="点击选择需求一级部门" name="FC.demand_deptname_one" id="demand_deptname_one" readonly/>
+							</td>
+						</tr>
+						<tr>
+							<td class="ecitic-right" style="width:11%;">合同类别</td>
+							<td style="width:22.333%;">
+								<select id="contract_sort" name="FC.contract_sort" onchange="aaa(this.value);" style="width:100%;"></select>
+							</td>
+							<td class="ecitic-right" style="width:11%;">合同类型</td>
+							<td onclick="clickConType(this)" style="width:22.333%;">
+								<select id="contract_type" name="FC.contract_type" placeHolder="请先选择合同类别" style="width:100%;"></select>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><button class="btn btn-ecitic" id="queryContractInfo" type="button">查询</button></li>
+				<li><button class="btn btn-ecitic" id="resetContractInfo" type="button">重置</button></li>
+				<li class="ecitic-more"></li>
+			</ul>
+		</div>
+		<div id="query_contract_Pop"></div>
+		<div class="ecitic-operation">
+<!-- 			<button class="btn btn-ecitic" id="contractInfo_imp">导入</button> -->
+			<button class="btn btn-ecitic" id="contractInfo_add" type="button">新增</button>
+			<button class="btn btn-ecitic" id="contractInfo_update" type="button">修改</button>
+			<button class="btn btn-ecitic" id="contractInfo_del" type="button">删除</button>
+			<button class="btn btn-ecitic" id="contractInfo_detail" type="button">查看</button>
+		<!-- 	<button class="btn btn-ecitic" id="contractInfo_submit" type="button">确认生成</button> -->
+		</div>
+		<div class="ecitic-new">
+			<table class="table table-bordered table-hover" id="contractInfoTable"></table>
+		</div>
+<!-- 合同导入模态框 -->
+<div id="contractInfo_import" class="modal hide fade" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">×</button>
+		<h3>合同信息导入</h3>
+	</div>
+	<div class="modal-body">
+		<table id="contract_info_import" class="table table-bordered tablr-input-text">
+			<tr>
+				<td width="120" class="table-text">选择附件：</td>
+				<td width="430">
+					<div class="upload-checkfile-all">
+						<input type="text" name="contractfield" id="contractfield" class="input-txt" />
+						<input type="button" value="浏览" class="input-btn" />
+						<input type="file" name="file" class="input-file" id="contractFile" 
+						onchange="document.getElementById('contractfield').value=this.value" />
+					</div>
+				</td>
+				<td width="120" class="table-text">
+					<a href="templet/contractImp.xlsx">下载模板</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" aria-hidden="true"  data-dismiss="modal">关闭</button>
+		<button id="importContract" class="btn btn-ecitic">导入</button>
+	</div>
+</div>
+</body>
+	<script src="bootstrap/js/bootstrap-table.min.js"></script>
+	<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+	<script src="js/commons/commons.js"></script>
+	<script type="text/javascript" src="dev_outsource/contract/contractInfo/contractInfo_queryList.js"></script>
+	<script type="text/javascript" src="dev_outsource/supplier/supplierInfo/supplierPop.js"></script>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link rel="stylesheet" type="text/css" href="pages/sfilepath/sfilepath_add.css" />
+<script src="js/commons/commons.js"></script>
+<script src="js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="pages/sfilepath/sfilepath_update.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+		<span>编辑路径规则<em></em></span>
+		<i></i>
+	</div>
+	<div>
+	<form action="" class="form-inline" id="sFilePath_update_from">
+		<div class="ecitic-title-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered tablr-input-text table-bor-paw">
+				<tr>
+					<td width="11%" class="table-text">规则编码：</td>
+					<td width="22.333%">
+						<input type="text" id="u_path_id" validate="v.required" valititle="该项为必填项" class="citic-ast" readonly/>
+					</td>
+					<td width="11%" class="table-text">是否启用：</td>
+					<td width="22.333%">
+						<select id="u_status" validate="v.required" valititle="该项为必填项" class="citic-ast"></select>
+					</td>
+					<td width="11%" class="table-text">文档类型：</td>
+					<td width="22.333">
+						<select id="u_type" validate="v.required" valititle="该项为必填项" class="citic-ast" disabled="disabled"></select>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div  id="dragSortSelect"  class="selectbox ">
+			<p id="ms_context">
+			<div>
+				<div>
+					<div id="select0">
+						<div class="select-bar text-center">
+					    	<legend align="center">系统标签池 </legend>
+							<ul class="chooseBarList1 connectedSortable" id="u_chooseBarList1">	
+							</ul>
+						</div>
+					</div>
+					<div id="select1">
+						<div class="select-bar text-center">
+					    	<legend align="center">自定义标签池 </legend>
+							<ul class="chooseBarList2 connectedSortable" id="u_chooseBarList2">	
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="btn-bar">
+					       <img src="images/icon-loop.png">
+					       <p>（左右拖拽）</p>
+					    </div>
+					</div>
+					<div id="select2">
+						<div class="select-bar text-center"> 
+							<legend align="center">已选标签</legend>
+							<ul class="chooseBarList connectedSortable" id="u_chooseBarList">	
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="clear"></div>
+			<div class="rule">
+				<span>路径规则：</span><input name="chooseBarListSortOrder" type="text" disabled/>
+			</div>
+		</div>
+	</form>
+	</div>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="编辑自定义标签" id="u_addTag" />
+		<input type="button" class="btn btn-ecitic" value="保存" id="u_saveFliePath" />
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+	</div>
+	</div>
+	<!--编辑自定义标签模态框 -->
+	<div id="u_tagModel" class="modal hide fade modal-big-table" tabindex="-1">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="">编辑标签</h5>
+		</div>
+		<div class=" ecitic-title-table modal-body ecitic-new">
+			<table border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td width="20%">自定义标签名称：</td>
+					<td width="25%"><input type="text" id="u_tag_name_model" validate="v.required" valititle="该项为必填项"/></td>
+					<td width="8%"></td>
+					<td width="8%"></td>
+					<td width="13.333%"><button class="btn btn-ecitic" id="u_save_tag">保存</button></td>
+					<td width="20%"><button class="btn btn-ecitic" id="u_reset_tag">重置</button></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

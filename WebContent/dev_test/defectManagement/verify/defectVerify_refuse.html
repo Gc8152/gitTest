@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>验证缺陷</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+       <div class="main_iframe_con">
+	        <div class="ecitic-title">
+	            <span>基本信息</span>
+	        </div>
+	          <div class="ecitic-title-table">
+	        	<input type="hidden" name="IU.DEFECT_ID">
+	            <table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+	                 <colgroup>
+						<col style="width: 20%">
+						<col style="width: 30%">
+						<col style="width: 20%">
+						<col style="width: 30%">
+					</colgroup>
+	                <tr>
+	                    <td class="table-text">摘要：</td>
+	                    <td colspan="4">
+	                    	<div id="SUMMARY"></div>
+	                    	<input id="FILE_ID_VER" name="IU.FILE_ID" type="hidden" />
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="table-text">测试版本：</td>
+	                    <td >
+	                    	<div id="TEST_VERSION_ID"></div>
+	                    </td>
+	                    <td class="table-text">所属功能点：</td>
+	                    <td >
+	                    	<div id="FUNC_ID_NAME"></div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="table-text">出现频率：</td>
+	                    <td >
+	                    	<div id="FREQUENCY_NAME"></div>
+	                    </td>
+	                    <td class="table-text">可否重现：</td>
+	                    <td >
+	                    	<div id="IS_REAPPEAR_NAME"></div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="table-text">缺陷等级：</td>
+	                    <td >
+	                    	<div id="SEVERITY_GRADE_NAME"></div>
+	                    </td>
+	                    <td class="table-text">缺陷优先级：</td>
+	                    <td >
+	                    	<div id="PRIORITY_LEVEL_NAME"></div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="table-text">责任人：</td>
+	                    <td >
+	                    	<div id="DUTY_PERSON_NAME"></div>
+	                    </td>
+						 <td class="table-text">处理人：</td>
+	                    <td >
+	                    	<div id="DISPOSE_MAN_NAME"></div>
+	                    </td>
+	                </tr>
+	 <!--                <td class="table-text">问题类型：</td> -->
+	<!--                <td colspan="2"><select name=" " diccode=" " class="requirement-ele-width" style="width: 100%"></select></td> -->
+	<!--                 <tr> -->
+	<!--                     <td class="table-text">用户名：</td> -->
+	<!--                     <td colspan="2"><input type="text" name="IU.NAME" class="requirement-ele-width" ></td> -->
+	<!--                     <td class="table-text"></td> -->
+	<!--                     <td colspan="2"></td> -->
+	<!--                 </tr> -->
+	                <tr>
+	                    <td class="table-text">缺陷描述：</td>
+	                    <td colspan="4">
+	                    	<div id="DEFECT_DESCRIPTION"></div>
+	                    </td>
+	                </tr>
+	                 <tr>
+	                    <td class="table-text">拒绝原因：</td>
+	                    <td colspan="4">
+	                    	<div id="DISPOSE_REASON"></div>
+	                    </td>
+	                </tr>
+	            </table>
+	        </div>
+	           <div class="ecitic-title">
+            <span>自定义属性<em></em></span> <i></i>
+        </div>
+        <div class="ecitic-title-table">
+		<table tb="refInfoAttrTable" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+		<tbody>
+	   </tbody>
+	 </table>
+	 </div>
+	        <div class="ecitic-title">
+	            <span>实际操作步骤<em></em></span> <i></i>
+	        </div>
+	        <div class="ecitic-title-table">
+	            <table tb="realOptTable" class="table table-bordered table-hover table-text-show"></table>
+	        </div>
+	
+	        <div class="ecitic-title">
+	            <span>附件列表信息<em></em></span> <i></i>
+	        </div>
+	        <div class="ecitic-title-table">
+	            <table tb="refuseFileTable" class="table table-bordered table-hover table-text-show"></table>
+	        </div>
+	
+			
+	        <div class="ecitic-save">
+	            <input type="button"  class="btn btn-ecitic" btn="cancel_defect" value="取消缺陷" />
+	            <input type="button"  class="btn btn-ecitic" btn="reconfirm_defect" value="重新确认" />
+	            <input type="button"  class="btn btn-ecitic" name="closePageTabConfirm" value="返回" />
+	        </div>
+        </div>
+       	
+        <!--     取消缺陷模态框  -->
+        <div id="cancelDefect_modal" class="modal hide fade" tabindex="-1" z-index="1060" aria-hidden="true">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="processModalLabel">取消缺陷</h3>
+            </div>
+            <div class="ecitic-title-table modal-body">
+                <table width="100%" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+                    <tbody>
+                        <tr>
+                            <td class="table-text">备注：</td>
+                            <td>
+                                <textarea class="textarea3"  name="IU.CANCEL_REMARK"></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="ecitic-save">
+                <input type="button" class="btn btn-ecitic" value="保存" btn="cancel_save">
+                <button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+
+
+        <!--     重新确认模态框  -->
+        <div id="reconfirmDefect_modal" class="modal hide fade" tabindex="-1" z-index="1060" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="processModalLabel">重新确认</h3>
+            </div>
+            <div class="ecitic-title-table modal-body">
+                <table width="100%" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+                    <tbody>
+                       
+                        <tr>
+                            <td class="table-text">备注：</td>
+                            <td>
+                                <textarea class="textarea3" name="IU.RECONFIRM_REMARK" validate="v.required" valititle="该项为必填项"></textarea>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="ecitic-save">
+                <input type="button" class="btn btn-ecitic" value="保存" btn="reconfirm_save">
+                <button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+          <!--上传附件模态框  -->
+		<div id="file_refuse_modal"></div>
+		
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script src="dev_test/defectManagement/verify/defectVerify_refuse.js"></script>
+</html>

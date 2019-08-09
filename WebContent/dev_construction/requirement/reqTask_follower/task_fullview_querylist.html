@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>任务列表查询》》</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div>
+			<div class="ecitic-inquire ecitic-moreNo"  id="ecitic-inquire">
+				<div class="ecitic-table" id="ecitic-table">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad" id="task_fullview_Query">
+						<tr>
+							<td class="ecitic-right"  style="width:10%">任务编号：</td>
+							<td width="20%">
+							<input type="text" id="req_task_codeTFV" name="req_task_code" />
+							</td>
+							<td class="ecitic-right"  style="width:10%">任务名称：</td>
+							<td width="20%"><input type="text" id="req_task_nameTFV" name="req_task_name" />
+							</td>
+							<td class="ecitic-right" >申请纳入版本：</td>
+							<td><input type="text" id="version_nameTFV" name="version_name"  placeholder="点击选择 " readonly/>
+							    <input type="hidden" id="version_idTFV" name="version_id" />
+							</td>
+						    </tr>
+						<tr>
+							<td class="ecitic-right"   style="width:15%">任务状态：</td>
+							<td style="width:25%">
+							<select id="req_task_stateTFV" name="req_task_state" dic_code="G_DIC_REQTASK_STATE" style="width:100%;">
+							</select>
+							</td>
+							<td class="ecitic-right" >应用名称：</td>
+							<td>
+							    <input type="text" id="system_nameTFV" name="system_name"  placeholder="点击选择" readonly/>
+							    <input type="hidden" id="system_noTFV" name="system_no" />
+							</td>
+							<td class="ecitic-right" >计划投产日期：</td>
+							<td>
+								<div style="float:left; width:45%;">
+								<input type="text" id="plan_onlinetimeTFV" name="plan_onlinetime" onClick="WdatePicker({});" placeHolder="点击选择" class="requirement-ele-width" readonly/>
+								</div>
+								<div style="float:left; width:10%;line-height:26px;">&nbsp至&nbsp</div>	
+								<div style="float:left; width:45%;">
+								<input type="text" id="plan_onlinetimeTFV1" name="plan_onlinetime1" class="requirement-ele-width" onClick="WdatePicker({});" placeHolder="点击选择"  readonly/>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<ul class="ecitic-btn-all">
+					<li><input type="button" class="btn btn-ecitic" id="serach_fullviewtask_Query" value="查询"/></li>
+					<li><input type="reset" class="btn btn-ecitic" id="reset_fullviewtask_Query" value="重置"/></li>
+				</ul>
+			</div>
+	    <div class="ecitic-operation">
+	       <button class="btn btn-ecitic" id="view_taskDetail">查看详情</button>
+        </div>
+		<div class="ecitic-new">
+			<table id="g_FullView_TaskTable" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+		<!-- 系统应用pop -->
+		<div id="tvsystem_pop"></div>
+		<!-- 版本pop -->
+		<div id="tvVsersion_pop"></div>
+	</div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_intoVersion/taskVersion_pop.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_follower/task_fullview_querylist.js"></script>
+<script type="text/javascript" src="dev_application/System_pop.js"></script>
+</html>

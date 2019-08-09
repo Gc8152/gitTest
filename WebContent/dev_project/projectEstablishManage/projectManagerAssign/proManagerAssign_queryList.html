@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>指派项目经理</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+	<div class="ecitic-inquire queny_workHight" >
+		<div class="ecitic-table" >
+			<form id="proManagerAssign">
+				<table id="table_select" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad requirement-table">
+					<tr>
+						<td class="ecitic-right" style="width: 11%;">项目名称：</td>
+						<td style="width: 22%;">
+							<input type="text" name="PROJECT_NAME"/>
+						</td>
+						<td class="ecitic-right" style="width: 12%;">项目编号：</td>
+						<td style="width: 22%;">
+							<input type="text" name="PROJECT_NUM"/>
+						</td>
+						<td class="ecitic-right" style="width: 11%;">项目规模：</td>
+						<td style="width: 22%;">
+							<select name="PROJECT_SCALE" diccode="P_DIC_PROJECT_SCALE" style="width:100%;"></select>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="select_assign">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset_assign">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="assignPM">指派项目经理</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="table_assignPMList" class="table table-bordered table-hover"></table>
+	</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="dev_project/projectEstablishManage/projectManagerAssign/proManagerAssign_queryList.js"></script>
+</html>

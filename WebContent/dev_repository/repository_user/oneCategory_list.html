@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>  
+<script src="js/commons/commons.js"></script>
+<script src="dev_repository/repository_user/oneCategory_list.js"></script>
+</head>
+<body>
+<div class="container-fluid" id="institution" style="position:relative;">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="span6 citic-tree" >
+				<div class="widget-box">
+					<div class="widget-title">
+						<span class="icon"><i class="icon-align-justify"></i></span>
+						<h5></h5>
+					</div>
+					<div class="controlsOverFlow" id="InstitutionTreeDiv">
+						<ul id="treeOneCategoryTree" class="ztree"></ul>
+					</div>
+				</div>
+			</div>
+			<div  class="span6 citic-add" >
+				<div class="widget-content nopadding">
+					<form id="oneCategory_form" action="#" method="get" class="oneCategory_form">
+						<div class="ecitic-title-table">
+							<table width="100%" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+								<tr>
+									<!-- <td class="ecitic-right">类别：</td>
+									<td>
+										<input type="hidden" id="old_category_code" name="OLD_CATEGORY_CODE"/>
+										<input type="hidden" id="category_code" name="CATEGORY_CODE"/>
+										<input type="text" id='category_name' name="CATEGORY_NAME" valititle="类别名称必填" validate="v.required"  placeholder="类别名称" class="citic-ast" />
+									</td> -->
+									
+									<td class="ecitic-right">标题：</td>
+									<td>
+										
+										<input type="hidden" id='category_code' name="CATEGORY_CODE">
+										<input type="text" name="TITLE"/>
+									</td>
+									<td class="ecitic-right">状态：</td>
+									<td>
+										<select class="requirement-ele-width" name="STATUS" diccode="K_DIC_INTELL_STATUS" style="width: 100%"></select>
+									</td>
+								</tr>
+								<tr>
+									
+									<!-- <td class="ecitic-right">发布人：</td>
+									<td>
+										<input type="text" name="REP.RELEASE_PERSON"/>
+										<input type="hidden" name="REP.RELEASE_PERSON_NO"/>
+									</td> -->
+									<!-- <td class="ecitic-right" >时间从：</td>
+									<td>
+										<div class="dateSelectZ_From">
+										<input type="text" id="start_time" name="START_TIME" class="requirement-ele-width"  onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'end_time\',{d:0});}'})" placeHolder="点击选择"   readonly/>
+										</div>
+										<div class="dateSelectZ_W">&nbsp至&nbsp</div>
+										<div class="dateSelectZ_From">
+										<input type="text" id="end_time" name="END_TIME" class="requirement-ele-width" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'start_time\',{d:0});}'})" placeHolder="点击选择"  readonly/>
+										</div>
+									</td> -->
+									
+								</tr>
+							</table>
+						</div>
+						<div class="ecitic-save">
+							<input type="button" class="btn btn-ecitic" btn="query_oneCategory" value="查询"/>
+							<input type="button"  class="btn btn-ecitic" btn="reset_oneCategory" value="重置"/>
+						</div>
+					</form>
+					<div class="ecitic-operation">
+						<button class="btn btn-ecitic" btn="view_oneCategory">查看详情</button>
+					</div>	
+					<div class="ecitic-new">
+						<table tb="oneCategoryTable" class="table table-bordered table-hover table-text-show"></table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+
+</html>
+

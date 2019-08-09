@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>UAT评审文档上传</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+</head>
+<body>
+<div class="main_iframeFormW">
+	<div class="tab-pane fade in active">
+		<div class="main_iframe_con">
+			<div class="ecitic-title">
+				<span>测试基本信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table" id="reqSubsInfo">
+				<!-- 需求点ID -->
+				<input type="hidden" id="sub_req_id">
+				<input type="hidden" id="req_task_code">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+					<tr>
+						<td width="15%" class="table-text">需求点名称：</td>
+						<td width="18.333%">
+							<span id="sub_req_name"></span>
+						</td>
+						<td width="15%" class="table-text">需求名称：</td>
+						<td width="18.333%">
+							<span id="req_name"></span>
+						</td>
+						<td width="15%" class="table-text">需求编号：</td>
+						<td width="18.333%">
+							 <span id="req_code"></span>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">应用名称：</td>
+						<td>
+							 <span id="system_name"></span>
+						</td>
+						<td width="15%" class="table-text">需求点编号：</td>
+						<td width="18.333%">		
+							<span id="sub_req_code"></span>					
+						</td>
+						<td colspan="2"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>测试执行情况<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table" id="reqSubsInfo">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+				<tr>
+				
+					<td width="15%" class="table-text">提交程序版本日期：</td>
+					<td width="18.333%">
+						<span id="xx">2017-04-01</span>
+					</td>
+					<td width="15%" class="table-text">测试开始日期：</td>
+					<td width="18.333%">
+						<input type="text" id="test_starttime" name="A.test_starttime" class="citic-ast" validate="v.required"
+							onclick="WdatePicker({})" placeholder="请选择" readonly="readonly">
+					</td>
+					<td width="15%" class="table-text">测试完成日期：</td>
+					<td width="18.333%">
+						<input type="text" id="test_endtime" name="A.test_endtime" class="citic-ast" validate="v.required"
+							onclick="WdatePicker({})" placeholder="请选择" readonly="readonly">
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>测试案例<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table" id="reqSubsInfo">
+			<table class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+				<tr>
+					<td width="15%" class="table-text">不通过条数：</td>
+					<td width="18.333%">
+						<input type="text" id="unpass_num" name="A.unpass_num"  validate="v.isint" class="citic-ast"
+						 onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^[0-9]\d*|0$]/g,'')}else{this.value=this.value.replace(/[^0-9]/g,'')}"/>
+					</td>
+					<td width="15%" class="table-text">不适用条数：</td>
+					<td width="18.333%">
+						<input type="text" id="unuse_num" name="A.unuse_num" validate="v.isint" class="citic-ast"
+						 onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^[0-9]\d*|0$]/g,'')}else{this.value=this.value.replace(/[^0-9]/g,'')}"/>
+					</td>
+					<td width="15%" class="table-text">未测试条数：</td>
+					<td width="18.333%">
+						<input type="text" id="untest_num" name="A.untest_num" validate="v.isint" class="citic-ast"
+						 onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^[0-9]\d*|0$]/g,'')}else{this.value=this.value.replace(/[^0-9]/g,'')}"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">测试通过条数：</td>
+					<td>
+						<input type="text" id="pass_num" name="A.pass_num" validate="v.isint" class="citic-ast"
+						 onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^[0-9]\d*|0$]/g,'')}else{this.value=this.value.replace(/[^0-9]/g,'')}"/>
+					</td>
+					<td class="table-text">案例条数：</td>
+					<td>
+						<input type="text" id="case_num" name="A.case_num" validate="v.isint" class="citic-ast" readonly/>
+					</td>
+					<td class="table-text">测试通过率（%）：</td>
+					<td>
+						<div style="width:250px;"><input type="text" id="pass_rate" name="A.pass_rate" validate="v.isfloat" class="citic-ast" readonly/></div><span>%</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+	<div class="ecitic-title-table" id="">
+		<div class="ecitic-title">
+			<span>测试缺陷<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table id="bug_table" class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+				<tr>
+					<th width="25%">缺陷级别</th>
+					<th width="25%">缺陷数</th>
+					<th width="25%">修复验证通过数</th>
+					<th width="25%">遗留缺陷数</th>
+				</tr>
+				<tr>
+					<th>A级(致命)缺陷</th>
+					<td>
+						<input type="text" name="A.adefect_num" validate="v.isint">
+					</td>
+					<td>
+						<input type="text" name="A.adefect_passnum" validate="v.isint">
+					</td>
+					<td>
+						<input type="text" name="aleave" readonly>
+					</td>
+				</tr>
+				<tr>
+					<th>B级(严重)缺陷</th>
+					<td>
+						<input type="text" name="A.bdefect_num" validate="v.isint">
+					</td>
+					<td>
+						<input type="text" name="A.bdefect_passnum" validate="v.isint">
+					</td>
+					<td>
+						<input type="text" name="bleave" readonly>
+					</td>
+				</tr>
+				<tr>
+					<th>C级(一般)缺陷</th>
+					<td>
+						<input type="text" name="A.cdefect_num" validate="v.isint">
+					</td>
+					<td>
+						<input type="text" name="A.cdefect_passnum" validate="v.isint">
+					</td>
+					<td>
+						<input type="text" name="cleave" readonly> 
+					</td>
+				</tr>
+				<tr>
+					<th>D级(建议)缺陷</th>
+					<td>
+						<input type="text" name="A.ddefect_num" validate="v.isint">
+					</td>
+					<td>
+						<input type="text" name="A.ddefect_passnum" validate="v.isint">
+					</td>
+					<td>
+						<input type="text" name="dleave" readonly>
+					</td>
+				</tr>
+				<tr>
+					<th>总缺陷数</th>
+					<td>
+						<input type="text" name="A.alldefect_num" readonly>
+					</td>
+					<td>
+						<input type="text" name="allpass" readonly>
+					</td>
+					<td>
+						<input type="text" name="A.allleftdefect_num" readonly>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>验收结论<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table" id="reqSubsInfo">
+			<table class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+				<tr>
+					<td width="15%" class="table-text">验收结论：</td>
+					<td width="18.333%">
+						<select id="accept_result" name="A.accept_result" validate="v.required"></select>
+					</td>
+					<td colspan="4"></td>
+					<!-- <td width="15%" class="table-text">是否允许投产：</td>
+					<td width="18.333%">
+						<select id="putin_result" name="A.putin_result" validate="v.required"></select>
+					</td>
+					<td colspan="2"></td>
+					 -->
+				</tr>
+				<tr>
+					<td class="table-text">备注：</td>
+					<td colspan="5">
+						<textarea class="textarea2" id="test_memo" name="A.test_memo"></textarea>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+	<div class="ecitic-title-table" id="">
+		<div class="ecitic-title">
+			<input name="FILE_ID" type="hidden" value=""/>
+			<span>附件<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<div class="ecitic-operation">
+				<button class="btn btn-ecitic" id="add_file">上传</button>
+				<button class="btn btn-ecitic" id="delete_file">删除</button>
+				<a href="sfile/downloadFTPFile.asp?id=m_025" class="file_template_style">仿生产环境测试报告模板</a>
+				<a href="sfile/downloadFTPFile.asp?id=m_038" class="file_template_style">仿生产环境测试报告模板v1.0（紧急）</a>
+			</div>
+			<table id="table_file" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover table-center table-th tablr-input-text">
+
+			</table>
+		</div>
+	</div>
+	
+	<div class="ecitic-save">
+		<!-- <input id="saveUatReprot" type="button" class="btn btn-ecitic" value="保存"> -->
+		<input id="submitUatReprot" type="button" class="btn btn-ecitic" value="保存&提交">		
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭">
+	</div>
+</div>
+
+<!--上传附件模态框  -->
+<div id="file_modal"></div>
+<div id="fileview_modal"></div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script src="pages/approvalflow/afcommons.js"></script>
+<script type="text/javascript" src="dev_construction/uat_test/uatreport/uatReport_update.js"></script>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>应用查看页面</title>
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="main_iframe_con">
+		
+	<form class="main_iframeFormW">
+	<div class="ecitic-title">
+		  <span>应用基本信息<em></em></span>
+			      <i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table class="table table-striped table-hover table-bordered tablr-input-text"><!-- table-bor-paw-->
+					<!-- <td width="14%" class="table-text">处室：</td>
+					<td width="19.333%"><span id="APDorgan_id" name="organ_name"></span></td>
+					 -->
+				<colgroup  >
+					<col style="width: 4%">
+			        <col style="width: 11%">
+			        <col style="width: 4%">
+			        <col style="width: 11%">
+		        </colgroup>	
+				<tr>
+					<td class="table-text">应用名称：</td>
+					<td><span id="APDsystem_name" name="system_name"></span></td>
+					
+					<td class="table-text">英文简称：</td>
+					<td><span id="APDsystem_short" name="system_short"></span></td>
+				</tr>
+				
+				<tr>
+					<td class="table-text">测试小组：</td>
+					<td><span id="APDtest_group" name="test_group_display"></span></td>
+					<td class="table-text">投产类型：</td>
+					<td><span id="APDyield_type" name="yield_type_name"></span></td>
+				</tr>
+				<tr>
+					<td class="table-text">业务条线：</td>
+					<td><span id="APDbusiness_line" name="business_line_display"></span></td>
+					<td class="table-text">是否新建系统：</td>
+					<td>
+					  <span id="APDis_new_system" name="is_new_system_display">	
+					   </span>
+					</td>
+				</tr>
+				
+				<tr>
+<!-- 					<td class="table-text">是否纳入CC管理：</td>
+					<td>
+					    <span id="is_CC_display" name="is_cc_display">	
+					   </span>
+					</td> -->
+					<td class="table-text">是否科技管理：</td>
+					<td>
+					    <span id="APDis_secientific_management" name="is_secientific_management">	
+					   </span>
+					</td>
+					<td  class="table-text">业务管理部门：</td>
+					<td  ><span id="APDbusiness_dept_id" name="business_dept_name"></span></td>
+				</tr>
+				<tr>
+				<tr>
+					<td class="table-text">应用状态：</td>
+					<td>
+					    <span id="system_status_display" name="system_status_display">	
+					   </span>
+					</td>
+<!-- 					<td class="table-text">是否科技管理：</td>
+					<td>
+					    <span id="APDis_secientific_management" name="is_secientific_management">	
+					   </span>
+					</td> 
+					<td colspan="2"></td>-->	
+					<td  class="table-text">开发组：</td>
+					<td>
+					    <span id="APDdev_group_id" name="dev_group_name"></span>
+					</td>		
+				</tr>
+				<tr>
+					<td  class="table-text">负责组：</td>
+					<td>
+					    <span id="APDres_group_id" name="res_group_name"></span>
+					</td>	
+					<td class="table-text">是否缺陷审核：</td>
+					<td>
+					    <span id="APDis_review_display" name="is_review_display">	
+					   </span>
+					</td>	
+				</tr>
+				<tr>
+				<td class="table-text">应用简介：</td>
+					<td colspan="3">
+						<span id="system_profile_applicationadd" name="system_profile">	
+					   </span>
+						<!-- <textarea name="UPP.system_profile" placeholder="请详细输入应用简介" id="system_profile_applicationadd" style="height:80px" maxlength="100" class="citic-text-ast" readonly="true"></textarea> -->
+					</td>
+				
+				</tr>
+				
+				
+			<!-- 	<tr>
+					<td class="table-text">是否重要应用：</td>
+					<td><span id="APDis_important" name="is_important_display"></span></td>
+					<td class="table-text">应用状态：</td>
+					<td><span id="APDsystem_status" name="system_status_display"></span></td>
+				</tr>
+				<tr>
+					<td class="table-text">是否测试剥离：</td>
+					<td><span id="APDis_text_peel" name="is_test_peel_display"></span></td>
+					<td class="table-text">是否部署剥离：</td>
+					<td><span id="APDis_deploy_peel" name="is_deploy_peel_display"></span></td>
+				</tr>
+				<tr>
+					<td class="table-text">是否集中监控：</td>
+					<td><span id="APDis_centralizedmonitor" name="is_centralizedmonitor_display"></span></td>
+					<td class="table-text">测试条线：</td>
+					<td><span id="APDtest_line" name="test_line_display"></span></td>
+				</tr>
+				<tr>
+					<td class="table-text">测试部署类型：</td>
+					<td><span id="APDtest_deploy_type" name="test_deploy_type_display"></span></td>
+					<td class="table-text">测试小组：</td>
+					<td><span id="APDtest_group" name="test_group_display"></span></td>
+				</tr>
+				<tr>
+					<td class="table-text">投产类型：</td>
+					<td><span id="APDyield_type" name="yield_type"></span></td>
+					<td class="table-text">业务条线：</td>
+					<td><span id="APDbusiness_line" name="business_line_display"></span></td>
+				</tr>
+				<tr>
+					<td class="table-text">应用类型：</td>
+					<td><span id="APDsystem_type" name="system_type"></span></td>
+					<td class="table-text">是否双周版：</td>
+					<td><span id="APDis_two_week" name="is_two_week_display"></span></td>
+				</tr>
+				<tr>
+					<td class="table-text">是否敏捷应用：</td>
+					<td><span id="APDis_agile" name="is_agile_display"></span></td>
+					<td class="table-text">是否新建系统：</td>
+					<td>
+					  <span id="APDis_new_system" name="is_new_system_display">	
+					   </span>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">文件服务地址：</td>
+					<td colspan="3"><span id="APDfile_addr" name="file_addr"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">投产材料SVN：</td>
+					<td colspan="3"><span id="APDyield_svn" name="yield_svn"></span></td>
+				</tr> -->
+			</table>
+		</div>
+		<div class="ecitic-title">
+		  <span>负责人信息<em></em></span>
+			      <i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table class="table table-striped table-hover table-bordered tablr-input-text">
+			<tr>
+					<td width="14%" class="table-text">应用负责人：</td>
+					<td width="19.333%"><span id="APDproject_man_name" name="project_man_name"></span></td>
+					<td width="14%" class="table-text">技术经理：</td>
+					<td width="19.333%"><span id="APDskill_man_name" name="skill_man_name"></span></td>
+					<td width="14%" class="table-text">产品经理：</td>
+					<td width="19.333%"><span id="APDproduct_man_name" name="product_man_name"></span></td>
+					</tr>
+				<tr>
+					<td class="table-text">中心级配置管理岗：</td>
+					<td><span id="APDconfig_man_name" name="config_man_name"></span></td>
+				
+					<td class="table-text">测试经理：</td>
+					<td><span id="APDtest_man_name" name="test_man_name"></span></td>
+					<td class="table-text">测试环境部署岗：</td>
+					<td><span id="APDsys_man_name" name="sys_man_name"></span></td>
+					
+				</tr>
+				<!-- <tr>
+					<td class="table-text">测试分析师：</td>
+					<td><span id="APDtest_analise_name" name="test_analyse_name"></span></td>
+					<td class="table-text">元数据管理员：</td>
+					<td><span id="APDunit_data_name" name="unit_data_name"></span></td>
+					<td colspan="2"></td>
+				</tr> -->
+			</table>
+			</div>
+		<!-- <div class="ecitic-title">
+			<span>技术信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table class="table table-striped table-hover table-bordered tablr-input-text">
+			<tr>
+					<td width="14%" class="table-text">开发工具：</td>
+					<td width="19.333%"><select id="APDdevelop_tool" name="develop_tool" dic_code="G_DIC_DEVELOP_TOOL" multiple="multiple" disabled></select></td>
+					<td width="14%" class="table-text">开发语言：</td>
+					<td width="19.333%"><select id="APDdevelop_language" name="develop_language" dic_code="G_DIC_DEVELOP_LANGUAGE" multiple="multiple" disabled></select></td>
+				</tr>
+				<tr>
+					<td class="table-text">操作系统：</td>
+					<td><select id="APDmac_os" name="mac_os" dic_code="G_DIC_MAC_OS" multiple="multiple" disabled></select></td>
+					<td class="table-text">硬件类型：</td>
+					<td><select id="APDhardware_type" name="hardware_type" dic_code="G_DIC_HARDWARE_TYPE" multiple="multiple" disabled></select></td>
+				</tr>
+				<tr>
+					<td class="table-text">中间件：</td>
+					<td><select id="APDamong" name="among" dic_code="G_DIC_DEVELOP_AMONG" multiple="multiple" disabled></select></td>
+					<td class="table-text">数据库：</td>
+					<td><select id="APDdatabase" name="database" dic_code="G_DIC_DEVELOP_DATABASE" multiple="multiple" disabled></select></td>
+				</tr>
+			</table>
+			</div> -->
+		<!-- <div class="ecitic-title">
+			<span>规范组信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table class="table table-striped table-hover table-bordered tablr-input-text">
+			<tr>
+			        <td width="14%" class="table-text">是否需求漏洞扫描：</td>
+					<td width="19.333%"><span id="APDis_scanning" name="is_scanning_display"></span></td>
+					<td width="14%" class="table-text">是否互联网应用：</td>
+					<td width="19.333%"><span id="APDis_inter" name="is_inter_display"></span></td>
+					</tr>
+					<tr>
+					<td class="table-text">是否移动APP：</td>
+					<td><span id="APDis_app" name="is_app_display"></span></td>
+					
+					<td class="table-text">应用架构：</td>
+					<td><span id="APDframework" name="framework_display"></span></td>
+					</tr>
+			  </table>
+			 </div> 
+			 <div class="ecitic-title">
+			  <span>配置库信息<em></em></span>
+				      <i></i>
+			</div>
+				<div class="ecitic-title-table">
+				<table id="configTable" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+				<tr>
+					 <td class="table-text" >CC服务器URL：</td>
+						<td  colspan="5">
+						      <span  id="ccserverurl" name="C.cc_server_url" class="requirement-ele-width"  ></span>
+						</td>
+				</tr>
+				<tr>
+			    <td class="table-text">VOB信息：</td>
+			    <td style="height:80px" colspan="5">
+			      <span  id="vobinfo" name="C.vob_info" class="requirement-ele-width"  ></span>
+			    </td>
+			    </tr>
+				</table>
+				</div>
+				
+				<div class="ecitic-title">
+					<span>环境类型<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-title-table">
+				<table id="envirTable" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+				<tr>
+					<td class="table-text">环境类型：</td>
+					<td class="litterSelectsTD" colspan="5">
+						<div id="addrType"></div>
+						<input id="system_id" name="system_id" type="hidden">
+					</td>
+				</tr>
+				</table>
+				</div>-->
+				
+			<!-- 	<div class="ecitic-title">
+					<span>环境类型<em></em></span>
+					<i></i>
+				</div> 
+				
+			 <div  class="ecitic-title"></div>-->
+			 
+			</form>
+		<div class="ecitic-title">
+		  <span>应用关联人员信息<em></em></span>
+			      <i></i>
+		</div>	
+		<div class="ecitic-new">
+		        <table id="SfunctionTableInfoTwo" class="table table-bordered table-hover"></table>
+	    </div>	
+		<div class="ecitic-save" >
+	   		<div>
+	  		 	<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+	  		</div>
+	   </div>
+	</div>
+</body>
+<script type="text/javascript" src="bootstrap/js/select2.min.js"></script>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_application/application_queryInfo.js"></script>
+</html>

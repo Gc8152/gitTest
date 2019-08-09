@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>持续集成平台</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/select2.css"/>
+    <link rel="stylesheet" href="../../css/public.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/zebra_dialog.css"/>
+    <link rel="stylesheet" href="../../css/style.css" />
+	<link rel="stylesheet" href="../../css/form.css" />
+    <script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../js/select2.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="../../js/commons.js"></script>
+    <script type="text/javascript" src="../../js/alertAndConfirm.js"></script>
+	<script type="text/javascript" src="../../js/zebra_dialog.js"></script>
+    <script type="text/javascript" src="evnConfig_query.js"></script>
+
+</head>
+<body style="overflow:auto;">
+<div class="main_iframe_con">
+    <div class="yourLocation">
+        <i></i>
+        <span>您所在的位置：子应用管理》环境配置列表</span>
+    </div>
+    <div class="ecitic-inquire" id="ecitic-inquire">
+        <div class="ecitic-table" id="ecitic-table">
+            <form id="queryForm" >
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+                <tr>
+                    <td class="ecitic-right">应用名称</td>
+                    <td>
+                        <input type="text" id="systemName"  name="systemName" />
+                    </td>
+                    <td class="ecitic-right">应用简称</td>
+                    <td >
+                        <input type="text"  id="systemShort"  name="systemShort"/>
+                    </td>
+                <tr>
+                <tr>
+                    <td class="ecitic-right">子应用名称</td>
+                    <td>
+                        <input type="text" name="appName" id="appName"/>
+                    </td>
+                    <td class="ecitic-right">AP服务器</td>
+                    <td>
+                        <input type="text" name="apServerInfoName" id="apServerInfoName"/>
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+        <ul class="ecitic-btn-all">
+            <li>
+                <button class="btn btn-ecitic" id="query">查询</button>
+            </li>
+            <li>
+                <button class="btn btn-ecitic" id="reset">重置</button>
+            </li>
+        </ul>
+    </div>
+    <div class="ecitic-operation">
+        <button class="btn btn-ecitic" id="add">新增</button>
+        <button class="btn btn-ecitic" id="update">修改</button>
+        <button class="btn btn-ecitic" id="delete" style="display:none">删除</button>
+        <button class="btn btn-ecitic" id="detail">查看</button>
+    </div>
+    <div class="ecitic-new">
+        <table class="table table-bordered table-hover" id="evnConfigTable"></table>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

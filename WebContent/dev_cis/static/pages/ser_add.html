@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/select2.css"/>
+<link rel="stylesheet" href="../css/public.css" />
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../js/select2.min.js"></script>
+</head>
+
+<body style="overflow:auto;">
+	<div class="main_iframe_con">
+		<div class="yourLocation">
+					<i></i>
+					<span>您所在的位置：政采项目及工作站录入</span>
+				</div>
+		<div class="ecitic-title">			
+			<span>项目及站点信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table class="table table-bordered"><!-- table-bor-paw-->
+				<tr>
+					<td width="11%" class="table-text">录入人名称</td>
+					<td width="22.333%">
+						
+					</td>
+					<td width="11%" class="table-text">录入人工号</td>
+					<td width="22.333%">
+						
+					</td>
+					<td class="table-text">录入时间</td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">政采项目/工作站</td>
+					<td>
+						<select id="selSex3">
+							<option value="00">政采项目</option>
+							<option value="01">工作站</option>
+						</select>
+					</td>
+					<td class="table-text">政采项目名称/工作站名称</td>
+					<td >
+						<input type="text" />
+					</td>
+					<td width="11%" class="table-text"></td>
+					<td width="22.333%">
+						
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">政采项目地址/工作站地址</td>
+					<td colspan="5">
+						<input type="text" />
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">备注</td>
+					<td colspan="5">
+						<textarea style="height: 50px;"></textarea>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="ecitic-operation ecitic-operation-bg" style="text-align: center;">
+				<button class="btn btn-ecitic">保存</button>
+				<button class="btn btn-ecitic">关闭</button>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function(){
+			$("select").select2();
+		});
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>外包人员查询</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script type="text/javascript" src="js/commons/dic_item.js"></script>
+<script type="text/javascript" src="dev_outsource/supplier/supplierInfo/supplierPop.js"></script>
+</head>
+<body>
+<form action="" id="staffInfoList">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">人员名称</td>
+					<td>
+						<input type="text" name="FDI.op_name" id="op_name_qu"/>
+					</td>
+					<td class="ecitic-right">供应商名称</td>
+					<td>
+						<div class="ecitic-input-all">
+							<input type="hidden"  name="FDI.supplier_id" id="supplier_id_qu" />
+							<input type="text" placeholder="点击选择供应商" id="FDIsupplier_name" readonly/>
+						</div>
+					</td>
+<!-- 					<td class="ecitic-right">所属项目</td>
+					<td>
+						<input type="text" name="FDI.belongproject" id="belongproject_qu"/>
+					</td> -->
+					<td class="ecitic-right">人员状态</td>
+					<td>
+						<select  id="op_state_qu" name="FDI.op_state" class="citic-sele-ast" style="width:100%;"></select>
+					</td>
+				</tr>
+				<tr>
+					<td  class="ecitic-right">技能类型</td>
+					<td width="22%">
+						<select name="FDI.skill_type" id="skill_type_qu" onchange="selectSkillType(this.value);" class="citic-sele-ast" style="width:100%;"></select>
+					</td>
+					<td class="ecitic-right">技能</td>
+					<td width="22%">
+						<select name="FDI.skill" id="skill_qu" class="citic-sele-ast" style="width:100%;"></select>
+					</td>
+					<td  class="ecitic-right">熟练度</td>
+					<td>
+						<select name="FDI.proficiency_degree" id="skill_proficiency_degree_qu" class="citic-sele-ast" style="width:100%;"></select>
+					</td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">人员采购类型</td>
+					<td>
+						<select  id="purch_type_qu" name="FDI.purch_type" class="citic-sele-ast" style="width:100%;"></select>
+					</td> 
+					<td class="ecitic-right">开发方向</td>
+					<td>
+						<select name="FDI.dev_direction" id="dev_direction_qu" class="citic-sele-ast" style="width:100%;"></select>
+					</td>
+					<td class="ecitic-right">人员级别</td>
+					<td>
+						<select name="FDI.dev_grade" id="dev_grade_qu" class="citic-sele-ast" style="width:100%;"></select>
+					</td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">所属应用</td>
+					<td>
+						<input type="text" name="FDI.op_belongsystem" id="op_belongsystem_qu"/>
+					</td>
+					<td class="ecitic-right">行内归属部门</td>
+					<td>
+						<div class="ecitic-input-all" style="position: static;">
+							<input type="hidden" name="FDI.op_office" id="op_office_qu"/>
+							<input type="text" placeholder="点击选择行内归属部门" name="" id="FDI_op_office" readonly/>
+						</div>
+					</td>
+					<td class="ecitic-right">行方项目经理</td>
+					<td>
+						<input type="hidden" name="FDI.op_staff" id="op_staff_qu"/>
+						<input type="text" id="FDI_staff_name"  name=""  placeholder="点击选择行方项目经理" class="citic-ast  read" readonly/>
+					</td> 
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button type="button" class="btn btn-ecitic" id="queryInfo_OutPerson">查询</button></li>
+			<li><button type="button" class="btn btn-ecitic" id="resetInfo_OutPerson">重置</button></li>
+		</ul>
+	</div>
+</form>
+	<div class="ecitic-operation">
+		<button type="button" class="btn btn-ecitic" id="outperson_Detail">查看详情</button>
+		<button type="button" class="btn btn-ecitic" id="outperson_export">导出</button>
+		<!-- <button type="button" class="btn btn-ecitic" id="outpersonLeave_Detail">离场详情</button> -->
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover table-text-show" id="outperson_TableInfo"></table>
+	</div>
+	
+<div id="outperson_contractSupplier_Pop_qu"></div>
+<!-- 行方项目经理POP框 -->
+<div id="staffDivPop"></div>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="js/commons/ajaxfileupload.js"></script>
+<script type="text/javascript" src="pages/suser/suserPop.js"></script>
+<script src="dev_outsource/outsource/outperson/outperson_queryInfo.js"></script>
+<!-- 工作流 -->
+<script src="pages/approvalflow/approval_title.js"></script>
+<script src="pages/approvalflow/approval_history.js"></script>
+<script src="pages/approvalflow/approval_content.js"></script>
+<script src="pages/approvalflow/afcommons.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>中信银行综合管理系统</title>
+<link rel="stylesheet" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/select2.css"/>
+<link rel="stylesheet" href="../css/public.css" />
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../js/select2.min.js"></script>
+</head>
+
+<body style="overflow:auto;">
+	
+			
+			<div class="main_iframe_con">
+				<div class="yourLocation">
+					<i></i>
+					<span>您所在的位置：首页</span>
+				</div>
+				<div class="ecitic-inquire" id="ecitic-inquire">
+					<div class="ecitic-table" id="ecitic-table">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+							<tr>
+								<td class="ecitic-right">人员姓名</td>
+								<td><input type="text" /></td>
+								<td class="ecitic-right">人员工号</td>
+								<td>
+									<div class="ecitic-input-all">
+										<input type="text" />
+									</div>
+								</td>
+								<td class="ecitic-right">联系电话</td>
+								<td>
+									<input type="text" />
+								</td>
+							</tr>
+						</table>
+					</div>
+					<ul class="ecitic-btn-all">
+						<li><button class="btn btn-ecitic">查询</button></li>
+						<li><button class="btn btn-ecitic">重置</button></li>
+					</ul>
+				</div>
+				<div class="ecitic-operation">
+					<button class="btn btn-ecitic">录入</button><button class="btn btn-ecitic">修改</button><button class="btn btn-ecitic">停用/启用</button>
+					<button class="btn btn-ecitic">删除</button>
+				</div>
+				<div class="ecitic-new">
+					<table class="table table-bordered table-hover">
+						<tr>
+							<th width="24">
+								<div class="ecitic-checkbox">
+									<span><input type="checkbox" value=""></span>
+								</div>
+							</th>
+							<th>序号</th>
+							<th>员工工号</th>
+							<th>姓名</th>
+							<th>性别</th>
+							<th>身份证号</th>
+							<th>出生年月</th>
+							<th>联系电话</th>
+							<th>录入人工号</th>
+							<th>录入人名称</th>
+							<th>录入时间</th>
+						</tr>
+						<tr>
+							<td>
+								<div class="ecitic-checkbox">
+									<span><input type="checkbox" value=""></span>
+								</div>
+							</td>
+							<td>1</td>
+							<td>10001</td>
+							<td>张三</td>
+							<td>男</td>
+							<td>28</td>
+							<td>12</td>
+							<td>1</td>
+							<td>1</td>
+							<td>1</td>
+							<td>1</td>
+						</tr>
+					</table>
+					<div class="ecitic-page-all">
+						<div class="ecitic-page-every">
+							<span>每页显示5条</span>
+							<span>共4条</span>
+						</div>
+						<div class="ecitic-page-select">
+							<div class="ecitic-page-select-btn">
+								<button class="btn">首页</button>
+								<button class="btn">上一页</button>
+								<button class="btn">下一页</button>
+								<button class="btn">末页</button>
+							</div>
+							<div class="ecitic-page-select-go">
+								<span>第</span>
+								<input type="text" value="" />
+								<span>页</span>
+								<button class="btn">GO</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+		
+		
+</body>
+</html>
+
+<script type="text/javascript">
+	//点击标题隐藏内容
+	$(".ecitic-title i").click(function(){
+		if($(this).is(".open")){
+			$(this).removeClass("open");
+		}else{
+			$(this).addClass("open");
+		}
+		$(this).parent().next().slideToggle();
+	});
+	//标签切换(注解：变量tab_li是点击的元素,变量tab_ul切换的主题内容元素)
+	function Tag_tab(tab_li,tab_ul){
+		tab_li.click(function(){
+			var $this = $(this);
+			var $t = $this.index();
+			tab_li.removeClass("current");
+			$this.addClass("current");
+			tab_ul.removeClass("open");
+			tab_ul.eq($t).addClass("open");
+		});
+	};
+	//多选按钮
+	var SinCS_C=$(".ecitic-checkbox span");
+	SinCS_C.bind("click",function(){
+		if($(this).is(".checkd")){
+			$(this).removeClass("checkd");
+		}else{
+			$(this).addClass("checkd");
+		}
+	});
+	//单选按钮
+	var SinCS_R=$(".ecitic-radio span");
+	SinCS_R.bind("click",function(){
+		var $this = $(this);
+		var $t = $this.index();
+		SinCS_R.removeClass('checkd');
+		$this.addClass('checkd');
+	});
+	//下拉菜单select2
+	$("select").select2();
+	
+	//查询条件隐藏显示
+	$(".ecitic-more").click(function(){
+		var EciticInquire=document.getElementById("ecitic-inquire");
+		var EciticTable=document.getElementById("ecitic-table");
+		if($(this).is(".open")){
+			$(this).removeClass("open");
+			EciticInquire.style.height="134px";
+			EciticTable.style.height="96px";
+		}else{
+			$(this).addClass("open");
+			EciticInquire.style.height="auto";
+			EciticTable.style.height="auto";
+		}
+	});
+	
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

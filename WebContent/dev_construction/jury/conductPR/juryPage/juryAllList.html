@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>评审专家库管理</title> 
+
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css">
+	<link rel="stylesheet" type="text/css" href="css/form.css"/>
+
+	<script src="bootstrap/js/bootstrap-table.min.js"></script>
+	<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+	<script type="text/javascript" src="dev_construction/jury/conductPR/juryInfo/prepareList.js"></script>
+	<script type="text/javascript" src="dev_construction/jury/conductPR/juryPage/juryAllList.js"></script>
+	<script src="pages/suser/suserPop.js"></script>
+	<script type="text/javascript" src="dev_application/System_pop.js"></script>
+	</head>
+<body>
+	<div class="ecitic-inquire ecitic-moreNo"  id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table id="juryQueryT" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">评审名称:</td>
+					<td>
+					<input type="text" id="jury_name" />
+					</td>
+					<td class="ecitic-right">评审级别:</td>
+					<td><select id="at_jury_grade" class="citic-sele-ast" name="G.at_jury_grade"></select></td>
+					<td class="ecitic-right">应用名称:</td>
+					<td><input type="hidden" id="system_id" />
+					<input type="text" id="system_name" /></td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">发起人:</td>
+					<td><input type="hidden" id="sponsor_id" />
+					<input type="text" id="sponsor_name" />
+					</td>
+					<td class="ecitic-right">评审类型:</td>
+					<td><select name="G.jury_type" id="jury_type" class="citic-sele-ast"></select></td>
+					<td class="ecitic-right">负责人:</td>
+					<td><input type="hidden" name="G.jury_principal_id" id="jury_principal_id" />
+					<input type="text" name="G.jury_principal_name" id="jury_principal_name" />
+					</td>
+					
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="queryJury">查询</button></li>
+			<li><button class="btn btn-ecitic" id="resetJury">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+<!-- 
+		<button class="btn btn-ecitic" id="jury_add" >发起评审</button>
+		 -->
+		<button class="btn btn-ecitic" id="jury_view">查看评审</button>
+	</div>
+	
+	<div class="ecitic-new">
+		<table id="juryTableInfo" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+	
+	<div id="queryDivExpert"></div>
+</body>
+
+
+</html>

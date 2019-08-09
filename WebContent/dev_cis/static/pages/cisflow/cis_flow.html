@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap-table.min.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/zebra_dialog.css" />
+<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+<link rel="stylesheet" type="text/css" href="../../css/form.css" />
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../../js/select2.min.js"></script>
+<script type="text/javascript" src="../../js/zebra_dialog.js"></script>
+<script type="text/javascript" src="../../js/alertAndConfirm.js"></script>
+<script type="text/javascript" src="../../js/Math.uuid.js"></script>
+<script type="text/javascript" src="../../js/commons.js"></script>
+</head>
+
+<body style="overflow:auto;">
+	<div class="main_iframe_con">
+		<div class="yourLocation">
+			<i></i><span>您所在的位置：服务器配置》持续集成流程》持续集成流程编辑</span>
+		</div>
+		<div class="ecitic-title">			
+			<span>持续集成流程编辑<em></em></span><i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<ul class="nav nav-tabs" id="cis_tab">
+			<!-- <ul class="nav nav-pills" id="cis_tab"> -->
+			  <!-- <li class="active" data-index="0"><a href="#baseInfo" data-toggle="tab">基本信息</a></li>
+			  <li data-index="1"><a href="#envInfo" data-toggle="tab">环境配置</a></li>
+			  <li data-index="2"><a href="#flowInfo" data-toggle="tab">流程配置</a></li> -->
+			  
+			  <li class="active" data-index="0"><a href="#baseInfo" >基本信息</a></li>
+			  <li data-index="1"><a href="#envInfo">环境配置</a></li>
+			  <li data-index="2"><a href="#flowInfo">流程配置</a></li>
+			</ul>
+			<!-- tab内容 -->
+			<form id="cisFlowForm" method="post" onsubmit="return false;">
+				<div class="tab-content"  style="overflow-y: auto;height: 410px;">
+					<!-- 基本信息 -->
+				    <div class="tab-pane fade in active" id="baseInfo">
+				    	<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table"><!-- table-bor-paw-->
+							<tr>
+								<td width="28%" class="table-text">子应用名称：</td>
+								<td width="72%">
+									<input type="hidden" name="appId"/>
+									<!-- <input type="text" id="appInfo" name="appInfo.appName" validate="v.required" valititle="该项必选"/> -->
+									<select id="appInfo" name="appInfo.id" validate="v.required" valititle="该项必选">
+										<option value=" ">请选择</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="table-text">应用名称：</td>
+								<td><input type="text" name="appInfo.systemInfo.systemName" disabled="disabled"/></td>
+							</tr>
+							<tr>
+								<td class="table-text">流程类型：</td>
+								<td>
+									<select id="serverOs" name="flowType" validate="v.required" valititle="该项必选">
+										<option value=" ">请选择</option>
+										<option value="01">sit</option>
+										<option value="02">uat</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="table-text">流程名称：</td>
+								<td>
+									<input type="text" name="flowName"/>
+								</td>
+							</tr>
+							<tr>
+                                <td class="table-text">部署包名称：</td>
+                                <td>
+                                    <input type="text" name="projectName"/>
+                                </td>
+                            </tr>
+							<tr>
+								<td class="table-text">流程状态：</td>
+								<td>
+									<select id="flowStatus" name="flowStatus" validate="v.required" valititle="该项必选">
+										<option value="00">启用</option>
+										<option value="01">停用</option>
+									</select>
+								</td>
+							</tr>
+							<!-- <tr>
+							    <td class="table-text">构建类型：</td>
+			                    <td>
+			                        <select id="buildType" name="buildType" validate="v.required" valititle="该项必选">
+		                               <option value="00" selected="selected">ant构建</option>
+		                               <option value="01">maven构建</option>
+			                        </select>
+	                            </td>
+							</tr> -->
+							<tr>
+							    <td class="table-text">部署类型：</td>
+							    <td>
+							        <select id="deployType" name="deployType">
+							            <option value="00">全量</option>
+							            <option value="01">增量</option>
+							        </select>
+							    </td>
+							</tr>
+						</table>
+				    </div>
+				    <!-- 环境配置 -->
+				    <div class="tab-pane fade" id="envInfo">
+				    	<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table"><!-- table-bor-paw-->
+							<tr>
+								<td width="28%" class="table-text">选择环境：</td>
+								<td width="72%">
+									<input type="hidden" name="evnId"/>
+									<select id="evnConfig" name="evnConfig.id" validate="v.required" valititle="该项必选">
+										<option value=" ">请选择</option>
+										<!-- <option value="01">环境一</option>
+										<option value="02">环境二</option>
+										<option value="03">环境三</option>
+										<option value="03">环境四</option> -->
+									</select>
+								</td>
+							</tr>
+						</table>
+						<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table"><!-- table-bor-paw-->
+							<tr>
+								<td colspan="4">
+									<a class="btn btn-ecitic disabled">代码库</a>
+								</td>
+							</tr>
+							<tr>
+								<td width="13%" class="table-text">代码库类型：</td>
+								<td width="37%">
+									<input type="text" name="appInfo.codeBase.type" disabled="disabled"/>
+								</td>
+								<td width="13%" class="table-text">代码存放路径：</td>
+								<td width="37%">
+									<input type="text" name="appInfo.codeBase.url" disabled="disabled"/>
+								</td>
+							</tr>
+							<tr>
+								<td class="table-text">访问用户名：</td>
+								<td>
+									<input type="text" name="appInfo.codeBase.username" disabled="disabled"/>
+								</td>
+								<td class="table-text">访问密码：</td>
+								<td>
+									<input type="text" name="appInfo.codeBase.password" disabled="disabled"/>
+								</td>
+							</tr>
+							
+							<tr>
+								<td colspan="4">
+									<a class="btn btn-ecitic disabled">AP服务器</a>
+									<input type="hidden" name="evnConfig.apServerInfoId"/>
+								</td>
+							</tr>
+							<tr>
+								<td class="table-text">AP服务器类型：</td>
+								<td>
+									<input type="text" name="evnConfig.apServerInfo.serverinfoAdditional.midwareType" disabled="disabled"/>
+								</td>
+								<td class="table-text">AP服务器：</td>
+								<td>
+									<input type="text" name="evnConfig.apServerInfo.serverName" disabled="disabled"/>
+								</td>
+							</tr>
+							<tr>
+								<td class="table-text">服务器IP地址：</td>
+								<td>
+									<input type="text" name="evnConfig.apServerInfo.serverIp" disabled="disabled"/>
+								</td>
+								<td class="table-text">操作系统：</td>
+								<td>
+									<input type="text" name="evnConfig.apServerInfo.serverOs" disabled="disabled"/>
+								</td>
+							</tr>
+							<tr>
+								<td class="table-text">版本号：</td>
+								<td>
+									<input type="text" name="evnConfig.apServerInfo.serverVersion" disabled="disabled"/>
+								</td>
+								<td class="table-text">访问用户：</td>
+								<td>
+									<input type="text" name="evnConfig.apServerInfo.serverUsername" disabled="disabled"/>
+								</td>
+							</tr>
+							<tr>
+								<td class="table-text">访问密码：</td>
+								<td>
+									<input type="text" name="evnConfig.apServerInfo.serverPassword" disabled="disabled"/>
+								</td>
+								<td class="table-text">端口号：</td>
+								<td>
+									<input type="text" name="evnConfig.apPort" disabled="disabled"/>
+								</td>
+							</tr>
+							<tr>
+								<td class="table-text">WAR包存放路径：</td>
+								<td>
+									<input type="text" name="evnConfig.warFilePath" disabled="disabled"/>
+								</td>
+								<td class="table-text">Build文件地址：</td>
+								<td>
+									<input type="text" name="evnConfig.buildFilePath" disabled="disabled"/>
+								</td>
+							</tr>
+							<tr>
+								<td class="table-text">Config文件地址：</td>
+								<td>
+									<input type="text" name="evnConfig.configFilePath" disabled="disabled"/>
+								</td>
+								<td class="table-text"></td>
+								<td></td>
+							</tr>
+							
+							<tr>
+								<td colspan="4">
+									<a class="btn btn-ecitic disabled">DB服务器</a>
+									<input type="hidden" name="evnConfig.dbServerInfoId"/>
+								</td>
+							</tr>
+							<tr>
+								<td width="13%" class="table-text">服务器IP地址：</td>
+								<td width="37%">
+									<input type="text" name="evnConfig.dbServerInfo.serverIp" disabled="disabled"/>
+								</td>
+								<td width="13%" class="table-text">操作系统：</td>
+								<td width="37%">
+									<input type="text" name="evnConfig.dbServerInfo.serverOs" disabled="disabled"/>
+								</td>
+							</tr>
+							<tr>
+								<td class="table-text">数据库类型：</td>
+								<td>
+									<input type="text" name="evnConfig.dbServerInfo.serverinfoAdditional.dbType" disabled="disabled"/>
+								</td>
+								<td class="table-text">版本号：</td>
+								<td>
+									<input type="text" name="evnConfig.dbServerInfo.serverVersion" disabled="disabled"/>
+								</td>
+							</tr>
+							<tr>
+								<td class="table-text">访问用户名：</td>
+								<td>
+									<input type="text" name="evnConfig.dbServerInfo.serverUsername" disabled="disabled"/>
+								</td>
+								<td class="table-text">访问密码：</td>
+								<td><input type="text" name="evnConfig.dbServerInfo.serverPassword" disabled="disabled"/></td>
+							</tr>
+							<tr>
+								<td class="table-text">数据库用户名：</td>
+								<td><input type="text" name="evnConfig.dbServerInfo.serverinfoAdditional.dbUsername" disabled="disabled"/></td>
+								<td class="table-text">数据库访问密码：</td>
+								<td><input type="text" name="evnConfig.dbServerInfo.serverinfoAdditional.dbPassword" disabled="disabled"/></td>
+							</tr>
+							<tr>
+								<td class="table-text">SQL脚本路径：</td>
+								<td><input type="text" name="evnConfig.sqlFilePath" disabled="disabled"/></td>
+								<td class="table-text"></td>
+								<td></td>
+							</tr>
+						</table>
+				    	
+				    </div>
+				    <!-- 流程配置 -->
+				    <div class="tab-pane fade" id="flowInfo">
+				    	<table id="cis_flow_step_table" class="table table-bordered table-hover" ></table>
+				    </div>
+				</div>
+			</form>
+		</div>
+		<div class="ecitic-operation ecitic-operation-bg" style="text-align: center;">
+			<button class="btn btn-ecitic" id="pre" style="display: none;">上一步</button>
+			<button class="btn btn-ecitic" id="save"  style="display: none;">保存</button>
+			<button class="btn btn-ecitic" id="next">下一步</button>
+			<button class="btn btn-ecitic" id="close">关闭</button>
+		</div>
+	</div>
+	
+	<div id="appInfomodal" class="modal hide fade" tabindex="-1">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="myModalLabel">用户查询页面</h5>
+		</div>
+		<h1>sdfsdfdsf</h1>
+	</div>
+		
+		
+	<script type="text/javascript" src="cis_flow.js"></script>
+</body>
+</html>

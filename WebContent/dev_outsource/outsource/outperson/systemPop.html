@@ -1,0 +1,46 @@
+
+<!--应用模态框 -->
+<div id="myModal_system" class="modal hide fade" style="top: 50%;margin-top: -260px;" tabindex="-1" z-index="1060">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="myModalLabel">应用查询页面</h5>
+	</div>
+	
+		<form action="" class="form-inline" id="pop_sys_condition">
+			<div class="row">
+				<div class="span6 h30">
+					<label class="pl60">应用编号：</label>
+					<input type="text" name="O_system_id" id="O_system_id"/>				
+				</div>
+				<div class="span6 h30">
+					<label class="pl60">应用名称：</label>
+					<input type="text" name="O_system_name" id="O_system_name"/>
+				</div>
+				<!-- <div class="span6 h30" style="width:100%">
+					<label class="pl60">所属部门：</label>
+					<input type="hidden" name="O_business_dept_id" id="O_business_dept_id"/>
+					<input type="text" name="O_business_dept_name" id="O_business_dept_name" validate="v.required" valititle="请选择行内归属部门" placeholder="点击选择行内归属部门" 
+					class="citic-ast  read" readonly/>
+				</div> -->
+				 <div class="span6 h30" style="width:100%">
+					<label class="pl60">负责组：</label>
+					<select id="res_group_name" name="res_group_name" style="min-width: 188px ;width: 188px; "/>
+				</div> 
+		</form>
+	
+	<div class="ecitic-save">
+	<input class="btn btn-ecitic" value="查询" id="pop_systemSearch" type="button" />
+	<input class="btn btn-ecitic" value="重置" id="pop_systemReset" type="button" />
+	</div>
+	<!-- <div class="ecitic-save">
+		<input class="btn btn-ecitic" value="查询" id="pop_systemSearch" type="button" />
+		<input class="btn btn-ecitic" value="重置" id="pop_systemReset" type="button" />
+	</div> -->
+	<div class="ecitic-title-table modal-body ecitic-new">
+		<div class="tz_btn" style="display:none;">
+			<button class="btn btn-ecitic" type="button" id="systemPOPSureSelected">确认选择</button>
+		</div> 
+		<table id="pop_systemTable" class="table table-bordered table-hover table-center table-th tablr-input-text"></table>
+	</div>
+	<div class="modal-footer"></div>
+</div>

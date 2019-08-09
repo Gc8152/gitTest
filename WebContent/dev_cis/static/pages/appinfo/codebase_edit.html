@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../../css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/zebra_dialog.css"/>
+<link rel="stylesheet" href="../../css/public.css" />
+<link rel="stylesheet" href="../../css/style.css" />
+<link rel="stylesheet" href="../../css/form.css" />
+
+
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/select2.min.js"></script>
+<script type="text/javascript" src="../../js/commons.js"></script>
+<script type="text/javascript" src="../../js/Math.uuid.js"></script>
+<script type="text/javascript" src="../../js/alertAndConfirm.js"></script>
+<script type="text/javascript" src="../../js/zebra_dialog.js"></script>
+<script type="text/javascript" src="codeBase_edit.js"></script>
+
+</head>
+
+<body style="overflow:auto;">
+<div class="main_iframe_con">
+	<div class="yourLocation">
+		<i></i>
+		<span>您所在的位置：服务器配置》部署服务器</span>
+	</div>
+	<div class="ecitic-title">
+		<span>子应用代码库信息<em></em></span>
+		<i></i>
+	</div>
+	<div class="ecitic-title-table">
+		<form id="codeBaseForm">
+			<input type="hidden" name="id"/>
+			<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table"><!-- table-bor-paw-->
+				<tr>
+					<td width="22%" class="table-text">子应用名称</td>
+					<td width="78%">
+						<input type="hidden" name="appId" id="appId"/>
+						<select id="appInfo" name="appInfo.id" validate="v.required" valititle="该项必选">
+							<option value=" ">请选择</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">应用名称</td>
+					<td>
+						<input type="text" name="appInfo.systemId" id="systemName" validate="v.required" valititle="该项必填"/>
+					</td>
+				</tr>
+				<tr>
+				    <td class="table-text">是否scmt</td>
+                    <td>
+                        <select id="scm" name="scm" validate="v.required" valititle="该项必选">
+                            <option value="00">是</option>
+                            <option value="01" selected="selected">否</option>
+                        </select>
+                    </td>
+				</tr>
+				<tr id="typeTr">
+					<td class="table-text">代码库类型</td>
+					<td>
+						<select id="type" name="type" validate="v.required" valititle="该项必选">
+							<option value=" ">请选择</option>
+							<option value="01">SVN</option>
+							<option value="02">ClearCase</option>
+							<option value="03">RTC</option>
+							<option value="04">GIT</option>
+						</select>
+					</td>
+				</tr>
+				<tr id="urlTr">
+					<td class="table-text">代码存放路径</td>
+					<td>
+						<input type="text" name="url" id="url" validate="v.required" valititle="该项必填"/>
+					</td>
+				</tr>
+				<tr id="branch">
+                    <td class="table-text">代码分支</td>
+                    <td>
+                        <input type="text" name="branch" validate="v.required" valititle="该项必填"/>
+                    </td>
+                </tr>
+                <tr id="gittag">
+                    <td class="table-text">代码标签</td>
+                    <td>
+                        <input type="text" name="gittag" validate="v.required" valititle="该项必填"/>
+                    </td>
+                </tr>
+				<tr>
+					<td class="table-text">访问用户名</td>
+					<td>
+						<input type="text" name="username" id="username" validate="v.required" valititle="该项必填"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">访问密码</td>
+					<td>
+						<input type="password" name="password" id="password" validate="v.required" valititle="该项必填"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">构建文件相对目录</td>
+					<td>
+						<input type="text" name="buildRootPath" id="buildRootPath"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div class="ecitic-operation ecitic-operation-bg" style="text-align: center;">
+		<button class="btn btn-ecitic" id="save">保存</button>
+		<button class="btn btn-ecitic" id="close">关闭</button>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>人员单价信息维护新增</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body style="overflow: auto;">
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>人员单价信息<em></em></span> <i></i>
+		</div>
+		<form id="pprice_au">
+			<div class="ecitic-title-table">
+				<div class="ecitic-title-table">
+					<table class="table table-bordered tablr-input-text">
+						<tr>
+							<td class="table-text" style="width: 11%;">供应商</td>
+							<td style="width: 22.333%;"><input type="hidden"
+								id="supplier_id_a" name="supplier_id_a" /> <input type="text"
+								id="supplier_name_a" name="supplier_name" readonly="readonly"
+								placeholder="点击选择" validate="v.required" valititle="供应商必填" /></td>
+							<td class="table-text" style="width: 11%;">框架合同号</td>
+							<td style="width: 22.333%;"><input type="text"
+								id="contract_a" name="contract" validate="v.required"
+								valititle="合同号必填" readonly="readonly" placeholder="点击选择" /></td>
+						</tr>
+						<tr>
+							<td class="table-text" style="width: 11%;">开始时间</td>
+							<td style="width: 22.333%;"><input type="text"
+								id="p_starttime_a" name="p_starttime" onclick="checkTimeSupCompare_common('p_starttime_a','p_endtime_a');"
+								class="input" readonly validate="v.required" valititle="开始时间必填"
+								placeholder="点击选择" /></td>
+							<td class="table-text" style="width: 11%;">结束时间</td>
+							<td style="width: 22.333%;"><input type="text"
+								id="p_endtime_a" name="p_endtime" onclick="checkTimeSupCompare_common('p_starttime_a','p_endtime_a');"
+								class="input" readonly  placeholder="点击选择" /></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="ecitic-title">
+				<span>人员单价信息<em></em></span> <i></i>
+			</div>
+			<div class="ecitic-new">
+				<div class="ecitic-operation ecitic-operation-bg">
+					<button type="button" class="btn btn-ecitic" id="post_add">增加</button>
+				</div>
+				<table class="table table-bordered table-hover"
+					id="pprice_add_table">
+					<tr>
+						<!-- <th width="20%">类别</th> -->
+						<th width="15%">开发方向</th>
+						<th width="15%">人员级别</th>
+<!-- 						<th width="15%">单价(不含税:元)</th> -->
+						<th width="15%">单价(含税:元)</th>
+						<th width="30%">备注</th>
+						<th width="10%">操作</th>
+					</tr>
+				</table>
+			</div>
+		</form>
+		<div class="ecitic-save">
+			<input type="button" class="btn btn-ecitic" id="pprice_save"
+				value="保存" /> <input type="button" class="btn btn-ecitic"
+				name="closePageTabConfirm" value="关闭" />
+		</div>
+	</div>
+	<!-- 供应商POP框 -->
+	<div id="addpriceSupplier_Pop"></div>
+	<!--合同POP框 -->
+	<div id="addpriceContract_Pop"></div>
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_outsource/supplier/supplierInfo/supplierPop.js"></script>
+<script type="text/javascript" src="dev_outsource/contract/contractInfo/contractInfoPop.js"></script>
+<script type="text/javascript" src="dev_outsource/serviceOrder/personnelPrice/personnelPrice_add.js"></script>
+</html>

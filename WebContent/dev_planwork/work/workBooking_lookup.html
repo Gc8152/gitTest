@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="pages/suser/suserPop.js"></script>
+<script src="dev_planwork/work/workBooking_lookup.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<form id="workBooking_lookup_form" action=""  class="form-inline">
+	      <div class="ecitic-inquire ecitic-inquire-sec" id="ecitic-inquire_lookup">
+			<div class="ecitic-table" id="ecitic_table">
+				<table id="queryTable_lookup" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">人员姓名：</td>
+						<td>
+							<input type="text" name="staff_name" id="staff_name" class="citic-ast" placeholder="请选择"/>
+							<input type="hidden" name="staff_code" id="staff_code"  />
+						</td>
+						<td class="ecitic-right">日期：</td>
+						<td>
+							<input type="text" name="w_date" id="w_date" readonly="readonly" onclick="initDate(this)"/>
+						</td>
+						<td class="ecitic-right">审批状态：</td>
+						<td>
+						     <select id="status" name="status"></select>
+						</td>
+					</tr>
+					
+				</table>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" id="work_lookup_serch" value="查询" /></li>
+				<li><input type="reset" class="btn btn-ecitic" id="work_lookup_reset" value="重置" /></li>
+			</ul>
+	  </div>
+	</form>
+	<div class="ecitic-operation">
+		<!-- <button class="btn btn-ecitic" id="allSelect">全选</button> -->
+		<!-- <button class="btn btn-ecitic" id="passThough">审批通过</button>
+		<button class="btn btn-ecitic" id="beatBack">审批打回</button> -->
+		<h3>
+		   审批清单
+		</h3>
+	</div>
+	<div class="ecitic-new">
+		<table id="projectList_lookup" class="table table-bordered table-hover"></table>
+	</div>
+</div>
+<div id='staffPOP'></div>
+</body>
+</html>

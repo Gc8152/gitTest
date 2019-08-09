@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>版本评审</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<style type="text/css">
+	.click_text_sp{color:#c9161d;}
+	.click_text_sp:hover{color:#c9161d;cursor:pointer;text-decoration:underline;}
+	.click_text_sp:active{color:blue;cursor:pointer;text-decoration:underline;}
+</style>
+</head>
+<body>
+<div class="main_iframeFormW" style="min-height:800px;">
+	<div class="tab-pane fade in active">
+	<div class="form-inline" >
+		<div class="main_iframe_con">
+			<div class="ecitic-title">
+				<span>基本信息<em></em></span>
+				<i></i>
+			</div>			
+			<div class="ecitic-title-table tab-content bootstrapTabsCont">
+				<table class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+					<tr>
+						<td width="13.333%" class="table-text">版本名称：</td>
+						<td width="19%">
+							<span id="VERSIONS_NAME" ></span>
+						</td>
+						<td width="13.333%" class="table-text">涉及任务总数：</td>
+						<td width="19%">
+							<span id="TASK_COUNT"></span>
+						</td>
+						<td width="13.3%" class="table-text">未提交投产任务数：</td>
+						<td width="19%">
+							<span id="TASK_NOSEND_COUNT"  ></span>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		</div>
+		<div class="ecitic-title" name="type15">
+				<span>附件列表信息<em></em></span>
+				<i></i>
+		</div>
+		<div class="ecitic-title-table" name="type15">
+			<div class="ecitic-operation" id="version_app_file_record_">
+					<button type="button" class="btn btn-ecitic" id="review_file">上传投产评审记录表</button>
+					<button type="button" class="btn btn-ecitic" id="reviewdelete_file">删除</button>
+					<a href="sfile/downloadFTPFile.asp?id=m_017" class="file_template_style">二级投产评审记录表模板</a>
+					<a href="sfile/downloadFTPFile.asp?id=m_020" class="file_template_style">一级投产评审记录表模板</a>
+				</div>
+				<table id="reviewadd_filetable"  class="table table-bordered table-hover table-text-show"></table>
+		</div>
+		<div class="ecitic-title-table">
+			<div class="ecitic-title">
+				<span id="peel_title">剥离的需求点列表<em></em></span>
+				<i></i>
+			</div>
+			<div>
+				<div class="ecitic-operation">
+					<button class="btn btn-ecitic" id="add_peelAudit">选择剥离子需求</button>
+				</div>
+				<table id="table_subReq" border="0" cellspacing="0" cellpadding="0" class="aa table table-bordered table-hover table-center table-th tablr-input-text">
+				</table>
+			</div>
+		</div>
+		<input id="VERSIONS_ID" name="A.VERSIONS_ID" type="hidden">
+		<input type="hidden" id="VERSIONS_TYPE" name="A.VERSIONS_TYPE"/>
+		<div class="ecitic-save">
+			<button class="btn btn-ecitic" id="submit_sub">提交</button>
+			<input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭">
+		</div>		
+	</div>
+</div>
+<div id="auditPop"></div>
+ <!--上传附件模态框  -->
+<div id="reqviewaAdd_modalfile"></div>
+<div id="reqviewAss_fileview_modal"></div>
+</body>
+
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="dev_construction/send_produce/audit/subVersionSubmit.js"></script>
+<script type="text/javascript" src="dev_construction/send_produce/audit/subReqPop.js"></script>
+</html>

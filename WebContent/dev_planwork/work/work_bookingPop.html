@@ -1,0 +1,23 @@
+<script src="dev_planwork/work/work_bookingPop.js"></script>
+<script src="dev_planwork/work/taskDetailsPop.js"></script>
+<!-- 用户模态框 -->
+<div id="myModal_user" class="modal hide fade" style="top: 50%;margin-top: -285px; width:900px;" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="myModalLabel">任务信息查询页面</h5>
+	</div>
+	<div class="ecitic-operation">
+	   <h3>待审批任务列表</h3>
+		<!-- <button class="btn btn-ecitic" id="add" onclick="pageDispatchSRole(this,'SRoleAdd','')">全选</button> -->
+		<button class="btn btn-ecitic" id="taskPassThough">审批通过</button>
+		<button class="btn btn-ecitic" id="taskBeatBack">审批打回</button>
+	 </div>
+	<div class="modal-body">
+		<div class="tz_btn" style="display:none;">
+			<button class="btn btn-ecitic" type="button" id="workBookingPOPSureSelected">确认选择</button>
+		</div>
+		<table id="pop_workBookingTable" title="双击选择一条数据"></table>
+	</div>
+<!-- 	<div class="modal-footer"></div> -->
+</div>
+<div id='taskDetailsPOP'></div>

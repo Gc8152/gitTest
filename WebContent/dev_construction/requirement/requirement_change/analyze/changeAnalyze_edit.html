@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>变更分析</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="widget-box">
+		<div class="widget-content nopadding">
+			<div class="control-group">
+				<div class="controls">
+					<ul class="nav nav-tabs">
+						<li><a href="#reqchange_apply_info" data-toggle="tab"><i class="icon-folder-open"></i>变更申请信息</a></li>
+						<li class="active"><a href="#reqchange_apply_analyze" data-toggle="tab"><i class="icon-home"></i>变更申请分析</a></li>
+						<li><a href="#opt_history_analyze" data-toggle="tab"><i class="icon-folder-open"></i>历史操作记录</a></li>
+					</ul>
+			<div class="tab-content">
+<!-- 	******变更申请分析******     -->
+				<div class="tab-pane active" id="reqchange_apply_analyze">
+						<div class="ecitic-title-table">
+							<table id="changeAnalyzeTab" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+								<tr>
+									<td class="table-text">变更分析人：</td>
+									<td colspan="3">
+										<div id="CHANGE_ANALYZE_NAME"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text">变更分析结论：</td>
+									<td>
+										<select  name="IU.CHANGE_ANALYZE_RESULT" diccode="G_DIC_CHANGE_RESULT"  style="width:100%" validate="v.required"  valititle="" onchange="selfunc()"></select>					
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text" >变更影响分析：</td>
+									<td colspan="3">
+										<textarea cols="90" rows="5" name="IU.CHANGE_AFFECT_ANALYZE" placeholder="请填写变更影响分析" class="requirement-ele-width" validate="v.required" valititle="该项为必填项"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text" >建议变更实施方案：</td>
+									<td colspan="3">
+										<textarea cols="90" rows="5" name="IU.CHANGE_SOLUTION" placeholder="请填写建议变更实施方案" class="requirement-ele-width" ></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text" >变更实施计划：</td>
+									<td colspan="3">
+										<textarea cols="90" rows="5" name="IU.CHANGE_PLAN" placeholder="请填写变更实施计划" class="requirement-ele-width" ></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text">变更预计完成日期：</td>
+									<td>
+										<input type="text"  name="IU.CHANGE_ESTIMATED_FINISHTIME" class="requirement-ele-width" validate="v.required"  onFocus="WdatePicker({minDate:'%y-%M-#{%d}'})"/>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="ecitic-save">
+							<input type="button"  name="useInterfaceApply_edit" class="btn btn-ecitic" btn="saveSubmit" value="保存&提交"/>
+							<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+						</div>
+			</div>
+<!-- 	******变更申请信息******     -->
+					<div class="tab-pane fade" id="reqchange_apply_info">
+						<div class="ecitic-title-table">
+							<input type="hidden" id="APPR_MANAGER_ID">
+							<input type="hidden" id="APPR_TEST_ID">
+							<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+								<colgroup>
+											<col style="width: 20%">
+									        <col style="width: 30%">
+									        <col style="width: 20%">
+									        <col style="width: 30%">
+								</colgroup>
+								<tr>
+									<td class="table-text">需求编号：</td>
+									<td>
+										<div id="REQ_CODE"></div>
+										<input type="hidden" id="RES_GROUP_ID" name = "RES_GROUP_ID">
+									</td>
+									<td class="table-text">需求名称：</td>
+									<td >
+										<div id="REQ_NAME"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text">业务联系人：</td>
+									<td >
+										<div id="CHANGE_BUSINESSER"></div>
+									</td>
+									<td class="table-text">业务联系人电话：</td>
+									<td>
+										<div id="CHANGE_BUSINESS_PHONE"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text">变更原因分类：</td>
+									<td colspan="3">
+										<div id="CHANGE_REASON_TYPE_NAME"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text" >变更原因：</td>
+									<td colspan="3">
+										<div id="CHANGE_REASON"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text" >变更描述：</td>
+									<td colspan="3">
+										<div id="CHANGE_DESCRIPTION"></div>
+									</td>
+								</tr>
+							</table>
+						</div>
+						
+						<div class="ecitic-title">
+								<span>需求点列表信息<em></em></span> <i></i>
+						</div>
+						<div class="ecitic-title-table">
+							<table id="analyze_reqSubsTable"
+								class="table table-bordered table-hover table-text-show"></table>
+						</div>
+
+							<div class="ecitic-title">
+							<span>附件列表信息<em></em></span> <i></i>
+						</div>
+						<div class="ecitic-title-table">
+							<table id="analyze_fileTable" class="table table-bordered table-hover table-text-show"></table>
+						</div>
+						<!--上传附件模态框  -->
+						<div id="file_analyze_modal"></div>
+				</div>
+
+<!-- 	******操作历史 ******    -->
+					<div class="tab-pane fade" id="opt_history_analyze">
+						<div class="ecitic-new">
+							<table id="OptHistoryTable" class="table table-bordered table-hover table-text-show"></table>
+						</div>
+					</div>
+					
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_construction/requirement/requirement_change/analyze/changeAnalyze_edit.js"></script>
+<script src="pages/approvalflow/afcommons.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+</html>

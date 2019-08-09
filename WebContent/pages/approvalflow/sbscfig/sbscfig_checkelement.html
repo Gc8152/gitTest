@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>查看业务要素</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+<script src="pages/approvalflow/sbscfig/sbscfig_checkelement.js"></script>
+</head>
+<body>
+	<div class="ecitic-title">
+		<span>查看业务要素<em></em></span>
+    </div>
+		<table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+			<tr>
+				<td class="ecitic-right">业务系统：</td>
+				<td>
+					<div id="A_SYS_NAME"></div>
+				</td>
+				<td class="ecitic-right">状态：</td>
+				<td>
+					<div id="B_STATE_NAME"></div>
+				</td>
+				<td class="ecitic-right">业务要素类别：</td>
+				<td>
+					<div id="B_CATEGORY_NAME"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="ecitic-right">业务要素编号：</td>
+				<td>
+					<div id="B_CODE"></div>
+				</td>
+				<td class="ecitic-right">业务要素名称：</td>
+				<td>
+					<div id="B_NAME"></div>
+				</td>
+				<td class="ecitic-right">业务要素类型：</td>
+				<td>
+					<div id="B_TYPE_NAME"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="ecitic-right">操作人：</td>
+				<td>
+					<div id="OPT_PERSONNAME"></div>
+				</td>
+				<td class="ecitic-right">操作时间：</td>
+				<td>
+					<div id="OPT_TIME"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="ecitic-right">备注：</td>
+				<td colspan="4">
+					<div id="MEMO"></div>
+				</td>
+			</tr>
+		</table>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="返回" id="CgoBackSbscfigList" onclick="doBackList()" />
+	</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>考勤日历表</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link rel="stylesheet" type="text/css" href="dev_planwork/work/attendanceCalendar.css" />
+
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>  
+<!-- <script src="bootstrap/js/bootstrap-editable.js"></script>
+
+<script src="bootstrap/js/bootstrap-table-editable.js"></script> -->
+<!-- <script src="bootstrap/js/rawgit-bootstrap-editable.js"></script> -->
+<script src="dev_planwork/work/attendance_calender.js"></script>
+<script src="dev_planwork/work/attendanceCalendar.js"></script>
+
+</head>
+<body>
+<div class="main_iframe_con">
+<div class="wrapCal">
+<div class="popD">
+	<span class="arrow-up"></span>休息日无报工信息!
+</div>
+<div id="attend_wrap" class="container">
+ <a href="javascript:;" target="_self"  class="attendanceCalendarSider-btn" id="attendanceCalendarSider-btn"></a>
+  <div id="attend_tab"> <a href="#">考勤签到</a> <a href="#" class="active">我的考勤</a> </div>
+  <div id="attend_a" class="hidden"></div>
+  <div id="attend_b" class="row">
+    <ul class="col-md-9 bor_r">
+      <table cellpadding="0" cellspacing="0">
+        
+      </table>
+      <li id="rili_wrap_lookup"></li>
+    </ul>
+    <ul class="col-md-3">
+      <li id="date_ch">
+        <p class="d_c_name">选择日期：</p>
+        <p class="d_c_form" id="rili_se_lookup"></p>
+      </li>
+    </ul>
+  </div>
+  <div class="operating-condition">
+  	<ul>
+  		<li><i style="background:#2f6de1"></i><span>已报工</span></li>
+  		<li><i style="background:#000"></i><span>未报工</span></li>
+  		<li><i style="background:#f29622"></i><span>休息日</span></li>
+  	</ul>
+  </div>
+</div>
+<!-- 右侧内容 -->
+		<div class="cont-right">
+		   <h3> <span>当前日期：</span>
+	        <span id = "currentTime2">2016年11月24日</span>
+	        <span id = "currentTimeHidden2" style=display:none></span>
+	        </h3>
+		<form  class="form-inline">
+			<div class="ecitic-inquire ecitic-moreNo">
+		<div class="ecitic-table" id="ecitic-table">
+		<table id="attendanceCalendar_lookup" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">任务名称：</td>
+						<td><input type="text" name="plan_name" id="plan_name"/></td>
+						<td class="ecitic-right">任务类型：</td>
+						<td>
+						   <select id="task_type" name="task_type"></select>
+						</td>
+						</tr>
+						<!-- <tr>
+						<td class="ecitic-right">任务状态：</td>
+						<td>
+						   <select id="execute_status" name="execute_status"></select>
+						</td>
+					</tr> -->
+				</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="search_lookup" value="查询" /></li>
+			<li><input type="reset" class="btn btn-ecitic" id="reset" value="重置" /></li>
+		</ul>
+	</div>
+	</form>
+		<div class="ecitic-operation">
+		    <h3>待办任务：</h3>
+			<!-- <button class="btn btn-ecitic" id="addTaskExt" >新增计划外任务</button>
+			<button class="btn btn-ecitic" id="taskEdit">编辑</button>
+			<button class="btn btn-ecitic" id="save">保存</button> -->
+		</div>
+		<div class="ecitic-new">
+			<table id="attendanceCalendarTable_lookup" class="table table-bordered table-hover"></table>
+		</div>
+			<div class="Bgdetalis">
+				<h3>任务详情：</h3>
+				<!-- <span class="BgdetalisTitle">项目名称：</span>
+	            <span id = "proName_lookup"></span>
+	            <span class="BgdetalisTitle">计划工作量：</span>
+	            <span id = "planWork_lookup"></span>
+	            <span class="BgdetalisTitle">工作量完成百分比：</span>
+	            <span id = "workPercentage_lookup"></span>
+	            <span class="BgdetalisTitle">任务状态：</span>
+	            <span id = "taskStatus_lookup"></span> -->
+				<table id="personTaskDetailsTable_lookup" class="table table-bordered table-hover"> </table>
+			</div>
+				</div>
+				<div class="clear"></div>
+				</div>
+			</div>
+</body>
+</html>

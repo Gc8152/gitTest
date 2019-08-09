@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link  href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="pages/slog/slog_operaQueryList.js"></script>
+<script src="pages/slog/logDetailPop.js"></script>
+
+</head>
+<body>
+	<form action=""  class="form-inline">
+		<div class="ecitic-title">
+			<span>操作日志查询<em></em></span>
+	    </div>
+		<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<table style="width:100%;border:0;cellspacing:0;cellpadding:0;" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">操作账号：</td>
+						<td><input type="text" name="O.login_name" id="Ologin_name" /></td>
+						<td class="ecitic-right">操作人：</td>
+						<td><input type="text" name="O.user_name" id="Ouser_name" /></td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">操作日期：</td>
+						<td>
+							<span class="ecitic-time">
+								<input type="text" name="O.opt_time1" id="Oopt_time1" readonly="readonly" onclick="initDate(this)"/>
+							</span>
+							<span class="ecitic-to">至</span>
+							<span class="ecitic-time">
+								<input type="text" name="O.opt_time2" id="Oopt_time2" readonly="readonly" onclick="initDate(this)"/>
+							</span>
+						</td>
+						<td class="ecitic-right">业务ID</td>
+						<td>
+							<input type="text" name="O.business_id" id="Obusiness_id" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" id="queryOpera" value="查询" /></li>
+				<li><input type="reset" class="btn btn-ecitic" id="resetOpera" value="重置" /></li>
+			</ul>
+		</div>
+	</form>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="openOptDetail" >查看详情</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="SOperaTableInfo" class="table table-bordered table-hover"></table>
+	</div>
+	<div id="optLogPop"></div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>不符合项目管理（配置）</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+<body>
+	<div class="ecitic-inquire ecitic-moreNo">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="qualityManage_query">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<tr>
+						<td class="ecitic-right">项目编号：</td>
+						<td><input type="text" name="PROJECT_NUM" id="project_num" /></td>
+						<td class="ecitic-right">项目名称：</td>
+						<td><input type="text" name="PROJECT_NAME" id="project_name" />
+						<td class="ecitic-right">应用名称：</td>
+						<td><input type="text" name="SYSTEM_NAME" id="system_name" />
+						</td>
+					</tr>
+					<tr>
+					<td class="ecitic-right">不符合项分类：</td>
+						<td><select name="TYP" id="typ" diccode="P_DIC_QUALITY_TYP"></select></td>
+						<td class="ecitic-right">状     态：</td>
+						<td><select id="status" name="STATUS" diccode="P_DIC_PROJECT_STATUS"></select></td>
+						<td class="ecitic-right">提出人：</td>
+						<td><input type="text" name="PRESENT_USER_ID" id="present_user_id" />
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">处理人：</td>
+						<td><input type="text" name="DISPOSE_USER_ID" id="dispose_user_id" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="commit">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<!-- <button class="btn btn-ecitic" id="qualityManage_import">导入</button> -->
+	<!-- 	<button class="btn btn-ecitic" id="qualityManage_add">新增 查询</button>
+		<button class="btn btn-ecitic" id="qualityManage_update">修改</button>
+		<button class="btn btn-ecitic" id="qualityManage_delete">删除</button>
+		<button class="btn btn-ecitic" id="qualityManage_accept">受理</button>
+		<button class="btn btn-ecitic" id="qualityManage_handle">处理</button>
+		<button class="btn btn-ecitic" id="qualityManage_validate">验证</button> -->
+		<button class="btn btn-ecitic" id="qualityManage_detail">详情</button>
+	</div>
+	<!-- table开始 -->
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover" id="PQManageTable"/>
+	</div>
+
+</body>
+<script type="text/javascript" src="dev_project/qualityManage/qualityManage_queryList.js"></script>
+</html>

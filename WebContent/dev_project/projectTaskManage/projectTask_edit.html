@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet"/>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+<body>
+<div class="container-fluid" id="menu_mm" style="position:relative;">
+	<div class="row-fluid">
+		<div class="span12">
+			<!-- 			左部					 -->
+			<div class="span6 citic-tree">
+				<div class="widget-box">
+					<div class="widget-title">
+						<span class="icon"><i class="icon-align-justify"></i></span>
+						<h5>开发任务分派</h5>
+					</div>
+					<div class="controlsOverFlow">
+						<ul id="treeTestTask" class="ztree"></ul>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 	右部 	-->
+			<div class="span6 citic-add">
+			
+<!-- 说明     -->
+				<!-- <div class="widget-box" id="project_tab">
+					 <div class="ecitic-title">
+	            		<span>统计信息</span>
+	       			 </div>
+					<div class="ecitic-title-table"> 
+					<span style="color:red;font-size:20px">说明：</span><br>
+						<span>&nbsp;&nbsp;选择左侧的需求任务进行开发任务派发</span>						
+					</div> 
+				</div> -->
+			
+			
+<!-- 需求任务     -->	
+				<div class="widget-box" id="reqtask_tab" style="display:none">
+					<div class="widget-content nopadding">
+						<div class="control-group">
+							<div class="controls">
+								<ul class="nav nav-tabs">
+									<li id="L1"><a href="#task_explain" data-toggle="tab">需求任务信息</a></li>
+									<li id="L2" class="active"><a href="#func_point_split" data-toggle="tab">开发任务信息</a></li>
+									<li id="L3"><a href="#add_task" data-toggle="tab">新增开发任务</a></li>
+									<li id="L4"><a href="#show_task" data-toggle="tab">开发任务详情</a></li>
+									<li id="L5"><a href="#change_task" data-toggle="tab">转发开发任务</a></li>
+								</ul>
+								<div class="tab-content">
+									<!-- 需求任务信息开始 L1页签-->
+									<div class="tab-pane fade" id="task_explain">
+										<div class="ecitic-title-table">
+												<table
+													class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+													<colgroup>
+														<col style="width: 20%">
+														<col style="width: 30%">
+														<col style="width: 20%">
+														<col style="width: 30%">
+													</colgroup>
+													<tr>
+														<td class="table-text">需求任务编号：</td>
+														<td>
+															<div id="T_TASK_NUM"></div>
+															<div style="display:none" id="T_REQ_TASK_ID"></div>
+															<!-- <input type="hidden" id="T_REQ_TASK_ID" /> -->
+														</td>
+														<td class="table-text">需求任务名称：</td>
+														<td>
+															<div id="T_TASK_NAME"></div>
+														</td>
+													</tr>													
+																									
+													<tr>
+														<td class="table-text">需求点编号：</td>
+														<td>
+															<div id="T_SUB_REQ_CODE"></div>
+														</td>
+														<td class="table-text">需求点名称：</td>
+														<td>
+															<div id="T_SUB_REQ_NAME"></div>
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">需求编号：</td>
+														<td>
+															<div id="T_REQ_CODE"></div>
+														</td>
+														<td class="table-text">需求名称：</td>
+														<td>
+															<div id="T_REQ_NAME"></div>
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">任务从属关系：</td>
+														<td>
+															<div id="T_REQ_TASK_RELATION_NAME"></div>
+														</td>
+														<td class="table-text">任务状态：</td>
+														<td>
+															<div id="T_REQ_TASK_STATE_NAME"></div>
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">应用名称：</td>
+														<td>
+															<div id="T_SYSTEM_NAME"></div>
+															<div style="display:none" id="T_SYSTEM_NO"></div>
+														</td>
+														<td class="table-text">任务项目经理：</td>
+														<td>
+															<div id="T_P_OWNER_NAME"></div>
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">任务实现内容：</td>
+														<td colspan="3">
+															<div id="T_TASK_CONTENT"></div>
+														</td>
+													</tr>
+												</table>
+											</div>										
+									</div>
+									
+									<!-- 开发任务信息L2页签 -->
+									<div class="tab-pane active" id="func_point_split">
+										<div class="ecitic-title">
+												<span>开发任务<em></em></span> <i></i>
+										</div> 
+										<div class="ecitic-operation">
+											<button class="btn btn-ecitic btn-new-mb5" name="func_add">新增</button>
+											<button class="btn btn-ecitic btn-new-mb5" name="func_edit">修改</button>
+											<button class="btn btn-ecitic btn-new-mb5" name="func_delete_btn" >删除</button>
+											<button class="btn btn-ecitic btn-new-mb5" name="func_changeState">发布</button>
+											<button class="btn btn-ecitic btn-new-mb5" name="func_changeExecutor">转发</button>
+											<button class="btn btn-ecitic btn-new-mb5" name="func_show">查看详情</button>
+											<button class="btn btn-ecitic btn-new-mb5" name="func_upload">导入</button>
+											
+										</div>
+										<div class="ecitic-new">
+											  <table tb="funcSplitTable" class="table table-bordered table-hover table-text-show"></table>
+											<!-- <table tb="funcSplitTable"  style="border-collapse:collapse background-clip: padding-box; position:relative;" class="table table-bordered table-hover"></table> -->
+										 </div>
+									</div>
+									
+									
+									<!-- 新增开发任务 L3页签-->
+									<div class="tab-pane" id="add_task">
+										<div class="ecitic-title">
+												<span>新增开发任务<em></em></span> <i></i>
+										</div>
+									<div class="ecitic-title-table">
+										<table id="addTask_table" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+													<colgroup>
+														<col style="width: 20%">
+														<col style="width: 30%">
+														<col style="width: 20%">
+														<col style="width: 30%">
+													</colgroup>
+													<tr>
+														<td class="table-text">开发任务名称：</td>
+														<td>
+															<input type="text" name="TASK_NAME" class="requirement-ele-width" validate="v.required" valititle="">
+															
+														</td>
+														<td class="table-text">任务优先级：</td>
+														<td>
+															<select type="text" name="TASK_LEVEL" id="add_task_level"  validate="v.required" valititle="">
+                   											</select>
+														</td>
+													</tr>													
+													<tr>
+														<td class="table-text">任务类型：</td>
+														<td>
+															<select type="text" name="TASK_TYPE" id="add_task_type" class="requirement-ele-width" validate="v.required" valititle="" readonly="readonly">
+                    										</select>
+														</td>
+														<td class="table-text">执行人：</td>
+														<td>
+															<input type="text" name="EXECUTOR_NAME" id="addExe" class="requirement-ele-width" validate="v.required" valititle=""></td>
+               												<input type="hidden" name="EXECUTOR" id="addExeId">
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">计划开始时间：</td>
+														<td>
+															<input type="text"  name="PLAN_STARTTIME" readonly="readonly" onclick="checkTimeSupCompare()" class="requirement-ele-width" validate="v.required" valititle="">
+														</td>
+														<td class="table-text">计划结束时间：</td>
+														<td>
+															<input type="text" name="PLAN_ENDTIME" readonly="readonly" onclick="checkTimeSupCompare()" class="requirement-ele-width" validate="v.required" valititle="">
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">任务描述：</td>
+														<td colspan="3">
+															<textarea  name="TASK_DESC" class="requirement-ele-width" validate="v.charCountLimit" style="height:180px"></textarea>
+														</td>
+													</tr>
+												</table>
+											</div>
+											<div class="ecitic-save">
+									                <input type="button" class="btn btn-ecitic" id="save_task" value="保存" >
+									                <input type="button" class="btn btn-ecitic" id="saveAdd_task" value="保存并发布" >
+									                <input type="button" class="btn btn-ecitic" id="back_task" value="返回" >
+										     </div>
+										     <div id="choosePm"></div>
+									</div>
+									<!-- L3页签结束 -->
+									<!-- L4页签--查看开发任务详情开始 -->
+									<div class="tab-pane" id="show_task">
+										<div class="ecitic-title">
+												<span>开发任务详情<em></em></span> <i></i>
+										</div>
+									<div class="ecitic-title-table">
+										<table id="showTask_table" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+													<colgroup>
+														<col style="width: 20%">
+														<col style="width: 30%">
+														<col style="width: 20%">
+														<col style="width: 30%">
+													</colgroup>
+													<tr>
+														<td class="table-text">开发任务名称：</td>
+														<td>
+															<div name="SH_TASK_NAME"></div>															
+														</td>
+														<td class="table-text">任务优先级：</td>
+														<td>
+															<div name="SH_TASK_LEVEL_NAME"></div>
+														</td>
+													</tr>													
+													<tr>
+														<td class="table-text">任务类型：</td>
+														<td>
+															<div name="SH_TASK_TYPE_NAME"></div>
+														</td>
+														<td class="table-text">执行人：</td>
+														<td>
+															<div name="SH_EXECUTOR_NAME"></div>
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">计划开始时间：</td>
+														<td>
+															<div name="SH_PLAN_STARTTIME"></div>
+														</td>
+														<td class="table-text">计划结束时间：</td>
+														<td>
+															<div name="SH_PLAN_ENDTIME"></div>
+														</td>
+													</tr>
+														<tr>
+														<td class="table-text">实际开始时间：</td>
+														<td>
+															<div  name="SH_ACTUAL_STARTTIME"></div>
+														</td>
+														<td class="table-text">实际结束时间：</td>
+														<td>
+															<div name="SH_ACTUAL_ENDTIME"></div>
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">任务描述：</td>
+														<td colspan="3">
+															<pre name="SH_TASK_DESC"  style="border:none;background:#f9f9f9"></pre>
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">任务说明：</td>
+														<td colspan="3">
+															<div name="SH_DELAY_REASON"></div>
+														</td>
+													</tr>
+												</table>
+											</div>
+											<div class="ecitic-save">
+									                <input type="button" class="btn btn-ecitic" id="close_task" value="关闭" >
+									              
+										     </div>
+										     
+									</div>
+									<!-- L4页签--查看开发任务详情结束 -->
+									<!-- L5页签--转发开发任务开始 -->
+									<div class="tab-pane" id="change_task">
+										<div class="ecitic-title">
+												<span>开发任务详情<em></em></span> <i></i>
+										</div>
+									<div class="ecitic-title-table">
+										<table id="changeTask_table" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+													<colgroup>
+														<col style="width: 20%">
+														<col style="width: 30%">
+														<col style="width: 20%">
+														<col style="width: 30%">
+													</colgroup>
+													<tr>
+														<td class="table-text">开发任务名称：</td>
+														<td>
+															<!-- <input type="text" name="ZF_TASK_NAME" class="requirement-ele-width" readonly="readonly"> -->
+															<div name="ZF_TASK_NAME"></div>
+														</td>
+														<td class="table-text">任务优先级：</td>
+														<td>
+															<div name="ZF_TASK_LEVEL_NAME">
+															</div>               											
+                   											<input type="hidden" name="ZF_TASK_LEVEL" />
+														</td>
+													</tr>													
+													<tr>
+														<td class="table-text">任务类型：</td>
+														<td>
+															<div name="ZF_TASK_TYPE_NAME">
+                    										</div>
+                    										<input type="hidden" name="ZF_TASK_TYPE"/>
+														</td>
+														<td class="table-text">执行人：</td>
+														<td>
+															
+															<input type="text" name="ZF_EXECUTOR_NAME" id="changeExe" class="requirement-ele-width" readonly="readonly"/>
+               												<input type="hidden" name="ZF_EXECUTOR" id="changeExeId">
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">计划开始时间：</td>
+														<td>
+															<div name="ZF_PLAN_STARTTIME"></div>
+														</td>
+														<td class="table-text">计划结束时间：</td>
+														<td>
+															<div name="ZF_PLAN_ENDTIME"></div>
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">任务描述：</td>
+														<td colspan="3">
+															<div name="ZF_TASK_DESC"></div>
+														</td>
+													</tr>
+												</table>
+											</div>
+											<div class="ecitic-save">
+											 	<input type="button" class="btn btn-ecitic" id="save_task_exe" value="保存" >
+									            <input type="button" class="btn btn-ecitic" id="close_task_exe" value="关闭" >
+									              
+										     </div>
+										     <div id="chooseExe"></div>
+									</div>
+									<!-- L5页签结束--转发开发任务 -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</body>
+<!-- <script src="ztree3.5.22/js/jquery.ztree.core.min.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.excheck.min.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.exedit.min.js"></script> -->
+<script src="js/commons/jquery-ztree-extend.js"></script>
+<!-- <script src="js/commons/bootstrap-table-Edit.js"></script> -->
+<script type="text/javascript" src="js/commons/importExcelUtil.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="dev_project/projectTaskManage/addTaskPop.js"></script>
+<script type="text/javascript" src="dev_project/projectTaskManage/executorPop.js"></script>
+<script type="text/javascript" src="dev_project/projectTaskManage/projectTask_edit.js"></script>
+</html>

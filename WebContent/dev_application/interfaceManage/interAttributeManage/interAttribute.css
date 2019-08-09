@@ -1,0 +1,34 @@
+@CHARSET "UTF-8";
+/*文字提示红色  */
+
+.tag-red {
+	color: #c00;
+	font-size: 12px;
+	height: 26px;
+	line-height: 26px;
+	position: absolute;
+	right: 9px;
+	top: 50%;
+	margin: -13px 0 0 0;
+	padding-right: 8px;
+	word-break: keep-all;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+/*文字提示绿色  */
+.tag-green {
+	color: #00A300;
+	font-size: 12px;
+	height: 26px;
+	line-height: 26px;
+	position: absolute;
+	right: 9px;
+	top: 50%;
+	margin: -13px 0 0 0;
+	padding-right: 8px;
+	word-break: keep-all;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}

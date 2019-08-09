@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+<body>
+<div class="ecitic-inquire ecitic-moreNo" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">项目名称：</td>
+					<td><input type="text" id="project_name"/></td>
+					<td class="ecitic-right">项目编号：</td>
+					<td><input type="text" id="project_num"/></td>
+					<td class="ecitic-right">项目状态：</td>
+					<td>
+						<select id="status" style="width:100%;">
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">归属部门：</td>
+					<td><input type="text" id="organ_id"/></td>
+					<td class="ecitic-right">归属应用：</td>
+					<td><input type="text" id="system_id"/></td>
+					<td class="ecitic-right">项目经理：</td>
+					<td><input type="text" id="project_man_id"/></td>
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="queryProjectTaskList">查询</button></li>
+			<li><button class="btn btn-ecitic" id="resetProjectTask">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="task_sync">工作任务同步</button>
+		<button class="btn btn-ecitic" id="task_sync_status">查看工作任务同步情况</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover table-striped" id="projectTaskInfoTab"></table>
+	</div>
+</body>
+<script src="dev_planwork/taskSync/project_queryList.js"></script>
+</html>

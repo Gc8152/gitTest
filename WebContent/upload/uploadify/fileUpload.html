@@ -1,0 +1,96 @@
+<!DOCTYPE HTML >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>附件上传</title>
+<link rel="stylesheet" type="text/css" href="uploadify.css">
+<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
+
+<style type="text/css">
+#file_upload {
+	padding-top: 5px;
+	padding-left: 20px;
+}
+
+#upload_opt {
+	line-height: 30px;
+	height: 30px;
+	float: right;
+	padding-right: 30px;
+	padding-top: 5px;
+}
+.cancel a{
+	height: 13px !important;
+    width: 13px !important;
+}
+.cancel a:hover{
+	background-color: #D8C9C9;
+	height: 13px;
+    width: 13px;
+}
+</style>
+
+</head>
+<body>
+	<div id="upload_opt">
+		<a href="javascript:$('#file_upload').uploadify('cancel','*')">清空列表</a>
+		|
+		<a href="javascript:$('#file_upload').uploadify('upload', '*')">开始上传</a>
+	</div>
+	<input type="file" id="file_upload" />
+	<script type="text/javascript"
+	src="../../js/jquery/jquery-1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.uploadify.min.js"></script>
+<script>
+	/***
+		获取url后面的参数
+	**/
+	function getParamString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null)
+			return unescape(r[2]);
+		return null;
+	}
+	$(document)
+			.ready(
+					function() {
+						var path_id = getParamString("path_id");
+						var file_id = getParamString("file_id");
+						$("#file_upload")
+								.uploadify(
+										{
+											'buttonText' : '选择文件',
+											'height' : 30,
+											'swf' : 'uploadify.swf',
+											'uploader' : '',
+											'width' : 120,
+											'auto' : false,
+											'onUploadStart' : function(file) {
+												$("#file_upload")
+														.uploadify(
+																'settings',
+																'uploader',
+																'../../sfile/uploadFile.asp?path_id='
+																		+ path_id
+																		+ '&file_id='
+																		+ file_id
+																		+ '&file_name='
+																		+ escape(encodeURIComponent(file.name)));
+											},
+											'fileObjName' : 'file',
+											'onUploadSuccess' : function(file,
+													data, response) {
+												if (data != null
+														&& eval('(' + data
+																+ ')').result == "true") {
+													// alert("上传成功!");
+												} else {
+													alert("上传失败!");
+												}
+											}
+										});
+					});
+</script>
+</body>
+</html>

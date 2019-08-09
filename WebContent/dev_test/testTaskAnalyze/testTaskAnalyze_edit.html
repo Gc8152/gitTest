@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet"/>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+<body>
+<div class="container-fluid" id="menu_mm" style="position:relative;">
+	<div class="row-fluid">
+		<div class="span12">
+			<!-- 			左部					 -->
+			<div class="span6 citic-tree">
+				<div class="widget-box">
+					<div class="widget-title">
+						<span class="icon"><i class="icon-align-justify"></i></span>
+						<h5>测试任务分析</h5>
+					</div>
+					<div class="controlsOverFlow">
+						<ul id="treeTestTask" class="ztree"></ul>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 	右部 	-->
+			<div class="span6 citic-add">
+			
+<!-- 版本项目     -->
+				<div class="widget-box" id="project_tab">
+					 <div class="ecitic-title">
+	            		<span>统计信息</span>
+	       			 </div>
+					<div class="ecitic-title-table"> 
+						<table tb="statiTable" class="table table-bordered table-hover"></table>
+					</div> 
+					 <div class="ecitic-title">
+	            		<span>测试任务信息</span>
+	       			 </div>
+					<div class="ecitic-title-table"> 
+	       			 <button class="btn btn-ecitic" id="add_Test_Task">新增</button>
+	       			 <button class="btn btn-ecitic" id="update_Test_Task">修改</button>
+	       			 <button class="btn btn-ecitic" id="del_Test_Task">删除</button>
+						<div class="ecitic-new">
+							<table id="testTaskTable" class="table table-bordered table-hover"></table>
+						</div>
+					</div> 
+				</div>
+			
+			
+<!-- 需求任务     -->	
+				<div class="widget-box" id="reqtask_tab" style="display:none">
+					<div class="widget-content nopadding">
+						<div class="control-group">
+							<div class="controls">
+								<ul class="nav nav-tabs">
+									<li id="L1" class="active"><a href="#task_explain" data-toggle="tab">任务说明</a></li>
+									<li id="L2"><a href="#func_point_split" data-toggle="tab">功能点拆分</a></li>
+									<li id="L3"><a href="#func_point_explain" data-toggle="tab">功能点说明</a></li>
+								</ul>
+								<div class="tab-content">
+									<!-- 需求任务说明 -->
+									<div class="tab-pane active" id="task_explain">
+										<div class="ecitic-title-table">
+												<table
+													class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+													<colgroup>
+														<col style="width: 20%">
+														<col style="width: 30%">
+														<col style="width: 20%">
+														<col style="width: 30%">
+													</colgroup>
+													<tr>
+														<td class="table-text">需求任务编号：</td>
+														<td>
+															<div id="T_TASK_NUM"></div>
+														</td>
+														<td class="table-text">需求任务名称：</td>
+														<td>
+															<div id="T_TASK_NAME"></div>
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">需求点编号：</td>
+														<td>
+															<div id="T_SUB_REQ_CODE"></div>
+														</td>
+														<td class="table-text">需求点名称：</td>
+														<td>
+															<div id="T_SUB_REQ_NAME"></div>
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">需求编号：</td>
+														<td>
+															<div id="T_REQ_CODE"></div>
+														</td>
+														<td class="table-text">需求名称：</td>
+														<td>
+															<div id="T_REQ_NAME"></div>
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">任务从属关系：</td>
+														<td>
+															<div id="T_REQ_TASK_RELATION_NAME"></div>
+														</td>
+														<td class="table-text">任务状态：</td>
+														<td>
+															<div id="T_REQ_TASK_STATE_NAME"></div>
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">应用名称：</td>
+														<td colspan="3">
+															<div id="T_SYSTEM_NAME"></div>
+															<div style="display:none" id="T_SYSTEM_NO"></div>
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">任务实现内容：</td>
+														<td colspan="3">
+															<div id="T_TASK_CONTENT"></div>
+														</td>
+													</tr>
+												</table>
+											</div>
+											<div class="ecitic-title">
+												<span>附件列表信息<em></em></span> <i></i>
+											</div>
+											<div class="ecitic-new">
+												<table tb="taskFileTable" class="table table-bordered table-hover table-text-show"></table>
+											</div>
+									</div>
+									
+									<!-- 功能点拆分 -->
+									<div class="tab-pane fade" id="func_point_split">
+										<div class="ecitic-title">
+												<span>功能点<em></em></span> <i></i>
+										</div>
+										<div class="ecitic-new">
+											<button class="btn btn-ecitic" name="func_add">新增</button>
+											<button class="btn btn-ecitic" name="func_delete_btn" >删除</button>
+											<!-- <button class="btn btn-ecitic" name="func_choose">现有功能点维护</button> -->
+											<button class="btn btn-ecitic" name="importFuncMain">导入功能点</button>
+											<button class="btn btn-ecitic" name="addTestTask" style="display:none">创建测试任务</button> 
+											<div class="ecitic-new">
+												<table tb="funcSplitTable"  style="border-collapse:collapse background-clip: padding-box; position:relative;" class="table table-bordered table-hover"></table>
+											</div>
+										</div>
+										 <!--新增功能点模态框  -->
+										<div mod="add_func_modal"></div>
+										 <!--选择已有功能点模态框  -->
+										<div mod="choose_func_modal"></div>
+									</div>
+									
+									
+									<!-- 功能点说明 -->
+									<div class="tab-pane fade" id="func_point_explain">
+										<div class="ecitic-title-table" vie="LL">
+												<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+													<tr>
+														<td class="table-text">应用名称：</td>
+														<td colspan="3">
+															<div id="F_SYSTEM_NAME"></div>
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">模块名称：</td>
+														<td colspan="3">
+															<div id="F_MODULE_NAME"></div>
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">功能点名称：</td>
+														<td colspan="3">
+															<div id="F_FUNC_NAME"></div>
+														</td>
+													</tr>
+													<tr>
+														<td class="table-text">功能点描述：</td>
+														<td colspan="3">
+															<div id="F_FUNC_REMARK"></div>
+														</td>
+													</tr>
+												</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--新增测试任务模态框 -->
+
+ <!--  附件模态框  -->
+<div id="file_reqtask_modal"></div>
+ <!--  导入功能点模态框  -->
+<div mod="import_func_modal"></div>
+<!-- 测试任务功能点查询 -->
+<div id="view_task_func_modal" class="modal hide fade modal-big-table" tabindex="-1">                
+	<div class="modal-header">                                                                      
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>        
+		<h5 id="myModalLabel">测试功能</h5>                                                     
+	</div>																					
+	<div class="ecitic-title-table modal-body ecitic-new">                                          
+		<table id="view_task_func_table" class="table table-bordered table-hover"> </table>		        
+	</div>                                                                                          
+	<div class="modal-footer"></div>                                                                 
+</div>
+</body>
+<script src="ztree3.5.22/js/jquery.ztree.core.min.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.excheck.min.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.exedit.min.js"></script>
+<script src="js/commons/jquery-ztree-extend.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="dev_test/testTaskAnalyze/testTaskInfoPop.js"></script>
+<script type="text/javascript" src="dev_test/testTaskAnalyze/addFuncPop.js"></script>
+<script type="text/javascript" src="dev_test/testTaskAnalyze/chooseFuncPop.js"></script>
+<script type="text/javascript" src="dev_test/testTaskAnalyze/importFuncPop.js"></script>
+<script src="dev_test/testTaskAnalyze/testTaskAnalyze_edit.js"></script>
+</html>

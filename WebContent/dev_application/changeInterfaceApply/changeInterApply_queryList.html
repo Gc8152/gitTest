@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">
+	<form class="form-inline" id="changeInterfaceApply_query">
+		<div class="ecitic-inquire">
+			<div class="ecitic-table">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">申请单编号：</td>
+						<td><input type="text" name="record_app_num"/></td>
+						<td class="ecitic-right">变更申请名称：</td>
+						<td>
+							<input type="text" name="app_name"/>
+						</td>
+						<td class="ecitic-right">申请状态：</td>
+						<td>
+							<select name="app_status" diccode="I_DIC_INTER_ORDER_APP_STATUS" style="width:100%"></select>
+						</td>
+					</tr>
+					<tr>
+						
+						<td class="ecitic-right">申请变更应用名称：</td>
+						<td>
+							<input type="text" name="ser_system_name" readonly/>
+							<input type="hidden" name="ser_system_id"/>
+						</td>
+						<td class="ecitic-right" >要求完成日期：</td>
+						<td>
+							<div class="dateSelectZ_From">
+							<input type="text" id="req_finish_time_changeInterApp" name="req_finish_time" class="requirement-ele-width"  onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'req_finish_time1_changeInterApp\',{d:0});}'})" placeHolder="点击选择"   readonly/>
+							</div>
+							<div class="dateSelectZ_W">&nbsp至&nbsp</div>
+							<div class="dateSelectZ_From">
+							<input type="text" id="req_finish_time1_changeInterApp" name="req_finish_time1" class="requirement-ele-width" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'req_finish_time_changeInterApp\',{d:0});}'})" placeHolder="点击选择"  readonly/>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" btn="query_appList" value="查询"/></li>
+				<li><input type="button"  class="btn btn-ecitic" btn="reset_appList" value="重置"/></li>
+			</ul>
+		</div>
+	</form>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" btn="addOrder_appList" >填写申请</button>
+		<button class="btn btn-ecitic" btn="updateOrder_appList">修改申请</button>
+		<button class="btn btn-ecitic" btn="deleteOrder_appList">删除申请</button>
+		<button class="btn btn-ecitic" btn="submitOrder_appList">提交申请</button>
+		<button class="btn btn-ecitic" btn="viewOrder_appList">查看申请</button>
+	</div>
+	<div mod="systemPop"></div>
+	<div class="ecitic-new">
+		<table tb="useAppOrderlist" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_application/changeInterfaceApply/changeInterApply_queryList.js"></script>
+<script src="dev_application/useInterfaceApply/useInterfaceApply_systemPop.js"></script>
+</html>
+

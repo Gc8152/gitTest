@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>ESB方已分析清单</title>
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="ESBUseAnalysedQueryForm">
+				<table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">关联任务编号：</td>
+						<td>
+							<input type="text" id="req_task_code" name="req_task_code"/>
+						</td>
+						<td class="ecitic-right">接口名称：</td>
+						<td>
+							<input type="text" id="inter_name" name="inter_name"/>
+						</td>
+						<td class="ecitic-right">接口交易码：</td>
+						<td>
+							<input type="text" id="trade_code" name="trade_code"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">申请类型：</td>
+						<td>
+							<select id="app_type" name="app_type" style="width:100%;"></select>
+						</td>
+						<td class="ecitic-right">消费方应用名称：</td>
+						<td>
+							<input type="text" id="consumer_name" name="consumer_name" readonly/>
+						</td>
+						<td class="ecitic-right">服务方应用名称：</td>
+						<td>
+							<input type="text" id="ESBvice_name" name="ESBvice_name" readonly/>
+						</td>
+						
+					</tr>
+					<tr>
+						<td class="ecitic-right">申请人：</td>
+						<td>
+							<input type="text" id="applicant" name="applicant"/>
+						</td>
+						<td class="ecitic-right" >要求完成日期：</td>					
+						<td>
+							<div class="dateSelectZ_From">
+							<input type="text" id="req_finish_time_ESBUseAnalysed" name="req_finish_time" class="requirement-ele-width"  onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'req_finish_time1_ESBUseAnalysed\',{d:0});}'})" placeHolder="点击选择"   readonly/>
+							</div>
+							<div class="dateSelectZ_W">&nbsp至&nbsp</div>
+							<div class="dateSelectZ_From">
+							<input type="text" id="req_finish_time1_ESBUseAnalysed" name="req_finish_time1" class="requirement-ele-width" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'req_finish_time_ESBUseAnalysed\',{d:0});}'})" placeHolder="点击选择"  readonly/>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="queryESBUseAnalysed" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" id="reset" value="重置"/></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="inter_Analyse">接口分析</button>
+		<button class="btn btn-ecitic" btn="esb_return">接口打回</button>
+		<button class="btn btn-ecitic" btn="inter_export">导出接口申请单</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="ESBAnalysedInfoTable" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+	<div mod="systemPop"></div>
+	
+	
+	
+	  <div id="esb_inter_return" class="modal hide fade" tabindex="-1" z-index="1060" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="">接口打回</h3>
+            </div>
+            <div class="ecitic-title-table modal-body">
+            	<input type="hidden" name="R.APP_ID">
+            	<input type="hidden" name="R.APP_TYPE">
+            	<input type="hidden" name="R.RECORD_APP_NUM">
+                <table width="100%" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+                        <colgroup>
+							<col style="width: 30%">
+							<col style="width: 70%">
+						</colgroup>
+                          <tr>
+                        	<td class="table-text">打回原因：</td>
+                            <td colspan="5">
+								<textarea name="R.REASON" class="requirement-ele-width" ></textarea>
+							</td> 
+                        </tr>
+              
+                </table>
+            </div>
+            <div class="ecitic-save">
+                <input type="button" class="btn btn-ecitic" value="确定" btn="save_modal">
+                <input type="button" class="btn btn-ecitic" value="返回" btn="close_modal">
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+	
+	
+	
+</div>
+</body>
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_application/ESBUseInterAnalyse/ESBUseAnalysed_queryList.js"></script>
+<script src="dev_application/useInterfaceApply/useInterfaceApply_systemPop.js"></script>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+<link rel="stylesheet" href="../../css/bootstrap-table.min.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/select2.css"/>
+<link rel="stylesheet" href="../../css/public.css" />
+<link rel="stylesheet" href="../../css/form.css" />
+<link rel="stylesheet" type="text/css" href="../../css/zebra_dialog.css"/>
+<link rel="stylesheet" href="../../css/style.css" />
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../../js/select2.min.js"></script>
+<script type="text/javascript" src="../../js/Math.uuid.js"></script>
+<script type="text/javascript" src="../../js/commons.js"></script>
+<script type="text/javascript" src="../../js/alertAndConfirm.js"></script>
+<script type="text/javascript" src="../../js/zebra_dialog.js"></script>
+</head>
+
+<body style="overflow:auto;">
+	<div class="main_iframe_con">
+		<div class="yourLocation">
+			<i></i><span>您所在的位置：流程配置》流程配置列表</span>
+		</div>
+		<form id="query_form" class="form-inline">
+			<div class="ecitic-inquire" id="ecitic-inquire">
+				<div class="ecitic-table" id="ecitic-table">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad requirement-table" >
+						<tr>
+	                        <td class="ecitic-right">应用名称</td>
+	                        <td>
+	                            <input type="text" id="systemName"  name="appInfo.systemInfo.systemName" />
+	                        </td>
+	                        <td class="ecitic-right">应用简称</td>
+	                        <td >
+	                            <input type="text"  id="systemShort"  name="appInfo.systemInfo.systemShort"/>
+	                        </td>
+	                    <tr>
+						<tr>
+						    <td class="ecitic-right" >流程名称：</td>
+							<td>
+								<input type="text" name="flowName" value=""/>
+							</td>
+							<!-- <td class="ecitic-right">子应用名称：</td>
+							<td>
+								<input type="text" name="appInfo.appName" value=""/>
+							</td > -->
+							<!-- <td class="ecitic-right"  style="width:15%">需求大类：</td>
+							<td style="width:25%">
+							<select id="req_type1_reqquery" name="req_type1" class="requirement-ele-width" diccode="G_DIC_REQUIREMENT_TYPE1" style="width:100%;">
+							</select>
+							</td> -->
+							<td class="ecitic-right" >流程状态：</td>
+							<td >
+							    <select id="flowStatus" name="flowStatus" validate="v.required" valititle="该项必选">
+									<option value=" ">请选择</option>
+									<option value="00">启用</option>
+									<option value="01">停用</option>
+								</select>
+							</td>
+					    </tr>
+					</table>
+				</div>
+				<ul class="ecitic-btn-all">
+					<li><input type="button" class="btn btn-ecitic" id="query" value="查询"/></li>
+					<li><input type="reset" class="btn btn-ecitic" id="reset" value="重置"/></li>
+				</ul>
+			</div>
+		</form>
+		
+		<div class="ecitic-operation">
+			<button class="btn btn-ecitic" id="add">新增流程</button>
+			<button class="btn btn-ecitic" id="update">修改流程</button>
+			<button class="btn btn-ecitic" id="start">启用流程</button>
+			<button class="btn btn-ecitic" id="stop">停用流程</button>
+			<button class="btn btn-ecitic" id="detail">查看详情</button>
+		</div>
+		<div class="ecitic-new">
+			<table id="cis_flow_table" class="table table-bordered table-hover" ></table>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="cis_flow_list.js"></script>
+</body>
+</html>

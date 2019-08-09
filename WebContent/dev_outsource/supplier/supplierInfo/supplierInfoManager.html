@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>供应商信息维护1</title>
+		<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/form.css" />
+	</head>
+	<body>
+		<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<form action="" id="supplierInfoList">
+					<table class="table table-bordered table-bor-pad">
+						<tr>
+							<td class="ecitic-right">供应商名称</td>
+							<td>
+								<input type="text" name="sup_name" id="sup_name" class="citic-ast"/>
+							</td>
+							<td class="ecitic-right">供应商简称</td>
+							<td>
+								<input type="text" name="sup_simp_name" id="sup_simp_name" class="citic-ast"/>
+							</td>
+							<td class="ecitic-right">注册资金(元)</td>
+							<td>
+								<span class="ecitic-time">
+									<input type="text" name="register_money_gt" id="register_money_gt" class="citic-ast"
+									onchange="supplierInfoList_checkNum(this);"/>
+								</span>
+								<span class="ecitic-to">至</span>
+								<span class="ecitic-time">
+									<input type="text" name="register_money_lt" id="register_money_lt" class="citic-ast" 
+									onchange="supplierInfoList_checkNum(this);"/>
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="ecitic-right">常用联系人</td>
+							<td>
+								<input type="text" name="linkmanname" id="linkmanname" class="citic-ast"/>
+							</td>
+							<td class="ecitic-right">成立时间</td>
+							<td>
+								<span class="ecitic-time">
+									<input type="text" name="establish_time_st" id="establish_time_st" onClick="checkTimeSupCompare();" 
+									class="citic-ast" class="input" placeholder="点击选择" readonly/>
+								</span>
+								<span class="ecitic-to">至</span>
+								<span class="ecitic-time">
+									<input type="text" name="establish_time_et" id="establish_time_et" onClick="checkTimeSupCompare();" 
+									class="citic-ast" class="input" placeholder="点击选择" readonly/>
+								</span>
+							</td>
+							<td class="ecitic-right">供应商级别</td>
+							<td>
+								<select name="sup_level" id="sup_level" class="citic-ast"></select>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><button type="button" class="btn btn-ecitic" id="queryAllSupplierList" onClick="checkMoneySupCompare();" >查询</button></li>
+				<li><button type="button" class="btn btn-ecitic" id="reset_supplierList">重置</button></li>
+		<!-- 		<li class="ecitic-more"></li> -->
+			</ul>
+		</div>
+		<div class="ecitic-operation">
+			<button type="button" class="btn btn-ecitic" id="importAllSupDetails">导入</button>
+			<button type="button" class="btn btn-ecitic" id="addSupplier">新增</button>
+			<button type="button" class="btn btn-ecitic" id="updateSupplier">修改</button>
+			<button type="button" class="btn btn-ecitic" id="detailSupplier">查看</button>
+			<button type="button" class="btn btn-ecitic" id="deleteSupplier">删除</button>
+			<!-- <button type="button" class="btn btn-ecitic" id="sendApply">发起申请</button> -->
+		<!-- 	<button type="button" class="btn btn-ecitic" id="importAllSup">批量导入</button> -->
+		</div>
+		
+		<div class="ecitic-new">
+			<table class="table table-bordered table-hover table-text-show" id="detailTable"></table>
+		</div>
+		<script src="bootstrap/js/bootstrap-table.min.js"></script>
+		<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+		<script type="text/javascript" src="js/commons/ajaxfileupload.js"></script>
+		<script src="js/commons/importExcelUtil.js"></script>
+		<script src="dev_outsource/supplier/supplierInfo/supplierInfoManager.js"></script>
+		<script src="dev_outsource/supplier/supplierInfo/updateSupplier.js"></script>
+		<script src="upload/uploadFileInfo.js"></script>
+		<!-- 工作流 -->
+		<script src="pages/approvalflow/approval_title.js"></script>
+		<script src="pages/approvalflow/approval_history.js"></script>
+		<script src="pages/approvalflow/approval_content.js"></script>
+		<script src="pages/approvalflow/afcommons.js"></script>
+	</body>
+</html>

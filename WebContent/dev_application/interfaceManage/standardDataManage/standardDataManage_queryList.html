@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+</head>
+<body>
+<div class="ecitic-inquire ecitic-inquire-sec lessSearch"  id="ecitic-inquire">
+	<div class="ecitic-table" id="ecitic-table">
+		<form id="InterAttrQueryForm">
+			<table id="InterAttrQuery" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">数据名称(中文)：</td>
+					<td><input type="text" id="data_chnname" name="data_chnname"/></td>
+					<td class="ecitic-right">数据名称(英文)：</td>
+					<td><input id="data_engname" class="citic-sele-ast" name="data_engname"></td>
+					<td class="ecitic-right">数据类型:</td>
+					<td>					
+					    <select name="data_type" id="data_type" class="citic-sele-ast" style="width:100%;"></select>
+					</td>
+				</tr>				
+			</table>
+		</form>	
+	</div>
+	<ul class="ecitic-btn-all">
+		<li><button class="btn btn-ecitic" id="queryStandardData">查询</button></li>
+		<li><button class="btn btn-ecitic" id="resetStandardData">重置</button></li>
+	</ul>
+</div>
+<div class="main_iframe_con">
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="standard_add" >新增</button>
+		<button class="btn btn-ecitic" id="standard_update" >修改</button>
+		<button class="btn btn-ecitic" id="standard_delete" >删除</button>
+		<!-- <button class="btn-gray" type="button" id="synchronizationUser">同步OA用户</button> -->
+	</div>
+	<div class="ecitic-new">
+		<table id="IStandardDataTableInfo" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_application/interfaceManage/standardDataManage/standardDataManage_queryList.js"></script>
+</html>

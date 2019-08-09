@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link href="css/form.css" rel="stylesheet">
+<link href="dev_application/interfaceManage/standardDataManage/standardDataManage.css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">
+		<form action="" id="addDataManage_from" class="form-inline">
+			<div class="ecitic-title-table" id="ecitic-table">
+				<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+					<tr>
+						<td width="14%" class="ecitic-right">数据名称(英文)：</td>
+						<td width="35.444%"><input type="text" name="I.data_engname" id="data_engname" validate="v.required"/></td>
+						<td width="14%" class="ecitic-right">数据名称(中文)：</td>
+						<td width="35.444%"><input type="text" name="I.data_chnname" id="data_chnname" validate="v.required"/></td>
+					</tr>
+					<tr>						
+						<td class="ecitic-right">数据类型：</td>
+						<td>
+							<select name="I.data_type" id="data_type" validate="v.required" valititle="该项为必填项"></select>						
+						</td>
+						<td class="ecitic-right">长度：</td>
+						<td><input type="text" name="I.msg_length" id="msg_length" validate="v.isint" valititle="该项为必填项"/></td>	
+					</tr>					
+					<tr>
+						<td class="ecitic-right">标准代码：</td>
+						<td colspan="3">
+							<textarea rows="4" cols="50" name="I.standard_code" id="standard_code" ></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">说明：</td>
+						<td colspan="3">
+							<textarea rows="4" cols="50" name="I.data_instruction" id="data_instruction" validate="v.required" valititle="该项为必填项"></textarea>
+						</td>
+					</tr>
+				</table>			
+			</div>
+		</form>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="确定" id="addDataManage" />
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+		<!-- <input type="button" class="btn btn-ecitic" value="返回" name="globeBack" /> -->
+	</div>
+</div>
+
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_application/interfaceManage/standardDataManage/standardDataManage_add.js"></script>
+</html>

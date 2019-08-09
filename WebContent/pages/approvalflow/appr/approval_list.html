@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+</head>
+<body>
+	<div class="main_iframe_con">
+		<form action=""  class="form-inline" id="approvalForm">
+		      <div class="ecitic-inquire ecitic-inquire-sec" id="ecitic-inquire">
+				<div class="ecitic-table" id="ecitic-table">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+						<tr>
+							<td class="ecitic-right">业务数据ID：</td>
+							<td>
+								<input type="text" name="biz_id" id="biz_id" />
+							</td>
+							<td class="ecitic-right">流程名称：</td>
+							<td>
+								<input type="text" name="af_name" id="af_name" />
+							</td>
+							<td class="ecitic-right">流程实例状态：</td>
+							<td>
+								<select id="instance_state" name="instance_state"></select>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<ul class="ecitic-btn-all">
+					<li><input type="button" class="btn btn-ecitic" id="query" value="查询" /></li>
+					<li><input type="reset" class="btn btn-ecitic" id="reset" value="重置" /></li>
+				</ul>
+		  </div>
+		</form>
+		<div class="ecitic-operation">
+			<button class="btn btn-ecitic" id="viewApproval">查看流程记录</button>
+		</div>
+		<div class="ecitic-new">
+			<table id="approvalListTableInfo" class="table table-bordered table-hover"></table>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="pages/approvalflow/appr/approval_list.js"></script>
+</html>

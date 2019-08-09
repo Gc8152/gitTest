@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>应用管理</title>
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div id="applicationListPart" class="main_iframe_con">
+	<form action=""  class="form-inline">
+		<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<table id="querySystem" style="border:1px; cellspacing:0px; cellpadding:0px;"class="table table-bordered table-bor-pad requirement-table">
+					<tr>
+						<!-- <td class="ecitic-right" style="width:10%">处室：</td>
+						<td  class="positionAb" style="width:20%">
+						<input type="hidden"  id="organ_id_applicationquerylist" name="organ_id" />
+						    <input type="text" id="organ_id_queryOrg" placeholder="点击选择处室" readonly>
+						</td> -->
+						<!-- <td class="ecitic-right" width="11%">项目组：</td>
+						<td style="width:20%" class="positionAb">
+						    <input type="hidden" id="project_id_applicationquerylist" name="project_id" />
+						    <input type="text" id="project_id_queryOrg" class="requirement-ele-width" placeholder="点击选择项目组" readonly/>
+						</td> -->
+					
+						<td class="ecitic-right">应用编号：</td>
+						<td ><input type="text" id="system_id_applicationquerylist" name="system_id" /></td>
+					
+						<td class="ecitic-right">应用简称：</td>
+						<td ><input type="text" id="system_short_applicationquerylist" name="system_short" /></td>
+					
+						<td class="ecitic-right">应用名称：</td>
+						<td  ><input type="text" id="system_name_applicationquerylist" name="system_name" /></td>
+						
+					<tr>
+						<td class="ecitic-right">应用负责人：</td>
+						<td ><input type="text" id="project_name_applicationquerylist" name="project_man_name" /></td>
+ 						<td class="ecitic-right">应用状态：</td> 
+						<td ><select id="system_status_applicationquerylist" name="system_status" dic_code="G_DIC_SYSTEM_STATUS" style="width:100%"></select></td>
+						<td></td>
+					</tr> 
+				</table>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" id="serach_application" value="查询"/></li>
+				<li><input type="button"  class="btn btn-ecitic" id="reset_application" value="重置"/></li>
+				<!-- <li class="ecitic-more"></li> -->
+			</ul>
+		</div>
+		</form>
+		<div class="ecitic-operation">
+			<button class="btn btn-ecitic" id="add">新增</button>
+			<!-- <button class="btn btn-ecitic" id="logicDelete">删除</button> -->
+			<button class="btn btn-ecitic" id="update">编辑</button>
+			<button class="btn btn-ecitic" id="funcPointEdit">功能点维护</button>
+			<!-- <button class="btn btn-ecitic"  id="archive">归档</button>
+			<button class="btn btn-ecitic"  id="export">导出</button>
+			<button class="btn btn-ecitic"  id="viewHistory">查看同步历史</button> -->
+			<button class="btn btn-ecitic" id="view_sysDetail">查看应用详情</button>
+			<button class="btn btn-ecitic" id="optHistory">查看操作历史</button>
+			<button class="btn btn-ecitic" id="allHistory">应用管理日志</button>
+			<button class="btn btn-ecitic" id="doc_state">创建文档库</button>
+		</div>
+		<div class="ecitic-new">
+			<table id="gSystemInfoTable" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+	</div>
+	<div id="openPop"></div
+	><div id="allHisPop"></div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="dev_application/applicationManager_querylist.js"></script>
+<script type="text/javascript" src="dev_application/optHistory.js"></script>
+</html>

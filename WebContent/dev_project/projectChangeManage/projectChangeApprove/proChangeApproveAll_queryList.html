@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>计划变更查询列表</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+	<div class="ecitic-inquire ecitic-moreNo" >
+		<div class="ecitic-table" >
+			<form id="proChangeApp">
+				<table id="table_select" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+					<!--  
+						<td class="ecitic-right">变更编号：</td>
+						<td>
+							<input type="text" name="CHANGE_CODE"/>
+						</td>
+						<td class="ecitic-right">项目编号：</td>
+						<td>
+							<input type="text" name="PROJECT_NUM"/>
+						</td>
+					-->
+						<td class="ecitic-right">项目名称：</td>
+						<td>
+							<input type="text" name="PROJECT_NAME"/>
+						</td>
+						<td class="ecitic-right">项目类型：</td>
+						<td>
+							<select name="PROJECT_TYPE" diccode="SYS_DIC_MILESTONE_PROJECT_TYPE">
+								
+							</select>
+						</td>
+						<td class="ecitic-right">变更状态：</td>
+						<td>
+							<select name="APP_STATUS" diccode="G_DIC_REQ_CHANGE_STATE">
+								
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">应用名称：</td>
+						<td>
+							<input type="text" name="SYSTEM_NAME"/>
+						</td>
+						<td class="ecitic-right">提出日期：</td>
+						<td>
+							<input type="text" name="PRESENT_DATE" onFocus="WdatePicker({})" placeHolder="点击选择" readonly/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="select">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button id="viewApp_proChange" class="btn btn-ecitic">变更查看</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="table_proChangeApp" class="table table-bordered table-hover table-text-show">
+			
+		</table>
+	</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="dev_project/projectChangeManage/projectChangeApprove/proChangeApproveAll_queryList.js"></script>
+</html>

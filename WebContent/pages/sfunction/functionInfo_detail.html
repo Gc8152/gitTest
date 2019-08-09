@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>查询常用功能</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<form action="" id="addStaffList">
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>常用功能<em></em></span>
+			<i></i>
+		</div>
+		
+		
+		<div class="ecitic-title-table">
+			<table id="reqBasicInfo" class="table table-bordered table-center table-th tablr-input-text">
+				<tbody>
+					<tr>
+						<td width="11%" class="table-text">常用功能编号:</td>
+						<td width="21.333%">
+							<span id="MENU_CODE"></span>		
+						</td>
+						<td width="11%" class="table-text">常用功能名称:</td>
+						<td width="21.333%">
+							<span id="MENU_NAME"></span>	
+						</td>
+						<td width="11%" class="table-text">创建人:</td>
+						<td width="21.333%">
+							<span id="OPT_PERSON"></span>	
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">备注:</td>
+						<td>
+							<span id="MENU_MEMO"></span>	
+						</td>
+						<td class="table-text">创建时间:</td>
+						<td>
+							<span id="OPT_TIME"></span>	
+						</td>
+						<td class="table-text"></td>
+						<td>
+							<span></span>	
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">常用功能地址:</td>
+						<td colspan="5">
+							<span id="MENU_URL"></span>	
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">图片地址:</td>
+						<td colspan="5">
+							<span id="MENU_IMG"></span>	
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="ecitic-save">
+			<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+		</div>
+	</div>
+</form>
+<script type="text/javascript">
+
+</script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="pages/sfunction/functionInfo_detail.js"></script>
+</body>
+</html>

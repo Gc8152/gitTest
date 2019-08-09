@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>需求360视图</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="pages/approvalflow/afcommons.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="bootstrap/js/select2.min.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="dev_application/interfaceInfo/interfaceinfo_360mesbasic.js"></script>
+<style type="text/css">
+	.click_text_sp{color:#c9161d;}
+	.click_text_sp:hover{color:#c9161d;cursor:pointer;text-decoration:underline;}
+	.click_text_sp:active{color:blue;cursor:pointer;text-decoration:underline;}
+</style>
+</head>
+<body class="">
+<div class="tabbable"> 
+	  <ul class="nav nav-tabs" style="font-size:13px;">
+	    <li class="active"><a href="#tab1_requirement_360view" data-toggle="tab"><i class="icon-home"></i>接口基本信息</a></li>
+	    <li id=""><a href="#tab6_requirement_360view" data-toggle="tab" ><i class="icon-folder-open"></i>基础属性</a></li>
+	    <li id=""><a href="#tab5_requirement_360view" data-toggle="tab" ><i class="icon-folder-open"></i>报文内容</a></li>
+	    <li id=""><a href="#tab2_requirement_360view" data-toggle="tab" ><i class="icon-folder-open"></i>接口调用关系</a></li>
+	    <li id=""><a href="#tab3_requirement_360view" data-toggle="tab" ><i class="icon-folder-open"></i>接口版本信息</a></li>
+<!-- 	    <li id=""><a href="#tab4_requirement_360view" data-toggle="tab" ><i class="icon-folder-open"></i>接口变更信息</a></li> -->
+	  </ul>
+	<div class="tab-content" style="overflow-x:hidden ">
+	  	<!-- tab1内容开始 -->
+	    <div class="tab-pane active" id="tab1_requirement_360view" style="padding: 0 20px 0 20px">
+	    	<div class="ecitic-title-table">
+				<table style="align:center;width:100%;" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+					<tr>
+						<td class="ecitic-right">接口编号:</td>
+						<td>
+							<div id="inter360_code"></div>
+						</td>				
+						<td class="ecitic-right">接口名称:</td>
+						<td>
+						    <div id="inter360_name"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">接口业务类型:</td>
+						<td >
+							<div id="inter360_bustype"></div>
+						</td>
+						<td class="ecitic-right">接口交易码:</td>
+						<td>
+						    <div id="inter360_trade"></div>
+						</td>				
+					</tr>
+					<tr>
+					    <td class="ecitic-right">服务方应用名称:</td>
+						<td>
+						    <div id="inter360_serapp_name"></div>
+						</td>
+						<td class="ecitic-right">开始执行日期:</td>
+						<td>
+						    <div id="inter360_starttime"></div>
+						</td>
+					</tr>
+					<tr>
+					    <td class="ecitic-right">接口描述:</td>
+						<td colspan="3">
+						    <div id="inter360_descr"></div>
+						</td>
+					</tr>
+					<tr>
+					    <td class="ecitic-right">接口状态:</td>
+						<td>
+						    <div id="inter360_status"></div>
+						</td>
+						<td class="ecitic-right">接口版本:</td>
+						<td>
+						    <div id="inter360_version"></div>
+						</td>
+					</tr>
+				</table>
+			</div>
+    	<br>
+		</div>
+	   
+	    
+	    <!-- 基础属性 -->
+	    <!-- tab6内容开始 -->
+	    <div class="tab-pane" id="tab6_requirement_360view" style="padding: 0 20px 0 20px">
+	      <div class="ecitic-title">
+			<span>接口基础属性信息<em></em></span>
+			<i></i>
+		  </div>
+			<div class="ecitic-title-table" id="inter360_basic_table">
+				<table tb="360attrTable" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+							<tbody>
+							</tbody>
+						  </table>
+		</div>			
+		<br>
+		</div>
+	    <div class="tab-pane" id="tab2_requirement_360view" style="padding: 0 20px 0 20px">
+			<div class="ecitic-title-table">
+				<table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">接口编号:</td>
+						<td>
+							<div id="360_code"></div>
+						</td>				
+						<td class="ecitic-right">接口名称:</td>
+						<td>
+						    <div id="360_name"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">服务方应用名称:</td>
+						<td>
+							<div id="360_serapp_name"></div>
+						</td>	
+							 <td class="ecitic-right">被调用次数:</td>
+						<td>
+						    <div id="360_use_time"></div>
+						</td>		
+					</tr>			
+				</table>
+			</div>
+			
+			<div class="ecitic-title-table ecitic-new" id="">
+				<div class="ecitic-title">
+					<span>调用关系<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-new">
+					<table id="inter360_useRelationTable" class="table table-bordered table-hover table-text-show"></table>
+				</div>
+			</div>       
+	    </div>
+	    <!-- tab2结束 -->
+	    
+	    <!-- 接口版本信息 -->
+	    
+	    <div class="tab-pane" id="tab3_requirement_360view" style="padding: 0 20px 0 20px">
+			<div class="ecitic-title-table ecitic-new" id="">
+				<div class="ecitic-title">
+					<span>版本清单<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-new">
+					<table id="inter360_versionListTable" class="table table-bordered table-hover table-text-show"></table>
+				</div>
+			</div>   
+			<div id="AVersionDetail" class="hide">
+			<br>		
+	    	<div class="ecitic-title">
+				<span>接口基础属性信息<em></em></span>
+				<i></i>
+			 </div>
+				<div class="ecitic-title-table" id="inter360_basic_table1">
+				<table tb="360attrTable1" class="table table-bordered table-hover table-text-show">
+							<tbody>
+							</tbody>
+						  </table>
+		</div>			
+			<div class="ecitic-title-table ecitic-new" id="">
+				<div class="ecitic-title">
+					<span>输入内容<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-new">
+					<table id="AImportContentList1" class="table table-bordered table-hover table-text-show"></table>
+				</div>
+			</div>       
+			<div class="ecitic-title-table ecitic-new" id="">
+				<div class="ecitic-title">
+					<span>输出内容<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-new">
+					<table id="AExportContentList1" class="table table-bordered table-hover table-text-show"></table>
+				</div>
+			</div>  		
+			<!-- <div class="ecitic-title-table ecitic-new" id="">
+				文件列表
+				<div class="ecitic-title">
+					<span>附件列表信息<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-title-table">
+					<table id="old_filetable"  class="table table-bordered table-hover table-text-show"></table>
+				</div>
+			</div> -->
+			</div>
+	    </div>
+	    
+	    <!-- 接口变更信息 -->
+	    
+	    <div class="tab-pane" id="tab4_requirement_360view" style="padding: 0 20px 0 20px">
+			<div class="ecitic-title-table ecitic-new" id="">
+				<div class="ecitic-title">
+					<span>变更历史<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-new">
+					<table id="AExchangeList" class="table table-bordered table-hover table-text-show"></table>
+				</div>
+				被调用次数：<span id="app_use_time"></span>
+			</div>       
+	    </div>
+	    <!-- 报文内容 -->
+	    <div class="tab-pane" id="tab5_requirement_360view" style="padding: 0 20px 0 20px">
+			<div class="ecitic-title-table ecitic-new" id="">
+				<div class="ecitic-title">
+					<span>输入内容<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-new">
+					<table id="AImportContentList" class="table table-bordered table-hover table-text-show"></table>
+				</div>
+			</div>       
+			<div class="ecitic-title-table ecitic-new" id="">
+				<div class="ecitic-title">
+					<span>输出内容<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-new">
+					<table id="AExportContentList" class="table table-bordered table-hover table-text-show"></table>
+				</div>
+			</div>     
+			<!-- 文件列表 -->
+			<!-- <div class="ecitic-title">
+				<span>附件列表信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table id="filetable"  class="table table-bordered table-hover table-text-show"></table>
+			</div> -->
+	    </div>
+	    
+	</div>
+</div>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+	</div>
+	<!-- 弹出窗口 -->
+	<div id="add_fileview_modal"></div>
+</body>
+
+</html>

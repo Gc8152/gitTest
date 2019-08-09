@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>终止查看</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="widget-box">
+		<div class="widget-content nopadding">
+			<div class="control-group">
+				<div class="controls">
+					<ul class="nav nav-tabs">
+						<li class="active">
+						<a href="#terminate_query_info" data-toggle="tab"><i class="icon-home"></i>终止申请信息</a></li>
+						<li><a href="#opt_history_q" data-toggle="tab"><i class="icon-folder-open"></i>历史操作记录</a></li>
+					</ul>
+					<div class="tab-content">
+<!-- 	******终止申请信息******     -->
+					<div class="tab-pane active" id="terminate_query_info">
+						<div class="ecitic-title-table">
+							<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+								<colgroup>
+											<col style="width: 20%">
+									        <col style="width: 30%">
+									        <col style="width: 20%">
+									        <col style="width: 30%">
+								</colgroup>
+								<tr>
+									<td class="table-text">需求编号：</td>
+									<td>
+										<div id="REQ_CODE"></div>
+									</td>
+									<td class="table-text">需求名称：</td>
+									<td >
+										<div id="REQ_NAME"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text" >终止原因：</td>
+									<td>
+										<div id="TERMINATE_REASON_NAME"></div>
+									</td>
+									<td class="table-text" >分析结论：</td>
+									<td colspan="3">
+										<div id="ANALYZE_RESULT_NAME"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text" >终止描述：</td>
+									<td colspan="3">
+										<div id="INITIATE_EXPLAIN"></div>
+									</td>
+								</tr>
+									<tr>
+									<td class="table-text" >影响分析：</td>
+									<td colspan="3">
+										<div id="ANALYZE_AFFECT"></div>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="ecitic-title">
+		  					<span>需求点信息<em></em></span>
+			    				<i></i>
+						</div>
+						<div class="ecitic-new">
+							<table class="table table-bordered table-hover" id="subReqTableView"/>
+						</div> 
+						<div class="ecitic-save">
+							<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+						</div>
+				</div>
+
+<!-- 	******操作历史 ******    -->
+					<div class="tab-pane fade" id="opt_history_q">
+						<div class="ecitic-new">
+							<table id="OptHistoryTableq" class="table table-bordered table-hover table-text-show"></table>
+						</div>
+					</div>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_construction/requirement/requirement_terminate/query/query_view.js"></script>
+</html>

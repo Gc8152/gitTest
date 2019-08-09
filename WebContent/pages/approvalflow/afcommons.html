@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<link href="pages/approvalflow/afcommons.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+<script src="pages/approvalflow/approval_title.js"></script>
+<script src="pages/approvalflow/approval_history.js"></script>
+<script src="pages/approvalflow/approval_content.js"></script>
+<script src="pages/approvalflow/afcommons.js"></script>
+</head>
+<body>
+	<div>
+		<div class="ecitic-operation">
+			<button class="btn btn-ecitic" id="approvalProcess" >发起流程</button>
+			<button class="btn btn-ecitic" id="backupApprProcess">撤回审批流程</button>
+			<button class="btn btn-ecitic" id="batchStartApprBtn">批量发起流程</button>
+			<button class="btn btn-ecitic" id="batchApprPassBtn">批量审批通过</button>
+			<button class="btn btn-ecitic" id="batchApprRejectBtn">批量审批拒绝</button>
+			<button class="btn btn-ecitic" id="batchApprBackBtn">批量审批撤回</button>
+			<button class="btn btn-ecitic" id="viewApprProcess">查看审批</button>
+			<button class="btn btn-ecitic" id="historyRecordOpt">查看历史审批记录</button>
+		</div>
+		<div id="apptitlePop"></div>
+		<div id="apphistoryPop"></div>
+    	<div id="appOptPop"></div>
+    	<div id="historyPopDiv"></div>
+		<div class="ecitic-save">
+			<input type="button" class="btn btn-ecitic" value="返回" id="backToAtherList"/>
+		</div>
+	</div>
+</body>
+</html>

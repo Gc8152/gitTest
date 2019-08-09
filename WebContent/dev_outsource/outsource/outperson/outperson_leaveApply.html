@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>离场申请</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+
+<body>
+<div class="tab-pane active" id="entranceApply">
+	<div class="ecitic-title">
+		<span>人员基本信息<em></em></span>
+		<i></i>
+	</div>
+	<div class="ecitic-title-table">
+		<table class="table table-bordered tablr-input-text" id="en_opInfo_table"><!-- table-bor-paw-->
+				<tr>
+					<td width="11%" class="table-text">姓名</td>
+					<td width="22.333%">
+						<div id="OPDT_OP_NAME"></div>
+					</td>
+					<td width="11%" class="table-text">身份证</td>
+					<td width="22.333%">
+						<div id="OPDT_IDCARD_NO"></div>
+					</td>
+					<td width="11%" class="table-text">性别</td>
+					<td width="22.333%">
+						<div id="OPDT_SEX_NAME"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">出生年月</td>
+					<td>
+						<div id="OPDT_OP_BIRTHDAY"></div>
+					</td>
+					<td class="table-text">手机号</td>
+					<td>
+						<div id="OPDT_OP_PHONE"></div>
+					</td>
+					<td class="table-text">最高学历</td>
+					<td>
+						<div id="OPDT_EDUCATION_NAME" ></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">毕业院校</td>
+					<td>
+						<div id="OPDT_GRADUATE_COLLEGE"></div>
+					</td>
+					<td class="table-text">所学专业</td>
+					<td>
+						<div id="OPDT_OP_SPECIAL"></div>
+					</td>
+					<td class="table-text">专业分类</td>
+					<td>
+						<div id="OPDT_OP_SPECIALTYPE_NAME"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">技术特长</td>
+					<td>
+						<div id="OPDT_OP_SKILLS_NAME"></div>
+					</td>
+					<td class="table-text">参加工作时间</td>
+					<td>
+						<div id="OPDT_START_WORKTIME" ></div>
+					</td>
+					<td class="table-text">入本行时间</td>
+					<td>
+						<div id="OPDT_JOIN_BANK_TIME"></div>
+					</td> 
+				</tr>
+				<tr>
+					<td class="table-text">金融领域工作年限</td>
+					<td>
+						<div id="OPDT_YEAR_WORK_FINANCE" ></div>
+					</td>
+					<td class="table-text">工作年限(年)</td>
+					<td>
+						<div id="OPDT_YEAR_WORK" ></div>
+					</td>
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<td width="11%" class="table-text">供应商</td>
+					<td width="22.333%">
+						<div id="OPDT_SUPPLIER_NAME"></div>
+					</td>				
+					<td width="11%" class="table-text">所属公司负责人</td>
+					<td width="22.333%">
+						<div id="OPDT_SUPCONTACT_MAN"></div>
+					</td>
+					<td width="11%" class="table-text">所属公司联系方式</td>
+					<td width="22.333%">
+						<div id="OPDT_SUPCONTACT_NUM"></div>
+					</td>				
+				</tr>
+				<tr>
+					<td class="table-text">人员采购类型</td>
+					<td>
+						<div id="OPDT_PURCH_TYPE_NAME"></div>
+					</td>
+					<td class="table-text">开发方向</td>
+					<td>
+						<div id="OPDT_DEV_DIRECTION_NAME" ></div>
+					</td>
+					<td class="table-text">人员级别</td>
+					<td>
+						<div id="OPDT_DEV_GRADE_NAME" ></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">所属应用</td>
+					<td style="position:relative;">
+						<div  id="OPDT_OP_BELONGSYSTEM"></div>
+					</td>
+					<td class="table-text">行内归属部门</td>
+					<td style="position:relative;">
+						<div  id="OPDT_SSBM"></div>
+					</td>
+					<td class="table-text">行内项目经理</td>
+					<td>
+						<div id="OPDT_OP_STAFF_NAME"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">备注</td>
+					<td colspan="5">
+						<div id="OPDT_MEMO"></div>
+					</td>
+				</tr>
+				</table>
+				</div>
+				<div class="ecitic-title">
+		<span>入场信息<em></em></span>
+		<i></i>
+	</div>
+	<div class="ecitic-title-table">
+		<table class="table table-bordered tablr-input-text">
+			<tr>
+				<td width="11%" class="table-text">人员简历</td>
+				<td colspan="5">
+					<input type="hidden" value="上传" id="ETA_out_resume" class="btn btn-ecitic" />
+					<input type="hidden" name="ETA.out_resume_file" id="ETA_out_resume_file" />
+					<input type="hidden" id="OPLA_op_id" />
+					<input type="hidden" name="ETA.idcard_no" id="OPLA_idcard_no" />
+					<input type="hidden" name="ETA.coe_id" id="OPLA_coe_id" />
+					<input type="hidden" name="ETA.op_supoffice_manager" id="OPLA_op_office_manager" />
+					<input type="hidden" name="ETA.op_office_manager" id="OPLA_op_supoffice_manager" />
+				</td>
+			</tr>
+			<tr>
+				<td class="table-text" width="11%">入场日期</td>
+				<td>
+					<div id="OPDT_ENTRANCE_TIME" width="22.333%"></div>
+				</td>
+				<td class="table-text" width="11%">计划离场日期</td>
+				<td>
+					<div id="OPDT_PLAN_LEAVE_TIME" width="22.333%"></div>
+				</td>
+				<td class="table-text" width="11%">房间及工位号</td>
+				<td>
+					<div id="OPDT_P_STATION" width="22.333%"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="table-text">入场事由</td>
+				<td colspan="5">
+					<div id="OPDT_ENTRANCE_REASON"></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="ecitic-title deviceInfo">
+		<span>账号及设备需求<em></em></span>
+		<i></i>
+	</div>
+	<div class="ecitic-title-table deviceInfo">
+		<table class="table table-bordered tablr-input-text"><!-- table-bor-paw-->
+			<tr>
+				<td class="table-text"  width="25%">负责部门</td>
+				<td class="table-text">内容</td>
+				<td class="table-text"  width="30%">是否开通</td>
+			</tr>
+			<tr>
+				<td class="table-text" rowspan='2'>综合管理部</td>
+				<td>指纹录入</td>
+				<td width="30%">
+					<input type="hidden" id="OPLA_coe_id"/>
+					<div class="ecitic-radio-more" >
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.fingerprint_in" ></span>
+							<label>是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.fingerprint_in" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>台式机终端领用</td>
+				<td>
+					<div class="ecitic-radio-more">
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.device_reveive" ></span>
+							<label>是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.device_reveive" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+<!-- 			<tr> -->
+<!-- 				<td>OA/办公邮箱开通</td> -->
+<!-- 				<td width="30%"> -->
+<!-- 					<div class="ecitic-radio-more"> -->
+<!-- 						 <div class="ecitic-radio ecitic-radio-inline"> -->
+<!-- 							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.email_open" ></span> -->
+<!-- 							<label>是</label> -->
+<!-- 						</div> -->
+<!-- 						<div class="ecitic-radio ecitic-radio-inline"> -->
+<!-- 							<span><input type="radio" value="1" name="OPLA.email_open" ></span> -->
+<!-- 							<label>否</label> -->
+<!-- 						</div>  -->
+<!-- 					</div> -->
+<!-- 				</td> -->
+<!-- 			</tr> -->
+			<tr>
+				<td class="table-text" rowspan='4'>运行管理部</td>
+				<td>测试邮箱开通</td>
+				<td width="30%">
+					<div class="ecitic-radio-more">
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.testeamil_open" ></span>
+							<label>是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.testeamil_open" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>内部网络开通</td>
+				<td width="30%">
+					<div class="ecitic-radio-more">
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.innernetwork_open" ></span>
+							<label>是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.innernetwork_open" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>代理上网账号开通</td>
+				<td width="30%">
+					<div class="ecitic-radio-more">
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.agency_internet_open" ></span>
+							<label>是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.agency_internet_open" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>RTX开通</td>
+				<td width="30%">
+					<div class="ecitic-radio-more">
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.rtx_open" ></span>
+							<label>是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.rtx_open" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="table-text" rowspan='3'>质量测试部</td>
+				<td>Synergy</td>
+				<td width="30%">
+					<div class="ecitic-radio-more">
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.synergy_open" ></span>
+							<label >是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.synergy_open" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>SVN</td>
+				<td>
+					<div class="ecitic-radio-more">
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.svn_open" ></span>
+							<label>是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.svn_open" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>QC</td>
+				<td>
+					<div class="ecitic-radio-more">
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.qc_open"  ></span>
+							<label>是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.qc_open" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="ecitic-title">
+		<span>离场信息<em></em></span>
+		<i></i>
+	</div>
+	<div class="ecitic-title-table">
+		<table class="table table-bordered tablr-input-text"><!-- table-bor-paw-->
+			<tr>
+				<td class="table-text" width="11%">实际离场时间</td>
+				<td  >
+					<input  type="text" name="OPLA.actully_leavetime" id="OPLA_actully_leavetime" onclick="WdatePicker({})" class="citic-ast" validate="v.required" valititle="请选择日期" readonly/>
+				</td>
+				<td colspan="2" width="66.66%">
+				</td>
+			</tr>
+			<tr>
+				<td class="table-text" width="11%">离场原因</td>
+				<td colspan="2">
+					<textarea name="OPLA.leave_reason" id="OPLA_leave_reason"  class="citic-text-ast" validate="v.required"></textarea>
+				</td>
+				<td colspan="1" width="33.33%">
+				</td>
+			</tr>
+			<tr class="deviceInfo">
+				<td class="table-text">负责部门</td>
+				<td class="table-text">内容</td>
+				<td class="table-text" width="30%">是否开通</td>
+			</tr>
+			<tr class="deviceInfo">
+				<td class="table-text" rowspan='2'>综合管理部</td>
+				<td>指纹录入</td>
+				<td width="30%">
+					<input type="hidden" id="OPLA_coe_id"/>
+					<div class="ecitic-radio-more" >
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.fingerprint_in" ></span>
+							<label>是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.fingerprint_in" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+			<tr class="deviceInfo">
+				<td>台式机终端领用</td>
+				<td>
+					<div class="ecitic-radio-more">
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.device_reveive" ></span>
+							<label>是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.device_reveive" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+<!-- 			<tr> -->
+<!-- 				<td>OA/办公邮箱开通</td> -->
+<!-- 				<td width="30%"> -->
+<!-- 					<div class="ecitic-radio-more"> -->
+<!-- 						 <div class="ecitic-radio ecitic-radio-inline"> -->
+<!-- 							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.email_open" ></span> -->
+<!-- 							<label>是</label> -->
+<!-- 						</div> -->
+<!-- 						<div class="ecitic-radio ecitic-radio-inline"> -->
+<!-- 							<span><input type="radio" value="1" name="OPLA.email_open" ></span> -->
+<!-- 							<label>否</label> -->
+<!-- 						</div>  -->
+<!-- 					</div> -->
+<!-- 				</td> -->
+<!-- 			</tr> -->
+			<tr class="deviceInfo">
+				<td class="table-text" rowspan='4'>运行管理部</td>
+				<td>测试邮箱开通</td>
+				<td width="30%">
+					<div class="ecitic-radio-more">
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.testeamil_open" ></span>
+							<label>是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.testeamil_open" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+			<tr class="deviceInfo">
+				<td>内部网络开通</td>
+				<td width="30%">
+					<div class="ecitic-radio-more">
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.innernetwork_open" ></span>
+							<label>是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.innernetwork_open" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+			<tr class="deviceInfo">
+				<td>代理上网账号开通</td>
+				<td width="30%">
+					<div class="ecitic-radio-more">
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.agency_internet_open" ></span>
+							<label>是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.agency_internet_open" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+			<tr class="deviceInfo">
+				<td>RTX开通</td>
+				<td width="30%">
+					<div class="ecitic-radio-more">
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.rtx_open" ></span>
+							<label>是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.rtx_open" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+			<tr class="deviceInfo">
+				<td class="table-text" rowspan='3'>质量测试部</td>
+				<td>Synergy</td>
+				<td width="30%">
+					<div class="ecitic-radio-more">
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.synergy_open" ></span>
+							<label >是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.synergy_open" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+			<tr class="deviceInfo">
+				<td>SVN</td>
+				<td>
+					<div class="ecitic-radio-more">
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.svn_open" ></span>
+							<label>是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.svn_open" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+			<tr class="deviceInfo">
+				<td>QC</td>
+				<td>
+					<div class="ecitic-radio-more">
+						 <div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="0" checked="true" name="OPLA.qc_open"  ></span>
+							<label>是</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span><input type="radio" value="1" name="OPLA.qc_open" ></span>
+							<label>否</label>
+						</div> 
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" onclick="saveAndSubmitLaFunction('save')" value="保存" />
+		<input type="button" class="btn btn-ecitic" onclick="saveAndSubmitLaFunction('submit')" value="保存并提交" />
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+	</div>
+</div>	
+<script src="pages/approvalflow/afcommons.js"></script>
+<script src="upload/uploadFileInfo.js"></script>
+<script type="text/javascript" src="dev_outsource/outsource/outpersonEntrance/outperson_comm.js"></script> 
+<script type="text/javascript" src="dev_outsource/outsource/outperson/outperson_leaveApply.js"></script>
+</body>
+</html>

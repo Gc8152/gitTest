@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+<body>
+<div class="container-fluid" id="menu_mm" style="position:relative;">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="span6 citic-tree">
+				<div class="widget-box">
+					<div class="widget-title">
+						<span class="icon"><i class="icon-align-justify"></i></span>
+						<h5>菜单管理</h5>
+						<button type="button" id="addMenu" class="btn btn-ecitic">创建菜单</button>
+					</div>
+					<div class="controlsOverFlow">
+						<ul id="treeMenuManager" class="ztree"></ul>
+					</div>
+				</div>
+			</div>
+			<div class="span6 citic-add">
+				<div class="widget-box">
+					<div class="widget-content nopadding">
+						<div class="control-group">
+							<div class="controls">
+								
+								<ul class="nav nav-tabs">
+									<li><a href="#menu_opt" data-toggle="tab">菜单操作配置</a></li>
+									<li><a href="#menu_property" data-toggle="tab">菜单属性配置</a></li>
+								</ul>
+								<div id="mymenuTabContent" class="tab-content">
+									
+									<div class="tab-pane fade" id="menu_opt">
+										<button type="button" id="addButton" class="btn btn-ecitic btn-new-mb5" style="display:none;">新增</button>
+										<table id="buttonTableMenu"></table>
+									</div>
+									<div class="tab-pane fade" id="menu_property">
+										<button type="button" id="addProperty" class="btn btn-ecitic btn-new-mb5" style="display:none;">新增</button>
+										<table id="propertyTableMenu"></table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="myModalMenu" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">提示...</h3>
+	</div>
+	<div class="modal-body">
+		<p id="msmenu_context">One fine body…</p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" id="cancel" style="display:none;" aria-hidden="true">取消</button>
+		<button class="btn btn-ecitic" data-dismiss="modal" id="menu_sure" aria-hidden="true">确定</button>
+	</div>
+</div>
+</body>
+</html>
+<script src="pages/smenu/smenu_manager.js"></script>

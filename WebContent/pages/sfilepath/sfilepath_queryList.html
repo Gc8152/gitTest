@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="pages/sfilepath/sfilepath_queryList.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<form action=""  class="form-inline">
+	      <div class="ecitic-inquire ecitic-inquire-sec lessSearch">
+			<div class="ecitic-table">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">规则编码：</td>
+						<td>
+							<input type="text" id="path_id" />
+						</td>
+						<td class="ecitic-right">是否启用：</td>
+						<td>
+							<select id="status"></select>
+						</td>
+						<td class="ecitic-right">文件类型：</td>
+						<td>
+							<select id="type"></select>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" id="sfilepath_serch" value="查询" /></li>
+				<li><input type="button" class="btn btn-ecitic" id="sfilepath_reset" value="重置" /></li>
+			</ul>
+	  </div>
+	</form>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="addPath">新增</button>
+		<button class="btn btn-ecitic" id="updatePath">修改</button>
+		<button class="btn btn-ecitic" id="deletePath">删除</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="SFilePathTableInfo" class="table table-bordered table-hover"></table>
+	</div>
+</div>
+</body>
+</html>

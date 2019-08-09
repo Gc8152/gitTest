@@ -1,0 +1,49 @@
+/*拖曳*/
+#dragSortSelect.selectbox{width: 644px;margin: 90px auto 0 auto;}
+#dragSortSelect.selectbox div{float: left;}
+ #dragSortSelect.selectbox .select-bar{margin-top: -50px;}
+ legend{width:160px;font-size:16px;font-weight:bolder;}
+ #dragSortSelect.selectbox .select-bar .chooseBarList,
+ #dragSortSelect.selectbox .select-bar .chooseBarList1,
+ #dragSortSelect.selectbox .select-bar .chooseBarList2
+ {height: 200px;
+border: solid 1px #a80e15;
+     width: 150px;
+     height: 184px;
+     border: 1px #a80e15 solid;
+     padding: 4px;
+     font-size: 14px;
+     border-radius: 6px;
+     overflow: auto;
+     outline: none;
+     float:none;
+ }
+ #dragSortSelect.selectbox .select-bar .chooseBarList1{margin-right:60px;}
+ #dragSortSelect.selectbox .placeHolder{
+	padding:4px;
+     border-radius:4px;
+     margin-bottom:1px;
+     display:block;
+     width:95%;
+     border:solid 1px #a80e15
+}
+ 
+ #dragSortSelect.selectbox .select-bar li:not(.placeHolder){
+     padding:4px;
+     background:#a80e15;
+     text-align:center;
+     border-radius:4px;
+     margin-bottom:1px;
+     color:#fff;
+     display:block;
+     border:none;
+     width:95%;
+     outline:none;
+ }
+ .btn-bar {
+         margin: 0 10px;
+        margin-top:100px;
+        text-align:center;margin-left:10px;
+     }
+.rule{width: 820px;font-weight:bolder;margin: 30px auto;font-size: 16px;background: #f5f5f5;border: 1px solid #ddd;padding: 0 15px;height: 40px;line-height: 40px;}
+.rule input{border:none;width: 715px;height: 40px;padding: 0;margin-top: -5px;background: none;}

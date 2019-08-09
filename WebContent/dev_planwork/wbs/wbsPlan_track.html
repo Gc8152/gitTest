@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="dev_planwork/wbs/wbsPlan_public.css"/>
+</head>
+<body>
+
+<div class="ecitic-title">
+			<span>跟踪项目WBS计划<em></em></span>
+			<i></i>
+		</div> 
+		<div>
+		<div class="tableTitle">
+			<span id="T_project_num"></span>
+			<h2 id="T_project_name"></h2>
+		</div>
+		<br>
+<div class="ecitic-operation">
+	<a href="#" id="wbs_milestone_completion_confirmation"><button class="btn btn-ecitic">里程碑完成确认</button></a>
+	<!-- <a href="#" id="wbs_completion_confirmation"><button class="btn btn-ecitic">完成确认</button></a> -->
+	<a href="#" id="wbs_task_off"><button class="btn btn-ecitic">任务关闭</button></a>
+	<a href="#" id="wbs_delete"><button class="btn btn-ecitic">删除</button></a>
+	<a href="#" id="wbsPlan_track_details"><button class="btn btn-ecitic">详情</button></a>
+</div>
+	<div id="treegridDiv" style="min-height: 400px;">
+		<input type="hidden" id="wbs_track_project_id" />
+		<table class="easyui-treegrid" id="treegridTab_track"
+			style="min-height: 400px;">
+
+		</table>
+	</div>
+	</div>
+<!-- 弹出框pop -->
+<!-- 完成确认模态框 -->
+<div id="wbsPlan_confirmation_modal" class="modal hide fade pb20" tabindex="-1" >
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="wbsPlan_confirmation_modal_title">任务完成确认</h3>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover pos-rel" id="wbsPlan_modal_table">
+			<tr>
+				<th width="18%">名称</th>
+				<th width="17%">负责人</th>
+				<th width="17%">任务状态</th>
+				<th width="17%">完成确认</th>
+				<th width="28%">备注</th>
+			</tr>
+		</table>
+	</div>
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="提交" id="save_confirmation" type="button"/>
+		<input class="btn btn-ecitic" data-dismiss="modal" value="返回" type="button" />
+	</div>
+</div>
+
+<!-- 任务关闭模态框 -->
+<div id="task_off_modal" class="modal hide fade pb20" tabindex="-1" >
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="task_off_modal_title">任务关闭</h3>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover pos-rel" id="task_off_modal_table">
+			<tr>
+				<th width="12%">名称</th>
+				<th width="17%">负责人</th>
+				<th width="17%">任务状态</th>
+				<th width="17%">完成比例</th>
+				<th width="27%">备注（关闭原因）</th>
+			</tr>
+		</table>
+	</div>
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="提交" id="save_task_off" type="button"/>
+		<input class="btn btn-ecitic" data-dismiss="modal" value="返回" type="button" />
+	</div>
+</div>
+</body>
+
+<script type="text/javascript" src="js/commons/commons.js"></script>
+	<script src="dev_planwork/wbs/wbsPlan_track.js"></script>
+	<script src="dev_planwork/wbs/wbsPlan_public.js"></script>
+</html>

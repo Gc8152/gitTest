@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<form action=""  class="form-inline">
+	      <div class="ecitic-inquire ecitic-inquire-sec" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">角色编号</td>
+						<td>
+							<input type="text" name="role_no" id="role_no" />
+						</td>
+						<td class="ecitic-right">角色名称</td>
+						<td>
+							<input type="text" name="role_name" id="role_name" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" id="sRole_serch" value="查询" /></li>
+				<li><input type="button" class="btn btn-ecitic" id="sRole_reset" value="重置" /></li>
+			</ul>
+	  </div>
+	</form>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="add" onclick="pageDispatchSRole(this,'SRoleAdd','')">创建</button>
+		<button class="btn btn-ecitic" id="update">修改</button>
+		<button class="btn btn-ecitic" id="del">删除</button>
+		<button class="btn btn-ecitic" id="authDis">权限设置</button>
+		<button class="btn btn-ecitic" id="function">常用功能配置</button>
+		<button class="btn btn-ecitic" id="relateUser">关联人员</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="SRoleTableInfo" class="table table-bordered table-hover"></table>
+	</div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="pages/srole/srole_queryList.js"></script>

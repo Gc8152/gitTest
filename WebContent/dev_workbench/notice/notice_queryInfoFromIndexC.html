@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<!-- <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" /> 不能引入，会影响样式-->
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script src="js/commons/commons.js"></script>
+
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+		<span>通知查看<em></em></span>
+    </div>
+    <div class="ecitic-title-table">
+		<table class="table table-bordered table-center table-th tablr-input-text" style="border-top:none;">
+			<tbody>
+				<input id="file_id_noticeAdd" name="NOTICE_FILES" type="hidden" />
+				<tr>
+					<td width="11%" class="table-text" style="height:1px;padding:0;border-top:none;"></td>
+					<td width="21.333%" style="height:1px;padding:0;border-top:none;"></td>
+					<td width="11%" class="table-text" style="height:1px;padding:0;border-top:none;"></td>
+					<td width="21.333%" style="height:1px;padding:0;border-top:none;"></td>
+					<td width="11%" class="table-text" style="height:1px;padding:0;border-top:none;"></td>
+					<td width="21.333%" style="height:1px;padding:0;border-top:none;"></td>
+				</tr>
+				<tr>
+					<td width="11%" class="table-text">标题</td>
+					<td width="21.333%" colspan="5">
+						<span id="NOTICE_TITLE"></span>		
+					</td>
+				</tr>
+				<tr>
+					<td width="11%" class="table-text">内容</td>
+					<td width="21.333%" colspan="5">
+						<span id="NOTICE_BODY"></span>	
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+    <div class="ecitic-title">
+		<span>附件列表<em></em></span>
+    </div>
+	<div class="ecitic-title-table">
+		<table id="noticeadd_filetable"  class="table table-bordered table-hover table-text-show"></table>
+    </div>
+	<div id="noticeadd_fileview_modal"></div>
+	<div class="ecitic-title">
+		<span>接收方<em></em></span>
+    </div>
+    <div class="ecitic-title-table">
+		<table class="table table-bordered table-center table-th tablr-input-text" style="border-top:none;">
+			<tbody>
+				<input id="file_id_noticeAdd" name="NOTICE_FILES" type="hidden" />
+				<tr>
+					<td width="11%" class="table-text" style="height:1px;padding:0;border-top:none;"></td>
+					<td width="21.333%" style="height:1px;padding:0;border-top:none;"></td>
+					<td width="11%" class="table-text" style="height:1px;padding:0;border-top:none;"></td>
+					<td width="21.333%" style="height:1px;padding:0;border-top:none;"></td>
+					<td width="11%" class="table-text" style="height:1px;padding:0;border-top:none;"></td>
+					<td width="21.333%" style="height:1px;padding:0;border-top:none;"></td>
+				</tr>
+				<tr>
+					<td width="11%" class="table-text">接收部门</td>
+					<td width="21.333%" colspan="5">
+						<span id="RECEIVE_OFFICE"></span>		
+					</td>
+				</tr>
+				<tr>
+					<td width="11%" class="table-text">接收岗位</td>
+					<td width="21.333%" colspan="5">
+						<span id="RECEIVE_POST"></span>	
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
+<script src="dev_workbench/notice/notice_queryInfoFromIndexC.js"></script>
+</html>

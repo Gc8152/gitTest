@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>执行测试任务</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main_iframe_con">
+        <div class="ecitic-inquire" id="ecitic-inquire">
+            <div class="ecitic-table" id="ecitic-table">
+                <form id="executeForm">
+                    <table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+                        <tr>
+                            <td class="ecitic-right">项目编号：</td>
+                            <td>
+                                <input type="text" name="PROJECT_NUM" />
+                            </td>
+                            <td class="ecitic-right">项目名称：</td>
+                            <td>
+                                <input type="text" name="PROJECT_NAME" />
+                            </td>
+                            <td class="ecitic-right">测试版本号：</td>
+                            <td>
+                                <input type="text" name="TEST_VERSION" />
+                            </td>
+                           <!--  <td class="ecitic-right">投产包名称：</td>
+                            <td>
+                                <input type="text" name="TEST_MAN" />
+                            </td> -->
+                        </tr>
+                        <tr>
+                           
+                            <td class="ecitic-right">版本发布日期：</td>
+                            <td>
+                                <input type="text" name="ISSUE_TIME" onclick="WdatePicker({})"/>
+                            </td>
+                            <td class="ecitic-right"></td>
+                            <td>
+                            
+                            </td>
+                             <td class="ecitic-right"></td>
+                            <td>
+                            
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <ul class="ecitic-btn-all">
+                <li><input type="button" class="btn btn-ecitic" name="queryExecute" value="查询" /></li>
+                <li><input type="button" class="btn btn-ecitic" name="resetExecute" value="重置" /></li>
+            </ul>
+        </div>
+        <div class="ecitic-operation">
+            <button class="btn btn-ecitic" name="testExecute">执行测试</button>
+            <button class="btn btn-ecitic" name="testFinish" style="display:none">完成测试</button>
+           <!--   <button class="btn btn-ecitic" name="testCasesReview">生成测试报告</button>-->
+        </div>
+        <div class="ecitic-new">
+            <table tb="testExecute" class="table table-bordered table-hover table-text-show"></table>
+        </div>
+    </div>
+</body>
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_test/testTaskExecute/testTaskExecute_queryList.js"></script>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>详情</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+</head>
+<body>
+	<div class="ecitic-inquire ecitic-moreNo">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="noconfigManageQueryForm">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+					<td class="ecitic-right">不符合项描述：</td>
+						<td><input type="text" id="Q_descr" name="descr"/></td>
+						<td class="ecitic-right">项目名称：</td>
+						<td>
+							<input type="text" id="Q_project_name" name="project_name"/>
+						</td>
+						<td class="ecitic-right">不符合项状态：</td>
+						<td>
+							<select id="Q_status_name" name="status_name" diccode="P_DIC_CONFIG_NOCONFORM_STATUS" style="width:100%;"></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">不符合等级：</td>
+						<td><select id="Q_grade_name" name="grade_name" diccode="P_DIC_QUALITY_GRADE" style="width:100%;"></select></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="querynoconfigManageQuery">查询</button></li>
+			<li><button class="btn btn-ecitic" id="resetnoconfigManageQuery">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<!-- <button class="btn btn-ecitic" id="configManage_import">导入</button> -->
+		<button class="btn btn-ecitic" id="noconfigManageQuery_info">详情</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover table-text-show" id="noconfigManageQueryTab"></table>
+	</div> 
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="dev_project/configManage/noconfigManageQuery/noconfigManageQuery_queryList.js"></script>
+</html>

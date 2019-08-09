@@ -1,0 +1,56 @@
+<style>
+.btn_ftp {float:none;}
+</style>
+<div id="modal" class="modal hide fade" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="">文件上传</h5>
+	</div>
+	<div class="ecitic-title-table modal-body" id="sit_fileupload_div" >
+		<table class="table table-striped table-hover table-bordered tablr-input-text">
+			<tbody>
+				<tr>
+					<td class="table-text" width="15%">文档类型：</td>
+					<td width="35%">
+						<input name="BUSINESS_CODE" type="hidden" value=""/>
+						<input name="MODULE_FLAG" type="hidden" value=""/>
+						<select name="FILE_TYPE" diccode="" validate="v.required"></select>
+						<input name="PATH_ID" type="hidden" value=""/>
+					</td>
+					<!-- <td class="table-text" width="15%">版本：</td>
+					<td width="35%"><input type="text" class="" name="FILE_VERSION" value="" validate="v.required"></td> -->
+				</tr>
+				<tr>
+					<td class="table-text">选择附件：</td>
+					<td colspan="3">
+						<div class="upload-checkfile-all" >选择文件
+							<!-- <input name="file_id" class="input-txt" type="hidden"> -->
+							<input name="file" id="file_test" class="input-btn" type="file" value="选择文件">
+						</div>
+						<div id="file_flash_check_result" class="upload-checkfile-all-text">未安装或者已停用flash,
+						IE浏览器请点击<a style="color:blue"href="software\Adobe Flash Player ActiveX_28.0.0.161.exe">下载</a>
+						，非IE浏览器请点击<a style="color:blue" href="software\Adobe Flash Player NPAPI_28.0.0.161.exe">下载</a>安装或者进行相关设置。</div>
+					</td> 
+				</tr>
+				<tr>
+					<td class="table-text">文档名称：</td>
+					<td colspan="3">
+						<input name="file_name" type="text" class="input-txt" readonly="readonly" validate="v.required" valititle="请先选择文件"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">备注：</td>
+					<td colspan="3">
+						<textarea class="writer" id="descrText" name="DESCR" maxlength="660"></textarea>
+					</td>		
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="ecitic-save">	
+		<button class="btn btn-ecitic" id="upload_file_start">保存</button>
+		<button class="btn btn-ecitic" id="upload_file_reset">重置</button>
+		<button class="btn btn-ecitic" data-dismiss="modal">关闭</button>
+	</div>
+	<div class="modal-footer"></div>
+</div>

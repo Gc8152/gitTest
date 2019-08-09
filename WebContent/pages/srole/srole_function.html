@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<script src="bootstrap/js/select2.min.js"></script>
+<script src="js/commons/commons.js"></script>
+<script type="text/javascript" src="pages/srole/srole_function.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+    <div class="ecitic-title">
+		<span>角色基本信息<em></em></span>
+    </div>
+    <table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+		<tr>
+			<td class="ecitic-right">角色编号：</td>
+			<td>
+				<div id="role_no"></div>
+			</td>
+			<td class="ecitic-right">角色名称：</td>
+			<td>
+				<div id="role_name"></div>
+			</td>
+			<td class="ecitic-right">标记状态：</td>
+			<td>
+				<div id="flag"></div>
+			</td>
+		</tr>
+	</table>
+	<div class="ecitic-title">
+		<span>常用功能信息<em></em></span>
+	</div>
+
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="addfunction">新增</button>
+		<button class="btn btn-ecitic" id="delfunction">删除</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="SfunctionTableInfo" class="table table-bordered table-hover"></table>
+	</div>	
+	<!-- 新增常用功能pop框 -->	
+	<!-- <div id="matrixInfoModalPOP" class="modal hide fade" style="top: 50%; margin-top: -250px; width: 780px; height:500px" tabindex="-1"> -->
+	<div id="matrixInfoModalPOP" class="modal hide fade in" style="top: 50%;margin-top: -300px;width: 780px" tabindex="-1" aria-hidden="false">
+	    <div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		  <h3>新增常用功能</h3>
+	   </div>
+	   <div class="modal-body" style="max-height:500px;">
+	       <form id="functionPOPForm">
+	        <div class="row">
+			 <div class="span6 h50">
+				<label class="pl60">菜单编号&nbsp;&nbsp;</label>
+				<input type="text" id="pop_menucode" placeholder="菜单编号" />
+			 </div>
+			 <div class="span6 h50">
+			 	<label class="pl60">菜单名称&nbsp;&nbsp;</label>
+				<input type="text" id="pop_menuname" placeholder="菜单名称" />
+			 </div>
+		   </div>     
+	       </form>
+	      <div class="ecitic-save">
+		    <input class="btn btn-ecitic" value="查询" id="pop_menuSearch" type="button" />
+		    <input class="btn btn-ecitic" value="重置" id="pop_menuReset" type="button" />
+	      </div>
+      		<div class="ecitic-new">
+      		<!-- <div class="ecitic-title-table modal-body ecitic-new"> -->
+				<table id="functionPopList" class="table table-bordered table-hover"></table>
+			</div>			
+	   		 <div class="ecitic-save">
+		    <input class="btn btn-ecitic" value="添加" id="addPOP" type="button" />
+		    <input class="btn btn-ecitic" value="取消" id="cancelBtn" type="button" />
+	      </div>
+		  <!--  <div class="modal-footer" style="position:fixed;height: 20px;width: 747px;top:540px">
+		       <div style="position:fixed;top:500px;right:10px;" class="ecitic-save">
+					<input type="button" class="btn btn-ecitic" value="添加" id="addPOP"/>
+					<input type="button" class="btn btn-ecitic" value="取消" id="cancelBtn"/>
+			   </div>			
+					<input type="button" class="btn btn-ecitic" style="position: relative;margin-right: 310px;" value="取消" id="cancelBtn"/>
+					<input type="button" class="btn btn-ecitic" value="添加" id="addPOP"/>
+		   </div> -->
+	   </div>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="pages/approvalflow/appr/approval_detail.js"></script>
+<script type="text/javascript" src="pages/suser/suserPop.js"></script>
+</head>
+<body>
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>流程实例信息<em></em></span>
+		</div>
+		<form action="" class="form-inline" id="sRole_from">
+			<div class="ecitic-title-table">
+				<table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+					
+					<tr>
+						<td class="ecitic-right">业务数据ID：</td>
+						<td>
+							<input type="text" name="biz_id" id="biz_id" readonly="readonly"/>
+							<input type="hidden"  id="app_person"/>
+							<input type="hidden" name="instance_id" id="instance_id"/>
+						</td>
+						<td class="ecitic-right">流程名称：</td>
+						<td><input type="text" name="af_name" id="af_name" readonly="readonly"/></td>
+						<td class="ecitic-right">流程实例状态</td>
+						<td><input type="text" name="instance_state" id="instance_state" readonly="readonly"/></td>
+					</tr>
+				</table>
+			</div>
+		</form>
+		<div class="ecitic-title">
+			<span>审批记录信息<em></em></span>
+		</div>
+		<div class="ecitic-new">
+			<table id="approvalRecordLists" class="table table-bordered table-hover"></table>
+		</div>
+		<div class="ecitic-save">
+			<input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭" />
+			<input type="button" class="btn btn-ecitic" name="goBackBtn" value="返回" id="goBackBtn" />
+		</div>
+	</div>
+	<!-- 用户模态框 -->
+	<div id="myModal_user" class="modal hide fade" style="top: 50%;margin-top: -285px; width:750px;" tabindex="-1">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭" onclick="closeuserPop()">×</button>
+			<h5 id="myModalLabel">审批人修改</h5>
+		</div>
+		<table style="width:100%;border:0;cellspacing:0;cellpadding:0;padding-right:80px" class="table table-bordered table-bor-pad">
+			<tr>
+				<td class="ecitic-right">变更原因：</td>
+				<td colspan="3">
+					<textarea rows="" cols="" id = "mark" validate="v.required" valititle="请输入变更原因"></textarea>
+				</td>
+			</tr>
+		</table>
+		<form action="" class="form-inline" id="selectParam"> 
+			<div class="row">
+				<div class="span6 h50">
+					<label class="pl60">用户编号：</label>
+					<input type="text" id="pop_userCode" name="user" placeholder="用户编号" />
+				</div>
+				<div class="span6 h50">
+					<label class="pl60">用户姓名：</label>
+					<input type="text" id="pop_username" name="user" placeholder="用户名 " />
+				</div>
+			</div>
+			<div class="row">
+				<div class="span6 h50">
+					<label class="pl60">登录名：</label>
+					<input type="text" id="pop_userLoginName" name="user" placeholder="登录名" />
+				</div>
+				<div class="span6 h50">
+					<label class="pl60">所在部门 ：</label>
+					<input type="text" id="user_pop_org_name" name="org" onfocus="javascript:return false;" placeholder="点击选择部门 " readonly />
+					<input type="hidden" id="user_pop_org_code" name="org" />
+				</div>
+			</div>
+		</form>
+		<div class="ecitic-save">
+			<input class="btn btn-ecitic" value="查询" id="pop_userSearch" type="button" />
+			<input class="btn btn-ecitic" value="重置" id="pop_userReset" type="button" />
+		</div>
+		<div class="modal-body">
+			<table id="pop_userTable" title="双击选择一条数据" ></table>
+		</div>
+		<div class="ecitic-save">
+			<input class="btn btn-ecitic" value="保存" id="update" type="button" />
+			<input class="btn btn-ecitic" value="取消" id="canel" type="button" onclick="closeuserPop()"/>
+		</div>
+	</div>	
+</body>
+</html>

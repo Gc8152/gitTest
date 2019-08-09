@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<title>不符合项详情</title>
+</head>
+<body>
+<div class="tabbable">
+<ul class="nav nav-tabs" style="font-size:13px;">
+						<li class="active">
+						<a href="#nQ_info" data-toggle="tab" > <i class="icon-home"></i> 问题信息</a></li>
+						
+						<li>
+						<a href="#nQ_operate_log" data-toggle="tab" ><i class="icon-file"></i>历史跟踪记录</a></li>
+					</ul>
+<div class="tab-content"  style="overflow-x:hidden ">
+	<div class="tab-pane active" id="nQ_info" style="padding: 0 20px 0 20px">
+
+		<div class="ecitic-title">
+				<span>基本信息<em></em></span>
+				<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+					<colgroup>
+				<col style="width: 20%">
+				<col style="width: 30%">
+				<col style="width: 20%">
+				<col style="width: 30%">
+				</colgroup>
+				<tr>
+					<td class="table-text">项目编号：</td>
+					<td><div align="left" name="PROJECT_NUM" ></div></td>
+					<td class="table-text">项目名称：</td>
+					<td>
+						<input type="hidden" name="PROJECT_ID" />
+						<input type="hidden" name="CONFIG_ID" />
+						<div align="left" name="PROJECT_NAME" ></div>
+					</td>
+				</tr>
+				<tr>
+					<td  class="table-text">发现日期：</td>
+					<td ><div align="left" name="FIND_DATE" ></div> </td>
+					<td  class="table-text">提出人：</td>
+					<td ><input type="hidden" name="PRESENT_USER_ID" />
+					<div align="left" name="PRESENT_USER_NAME" ></div>
+					</td>				
+				</tr>
+				<tr>
+					<td class="table-text">不符合项描述：</td>
+					<td colspan="3"  class="textalignL"><div name="DESCR" style="width: 850px; height: 60px;display:block;"></div> </td>
+				</tr>
+				<tr>
+					<td class="table-text">建议措施：</td>
+					<td colspan="3"  class="textalignL"><div  name="SUGGEST_MEASURES" style="width: 850px; height: 60px;display:block;"></div> </td>
+				</tr>
+				<tr>
+					<td class="table-text">所属阶段：</td>
+					<td><div align="left" name="PHASES_NAME" ></div></td>
+					<td class="table-text">审计配置库：</td>
+					<td><div align="left" name="AUDIT_CONFIG" ></div></td>
+				</tr>
+				<tr>
+					<td  class="table-text">不符合项等级：</td>
+					<td>
+						<div align="left" name="GRADE_NAME" ></div>
+					</td>	
+					<td class="table-text">是否重现：</td>
+					<td><div align="left" name="IS_REAPPEAR_NAME" ></div></td>
+				</tr>
+				<tr>
+					<td class="table-text">责任人：</td>
+					<td>
+						<input type="hidden" name="DUTY_USER_ID"/>
+						<div align="left" name="DUTY_USER_NAME"></div>
+					</td>
+					<td class="table-text">建议解决日期：</td>
+					<td>
+						<div align="left" name="SUGGEST_SOLVE_TIME"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">不符合项状态：</td>
+					<td>
+						<div align="left" name="STATUS_NAME"></div>
+					</td>
+					<td class="table-text"></td>
+					<td>
+					</td>
+				</tr>
+			</table>
+		</div>
+	
+	<div class="ecitic-title">
+				<span>受理信息<em></em></span>
+				<i></i>
+		</div>
+			<div class="ecitic-title-table" id="ecitic-table">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+					<colgroup>
+				<col style="width: 20%">
+				<col style="width: 30%">
+				<col style="width: 20%">
+				<col style="width: 30%">
+			</colgroup>
+					<tr>
+						<td  class="table-text">确认不符合项：</td>
+						<td>
+							<div align="left" name="CONFIRM_INCON_NAME"></div>
+						</td>
+						<td  class="table-text">是否要修正：</td>
+						<td>
+							<div align="left" name="REVISE_NAME"></div>
+						</td>
+					</tr>
+					<tr>
+						<td  class="table-text">处理人：</td>
+						<td>
+							
+							<div align="left" name="DISPOSE_USER_NAME"></div>
+							
+						</td>	
+						<td class="table-text">计划解决时间：</td>
+						<td>
+						<div align="left" name="DISPOSE_PLAN_TIME"></div>
+			
+						</td>
+					<tr>
+					<tr>
+						<td class="table-text">原因分析：</td>
+						<td colspan="3">
+								<div align="left" name="PROBLEM_ANALYSE" style="width: 850px; height: 60px;display:block;"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">解决措施：</td>
+						<td colspan="3">
+								<div align="left" name="SOLVE_MEASURES" style="width: 850px; height: 60px;display:block;"></div>
+						</td>
+					</tr>
+				</table>
+			</div>
+	<div class="ecitic-title">
+				<span>处理信息<em></em></span>
+				<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+					<colgroup>
+				<col style="width: 20%">
+				<col style="width: 30%">
+				<col style="width: 20%">
+				<col style="width: 30%">
+			</colgroup>
+					<tr>
+						<td class="table-text">实际完成时间：</td>
+						<td>
+							<div align="left" name="REALITY_FINISH_TIME"></div>
+						</td>
+						<td class="table-text"></td>
+						<td>
+							<div align="left"></div>
+						</td>
+					</tr>
+			
+			</table>
+		</div>
+	<div class="ecitic-title">
+				<span>验证信息<em></em></span>
+				<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+	                	
+	                	<colgroup>
+				<col style="width: 20%">
+				<col style="width: 30%">
+				<col style="width: 20%">
+				<col style="width: 30%">
+			</colgroup>
+	                	<tr>
+						<td class="table-text">验证人：</td>
+						<td>
+							<div align="left" name="VALIDATE_MAN_NAME"></div>
+						</td>
+						<td class="table-text">验证时间：</td>
+						<td>
+							<div align="left" name="VALIDATE_TIME"></div>
+						</td>
+					</tr>
+			</table>
+		</div>
+	<div class="ecitic-save" >
+			<button class="btn btn-ecitic" id="noconfigManageQuery_queryinfo_back">关闭</button>
+		</div>	
+	</div>
+     <div class="tab-pane" id="nQ_operate_log" style="padding: 0 20px 0 20px">
+		<div class="ecitic-title titil_margintop">
+			<span>历史跟踪记录<em></em></span>
+				<i></i>
+		</div>
+		<div class="ecitic-new">
+			<table id="noconfigManageQueryInfo_table" class="table table-bordered table-hover"></table>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+<script type="text/javascript" src="dev_project/configManage/noconfigManageQuery/noconfigManageQuery_queryInfo.js"></script>
+</html>

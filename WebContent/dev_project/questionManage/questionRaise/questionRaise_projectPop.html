@@ -1,0 +1,29 @@
+<!-- 项目模态框 -->
+<div id="qr_project_Modal" class="modal hide fade" tabindex="-1" z-index="1060" style="width: 50%;">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="rq_project_modalLabel_">项目查询页面</h5>
+	</div>
+	<form class="form-inline" id="qr_project_Form">
+	<div class="row">
+			<div class="span6 h30">
+				<label class="pl60">项目名称：</label>
+				<input type="text" id="qr_project_name" name="PROJECT_NAME" />
+			</div>
+			<div class="span6 h30">
+				<label class="pl60">所属应用：</label>
+				<input type="text" id="qr_system_name" name="SYSTEM_NAME" />
+			</div>
+		</div>
+	</form>
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="查询" id="qr_projectSearch" type="button" />
+		<input class="btn btn-ecitic" value="重置" id="qr_projectReset" type="button" />
+	</div>
+	
+	<div class="ecitic-title-table modal-body ecitic-new">
+		<table id="qr_projectTable"  title="双击选择一条数据"></table>
+	</div>
+<div class="modal-footer"></div>
+</div>
+<script src="dev_project/questionManage/questionRaise/questionRaise_projectPop.js"></script>

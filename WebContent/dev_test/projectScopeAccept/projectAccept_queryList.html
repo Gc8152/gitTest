@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>受理项目范围</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="acceptForm">
+				<table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">项目编号：</td>
+						<td>
+							<input type="text"  name="PROJECT_NUM"/>
+						</td>
+						<td class="ecitic-right">项目名称：</td>
+						<td>
+							<input type="text"  name="PROJECT_NAME" />
+						</td>
+						<td class="ecitic-right">版本名称：</td>
+						<td>
+							<input type="text"  name="VERSIONS_NAME" />
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">应用名称：</td>
+						<td>
+							<input type="text"  name="SYSTEM_NAME"/>
+						</td>
+						<td class="ecitic-right">受理来源：</td>
+						<td>
+							<select  name="ACCEPT_SOURCE" diccode="TM_DIC_ACCEPT_SOURCE" class="requirement-ele-width" style="width: 100%"></select>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" name="queryPrj" id="queryPrj" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" name="resetPrj" value="重置"/></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" name="prjAccept">受理</button>
+		<button class="btn btn-ecitic" name="prjDetail">查看受理详情</button>
+	</div>
+	<div class="ecitic-new">
+		<table tb="prjAcceptTable" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+</body>
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_test/projectScopeAccept/projectAccept_queryList.js"></script>
+</html>
+
+
+
+

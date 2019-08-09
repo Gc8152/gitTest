@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link  href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+<body>
+	<div class="widget-title1">
+		<div class="roleTitle">
+			<span class="role-this">当前角色：</span>
+			<span id="nowSRole"></span>
+		</div>
+	</div>
+	<div class="container container1">     
+		<ul class="nav nav-tabs">
+			<li class="active"><a data-toggle="tab" href="#roleMenu">角色菜单配置</a></li>
+			<li><a data-toggle="tab" href="#roleOpt" >角色操作配置</a></li>
+			<li><a data-toggle="tab" href="#roleData" >角色数据权限</a></li>
+			<!-- <li><a data-toggle="tab" href="#roleProperty" >角色字段权限</a></li> -->
+		</ul>
+		<div class="tab-content">
+			<div id="roleMenu" class="tab-pane active">
+				<div class="row-fluid">
+					<div class="span4">
+						<div class="widget-box">
+							<div class="widget-content nopadding">
+								<div class="control-group" style="display:none"></div>
+								<div class="control-group control-group600">
+									<div class="controls">
+										<ul id="treeRoleMenu" class="ztree"></ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="span8">
+						<div class="widget-box">		            				
+							<div class="main_btn">
+								<button class="btn btn-ecitic" type="button" onclick="saveSRolem();" id="saveSRole">保存</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="roleOpt" class="tab-pane">
+				<div class="row-fluid">
+					<div class="span4">
+						<div class="widget-box">
+							<div class="widget-content nopadding">
+								<div class="control-group control-group600">
+									<div class="controls">
+										<ul id="treeOpr" class="ztree"></ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="span8">
+						<div class="widget-box">
+							<div class="main_btn">
+								<button class="btn btn-ecitic" type="button" onclick="saveSRoleOpr();" id="saveSRoleO">保存</button>
+							</div>
+							<table id="buttonTable"></table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="roleData" class="tab-pane">
+				<div class="row-fluid">
+					<div class="span4">
+						<div class="widget-box">
+							<div class="widget-content nopadding">
+								<div class="control-group control-group600">
+									<div class="controls">
+										<ul id="treeData" class="ztree"></ul>
+									</div>
+								</div>
+							</div>
+						</div>	
+            		</div>
+            		<div class="span8">
+            			<div class="widget-box">
+            				<div class="main_btn">
+								<button class="btn btn-ecitic" type="button" onclick="saveSRoleText();" id="saveSRoleO">保存</button>
+							</div>
+							<table id="dataButton"></table>
+						</div>           									
+            		</div>
+        		</div>
+        	</div>
+			<div id="roleProperty" class="tab-pane">
+		        <div class="row-fluid">
+        			<div class="span4">
+		     			<div class="widget-box">							
+							<div class="nopadding">
+								<div class="control-group control-group600">
+									<div class="controls">
+										<ul id="treeFiled" class="ztree"></ul>
+									</div>
+								</div>
+							</div>
+						</div>	
+            		</div>
+		            <div class="span8">
+						<div class="widget-box">
+							<div class="main_btn">
+								<button class="btn btn-ecitic" type="button" onclick="saveSRoleData();" id="saveSRoleO">保存</button>
+							</div>		            				      				
+							<table id="propertyTable"></table>
+						</div>           										
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script src="pages/srole/srole_author.js"></script>

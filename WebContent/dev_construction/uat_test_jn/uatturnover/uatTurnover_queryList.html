@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>UAT移交列表（江南）</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire">
+		<div class="ecitic-table">
+			<form id="uatTurnover">
+				<table id="table_select" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">需求任务编号：</td>
+						<td><input type="text" name="REQ_TASK_CODE"/></td>
+						<td class="ecitic-right">需求任务名称：</td>
+						<td><input type="text" name="REQ_TASK_NAME"/></td>
+						<td class="ecitic-right">状态：</td>
+						<td>
+							<select name="STATUS" diccode="P_DIC_SUBMIT_STATUS" ></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">测试版本号：</td>
+						<td><input type="text" name="TEST_VERSION_ID"/></td>
+						<td class="ecitic-right">版本发布日期：</td>
+						<td><input type="text" name="VERSION_PUSH_DATA" onclick="WdatePicker({})" 
+						    placeholder="请选择" readonly="readonly"/>
+					    </td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="query">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="add_Uat">添加UAT测试</button>
+		<button class="btn btn-ecitic" id="update_Uat">修改</button>
+		<button class="btn btn-ecitic" id="delete_Uat">删除</button>
+		<button class="btn btn-ecitic" id="view_Uat">查看详情</button>
+		<button class="btn btn-ecitic" id="submit_Uat">提交</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="uatTable" class="table table-bordered table-hover"></table>
+	</div>
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/uat_test_jn/uatturnover/uatTurnover_queryList.js"></script>
+</html>

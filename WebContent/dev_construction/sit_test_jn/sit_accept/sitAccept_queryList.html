@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SIT测试受理列表</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire">
+		<div class="ecitic-table">
+			<form id="sitAccept">
+				<table id="table_select" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+						<tr>
+						<td class="ecitic-right">需求点编号：</td>
+						<td><input type="text" name="SUB_REQ_CODE"/></td>
+						<td class="ecitic-right">需求点名称：</td>
+						<td><input type="text" name="SUB_REQ_NAME"/></td>
+						<td class="ecitic-right">应用名称：</td>
+						<td><input type="text" name="SYSTEM_NAME"/></td>
+						
+					</tr>
+					<tr>
+					    <td class="ecitic-right">版本名称：</td>
+						<td><input type="text" name="VERSIONS_NAME"/></td>
+ 						<td class="ecitic-right">测试责任人：</td> 
+ 						<td><input type="text" name="TEST_EXECUTOR_NAME"/></td> 
+						<td class="ecitic-right">移交状态：</td>
+						<td>
+							<select  id="STATUS_NAME" name="STATUS_NAME" diccode="G_DIC_SIT_SUBMIT_STATE" style="width:100%;"></select>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div id="opModal_approve" class="modal hide fade" style="top: 50%;margin-top: -300px;width: 780px" tabindex="-1" data-backdrop="static">
+			<div class="modal-header">
+				<!-- <button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button> -->
+				<h5 id="myModalLabel">打回</h5>
+			</div>
+			<form id="eduinfo_form" action="" class="form-inline">
+			<div class="ecitic-title-table">
+				<table style="margin-left:8px;width:98%; " class="table table-bordered tablr-input-text">
+					<tr>
+						<td class="table-text">打回说明</td>
+						<td>
+							<textarea class="writer" placeHolder="请说明测试打回意见。"  id="acceot_describe" name="ACCEOT_DESCRIBE"></textarea>
+						</td>
+					</tr>
+					
+				</table>
+			</div>
+			</form>
+			<div class="ecitic-save">
+				<input id="black_save" type="button" class="btn btn-ecitic" value="保存" />
+				<button type="button" class="btn btn-ecitic" data-dismiss="modal" >关闭</button>
+			</div>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="query">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="edit_Sit">SIT测试受理</button>
+		<button class="btn btn-ecitic" id="balck_sit">SIT打回</button>
+		<button class="btn btn-ecitic" id="view_Sit">查看详情</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="sitAccept_Table" class="table table-bordered table-hover table-text-show" style="min-width:1200px;"></table>
+	</div>
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/sit_test_jn/sit_accept/sitAccept_queryList.js"></script>
+</html>

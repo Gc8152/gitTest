@@ -1,0 +1,63 @@
+
+<!-- 版本模态框 -->
+<div id="myModal_version" class="modal hide fade" tabindex="-1" z-index="1060">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="myModalLabel">版本查询页面</h5>
+	</div>
+	<!-- <form action="" class="form-inline" id="pop_ver_condition">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+			<tr>
+				<td class="ecitic-right">年度：</td>
+				<td>
+				<input type="text" name="P_versions_date" placeholder="点击选择年度" onclick="WdatePicker({dateFmt:'yyyy',minDate:'2000',maxDate:'2050'})"  readOnly="readonly"/>
+				</td>
+				<td class="ecitic-right">版本类型：</td>
+				<td>
+					<select name="P_versions_type" diccode="SYS_DIC_VERSION_PROJECT"></select>
+				</td>
+			</tr>
+			<tr>
+				<td class="ecitic-right">版本名称：</td>
+				<td><input type="text" name="P_versions_name"/></td>
+			</tr>			
+		</table>
+	</form> -->
+	
+	<form action="" class="form-inline" id="pop_ver_condition">
+		<div class="row">
+			<div class="span6 h30">
+				<label class="pl60">年度：</label>
+				<input type="text" name="P_versions_date" onclick="WdatePicker({dateFmt:'yyyy',minDate:'2000',maxDate:'2050'})"  readOnly="readonly"/>
+			</div>
+			<div class="span6 h30">
+				<label class="pl60">版本类型：</label>
+				<select style="width:188px!important;" name="P_versions_type" diccode="SYS_DIC_VERSION_PROJECT"></select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span6 h30">
+				<label class="pl60">版本名称：</label>
+				<input type="text" name="P_versions_name"/>
+			</div>
+
+		</div>
+	</form>
+	
+	
+	
+	
+	
+	
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="查询" id="pop_versionSearch" type="button" />
+		<input class="btn btn-ecitic" value="重置" id="pop_versionReset" type="button" />
+	</div>
+	<div class="ecitic-title-table modal-body ecitic-new">
+		<div class="tz_btn" style="display:none;">
+			<button class="btn btn-ecitic" type="button" id="versionPOPSureSelected">确认选择</button>
+		</div> 
+		<table id="pop_versionTable" class="table table-bordered table-hover table-center table-th tablr-input-text"></table>
+	</div>
+	<div class="modal-footer"></div>
+</div>

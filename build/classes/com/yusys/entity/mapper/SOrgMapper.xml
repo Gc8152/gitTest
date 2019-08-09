@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.SOrgDao">
+	<!-- 创建机构 -->
+	<insert id="insertNewOrg" parameterType="java.util.Map">
+		insert into s_org(org_code,suporg_code,org_name,launch_date,org_manager,
+		order_no,org_address,create_no,create_time,state,update_time,org_vp)
+		values(#{org_code},#{suporg_code},#{org_name},#{launch_date},#{org_manager_code},
+		#{order_no},#{org_address},#{create_no},#{create_time},#{state},#{update_time},#{org_vp})
+	</insert>
+	<!-- 树形列表查询语句  -->
+	<select id="queryOrgTreeList" parameterType="java.lang.String" resultType="java.util.Map">
+        select so.org_code id,so.suporg_code pId,so.org_name name,nvl(soo.isparent,'false') isparent from s_org so
+		left join (select distinct suporg_code,'true' isparent from s_org where suporg_code in (select org_code id from s_org where state='00' and suporg_code=#{org_no})) soo on so.org_code = soo.suporg_code
+		where state='00'and so.suporg_code=#{org_no} order by id asc
+	</select>
+	<!-- 上一级树形列表查询语句  -->
+	<select id="queryOrgTreeDeptList" parameterType="java.lang.String" resultType="java.util.Map">
+        select s1.org_code id,s1.suporg_code pId,s1.org_name name from s_org s1 where s1.org_code in (select s2.suporg_code from s_org s2) and
+		state='00' order by org_code asc
+	</select>
+	<!-- 末级树形列表查询语句  -->
+	<select id="queryOrgTreeOfficesList" parameterType="java.lang.String" resultType="java.util.Map">
+        select org_code id,suporg_code pId,org_name name from s_org where suporg_code=#{suporg_code} and state='00' order by org_code asc
+	</select>
+	<!-- 末级树形列表查询语句  -->
+	<select id="queryOrgTreePostList" parameterType="java.lang.String" resultType="java.util.Map">
+        select p_code id,org_code pId,p_name name from s_org_position where p_flag='00' and org_code=#{org_code} order by org_code asc
+	</select>
+	<!-- 查询用户是否为部门经理  -->
+	<select id="queryUserIsOrgManager" parameterType="java.lang.String" resultType="java.util.Map">
+		select * from s_org so where so.org_manager=#{userid} 
+	</select>
+	<!-- 删除用户的部门经理角色 任务创建者角色-->
+	<delete id = "deleteUserManagerRole" parameterType="java.util.Map">  
+	  delete from s_roleuser where user_no=#{userid}
+	  <if test="null != org_code and org_code != ''">
+			and org_code  =  #{org_code}
+	  </if>
+	  <if test="roles!=null and roles.length!=0">
+			and role_no in 
+			<foreach item="roles" index="index" collection="roles" open="(" separator="," close=")">
+					#{roles}
+			</foreach>
+		</if>
+	</delete>
+	<!-- 单条查询语句  -->
+	<select id="findOrgByOrgNo" parameterType="java.lang.String" resultType="com.yusys.entity.SOrg">
+		select so.org_code,
+	    so.suporg_code,
+	    (select o.org_name from  s_org o where so.suporg_code = o.org_code) as suporg_name,
+	    so.org_name,so.launch_date,
+	    (select u.user_name from s_user u where u.user_no=so.org_manager) as org_manager_name,
+	    so.org_manager as org_manager_code,so.org_area,so.business_type,so.order_no,so.org_address,
+	    so.org_vp,
+	    (select u.user_name from s_user u where u.user_no=so.org_vp) org_vpname,
+	    so.enable_flag,
+	    so.org_level
+	    from s_org so 
+	    where so.org_code = #{org_code} and so.state='00'
+	</select>
+	
+	<!-- 修改数据  -->
+	<update id="updateOrg" parameterType="java.util.Map">
+		update s_org set  
+		org_code=#{org_code},org_name=#{org_name},suporg_code=#{suporg_code},
+		launch_date=#{launch_date},org_manager=#{org_manager_code},
+		order_no=#{order_no},org_address=#{org_address}
+		<if test="null != enable_flag and enable_flag != ''">
+			,enable_flag=#{enable_flag}
+		</if>
+		<if test="null != org_vp and org_vp != ''">
+			,org_vp=#{org_vp}
+		</if>
+		<if test="null != org_level and org_level != ''">
+			,org_level=#{org_level}
+		</if>
+		,update_no=#{update_no},update_time=#{update_time}
+		where org_code=#{old_org_code} and state='00'
+	</update>
+	
+	<!-- 删除(修改标记位) -->
+	<update id="deleteOrgInfo" parameterType="java.util.Map">
+		update s_org set state=#{state},update_no=#{update_no},update_time=#{update_time} where org_code=#{org_code} and state='00'
+	</update>
+	<!-- 启用或者停用部门 -->
+	<update id="openOrDeptEnable" parameterType="java.util.Map">
+		update s_org set enable_flag=#{enable_flag} 
+		where org_code in(select org_code  from s_org t start with t.org_code=#{org_code} connect by prior t.org_code = t.suporg_code)
+	</update>
+	
+	<!-- 修改系统启用状态 -->
+	<update id="updateSysEnableFlag" parameterType="java.util.Map">
+		update s_org set enable_flag=#{enable_flag},update_no=#{update_no},update_time=#{update_time} where org_code=#{org_code} and state='00'
+	</update>
+	
+	<!-- 根据用户ID查询机构信息 -->
+	<select id="findAllOrgById"    parameterType="java.util.Map"	resultType="java.util.Map">
+		select s.*,o.org_name,o.org_manager,o.org_code,o.enable_flag from s_user s
+		left join s_org o on s.user_no = o.org_manager
+		where 1=1
+			<if test="null != user_no and user_no != ''">
+					and s.user_no =  #{user_no}
+			</if>
+			<if test="null != org_code and org_code != ''">
+					and o.org_code  =  #{org_code}
+			</if>
+	</select>	
+			
+	<!-- 查询所有机构 -->
+	<select id="findAllOrg"    parameterType="java.util.Map"	resultType="java.util.Map">
+			  select o.org_code,o.org_name,u.user_name  org_manager,o.business_type,o.state,o.update_time from  s_org	o 
+		   		   left join s_user u  on   u.user_no = o.org_manager
+		      where 1=1
+			<if test="null != org_name and org_name != ''">
+					and o.org_name  like  #{org_name}
+			</if>
+			<if test="null != org_manager and org_manager != ''">
+					and u.user_name  like  #{org_manager}
+			</if>
+			<if test="null != org_code and org_code != ''">
+					and o.org_code  =  #{org_code}
+			</if>
+			<if test="null != state and state != ''">
+					and o.state = #{state}
+			</if>
+	</select>
+	<!-- 查询某个机构是否包含另外一个机构 -->
+	<select id="checkChildOrg"    parameterType="java.util.Map"	resultType="java.util.Map">
+		select * from s_org so where so.org_code=#{corg_code} and so.org_code in(
+      		select org_code from s_org t start with t.org_code in 
+      		(select org_code from s_org t where (t.org_code=#{porg_code} and t.org_manager=#{userid}) or t.org_vp=#{userid})
+      		connect by prior t.org_code=t.suporg_code
+   		 )
+	</select>
+	
+	<!-- 写入机构下岗位 -->
+	<insert id="insertOrgPosition" parameterType="java.util.Map">
+       insert into s_org_position(org_code,p_code,p_name,p_memo,p_flag,opt_person,opt_time)
+       values(#{org_code},#{p_code},#{p_name},#{p_memo},#{p_flag},#{opt_person},#{opt_time})
+    </insert>
+    <!-- 标记删除岗位 -->
+    <update id="updateOrgPositionFlag" parameterType="java.util.Map">
+		update s_org_position set p_flag=#{p_flag},opt_person=#{opt_person},opt_time=#{opt_time}
+		where org_code=#{org_code} and p_code=#{p_code}
+	</update>
+	<!-- 修改机构下岗位-->
+    <update id="updateOrgPosition" parameterType="java.util.Map">
+		update s_org_position set 		
+		p_code=#{p_code},p_name=#{p_name},p_memo=#{p_memo},
+		opt_person=#{opt_person},opt_time=#{opt_time}
+		where org_code=#{org_code} and p_code=#{old_p_code}
+	</update>
+	<!-- 查询一条岗位信息-->
+	<select id="queryOneOrgPosition" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from s_org_position where org_code=#{org_code} and p_code=#{p_code}
+    </select>
+    <!-- 查询机构下岗位-->
+    <select id="queryOrgPosition" parameterType="java.lang.String" resultType="java.util.Map">
+		select * from s_org_position where p_flag='00' and org_code=#{org_code}
+    </select>
+	<!-- 查询机构下用户-->
+    <select id="queryUserPosition" parameterType="java.lang.String" resultType="java.util.Map">
+		select su.user_no,su.user_name,su.state,
+         (select sd.item_name
+            from s_dic_item sd
+           where sd.item_code = su.state
+             and sd.dic_code = 'S_DIC_USERSTATE') state_name,
+         	su.user_mail,
+         	su.nick_name
+   		 from s_user su
+  		 where su.org_no = #{org_code}
+    </select>    
+    
+</mapper>

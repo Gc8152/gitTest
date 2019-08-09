@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>环境资源管理</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_resourceManage/ERmanage_manager/ERmanage_querylist.js"></script>
+<script src="js/commons/commons.js"></script>
+<link href="dev_resourceManage/rmcss.css" rel="stylesheet">
+<script src="dev_resourceManage/rmjs.js"></script>
+</head>
+<body>
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form action="" class="form-inline" id="queryParam">
+				<table class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">资源编号：</td>
+						<td><input type="text" name="" id="" /></td>
+						<td class="ecitic-right">环境类别：</td>
+						<td>
+							<select>
+		        				<option selected="selected">开发环境</option>
+		        				<option>测试环境</option>
+		        			</select>
+		        		</td>
+		        		<td class="ecitic-right">资源编号：</td>
+						<td><input type="text" name="" id="" /></td>					
+					</tr>
+					<tr>
+						<td class="ecitic-right">机柜号：</td>
+						<td><input type="text" name="" id="" /></td>
+						<td class="ecitic-right">开始位置：</td>
+						<td><input type="text" name="" id="" /></td>
+		        		<td class="ecitic-right">结束位置：</td>
+						<td><input type="text" name="" id="" /></td>					
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="queryERManager" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" id="reset" value="重置"/></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<!-- <button class="btn btn-ecitic" id="seniorQuery"><span class="seniorQuery"></span>高级查询</button> -->
+		<button class="btn btn-ecitic" id="addERManager">新增</button>
+		<button class="btn btn-ecitic" id="updateERManager">变更</button>
+		<button class="btn btn-ecitic" id="">删除</button>
+		<button class="btn btn-ecitic" id="">查看</button>
+		<button class="btn btn-ecitic ilshA" id="moreIlsh" onclick="moreIlsh()"></button>
+	</div>
+	<div class="ecitic-new">
+		<table id="managerERTable" class="table table-bordered table-hover">
+			<tbody>
+				<tr class="tableFirTR">
+					<td class="newStyle">
+						<input name="chkAll" id="chkAll" title="全选" onClick="ChkAllClick('chkSon','chkAll')" type="checkbox" />
+					</td>
+					<td class="newStyle">
+						<span>序号</span>
+					</td>
+					<td class="newStyle">
+						<span>资源编号</span>
+					</td>
+					<td class="newStyle">
+						<span>环境类别</span>
+					</td>
+					<td class="newStyle">
+						<span>机柜号</span>
+					</td>
+					<td class="newStyle">
+						<span>开始位置</span>
+					</td>
+					<td class="newStyle">
+						<span>结束位置</span>
+					</td>
+					<td class="newStyle">
+						<span>服务器数量</span>
+					</td>
+					<td class="newStyle">
+						<span>管理负责人</span>
+					</td>
+					
+				</tr>
+				<tr class="tit">
+					<td rowspan="" id="combine">
+						<input name="chkSon" id="chkSon1" type="checkbox"  value='1' onclick="ChkSonClick('chkSon','chkAll')" />
+					</td>
+					
+					<td rowspan="" id="combine2">
+						<span>1</span>
+					</td>
+					<td style="width:250px;">
+					  <span>HJZY-0001</span>
+					</td>
+					<td>
+					  <div class="tit">
+						  <span>开发环境</span>
+					  </div>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td >
+						<span></span>
+					</td>
+					
+				</tr>
+				<tr class="tit" id="">
+					<td rowspan="" id="combine">
+						<input name="chkSon" id="chkSon1" type="checkbox"  value='1' onclick="ChkSonClick('chkSon','chkAll')" />
+					</td>
+					
+					<td rowspan="" id="combine2">
+						<span>1</span>
+					</td>
+					<td style="width:250px;">
+					  <span>HJZY-0001</span>
+					</td>
+					<td>
+					  <div class="tit">
+						  <span>开发环境</span>
+					  </div>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td >
+						<span></span>
+					</td>
+					<td >
+						<span></span>
+					</td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

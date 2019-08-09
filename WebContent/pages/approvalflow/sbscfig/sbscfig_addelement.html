@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>新增或修改业务要素</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+<script src="pages/approvalflow/sbscfig/sbscfig_addelement.js"></script>
+</head>
+<body>
+	<div id="addAFFactTitle" class="ecitic-title">
+		<span>新增业务要素<em></em></span>
+    </div>
+   	<div id="updateAFFactTitle" class="ecitic-title">
+		<span>修改业务要素<em></em></span>
+    </div>
+	<form id="addOrUpdatepFactForm" method="post">
+		<table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+			<tr>
+				<td class="ecitic-right">业务要素编号：</td>
+				<td>
+					<input type="text" name="b_code" id="b_code" validate="v.50_mzhi"/>
+					<input type="hidden"  class="form-control" name="v_b_code" id="v_b_code"/>
+				</td>
+				<td class="ecitic-right">状态：</td>
+				<td>
+					<select id="b_state" name="b_state" validate="v.required" valititle="请选择状态"></select>
+				</td>
+
+			</tr>
+			<tr>
+				<td class="ecitic-right">业务要素类别：</td>
+				<td>
+					<div class="ecitic-radio-all" id="b_category">
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="00" checked="checked" id="node_b_category" name="b_category"/></span>
+							<label>节点要素</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span style="margin-left:14px;"><input type="radio" value="01" id="route_b_category" name="b_category"/></span>
+							<label>路由要素</label>
+						</div>
+					</div>
+				</td>
+				<td class="ecitic-right">业务系统：</td>
+				<td>
+					<select id="system_code" name="system_code" validate="v.required" valititle="请选择业务系统"></select>
+					<input type="hidden"  class="form-control" name="v_system_code" id="v_system_code"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="ecitic-right">业务要素名称：</td>
+				<td>
+					<input type="text" name="b_name" id="b_name" validate="v.150_mzhi"/>
+				</td>
+				<td class="ecitic-right">业务要素类型：</td>
+				<td>
+					<select id="b_type" name="b_type" validate="v.required" valititle="请选择业务要素类型"></select>
+				</td>
+			</tr>
+			<tr>
+				<td class="ecitic-right">备注：</td>
+				<td colspan="3">
+					<textarea rows="4" maxlength="50" validate="v.1000_zhi" name="memo" id="memo"></textarea>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="保存" id="saveElement" />
+		<input type="button" class="btn btn-ecitic" value="保存" id="updateElement" />
+		<input type="button" class="btn btn-ecitic" value="返回" id="goBackSbscfigList" />
+	</div>
+</body>
+</html>

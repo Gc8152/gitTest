@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>测试地址列表</title>
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">	
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+		<form id="SystemAddrQuerytForm">
+			<table id="SystemAddrQuery" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">应用简称:</td>
+					<td><input type="text" id="system_short" name="system_short"/></td>
+					<td class="ecitic-right">应用名称:</td>
+					<td><input type="text" id="system_name" name="system_name"></td>
+					<td class="ecitic-right">应用负责人：</td>
+					<td><input type="text" id="project_man_name" name="project_man_name" /></td>
+				</tr>	
+				<tr>
+					<td class="ecitic-right">环境类型:</td>
+					<td>					
+					    <select name="addr_type" id="addr_type" style="width:100%;"></select>
+					</td>
+					<td class="ecitic-right">是否已配置:</td>
+					<td>					
+					    <select name="is_config" id="is_config" style="width:100%;"></select>
+					</td>
+				</tr>			
+			</table>
+		</form>	
+	</div>
+	<ul class="ecitic-btn-all">
+		<li><button class="btn btn-ecitic" id="querySystemAddr">查询</button></li>
+		<li><button class="btn btn-ecitic" id="resetSystemAddr">重置</button></li>
+	</ul>
+</div>
+<div class="main_iframe_con">
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="testAddr_config" >测试地址配置</button>
+		<!-- <button class="btn-gray" type="button" id="synchronizationUser">同步OA用户</button> -->
+	</div>
+	<div class="ecitic-new">
+		<table id="SystemAddrTableInfo" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_application/systemAddrConfig/systemAddress_queryList.js"></script>
+</html>
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/public.css"/>
+<script src="pages/suser/suserPop.js"></script>
+</head>
+<style>
+<!--
+/* .select2-container{
+margin-left:4px;
+margin-right:1px;
+} */
+-->
+</style>
+<body>
+<div class="main_iframe_con">
+	<form id="messrecordlist_form" action=""  class="form-inline">
+		<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0"
+							class="table table-bordered table-bor-pad">
+							<tr>
+								<td class="ecitic-right">发送开始时间：</td>
+								<td>
+									<input type="text" placeholder="点击选择" readonly="readonly" name="start_sendtime" id="SD_SSENDTIME" onclick="initDate()" readyonly/>
+								</td>
+								<td class="ecitic-right">发送结束时间：</td>
+								<td>
+									<input type="text" placeholder="点击选择" readonly="readonly" name="end_sendtime" id="SD_ESENDTIME"   onclick="initDate()" readyonly/>
+								</td>
+								<td class="ecitic-right">发送类型：</td>
+								<td><select id="tasktype" name="transmit_mode" id="SD_TRANSMIT_MODE"></select></td>
+							</tr>
+							<tr>
+								<td class="ecitic-right">接收人：</td>
+								<td>
+									<input type="hidden" name="receiver_code" id="SD_RECEIVER_CODE"/>
+									<input type="text" id="RECEIVER_NAME"/>
+								</td>
+							</tr>
+						</table>
+			<ul class="ecitic-btn-all">
+				<li><button type="button" id="queryMessRecordinfo" class="btn btn-ecitic">查询</button></li>
+				<li><button type="button" id="messRecordReset" class="btn btn-ecitic">重置</button></li>
+			</ul>
+		</div>
+	</form>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" type="button" id="viewMRecordDetail" >查看详情</button>
+	</div>
+	<table id="MRecordTableInfo"></table>
+	<div id="userPop"></div>
+	</div>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="supervision/messrecord/query_messrecordList.js"></script>
+</body>
+</html>

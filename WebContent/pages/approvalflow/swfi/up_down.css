@@ -1,0 +1,18 @@
+/*查看页面字体向左靠*/
+.textalignL{text-align:left!important;}
+/*上移-下移-置顶-置底*/
+.form-move-all {display:table;margin:-1px auto 0 auto;overflow:hidden;}
+	.form-move {height:18px;padding:0;margin:0;overflow:hidden;}
+		.form-move li {float:left;width:18px;height:18px;line-height:18px;display:inline;margin:0 3px;background-image:url(../../../images/icon_yanfa.png);background-repeat: no-repeat;}
+			/*上移*/
+			.form-move-up {background-position:-79px -375px;}
+				.form-move-up:hover {background-position:-101px -375px;}
+			/*下移*/
+			.form-move-down {background-position:-123px -375px;}
+				.form-move-down:hover {background-position:-145px -375px;}
+			/*置顶*/
+			.form-move-top {background-position:-167px -375px;}
+				.form-move-top:hover {background-position:-189px -375px;}
+			/*置底*/
+			.form-move-bottom {background-position:-211px -375px;}
+				.form-move-bottom:hover {background-position:-233px -375px;}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+</head>
+<body>
+<div class="ecitic-inquire ecitic-inquire-sec lessSearch"  id="ecitic-inquire">
+	<div class="ecitic-table" id="ecitic-table">
+		<form id="CaseAttrQuerytForm">
+			<table id="CaseAttrQuery" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">属性ID:</td>
+					<td><input type="text" id="ATTR_ID" name="ATTR_ID"/></td>
+					<td class="ecitic-right">属性名称:</td>
+					<td><input id="ATTR_NAME" class="citic-sele-ast" id="ATTR_NAME" name="ATTR_NAME"></td>
+					<td class="ecitic-right">属性类型:</td>
+					<td>					
+					    <select name="ATTR_TYPE" id="ATTR_TYPE" diccode="TM_DIC_ATTR_TYPE" ></select>
+					</td>
+				</tr>				
+			</table>
+		</form>	
+	</div>
+	<ul class="ecitic-btn-all">
+		<li><button class="btn btn-ecitic" id="queryCaseAttr">查询</button></li>
+		<li><button class="btn btn-ecitic" id="resetCaseAttr">重置</button></li>
+	</ul>
+</div>
+<div class="main_iframe_con">
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="caseAttr_add" >新增属性</button>
+		<button class="btn btn-ecitic" id="caseAttr_update" >修改属性</button>
+		<button class="btn btn-ecitic" id="caseAttr_delete" >删除属性</button>
+		<button class="btn btn-ecitic" id="caseAttr_show" >查看属性</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="CaseAttrTableInfo" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_test/systemManage/caseAttrCust/caseAttrCust_queryList.js"></script>
+</html>
+

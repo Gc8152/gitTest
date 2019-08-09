@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>项目群全景视图</title>
+<link rel="stylesheet" type="text/css" href="dev_planwork/wbs/wbsPlan_public.css"/>
+<!-- <link rel="stylesheet" type="text/css" href="css/index_insidePage.css" />-->
+<link rel="stylesheet" type="text/css" href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script type="text/javascript" src="ztree3.5.22/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="ztree3.5.22/js/jquery.ztree.excheck.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>	
+</head>
+<body>
+<div class="tableTitleArea">
+	<b><span>项目群编号：</span><span id="VERSIONS_ID"></span></b>
+	<i></i>
+	<span>项目群名称：</span><span id="VERSIONS_NAME"></span>
+</div>
+<div class="main_iframeFormW">	
+
+	<ul id="" class="nav nav-tabs" style="font-size:14px;">
+	    <li id="programQueryInfo_li_one" class="active"><a href="#tab1_programQueryInfo" data-toggle="tab"><i class="fa fa-crosshairs"></i> 项目群范围</a></li>
+	    <li id="programQueryInfo_li_two"><a href="#tab2_programQueryInfo" data-toggle="tab"><i class="fa fa-flag"></i> 项目群里程碑信息</a></li>
+	    <li id="programQueryInfo_li_three"><a href="#tab3_programQueryInfo" data-toggle="tab"><i class="fa fa-exclamation-triangle"></i> 风险问题</a></li>
+	    <li id="programQueryInfo_li_four"><a href="#tab4_programQueryInfo" data-toggle="tab"><i class="fa fa-refresh"></i> 项目变更</a></li>
+	   	<li id="programQueryInfo_li_five"><a href="#tab5_programQueryInfo" data-toggle="tab"><i class="fa fa-check-square-o"></i> 质量保证</a></li>
+	   	<li id="programQueryInfo_li_six"><a href="#tab6_programQueryInfo" data-toggle="tab"><i class="fa fa-cog"></i> 配置审计</a></li>
+	</ul>
+	
+	<div id="programBasicInfoDiv" class="tab-content bootstrapTabsCont">
+	
+	    <div class="tab-pane fade in active" id="tab1_programQueryInfo"  >
+	    	<br/>
+			<div class="main_iframe_con">
+				<div class="ecitic-title">
+					<span>项目群范围</span>
+					<i></i>
+				</div>
+				<div class="ecitic-new">
+					<table id="ProjectDetailtable" class="table table-bordered table-hover table-text-show" ></table>
+				</div>
+			</div>
+	    </div>
+	    
+	  	<div class="tab-pane fade" id="tab2_programQueryInfo">
+	  		<div class="container-fluid" id="menu_mm" style="position:relative;" >
+				<div class="row-fluid" >
+						<div class=" citic-treeW">
+							<div class="widget-box">
+								<div class="widget-title">
+									<span class="icon"><i class="icon-align-justify"></i></span>
+									<span style="float: right;font-weight:bold;color:#c00;">项目列表</span>					
+								</div>
+								<div style="height:380px;max-height:380px;overflow-y:auto;">
+									<ul id="treeSubject" class="ztree"></ul>
+								</div>
+							</div>
+							<div id="treePop"></div>
+						</div>
+						<div class="citic-addW">
+							<div class="widget-box">
+								<div class="widget-content nopadding">
+									<div class="control-group">
+										<!-- 加载里程碑 -->
+										<div id="milestonePageShow"></div>
+							</div></div></div></div>
+				</div>
+			</div>
+	  	</div>
+	  	
+		<div class="tab-pane fade" id="tab3_programQueryInfo">
+			<br/>
+			<div class="main_iframe_con">
+				<div class="ecitic-title">
+					<span>风险问题</span>
+					<i></i>
+				</div>
+				<div class="ecitic-new">
+					<table id="ProjectRisktable" class="table table-striped table-hover table-bordered tablr-input-textW">
+						<tr>
+							<th rowspan="2" style="height: 80;width:5%;">序号</th>
+							<!-- <th rowspan="2" style="height: 80;width:12%;">项目编号</th> -->
+							<th rowspan="2" style="height: 80;width:35%;">项目名称</th>
+							<th rowspan="2" style="height: 80;width:12%;">项目状态</th>
+							<th colspan="4" style="height: 40;width:48%;">风险问题个数(未关闭个数/总数)</th>
+						</tr>
+						<tr>
+							<th style="height: 40;width:12%;">严重</th>
+							<th style="height: 40;width:12%;">高</th>
+							<th style="height: 40;width:12%;">一般</th>
+							<th style="height: 40;width:12%;">低</th>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+			
+		<div class="tab-pane fade" id="tab4_programQueryInfo">
+						<br/>
+			<div class="main_iframe_con">
+				<div class="ecitic-title">
+					<span>项目变更</span>
+					<i></i>
+				</div>
+				<div class="ecitic-new">
+					<table id="ProjectChangetable" class="table table-striped table-hover table-bordered tablr-input-textW">
+						<tr>
+							<th style="height: 40;width:5%;">序号</th>
+							<!-- <th style="height: 40;width:15%;">项目编号</th> -->
+							<th style="height: 40;width:35%;">项目名称</th>
+							<th style="height: 40;width:12%;">项目状态</th>
+							<th style="height: 40;width:16%;">需求变更</th>
+							<th style="height: 40;width:16%;">版本范围变更</th>
+							<th style="height: 40;width:16%;">计划变更</th>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		<div class="tab-pane fade" id="tab5_programQueryInfo">
+			<br/>
+			<div class="main_iframe_con">
+				<div class="ecitic-title">
+					<span>项目质量保证</span>
+					<i></i>
+				</div>
+				<div class="ecitic-new">
+					<table id="ProjectQualitytable" class="table table-bordered table-hover table-text-show" ></table>
+				</div>
+			</div>
+		</div>
+			
+		<div class="tab-pane fade" id="tab6_programQueryInfo">
+			<br/>
+			<div class="main_iframe_con">
+				<div class="ecitic-title">
+					<span>项目配置审计</span>
+					<i></i>
+				</div>
+				<div class="ecitic-new">
+					<table id="ProjectConfigtable" class="table table-bordered table-hover table-text-show" ></table>
+				</div>
+			</div>
+		</div>	
+	</div>
+	
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+	</div>
+</div>
+<script type="text/javascript" src="dev_project/projectManage/myProject/ProjectTaskView_queryInfo.js"></script>
+<script type="text/javascript" src="dev_project/projectManage/programQuery/programQuery_queryInfo.js"></script>
+<script type="text/javascript" src="dev_project/projectManage/programQuery/ProjectMilestoneDiv.js"></script>
+<script type="text/javascript" src="dev_project/projectManage/programQuery/taskPop.js"></script>
+</body>
+</html>

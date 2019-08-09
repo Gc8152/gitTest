@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>外包人员入场管理</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script type="text/javascript" src="js/commons/dic_item.js"></script>
+<script type="text/javascript" src="dev_outsource/supplier/supplierInfo/supplierPop.js"></script>
+<script type="text/javascript" src="js/commons/importExcelUtil.js"></script>
+</head>
+<body>
+<form action="" id="staffInfoList">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">人员名称</td>
+					<td>
+						<input type="text" name="FD.op_name" id="op_name"/>
+					</td>
+					<td class="ecitic-right">供应商名称</td>
+					<td>
+						<div class="ecitic-input-all">
+							<input type="hidden"  name="FD.supplier_id" id="supplier_id" />
+							<input type="hidden" name="FD.entranceLeave" value="00">
+							<input type="text" placeholder="点击选择供应商" id="FDsupplier_name" readonly/>
+						</div>
+					</td>
+					<td class="ecitic-right">所属应用</td>
+					<td>
+						<input type="text" name="FD.op_belongsystem" id=op_belongsystem/>
+					</td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">行内归属部门</td>
+					<td>
+						<div class="ecitic-input-all" style="position: static;">
+							<input type="hidden" name="FD.op_office" id="op_office"/>
+							<input type="text" placeholder="点击选择行内归属部门" name="FD.a" id="FD_op_office" readonly/>
+						</div>
+					</td>
+					<td class="ecitic-right">人员采购类型</td>
+					<td>
+						<select  id="purch_type" name="FD.purch_type"></select>
+					</td> 
+					<td class="ecitic-right"></td>
+					<td>
+						<input  id="op_state" name="FD.op_state" type="hidden" value="entranceApp"/>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button type="button" class="btn btn-ecitic" id="queryOutworkbenchInfo">查询</button></li>
+			<li><button type="button" class="btn btn-ecitic" id="resetOutworkbenchInfo">重置</button></li>
+		</ul>
+	</div>
+</form>
+	<div class="ecitic-operation">
+		<button type="button" class="btn btn-ecitic" id="Outworkbench_Apply">入场申请</button>
+		<!-- <button type="button" class="btn btn-ecitic" id="Outworkbench_Detaill" >查看详情</button> -->
+	</div>
+	<div class="ecitic-new">
+		<input type="hidden" id="outpseron_workflowType" value="enterbank"/><!-- 区别流程，公用的js -->
+		<table class="table table-bordered table-hover" id="OutworkTableInfo"></table>
+	</div>
+<div id="modal_outperson_import" class="modal hide fade" data-backdrop="static">
+	<div class="modal-header">
+		<h3>外包人员信息批量导入</h3>
+	</div>
+	<div class="ecitic-title-table modal-body">
+		<table id="ass_info_export" class="table table-striped table-hover table-bordered tablr-input-text">
+			<tbody><tr>
+				<td class="table-text">选择附件：</td>
+				<td  width="430">
+					<div class="upload-checkfile-all">
+						<input type="text" name="outpersonld" id="outpersonld" class="input-txt" />
+						<input type="button" value="浏览" class="input-btn" />
+						<input name="file" type="file" class="input-file" onchange="document.getElementById('outpersonld').value=this.value"  id="file_outperson_import">
+					</div>
+				</td>
+				<td class="table-text">
+					<a href="sfile/downloadFTPFile.asp?id=m_044">下载模板</a>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div class="modal-footer" style="text-align:center">
+		<button class="btn btn-ecitic" aria-hidden="true" data-dismiss="modal">关闭</button>
+		<button id="import_outperson_button" class="btn btn-ecitic">导入</button>
+	</div>
+</div>
+<div id="outperson_contractSupplier_Pop"></div>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="js/commons/ajaxfileupload.js"></script>
+<script src="dev_outsource/outsource/outperson/outperson_entrance.js"></script>
+</body>
+</html>

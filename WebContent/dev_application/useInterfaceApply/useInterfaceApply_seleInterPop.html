@@ -1,0 +1,27 @@
+<!--接口模态框 -->
+<div id="useInterfaceApply_seleInterPop" class="modal hide fade modal-big-table" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5>现有接口列表</h5>
+	</div>
+	<div class="ecitic-title-table modal-body ecitic-new">
+		<form id="selePopForm">
+			<table border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td width="13.333%" class="table-text">接口编号：</td>
+					<td width="13.333%"><input type="text" name="inter_code"/></td>
+					<td width="13.333%" class="table-text">接口名称：</td>
+					<td width="13.333%"><input type="text" name="inter_name"/></td>
+					<td width="13.333%" class="table-text">交易码：</td>
+					<td width="13.333%"><input type="text" name="trade_code"/></td>
+					<td><input type="button" class="btn btn-ecitic" id="query_seleInter" value="查询"/></td>
+					<td><input type="button" class="btn btn-ecitic" id="reset_seleInter" value="重置"/></td>
+				</tr>
+			</table>
+		</form>
+		<div class="ecitic-new">
+			<table tb="table_seleInter" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+	</div>
+	<div class="modal-footer"></div>
+</div>

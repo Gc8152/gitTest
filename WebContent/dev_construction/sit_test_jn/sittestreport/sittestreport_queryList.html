@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sit测试报告管理</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire ecitic-moreNo">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="sittestreport">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">应用名称：</td>
+						<td><input type="text" name="SYSTEM_NAME"/></td>
+						<td class="ecitic-right">需求任务编号：</td>
+						<td><input type="text" name="REQ_TASK_CODE"/></td>
+						<td class="ecitic-right">需求任务名称:</td>
+						<td><input type="text" name="REQ_TASK_NAME"/></td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">测试报告上传状态:</td>
+						<td><select name="FILE_STATUS" diccode="G_DIC_FILE_STATUS" style="width:100%;"></select></td>
+						<td class="ecitic-right">验收结论</td>
+						<td><select name="ACCEPT_RESULT" diccode="G_DIC_ACCEPT_CONCLUSION" style="width:100%;"></select></td>
+						<td class="ecitic-right">提交状态:</td>
+						<td><select name="STATUS" diccode="P_DIC_SUBMIT_STATUS" style="width:100%;"></select></td>
+					</tr>
+				<!-- 	<tr>
+						<td class="ecitic-right">提交人:</td>
+						<td><input type="text" name="OPT_PERSON_NAME"/></td>
+						<td class="ecitic-right">审核状态:</td>
+						<td><select name="APP_STATUS" diccode="P_DIC_APP_STATUS"></select></td>
+					</tr> -->
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="commit">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+			<!-- <li class="ecitic-more"></li> -->
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="edit">上传测试报告</button>
+		<button class="btn btn-ecitic" id="queryInfo">查看详情</button>
+		<button class="btn btn-ecitic" id="submit">提交</button>
+		<button class="btn btn-ecitic" id="approve">提交审批</button>
+		<button class="btn btn-ecitic" id="import">缺陷导入</button>
+	</div>
+	<!-- table开始 -->
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover" id="sittestreport_table"></table>
+	</div>
+	<script src="bootstrap/js/bootstrap-table.min.js"></script>
+	<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>  
+	<script type="text/javascript" src="dev_construction/sit_test_jn/sittestreport/sittestreport_queryList.js"></script>
+</body>
+</html>

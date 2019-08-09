@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>管理系统</title>
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/select2.css"/>
+<link rel="stylesheet" href="css/public.css" />
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/select2.min.js"></script>
+</head>
+
+<body>
+	<div class="main_header">
+		<div class="headerArea">
+			<div class="logo"><!--<img src="images/logo1.png" />--></div>
+			<ul class="rightTopHelp">
+				<li class="ecitic-user"><i></i>用户名</li>
+				<li class="ecitic-set"><i></i>设置</li>
+				<li class="ecitic-exit"><i></i>退出</li>
+			</ul>
+		</div>
+		<ul class="list_tree_nav">
+			<li id="tit_baidu_map" class="tree_first firstcurrend">首页</li>
+			<li>
+				<ul class="list_tree_1nav">
+				</ul>
+			</li>
+			<li id="tree_last" class="tree_last" title="全部关闭"></li>
+		</ul>
+	</div>
+	
+	<div class="main_all">
+		<div class="main_container" id="sidebar">
+			<ul class="nui-tree">
+				<li>
+					<ul class="gundong" id="gundongNavWrap">
+						<li class="gundongNav" id="baidu_map">
+							<div class="nui-tree-item-label nui-tree-item-labelNav pl15 duojiMenu" pageId="baidu_map" pageUrl="#">
+								<span>首页</span>
+							</div>
+						</li>
+						<li class="gundongNav">
+							<div class="nui-tree-item-label nui-tree-item-labelNav pl15">
+								<span>子应用管理</span>
+								<img src="images/21.png" class="arrowNav">
+							</div>
+							<ul class="nuinone">
+								<li>
+									<div class="nui-tree-item-label pl30 duojiMenu" pageId="appInfo_query" pageUrl="appInfo/appInfo_query.html">
+										<span>子应用配置</span>
+									</div>
+								</li>
+								<li>
+									<div class="nui-tree-item-label pl30 duojiMenu" pageId="codeBase_query" pageUrl="appInfo/codeBase_query.html">
+										<span>代码库配置</span>
+									</div>
+								</li>
+								<li>
+									<div class="nui-tree-item-label pl30 duojiMenu" pageId="evnConfig_query" pageUrl="appInfo/evnConfig_query.html">
+										<span>环境配置</span>
+									</div>
+								</li>
+								<li class="guangdongNav">
+									<div class="nui-tree-item-label nui-tree-item-labelNav pl30">
+										<span>构建环境服务器配置</span>
+										<img src="images/21.png" class="arrowNav">
+									</div>
+									<ul class="nuinone">
+										<li>
+											<div class="nui-tree-item-label pl45 duojiMenu" pageId="evnBuildAnt_query" pageUrl="appInfo/evnBuild_query.html?evnBuildType=0">
+												<span>Ant管理</span>
+										</li>
+										<li>
+											<div class="nui-tree-item-label pl45 duojiMenu" pageId="evnBuildMaven_query" pageUrl="appInfo/evnBuild_query.html?evnBuildType=1">
+												<span>maven管理</span>
+										</li>
+										<li>
+											<div class="nui-tree-item-label pl45 duojiMenu" pageId="evnBuildJDK_query" pageUrl="appInfo/evnBuild_query.html?evnBuildType=2">
+												<span>JDK管理</span>
+										</li>
+									</ul>
+								</li>
+							</ul>	
+						</li>
+						<!-- 服务器配置 -->
+						<li class="gundongNav">
+							<div class="nui-tree-item-label nui-tree-item-labelNav pl15">
+								<span>服务器配置</span>
+								<img src="images/21.png" class="arrowNav">
+							</div>
+							<ul class="nuinone">
+								<li>
+									<div class="nui-tree-item-label pl30 duojiMenu" pageId="build_server" pageUrl="serverInfo/build_server.html?aa=bbdd">
+										<span>构建服务器</span>
+									</div>
+								</li>
+								<li>
+									<div class="nui-tree-item-label pl30 duojiMenu"  pageId="deploy_server" pageUrl="serverInfo/deploy_server.html">
+										<span>部署服务器</span>
+									</div>
+								</li>
+								<li>
+									<div class="nui-tree-item-label pl30 duojiMenu" pageId="app_server" pageUrl="serverInfo/app_server_list.html">
+										<span>应用服务器</span>
+									</div>
+								</li>
+							</ul>
+						</li>
+						<!--流程配置-->
+						<li class="gundongNav">
+							<div class="nui-tree-item-label nui-tree-item-labelNav pl15">
+								<span>流程配置</span>
+								<img src="images/21.png" class="arrowNav">
+							</div>
+							<ul class="nuinone">
+								<li>
+									<div class="nui-tree-item-label pl30 duojiMenu" pageId="cis_flow_list" pageUrl="cisFlow/cis_flow_list.html">
+										<span>流程配置列表</span>
+									</div>
+								</li>
+							</ul>
+						</li>
+					<!-- 	<li class="gundongNav">
+							<div class="nui-tree-item-label nui-tree-item-labelNav pl15">
+								<span>测试功能</span>
+								<img src="images/21.png" class="arrowNav">
+							</div>
+							<ul class="nuinone">
+								<li>
+									<div class="nui-tree-item-label pl30 duojiMenu" pageId="test_query" pageUrl="test/test_query.html">
+										<span>测试功能列表</span>
+									</div>
+								</li>
+							</ul>
+						</li> -->
+						<!--监控管理-->
+						<li class="gundongNav">
+							<div class="nui-tree-item-label nui-tree-item-labelNav pl15">
+								<span>监控管理</span>
+								<img src="images/21.png" class="arrowNav">
+							</div>
+							<ul class="nuinone">
+								<li>
+									<div class="nui-tree-item-label pl30 duojiMenu" pageId="workOrder_query" pageUrl="monitor/workOrderInfo_query.html">
+										<span>工单执行列表</span>
+									</div>
+								</li>
+							</ul>
+						</li>
+						<!--系统管理-->
+                       <!--  <li class="gundongNav">
+                            <div class="nui-tree-item-label nui-tree-item-labelNav pl15">
+                                <span>系统管理</span>
+                                <img src="images/21.png" class="arrowNav">
+                            </div>
+                            <ul class="nuinone">
+                                <li>
+                                    <div class="nui-tree-item-label pl30 duojiMenu" pageId="dicManager_query" pageUrl="dicManager/dicManager_query.html">
+                                        <span>字典项管理列表</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li> -->
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<a href="javascript:;" target="_self" class="suo" id="sidebar-btn"></a>
+		<div class="main_iframe clearfix" id="content">
+			<div class="main_iframe_con" style="height: 95%;">
+				<iframe fid="tit_baidu_map" class="frame_tag_index" src="pages/baidu_map.html"></iframe>
+			</div>			
+		</div>
+	</div>
+	<script type="text/javascript" src="js/index/index2.js" ></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>合同基本信息查看</title>
+		<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/form.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+	</head>
+	<body>
+		<form action="" id="queryInfoContractInfoForm">
+			<div class="main_iframe_con">
+				<div class="ecitic-title">
+					<span>合同基本信息<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-title-table">
+					<table class="table table-bordered tablr-input-text">
+						<tr>
+							<td class="table-text" width="11%" >合同编号</td>
+							<td  width="22.333%">
+								<div id="QCI_contract_code"></div>
+							</td>
+							<td class="table-text" width="11%" >合同名称</td>
+							<td  width="22.333%">
+								<div id="QCI_contract_name"></div>
+							</td>
+							<td width="11%" class="table-text">签约时间</td>
+							<td width="22.333%">
+								<div id="QCI_sign_time"></div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text" width="11%" >合同类别</td>
+							<td width="22.333%">
+								<div id="QCI_contract_sort_name"></div>
+							</td>
+							<td class="table-text" width="11%" >合同类型</td>
+							<td width="22.333%">
+								<div id="QCI_contract_type_name"></div>
+							</td>
+							<td width="11%" class="table-text">项目编号</td>
+							<td width="22.333%">
+								<div id="QCI_project_code"></div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text">总金额(不含税:元)</td>
+							<td>
+								<div id="QCI_con_money"></div>
+							</td>
+							<td width="11%" class="table-text">总金额(含税:元)</td>
+							<td width="22.333%">
+								<div id="QCI_con_taxmoney"></div>
+							</td>
+							<td width="11%" class="table-text">折扣(%)</td>
+							<td width="22.333%">
+								<div id="QCI_discount_rate_name"></div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text">需求一级部门</td>
+							<td>
+								<div id="QCI_demand_deptname_one"></div>
+							</td>
+							<td width="11%" class="table-text">责任一级部门</td>
+							<td width="22.333%">
+								<div id="QCI_responsibility_deptname_one"></div>
+							</td>
+							<td width="11%" class="table-text">责任二级部门</td>
+							<td width="22.333%">
+								<div id="QCI_responsibility_deptname_two"></div>
+							</td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">项目经理编号</td>
+							<td width="22.333%">
+								<div id="QCI_res_person_no"></div>
+							</td>
+							<td width="11%" class="table-text">项目经理名称</td>
+							<td width="22.333%">
+								<div id="QCI_res_person"></div>
+							</td>
+							<td width="11%" class="table-text">供应商</td>
+							<td width="22.333%">
+								<div id="QCI_supplier_name"></div>
+							</td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">计划验收时间</td>
+							<td width="22.333%">
+								<div id="QCI_plan_arrivaltime"></div>
+							</td>
+							<td class="table-text">保修开始时间</td>
+							<td>
+								<div id="QCI_guarantee_starttime"></div>
+							</td>
+							<td width="11%" class="table-text">保修结束时间</td>
+							<td width="22.333%">
+								<div id="QCI_guarantee_endtime"></div>
+							</td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">产品名称</td>
+							<td width="22.333%">
+								<div id="QCI_product_name"></div>
+							</td>
+							<td width="11%" class="table-text">产品型号</td>
+							<td width="22.333%">
+								<div id="QCI_product_model"></div>
+							</td>
+							<td class="table-text">制造商</td>
+							<td>
+								<div id="QCI_manufacturers"></div>
+							</td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">附件</td>
+							<td colspan="5">
+								<div class="upload-file" id="QCI_queryInfoContractFileinfo"></div>
+							</td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">备注</td>
+							<td width="22.333%"  colspan="5">
+							<div  id="QCI_meet_memo"></div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="ecitic-title" id="Con_phase_info_title">
+					<span>付款阶段<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-title-table" id="Con_phase_info_table">
+					<table class="table table-bordered table-center table-th tablr-input-text" id="contractPhase_queryInfo_table">
+						<tr>
+							<th width="15%">付款阶段名称</th>
+							<th width="10%">付款条件</th>
+							<th width="15%">付款类型</th>
+							<th width="10%">占比(%)</th>
+							<th width="10%">付款金额(元)</th>
+						</tr>
+					</table>
+				</div>
+				
+<!-- 			<div id="purchase_Info" style="display:none;">
+			<div class="ecitic-title" id="addCon_purchase_title_Info">
+				<span>软硬件采购<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-new" id="InfoCon_purchase_table">
+				<table class="table table-bordered table-center table-th tablr-input-text" id="contractPurchase_table_Info">
+					<tr>
+						<th width="12%">名称</th>
+						<th width="15%">型号</th>
+						<th width="15%">材质</th>
+						<th width="10%">数量</th>
+						<th width="10%">备注</th>
+					</tr>
+				</table>
+			</div>
+			</div> -->
+				<div class="ecitic-save">
+					<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+				</div>
+			</div>
+		</form>
+		<script src="bootstrap/js/bootstrap-table.min.js"></script>
+		<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+		<script src="dev_outsource/contract/contractInfo/contractInfo_queryInfo.js"></script>
+		<script src="upload/uploadFileInfo.js"></script>
+	</body>
+</html>

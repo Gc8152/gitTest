@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>缺陷属性自定义</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link href="css/form.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main_iframe_con">
+        <div class="ecitic-inquire" id="ecitic-inquire">
+            <div class="ecitic-table" id="ecitic-table">
+                <form id="defectAttrForm">
+                    <table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+                        <tr>
+                            <td class="ecitic-right">属性ID：</td>
+                            <td>
+                                <input type="text" name="ATTR_ID" />
+                            </td>
+                            <td class="ecitic-right">属性名称：</td>
+                            <td>
+                                <input type="text" name="ATTR_NAME" />
+                            </td>
+                            <!-- <td class="ecitic-right">是否必填：</td>
+                            <td>
+                                <select name="NECESSARY" diccode="TM_DIC_SEVERITY_GRADE" class="requirement-ele-width" style="width: 100%"></select>
+                            </td> -->
+                            <td class="ecitic-right">属性类型：</td>
+                            <td>
+                                <select name="ATTR_TYPE" diccode="TM_DIC_ATTR_TYPE" class="requirement-ele-width" style="width: 100%"></select>
+                            </td>  
+                        </tr>
+                        
+                    </table>
+                </form>
+            </div>
+            <ul class="ecitic-btn-all">
+                <li><input type="button" class="btn btn-ecitic" name="queryDefectAttr" value="查询" /></li>
+                <li><input type="button" class="btn btn-ecitic" name="resetDefectAttr" value="重置" /></li>
+            </ul>
+        </div>
+        <div class="ecitic-operation">
+            <button class="btn btn-ecitic" name="addAttr">新增属性</button>
+            <button class="btn btn-ecitic" name="editAttr">修改属性</button>
+            <button class="btn btn-ecitic" name="delectAttr">删除属性</button>
+            <button class="btn btn-ecitic" name="showAttr">查看属性</button>
+        </div>
+        <div class="ecitic-new">
+            <table tb="defectAttrTable" class="table table-bordered table-hover table-text-show"></table>
+        </div>
+    </div>
+</body>
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_test/systemManage/defectAttrCust/defectAttrCust_queryList.js"></script>
+
+</html>

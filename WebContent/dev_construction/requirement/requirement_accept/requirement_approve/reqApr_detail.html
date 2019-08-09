@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>需求审批详情页面</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link href="pages/approvalflow/afcommons.css" rel="stylesheet">
+</head>
+<body>
+<div class="tabbable">
+<ul id="myTab" class="nav nav-tabs" style="font-size:13px;">
+    <li>
+        <a href="#reqAprDetailInfo" data-toggle="tab">
+        <i class="icon-home"></i>
+                                  需求信息
+        </a>
+    </li>
+    <li>
+        <a href="#reqAprAssessDetail" data-toggle="tab">
+        <i class="icon-certificate"></i>
+                                  需求评估
+        </a>
+    </li>
+    <li class="active">
+    	<a href="#reqApproveDetail" data-toggle="tab">
+    	 <i class="icon-exclamation-sign"></i>
+    		需求审批
+    	</a>
+    </li>
+ </ul>
+ <div id="requirementAssessTabContent" class="tab-content">
+ <!-- 需求信息tab开始 -->
+  <div class="tab-pane fade" id="reqAprDetailInfo">
+	   
+		<form class="form_inline" id="g_requirement_distribute">
+		<div class="ecitic-title">
+			<span>需求信息<em></em></span>
+			<i></i>
+		</div>
+			<div class="ecitic-title-table">
+				<table style="width: 100%" class="table table-bordered table-hover table-center table-th tablr-input-text">
+					<!-- table-bor-paw-->
+					<tr>
+					    <td width="11%" class="table-text">需求编号：</td>
+					    <td width="22%">
+					       <span  id="req_code_reqAPR" name="APR.req_code"  ></span>
+					    </td>
+					     <input type="hidden" id="req_id_reqAPR" name="APR.req_id"/>
+						<td width="12%" class="table-text">需求名称：</td>
+						<td colspan="3" width="55%">
+						  <span id="req_name_reqAPR"  name="APR.req_name" ></span>
+						</td>
+					</tr>
+					<!-- <tr>
+						<td class="table-text">需求大类：</td>
+						<td><span id="req_type1_reqAPR" name="APR.req_type1_display"   ></span></td>
+						<td  class="table-text">需求子类：</td>
+						<td width="22%"><span  id="req_type2_reqAPR" name="APR.req_type2_display"></span></td>
+						<td width="11%" class="table-text">需求来源：</td>
+						<td width="22%"><span  id="req_come_reqAPR" name="APR.req_come_display" ></span></td>
+					</tr> -->
+					<tr>
+						<td class="table-text">业务联系人：</td>
+						<td><span id="req_businesser_reqAPR"  name="APR.req_businesser" ></span></td>
+						<td class="table-text">业务联系电话：</td>
+						<td><span id="req_business_phone_reqAPR"  name="APR.req_business_phone" ></span></td>
+						<td class="table-text">提出部门：</td>
+						<td>
+						<span  id="req_put_dept_reqAPR" name="APR.req_put_dept_display" ></span>	
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">主管部门：</td>
+						<td>
+						<span  id="req_dept_reqAPR" name="APR.req_dept_display" > </span>
+						<td class="table-text">会签部门：</td>
+						<td colspan="3"><span  id="req_countersign_dept_reqAPR" name="APR.req_countersign_dept_display" ></span></td>
+					</tr>
+					<tr>
+						<td class="table-text">要求投产日期：</td>
+						<td><span  id="req_operation_date_reqAPR" name="APR.req_operation_date"  ></span></td>
+						
+						<td class="table-text">业务优先级：</td>
+						<td><input disabled="disabled" type="radio" id="req_level_reqAPR1"name="APR.req_level" value="01" />高&nbsp;&nbsp;&nbsp; 
+						<input disabled="disabled" type="radio" id="req_level_reqAPR2" name="APR.req_level" value="02" />中&nbsp;&nbsp;&nbsp;
+						<input disabled="disabled" type="radio" id="req_level_reqAPR3" name="APR.req_level" value="03" />低</td>
+								
+						<!-- <td class="table-text">文书审核人：</td>
+						<td><span  id="req_clerk_reqAPR" name="APR.req_clerk"  ></span></td>-->
+						<!-- <td class="table-text">是否提供数据标准明细报表：</td>
+						<td>
+						
+						<input disabled="disabled" type="radio" id="req_datatable_flag_reqAPR1" name="APR.req_datatable_flag" value="00" >是&nbsp;&nbsp;&nbsp;
+						<input disabled="disabled" type="radio" id="req_datatable_flag_reqAPR2" name="APR.req_datatable_flag" value="01" >否
+						</td> -->
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<!-- <td colspan="4">
+							<div style="color: red">说明：在本部门全部需求中的优先级进行客观评估，高、中、低优先级应保证一定比例，以便开发中心合理评估需求的开发优先级</div>
+						</td> -->
+					</tr>
+					<tr>
+					  <td class="table-text" style="height: 80px">需求收益评估理由：</td>
+					  <td colspan="5">
+						<span id="req_income_doc_reqAPR" name="APR.req_income_doc" style=" height: 80px" ></span>
+					  </td>
+					</tr>
+					<tr>
+						<td class="table-text" style="height: 80px">需求概述：</td>
+						<td colspan="5">
+						  <span id="req_description_reqAPR" name="APR.req_description" style=" height: 80px" >
+						  </span>
+						</td>
+					</tr>
+					<tr>
+					<td class="table-text" >需求提出部门意见：</td>
+					<td colspan="5">
+						<span  id="put_dept_opinion_reqAPR" name="APR.put_dept_opinion"  style="height:80px"></span>
+					</td>
+				    </tr>
+				</table>
+			</div>
+			<div class="ecitic-title">
+				<input id="file_id_reqAPR" name="APR.file_id" type="hidden" />
+				<span>附件列表信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table id="reqAPR_tablefile" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover table-center table-th tablr-input-text"></table>
+			</div>
+			<div class="ecitic-title">
+				<span>需求分发信息<em></em></span>
+			         <i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table style="width: 100%" class="table table-bordered table-hover table-center table-th tablr-input-text">
+					<!-- table-bor-paw-->
+					<tr>
+						<td class="table-text" width="11%">分发结论：</td>
+						<td width="22%">
+						    <input disabled="disabled" type="radio" id="req_dis_resultAPR1" name="APR.req_dis_result" value="01" >接受&nbsp;&nbsp;&nbsp; 
+							<input disabled="disabled" type="radio" id="req_dis_resultAPR2" name="APR.req_dis_result" value="02" >退回
+						</td>
+						<td class="table-text" width="12%" >需求优先级：</td>
+						<td width="22%">
+						 <span  id="req_scoreAPR1" name="APR.req_score_display" >
+						 </span>
+						</td>
+						<td class="table-text" width="13%">指定产品经理人：</td>
+						<td width="20%">
+						   <span  id="req_product_managerAPR" name="APR.req_product_manager_display"></span>
+					    </tr>
+					<tr>
+						<td class="table-text">分发意见：</td>
+						<td colspan="5" height="90px">
+						<span id="req_dis_viewAPR" name="APR.req_dis_view" style="height:90px" ></span>
+					</tr>
+				</table>
+			</div>
+		</form>
+		<div class="ecitic-save">
+			 <input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭" />
+		</div>
+	</div>
+<!--需求信息tab结束 -->
+<!-- 需求评估tab开始 -->
+<div class="tab-pane fade in " id="reqAprAssessDetail">
+			
+  <form class="form_inline" id="g_requirement_accept2">
+	       <div class="ecitic-title">
+				<span>受理信息<em></em></span>
+			        <i></i>
+			</div>
+		<div class="ecitic-title-table">
+			<table style="width: 100%" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+				<tr>
+				<td class="table-text" width="11%">受理结论：</td>
+				<td colspan="5" width="89%">
+				<div style="float:left">
+				  <input type="radio" id="APRreq_acc_result1" name="APR.req_acc_result" value="01" disabled="disabled">受理&nbsp;&nbsp;&nbsp;
+				  <input type="radio" id="APRreq_acc_result2" name="APR.req_acc_result" value="02" disabled="disabled">退回&nbsp;&nbsp;&nbsp;
+				  <input type="radio" id="APRreq_acc_result3" name="APR.req_acc_result" value="03" disabled="disabled">转交
+				  </div>
+				</td>
+				</tr>
+				<tr>
+				
+			    <td class="table-text">评估结论说明：</td>
+			    <td colspan="5" height="90px">
+			      <span  id="APRreq_analytic_result" name="APR.req_analytic_result" style="height:80px" ></span>
+			    </td>
+			    </tr>
+			 </table>
+		  </div>
+		  
+		   <div class="ecitic-title">
+		     <span id="req_feasibility_title">可行性分析<em></em></span>
+			   <i></i>
+		 </div>
+		 <div class="ecitic-title-table">
+		    <table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+			  <tr>
+				<td class="table-text" style="width: 11%"><span id="APR_acc_feasibility_hide" readonly>分析结论：</span></td>
+				<td style="width: 25%">
+				  <span id="APR_acc_feasibility"></span>
+				</td>
+				<td colspan="4"></td>
+			  </tr>
+			  <tr>
+			    <td class="table-text" style="width: 11%">备注：</td>
+			    <td colspan="5" height="90px">
+			      <span  id="APRreq_feasibility_explain" name="APR.req_feasibility_explain" style="height:120px" ></span>
+			    </td>
+			  </tr>
+			 </table>
+		  </div>
+		  <div class="ecitic-title">
+		     <span id="req_access_title">需求属性<em></em></span>
+			   <i></i>
+		  </div>
+		  <div class="ecitic-title-table ecitic-title-table-application" >
+		    <table   class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+			  <tr>
+			    <td class="table-text" style="width: 12%">流程分类：</td>
+			    <td style="width: 20%">
+			      <span id="APRreq_acc_classify" name="APR.req_acc_classify_display"  class="requirement-ele-width" >
+			      </span>
+			    </td>
+			    <td class="table-text" style="width: 14%">需求质量：</td>
+			    <td style="width: 19%">
+			        <span id="APRreq_quality" name="APR.req_quality_display" class="requirement-ele-width" >
+			        </span>
+			    </td>  
+			    <td class="table-text">需求来源：</td>
+				<td>
+					  <span id="APRreq_come" name="APR.req_acc_come_display"  class="requirement-ele-width" ></span>
+				</td>
+			  </tr>
+			  <tr>
+				<td class="table-text">需求大类：</td>
+				<td>
+				  <span id="APRreq_acc_type1" name="APR.req_acc_type1_display"  class="requirement-ele-width"></span>
+				</td>
+				<td  class="table-text">需求子类：</td>
+				<td>
+					<span id="APRreq_acc_type2" name="APR.req_acc_type2_display" class="requirement-ele-width" ></span>
+				</td>
+				<td class="table-text">开发模式：</td>
+			     <td>
+			        <span id="APRreq_develop_mode" name="APR.req_develop_mode_display" class="requirement-ele-width" diccode="G_DIC_REQ_DEVELOP_MODE"  validate="v.required" valititle="该项为必填项" style="width:100%">
+			        </span>
+			     </td>
+				</tr>
+			    <tr>
+			      <td class="table-text">需求规模：</td>
+			      <td>
+			        <span id="APRreq_demand_size" name="APR.req_demand_size_display" class="requirement-ele-width" ></span>
+			      </td>
+			      <td class="table-text"><!-- 是否1618： --></td>
+			      <td>
+			        <span id="APRis_1618" name="APR.is_1618_display" style="display:none" class="requirement-ele-width" ></span>
+			      </td>
+			      <td class="table-text"><span id="business_org_hide">主管业务部门:</span></td>
+			      <td>
+			        <span  id="APRproject_id_display"  name="APR.project_id_display" ></span>
+			      </td>   
+			     </tr>
+			</table>
+		 </div>
+		<div class="ecitic-title">
+		  <span>评估信息<em></em></span>
+			    <i></i>
+		</div>
+			<div class="ecitic-title-table">
+			  <table style="width: 100%" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+			    <tr>
+			      <td class="table-text" width="14%">需求分析岗(主办方)：</td>
+			      <td width="20%">
+			        <span  id="APRreq_analysis_name" name="APR.req_analysis_name" class="requirement-ele-width" ></span>
+			      </td>
+			      <td class="table-text" style="width: 14%"><span id="system_name_hide">应用名称(主办方)：</span></td>
+			      <td style="width: 19%">
+			          <span  id="APRsystem_name" name="APR.system_name" class="requirement-ele-width" ></span>
+			      </td>
+			      <!-- <td class="table-text" width="14%">需求预计投产版本：</td>
+			      <td width="19%">
+			        <span  id="APRreq_version_name" name="APR.req_version_name" class="requirement-ele-width" ></span>
+			      </td> -->
+			      <td colspan="2"></td>
+			    </tr>
+			    <tr>
+                  <td class="table-text">开发工作量(人日):</td>
+			      <td>
+			        <span id="APRdev_workload" name="APR.dev_workload"></span>
+			      </td>
+			      <td class="table-text">测试工作量(人日):</td>
+			      <td>
+			        <span  id="APRtest_workload" name="APR.test_workload" class="requirement-ele-width" ></span>
+			      </td>
+			      <td class="table-text">总工作量(人日):</td>
+			      <td>
+			        <span  id="APRreq_total_workload" name="APR.req_total_workload" class="requirement-ele-width"></span>
+			      </td>
+			    </tr>
+			  </table>
+			</div>
+			 <!-- <div class="ecitic-title">
+			    <span>实施计划<em></em></span>
+			      <i></i> 
+			  </div>
+		    <div class="ecitic-title-table">
+			  <table id="gReqPlanTable"  class="table table-bordered table-hover" ></table>
+			</div> --> 
+	        <div class="ecitic-title" style="display:none">
+				<input id="file_id_reqAssAPR" name="APR.file_id_ass" type="hidden" />
+				<span>需求工作量附件列表信息<em></em></span>
+				<i></i>
+			</div>
+			<!-- <div class="ecitic-title-table">
+				<table id="reqAssAPR_tablefile" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover table-center table-th tablr-input-text"></table>
+			</div> -->
+	    </form>
+	    <div class="ecitic-save">
+			 <input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭" />
+		</div>
+		
+
+<div id="approveDemandInfo"></div>
+
+
+	  </div> <!--需求评估tab结束 -->
+	  
+	  <div class="tab-pane fade in active" id="reqApproveDetail">
+	  	<div id="apptitlePop"></div>
+	  	<div id="apphistoryPop"></div>
+		<div id="appOptPop"></div>
+					
+		<!--审批操作模态框 -->
+		<div id="modal_projectApprove" class="modal hide fade" tabindex="-1">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+				<h5 id="">审批</h5>
+			</div>
+			<div class="ecitic-title-table modal-body" id="" >
+				<table class="table table-striped table-hover table-bordered">
+					<tr>
+						<td class="table-text">审批意见：</td>
+						<td><span id="approve"></span></td>
+					</tr>
+					<tr>
+						<td class="table-text">审批说明：</td>
+						<td colspan="3"><textarea rows="5" resize="none"></textarea></td>
+					</tr>
+				</table>
+			</div>
+			<div class="ecitic-save">	
+				<button class="btn btn-ecitic" data-dismiss="modal">提交</button>
+				<button class="btn btn-ecitic" data-dismiss="modal" id="resetApprove">重置</button>
+				<button class="btn btn-ecitic" data-dismiss="modal" id="close">关闭</button>
+			</div>
+			<div class="modal-footer"></div>
+		</div>
+	</div>
+			
+	 </div><!--tab content结束 -->
+  </div>
+   <!--需求信息附件模态框  -->
+   <div id="reqAPR_fileview_modal"></div>
+   <!--需求工作量评估附件模态框  -->
+   <div id="reqAprAss_fileview_modal"></div>
+</body>
+<script type="text/javascript" src="bootstrap/js/select2.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script src="pages/approvalflow/approval_title.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_accept/requirement_approve/reqApr_detail.js"></script>
+</html>

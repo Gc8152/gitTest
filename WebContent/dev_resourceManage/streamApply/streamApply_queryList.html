@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>流申请列表</title>
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">	
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+		<form id="StreamApplyQuerytForm">
+			<table id="StreamApplyQuery" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">应用名称:</td>
+					<td><input type="text" id="system_name" name="system_name"></td>
+					<td class="ecitic-right">标题：</td>
+					<td><input type="text" id="stream_app_title" name="stream_app_title" /></td>
+						<td class="ecitic-right">申请状态:</td>
+					<td>					
+					    <select name="stream_app_status" id="stream_app_status" style="width:100%;"></select>
+					</td>
+				</tr>	
+				<tr>
+					<td class="ecitic-right">流名称:</td>
+					<td><input type="text" id="stream_name" name="stream_name" /></td>
+				</tr>			
+			</table>
+		</form>	
+	</div>
+	<ul class="ecitic-btn-all">
+		<li><button class="btn btn-ecitic" id="queryStreamApply">查询</button></li>
+		<li><button class="btn btn-ecitic" id="resetStreamApply">重置</button></li>
+	</ul>
+</div>
+<div class="main_iframe_con">
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="stream_add" >新增</button>
+		<button class="btn btn-ecitic" id="stream_update" >修改</button>
+		<button class="btn btn-ecitic" id="stream_delete" >删除</button>
+		<button class="btn btn-ecitic" id="stream_submit" >提交</button>
+		<button class="btn btn-ecitic" id="stream_view" >查看详情</button>
+		<!-- <button class="btn-gray" type="button" id="synchronizationUser">同步OA用户</button> -->
+	</div>
+	<div class="ecitic-new">
+		<table id="StreamApplyTableInfo" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+</div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_resourceManage/streamApply/streamApply_queryList.js"></script>
+</html>
+

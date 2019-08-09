@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>配置库管理</title>
+<link href="css/form.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="configAcceptForm">
+				<table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">应用名称：</td>
+						<td>
+						<input type="text" name="system_name"/></td>
+						<td class="ecitic-right">当前状态：</td>
+						<td>
+							<select id="statu_id" name="statu" class="requirement-ele-width" diccode="G_DIC_CONFIG_APPLY" style="width:100%;"></select>
+						</td>
+						<td class="ecitic-right">配置管理员：</td>
+						<td>
+							<input type="hidden" id="applicate_id" name="applicate" />
+							<input type="text" id="APPconfig_man_name" placeholder="点击选择" readonly>	
+						</td>
+					</tr>
+					
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="queryConfigAccepting" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" id="reset" value="重置"/></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="configAccept">配置库申请</button>
+		<button class="btn btn-ecitic" id="configInfo">查看</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="ConfigAcceptingInfoTable" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+	<div mod="systemPop"></div>
+	<!-- 用于应用人员选择弹出pop -->
+	   <div id="app_user_add"></div>
+</div>
+</body>
+
+<script src="js/commons/commons.js"></script>
+
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_application/appUserPop.js"></script>
+<script src="dev_resourceManage/Configuration_database/Configuration_querylist.js"></script>
+</html>

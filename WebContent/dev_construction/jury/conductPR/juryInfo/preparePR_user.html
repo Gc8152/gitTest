@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>准备评审</title>
+<!-- 字体图标 -->
+<link rel="stylesheet" type="text/css" href="bootstrap/font-awesome-4.7.0/css/font-awesome.min.css">
+
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="dev_construction/jury/conductPR/juryInfo/preparePR.js"></script>
+<script type="text/javascript" src="dev_construction/jury/conductPR/juryPop/checkPop.js"></script>
+<script type="text/javascript" src="dev_construction/jury/conductPR/juryPop/juryUserPop.js"></script>
+<script type="text/javascript" src="dev_construction/jury/conductPR/juryInfo/juryDefect.js"></script>
+<!-- <script type="text/javascript" src="dev_construction/requirement/requirement_analyze/task_accept/view_taskdetail.js"></script>
+ --><script type="text/javascript" src="dev_construction/requirement/reqTask_phased/task_phased_jury.js"></script>
+<script type="text/javascript" src="dev_construction/jury/conductPR/juryInfo/prepareList.js"></script>
+
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>	
+	</head>
+<body>
+
+<div class="main_iframe_con main_iframeFormW">
+	<div class="widget-box">
+		<!-- <div class="widget-content nopadding"> -->
+		<div class="tabbable">
+		<div class="nav nav-tabs" id="ms_context">
+			<ul style="font-size:13px;" class="nav nav-tabs" id="myJuryTab">
+				<li class="active" id="tab_jury_info"><a href="#prepare_div" data-toggle="tab" > <i class="icon-home"></i>评审基本信息</a></li>
+				<li id="tab_jury_defect" style="display:none"><a href="#defect_div" data-toggle="tab" ><i class="icon-file"></i>缺陷及解决情况</a></li>
+				<li id="tab_finish_jury" style="display:none"><a href="#finish_jury_div" data-toggle="tab" ><i class="icon-list-alt"></i>完成评审情况</a></li>
+				<li id="tab_jury_conclusion" style="display:none"><a href="#conclusion_div" data-toggle="tab" ><i class="icon-book"></i>评审结论</a></li>
+			</ul>
+
+		</div>
+		<div class="tab-content">
+			<div class="tab-pane active" id="prepare_div">
+				
+				<form id="juryPrepare">
+				<div class="ecitic-title-table">
+					<table class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+						<tbody>
+						<tr>
+							<td class="table-text" width="20%">评审名称：</td>
+							<td width="30%">
+								<div name="GI.jury_name" ></div>
+							</td>
+							<td class="table-text" width="20%">所属应用：</td>
+							<td width="30%">
+								<div name="GI.system_name"></div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text">评审主题：</td>
+							<td ><div  name="GI.theme_name"></div></td>
+							<td class="table-text">评审过程：</td>
+							<td>
+							<div name="GI.process_name"></div>
+							
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text">评审发起人：</td>
+							<td><div name="GI.sponsor_name" ></div></td>
+							<td class="table-text">评审负责人：</td>
+							<td>
+							<div name="GI.jury_principal_name"></div></td>
+							
+						</tr>
+						<tr>
+						
+							 <td class="table-text">当前评审级别：</td>
+							<td><div name="GI.at_grade_name"></div></td>
+							<td colspan="2"></td>
+						</tr>
+						
+						<tr>
+							<td class="table-text">评审内容概述：</td>
+							<td colspan="3"><div name="GI.jury_desc"></div></td>
+						</tr>
+						<tr>
+							<td class="table-text">评审主持人：</td>
+							<td colspan="3">
+								<div name="GI.compere_name" id="compereshow"></div>
+								<div id="compereshow2">
+									<input type="hidden" id="compere_id" name="G.compere_id" />
+									<input type="text" id="compere_name" name="G.compere_name" placeholder="请点击选择"/><strong class="high">*</strong>
+								</div>
+							</td>
+						</tr>
+						<tr style="display: none" id="tr_feedback2">
+							<td class="table-text">评审反馈时间：</td>
+							<td>
+								<div name="GI.feedback_time" ></div>
+							</td>
+							<td class="table-text">评审方式：</td>
+							<td>
+								<div name="GI.jury_type_name"></div>
+							</td>
+						</tr>
+						<tr style="display: none" id="tr_feedback">
+							<td class="table-text">评审反馈时间：</td>
+							<td>
+								<div><input style="width:100%" type="text" readonly id="feedback_time" name="G.feedback_time" onClick="WdatePicker({dateFmt:'yyyy-MM-dd', autoPickDate:true, minDate: '%y-%M-%d'});" /><strong class="high">*</strong></div>
+							</td>
+							<td class="table-text">评审方式：</td>
+							<td>
+								<div id="jury_type2"></div><strong class="high">*</strong>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+					
+				</div>
+				</form>
+				<!-- 关联评审任务 -->
+				<div class="ecitic-title">
+						<span>关联评审任务<em></em></span>
+						<i></i>
+				</div>
+				<div class="ecitic-title-table">
+					
+					<table class="table table-bordered table-hover table-center table-th tablr-input-text" id="juryTasktable">
+					</table>
+					
+				</div>
+				<div id="juryLiAll">
+					<ul class="tabD">
+						<li class="tabBtn" id="juryUserLi" style="display: none;">评审人员</li>
+						<li class="tabBtn" id="juryCheckLi" style="display: none;">评审检查项</li>
+						<div class="clear"></div>
+					</ul>
+					<!--内容区域-->
+					<ul class="content">
+						<li class="tabContListD" style="display: none;" id="juryUserLiD">
+							<div class="ecitic-operation" id="check_userList" style="display: none;">
+								<button class="btn btn-ecitic" id="pop_jury_user">添加评审人员</button>
+								<!-- <button class="btn btn-ecitic" style="margin-left:1px;"
+					   		id="deleteSchemel" onclick="delCheck('jury_user');">删除</button> -->
+							</div>
+							<div class="ecitic-title-table">
+								<table class="table table-bordered table-hover table-center table-th tablr-input-text" id="juryUsertable">
+								<!-- <tbody><tr id="juryPerson">
+									<th width="5%"></th>
+									<th>评审人员名称</th>
+									<th width="15%">评审角色</th>
+									<th>评委岗位</th>
+									<th>评委是否行员</th>
+									
+								</tr>
+								</tbody> -->
+							</table>
+							</div>
+						</li>
+						<!-- tab3 -->
+						<li class="tabContListD on" style="display: none;" id="juryCheckLiD">
+							<div class="ecitic-operation" id="check_checkList" style="display: none;">
+								<button class="btn btn-ecitic" id="addTackCheck"  >添加评审检查项</button>
+								<!-- <button class="btn btn-ecitic"  style="margin-left:1px;"
+					   		id="deleteSchemel" onclick="delCheck('jury_check');" >删除</button> -->
+							</div>
+							<div class="ecitic-title-table">
+								<table class="table table-bordered table-hover table-center table-th tablr-input-text" id="juryChecktable">
+								<!-- <tbody><tr>
+									<th width="5%"></th>
+									<th>评审检查项</th>
+									<th>评审负责人角色</th>
+								</tr>
+								</tbody> -->
+								</table>
+							</div>
+							
+							</li>
+						</ul>
+					</div>
+					
+					<input type="hidden" id="jury_sava_type" name="G.jury_sava_type">
+					<input type="hidden" id="jury_id" name="G.jury_id">
+					<input type="hidden" id="req_task_state" name="G.req_task_state"/>
+					<input type="hidden" id="at_jury_grade" name="G.at_jury_grade"/>
+					
+					<input type="hidden" id="jury_principal_id" name="G.jury_principal_id"/>
+					<input type="hidden" id="sponsor_id" name="G.sponsor_id"/>
+					<input type="hidden" id="at_jury_grade" name="G.at_jury_grade"/>
+					<input type="hidden" id="system_name" name="G.system_name"/>
+					<input type="hidden" id="req_task_code_aa" name="G.req_task_code_aa"/>
+					<input type="hidden" id="jury_name" name="G.jury_name"/>
+					
+					<div class="ecitic-save" id="jury_save_D">
+						<input class="btn btn-ecitic" data-dismiss="modal" value="保存并提交" id="jurySave" type="button" /> 
+						<!-- <input class="btn btn-ecitic" data-dismiss="modal" value="保存并发起" id="jurySaveSponsor" type="button"/> -->
+						<input class="btn btn-ecitic" data-dismiss="modal" value="返回" name="closePageTabConfirm" type="button" />
+					</div>
+				</div>
+				
+				<div class="tab-pane fade" id="defect_div">
+					<div class="main_iframe_con">
+				        <div class="ecitic-operation" >
+				        	<div id="defect_query_info">
+								<button class="btn btn-ecitic" id="defect_add">新增</button>
+								<button class="btn btn-ecitic" id="defect_edit">修改</button>
+								<button class="btn btn-ecitic" id="defect_del">删除</button>
+								<div id="finish_jury">
+									<button class="btn btn-ecitic" id="finish_jury">完成评审</button>
+								</div>
+							</div>
+							
+							<div id="defect_follow">
+								<button class="btn btn-ecitic" id="defect_dispose">处理</button>
+								<button class="btn btn-ecitic" id="defect_verify">验证</button>
+							</div>
+							<button class="btn btn-ecitic" id="defect_view">查看</button>
+						</div>
+						<div class="ecitic-new">
+							<table class="table table-bordered table-hover" id="juryDefectInfo"></table>
+						</div>
+					</div>
+				</div>
+				<div id="finish_jury_div" class="tab-pane fade">
+					<div class="ecitic-title-table">
+						<table class="table table-bordered table-hover table-center table-th tablr-input-text" id="juryUsertable2">
+							
+						</table>
+					</div>
+				</div>
+				<div id="conclusion_div" class="tab-pane fade">
+	    	<div class="ecitic-title-title"><span id="end_jury_title">评审记录表</span></div>
+		    	<div class="main_iframe_con">
+					<div class="ecitic-title-table">
+					<table class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+						<tbody>
+						<tr>
+							<td class="table-text" width="13%">需求点编码：</td>
+							<td width="20%">
+								<div id="sub_req_code"></div>
+							</td>
+							<td class="table-text" width="13%">需求点名称：</td>
+							<td colspan="3">
+								<div id="sub_req_name"></div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text" width="13%">评审主题：</td>
+							<td width="20%">
+								<div id="con_theme_name"></div>
+							</td>
+							<td class="table-text" width="13%">评审主持人：</td>
+							<td width="20%">
+								<div id="con_compere_name"></div>
+							</td>
+							<td class="table-text" width="13%">评审负责人：</td>
+							<td width="20%">
+								<div id="con_jury_principal_name"></div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text">所属主办应用：</td>
+							<td>
+								<div id="con_system_name"></div>
+							</td>
+							<td class="table-text">评审方式：</td>
+							<td>
+								<div id="con_jury_type_name"></div>
+							</td>
+							<td class="table-text">当前评审级别：</td>
+							<td><div id="con_at_grade_name"></div>
+							</td>
+						</tr>
+						
+						
+						<tr>
+							<td class="table-text">评审过程：</td>
+							<td>
+								<div id="con_process_name"></div>
+							</td>
+							<td class="table-text"><div>缺陷总数：</div></td>
+							<td>
+								<div id="con_defect_count"></div>
+							</td>
+							<td class="table-text"><div>未解决缺陷数：</div></td>
+							<td>
+								<div id="con_unsolved_defect_count"></div>
+							</td>
+						</tr>
+						<tr>
+						<tr>
+						<td class="table-text">评委及列席人员：</td>
+							<td colspan="5">
+								<div id="jury_user_name_all"></div>
+								<input id="jury_user_no_all" type="hidden"></input>
+								<input id="task_user_no_all" type="hidden"></input>
+							</td>
+						</tr>
+						<tr>
+						<td class="table-text">评审内容：</td>
+							<td colspan="5"><div id="con_jury_desc"></div></td>
+						</tr>
+							</tbody></table>
+						</div>
+						
+						<div class="ecitic-title">
+							<span>相关评审附件<em></em></span>
+							<input id="file_id" name="FILE_ID" type="hidden" />
+							<i></i>
+						</div>
+						<div>
+							<div class="ecitic-operation">
+								<div style="display: none;" id="file_show">
+								<button class="btn btn-ecitic" id="add_file" >添加</button>
+								<button class="btn btn-ecitic" id="delete_file" >删除</button>
+								</div>
+								<a href="sfile/downloadFTPFile.asp?id=m_002" class="file_template_style">评审记录表模版</a>
+								<a href="sfile/downloadFTPFile.asp?id=m_003" class="file_template_style">评审遗留问题模版</a>
+							</div>
+							<div class="ecitic-title-table ecitic-new">
+								<table id="table_file" class="table table-bordered table-hover">
+								</table>
+							</div>
+						</div>
+						
+						<div class="ecitic-title">
+							<span>评审结论<em></em></span>
+							<i></i>
+						</div>
+						<div class="ecitic-title-table">
+							<table class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+								<tbody><tr>
+									<td class="table-text" width="13%">评审结论：</td>
+									<td><div id="jury_result"></div></td>
+									</tr><tr>
+									<td class="table-text" width="13%">备注：</td>
+									<td><textarea   id="up_jury_desc" name="G.up_jury_desc"></textarea></td>
+								</tr></tbody>
+							</table>
+						</div>
+						<input type="hidden" id="all_jury_task" name="G.all_jury_task">
+						<div class="ecitic-save">
+							<!-- <input class="btn btn-ecitic" data-dismiss="modal" value="完成评审" id="juryEnd" type="button" /> -->
+							<input class="btn btn-ecitic" data-dismiss="modal" value="完成评审" id="juryEndSubmit" style="display: none;" type="button" />
+							<input class="btn btn-ecitic" data-dismiss="modal" value="关闭" name="closePageTabConfirm" type="button" />
+						</div>
+		           
+	    			</div>
+				</div>
+		
+		
+			</div>
+		</div>
+	</div>
+</div>
+<div id="addDivTask"></div>
+<!-- 选择评审检查项（多选） -->
+<div id="file_modal"></div>
+<div id="fileview_modal"></div>
+
+</body>
+</html>

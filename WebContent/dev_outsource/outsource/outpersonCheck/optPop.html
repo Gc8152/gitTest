@@ -1,0 +1,41 @@
+
+<div id="myModal_opt" class="modal hide fade in" style="top: 50%;margin-top: -300px;width: 780px" tabindex="-1" data-backdrop="static" >
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="myModalLabel">外包人员基本信息</h5>
+	</div>
+	<form action="" class="form-inline">
+		<!-- <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+			<tr>
+				<td class="ecitic-right">身份证</td>
+				<td><input type="text" name="supplier" id="pop_sup_name" placeholder="身份证号"/></td>
+				<td class="ecitic-right">外包人员姓名</td>
+				<td>
+					<input type="text" name="supplier" id="pop_sup_simp_name" placeholder="外包人员姓名 "/>
+				</td>
+			</tr>
+		</table> -->
+			<div class="row">
+			<div class="span6 h50">
+				<label class="pl60">身份证&nbsp;&nbsp;</label>
+				<input type="text" name="supplier" id="pop_optCode" placeholder="身份证号"/>
+			</div>
+			<div class="span6 h50">
+				<label class="pl60">外包人员姓名&nbsp;&nbsp;</label>
+				<input type="text" name="supplier" id="pop_optname" placeholder="外包人员姓名 "/>
+			</div>
+		</div>
+	</form>
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="查询" id="pop_optSearch" type="button" />
+		<input class="btn btn-ecitic" value="重置" id="pop_optReset" type="button" />
+	</div>
+	<div class="modal-body">
+		<div class="tz_btn" style="display:none;">
+			<button class="btn btn-ecitic" type="button" id="optPOPSureSelected"></button>
+		</div>
+		<table id="pop_optTable" ></table>
+	</div>
+</div>
+<div id="staffNameOptPop"></div>
+<div id="supNameOptPop"></div>

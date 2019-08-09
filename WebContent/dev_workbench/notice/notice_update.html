@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script src="dev_workbench/notice/notice_update.js"></script>
+<script src="upload/uploadFileInfo.js"></script>
+<script src="pages/suser/suserPop.js"></script>
+<script src="pages/srole/srolePop.js"></script>
+<script src="dev_workbench/notice/select_officePop.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<form action="" class="form-inline" id="updateNotice">
+		<div class="ecitic-title">
+			<span>修改通知<em></em></span>
+	    </div>
+		<div class="ecitic-title-table">
+			<table class="table table-bordered tablr-input-text table-bor-paw">
+				<tr>
+					<td width="11%" class="table-text">标题</td>
+					<td>
+						<input id="file_id_noticeAdd" name="NOTICE_FILES" type="hidden" />
+						<input type="hidden" name="NOTICE_ID" />
+						<input type="hidden" name="NOTICE_PUBLISH" />
+						<input type="hidden" name="SEND_PERSON" />
+						<input type="hidden" name="SEND_TIME" />
+						<input type="text" name="NOTICE_TITLE" id="notice_title" validate="v.50_mzhi"/>
+					</td>
+				</tr>
+				<tr>
+					<td width="11%" class="table-text">内容</td>
+					<td><textarea name="NOTICE_BODY" id="notice_body" style="height: 150px" validate="v.1000_mzhi"></textarea></td>
+				</tr>
+			</table>
+		</div>
+		<!-- <div class="ecitic-title">
+			<span>附件<em></em></span>
+	    </div>
+    	<div class="ecitic-operation">
+			<a class="btn btn-ecitic" id="addfile">上传</a>
+			<a class="btn btn-ecitic" id="deletefile">删除</a>
+		</div>
+		<div class="ecitic-new">
+			<table id="upFileTableInfo" class="table table-bordered table-hover"></table>
+		</div> -->
+		
+			<div class="ecitic-title-table">
+			<div class="ecitic-operation">
+				<button type="button" class="btn btn-ecitic" id="noticeadd_file">上传</button>
+				<button type="button" class="btn btn-ecitic" id="noticedelete_file">删除</button>
+			</div>
+			<table id="noticeadd_filetable"  class="table table-bordered table-hover table-text-show"></table>
+		</div>
+		
+		<div class="ecitic-title">
+			<span>接收方<em></em></span>
+	    </div>
+		<div class="ecitic-title-table">
+			<table class="table table-bordered table-bor-pad">
+				<tr>
+					<td width="11%" class="table-text" style="vertical-align: middle;">接收部门</td>
+					<td style="vertical-align: middle;">
+					    <div class="reset-name"  id="office">
+							<input type="hidden" name="RECEIVE_OFFICE" />
+							<input type="text" id="receive_office" name="OFFICE_RECEIVE" placeholder="点击选择接收部门" class="citic-ast" readonly/>
+							<button onclick="putClear('office');return false" class="btn btn-ecitic">清空</button>
+						</div>
+					</td>
+					<td width="11%" class="table-text">接收岗位</td>
+					<td>
+					    <input type="hidden" name="RECEIVE_POST"/>
+						<select id="receive_post"  multiple="multiple"></select>
+					</td>
+				</tr>
+				<tr>
+					<td width="11%" class="table-text">接收人</td>
+					<td width="39%">
+					    <div class="reset-name" id="person">
+							<input type="hidden" name="RECEIVE_PERSON"/>
+							<input type="text" id="receive_person" name="PERSON_RECEIVE" placeholder="点击选择接收人" class="citic-ast" readonly/>
+							<button class="btn btn-ecitic" onclick="putClear('person');return false">清空</button>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="保存" id="noticeUpdate" />
+		<input type="button" class="btn btn-ecitic" value="发布" id="noticePublish" />
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+	</div>
+	<div id="fileUploadPop"></div>
+	<div id="updateOfficePop"></div>
+	<div id="userPop"></div>
+	
+	 <div id="noticeadd_modalfile"></div>
+     <div id="noticeadd_fileview_modal"></div>
+	
+</div>
+</body>
+</html>

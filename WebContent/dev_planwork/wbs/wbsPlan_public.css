@@ -1,0 +1,46 @@
+/* WBS计划详情 */
+.wbsPlana-all #T_project_name {line-height:10px !important;margin:0 !important;}
+.wbsPlana-all .panel.datagrid{width:100% !important;}
+.wbsPlana-all .panel.datagrid .panel-header{width:100% !important;}
+.wbsPlana-all .datagrid-view2 {width:auto !important;left:210px;right:auto !important;}
+.wbsPlana-all .panel-body,
+	.wbsPlana-all .datagrid-footer,
+	.wbsPlana-all .datagrid-view ,
+	.wbsPlana-all .datagrid-header,
+	.wbsPlana-all .datagrid-header-inner {width:auto !important;min-height;}
+ .wbsPlana-all .datagrid-view {/* height:400px !important; */overflow: auto;} 
+.wbsPlana-all .datagrid-header {height: 35px !important; position:absolute;top:0;}
+.wbsPlana-all .datagrid-body {margin-top: 36px;}
+.wbsPlana-all .datagrid-view1 .datagrid-header { position:absolute;top:0;}
+.wbsPlana-all .datagrid-view1  .datagrid-body {margin-top: 36px !important;/* height:350px !important; */min-height:100px !important;}
+ .wbsPlana-all .datagrid-view2 .datagrid-header { position:relative;top:0;}
+ .wbsPlana-all .datagrid-view2  .datagrid-body {min-height:100px !important;/* margin-top: 36px !important;    width: 965px !important;    */ /* height: 365px !important;    overflow: auto !important; */} 
+.wbsPlana-all .tree-expanded,
+	.wbsPlana-all .tree-collapsed,
+	.wbsPlana-all .tree-folder,
+	.wbsPlana-all .tree-file,.wbsPlana-all
+	 .tree-checkbox,
+	 .wbsPlana-all .tree-indent {vertical-align:-4px !important;}
+ .wbsPlana-all .datagrid-cell,
+ 	.wbsPlana-all .datagrid-cell-group,
+ 	.wbsPlana-all .datagrid-header-rownumber,
+ 	.wbsPlana-all .datagrid-cell-rownumber,
+ 	.wbsPlana-all .datagrid-header .datagrid-cell span{font-size:14px !important;}
+.wbsPlana-all .datagrid-header-row {height: 35px !important;}
+.wbsPlana-all .datagrid-htable .datagrid-cell {text-align:center;}
+.wbsPlana-all .datagrid-row {height:30px !important;} 
+.wbsPlana-all .datagrid-editable-input,
+	.wbsPlana-all .textbox,
+	.wbsPlana-all #_easyui_textbox_input1 {height:25px !important;font-size:14px !important;text-align:center !important;}
+	.wbsPlana-all .datagrid-editable-input,
+	.wbsPlana-all #_easyui_textbox_input1 {padding-top:5px\0;}
+.wbsPlana-all .datagrid-editable-input {font-size:14px !important;width:100% !important;}
+.wbsPlana-all .textbox .textbox-text {font-size:14px !important;}
+.wbsPlana-all #S_project_name {margin:0 !important; line-height: 22px !important;}
+.wbsPlana-all .panel-title{font-size:14px;}
+.wbsPlana-all .tree-title {height: 23px !important;line-height: 23px !important;}
+.wbsPlana-all .datagrid-view1 {z-index:100;background:#fff;}
+.wbsPlan_track .datagrid-view-header {top:-1px;}
+.wbsPlan_edit .datagrid-view-header {top:-1px;}
+.wbsPlan_show .datagrid-view-header {top:-1px;}
+.wbsPlan_show .tableTitle {margin-bottom:10px;}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/form.css"/>		
+<script src="js/commons/commons.js"></script>
+<script src="pages/sconfig/s_email.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+			<span>邮箱配置<em></em></span>
+	</div>
+	<form action="#" method="get" class="form-inline" id="email_from">
+			<div class="ecitic-table mr0" id="ecitic-table" style="height:150px;">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">邮箱服务接口地址</td>
+						<td>
+							<input type="text" name="email_ip" id="email_ip" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+						</td>
+						<td class="ecitic-right">邮箱名称</td>
+						<td>
+							<input type="text" name="email_name" id="email_name" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">邮箱账号</td>
+						<td>
+							<input type="text" name="email_num" id="email_num" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+						</td>
+						<td class="ecitic-right">邮箱密码</td>
+						<td>
+							<input type="text" name="email_password" id="email_password" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">短信服务地址</td>
+						<td>
+							<input type="text"  name="mobile_address" id="mobile_address" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+						</td>
+						<td class="ecitic-right">内容管理服务接口地址</td>
+						<td>
+							<input type="text" name="mobile_address" id="contentManager_address" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+						</td>
+					</tr>
+				</table>
+			</div>
+	</form>
+	<div class="ecitic-save">
+			<input type="button" class="btn btn-ecitic" id="svaeEmail" value="保存" />
+			<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+	</div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+	initVlidate($("#email_from"));
+	hideVlidate();
+</script>

@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>环境资源新建审批</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_resourceManage/ERExam/ERaddexam.js"></script>
+<script src="js/commons/commons.js"></script>
+<style type="text/css">
+[class^="icon-"], [class*=" icon-"] {
+    background-image: url("dev_resourceManage/img/glyphicons-halflings.png");
+}
+/*step*/
+.step{ margin:0 auto; display:block; height:60px;}
+.step li{ cursor:pointer;position:relative; text-align:center;float:left;width:33%;}
+.step .line_bg{ height:3px; background:#d9eaf3; display:inline-block; width:50%; top:13px; position:absolute; z-index:1;}
+.step .lbg-l{left:0;}
+.step .lbg-r{right:0;}
+.step .num{ position:relative; z-index:2; background:#fff;width:54px; height:30px;text-align:center; display:inline-block;}
+.step .num em,.num i{width:24px; height:24px; display:inline-block; left:15px; top:2px;position:absolute;}
+.step .num em{ border-radius: 5px;background:#d9eaf3;transform:rotate(45deg);-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);-o-transform:rotate(45deg);z-index:2;}
+.step .num i{  z-index:3; color:#fff; font-style:normal; font-weight:700; top:4px;}
+.step .lbg-txt{ position:relative; color:#b6c6ce; font-size:13px;}
+.step .on .lbg-txt{color:#117769;}
+.step .on .line_bg,.step .on .num em{ background:#117769}
+
+.checkTable tr td{border:none;line-height: 35px;height: 35px;}
+.checkTable tr {border-bottom:1px dashed #eee;}
+
+.checkhead{position:relative;margin-top:20px;height: 40px;
+    line-height: 40px;margin-left:10px;padding-left:15px;
+    font-size: 16px;
+    font-weight: bold;
+	/* background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, #ecf0f1), color-stop(1, #fff) ); */
+	
+	border-top:1px solid #ecf0f1;
+	border-bottom:1px solid #ecf0f1;}
+.checkhead i{position:absolute;left:0px;border-bottom: 20px inset transparent;
+    border-left: 20px solid #146A5D;
+    border-top: 20px inset transparent;}
+.tableContMore li{padding:0 15px;margin:3px 0;}
+.tableContMore li:not(:first-child){float:left;border-right:1px solid #000;}
+</style>
+</head>
+<body>
+<div style="margin-bottom:50px"> 
+	<div class="step">        	
+       <ul>
+           <li class="col-xs-4 on">
+               <span class="num"><em class="f-r5"></em><i>1</i></span>                	
+               <span class="line_bg lbg-r"></span>
+               <p class="lbg-txt">项目质量保证工程师</p>
+           </li>
+           <li class="col-xs-4">
+               <span class="num"><em class="f-r5"></em><i>2</i></span>
+               <span class="line_bg lbg-l"></span>
+               <span class="line_bg lbg-r"></span>
+               <p class="lbg-txt">部门经理</p>
+           </li>
+           <li class="col-xs-4">
+               <span class="num"><em class="f-r5"></em><i>3</i></span>
+               <span class="line_bg lbg-l"></span>
+               <p class="lbg-txt">项目监理</p>
+           </li>
+       </ul>
+   </div>
+   <table class="table table-bordered table-bor-pad">
+		<tbody>
+		    <tr>
+				<td class="ecitic-right">申请人： </td>
+				<td>
+					<input type="text" value="张三">
+				</td>
+				<td class="ecitic-right">申请日期
+				</td>
+				<td>
+					<input type="text" readonly="readonly" onclick="initDate()">
+				</td>
+			</tr>
+			<tr>
+				<td class="ecitic-right">归属项目组：</td>
+				<td>
+					<select>
+						<option>核心项目组2</option>
+						<option>核心项目组</option>
+					</select>
+				</td>
+				
+				<td class="ecitic-right">归属部门：</td>
+				<td>
+					<select>
+						<option selected="selected">研发一处</option>
+						<option>研发二处</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="ecitic-right">归属系统：</td>
+				<td>
+					<select>
+						<option  selected="selected">研发一处</option>
+						<option>研发二处</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="ecitic-right">资源使用开始日期：</td>
+				<td><input type="text" readonly="readonly" onclick="initDate()"></td>
+			
+				<td class="ecitic-right">资源使用结束日期：</td>
+				<td><input type="text" readonly="readonly" onclick="initDate()"></td>
+			</tr>
+			<tr>
+				<td class="ecitic-right">申请用途：</td>
+				<td colspan="3"><textarea></textarea></td>
+			</tr>
+		</tbody>
+	</table>
+  	<div class="ecitic-title">
+		<span>资源清单<em></em></span>
+	</div>
+		<table class="table table-bordered table-hover"><tbody>
+				<tr>
+				<td class="newStyle">
+						<span>序号</span>
+					</td>
+					<td><span style="font-weight:bolder;">环境资源编号</span></td>
+					<td class="newStyle" style="font-weight:700;">
+						<span>环境类型</span>
+					</td>
+					<td class="newStyle" style="font-weight:700;">
+						<span>CPU/核</span>
+					</td>
+					<td class="newStyle" style="font-weight:700;">
+						<span>内存/G</span>
+					</td>
+					<td class="newStyle" style="font-weight:700;">
+						<span>硬盘/G</span>
+					</td>
+					
+				</tr>
+				<tr>
+				<td class="newStyle">
+						<span>1</span>
+					</td>
+					
+					<td class="newStyle" >
+					
+						<div class="tit" onclick="chebox(this)">
+						<i class="icon-chevron-right"></i>
+						<span>HJZY16-001-1</span>
+						</div>
+					</td>
+					<td class="newStyle" >
+						<span>测试环境</span>
+					</td>
+					<td class="newStyle">
+						<span>4</span>
+					</td>
+					<td class="newStyle">
+						<span>8G</span>
+					</td>
+					<td class="newStyle">
+						<span>100G</span>
+					</td>
+				</tr>
+				<tr class="hide combine2">
+					<td class="newStyle" colspan="6" style="text-align:left;">
+						<ul class="tableContMore">
+						<li>系统软件：Windows&nbsp;&nbsp;&nbsp;&nbsp;版本：11</li>
+						<li>应用软件1：office&nbsp;&nbsp;&nbsp;&nbsp;版本：1.2.3</li>
+						<li>应用软件2：office&nbsp;&nbsp;&nbsp;&nbsp;版本：111.2.3</li>
+						<li>应用软件2：office&nbsp;&nbsp;&nbsp;&nbsp;版本：111.2.3</li>
+						<li>应用软件1：office&nbsp;&nbsp;&nbsp;&nbsp;版本：1.2.3</li>
+						<li>应用软件2：office&nbsp;&nbsp;&nbsp;&nbsp;版本：111.2.3</li>
+						<li>应用软件2：office&nbsp;&nbsp;&nbsp;&nbsp;版本：111.2.3</li>
+						<li>应用软件1：office&nbsp;&nbsp;&nbsp;&nbsp;版本：1.2.3</li>
+						<li>应用软件2：office&nbsp;&nbsp;&nbsp;&nbsp;版本：111.2.3</li>
+						<li>应用软件2：office&nbsp;&nbsp;&nbsp;&nbsp;版本：111.2.3</li>
+						</ul>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+  	<div class="ecitic-title">
+		<span>流程审批<em></em></span>
+	</div>
+<!-- table开始 -->
+		<table class="table table-bordered table-hover">
+			<tbody>
+				<tr style="background:#f5f5f5;border-bottom:1px solid #ccc;">
+					<td class="newStyle" style="font-weight:700;">
+						<span>审批岗位</span>
+					</td>
+					<td class="newStyle" style="font-weight:700;">
+						<span>审批人</span>
+					</td>
+					<td class="newStyle" style="font-weight:700;">
+						<span>审批情况</span>
+					</td>
+					<td class="newStyle" style="font-weight:700;">
+						<span>审批操作</span>
+					</td>
+					<td class="newStyle" style="font-weight:700;">
+						<span>审批意见</span>
+					</td>
+					<td class="newStyle" style="font-weight:700;">
+						<span>审批时间</span>
+					</td>
+				</tr>
+				<tr class="tit" id="toSee">
+					<td>
+						<span>项目经理</span>
+					</td>
+					<td>
+						<span>王毅</span>
+					</td>
+					
+					<td>
+						<span style="color:#0095e9;font-weight:bold;">待审批</span>
+					</td>
+					<td>
+						<span>批准/拒绝</span>
+					</td>
+					<td>
+						<span>符合要求！</span>
+					</td>
+					<td>
+						<span>2015-04-07</span>
+					</td>
+					
+					
+				</tr>
+				<tr class="tit" id="toSee1">
+					<td>
+						<span>部门经理</span>
+					</td>
+					<td>
+						<span>李斯</span>
+					</td>
+					
+					<td>
+						<span style="color:red;font-weight:bold;">未审批</span>
+					</td>
+					<td>
+						<span>批准/拒绝</span>
+					</td>
+					<td>
+						<span>同意！</span>
+					</td>
+					<td>
+						<span>2015-04-08</span>
+					</td>
+					
+				</tr>
+				<tr class="tit">
+					<td>
+						<span>综合管理部</span>
+					</td>
+					<td>
+						<span>张剑</span>
+					</td>
+					
+					<td>
+						<span style="color:#28b779;font-weight:bold;">同意</span>
+					</td>
+					<td>
+						<span style="text-decoration:underline;" id="entranceApp">批准/拒绝</span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span>2015-04-10</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="保存"  />
+		<input type="button" class="btn btn-ecitic" value="提交"  />
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+	</div>
+</div>	
+	
+</body>
+</html>

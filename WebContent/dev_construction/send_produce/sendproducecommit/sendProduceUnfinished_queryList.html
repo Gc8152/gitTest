@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>转生产配置</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table id="queryCondition" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">投产单编号：</td>
+					<td><input type="text" name="audit_no"/></td>
+					<td class="ecitic-right">应用名称：</td>
+					<td><input type="text" name="system_name"/></td>
+					<td class="ecitic-right">版本名称：</td>
+					<td><input type="text" name="versions_name"/></td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">变更类别：</td>
+					<td><select id="change_type" name="change_type"></select></td>
+					<td class="ecitic-right">计划投产日期：</td>
+					<td>
+						<input type="text" name="plan_date"  class="citic-ast" onClick="WdatePicker({});" readonly="readonly"/>
+					</td>
+					<td></td><td></td>
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="query">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="updateSendProduce">补充投产信息</button>
+		<!-- <button class="btn btn-ecitic" id="start">发起投产审批</button> -->
+		<button class="btn btn-ecitic" id="detail">查看投产信息</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover table-text-show" id="sendProduceTable"></table>
+	</div>
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="pages/approvalflow/afcommons.js"></script>
+<script type="text/javascript" src="dev_construction/send_produce/sendproducecommit/sendProduceUnfinished_queryList.js"></script>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/public.css"/>
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<script src="js/commons/commons.js"></script>
+<script src="pages/suser/suser_queryUser.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.core.min.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.excheck.min.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.exedit.min.js"></script>
+</head>
+<body>
+	<div class="ecitic-title">
+		<span>个人信息<em></em></span>
+    </div>
+    <div class="ecitic-title-table">
+		<table class="table table-bordered table-center table-th tablr-input-text">
+			<tbody>
+				<tr>
+					<td width="11%" class="table-text">用户编号：</td>
+					<td width="21.333%">
+						<span id="QUwork_no"></span>		
+					</td>
+					<td width="11%" class="table-text">用户名称：</td>
+					<td width="21.333%">
+						<span id="QUuser_name"></span>	
+					</td>
+					<td width="11%" class="table-text">用户电话：</td>
+					<td width="21.333%">
+						<span id="QUuser_mobile"></span>	
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">用户岗位：</td>
+					<td>
+						<span id="QUuser_post_name"></span>	
+					</td>
+					<td class="table-text">状态：</td>
+					<td>
+						<span id="QUstate_name"></span>	
+					</td>
+					<td class="table-text">所属部门：</td>
+					<td>
+						<span id="QUorg_no_name"></span>	
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">邮箱：</td>
+					<td>
+						<span id="QUuser_mail"></span>	
+					</td>
+					<td class="table-text">是否行员：</td>
+					<td>
+						<span id="QUis_banker_name"></span>	
+					</td>
+					<td class="table-text"></td>
+					<td>
+						<span id=""></span>	
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">备注：</td>
+					<td colspan="5">
+						<span id="QUmemo"></span>	
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="关闭" id="GoBackSUserList" onclick="doBackList()" />
+	</div>  
+</body>
+</html>

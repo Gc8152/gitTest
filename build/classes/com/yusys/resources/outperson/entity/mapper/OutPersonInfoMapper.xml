@@ -1,0 +1,1137 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.resources.outperson.dao.OutPersonInfoDao">
+	<!-- 根据供应商名称 查询供应商ID  -->
+	<select id="findSupplierIdByName" parameterType="java.lang.String" resultType="java.lang.String">
+		select sup_num from sup_basic_info where sup_name  = #{supplier_name} and efficient='00' 
+	</select>
+	<!-- 修改外包人员 的查询 语句  -->
+	<select id="findOutPersonInfoByUpdate" parameterType="java.lang.String" resultType="java.util.Map">
+		select  si.sup_name supplier_name,op.*,su.staff_name hnfzr,so.org_name ssbm ,ops.item_name sex_name
+		 from c_outsource_person  op 
+			left join c_staff_info su on op.staff_id=su.staff_id 
+			left join s_org so on so.org_code=op.op_office
+			left join sup_basic_info si on op.supplier_id=si.sup_num
+			left join (select sdi.item_name,sdi.item_code from s_dic_item sdi where dic_code='C_DIC_SEX') ops on op.op_sex=ops.item_code
+		where op.op_id=#{op_id}
+	</select>
+	<!--删除外包人员  -->
+	<delete id = "deleteFindOutPersonInfo" parameterType="java.lang.String">  
+		delete  from c_outsource_person where op_id=#{op_id}
+	</delete>
+	<!-- 外包人员查询 包括列表信息 和详情信息 -->
+	<select id="findOutPersonToList" parameterType="java.util.Map" resultType="java.util.Map">
+		    select 
+	          t.op_name,t.op_state,v1.item_name op_state_name,t.op_sex,v2.item_name sex_name,t.sup_num supplier_id,
+	          t1.sup_name supplier_name,t.op_office,v4.item_name qualificate_level_name,v5.item_name op_skills_name,
+	          t.op_staff_name,t.purch_type , v3.item_name purch_type_name,t.spstate_enter,
+	          t.workflowbussinessid_enter,t.supcontact_man,t.supcontact_num,
+	          t.spstate_out,t.workflowbussinessid_out,t.dev_direction,t.dev_grade,t2.org_name ssbm,
+	          cqei.spstate,cqei.workflowbussinessid,t.op_id,v6.item_name education_name,
+	          v7.item_name op_specialtype_name,v8.item_name graduate_college_name,v9.item_name op_degree_name, b.st,t.op_staff,
+	          v11.item_name op_grade_name,t.op_code,t.op_birthday,t.idcard_no,t.graduate_time,t.join_bank_time,t.op_education,
+	          t.op_degree,t.graduate_college,t.college_type,t.op_phone,t.op_special,t.op_email,t.start_worktime,t.year_work,
+	          t.work_finance_time,t.year_work_finance,t.op_specialtype,t.op_skills,t.memo,t.opt_person,t.opt_time,t.flag,
+	          cqi.qualificate_level,cqi.op_grade,v12.item_name dev_direction_name,v13.item_name dev_grade_name, 
+	          (case t.purch_type 
+	                when '01' then pt.ass_code
+	                when '02' then pt.contract_code
+	                else  ''
+	                end) belongproject,
+	                afr.curr_actorno,
+	                afr.instance_id,
+	                ai.af_name
+	        from c_outsource_person t
+	        left join (select dic.item_code,dic.item_name from s_dic_item dic where dic.dic_code='C_DIC_OUTPERSION_STATUS') v1 
+	          on v1.item_code=t.op_state
+	        left join (select sdi.item_name, sdi.item_code from s_dic_item sdi where dic_code = 'C_DIC_SEX') v2 on t.op_sex = v2.item_code
+	        left join sup_basic_info t1 on t.sup_num = t1.sup_num and t1.efficient='00'
+	        left join s_org t2 on t2.org_code = t.op_office and t2.state='00'
+	        left join (select dic.item_code,dic.item_name from s_dic_item dic where dic.dic_code='C_DIC_PURCH_TYPE')v3 
+	          on v3.item_code=t.purch_type
+	        left join c_qualificate_evaluate_info  cqei on t.op_code=cqei.op_code
+	        left join (select 
+	                        cpi.op_code, crpi.ass_code, crpi.contract_code
+	                   from (select op_code, max(service_startime) mtime from c_resource_pool_info group by op_code) cpi
+	                   left join c_resource_pool_info crpi on crpi.op_code = cpi.op_code and cpi.mtime = crpi.service_startime
+	                   ) pt on pt.op_code=t.op_code
+	         left join c_outsource_qualificate_info cqi on cqi.op_code=t.idcard_no  and cqi.IS_CURRENT='01'
+	         left join (select dic.item_code,dic.item_name from s_dic_item dic where dic.dic_code='C_DIC_OUTPERSION_QULITY_LEVEL')v4 
+	           on v4.item_code=cqi.qualificate_level
+	         left join (select dic.item_code,dic.item_name,dic.dic_code from s_dic_item dic) v11 
+	           on v11.dic_code=cqi.qualificate_level and v11.item_code = cqi.op_grade
+	         left join  (select dic.item_code,dic.item_name from s_dic_item dic where dic.dic_code='C_DIC_OUTPERSION_EDU') v6
+	           on v6.item_code=t.op_education
+	         left join (select  dic.item_code,dic.item_name from s_dic_item dic where dic.dic_code='C_DIC_OUTPERSION_PROFESSION')v7 
+	           on v7.item_code=t.op_specialtype
+	         left join (select dic.item_code,dic.item_name,dic.dic_code from s_dic_item dic)v5
+	           on v5.dic_code=t.op_specialtype and v5.item_code=t.op_skills
+	         left join (select dic.item_code,dic.item_name from s_dic_item dic where dic.dic_code='C_DIC_OUTPERSION_COLLEGE_TYPE')v8 
+	           on v8.item_code=t.college_type 
+	         left join (select dic.item_code,dic.item_name from s_dic_item dic where dic.dic_code='C_DIC_OUTPERSION_DEGREE')v9
+	           on v9.item_code=t.op_degree
+         	 left join (select dic.item_code,dic.item_name from s_dic_item dic where dic.dic_code='C_DIC_OUTPERSION_DEV_DIRECT')v12
+	           on v12.item_code=t.dev_direction
+	         left join (select dic.item_code,dic.item_name from s_dic_item dic where dic.dic_code='C_DIC_OUTPERSION_LEVEL')v13
+	           on v13.item_code=t.dev_grade
+	         left join (select 
+	                           listagg(a.str,',') within group(order by a.op_id) as st,a.op_id
+	                   from (select 
+	                              to_char(dic.item_name)||'-'||to_char(t.check_score) as str,t.op_id
+	                         from C_OUTSOURCE_CHECK_INFO t
+	                         left join s_dic_item dic on dic.dic_code='C_DIC_OUTPERSION_PROFESSION' and dic.item_code= t.specialtype
+	                         ) a  group by a.op_id
+	                    ) b
+	           on b.op_id=t.op_id
+	            left join af_flow_record afr  on t.op_id= afr.biz_id
+	            left join af_instance ais on afr.instance_id=ais.instance_id
+				left join af_info ai on ai.af_id=ais.af_id
+	          where 1=1 
+		      <if test="query_type==null or query_type==''">
+				    <!--   and 
+				       (t.op_office in(select org_code from s_roleuser where role_no in ('007') and user_no=#{userid})
+				   		  or exists (select 1 from s_roleuser where user_no=#{userid} and role_no in ('010','admin','003'))
+				   	   ) -->
+		      </if>
+		<if test="op_id !=null and op_id !=''">
+				and t.op_id=#{op_id}
+		</if>   	   
+		<if test="belongproject_like !=null and belongproject_like !=''">
+				and pt.ass_code like #{belongproject_like} or pt.contract_code like #{belongproject_like}
+		</if>
+		<if test="op_name_like!=null and op_name_like!=''">
+				and t.op_name like #{op_name_like}
+		</if>
+		<if test="op_code !=null and op_code !=''">
+				and t.op_code like #{op_code}
+		</if>
+		<if test="rank!=null and rank!=''">
+				and t.purch_type='01'and t.op_state in ('01','03')
+		</if>
+		<if test="supplier_id!=null and supplier_id!=''">
+			    and t1.sup_num=#{supplier_id}
+		</if>
+		<if test="op_office!=null and op_office!=''">
+				and (t.op_office=#{op_office} or t.op_office in(select org_code  from  s_org  start with  org_code=#{op_office} connect by suporg_code=prior org_code ) )
+		</if>
+		<if test="purch_type!=null and purch_type!=''">
+				and t.purch_type=#{purch_type}
+		</if>
+		<choose>
+			<!-- 入场发起查询列表 字典项 C_DIC_OUTPERSION_STATUS-->
+			<when test='op_state!=null and op_state=="entranceApp"'>
+				and t.op_state in('01','02','03','05','08')
+			</when>
+			<!-- 离场发起查询列表 -->
+			<when test='op_state!=null and op_state=="leaveApp"'>
+				and t.op_state in('01','02','04','06','09')
+			</when>
+			<when test="op_state!=null and op_state!=''">
+				and t.op_state=#{op_state}
+			</when>
+		</choose>
+			<!-- 审批列表查询 -->
+          <choose>
+          	<when test='query_type!=null and query_type!="nosuser" and query_type!=""'>
+	          	and (
+	        		#{userid} in (SELECT REGEXP_SUBSTR(CURR_ACTORNO, '[^,]+', 1, LEVEL, 'i') AS STR   FROM DUAL  
+		             	CONNECT BY LEVEL &lt;=  LENGTH(CURR_ACTORNO) - LENGTH(REGEXP_REPLACE(CURR_ACTORNO, ',', ''))+1)
+		   		        and afr.if_end='01' 
+		            )
+		            and afr.flag='01'
+          	</when>
+          	<otherwise>
+          	 	and (afr.flag is null or afr.record_id in(select max(record_id) from af_flow_record where biz_id=t.op_id)) 
+          	</otherwise>
+          </choose>
+          <!-- and (afr.flag='01' or afr.flag is null) and  (afr.system_flag='04' or afr.system_flag is null) -->
+          <!-- 当人员状态为05入场审批中 -->
+          <if test='query_type!=null and query_type=="enter_approve"'>
+	            and t.op_state='05'
+          </if>
+          <!-- 当人员状态为06离场审批中 -->
+          <if test='query_type!=null and query_type=="leave_approve"'>
+	            and t.op_state='06'
+          </if>
+            <!-- 排除已关联用户的外包人员数据 -->
+          <if test='query_type!=null and query_type=="nosuser"'>
+	            and t.op_id not in(select outpersion_id from s_user where outpersion_id is not null)
+          </if>
+          <!-- 外包管理岗或者admin或者外包人员对应的项目经理 -->
+          <if test="entranceLeave!=null and entranceLeave!=''">
+          		and (t.op_staff=#{userid} or '0'=#{userid} 
+          		or  exists(  select * from s_roleuser where role_no='0055' and user_no=#{userid} and state='00'))
+          </if>
+		<if test="rank==null or rank==''">
+				 order by t.opt_time desc
+		</if>
+		<if test="rank!=null and rank!=''">
+				order by cqei.opt_time desc
+		</if>
+	</select>
+	<!-- 判断身份证是否存在-->
+	<select id="judgeCode" parameterType="String" resultType="java.util.Map">
+		select * from c_outsource_person where op_code=#{op_code}
+	</select>
+	<!--  新增一条外包人员信息-->
+	<insert id="addOutPersonInfo" parameterType="java.util.Map">
+		insert into c_outsource_person(
+			op_id,op_code,op_name,op_state,op_sex, op_birthday,sup_num,op_office,
+  			op_phone,op_education,graduate_college,op_special,start_worktime,year_work,
+  			op_email,op_degree,graduate_time,idcard_no,college_type,work_finance_time,
+  			year_work_finance,op_skills ,op_specialtype,memo,opt_person, opt_time,
+   			op_staff,op_staff_name,join_bank_time,purch_type,dev_direction,dev_grade,supcontact_man,supcontact_num)
+   		values(
+   			#{op_id},#{idcard_no},#{op_name},#{op_state},#{op_sex},#{op_birthday},#{supplier_id},#{op_office},
+   			#{op_phone},#{op_education},#{graduate_college},#{op_special},#{start_worktime},#{year_work},
+   		 	#{op_email},#{op_degree},#{graduate_time},#{idcard_no},#{college_type},#{work_finance_time},
+   		 	#{year_work_finance},#{op_skills},#{op_specialtype},#{memo},#{opt_person},#{opt_time},#{op_staff},
+   		 	#{op_staff_name},#{join_bank_time},#{purch_type},#{dev_direction},#{dev_grade},#{supcontact_man},#{supcontact_num})
+	</insert>
+	<!-- 修改一条外包人员信息 -->
+	<update id="updateOutPerson" parameterType="java.util.Map">
+		update c_outsource_person set 
+			op_code=#{idcard_no},op_name=#{op_name},op_sex=#{op_sex}, op_birthday=#{op_birthday},sup_num=#{supplier_id},
+			op_office=#{op_office},op_phone=#{op_phone},op_education=#{op_education},graduate_college=#{graduate_college},
+			op_special=#{op_special},start_worktime=#{start_worktime},op_email=#{op_email},op_degree=#{op_degree},
+			graduate_time=#{graduate_time},idcard_no=#{idcard_no},year_work=#{year_work},work_finance_time=#{work_finance_time},
+			year_work_finance=#{year_work_finance},op_skills=#{op_skills},op_specialtype=#{op_specialtype},memo=#{memo},
+			opt_person=#{opt_person}, opt_time=#{opt_time},college_type=#{college_type},op_staff=#{op_staff},op_staff_name=#{op_staff_name},
+			join_bank_time=#{join_bank_time},purch_type=#{purch_type},dev_direction = #{dev_direction},dev_grade = #{dev_grade},
+			supcontact_man = #{supcontact_man},supcontact_num = #{supcontact_num}
+		where op_id=#{op_id}
+	</update>
+	<!-- 定级更新外包人员职级 -->
+	<update id="updateOutPersonRank" parameterType="java.util.Map">
+		update c_outsource_person set dev_direction = #{dev_direction},dev_grade = #{dev_grade} where op_code=#{op_code}
+	</update>
+	<!-- 外包人员入场申请 -->
+	<update id="applyOutPersonEntrance" parameterType="java.util.Map">
+		update c_outsource_person set 
+			op_state=#{op_state},op_entrance_stream=#{instanceid},opt_person=#{opt_person}, opt_time=#{opt_time}
+		where op_id=#{op_id}
+	</update>
+	<!-- 增加外包人员工作资源 -->
+	<insert id="addOutPersonWorkResourceInfo" parameterType="java.util.Map">
+		insert into c_assignment_resource(ass_code,contract_code,op_id,workload_month,w_starttime,w_endtime,opt_person,opt_time)
+		values(#{ass_code},#{contract_code},#{op_id},#{workload_month},#{w_starttime},#{w_endtime},#{opt_person},#{opt_time})
+	</insert>
+	<!-- 修改外包人员工作资源 信息 -->
+	<update id="updateOutPersonWorkResourceInfo" parameterType="java.util.Map">
+		update c_assignment_resource set workload_month=#{workload_month},w_starttime=#{w_starttime},
+		w_endtime=#{w_endtime},
+		opt_person=#{opt_person},opt_time=#{opt_time} where ass_code=#{ass_code} and op_id=#{op_id}
+	</update>
+		<!-- 	删除外包人员  工作资源 -->
+	<delete id = "deleteOutPersonWorkInfo" parameterType="java.lang.String">  
+		delete  from c_assignment_resource where op_id=#{op_id}
+	</delete>
+	<!-- 	查询外包人员  工作资源信息 -->
+	<select id="findOutPersonWorkInfo" parameterType="java.lang.String" resultType="java.util.Map">
+		select 
+			c.*,(select item_name from s_dic_item sd where sd.dic_code = 'C_DIC_P_QUAIFICATION' and sd.item_code = c.op_qualificate) op_qualificate_name 
+        from c_assignment_resource c where c.op_id=#{op_id}
+	</select>
+	<!-- 	检查外包人员  工作资源信息 是否重复-->
+	<select id="checkOutPersonWorkRepeatInfo" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from c_assignment_resource where op_id=#{op_id} and op_qualificate=#{op_qualificate} and
+			(ass_code=#{ass_code} or ass_code is null) and (contract_code=#{contract_code} or contract_code is null)
+	</select>
+	<!-- 	查询外包人员  id-->
+	<select id="findOutPersonIdByCode" parameterType="java.lang.String" resultType="java.lang.String">
+		select op_id from c_outsource_person where op_code=#{op_code}
+	</select>
+	<select id="findOutPersonIdByIdcard" parameterType="java.lang.String" resultType="java.util.Map">
+		select op_id,op_state,op_name from c_outsource_person where idcard_no=#{string}
+	</select>
+	<!-- 	查询外包人员  id-->
+	<select id="findOutPIdByCode" parameterType="java.util.Map" resultType="java.lang.String">
+		select op.op_id from c_outsource_person op 
+		left join  c_assignment_resource ar on ar.op_id=op.op_id
+		where op.op_code=#{op_code} and ar.ass_code=#{ass_code}
+	</select>
+	<!-- 	查询外包人员ID根据op_id-->
+	<select id="findOutPcodeByCode" parameterType="java.lang.String" resultType="java.lang.String">
+		select op_id from c_outsource_person where op_code=#{op_code}
+	</select>
+	<!-- 查询教育经历 -->	
+	<select id="queryEduInfo" parameterType="java.util.Map" resultType="java.util.Map">
+		select cee.op_id,cee.op_code,cee.edu_institution,cee.edu_background,cee.start_time,cee.end_time,
+			   cee.op_special,cee.special_desc,cee.memo,
+			   (select sd.item_name from s_dic_item sd where sd.dic_code='C_DIC_OUTPERSION_EDU' and sd.item_code = cee.edu_background) edu_background_name
+		from c_edu_experience_info cee
+		where cee.op_code=#{op_code}
+		order by cee.start_time
+	</select>
+	<!-- 新增教育经历 -->
+	<insert id="addEduInfo" parameterType="java.util.Map">
+		insert into c_edu_experience_info(
+			op_id,op_code,edu_institution,edu_background,start_time,end_time,op_special,
+			special_desc,memo,opt_person,opt_time)
+		values(
+			#{op_id},#{op_code},#{edu_institution},#{edu_background},#{start_time},#{end_time},#{op_special},
+			#{special_desc},#{memo},#{opt_person},#{opt_time})
+	</insert>
+	<!-- 修改教育经历 -->
+	<update id = "updateEduInfo" parameterType="java.util.Map">
+		update c_edu_experience_info set 
+			edu_institution = #{edu_institution},edu_background = #{edu_background},start_time = #{start_time},
+			end_time = #{end_time},op_special = #{op_special},special_desc = #{special_desc},memo = #{memo},
+			opt_person = #{opt_person},opt_time = #{opt_time}
+		where op_id = #{op_id}	
+	</update>
+	<!-- 删除教育经历 -->
+	<delete id = "deleteEduInfo" parameterType="java.util.Map">  
+		delete from c_edu_experience_info where op_id=#{op_id}
+	</delete>
+	<!-- 查询工作履历 -->	
+	<select id="queryWorkInfo" parameterType="java.util.Map" resultType="java.util.Map">
+		select cwe.op_id,cwe.op_code,cwe.company_name,cwe.enterprise_nature,cwe.start_time,cwe.end_time,
+			   cwe.industry_belong,cwe.position,cwe.work_content,cwe.leave_reason,cwe.memo,
+			   (select sd.item_name from s_dic_item sd where sd.dic_code='SUP_DIC_NATURE_BUSINESS' and sd.item_code = cwe.enterprise_nature) enterprise_nature_name
+		from c_work_experience_info cwe
+		where cwe.op_code=#{op_code}
+		order by cwe.start_time
+	</select>
+	<!-- 新增工作履历 -->
+	<insert id="addWorkInfo" parameterType="java.util.Map">
+		insert into c_work_experience_info(
+			op_id,op_code,company_name,enterprise_nature,start_time,end_time,
+			industry_belong,position,work_content,leave_reason,
+			memo,opt_person,opt_time)
+		values(
+			#{op_id},#{op_code},#{company_name},#{enterprise_nature},#{start_time},#{end_time},
+			#{industry_belong},#{position},#{work_content},#{leave_reason},
+			#{memo},#{opt_person},#{opt_time})
+	</insert>
+	<insert id="addWorkInfoExc" parameterType="java.util.Map">
+		insert into c_work_experience_info(
+			op_id,op_code,company_name,enterprise_nature,start_time,end_time,
+			industry_belong,position,work_content,leave_reason,
+			memo,opt_person,opt_time)
+		values(
+			#{op_id},#{idcard_no},#{company_name},#{enterprise_nature},#{start_time},#{end_time},
+			#{industry_belong},#{position},#{work_content},#{leave_reason},
+			#{memo},#{opt_person},#{opt_time})
+	</insert>
+	<!-- 新增工作履历 -->
+	<update id="updateWorkInfo" parameterType="java.util.Map">
+		update c_work_experience_info set 
+			company_name=#{company_name},enterprise_nature=#{enterprise_nature},start_time=#{start_time},
+			end_time=#{end_time},industry_belong=#{industry_belong},position=#{position},work_content=#{work_content},
+			leave_reason=#{leave_reason},memo=#{memo},opt_person=#{opt_person},opt_time=#{opt_time}
+		where op_id = #{op_id}	
+	</update>
+	<!-- 删除工作履历 -->
+	<delete id = "deleteWorkInfo" parameterType="java.util.Map">  
+		delete from c_work_experience_info where op_id=#{op_id}
+	</delete>
+	<!-- 查询资质证书 -->	
+	<select id="queryQualificateInfo" parameterType="java.util.Map" resultType="java.util.Map">
+		select cqe.op_id,cqe.op_code,cqe.certificate_name,cqe.issuing_time,cqe.indate,cqe.issuing_unit,cqe.memo
+		from c_qualificate_certificate_info cqe
+		where cqe.op_code=#{op_code}
+		order by cqe.issuing_time
+	</select>
+	<!-- 新增资质证书 -->
+	<insert id="addQualificateInfo" parameterType="java.util.Map">
+		insert into c_qualificate_certificate_info(
+			op_id,op_code,certificate_name,issuing_time,indate,issuing_unit,
+			memo,opt_person,opt_time)
+		values(
+			#{op_id},#{op_code},#{certificate_name},#{issuing_time},#{indate},#{issuing_unit},
+			#{memo},#{opt_person},#{opt_time})
+	</insert>
+	<insert id="addQualificateInfoExc" parameterType="java.util.Map">
+		insert into c_qualificate_certificate_info(
+			op_id,op_code,certificate_name,issuing_time,indate,issuing_unit,
+			memo,opt_person,opt_time)
+		values(
+			#{op_id},#{idcard_no},#{certificate_name},#{issuing_time},#{indate},#{issuing_unit},
+			#{memo},#{opt_person},#{opt_time})
+	</insert>
+	<!-- 修改资质证书 -->
+	<update id="updateQualificateInfo" parameterType="java.util.Map">
+		update c_qualificate_certificate_info set
+			certificate_name=#{certificate_name},issuing_time=#{issuing_time},indate=#{indate},
+			issuing_unit=#{issuing_unit},memo=#{memo},opt_person=#{opt_person},opt_time=#{opt_time}
+		where op_id = #{op_id}
+	</update>
+	<!-- 删除资质证书 -->
+	<delete id = "deleteQualificateInfo" parameterType="java.util.Map">  
+		delete from c_qualificate_certificate_info where op_id=#{op_id}
+	</delete>
+	<!-- 查询专业技能 -->	
+	<select id="querySkillInfo" parameterType="java.util.Map" resultType="java.util.Map">
+		select csi.op_id,csi.op_code,csi.skill_type,csi.skill,csi.skill_name,csi.proficiency_degree,csi.using_time,csi.memo, 
+			   sd1.item_name skill_type_name,sd2.item_name skillname,ops.item_name proficiency_degree_name 
+		from c_skills_info csi 
+		left join (select item_name,item_code from s_dic_item where dic_code='C_DIC_OUTPERSION_SKILL') sd1 on csi.skill_type=sd1.item_code
+		left join (select item_name,item_code,dic_code from s_dic_item) sd2 on sd2.dic_code=csi.skill_type and csi.skill=sd2.item_code
+	    left join (select sdi.item_name,sdi.item_code from s_dic_item sdi where dic_code='C_DIC_OUTPERSION_SKILL_PROFICIENCY') ops on csi.proficiency_degree=ops.item_code
+		where csi.op_code=#{op_code}
+		order by csi.using_time
+	</select>
+	<!-- 新增专业技能 -->
+	<insert id="addSkillInfo" parameterType="java.util.Map">
+		insert into c_skills_info(
+			op_id,op_code,skill_type,skill,proficiency_degree,using_time,
+			memo,opt_person,opt_time)
+		values(
+			#{op_id},#{op_code},#{skill_type},#{skill},#{proficiency_degree},#{using_time},
+			#{memo},#{opt_person},#{opt_time})
+	</insert>
+	<insert id="addSkillInfoExc" parameterType="java.util.Map">
+		insert into c_skills_info(
+			op_id,op_code,skill_type,skill,proficiency_degree,using_time,
+			memo,opt_person,opt_time)
+		values(
+			#{op_id},#{idcard_no},#{skill_type},#{skill},#{proficiency_degree},#{using_time},
+			#{memo},#{opt_person},#{opt_time})
+	</insert>
+	<!-- 修改专业技能 -->
+	<update id="updateSkillInfo" parameterType="java.util.Map">
+		update c_skills_info set
+			skill_type=#{skill_type},skill=#{skill},proficiency_degree=#{proficiency_degree},
+			using_time=#{using_time},memo=#{memo},opt_person=#{opt_person},opt_time=#{opt_time}
+		where op_id=#{op_id}
+	</update>
+	<!-- 删除专业技能 -->
+	<delete id = "deleteSkillInfo" parameterType="java.util.Map">  
+		delete from c_skills_info where op_id=#{op_id}
+	</delete>
+	<!-- 查询项目经历 -->	
+	<select id="queryProjectInfo" parameterType="java.util.Map" resultType="java.util.Map">
+		select cpe.op_id,cpe.op_code,cpe.project_name,cpe.start_time,cpe.end_time,cpe.paly_role,cpe.project_abstract,cpe.project_responsibility,cpe.memo 
+		from c_project_experience cpe 
+		where cpe.op_code=#{op_code}
+		order by cpe.start_time
+	</select>
+	<!-- 新增项目经历 -->
+	<insert id="addProjectInfo" parameterType="java.util.Map">
+		insert into c_project_experience(
+			op_id,op_code,project_name,start_time,end_time,paly_role,project_abstract,project_responsibility,
+			memo,opt_person,opt_time)
+		values(
+			#{op_id},#{op_code},#{project_name},#{start_time},#{end_time},#{paly_role},#{project_abstract},#{project_responsibility},
+			#{memo},#{opt_person},#{opt_time})
+	</insert>
+	<insert id="addProjectInfoExc" parameterType="java.util.Map">
+		insert into c_project_experience(
+			op_id,op_code,project_name,start_time,end_time,paly_role,project_abstract,project_responsibility,
+			memo,opt_person,opt_time)
+		values(
+			#{op_id},#{idcard_no},#{project_name},#{start_time},#{end_time},#{paly_role},#{project_abstract},#{project_responsibility},
+			#{memo},#{opt_person},#{opt_time})
+	</insert>
+	<!-- 修改项目经历 -->
+	<update id="updateProjectInfo" parameterType="java.util.Map">
+		update c_project_experience set
+			project_name=#{project_name},start_time=#{start_time},end_time=#{end_time},paly_role=#{paly_role},
+			project_abstract=#{project_abstract},project_responsibility=#{project_responsibility},
+			memo=#{memo},opt_person=#{opt_person},opt_time=#{opt_time}
+		where op_id=#{op_id}
+	</update>
+	<!-- 删除项目经历 -->
+	<delete id = "deleteProjectInfo" parameterType="java.util.Map">  
+		delete from c_project_experience where op_id=#{op_id}
+	</delete>
+	<!-- 查询资质级别 -->	
+	<select id="queryQualiLevelInfo" parameterType="java.util.Map" resultType="java.util.Map">
+	    select coq.op_id,coq.op_code,coq.qualificate_level,coq.start_time,coq.end_time,coq.is_current,coq.op_grade,coq.memo,
+	         (select sd.item_name from s_dic_item sd where sd.dic_code='C_DIC_OUTPERSION_DEV_DIRECT' and sd.item_code = coq.qualificate_level) qualificate_level_name,
+	         (select sd.item_name from s_dic_item sd where sd.dic_code='C_DIC_OUTPERSION_LEVEL' and sd.item_code = coq.op_grade) op_grade_name
+	    from c_outsource_qualificate_info coq
+		where coq.op_code=#{op_code}
+		order by coq.start_time
+	</select>
+	<!-- 查询外包人员的是否存在当前资质 -->
+	<select id="findIsExist" parameterType="java.util.Map" resultType="java.util.Map">
+		select 
+			coq.op_id 
+		from c_outsource_qualificate_info coq 
+		where coq.op_code=#{op_code} and coq.qualificate_level=#{qualificate_level} and coq.op_grade=#{op_grade}
+	    and coq.start_time=#{start_time} and  coq.is_current=#{is_current}
+	</select>
+	<!-- 删除当前已经存在的人员资质数据 导入时用 -->
+	<delete id="delIsExistBy" parameterType="java.util.Map">
+		delete from c_outsource_qualificate_info coq where coq.op_code=#{op_code} and coq.qualificate_level=#{qualificate_level} 
+		and coq.op_grade=#{op_grade} and coq.start_time=#{start_time} and  coq.is_current=#{is_current}
+	</delete>
+	<!--查询是否当前资质  -->
+	<select id="findIsCurrentByOpCode" parameterType="java.util.Map" resultType="java.util.Map">
+		select coq.op_id, coq.is_current from c_outsource_qualificate_info coq where coq.op_code=#{op_code}
+	</select>
+	<update id="updateIsCurrentByOpCode" parameterType="java.util.Map">
+		update c_outsource_qualificate_info coq set coq.is_current='00' where coq.op_code=#{op_code} and coq.start_time=#{start_time} 
+	</update>
+	<!-- 资质级别信息是否有重叠时间 -->
+	<select id="queryTimeByTime" parameterType="java.util.Map" resultType="java.util.Map">
+		select coq.op_id from c_outsource_qualificate_info coq where coq.op_code=#{op_code} 
+		<if test="start_time !=null and start_time !='' and end_time !=null and end_time !=''">
+			<![CDATA[
+				and (
+					(coq.end_time>=#{start_time} and coq.start_time<=#{start_time})
+					or 
+					(coq.end_time>=#{end_time} and coq.start_time<=#{end_time})
+					or
+					(coq.end_time<=#{end_time} and coq.start_time>=#{start_time})
+					or
+					(coq.start_time>=#{start_time} and coq.start_time<=#{end_time})
+				)
+			]]>
+		</if>   
+		<if test="start_time !=null and start_time !='' and is_current!=null and is_current!=''">
+			<![CDATA[
+				and  coq.end_time>=#{start_time} and coq.start_time<=#{start_time}
+			]]>
+		</if>   
+		<if test="op_id !=null and op_id !=''">
+				and coq.op_id!=#{op_id}
+		</if>   
+	</select>
+	<!-- 资源池信息是否有重叠时间 -->
+	<select id="queryServiceTimeByTime" parameterType="java.util.Map" resultType="java.util.Map">
+		select coq.op_id from c_resource_pool_info coq where coq.op_code=#{op_code} 
+			<![CDATA[
+				and  coq.service_startime=#{service_startime} 
+			]]>
+		<if test="op_id !=null and op_id !=''">
+				and coq.op_id!=#{op_id}
+		</if>   
+	</select>
+	<!--查询原时间  -->
+	<select id="queryQualiTimeByTime" parameterType="java.util.Map" resultType="java.util.Map">
+		select coq.start_time,coq.end_time from c_outsource_qualificate_info coq where coq.op_id=#{op_id}
+	</select>
+	<!-- 新增资质级别 -->
+	<insert id="addQualiLevelInfo" parameterType="java.util.Map">
+		insert into c_outsource_qualificate_info(
+			op_id,op_code,qualificate_level,start_time,end_time,is_current,op_grade,
+			memo,opt_person,opt_time)
+		values(
+			#{op_id},#{op_code},#{qualificate_level},#{start_time},#{end_time},#{is_current},#{op_grade},
+			#{memo},#{opt_person},#{opt_time})
+	</insert>
+	<insert id="addQualiLevelInfoExc" parameterType="java.util.Map">
+		insert into c_outsource_qualificate_info(
+			op_id,op_code,qualificate_level,start_time,end_time,is_current,op_grade,
+			memo,opt_person,opt_time)
+		values(
+			#{op_id},#{idcard_no},#{qualificate_level},#{start_time},#{end_time},#{is_current},#{op_grade},
+			#{memo},#{opt_person},#{opt_time})
+	</insert>
+	<!-- 修改资质级别 -->
+	<update id="updateQualiLevelInfo" parameterType="java.util.Map">
+		update c_outsource_qualificate_info set
+			qualificate_level=#{qualificate_level},start_time=#{start_time},end_time=#{end_time},is_current=#{is_current},
+			op_grade=#{op_grade},memo=#{memo},opt_person=#{opt_person},opt_time=#{opt_time}
+		where op_id=#{op_id}
+	</update>
+	<!-- 删除资质级别 -->
+	<delete id = "deleteQualiLevelInfo" parameterType="java.util.Map">  
+		delete from c_outsource_qualificate_info where op_id=#{op_id}
+	</delete>
+	<!-- 查询资源池 -->	
+	<select id="queryResPoolInfo" parameterType="java.util.Map" resultType="java.util.Map">
+		select crp.op_id,crp.project_role,crp.op_code,crp.purch_type,crp.ass_code,crp.contract_code,crp.work_month,crp.service_startime,crp.service_endtime,crp.memo,crp.duty_explain,crp.is_key,
+				ops.item_name is_key_name,cd1.item_name project_role_name,
+			   (select sd.item_name from s_dic_item sd where sd.dic_code='C_DIC_PURCH_TYPE' and sd.item_code = crp.purch_type) purch_type_name 
+		from c_resource_pool_info crp
+		left join (select sdi.item_name,sdi.item_code from s_dic_item sdi where dic_code='C_DIC_OUTPERSION_YN') ops on crp.is_key=ops.item_code
+		left join (select item_code,item_name from s_dic_item where dic_code='C_OUT_PROJECT_ROLE') cd1 on cd1.item_code=crp.project_role
+		where crp.op_code=#{op_code}
+		order by crp.service_startime
+	</select>
+	<!-- 新增资源池 -->
+	<insert id="addResPoolInfo" parameterType="java.util.Map">
+		insert into c_resource_pool_info(
+			op_id,op_code,purch_type,ass_code,contract_code,work_month,service_startime,service_endtime,
+			memo,opt_person,opt_time,project_role,duty_explain,is_key)
+		values(
+			#{op_id},#{op_code},#{purch_type},#{ass_code},#{contract_code},#{work_month},#{service_startime},#{service_endtime},
+			#{memo},#{opt_person},#{opt_time},#{project_role},#{duty_explain},#{is_key})
+	</insert>
+	<insert id="addResPoolInfoExc" parameterType="java.util.Map">
+		insert into c_resource_pool_info(
+			op_id,op_code,purch_type,ass_code,contract_code,work_month,service_startime,service_endtime,project_role,
+			opt_person,opt_time,duty_explain,is_key)
+		values(
+			#{op_id},#{idcard_no},#{purch_type},#{ass_code},#{contract_code},#{work_month},#{service_startime},#{service_endtime},#{project_role},
+			#{opt_person},#{opt_time},#{duty_explain},#{is_key})
+	</insert>
+	<!-- 根据非项目任务编号查询 资源池信息是否存在 -->
+	<select id="checkIsExistByAssCode" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from c_resource_pool_info where  op_code=#{idcard_no} and ass_code=#{ass_code}
+	</select>
+	<delete id="delByAssCode" parameterType="java.util.Map">
+		delete from c_resource_pool_info where  op_code=#{idcard_no} and ass_code=#{ass_code}
+	</delete>
+	<!-- 根据合同编号查询 资源池信息是否存在 -->
+	<select id="checkIsExistByContract" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from c_resource_pool_info where op_code=#{idcard_no} and contract_code=#{contract_code}
+	</select>
+	<delete id="delByContract" parameterType="java.util.Map">
+		delete from c_resource_pool_info where op_code=#{idcard_no} and contract_code=#{contract_code}
+	</delete>
+	<!-- 根据单位名称 开始时间 结束时间 id 身份证编号 查询工作经历是否存在 -->
+	<select id="findWorkInfo" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from c_work_experience_info where  op_code=#{idcard_no} and start_time=#{start_time}
+		and end_time=#{end_time} and end_time=#{end_time}  and company_name=#{company_name}
+	</select>
+	<!-- 根据单位名称 开始时间 结束时间 id 身份证编号删除工作经历是否存在 -->
+	<delete id="delWorkInfo" parameterType="java.util.Map">
+		delete from c_work_experience_info where  op_code=#{idcard_no} and start_time=#{start_time}
+		and end_time=#{end_time} and end_time=#{end_time}  and company_name=#{company_name}
+	</delete>
+	<!-- 根据资质证书名称、发行时间发行单位 id 身份证编号 查询资质证书信息是否存在 -->
+	<select id="findzzzs" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from c_qualificate_certificate_info where  op_code=#{idcard_no} 
+		and certificate_name=#{certificate_name} and issuing_time=#{issuing_time}  and issuing_unit=#{issuing_unit}
+	</select>
+	<!-- 根据资质证书名称、发行时间发行单位 id 身份证编号 删除资质证书是否存在 -->
+	<delete id="delfindzzzsfo" parameterType="java.util.Map">
+		delete  from c_qualificate_certificate_info where op_code=#{idcard_no} 
+		and certificate_name=#{certificate_name} and issuing_time=#{issuing_time}  and issuing_unit=#{issuing_unit}
+	</delete>
+	<!-- 根据技能类型技能名称 熟练度 掌握时间 id 身份证编号 查询资专业技能是否已经 -->
+	<select id="findzyjnInfo" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from c_skills_info where  op_code=#{idcard_no} 
+		and skill_type=#{skill_type} and skill=#{skill}  and proficiency_degree=#{proficiency_degree}
+		and using_time=#{using_time}
+	</select>
+	<!-- 根据技能类型技能名称 熟练度 掌握时间  id 身份证编号 删除专业技能 已存在 -->
+	<delete id="delfindzyjnInfo" parameterType="java.util.Map">
+		delete  from c_skills_info where  op_code=#{idcard_no} 
+		and skill_type=#{skill_type} and skill=#{skill}  and proficiency_degree=#{proficiency_degree}
+		and using_time=#{using_time}
+	</delete>
+	<!-- 根据项目名称 开始时间  结束时间 id 身份证编号 删除工作经历已存在-->
+	<select id="findProjectInfo" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from c_project_experience where  op_code=#{idcard_no} 
+		and project_name=#{project_name} and start_time=#{start_time}  and end_time=#{end_time}
+	</select>
+	<!-- 根据根据项目名称 开始时间  结束时间  id 身份证编号 删除工作经历 已存在 -->
+	<delete id="delProjectInfo" parameterType="java.util.Map">
+		delete  from c_project_experience where  op_code=#{idcard_no} 
+		and project_name=#{project_name} and start_time=#{start_time}  and end_time=#{end_time}
+	</delete>
+	<!-- 修改资源池 -->
+	<update id="updateResPoolInfo" parameterType="java.util.Map">
+		update c_resource_pool_info set
+			purch_type=#{purch_type},project_role=#{project_role},ass_code=#{ass_code},contract_code=#{contract_code},work_month=#{work_month},service_startime=#{service_startime},
+			service_endtime=#{service_endtime},memo=#{memo},opt_person=#{opt_person},opt_time=#{opt_time},duty_explain=#{duty_explain},is_key=#{is_key}
+		where op_id=#{op_id}	
+	</update>
+	<!-- 删除资源池 -->
+	<delete id = "deleteResPoolInfo" parameterType="java.util.Map">  
+		delete from c_resource_pool_info where op_id=#{op_id}
+	</delete>
+	<!-- 根据查询条件导出外包人员信息 -->
+	<select id="exportOutPersonInfo" parameterType="java.util.Map" resultType="java.util.Map">
+	    select rownum rn,
+			  		t1.idcard_no,t1.op_name,t4.sup_name,v1.item_name op_qualification_name,t5.org_name,t1.op_staff_name,v2.item_name op_position_name,
+			  		t1.year_work,t1.op_phone,t1.memo,t1.join_bank_time,
+			  		t1.op_birthday,t1.op_education,v11.item_name op_education_name,t1.graduate_college,t1.op_special,t1.start_worktime,t1.work_finance_time,
+			  		v14.item_name purch_type_name,v15.item_name op_state_name,
+					(select dic.item_name from s_dic_item dic where dic.dic_code=t1.op_specialtype and dic.item_code=t1.op_skills)as op_skills_name,
+                crp1.ass_code,
+                crp1.contract_code,
+                crp1.work_month,               
+           case when t1.op_sex ='00' then '男'  
+              when t1.op_sex ='01' then '女'  
+              else null end op_sex
+         from c_outsource_person t1      
+         left join sup_basic_info t4 on t1.sup_num=t4.sup_num
+         left join c_outsource_qualificate_info cqi on cqi.op_code=t1.idcard_no and cqi.IS_CURRENT='01'
+         left join s_org t5 on t1.op_office=t5.org_code and t5.state='00'
+         left join (select t6.item_code,t6.item_name from s_dic_item t6 where t6.dic_code='C_DIC_OUTPERSION_QULITY_LEVEL') v1 on v1.item_code=cqi.qualificate_level
+         left join (select t8.item_code,t8.item_name from s_dic_item t8 where t8.dic_code='C_DIC_OUTPERSION_PROFESSION' ) v2 on v2.item_code=t1.op_specialtype 
+        left join (select  crp.*
+	              from c_resource_pool_info crp 
+	             inner join (select  op_code,max(service_startime) service_startime
+	                          from c_resource_pool_info
+	                         group by op_code) a
+	                on (crp.op_code = a.op_code and
+	                   crp.service_startime = a.service_startime) ) crp1
+	   on t1.op_code = crp1.op_code 
+         left join (select t16.item_code,t16.item_name from s_dic_item t16 where t16.dic_code='C_DIC_OUTPERSION_EDU' ) v11 on v11.item_code=t1.op_education
+         left join (select t17.item_code,t17.item_name from s_dic_item t17 where t17.dic_code='C_DIC_PURCH_TYPE') v14 on v14.item_code=crp1.purch_type 
+         left join (select t18.item_code,t18.item_name from s_dic_item t18 where t18.dic_code='C_DIC_OUTPERSION_STATUS') v15 on v15.item_code=t1.op_state  
+        where 1=1 and (t1.op_office in(select org_code from s_roleuser where role_no in ('005','003','036') and user_no='0')
+              or exists (select 1 from s_roleuser where user_no='0' and role_no in ('013','admin','018'))
+       )
+	  <if test="op_code!=null and op_code!=''">
+			and t1.idcard_no=#{op_code}
+	  </if>
+	  <if test="supplier_id!=null and supplier_id!=''">
+			and t1.sup_num=#{supplier_id}
+	  </if>
+	  <if test="op_office!=null and op_office!=''">
+			and (t1.op_office=#{op_office} or t1.op_office in(select org_code  from  s_org  start with  org_code=#{op_office} connect by suporg_code=prior org_code )))
+	  </if>
+	  <if test="op_name!=null and op_name!=''">
+			and t1.op_name like #{op_name}
+	  </if>
+	  <if test="op_state!=null and op_state!=''">
+			and t1.op_state like #{op_state}
+	  </if>
+	</select>
+	<!-- 导入 -->
+	<insert id="addOutPersonInfoExc" parameterType="java.util.Map">
+		insert into c_outsource_person(
+			op_id,op_code,op_name,op_state,op_sex, op_birthday,sup_num,op_office,purch_type,
+  			op_phone,op_education,graduate_college,op_special,start_worktime,year_work,
+  			op_email,op_degree,graduate_time,idcard_no,college_type,
+   			work_finance_time,year_work_finance,op_skills ,op_specialtype,memo,opt_person, 
+   			opt_time,op_staff,op_staff_name,join_bank_time,dev_direction,dev_grade,supcontact_man,supcontact_num,op_belongsystem_no)
+   		VALUES(
+   			#{op_id},#{idcard_no},#{op_name},#{op_state},#{op_sex},#{op_birthday},#{sup_num},#{op_office},#{purch_type},
+   			#{op_phone},#{op_education},#{graduate_college},#{op_special},#{start_worktime},#{year_work},
+   		 	#{op_email},#{op_degree},#{graduate_time},#{idcard_no},#{college_type},
+   			#{work_finance_time},#{year_work_finance},#{op_skills},#{op_specialtype},#{memo},#{opt_person},#{opt_time},
+   			#{op_staff},#{op_staff_name},#{join_bank_time},#{dev_direction},#{dev_grade},#{supcontact_man},#{supcontact_num},#{op_belongsystem_no})
+	</insert>
+	<!-- 修改一条外包人员信息 -->
+	<update id="updateOutPersonExc" parameterType="java.util.Map">
+		update c_outsource_person set 
+			op_name=#{op_name},op_state=#{op_state},op_sex=#{op_sex}, op_birthday=#{op_birthday},sup_num=#{sup_num},op_office=#{op_office},
+  			op_phone=#{op_phone},op_education=#{op_education},graduate_college=#{graduate_college},op_special=#{op_special},start_worktime=#{start_worktime},
+  			op_email=#{op_email},op_degree=#{op_degree},graduate_time=#{graduate_time},idcard_no=#{idcard_no},year_work=#{year_work},
+   			work_finance_time=#{work_finance_time},year_work_finance=#{year_work_finance},op_skills=#{op_skills},op_specialtype=#{op_specialtype},
+   			memo=#{memo},opt_person=#{opt_person}, opt_time=#{opt_time},college_type=#{college_type},op_staff=#{op_staff},
+   			op_staff_name=#{op_staff_name},join_bank_time=#{join_bank_time},purch_type=#{purch_type},dev_direction = #{dev_direction},dev_grade = #{dev_grade},
+			supcontact_man = #{supcontact_man},supcontact_num = #{supcontact_num},op_belongsystem_no=#{op_belongsystem_no}
+		where op_id=#{op_id}
+	</update>
+	<!-- 外包人员离场信息录入 -->
+	<insert id="addOutPersonLeaveInfo" parameterType="java.util.Map">
+		insert into C_RESOUCE_LEAVEINFO(
+			op_id,op_code,is_handover,work_handover_info,is_device_back,device_back_info,is_entrance_back,confirm_man,memo,opt_person,opt_time,device_back_man,entrance_back_man
+		)
+		values(#{op_id},#{op_code},#{is_handover},#{work_handover_info},#{is_device_back},#{device_back_info},#{is_entrance_back},#{confirm_man},#{memo},#{opt_person},#{opt_time},#{device_back_man},#{entrance_back_man})
+	</insert>
+	<!--  -->
+	<select id="findOutPersonLeaveDetailInfo" parameterType="java.util.Map" resultType="java.util.Map">
+		select  
+				crl.is_handover,
+				crl.work_handover_info,
+				crl.is_device_back,
+				crl.device_back_info,
+				crl.is_entrance_back,
+				crl.confirm_man,
+				crl.memo,
+				crl.device_back_man,
+				crl.entrance_back_man
+		from c_resouce_leaveinfo crl where crl.op_code=#{idcard_no}
+	</select>
+	<!--职级评定/升级  -->
+	<insert id="addOutPersonRank" parameterType="java.util.Map">
+		insert into c_opt_rank_evaluation(
+			id,apply_group,by1,opt_manager,rank_apply_time,apply_reason,file_id_se,create_person,create_time,
+			flag,file_id_son,file_id_state,spstate
+		)values (
+			#{id},#{apply_group},#{group_code},#{opt_manager},#{rank_apply_time},#{apply_reason},#{file_id_SE},#{create_person},#{create_time},
+			#{flag},#{file_id_son},#{file_id_state},#{spstate}
+			)
+	</insert>
+	<!--职级评定/升级修改  -->
+	<insert id="updateOutPerInfoRank" parameterType="java.util.Map">
+		update c_opt_rank_evaluation set 
+			id=#{id},apply_group=#{apply_group},opt_manager=#{opt_manager}, rank_apply_time=#{rank_apply_time},apply_reason=#{apply_reason},
+			file_id_se=#{file_id_SE},file_id_son=#{file_id_son},file_id_state=#{file_id_state},opt_person=#{opt_person},opt_time=#{opt_time},spstate = #{spstate}
+			where  id=#{id}
+	</insert>
+	<!-- 更改职级评定的状态 -->
+	<update id="updateOutPerRankStatus" parameterType="java.util.Map">
+		update c_opt_rank_evaluation set spstate=#{rank_state},opt_person=#{opt_person}, opt_time=#{opt_time}
+		where id=#{rank_id}
+	</update>
+	<!--查询是否保存  -->
+	<select id="findOutPersonRankByOpid"  parameterType="java.lang.String" resultType="java.lang.String">
+		select s.id from c_opt_rank_evaluation s  where s.id=#{string}
+	</select>
+	<!-- 查询最近3次考核分数 -->
+	<select id="findNearThreeTimesCheck" parameterType="java.util.Map" resultType="java.util.Map">
+          select 
+	  	  k.rnum,k.check_id,k.check_score,k.check_type  check_type_name,st.item_name specialtype_name
+		  from  (select rownum rnum,c.check_id,c.check_score,c.check_type,c.specialtype from (select * from c_outsource_check_info  where op_id = #{op_id} order by opt_time desc) c) k
+		  left join (select * from s_dic_item where dic_code = 'C_DIC_STAFF_CHECKTYPE') ct on ct.item_code = k.check_type
+		  left join  (select * from s_dic_item where dic_code = 'C_DIC_OUTPERSION_PROFESSION') st on st.item_code = k.specialtype
+          where k.rnum &gt; 0 and k.rnum &lt; 4
+	</select>
+	<!-- 根据合同编号 查询外包人员数量 -->
+	<select id="getOutpersonNum" parameterType="java.lang.String" resultType="java.lang.String">
+		select count(1) from c_outsource_person c 
+		inner join  c_resource_pool_info s on c.op_code=s.op_code
+		where s.contract_code = #{contract_code} and c.op_state='01'
+	</select>  
+	
+	<!-- 跑批 插入离场待办  -->
+	<insert id="insertOutPersonOutWait" parameterType="java.util.Map">
+		merge into workflow_bussiness wb
+		using (select #{bussinessid} bid,#{menu_no} menu_no from dual) d 
+		on (wb.bussinessid = d.bid and wb.menu_no = d.menu_no)
+		when not matched then
+		insert (wb.id,wb.bussinessid,wb.flowcategory,wb.createtime,wb.createman,wb.menu_no,wb.back_result,wb.is_checked,wb.flowtitle)
+		values (#{id},#{bussinessid},#{flowcategory},#{createtime},#{createman},#{menu_no},#{back_result},#{is_checked},#{flowtitle})
+	</insert>
+	<!-- 查询人员考核半年考核信息 -->
+	<select id="findOutPersonHalfYearsCheck" parameterType="java.lang.String" resultType="java.util.Map">
+		select * from c_outsource_check_info where check_type like '%半年考核' and op_id=#{op_id}
+		order by check_date desc 
+	</select>
+	<!-- 是否完成职级评定 -->
+	<select id="isRankDoneAlready" parameterType="java.lang.String" resultType="java.lang.String">
+		select count(1) from  c_opt_rank_evaluation_son t
+		left join c_opt_rank_evaluation t1 on  t.parent_id=t1.id
+		where t.op_code = #{op_code}  and t1.spstate='1' 
+	</select>
+	<!-- 查询外包人员入场申请信息 -->
+	<select id="findEpaMessage" parameterType="java.util.Map" resultType="java.util.Map">
+		select ei.id coe_id,ei.out_resume,ei.idcard_no,ei.idcard_no,ei.entrance_time,ei.plan_leave_time,ei.entrance_reason,ei.p_station,ei.leave_reason,ei.actully_leavetime ,
+		  	  so.org_manager op_office_manager,
+		      (select org_manager from s_org where org_code=so.suporg_code) op_supoffice_manager
+			from c_outsource_person op
+			left join c_outsource_entrance_info ei  on ei.idcard_no=op.op_code
+			left join s_org so on so.org_code = op.op_office
+			where op.op_id=#{op_id}
+	</select>
+	<!-- 查询外包人员入场申请信息 -->
+	<!-- <select id="findEpaMessage" parameterType="java.util.Map" resultType="java.util.Map">
+		select 
+			  op.op_office,op.op_staff_name,op.op_staff,op.op_code,op.op_name,op.op_sex,op.idcard_no,op.op_id,
+			  op.op_phone,op.op_email,op.op_name,op.op_sex,op.sup_num,
+			<if test="purch_type != '01'">其他
+			 	cci.contract_name project_name, 
+			</if>		
+			<if test="purch_type == '01'">非项目任务
+				cai.ass_name project_name,
+			</if>		
+			  coe.entrance_time,coe.plan_leave_time,coe.fingerprint_in,coe.device_reveive,coe.email_open,
+			  coe.testeamil_open,coe.innernetwork_open,coe.agency_internet_open,coe.rtx_open,coe.synergy_open,coe.svn_open,
+			  coe.qc_open,coe.actully_leavetime,coe.id coe_id,coe.out_resume,coe.leave_reason,coe.ejbspyj,
+			  pt.project_role,pt.duty_explain,pt.is_key,
+			  cqi.qualificate_level,cqi.op_grade,
+			  cqei.level_memo,
+		      si.sup_name,
+		      so.org_name op_office_name, 
+		      so.org_manager op_office_manager,
+		      (select org_manager from s_org where org_code=so.suporg_code) op_supoffice_manager,
+		      sd0.item_name spstateName_enter,op.spstate_enter,op.WORKFLOWBUSSINESSID_ENTER,wb0.flowurl flowurl_enter,wb0.flowid flowid_enter,
+			  sd1.item_name spstateName_out,op.spstate_out,op.WORKFLOWBUSSINESSID_out,wb1.flowurl flowurl_out,wb1.flowid flowid_out,  
+			  cd1.item_name purch_type_name,cd2.item_name op_sex_name,cd3.item_name op_grade_name,cd4.item_name is_key_name,cd5.item_name project_role_name
+		from c_outsource_person op
+			  left join c_qualificate_evaluate_info  cqei on op.op_code=cqei.op_code
+			  left join workflow_bussiness wb0 on (op.workflowbussinessid_enter=wb0.id and wb0.flowcategory='RCSP')
+			  left join workflow_bussiness wb1 on (op.workflowbussinessid_out=wb1.id and wb1.flowcategory='RULC')
+			  left join (select item_code,item_name from s_dic_item  where dic_code = 'C_DIC_WORKFLOW_SPSTATE')sd0 on wb0.back_result=sd0.item_code
+			  left join (select item_code,item_name from s_dic_item  where dic_code = 'C_DIC_WORKFLOW_SPSTATE')sd1 on wb1.back_result=sd1.item_code
+			  left join (select c.op_code,c.purch_type,c.ass_code,c.contract_code,c.project_role,c.duty_explain,c.is_key from c_resource_pool_info c
+  					 	inner join (select op_code,max(service_startime) mtime from c_resource_pool_info group by op_code) i1
+       				 	on i1.op_code = c.op_code and i1.mtime = c.service_startime) pt
+       					on pt.op_code = op.op_code 
+       		  left join sup_basic_info si  on op.sup_num = si.sup_num
+			  left join c_outsource_qualificate_info cqi on cqi.op_code=op.idcard_no  and cqi.is_current='01'
+		      left join s_org so on so.org_code = op.op_office		
+		      left join c_outsource_entrance_info coe on coe.idcard_no = op.idcard_no 
+		  <if test="purch_type != '01'">其他
+	      	  left join c_contract_info cci on cci.contract_code = pt.contract_code
+		  </if>		
+		  <if test="purch_type == '01'">非项目任务
+			  left join c_assignment_info cai on cai.ass_code = pt.ass_code
+	      </if>		
+			  left join (select item_code,item_name from s_dic_item where dic_code='C_DIC_PURCH_TYPE') cd1 on cd1.item_code=pt.purch_type
+			  left join (select item_code,item_name from s_dic_item where dic_code='C_DIC_SEX') cd2 on cd2.item_code=op.op_sex
+			  left join (select item_name,item_code,dic_code from s_dic_item ) cd3 on cd3.dic_code=cqi.qualificate_level and cd3.item_code = cqi.op_grade
+			  left join (select item_code,item_name from s_dic_item where dic_code='C_DIC_OUTPERSION_YN') cd4 on cd4.item_code=pt.is_key
+			  left join (select item_code,item_name from s_dic_item where dic_code='C_OUT_PROJECT_ROLE') cd5 on cd5.item_code=pt.project_role
+		  where op.op_id=#{op_id}
+	</select>   -->
+	<!-- 根据ID查询入场信息 -->
+	<select id="findEtaMessageById" parameterType="java.lang.String" resultType="java.util.Map">
+		select id,idcard_no from c_outsource_entrance_info where id=#{id}
+	</select>
+	<!-- 新增外包人员入场申请信息 -->
+	<insert id="saveEtaMessage" parameterType="java.util.Map">
+		insert into c_outsource_entrance_info(
+			  id,idcard_no,entrance_time,plan_leave_time,fingerprint_in,device_reveive,email_open,
+			  testeamil_open,innernetwork_open,agency_internet_open,rtx_open,synergy_open,
+			  svn_open,qc_open,actully_leavetime,create_person,create_time,out_resume,entrance_reason,p_station
+		)
+		values(#{id},#{idcard_no},#{entrance_time},#{plan_leave_time},#{fingerprint_in},#{device_reveive},#{email_open},
+			   #{testeamil_open},#{innernetwork_open},#{agency_internet_open},#{rtx_open},#{synergy_open},
+			   #{svn_open},#{qc_open},#{actully_leavetime},#{create_person},#{create_time},#{out_resume},#{entrance_reason},#{p_station})
+	</insert>
+	<!-- 修改外包人员入场申请信息 -->
+	<update id="updateEtaMessage" parameterType="java.util.Map">
+		update c_outsource_entrance_info set
+			  entrance_time=#{entrance_time},plan_leave_time=#{plan_leave_time},fingerprint_in=#{fingerprint_in},
+			  device_reveive=#{device_reveive},email_open=#{email_open},testeamil_open=#{testeamil_open},
+			  innernetwork_open=#{innernetwork_open},agency_internet_open=#{agency_internet_open},rtx_open=#{rtx_open},
+			  synergy_open=#{synergy_open},svn_open=#{svn_open},qc_open=#{qc_open},actully_leavetime=#{actully_leavetime},
+			  opt_person=#{opt_person},opt_time=#{opt_time},leave_reason=#{leave_reason}
+		where id = #{id}
+	</update>
+	<!-- 修改外包人员离场申请信息 -->
+	<update id="saveLaMessage" parameterType="java.util.Map">
+		update c_outsource_entrance_info set
+			  opt_person=#{opt_person},opt_time=#{opt_time},leave_reason=#{leave_reason},actully_leavetime=#{actully_leavetime}
+		where id = #{id}
+	</update>
+	<!--  插入外包人员每日打卡信息 -->
+	<insert id="saveSyncEveryday" parameterType="java.util.Map">
+		insert into c_sync_everyday(
+			  id,userid,name,department,departname,months,days,
+			  workidxname,workstatusname,onworktimea,offworktimea,onworktimeb,
+			  offworktimeb,othours,otbegintime,otendtime,create_time,creater)
+		values(
+			  #{id},#{userid},#{username},#{department},#{departname},#{months},#{days},
+			  #{workidxname},#{workstatusname},#{onworktimeA},#{offworktimeA},#{onworktimeB},
+			  #{offworktimeB},#{othours},#{otbegintime},#{otendtime},#{create_time},#{creater}
+			  )
+	</insert>
+	<!--  插入个人维度按月统计信息 -->
+	<insert id="saveSyncPerson" parameterType="java.util.Map">
+		insert into c_sync_person(id,departmentname,months,workdays,latedays,earlydays,notworkdays,
+			  vacatedays,othours,supplynum,username,create_time,creater,userid)
+		values(#{id},#{departmentname},#{months},#{workdays},#{latedays},#{earlydays},#{notworkdays},
+		#{vacatedays},#{othours},#{supplyNum},#{username},#{create_time},#{creater},#{userid})
+	</insert>
+	<!--  插入部门维度按月统计信息 -->
+	<insert id="saveAttendance2" parameterType="java.util.Map">
+		insert into view_kqs_departmentothours(id,department,departname,months,othours,create_time,creater)
+		values(#{id},#{department},#{departname},#{months},#{othours},#{create_time},#{creater})
+	</insert>
+	<!--根据外userid username month 查询外包人员的当月考勤数据是否已经存在 -->
+	<select id="queryDataByaIdNameMonth" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from c_sync_person s where s.userid=#{userid} and s.username=#{username} and s.months=#{months}
+	</select>
+	<!--查询每日人员信息是否存在 -->
+	<select id="queryDataByaIdEveryDay" parameterType="java.util.Map" resultType="java.util.Map">
+	  select  * from c_sync_everyday t where t.userid=#{userid} and t.name=#{username} and t.department=#{department} 
+	  and t.months=#{months} and t.days=#{days}
+	</select>
+	<!--查询加班信息是否存在 -->
+	<select id="querydepartmentByaIdNameMonth" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from view_kqs_departmentothours s where  s.department=#{department} and s.departname=#{departname} and s.months=#{months}
+	</select>
+	<!-- 更新外包人员月考勤信息 -->
+	<update id="updateIdNameMonth" parameterType="java.util.Map">
+		update c_sync_person t1 set 
+			t1.workdays=#{WORKDAYS},t1.latedays=#{LATEDAYS},t1.earlydays=#{EARLYDAYS},t1.notworkdays=#{NOTWORKDAYS},
+			t1.vacatedays=#{VACATEDAYS},t1.othours=#{OTHOURS},t1.supplynum=#{SUPPLYNUM},t1.opt_time=#{opt_time},
+			t1.opt_person=#{opt_person}
+ 		where t1.userid=#{USERID} and t1.months=#{MONTHS} and t1.username=#{USERNAME}
+	</update>
+	<!-- 更新每日考勤机信息 -->
+	<update id="updateIdEveryDay" parameterType="java.util.Map">
+		update c_sync_person t1 set 
+			t1.workidxname=#{WORKIDXNAME},t1.workstatusname=#{WORKSTATUSNAME},t1.onworktimea=#{ONWORKTIMEA},t1.offworktimea=#{OFFWORKTIMEA},
+			t1.onworktimeb=#{ONWORKTIMEB},t1.offworktimeb=#{OFFWORKTIMEB},t1.othours=#{OTHOURS},t1.otbegintime=#{OTBEGINTIME},
+			t1.otendtime=#{OTENDTIME},t1.opt_time=#{opt_time},t1.opt_time=#{opt_time}
+ 		where t1.userid=#{USERID} and t1.name=#{NAME} and t1.department=#{DEPARTMENT} 
+	  and t1.months=#{MONTHS} and t1.days=#{DAYS}
+	</update>
+	<!-- 更新外包外包商月加班信息 -->
+	<update id="updatedepartmentMonth" parameterType="java.util.Map">
+		update view_kqs_departmentothours t1 set 
+			t1.othours=#{OTHOURS},
+<!-- 			t1.latedays=#{latedays},t1.earlydays=#{earlydays},t1.notworkdays=#{notworkdays}, -->
+<!-- 			t1.vacatedays=#{vacatedays},t1.othours=#{othours},t1.supplynum=#{supplynum}, -->
+			t1.opt_time=#{opt_time},
+			t1.opt_person=#{opt_person}
+			
+ 		where t1.department=#{DEPARTMENT} and t1.months=#{MONTHS} 
+	</update>
+	 <!--新增一条拟引入人员情况  -->
+	<insert id="addRankPerson" parameterType="com.yusys.resources.outperson.entity.RankPersonInfo">
+		insert into c_opt_rank_evaluation_son(
+				  id,parent_id,op_name,op_speciality,op_grade,op_protocol_level,op_probation,op_company,
+				  evaluate_date,file_id,actually_time,op_code,create_person,create_time,op_protocol_grade,file_id_SE,
+				  apply_grade,own_project,check_score,original_grade,file_id_state,advice_price
+			)values(
+				  #{id},#{parent_id},#{op_name},#{op_speciality},#{op_grade},#{op_protocol_level},#{op_probation},#{op_company},
+				  #{evaluate_date},#{file_id},#{actually_time},#{op_code},#{create_person},#{create_time},#{apply_grade},#{file_id_SE},
+				   #{apply_grade},#{own_project},#{check_score},#{original_grade},#{file_id_state},#{advice_price}
+			)
+   </insert>
+   <!--查询职级评定信息 -->
+	<select id="queryOutPersonRankInfo" parameterType="java.util.Map" resultType="java.util.Map">
+		select 
+			t.id,t.apply_group,t.apply_reason,t.opt_manager,t.rank_apply_time,t.create_person,t.create_time,t1.user_name,t.flag, 
+			(case t.flag 
+		            when '1' then wb.flowurl
+		            when '2' then wb1.flowurl
+		            else  ''
+		            end) flowurl,
+            (case t.flag 
+            when '1' then wb.flowid
+            when '2' then wb1.flowid
+            else  ''
+            end) flowid,
+         	afr.curr_actorno,
+		    afr.instance_id,
+            (select sr.user_no from s_roleuser sr where sr.org_code=so.org_code and sr.role_no='0082') group_manager_project,
+        	(select sr.user_no from s_roleuser sr where sr.role_no='003') core_manager,
+			t.workflowbussinessid,
+			(select item_name from s_dic_item sdi where sdi.dic_code = 'C_DIC_RANK_APPROVE_STAUTS' and sdi.item_code=t.spstate)spstate_name,t.spstate
+		   from c_opt_rank_evaluation t
+		   left join s_user t1 on t1.user_no=t.create_person
+		   left join workflow_bussiness wb on t.workflowbussinessid=wb.id and wb.flowcategory='copy_zhxxjswaibaojbts'
+		   left join workflow_bussiness wb1 on (t.workflowbussinessid=wb1.id and wb1.flowcategory='zhxxjswaibaojbts')
+		   left join af_flow_record afr  on t.id= afr.biz_id
+		   left join s_org so on so.org_name = t.apply_group
+		   where 1=1 
+		   		      <if test="query_type==null or query_type==''">
+<!-- 				      and 
+				       (t.apply_group in(select org_code from s_roleuser where role_no in ('007') and user_no=#{userid})
+				   		  or exists (select 1 from s_roleuser where user_no=#{userid} and role_no in ('010','admin','003'))
+				   	   ) -->
+		      </if>
+<!-- 		   and
+		   (t.by1 in(select s.u_extend1 from s_user s where  s.user_no=#{userid})
+		   		  or exists (select 1 from s_roleuser where user_no=#{userid} and role_no in ('010','admin','003') )
+		   	   )  -->
+	  <!-- 审批列表默认定级审批状态 -->	   	   
+	  <if test="query_type!=null and query_type!=''">
+				and t.spstate = '02'
+	  </if>   	   	   
+	  <if test="apply_group !=null and apply_group !=''">
+				and t.apply_group like #{apply_group}
+	  </if>   
+	  <if test="opt_manager !=null and opt_manager !=''">
+				and t.opt_manager like #{opt_manager}
+	  </if>   
+	  <if test="apply_starttime !=null and apply_starttime !=''">
+				and t.rank_apply_time &gt;= #{apply_starttime}
+	  </if>   
+	  <if test="apply_endtime !=null and apply_endtime !=''">
+				and t.rank_apply_time &lt;= #{apply_endtime}    
+	  </if>  
+		<!-- 审批列表查询 -->
+		<if test="query_type!=null and query_type!=''">
+    		 and (
+       		#{userid} in (SELECT REGEXP_SUBSTR(CURR_ACTORNO, '[^,]+', 1, LEVEL, 'i') AS STR   FROM DUAL  
+             	CONNECT BY LEVEL &lt;=  LENGTH(CURR_ACTORNO) - LENGTH(REGEXP_REPLACE(CURR_ACTORNO, ',', ''))+1)
+   		        and afr.if_end='01' 
+            )
+        </if>	  
+	</select>
+   <!--职级评定选择人员pop查询-->
+	<select id="queryRankPerson" parameterType="java.util.Map" resultType="java.util.Map">
+    select t.op_id,t.op_code,t.op_name,t.op_sex,t.op_office,t.sup_num,t.op_state,v1.item_name sex,v2.item_name status,
+       t1.sup_name supplier_name,v3.item_name qualificate_level_name,v4.item_name op_grade_name,t3.org_name,t.dev_direction,t.dev_grade,
+       t4.purch_type,(case t4.purch_type 
+                when '01' then pt.ass_code
+                when '02' then pt.contract_code
+                else  ''
+                end) belongproject,
+        (select sr.user_no from s_roleuser sr where sr.org_code=t.op_office and sr.role_no='0082') group_manager_project,
+        (select sr.user_no from s_roleuser sr where sr.role_no='003') core_manager
+     from c_outsource_person t 
+     left join s_dic_item v1 on v1.item_code=t.op_sex and v1.dic_code='C_DIC_SEX'
+     left join s_dic_item v2 on v2.item_code=t.op_state and v2.dic_code='C_DIC_OUTPERSION_STATUS'
+     left join sup_basic_info t1 on t1.sup_num=t.sup_num
+     left join c_outsource_qualificate_info t2 on t2.op_code=t.op_code  and t2.IS_CURRENT='01'
+     left join s_dic_item v3 on v3.item_code=t.dev_direction and v3.dic_code='C_DIC_OUTPERSION_DEV_DIRECT' 
+     left join s_dic_item v4 on v4.item_code=t.dev_grade and v4.dic_code='C_DIC_OUTPERSION_LEVEL'
+     left join s_org t3 on t3.org_code=t.op_office 
+     left join c_outsource_person t4 on t4.op_code=t.op_code  
+      left join (select  cpi.op_code, crpi.ass_code, crpi.contract_code
+                   from (select op_code, max(service_startime) mtime from c_resource_pool_info group by op_code) cpi
+                   left join c_resource_pool_info crpi on crpi.op_code = cpi.op_code and cpi.mtime = crpi.service_startime
+                   ) pt on pt.op_code=t.op_code
+     where t.purch_type='01'
+	  <if test="codeArr !=null and codeArr !=''">
+	  		and t.op_code not 
+			<foreach collection="codeArr" item="item" index="index" open="IN(" separator="," close=")">
+			 #{item}
+			</foreach>
+	  </if>   
+	  <if test="apply_group !=null and apply_group !=''">
+				and t.apply_group like #{apply_group}
+	  </if>   
+	  <if test="opt_manager !=null and opt_manager !=''">
+				and t.opt_manager like #{opt_manager}
+	  </if>   
+	  <if test="apply_starttime !=null and apply_starttime !=''">
+				and t.rank_apply_time &gt;= #{apply_starttime}
+	  </if>   
+	  <if test="apply_endtime !=null and apply_endtime !=''">
+				and t.rank_apply_time &lt;= #{apply_endtime}
+	  </if>   
+	  <if test="op_name_like !=null and op_name_like !=''">
+				and t.op_name like #{op_name_like}
+	  </if>   
+	  <if test="sup_name_like !=null and sup_name_like !=''">
+				and t1.sup_name like #{sup_name_like}
+	  </if>   
+	  <if test="flag2 !=null and flag2 !=''">
+         and t.op_code not in  
+        (select  cors.op_code from c_opt_rank_evaluation_son cors left join c_opt_rank_evaluation core on  core.id = cors.parent_id
+         where core.spstate = '01' or core.spstate = '02') 
+	  </if>   
+	  <if test="flag1 !=null and flag1 !=''">
+				<!-- and t.op_state = '03' -->
+<!-- 				and t2.qualificate_level is null and t2.op_grade is null and t.op_code not in 
+				(select  cors.op_code from c_opt_rank_evaluation_son cors left join c_opt_rank_evaluation core on  core.id = cors.parent_id
+     			where  core.spstate = '00')  -->
+	  </if>
+  	  <if test="op_office !=null and op_office !=''">
+				and t.op_office = #{op_office}
+	  </if>      
+	</select>
+   <!--查询一条职级评定信息 -->
+	<select id="queryOneOutPersonRankInfo" parameterType="String" resultType="java.util.Map">
+		select t.id,t.apply_group,t.apply_reason,t.opt_manager,t.rank_apply_time,t.create_person,t.create_time,t.file_id_se,
+			t.file_id_son,t.file_id_state,t.by1 group_code,
+            (select sr.user_no from s_roleuser sr where sr.org_code=so.org_code and sr.role_no='0082') group_manager_project,
+            (select sr.user_no from s_roleuser sr where sr.role_no='003') core_manager
+		from c_opt_rank_evaluation t
+		left join s_org so on so.org_name = t.apply_group
+		where t.id=#{id}
+	</select>
+   <!--查询职级评定人员信息 -->
+	<select id="queryRankOutPerInfo" parameterType="String" resultType="java.util.Map">
+	select t.op_name,t.op_speciality,t.op_grade,t.op_protocol_level,t.op_probation,t.op_company,t.evaluate_date,t.file_id,
+	    t.actually_time,t.op_code,t.op_protocol_grade ,v1.item_name level_name,v2.item_name grade_name,t.file_id_se,t.original_grade,
+	    t.check_score,t.own_project,t.apply_grade,v3.item_name apply_grade_name,t.file_id_state,t.advice_price
+	    from c_opt_rank_evaluation_son t
+	    left join s_dic_item v1 on v1.item_code=t.op_protocol_level and v1.dic_code='C_DIC_OUTPERSION_DEV_DIRECT'
+	    left join s_dic_item v2 on v2.item_code=t.op_protocol_grade and v2.dic_code='C_DIC_OUTPERSION_LEVEL'
+	    left join s_dic_item v3 on v3.item_code=t.apply_grade and v3.dic_code=t.op_protocol_level
+		 where t.parent_id=#{id}
+	</select>
+   <!--判断附件是否存在 -->
+	<select id="judgeFile" parameterType="String" resultType="java.util.Map">
+	       select * from s_fileinfo where file_id=#{file_id}
+	</select>
+	<!--删除职级评定人员信息  -->
+	<delete id = "deleteRankPerson" parameterType="java.lang.String">  
+		delete  from c_opt_rank_evaluation_son where parent_id=#{op_id}
+	</delete>
+	<!--删除职级评定信息  -->
+	<delete id = "deleteRankPerInfo" parameterType="java.lang.String">  
+		delete  from c_opt_rank_evaluation where id =#{op_id}
+	</delete>
+	<!-- 根据业务流程flowid 查询非项目任务业务审批流程信息 -->
+	  <select id="findFlowInfoRank" parameterType="java.lang.String" resultType="java.util.Map">
+      	select ar.*,af.af_name,pr.order_id,sd.item_name state_name,
+      	(select user_name from s_user where user_no=ar.app_person) as app_person_name
+        from af_app_record ar
+      	left join af_instance t on t.instance_id = ar.instance_id
+      	left join af_process pr on pr.p_id = t.p_id and pr.n_id = ar.n_id
+      	left join af_info af on af.af_id = t.af_id
+      	left join af_node_info n on n.n_id = ar.n_id
+        left join s_dic_item sd on sd.dic_code = 'AF_DIC_APP_STATE' and sd.item_code = ar.app_state
+      	where ar.instance_id = #{flowid}
+      	and pr.order_id is not null
+      	order by to_number(nvl(pr.order_id,0)),to_number(nvl(ar.order_id,0))
+	  </select>
+	  <!-- 查询应用是否存在 -->
+	  <select id="querySystem" parameterType="java.lang.String" resultType="java.util.Map">
+      	select system_id from G_SYSTEM_INFO where system_name=#{system_name}
+	  </select>
+	  
+</mapper>

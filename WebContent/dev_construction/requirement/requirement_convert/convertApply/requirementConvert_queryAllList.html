@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>一般转紧急查看列表</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire">
+		<div class="ecitic-table">
+			<form id="viewConvertSubmit">
+				<table id="table_select" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">申请编号：</td>
+						<td><input type="text" name="CONVERT_NO"/></td>
+						<td class="ecitic-right">需求点名称：</td>
+						<td><input type="text" name="SUB_REQ_NAME"/></td>
+						<td class="ecitic-right">应用名称：</td>
+						<td><input type="text" name="SYSTEM_NAME"/></td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">申请时间：</td>
+						<td>
+							<input type="text" name="OPT_TIME" onClick="WdatePicker({})" class="citic-ast"  placeholder="请选择" readonly="readonly"/>
+						</td>
+						<td class="ecitic-right">变更状态：</td>
+						<td>
+							<select name="STATUS" diccode="G_DIC_REQ_CHANGE_STATE" style="width:100%;"> </select>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="view_query">查询</button></li>
+			<li><button class="btn btn-ecitic" id="view_reset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="readAppConvert">查看详情</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="reqConvertVeiwTable" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_convert/convertApply/requirementConvert_queryAllList.js"></script>
+</html>

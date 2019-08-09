@@ -1,0 +1,25 @@
+<!--查询功能点pop框-->
+<div id="Func_modal" class="modal hide fade modal-big-table" tabindex="-1">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" style="color:blue" title="">x</button>
+            <h5>选择功能点</h5>
+        </div>
+       <div class=" ecitic-title-table modal-body ecitic-new">
+        	 <form id="funcQuery">
+	             <table border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+                     <tr>
+                         <td class="ecitic-right" width="13.333%">功能点名称</td>
+                         <td width="20%"><input name="FUNC_NAME" type="text"></td>
+                         <td class="ecitic-right" width="13.333%">功能点编号</td>
+                         <td width="20%"><input  name="FUNC_NO" type="text"></td>
+                         <td><input type="button" class="btn btn-ecitic" id="funcSearch" value="查询"/></td>
+						<td><input type="button" class="btn btn-ecitic" id="funcReset" value="重置"/></td>
+                     </tr>
+	             </table>
+			</form>
+			<div class="ecitic-new">
+				<table tb="funcPopTable" class="table table-bordered table-hover table-text-show" ></table>
+			</div>
+        </div>
+        <div class="modal-footer"></div>
+</div>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>任务列表查询》》</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div>
+		<form action="" id="reqTaskSitCaseForm">
+			<div class="ecitic-inquire ecitic-moreNo"  id="ecitic-inquire">
+				<div class="ecitic-table" id="ecitic-table">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad" id="summaryQury">
+						<tr>
+							<td class="ecitic-right" width="13%">需求点编号：</td>
+							<td width="20%">
+							<input type="text" id="sub_req_codeSIT" name="sub_req_code" />
+							</td>
+							<td class="ecitic-right" width="13%">需求点名称：</td>
+							<td width="20%"><input type="text" id="sub_req_nameSIT" name="sub_req_name" />
+							</td>
+							<td class="ecitic-right" width="13%">主办应用名称：</td>
+							<td>
+							    <input type="text" id="system_nameSIT" name="system_name"  placeholder="点击选择" readonly/>
+							    <input type="hidden" id="system_noSIT" name="system_no" />
+							</td>
+					   </tr>
+						<!-- <tr>
+							<td class="ecitic-right" width="13%">任务编号：</td>
+							<td width="20%">
+							<input type="text" id="req_task_codeTO" name="req_task_code" />
+							</td>
+							<td class="ecitic-right" width="13%">任务名称：</td>
+							<td width="20%"><input type="text" id="req_task_nameTO" name="req_task_name" />
+							</td>
+							<td class="ecitic-right" width="13%">任务状态：</td>
+							<td width="20%">
+							<select id="req_task_stateTO" name="req_task_state" style="width:100%;" dic_code="G_DIC_REQTASK_STATE">
+							</select>
+							</td>
+						    </tr> -->
+		
+						<tr>
+							<td class="ecitic-right" >申请纳入版本：</td>
+							<td><input type="text" id="version_nameTO" name="version_name"  placeholder="点击选择 " readonly/>
+							    <input type="hidden" id="version_idTO" name="version_id" />
+							</td>
+							<!-- <td class="ecitic-right" >应用名称：</td>
+							<td>
+							    <input type="text" id="system_nameTO" name="system_name"  placeholder="点击选择" readonly/>
+							    <input type="hidden" id="system_noTO" name="system_no" />
+							</td> -->
+							<td class="ecitic-right" >计划投产日期：</td>
+							<td>
+								<div style="float:left; width:45%;">
+								<input type="text" id="plan_onlinetimeTO" name="plan_onlinetime" onClick="WdatePicker({});" class="requirement-ele-width"/>
+								</div>
+								<div style="float:left; width:10%;line-height:26px;">&nbsp至&nbsp</div>	
+								<div style="float:left; width:45%;">
+								<input type="text" id="plan_onlinetimeTO1" name="plan_onlinetime1" class="requirement-ele-width" onClick="WdatePicker({});"/>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<ul class="ecitic-btn-all">
+					<li><input type="button" class="btn btn-ecitic" id="serach_TversionQuery" value="查询"/></li>
+					<li><input type="reset" class="btn btn-ecitic" id="reset_TversionQuery" value="重置"/></li>
+				</ul>
+			</div>
+			</form>
+		<div class="ecitic-operation">
+			<button class="btn btn-ecitic" id="reqSitCaseFileUP">查看测试案例文档</button>
+			<!-- <button class="btn btn-ecitic" id="phasedJury1" onclick="sponsorJury('09001','01','gGTaskSitCaseTable','发起测试案例一级评审');">发起一级评审</button>
+			<button class="btn btn-ecitic" id="phasedJury2" onclick="sponsorJury('09001','02','gGTaskSitCaseTable','发起测试案例二级评审');">发起二级评审</button> -->
+			<!--扩展 
+			<button class="btn btn-ecitic" id="phasedJury3" onclick="sponsorJury('05','03','gGTaskAnalyzeTable','发起总体设计三级评审');">发起三级评审</button>
+			 -->
+			 <!-- <button type="button" class="btn btn-ecitic" id="importSitcaseJury" >发起评审</button> -->
+		</div>
+		<div class="ecitic-new">
+			<table id="gGTaskSitCaseTable" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+		<!-- 系统应用pop -->
+		<div id="tvsystem_pop"></div>
+		<!-- 版本pop -->
+		<div id="tvVsersion_pop"></div>
+	</div>
+	<div id="supplier_import" class="modal hide fade" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">×</button>
+		<h3>评审报告导入</h3>
+	</div>
+	<div class="modal-body" style="overflow-x: hidden; max-height: 450px;padding-top:0px;">
+		<table id="supplier_info_import" class="table table-bordered tablr-input-text">
+			<tr>
+				<td width="120" class="table-text">选择附件：</td>
+				<td width="430">
+					<div class="upload-checkfile-all">
+						<input type="text" name="supplierfield" id="supplierfield" class="input-txt" />
+						<input type="button" value="浏览" class="input-btn" />
+						<input type="file" name="file" class="input-file" id="sitCasefile" onchange="getCurrentPageObj().find('#supplierfield').val(this.value)" />
+					</div>
+				</td>
+				<td width="120" class="table-text">
+					<!--<a href="prefile/评审记录表.xls">下载模板</a>-->
+					<a href="sfile/downloadFTPFile.asp?id=m_034"><font color=blue>下载模板</font></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="modal-footer" style="text-align:center">
+			<button class="btn" aria-hidden="true"  data-dismiss="modal">关闭</button>
+			<button  onclick="importJury('09001','gGTaskSitCaseTable','sitCasefile')" class="btn btn-ecitic">导入评审报告</button>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_phased/sitcase/task_sitcase_checklist.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_intoVersion/taskVersion_pop.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_phased/task_phased_jury.js"></script>
+<script type="text/javascript" src="dev_application/System_pop.js"></script>
+<script type="text/javascript" src="js/commons/ajaxfileupload.js"></script>
+</html>

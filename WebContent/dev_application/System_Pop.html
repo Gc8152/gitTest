@@ -1,0 +1,44 @@
+<!-- 任务分发模态框 -->
+<div id="myModal_System" class="modal hide fade" style="top: 50%;margin-top: -200px; width:900px;" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" style="color:blue" title="点击关闭">×</button>
+		<h5 id="myModalLabel"><span>实施应用<span style="color:red;font-size: 14px;padding-left: 5px;">(如无需选应用，请联系系统管理员)</span></span></h5>
+	</div>	
+	<div class="ecitic-title-table modal-body ecitic-new">
+	<table class="table table-bordered table-bor-pad" cellspacing="0" cellpadding="0" border="0" id="systemQuery">
+			<tbody>
+			<tr>
+				<td class="table-text" width="10%">应用编号：</td>
+				<td width="15%"><input id="SPTsystem_id" name="SPT.system_id" type="text"></td>
+				<td class="table-text" width="10%">应用名称：</td>
+				<td width="15%"><input id="SPTsystem_name" name="SPT.system_name" type="text"></td>
+				<td class="table-text" width="10%">应用简称：</td>
+				<td width="15%"><input id="SPTsystem_short" name="SPT.system_short" type="text"></td>
+				<!-- <td width="10%"><button class="btn btn-ecitic" id="pop_sysSearch">查询</button></td>
+				<td width="10%"><button class="btn btn-ecitic" id="pop_sysReset">重置</button></td> -->
+			</tr>
+			<tr>
+				<td class="table-text" width="10%">业务管理部门：</td>
+				<td width="15%"><input id="SPTbusiness_dept_name" name="SPT.business_dept_name" type="text">
+				</td>
+				<td class="table-text" width="10%">负责组：</td>
+				<td width="15%">
+					<input id="SPTres_group_name" name="SPT.res_group_name" type="text">
+				</td>
+				<td class="table-text" width="10%">应用负责人：</td>
+				<td width="15%"><input id="SPTproduct_man_name" name="SPT.product_man_name" type="text"></td>
+			</tr>
+			<tr><td colspan="6">
+				<div style="padding-left: 39%;">
+					<button class="btn btn-ecitic" id="pop_sysSearch">查询</button>
+					<button class="btn btn-ecitic" id="pop_sysReset">重置</button>
+				</div>
+			</td></tr>
+		</tbody>
+		
+	</table>
+	
+			<table id="gSystemInfoPopTable" class="table table-bordered table-hover"></table>
+	</div>	
+	<div class="modal-footer"></div>
+</div>

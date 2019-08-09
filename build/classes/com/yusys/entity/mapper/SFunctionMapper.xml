@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.SFunctionDao">
+<!-- 查询全部常用功能 -->
+   <select id="queryAllFunctions" parameterType="java.util.Map" resultType="java.util.Map">
+       select cc.menu_code,cc.menu_name,cc.menu_url,cc.menu_img,cc.menu_memo,
+       (select s.user_name from s_user s where s.user_no=cc.opt_person) as opt_person,
+       cc.opt_time from c_cfg_workbench cc
+       where 1=1
+       <if test="menu_code!=null and menu_code!=''">
+         and cc.menu_code=#{menu_code}
+       </if>
+       <if test="menu_name!=null and menu_name!=''">
+	     and cc.menu_name like #{menu_name}
+       </if>
+       order by cc.opt_time desc
+   </select>
+   <!-- 删除常用功能 -->
+   <delete id="delFunctionByMenucode" parameterType="java.util.Map">
+      delete from c_cfg_workbench cc where cc.menu_code=#{menu_code}
+   </delete>
+   <!-- 根据menu_code查询常用功能 -->
+   <select id="findFunctionByMenucode" parameterType="java.util.Map" resultType="java.util.Map">
+       select cc.menu_code,cc.menu_name,cc.menu_url,cc.menu_img,cc.menu_memo,
+       (select s.user_name from s_user s where s.user_no=cc.opt_person) as opt_person,
+       cc.opt_time from c_cfg_workbench cc where cc.menu_code=#{menu_code}
+   </select>
+   <insert id="addFunction" parameterType="com.yusys.entity.SFunction" useGeneratedKeys="false">
+       insert into c_cfg_workbench values(#{menu_code},#{menu_name},
+       #{menu_url},#{menu_img},#{menu_memo},#{opt_person},#{opt_time})
+   </insert>
+   <!-- 查询code -->
+   <select id="findMenuCode" parameterType="java.lang.String" resultType="java.lang.String">
+      select cc.menu_code from c_cfg_workbench cc where cc.menu_code=#{menu_code}
+   </select>
+   <update id="updateFunction" parameterType="com.yusys.entity.SFunction">
+      update c_cfg_workbench cc set cc.menu_name=#{menu_name},cc.menu_url=#{menu_url},
+      cc.menu_img=#{menu_img},cc.menu_memo=#{menu_memo} where cc.menu_code=#{menu_code}
+   </update>
+   <!-- 根据人员编号查询对应常用功能 -->
+   <select id="queryAllFunctionByUser" parameterType="java.util.Map" resultType="java.util.Map">
+      select distinct cr.menu_code,cc.menu_name,cc.menu_img 
+      from c_role_workbench cr left join c_cfg_workbench cc on 
+      cr.menu_code=cc.menu_code where cr.role_code in 
+      (select t.role_no from S_ROLEUSER t where t.user_no=#{userid} group by t.role_no) 
+      and cr.menu_code not in
+      (select cw.menu_code from c_workbench_info cw where cw.user_code=#{userid})
+   </select>
+   <!-- 根据人员查询工作台显示的常用功能 -->
+   <select id="queryAllWorkbenchFunctionByUser" parameterType="java.util.Map" resultType="java.util.Map">
+       select cc.menu_name,cw.menu_code,cc.menu_img,cc.menu_url from c_workbench_info cw 
+       left join c_cfg_workbench cc
+       on cw.menu_code=cc.menu_code where cw.user_code=#{userid}
+   </select>
+   <!-- 根据用户编号菜单编号删除工作台常用功能 -->
+   <delete id="delWorkbenchFunctionByMenucode" parameterType="java.util.Map">
+       delete from c_workbench_info cw where cw.menu_code=#{menu_code}
+        <if test="userid!=null and userid!=''">
+         and cw.user_code=#{userid}
+       </if>
+   </delete>
+   <!-- 根据角色编号菜单编号删除工作台常用功能 -->
+   <delete id="delWorkbenchFunctionByMenucodeAndRoleNo" parameterType="java.util.Map">
+      delete from C_WORKBENCH_INFO cw where cw.user_code in
+      (select s.user_no from s_roleuser s where s.role_no=#{role_no}) 
+      and cw.menu_code=#{menu_code}
+   </delete>
+   <!-- 增加 工作台常用功能  -->
+   <insert id="addUserWorkBenchFunction" parameterType="java.util.Map">
+      insert into c_workbench_info(user_code,menu_code,order_id,opt_person,opt_time) 
+      values(#{user_code},#{menu_code},#{order_id},#{opt_person},#{opt_time})
+   </insert>
+</mapper>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>人员单价信息维护</title>
+		<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/form.css" />
+		<script type="text/javascript" src="js/commons/importExcelUtil.js"></script>
+	</head>
+	<body>
+		<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<form id="price_queryData">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+						<tr>
+							<td class="ecitic-right" style="width:11%;">供应商</td>
+							<td style="width:22.333%;">
+								<input type="hidden" id="supplier_id" name="pr.supplier_id"/>
+								<input type="text" id="supplier_name" name="supplier_name" readonly="readonly" placeholder="点击选择"/>
+							</td>
+							<td class="ecitic-right" style="width:11%;">开始时间_从</td>
+							<td style="width:22.333%;">
+								<input type="text" id="p_starttime" name="pr.p_starttime" onclick="checkTimeSupCompare_common('p_starttime','p_endtime');"
+								 class="input" readonly placeholder="点击选择时间"/>
+							</td>
+							<td class="ecitic-right" style="width:11%;">结束时间_至</td>
+							<td style="width:22.333%;">
+								<input type="text" id="p_endtime" name="pr.p_endtime" onclick="checkTimeSupCompare_common('p_starttime','p_endtime');"
+								class="input" readonly placeholder="点击选择时间"/>
+							</td>
+							<!-- <td class="ecitic-right" style="width:11%;">资源池类型</td>
+							<td style="width:22.333%;">
+								<select id="p_category" name="pr.p_category" onchange="dicChange(this.value);"></select>
+							</td>
+							<td class="ecitic-right" style="width:11%;">专业方向</td>
+							<td style="width:22.333%;">
+								<select id="p_type" name="pr.p_type"></select>
+							</td> -->
+						</tr>
+						<tr>
+							<td class="ecitic-right" style="width:11%;">框架合同号</td>
+							<td style="width:22.333%;">
+								<input type="text" id="contract" name="pr.contract" readonly="readonly" placeholder="点击选择"/>
+							</td>
+							
+						</tr>
+					</table>
+				</form>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><button class="btn btn-ecitic" id="price_query">查询</button></li>
+				<li><button class="btn btn-ecitic" id="price_reset">重置</button></li>
+			</ul>
+		</div>
+		<div class="ecitic-operation">
+			<button class="btn btn-ecitic" id="price_add">新增</button>
+			<button class="btn btn-ecitic" id="price_update">修改</button>
+			<button class="btn btn-ecitic" id="price_del">删除</button>
+			<button class="btn btn-ecitic" id="price_detail">查看</button>
+			<button type="button" class="btn btn-ecitic" id="outperson_Import">批量导入</button>
+		</div>
+		<div class="ecitic-new">
+			<table class="table table-bordered table-hover" id="personal_price_query"></table>
+		</div>
+		
+		<!-- 导入外包人员开始 -->
+		<div id="modal_outperson_import" class="modal hide fade" data-backdrop="static">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>外包人员单价信息批量导入</h3>
+			</div>
+			<div class="modal-body" style="overflow-x: hidden; max-height: 450px;padding-top:0px;">
+				<table id="ass_info_export" class="table table-bordered tablr-input-text">
+					<tbody><tr>
+						<td class="table-text">选择附件：</td>
+						<td  width="430">
+							<div class="upload-checkfile-all">
+								<input type="text" name="outpersonld" id="outpersonld" class="input-txt" />
+								<input type="button" value="浏览" class="input-btn" />
+								<input name="file" type="file" class="input-file" onchange="document.getElementById('outpersonld').value=this.value"  id="file_outperson_import">
+							</div>
+						</td>
+						<td class="table-text">
+							<a href="templet/outpersonPrice.xlsx">下载模板</a>
+						</td>
+					</tr>
+				</tbody></table>
+			</div>
+			<div class="modal-footer" style="text-align:center">
+				<button class="btn btn-ecitic" aria-hidden="true" data-dismiss="modal">关闭</button>
+				<button id="import_outperson_button" class="btn btn-ecitic">导入</button>
+			</div>
+		</div>
+		<!-- 导入外包人员结束 -->
+		<!-- 供应商POP框 -->
+		<div id="priceSupplier_Pop"></div>
+		<!-- 合同pop框 -->
+		<div id="priceContract_Pop"></div>
+		<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+		<script type="text/javascript" src="dev_outsource/supplier/supplierInfo/supplierPop.js"></script>
+		<script type="text/javascript" src="dev_outsource/contract/contractInfo/contractInfoPop.js"></script>
+		<script type="text/javascript" src="dev_outsource/serviceOrder/personnelPrice/personnelPrice_query.js"></script>
+		<script type="text/javascript" src="js/commons/ajaxfileupload.js"></script>
+	</body>
+</html>

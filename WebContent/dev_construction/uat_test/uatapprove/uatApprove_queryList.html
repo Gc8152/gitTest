@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>UAT审批列表</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table id="reqTaskTerm" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">需求点编号：</td>
+					<td><input type="text" name="sub_req_code"/></td>
+					<td class="ecitic-right">需求点名称：</td>
+					<td><input type="text" name="sub_req_name"/></td>
+					<td class="ecitic-right">从属关系：</td>
+					<td>
+						<select name="req_task_relation"></select>
+					</td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">任务编号：</td>
+					<td><input type="text" id="" name="req_task_code"/></td>
+					<td class="ecitic-right">任务名称：</td>
+					<td><input type="text" id="" name="req_task_name"/></td>
+					<td class="ecitic-right">任务状态：</td>
+					<td><select id="" name="req_task_state"></select></td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">申请纳入版本：</td>
+					<td><input type="text" id="" name="versions_name"/></td>
+					<td class="ecitic-right">实施应用：</td>
+					<td><input type="text" id="" name="system_name"/></td>
+					<td class="ecitic-right">计划投产日期：</td>
+                    <td>
+                        <span class="ecitic-time">
+                            <input type="text" name="plan_onlinetime_st" id="plan_onlinetime_st" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                        <span class="ecitic-to">至</span>
+                        <span class="ecitic-time">
+                            <input type="text" name="plan_onlinetime_et" id="plan_onlinetime_et" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                    </td>
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="queryReqTask">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+			<li class="ecitic-more"></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="uatApprove">UAT受理</button>
+		<button class="btn btn-ecitic" id="">通知</button>
+		<button class="btn btn-ecitic" id="batUatApprove">批量受理</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover table-text-show" id="reqTaskInfoTable">
+			
+		</table>
+	</div>
+	<!-- 模态框 -->
+	<div id="myModal_uatApprove" class="modal hide fade" tabindex="-1">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="">批量审批</h5>
+		</div>
+		<div class="ecitic-title-table modal-body" id="emp_modal" >
+				<table class="table table-striped table-hover table-bordered">
+					<tbody>
+					<tr>
+						<td class="table-text">审批意见：</td>
+						<td id="approve_conclusion">
+							<label style="display:inline;"><input type="radio" value="01" checked="checked" name="approve_conclusion">批准</label>
+							<label style="display:inline; margin-left:20px;"><input type="radio" value="02" name="approve_conclusion">打回</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">审批说明：</td>
+						<td colspan="3"><textarea id="approve_explain" rows="5" resize="none"></textarea></td>
+					</tr>
+					</tbody>
+				</table>
+		</div>
+		<div class="ecitic-save">	
+				<button class="btn btn-ecitic" data-dismiss="modal" id="submit">提交</button>
+				<button class="btn btn-ecitic" data-dismiss="modal" >关闭</button>
+		</div>
+		<div class="modal-footer"></div>
+	</div>
+	
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/uat_test/uatapprove/uatApprove_queryList.js"></script>
+</html>

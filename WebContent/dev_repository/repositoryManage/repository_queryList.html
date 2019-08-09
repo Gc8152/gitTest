@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">
+	<form class="form-inline" id="repository_query">
+		<div class="ecitic-inquire">
+			<div class="ecitic-table">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">类别：</td>
+						<td>
+							<input type="hidden" id='category_code' name="CATEGORY_CODE"/>
+							<input type="text" id='category_name'name="CATEGORY_NAME"/>
+							<!-- <select class="requirement-ele-width" id="category_code" name="REP.CATEGORY_CODE" diccode="" style="width: 100%"></select>
+						 --></td>
+						
+						<td class="ecitic-right">标题：</td>
+						<td>
+							<input type="text" name="TITLE"/>
+						</td>
+						<td class="ecitic-right">状态：</td>
+						<td>
+							<select class="requirement-ele-width" name="STATUS" diccode="K_DIC_INTELL_STATUS" style="width: 100%"></select>
+						</td>
+					</tr>
+					<!-- <tr>
+						<td class="ecitic-right">发布人：</td>
+						<td>
+							<input type="text" name="RELEASE_PERSON"/>
+							<input type="hidden" name="RELEASE_PERSON_NO"/>
+						</td>
+					</tr> -->
+				</table>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" btn="query_repositoryList" value="查询"/></li>
+				<li><input type="button"  class="btn btn-ecitic" btn="reset_repositoryList" value="重置"/></li>
+			</ul>
+		</div>
+	</form>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" btn="add_repList" >知识新增</button>
+		<button class="btn btn-ecitic" btn="update_repList">知识维护</button>
+		<button class="btn btn-ecitic" btn="release_repList">知识审核发布</button>
+		<button class="btn btn-ecitic" btn="cannel_repList">知识取消发布</button>
+		<button class="btn btn-ecitic" btn="overdue_repList">知识过期</button>
+		<button class="btn btn-ecitic" btn="delete_repList">知识删除</button>
+		<!-- <button class="btn btn-ecitic" btn="view_repList">知识详情</button> -->
+	</div>
+	<div class="ecitic-new">
+		<table tb="repositoryList" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+
+</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="dev_repository/repositoryManage/repository_queryList.js"></script>
+
+</html>
+

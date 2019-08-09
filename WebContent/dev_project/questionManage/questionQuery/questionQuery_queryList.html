@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>问题查询</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" >
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="main_iframe_con">
+	  <form action=""  class="form-inline" id="questionQueryForm">
+	      <div class="ecitic-inquire" id="ecitic-inquire">
+			 <div class="ecitic-table" id="ecitic-inquire">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				
+					<tr>
+					   <td class="ecitic-right">问题名称：</td>
+						<td>
+						  <input type="text" id="qQ_risk_name" name="qQ_risk_name" />
+						</td>
+					    <!-- <td class="ecitic-right">问题描述：</td>
+						<td>
+						   <input type="text" id="risk_desc" name="risk_desc" />
+						</td> -->
+						<td class="ecitic-right">问题状态：</td>
+						<td>
+						  <select id="qQ_risk_status" name="qQ_risk_status" diccode="P_DIC_RISK_STATUS" style="width:100%"></select>
+						</td>
+						  <td class="ecitic-right">问题级别：</td>
+						<td>
+						  <select id="qQ_risk_grade" name="qQ_risk_grade" diccode="P_DIC_RISK_LEVEL" style="width:100%"></select>
+						</td>
+					</tr>
+					<tr>
+						<!-- <td class="ecitic-right">项目编号：</td>
+						<td>
+						  <input type="text" id="project_num" name="project_num" />
+						</td> -->
+						<td class="ecitic-right">项目名称：</td>
+						<td>
+						   <input type="text" id="qQ_project_name" name="qQ_project_name" /></td>
+						   
+					<td class="ecitic-right">问题严重程度：</td>
+						<td>
+						   <select  id="qQ_ponderance" name="qQ_ponderance" diccode="P_DIC_RISK_SERIOUS" style="width:100%"></select>
+						</td>
+						<td class="ecitic-right">问题分类：</td>
+						<td>
+						   <select id="qQ_first_classify" name="qQ_first_classify" diccode="P_DIC_RISK_TYPE1" style="width:100%"></select>
+						</td>
+						<!-- <td class="ecitic-right">应用名称：</td>
+						<td>
+						   <input type="text" id="system_name" name="system_name" />
+						</td> -->
+					</tr>
+					<tr>
+					   <td class="ecitic-right">提出人：</td>
+						<td>
+						  <input type="text" id="qQ_present_user_id_name" name="qQ_present_user_id_name" />
+						</td>
+						 <td class="ecitic-right">责任人：</td>
+						<td>
+						  <input type="text" id="qQ_duty_user_id_name" name="qQ_duty_user_id_name" />
+						</td>
+						 <td class="ecitic-right">处理人：</td>
+						<td>
+						  <input type="text" id="qQ_handle_user_id_ame" name="qQ_handle_user_id_name" />
+						</td>
+						
+					</tr>
+					<tr>
+						 <td class="ecitic-right">提出日期：</td>
+						<td>
+						<div class="dateSelectZ">
+							<input type="text" id="qQ_present_time" name="qQ_present_time" class="requirement-ele-width"  onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'qQ_present_time\',{d:0});}'})" placeHolder="点击选择"   readonly/>
+						</div>
+						</td>
+						<td class="ecitic-right"></td>
+						<td></td>
+						<td class="ecitic-right"></td>
+						<td></td>
+					</tr>
+					
+				</table>
+		   </div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="query_questionQueryList" value="查询"></li>
+			<li><input type="reset" class="btn btn-ecitic" id="reset_qestionQueryList" value="重置"></li>
+		</ul>
+	  </div>	
+	</form>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="questionQuery_detail">详情</button>
+	</div>
+
+	<div class="ecitic-new">
+		<table id="questionQueryTable" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="dev_project/questionManage/questionQuery/questionQuery_queryList.js"></script>
+</html>

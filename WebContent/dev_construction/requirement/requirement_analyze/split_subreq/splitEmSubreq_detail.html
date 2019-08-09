@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>需求点拆分页面</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="tabbable">
+<ul id="myTab" class="nav nav-tabs" style="font-size:13px;">
+    <li>
+        <a href="#emreqInfodetail" data-toggle="tab">
+        <i class="icon-home"></i>
+                                  需求信息
+        </a>
+    </li>
+    <li >
+        <a href="#emreqAssessdetail" data-toggle="tab">
+         <i class="icon-file"></i>
+                                分析及解决方案
+        </a>
+    </li>
+    <li  class="active">
+        <a href="#emreqSplitdetail" data-toggle="tab">
+        <i class="icon-pencil"></i>
+                                  需求拆分
+        </a>
+    </li>
+ </ul>
+ <div class="tab-content"  style="overflow-x:hidden">
+ <!-- 需求信息tab开始 -->
+  <div class="tab-pane fade" id="emreqInfodetail">
+	      <form class="form-inline" id="emReqSplit_Detail_Form">
+		<div class="ecitic-title">
+		<span>需求基本信息<em></em></span><i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table"><!-- table-bor-paw-->
+				<colgroup>
+					<col style="width: 11%">
+			        <col style="width: 22%">
+			        <col style="width: 12%">
+			        <col style="width: 22%">
+			        <col style="width: 11%">
+			        <col style="width: 22%">
+		        </colgroup>
+				<tr>
+					<td class="table-text">需求名称：</td>
+					<td  colspan="5">
+					   
+						<div id="emReqSplit_req_name" type="text" name="req_name" class="requirement-ele-width"></div>
+						 <input type="hidden" id="Detail_req_code" name="req_code"/>
+						  <input type="hidden" id="Detail_req_acc_classify" name="req_acc_classify"/>
+						   <input type="hidden" id="Detail_req_analysis" name="req_analysis"/>
+							<input id="Detail_file_id" name="file_id" type="hidden" />
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">提出部门：</td>
+					<td>
+					<div type="text" id="req_put_dept_name" name="req_put_dept_name" class="requirement-ele-width"></div>
+					</td>
+					<td class="table-text">要求投产日期：</td>
+					<td >
+						<div type="text" id="req_operation_date" name="req_operation_date" class="requirement-ele-width"></div>
+					</td>
+					<td class="table-text">所属应用：</td>
+					<td>
+
+					<div type="text" id="system_id_name" name="system_id_name" class="requirement-ele-width"></div>
+					</td>
+				
+				</tr>
+				
+				<tr>
+					<td class="table-text" >紧急上线原因：</td>
+					<td colspan="5">
+						<div cols="90" rows="3" id="req_emupline_reason" name="req_emupline_reason"  class="requirement-ele-width" style="height:80px"></div>
+					</td>
+				</tr>
+			  </table>
+		   </div>
+		<div class="ecitic-title">
+				<span>附件列表信息<em></em></span>
+				<i></i>
+			</div>
+		<div class="ecitic-title-table">
+		<table id="emReqSplitDetail_filetable"  class="table table-bordered table-hover table-text-show"></table>
+		</div>
+		</form>
+		<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭" />
+		</div>
+</div>
+<!--需求信息tab结束 -->
+<!-- 需求评估tab开始 -->
+<div class="tab-pane fade" id="emreqAssessdetail">
+           <form class="form-inline" id="emReq_splitDetailForm">
+	<div class="ecitic-title">
+	<span>影响分析<em></em></span>
+	<i></i>
+	</div>
+	<div class="ecitic-new">
+	<table border="1" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+				<colgroup>
+					<col style="width: 10%">
+			        <col style="width: 30%">
+			        <col style="width: 30%">
+			        <col style="width: 30%">
+		        </colgroup>
+				<tr>
+					<td class="table-text" >序号</td>
+					<td class="table-text" >影响因素</td>
+					<td class="table-text" >是否影响</td>
+					<td class="table-text" >描述</td>
+				</tr>
+				<tr>
+					<td class="table-text" >1</td>
+					<td class="table-text" >是否影响其他系统？</td>
+					<td class="table-text">
+					 <input type="hidden" id="emreqDetail_id" name="req_id"></input>
+					<input  type="radio" checked="checked" name="affect_other_system"  value="1" >是</input>
+					<input  type="radio"  name="affect_other_system"  value="0">否</input>
+					</td>
+					<td class="table-text"><div id="affect_other_system_describe" type="text" name="affect_other_system_describe" class="requirement-ele-width"   valititle="该项为必填项"/></td>
+				</tr>
+				<tr>
+				<td class="table-text" >2</td>
+					<td class="table-text" >是否改变当前系统的功能？</td>
+					<td class="table-text" >
+					<input  type="radio" checked="checked" name="change_system_fuction" value="1">是</input>
+					<input  type="radio"  name="change_system_fuction" value="0">否</input>
+					</td>
+					<td class="table-text" ><div id="change_system_fuction_describe" type="text" name="change_system_fuction_describe" class="requirement-ele-width"   valititle="该项为必填项"/></td>
+				</tr>
+				<tr>
+					<td class="table-text" >3</td>
+					<td class="table-text" >是否对原有数据结构进行调整？</td>
+					<td class="table-text" >
+					<input  type="radio" checked="checked" name="change_data_structure" value="1">是</input>
+					<input  type="radio"  name="change_data_structure" value="0">否</input>
+					</td>
+					<td class="table-text" ><div id="change_data_structure_describe" type="text" name="change_data_structure_describe" class="requirement-ele-width"   valititle="该项为必填项"/></td>
+				</tr>
+				<tr>
+				<td class="table-text" >4</td>
+					<td class="table-text" >系统文档是否需要更新？</td>
+					<td class="table-text" >
+					<input  type="radio" checked="checked" name="update_system_file" value="1">是</input>
+					<input  type="radio"  name="update_system_file" value="0">否</input>
+					</td>
+					<td class="table-text" ><div id="update_system_file_describe" type="text" name="update_system_file_describe" class="requirement-ele-width"  valititle="该项为必填项"/></td>
+				</tr>
+			  </table>
+	</div>
+	<div class="ecitic-title">
+	<span>解决方案及测试建议<em></em></span>
+	<i></i>
+	</div>
+	<div class="ecitic-title-table">
+	<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+				<colgroup>
+					<col style="width: 11%">
+			        <col style="width: 22%">
+			        <col style="width: 12%">
+			        <col style="width: 22%">
+			        <col style="width: 11%">
+			        <col style="width: 22%">
+		        </colgroup>
+				<tr>
+					<td class="table-text" >解决方案：</td>
+					<td colspan="5">
+					<div cols="90" rows="3" id="emreq_solution" name="emreq_solution"  class="requirement-ele-width" style="height:80px"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text" >测试建议：</td>
+					<td colspan="5">
+					    <div cols="90" rows="3" id="emreq_test_suggest" name="emreq_test_suggest"  class="requirement-ele-width" style="height:80px"></div>
+					</td>
+				</tr>
+			  </table>
+	</div>
+	</form>
+		<div class="ecitic-save">
+			 <input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭" />
+		</div>
+</div>
+	 <!--需求评估tab结束 -->
+	 <!--需求分析tab开始 -->
+	 <div class="tab-pane fade in active" id="emreqSplitdetail">
+	 <form class="form_inline" id="emreqSubDetail">
+	       <div class="ecitic-title">
+				<span>需求点信息<em></em></span>
+			        <i></i>
+			</div>
+		<div class="ecitic-title-table">
+			<table id="emReqSubDetailTable"  class="table table-bordered table-hover table-text-show" ></table>
+	    </div>
+	    </form>
+	    <div class="ecitic-save">
+			 <input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭" />
+		</div>
+		<!-- 弹出子需求模态框使用的id -->
+	 </div>
+	<!--需求分析tab结束 -->
+	</div>
+	<!--tab content结束 -->
+  </div>
+<div id="emReqSplitdetail_modal"></div>
+</body>
+<script type="text/javascript" src="bootstrap/js/select2.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_analyze/split_subreq/splitEmSubreq_detail.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_analyze/split_subreq/reqSubPop.js"></script>
+</html>

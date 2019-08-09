@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.SWorkFlowInfoDao">
+    <!-- 查询所有流程信息 -->
+	<select id="queryAllProcessInfo" parameterType="java.util.Map" resultType="java.util.Map">
+		select afi.*,
+	    (select sd.item_name from s_dic_item sd where sd.dic_code = 'AF_DIC_STATE' and sd.item_code = afi.af_state) as a_state,
+	    (select sd.item_name from s_dic_item sd where sd.dic_code = 'AF_DIC_SYSTEM' and sd.item_code = afi.af_sys_name) as a_sys_name,
+      	(select user_name from s_user where user_no=afi.opt_person) as OPT_PERSONNAME
+	     from af_info afi where 1=1
+ 		<if test="af_name!=null and af_name!=''">
+ 			and af_name like #{af_name}
+ 		</if>
+ 		<if test="af_sys_name!=null and af_sys_name!=''">
+ 			and af_sys_name like #{af_sys_name}
+ 		</if>
+ 		<if test="af_state!=null and af_state!=''">
+ 			and af_state like #{af_state}
+ 		</if>
+ 		<if test="af_id!=null and af_id!=''">
+ 			and af_id = #{af_id}
+ 		</if>
+ 	</select>
+ 	
+    <!-- 向流程表中插入一条数据-->
+    <insert id="addOneProcessInfo" parameterType="java.util.Map">
+		insert into af_info (af_id,af_name,af_state,opt_time,opt_person,af_memo,af_sys_name)  
+		values(#{af_id},#{af_name},#{af_state},#{opt_time},#{opt_person},#{af_memo},#{af_sys_name})
+	</insert>
+	
+	<!-- 根据选择的id删除流程表中该信息 -->
+	<delete id="deleteOneProcessInfo" parameterType="java.util.Map">
+		delete from af_info where af_id=#{af_id}
+	</delete>
+	
+	<!-- 根据流程id删除节点表中该信息 -->
+	<delete id="deleteNoteInfoByWfId" parameterType="java.util.Map">
+		delete from af_node_info where af_id=#{af_id}
+	</delete>
+	
+	<!-- 根据流程id删除矩阵表中该信息 -->
+	<delete id="deleteMatrixInfoByWfId" parameterType="java.util.Map">
+		delete from af_matrix where af_id=#{af_id}
+	</delete>
+	
+	<!--修改一条流程信息 -->
+	<update id="updateOneProcessInfo" parameterType="java.util.Map">
+		update af_info 
+		set af_id=#{af_id},af_name=#{af_name},af_sys_name=#{af_sys_name},
+		af_state=#{af_state},opt_time=#{opt_time},opt_person=#{opt_person},
+		af_memo=#{af_memo}
+		where af_id=#{af_id}
+	</update>
+	
+	<!--通过流程id查询流程下所有矩阵信息；根据流程id&矩阵id查询某一条矩阵信息 -->
+	<select id="queryMatrixById" parameterType="java.util.Map" resultType="java.util.Map">
+		select wm.m_id,wm.af_id,wm.r_id,wm.m_state,
+		(select sd.item_name from s_dic_item sd where sd.dic_code = 'AF_DIC_STATE' and sd.item_code = wm.m_state) as m_state_name,
+		(select r_name from af_rule where r_id = wm.r_id) r_name,
+        (select r_exp from af_rule where r_id = wm.r_id) r_exp,
+        (select af_name from af_info where af_id = wm.af_id) af_name,
+        (select af_sys_name from af_info where af_id = wm.af_id) af_sys_name,
+        (select af_state from af_info where af_id = wm.af_id) af_state,
+        (select sd.item_name from s_dic_item sd where sd.dic_code = 'AF_DIC_STATE' and sd.item_code =
+			(select af_state from af_info where af_id = wm.af_id)               
+        ) as a_state,
+        (select sd.item_name from s_dic_item sd where sd.dic_code = 'AF_DIC_SYSTEM' and sd.item_code =
+			(select af_sys_name from af_info where af_id = wm.af_id)
+        ) as a_sys_name,
+		(select to_char(wm_concat(n_id)) from (select n_id,m_id,order_id from af_matrix order by to_number(order_id)) afm where afm.m_id=wm.m_id) n_ids,
+		(select to_char(wm_concat(n_name)) n_name from  
+		        (select (select n_name from af_node_info wn where wn.n_id=wm.n_id) n_name,m_id 
+		        from af_matrix wm order by to_number(order_id)) a where a.m_id=wm.m_id
+		) m_name
+		from af_matrix wm
+		where 1 = 1  
+		<if test="af_id!=null and af_id!=''">
+ 			and af_id = #{af_id}
+ 		</if>
+ 		<if test="m_id!=null and m_id!=''">
+ 			and m_id = #{m_id}
+ 		</if>
+		group by wm.m_id,wm.af_id,wm.r_id,wm.m_state
+	</select>
+	
+	<!--通过规则id查询规则表中对应信息 -->
+	<select id="queryOneRuleById" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from af_rule where r_id = #{r_id}
+	</select>
+	
+	 <!-- 向规则表中插入一条数据-->
+    <insert id="addOneRuleInfo" parameterType="java.util.Map">
+		insert into af_rule (r_id,r_name,r_exp,opt_person,opt_time,memo)  
+		values(#{r_id},#{r_name},#{r_exp},#{opt_person},#{opt_time},#{memo})
+	</insert>
+	
+	 <!-- 向矩阵表中插入一条数据-->
+    <insert id="addOneMatrixInfo" parameterType="java.util.Map">
+		insert into af_matrix (m_id,af_id,r_id,n_id,m_state,order_id,opt_person,opt_time,memo)  
+		values(#{m_id},#{af_id},#{r_id},#{n_id},#{m_state},#{order_id},#{opt_person},#{opt_time},#{memo})
+	</insert>
+	
+	<!-- 根据矩阵id删除矩阵表中的多条记录信息 -->
+	<delete id="deleteOneMatInfo" parameterType="java.util.Map">
+		delete from af_matrix where m_id = #{m_id}
+	</delete>
+	
+	<!-- 根据规则id删除规则表中的记录信息 -->
+	<delete id="deleteOneRuleInfo" parameterType="java.util.Map">
+		delete from af_rule where r_id = #{r_id}
+	</delete>
+	
+	 <!-- 修改规则表中一条数据-->
+	 <update id="updateOneRuleInfo" parameterType="java.util.Map">
+	 	update af_rule set r_name=#{r_name},opt_time=#{opt_time},r_exp=#{r_exp},memo=#{memo}
+		where r_id=#{r_id}
+	 </update>
+	 
+	 <!-- 修改矩阵表中所有对应的数据-->
+	 <update id="updateAllMatInfo" parameterType="java.util.Map">
+	 	update af_matrix set m_state=#{m_state},m_name=#{m_name},m_rote_v=#{m_rote_v},opt_time=#{opt_time}
+		where r_id=#{r_id}
+	 </update>
+	 
+	<!-- 向审批流程表中插入一条记录-->
+    <insert id="addApproveRuleInfo" parameterType="java.util.Map">
+		insert into af_process (p_id,m_id,r_id,n_id,order_id,opt_person,opt_time,state,memo)  
+		values(#{p_id},#{m_id},#{r_id},#{n_id},#{order_id},#{opt_person},#{opt_time},#{state},#{memo})
+	</insert>
+	
+	<!--根据id查找矩阵下的审批路由信息 -->
+	<select id="queryMatixRoteById" parameterType="java.util.Map" resultType="java.util.Map">
+		select r_id,p_id,m_id,matrix_note,
+		(select r_name from af_rule where r_id = ap.r_id) r_name
+		from af_process ap  
+		where ap.p_id in (select min(ap.p_id) from af_process ap group by ap.r_id ) 
+		and ap.m_id = #{m_id}
+	</select>
+	
+	<!-- 根据规则ID删除矩阵下所有路由节点和审批规则 -->
+	<delete id="deleteMatrixRoteById" parameterType="java.util.Map">
+		delete from af_process where r_id = #{r_id}
+	</delete>
+	
+	<!-- 根据矩阵ID删除审批流程表对应信息 -->
+	<delete id="deleteProcessByMId" parameterType="java.util.Map">
+		delete from af_process where m_id = #{m_id}
+	</delete>
+	
+	<select id="queryMatrixNodeInfos" parameterType="java.util.Map" resultType="java.util.Map">
+		select n.n_id,n.n_name,m.order_id
+		from af_node_info n
+		left join af_matrix m on m.n_id = n.n_id
+		where n.af_id = #{af_id}
+		and m.m_id = #{m_id}
+		order by to_number(m.order_id)
+	</select>
+	
+	<!--根据id查找矩阵下的审批路由信息  -->
+	<select id="queryMatixRoteByMId" parameterType="java.util.Map" resultType="java.util.Map">
+		select p_id,m_id,r_id,
+	    (select ar.r_name from af_rule ar where ar.r_id = wfp.r_id) r_name,
+	    (select ar.r_exp from af_rule ar where ar.r_id = wfp.r_id) r_exp,
+	    p_state,
+	    (select sd.item_name from s_dic_item sd where sd.dic_code = 'AF_DIC_STATE' and sd.item_code = p_state) p_state_name
+	    from (
+	      select max(p_id) p_id,max(m_id) m_id,max(r_id) r_id,max(state) p_state
+	      from af_process 
+	      where (state is null or state!='01') 
+	      and m_id = #{m_id} 
+	      group by p_id
+	      order by p_id desc
+	    ) wfp
+	</select>
+	
+	<!-- 查询审批流程下的所有节点 -->
+	<select id="queryMProcessNodeIds" parameterType="java.util.Map" resultType="java.lang.String">
+		select n_id from af_process where p_id = #{p_id}
+	</select>
+	
+	<!-- 根据规则ID删除矩阵下所有路由节点和审批规则 -->
+	<delete id="deleteMatrixRoteByPId" parameterType="java.lang.String">
+		delete from af_process where p_id = #{p_id}
+	</delete>
+	
+	<!-- 根据流程ID修改流程状态 -->
+	<update id="updateProcessSateById" parameterType="java.lang.String">
+	    update af_info set af_state=#{af_state} where af_id = #{af_id}
+	</update>
+	
+	<!-- 根据矩阵ID修改矩阵状态 -->
+	<update id="updateMatrixSateById" parameterType="java.lang.String">
+	    update af_matrix set m_state = #{m_state} where m_id = #{m_id}
+	</update>
+	
+	<!-- 根据规则ID删除矩阵下所有路由节点和审批规则 -->
+	<update id="updateMatrixProcessState" parameterType="java.util.Map">
+		update af_process set state = #{state} where p_id = #{p_id}
+	</update>
+	
+	<!-- 查询审批节点的排序序号 -->
+	<select id="getProNodeOrderId" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from af_matrix m where m.af_id = #{af_id} and m.m_id = #{m_id} and m.n_id = #{n_id}
+	</select>
+</mapper>

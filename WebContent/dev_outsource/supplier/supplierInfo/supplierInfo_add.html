@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>供应商基本信息新增1</title>
+		<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/form.css" />
+	</head>
+	<body>
+		 <ul class="nav nav-tabs" style="font-size:13px;">
+				<li class="active" id="TbaseInfo"><a href="#tabLinkmanInfos" data-toggle="tab"><i class="icon-home"></i> 基本信息</a></li>
+				<li id="tabLinkmanInfo_add" name="otherMsg"><a href="#tabLinkmanInfo" data-toggle="tab"><i class="icon-user"></i> 联系人信息</a></li>
+				<li id="tabShareholderInfo_add" name="otherMsg"><a href="#tabShareholderInfo" data-toggle="tab"><i class="icon-list-alt"></i> 股权结构</a></li>
+				<li id="tabFinancialInfo_add" name="otherMsg"><a href="#tabFinancialInfo" data-toggle="tab"><i class="icon-folder-close"></i> 财务信息</a></li>
+				<li id="tabFileInfo_add" name="otherMsg"><a href="#tabFileInfo" data-toggle="tab"><i class="icon-folder-open"></i> 资质文件信息</a></li>
+				<li id="tabSignInfo_add" name="otherMsg"><a href="#tabSignInfo" data-toggle="tab"><i class="icon-file"></i> 与主要客户签约情况</a></li> 
+			</ul>
+	<div id="" class="tab-content"> 
+		<!-- tab1 开始-->
+		<div class="tab-pane active" id="tabLinkmanInfos">
+		<form action="" id="addsuppInfoList" id="Usup_basic_info">
+			<div class="main_iframe_con">
+				<div class="ecitic-title">
+					<span>供应商基本信息<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-title-table">
+					<table class="table table-bordered tablr-input-text">
+						<tr>
+							<td class="table-text">供应商名称</td>
+							<td colspan="3">
+								 <input type="hidden" id="Asup_num" name="AD.sup_num"> 
+								<input type="text" name="AD.sup_name" validate="v.required" valititle="供应商名称为必填项"/>
+							</td>
+							<td class="table-text">供应商简称</td>
+							<td><input type="text" name="AD.sup_simp_name" validate="v.required" valititle="供应商简称为必填项"/></td>
+						</tr>
+						<tr>
+							<td class="table-text">组织机构代码证号</td>
+							<td><input type="text"  name="AD.sup_num" validate="v.required" valititle="组织机构代码证号为必填项" readonly="readonly"/></td>
+							<td class="table-text">成立时间</td>
+							<td><input type="text" name="AD.establish_time"   onClick="WdatePicker({})" readonly/></td>
+		                    <td class="table-text">注册资金(元)</td>
+							<td><input  type="text" name="AD.register_money" /></td>
+						</tr>
+						<tr>
+							<td class="table-text">注册地址</td>
+							<td colspan="3"><input type="text" name="AD.registered_addr" /></td>
+							<td class="table-text">所属区域</td>
+							<td>
+								<input  name="AD.address" id="Aaddress" readonly="readonly" type="text"/>
+								<input type="hidden" id="addcode" name="AD.addcode"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text">通讯地址</td>
+							<td colspan="3"><input type="text" name="AD.company_address" ></td>
+							<td class="table-text">法人代表</td>
+							<td><input type="text" name="AD.representative"   /></td>
+						</tr>
+						<tr>
+							<td class="table-text">税务登记证登记地址</td>
+							<td colspan="3"><input type="text" name="AD.tax_registration_addr"    /></td>
+							<td class="table-text">增值税纳税规模</td>
+							<td>
+								<select  name="AD.ordinary_vat_payr" id="Aordinary_vat_payr" style="width:100%;"></select>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text">是否营业税纳税人</td>
+							<td>
+								<select  name="AD.is_payer" id="Ais_payer" style="width:100%;"></select>	
+							</td>
+							<td class="table-text">公司网址</td>
+							<td><input type="text" name="AD.sup_url" /></td>
+							<td class="table-text">客服电话</td>
+							<td><input type="text" name="AD.tel"/></td>
+						</tr>
+						<tr>
+							<td class="table-text">是否上市</td>
+							<td>
+								<select  name="AD.is_listed" id="Ais_listed" onchange="changelisted(this.value);" style="width:100%;"></select>	
+							</td>
+							<td class="table-text">上市地点</td>
+							<td><input type="text" name="AD.listed_addr" id="AD_listed_addr"/></td>
+		                    <td class="table-text">股票代码</td>
+							<td><input type="text" name="AD.stock_code" id="AD_stock_code"/></td>
+						</tr>
+						<tr>
+						<td class="table-text">分支机构数量</td>
+							<td><input type="text" name="AD.sub_org_num"/></td>
+							<td class="table-text">所属行业</td>
+							<td ><input type="text" name="AD.industry"  /></td>
+							<td class="table-text">工商登记号</td>
+							<td ><input type="text" name="AD.business_registraion_num" id="Abusiness_registraion_num" /></td>
+						</tr>
+						<tr>
+						<td class="table-text">是否为集团</td>
+							<td>
+								<select  name="AD.group_company" id="Agroup_company" style="width:100%;">	
+						        </select>
+							</td> 
+							<td class="table-text">企业性质</td>
+							<td><select  name="AD.nature_business" id="Anature_business" style="width:100%;">
+							</select></td>
+							<td class="table-text">领取薪酬员工人数</td>
+							<td><input type="text" name="AD.emp_num"/></td>
+						</tr>
+						<tr>
+						<td class="table-text">签约3年员工人数</td>
+							<td><input type="text" name="AD.three_emp_num"/></td>
+							<td class="table-text">供应商级别</td>
+							<td>
+								<select  name="AD.sup_level" id="Asup_level"  style="width:100%;">	
+						        </select>
+					        </td>
+					        <td class="table-text">准入日期</td>
+							<td colspan="3">
+								<input  onClick="WdatePicker({})" name="AD.entry_date" type="text" readonly/>
+							</td>
+						</tr>
+						<tr>
+					 		<td class="table-text">供应商分类</td>
+							<td colspan="5" width="85%" >
+								<select  name="AD.sup_sort_one" id="Asup_sort_one" multiple="multiple" style="width:100%;">	
+						        </select>
+					        </td>
+					    </tr>
+					 	<tr>
+					 		<td class="table-text">主营范围</td>
+							<td colspan="5" ><textarea class="citic-text-ast" name="AD.business_scope"></textarea></td>
+						</tr> 
+						<tr>
+					 		<td class="table-text">核心业务或产品</td>
+							<td colspan="5"><textarea class="citic-text-ast" name="AD.core_business"></textarea>
+							</td>
+						</tr> 
+						<tr>
+					 		<td class="table-text">核心业务的行业地位</td>
+							<td colspan="5"><textarea class="citic-text-ast" name="AD.market_share"></textarea>
+							</td>
+						</tr> 
+					</table>
+				</div>
+				
+				<div class="ecitic-save">
+					<input id="supplierInfoSave" type="button" class="btn btn-ecitic" value="保存" />
+					<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+				</div>
+			</div>
+		</form>
+		</div>
+		<!-- tab1结束 -->
+		<!-- tab2内容开始，供应商联系人信息 -->
+				<div class="tab-pane" id="tabLinkmanInfo">
+					<div class="ecitic-operation">
+						<input id="addLinkMan_add" type="button" class="btn btn-ecitic" value="新增" />
+						<input id="updateLinkman_add" type="button" class="btn btn-ecitic" value="修改" />
+						<input id="deleteLinkman_add" type="button" class="btn btn-ecitic" value="删除" />
+					</div>
+					<table id="supLinkmanTableAdd" class="table table-bordered table-hover"></table>
+				</div>
+		<!-- tab2内容结束，供应商联系人信息 -->
+		
+		<!-- tab3内容开始，股权结构 -->
+				<div class="tab-pane" id="tabShareholderInfo">
+					<div class="ecitic-operation">
+						<input id="addShareholder_add" type="button" class="btn btn-ecitic" value="新增" />
+						<input id="updateShareholder_add" type="button" class="btn btn-ecitic" value="修改" />
+						<input id="deleteShareholder_add" type="button" class="btn btn-ecitic" value="删除" />
+					</div>
+					<table id="ownershipStructureTableAdd" class="table table-bordered table-hover"></table>
+				</div>
+		<!-- tab3内容结束，股权结构 --> 
+				
+		<!-- tab4内容开始，财务信息开始 -->
+				<div class="tab-pane" id="tabFinancialInfo">
+					<div class="ecitic-operation">
+						<input id="addFinancialInfo_add" type="button" class="btn btn-ecitic" value="新增" />
+						<input id="updateFinancialInfo_add" type="button" class="btn btn-ecitic" value="修改" />
+						<input id="deleteFinancialInfo_add" type="button" class="btn btn-ecitic" value="删除" />
+					</div>
+					<table id="financialInfoTableAdd" class="table table-bordered table-hover"></table>
+				</div>
+		<!-- tab4内容结束，财务信息开始 -->
+				
+		<!-- tab5内容开始，资质文件情况开始 -->
+				<div class="tab-pane" id="tabFileInfo">
+					
+					<div class="ecitic-operation">
+						<input id="addEnclInfo_add" type="button" class="btn btn-ecitic" value="新增" />
+						<input id="updateEnclInfo_add" type="button" class="btn btn-ecitic" value="修改" />
+						<input id="deleteEnclInfo_add" type="button" class="btn btn-ecitic" value="删除" />
+					</div>
+					<table id="enclosureInfoTableAdd" class="table table-bordered table-hover"></table>
+				</div>
+		<!-- tab5内容结束，资质文件情况结束	 -->	
+				
+		<!-- tab6内容开始，签约情况 -->
+				<div class="tab-pane" id="tabSignInfo">
+					<div class="ecitic-operation">
+						<input id="addSignInfo_add" type="button" class="btn btn-ecitic" value="新增" />
+						<input id="updateSignInfo_add" type="button" class="btn btn-ecitic" value="修改" />
+						<input id="deleteSignInfo_add" type="button" class="btn btn-ecitic" value="删除" />
+					</div>
+					<table id="signInfoTableAdd" class="table table-bordered table-hover"></table>
+				</div>
+			</div>
+		<!-- tab6内容结束，签约情况 -->
+		
+		
+		<!-- 新增联系人模态框开始 -->
+			<div id="addLinkmanPop_add" class="modal hide fade" style="top: 50%;margin-top: -260px;" tabindex="-1">
+				 <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+					<h5 id="myModalLabel">联系人信息</h5>
+				 </div>
+				 <div class="modal-body">
+				    <div class="ecitic-title-table">
+						<div class="tabbable" id="sup_linkman">
+						  	  <div  name="AL.linkman_num" id="Alinkman_num" style="display:none;"></div>	
+						      <table class="table table-bordered tablr-input-text" id="lmTable">
+									<tbody>
+										<tr>
+											<td class="table-text">联系人类别</td>
+											<td colspan="">
+												<select name="AL.linkman_type" id="Alinkman_type"  validate="v.required" valititle="联系人类别为必填项" style="width:100%;">	
+									        	</select>
+											</td>
+											<td class="table-text">姓名</td>
+											<td  >
+												<input type="text" name="AL.name"  validate="v.required"  valititle="姓名为必填项"/>
+											</td>
+									    <tr>
+											<td class="table-text">职务</td>
+											<td  >
+												<input type="text" name="AL.post"  validate="v.required"  valititle="职务为必填项"/>
+											</td>
+											<td class="table-text">联系电话</td>
+											<td  >
+												<input type="text" name="AL.tel"  validate="v.mobile" valititle="联系电话为必填项"/>
+											</td>
+										</tr>
+										<tr>
+											<td class="table-text">邮箱</td>
+											<td  >
+												<input type="email" name="AL.email"  validate="v.email" valititle="邮箱为必填项"/>
+											</td>
+											<td class="table-text">常用联系人</td>
+											<td >
+												<div class="ecitic-radio-all" id="is_liasions" >
+													<div class="ecitic-radio ecitic-radio-inline">
+														<span><input type="radio" value="00" name="AAL.is_liasions"/></span>
+														<label>是</label>
+													</div>
+													<div class="ecitic-radio ecitic-radio-inline">
+														<span class="checkd"><input type="radio" value="01" name="AAL.is_liasions" checked="checked"/></span>
+														<label>否</label>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+						    </div>
+					</div>
+				 </div>
+				 <div class="ecitic-save">
+					 <input class="btn btn-ecitic" value="保存" id="saveLinkman_add" type="button" />
+					 <input class="btn btn-ecitic" value="重置" id="reset_supLinkman_add" type="button" />
+				 </div>
+			</div>
+		<!-- 新增联系人模态框结束 -->
+		
+		<!-- 添加股东信息模态框开始 -->
+			<div id="addShareholderPop_add" class="modal hide fade" style="top: 50%;margin-top: -260px;" tabindex="-1">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+					<h5 id="myModalLabel">股东信息</h5>
+				</div>
+				<div class="modal-body">
+					<div class="ecitic-title-table">
+						<div>
+							<div style="display:none;" name="HA.shareholder_num" id="Ashareholder_num"></div>
+							<table class="table table-bordered tablr-input-text" id="haTable">
+								<tr>
+									<td class="table-text">股东名称</td>
+									<td><input type="text" name="HA.shareholder_name"  validate="v.required" valititle="股东名称为必填项"/></td>
+								</tr>
+								<tr>
+									<td class="table-text">出资金额(元)</td>
+									<td><input type="text" name="HA.amount"  validate="v.float2" valititle="出资金额为必填项"/></td>
+								</tr>
+								<tr>
+									<td class="table-text">持股比例</td>
+									<td><input type="text" name="HA.shareholding_ratio"  onchange="checkAddRateNum(this);" validate="v.required"/></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="ecitic-save">
+					 <input class="btn btn-ecitic" value="保存" id="saveShareholder_add" type="button" />
+					 <input class="btn btn-ecitic" value="重置" id="resetShareholder_add" type="button" />
+				 </div>
+			</div>
+		<!-- 添加股东信息模态框结束 -->
+			
+		<!-- 添加财务信息模态框开始 -->
+			<div id="addFinancialInfoPop_add" class="modal hide fade" style="top: 50%;margin-top: -260px;" tabindex="-1">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+					<h5 id="myModalLabel">财务信息</h5>
+				</div>
+				<div class="modal-body">
+					<div class="ecitic-title-table">
+						<div class="tabbable">
+							<div style="display:none;"  id="Afinancial_num" name="AF.financial_num"></div>
+							<table class="table table-bordered tablr-input-text" id="fiTable">
+								<tbody>
+									<tr>
+										<td class="table-text">年度：</td>
+										<td><input type="text" name="AF.year" validate="v.required" valititle="年度为必填项"/></td>
+										<td class="table-text">总资产(万元)</td>
+										<td><input type="text" name="AF.total_assets"/ validate="v.float2" valititle="总资产为必填项"></td>
+									</tr>
+									<tr>
+										<td class="table-text">净资产(万元)</td>
+										<td><input type="text" name="AF.net_assets" validate="v.float2" valititle="净资产为必填项"/></td>
+										<td class="table-text">销售额(万元)</td>
+										<td><input type="text" name="AF.sales_amount" validate="v.float2" valititle="销售额为必填项"/></td>
+									</tr>
+									<tr>
+										<td class="table-text">净利润(万元)</td>
+										<td><input type="text" name="AF.net_profits" validate="v.float2" valititle="净利润为必填项"/></td>
+										<td class="table-text">总资产利润率</td>
+										<td><input type="text" name="AF.total_assets_rate" validate="v.float2" valititle="总资产利润率为必填项"/></td>
+									</tr>
+									<tr>
+										<td class="table-text">资产负债率</td>
+										<td><input type="text" name="AF.asset_liability_ratio" validate="v.float2" valititle="资产负债率为必填项"/></td>
+										<td class="table-text">经营活动现金流量净额(万元)</td>
+										<td><input type="text" name="AF.net_cash_flows" validate="v.float2" valititle="经营活动现金流量净额为必填项"/></td>
+									</tr>
+									<tr>
+										<td class="table-text">期末现金及现金等价物余额(万元)</td>
+										<td><input type="text" name="AF.cash_equivalents" validate="v.float2" valititle="期末现金及现金等价物余额为必填项"/></td>
+										<td class="table-text">期末货币资金占流动资产比例</td>
+										<td><input type="text" name="AF.current_assets_ratio" validate="v.float2" valititle="期末货币资金占流动资产比例为必填项"/></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="ecitic-save">
+					 <input class="btn btn-ecitic" value="保存" id="saveFinancialInfo_add" type="button" />
+					 <input class="btn btn-ecitic" value="重置" id="resetFinancialInfo_add" type="button" />
+				</div>
+			</div>
+		<!-- 添加财务信息模态框结束 -->	
+			
+		<!-- 添加签约情况模态框开始 -->
+			<div id="addSignInfoPop_add" class="modal hide" style="top: 50%;margin-top: -260px;" tabindex="-1">
+			  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+					<h5 id="myModalLabel">与主要客户签约情况</h5>
+			  </div>
+			  <div class="modal-body">
+			    <div class="ecitic-title-table">
+				  <div class="tabbable" id="">
+				  	  <div style="display:none;" name="AS.sign_num" id="Asign_num">	</div>
+				      <table class="table table-bordered tablr-input-text" id="sgTable">
+							<tbody>
+								<tr>
+									<td class="table-text">客户名称</td>
+									<td colspan="">
+										<input type="text" name="AS.cus_name" validate="v.required" valititle="客户名称为必填项"/>
+									</td>
+									<td class="table-text">签约类别</td>
+									<td colspan="">
+										<select id="Asign_type" name="AS.sign_type" validate="v.required" valititle="签约类别为必填项" style="width:100%;"></select>
+									</td>
+							    <tr>
+							    	<td class="table-text">签约时间</td>
+									<td  >
+										<input type="text" onClick="WdatePicker({})" readonly name="AS.sign_date" validate="v.required" valititle="签约时间为必填项"/>
+									</td>
+									<td class="table-text">客户联系人</td>
+									<td  >
+										<input type="text" name="AS.linkman_name" validate="v.required" valititle="客户联系人为必填项"/>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text">联系人电话</td>
+									<td  >
+										<input type="text" name="AS.link_tel" validate="v.mobile" valititle="联系人电话为必填项"/>
+									</td>
+									<td class="table-text">项目签约金额</td>
+									<td>
+										<input type="text" name="AS.sign_money" validate="v.float2" valititle="项目规模为必填项"/>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text">签约主要产品/服务</td>
+									<td colspan="3" >
+										<textarea class="citic-text-ast" name="AS.product" validate="v.required" valititle="签约主要产品/服务为必填项"></textarea>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+				    </div>
+				</div>
+			  </div>
+				<div class="ecitic-save">
+					 <input class="btn btn-ecitic" value="保存" id="saveSignInfo_add" type="button" />
+					 <input class="btn btn-ecitic" value="重置" id="reset_signInfo_add" type="button" />
+				</div>
+			</div>
+		<!-- 添加签约情况模态框结束 -->
+		
+		<!-- 增加资质文件信息模态框开始 -->
+			<div id="addAttachmentPop_add" class="modal hide" style="top: 50%;margin-top: -260px;" tabindex="-1">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+					<h5 id="myModalLabel">资质文件信息</h5>
+			  	</div>
+			  	<div class="modal-body" >
+				    <div class="ecitic-title-table">
+					  <div class="tabbable">
+					  	  <div style="display:none;"  id="Aencl_num" name="AE.encl_num"></div>
+					      <table class="table table-bordered tablr-input-text" id="amTable">
+								<tbody>
+								    <tr>
+										<td class="table-text">资质名称</td>
+										<td><input type="text" name="AE.encl_name" validate="v.required" valititle="资质名称为必填项"/></td>
+										<td class="table-text">类别</td>
+										<td ><select id="Aencl_type" name="AE.encl_type" validate="v.required" valititle="类别为必填项" style="width:100%;"></select></td>
+									</tr>
+									<tr>
+										<td class="table-text">生效时间</td>
+										<td ><input type="text" id="AE_efficient_time" name="AE.efficient_time" readonly validate="v.required" valititle="生效时间为必填项" onClick="WdatePicker({})"/> </td>
+										<td class="table-text">终止时间</td>
+										<td ><input type="text" id="AE_end_time" name="AE.end_time"  validate="v.required" valititle="终止时间为必填项" onClick="WdatePicker({})" /></td>
+									</tr>
+									<tr>
+										<td class="table-text">颁发机构</td>
+										<td colspan="3"><input type="text" name="AE.issue_authority" validate="v.required" valititle="颁发机构为必填项"/></td>
+									</tr>
+								</tbody>
+							</table>
+					    </div>
+					</div>
+			  	</div>
+				<div class="ecitic-save">
+					 <input class="btn btn-ecitic" value="保存" id="saveEnclInfo_add" type="button" />
+					 <input class="btn btn-ecitic" value="重置" id="resetEnclInfo_add" type="button" />
+				</div>
+			</div>
+			<!-- 增加资质文件信息模态框结束-->
+		<div id="querySupplierCheckPop"></div>
+		<script type="text/javascript">
+		//单选按钮
+		var isLia=getCurrentPageObj().find("input[name='AAL.is_liasions']");
+		isLia.unbind("click");
+		isLia.click(function(){
+			getCurrentPageObj().find(".ecitic-radio span").removeClass('checkd');
+			$(this).parent("span").addClass('checkd');
+		});
+		</script>
+		
+		
+		
+		<script src="bootstrap/js/bootstrap-table.min.js"></script>
+		<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+		<script type="text/javascript" src="js/commons/Math.uuid.js"></script>
+		<script type="text/javascript" src="dev_outsource/supplier/supplierInfo/supplierPop.js"></script>	
+		<script src="dev_outsource/supplier/supplierInfo/supplierInfo_add.js"></script>
+	</body>
+</html>

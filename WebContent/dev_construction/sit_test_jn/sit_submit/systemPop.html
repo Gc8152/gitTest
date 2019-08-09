@@ -1,0 +1,70 @@
+
+<!--应用模态框 -->
+<div id="myModal_system" class="modal hide fade" style="top: 50%;margin-top: -260px;" tabindex="-1" z-index="1060">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="myModalLabel">应用查询页面</h5>
+	</div>
+	<!-- <form action="" class="form-inline" id="pop_ver_condition">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+			<tr>
+				<td class="ecitic-right">年度：</td>
+				<td>
+				<input type="text" name="P_versions_date" placeholder="点击选择年度" onclick="WdatePicker({dateFmt:'yyyy',minDate:'2000',maxDate:'2050'})"  readOnly="readonly"/>
+				</td>
+				<td class="ecitic-right">版本类型：</td>
+				<td>
+					<select name="P_versions_type" diccode="SYS_DIC_VERSION_PROJECT"></select>
+				</td>
+			</tr>
+			<tr>
+				<td class="ecitic-right">版本名称：</td>
+				<td><input type="text" name="P_versions_name"/></td>
+			</tr>			
+		</table>
+	</form> -->
+	
+	<form action="" class="form-inline" id="pop_sys_condition">
+		<div class="row">
+			<div class="span6 h30">
+				<label class="pl60">部门：</label>
+				<input type="hidden" id="P_organ_id" name="P_organ_id">
+				<input type="text" name="P_organ_name" id="P_organ_name" readonly="readonly" placeholder="点击选择部门"/>
+			
+			</div>
+			<div class="span6 h30">
+				<label class="pl60">项目组：</label>
+				<input type="hidden" id="P_project_id" name="P_project_id">
+				<input type="text" name="P_project_group_name" id="P_project_group_name" readonly="readonly" placeholder="点击选择部门"/>
+				
+			</div>
+		</div>
+		<div class="row">
+			<div class="span6 h30">
+				<label class="pl60">应用名称：</label>
+				<input type="text" name="P_system_name" id="P_system_name"/>
+			</div>
+			<div class="span6 h30">
+				<label class="pl60">应用状态：</label>
+				<select style="width:188px!important;" id="P_system_status" name="P_system_status"></select>
+			</div>
+		</div>
+	</form>
+	
+	
+	
+	
+	
+	
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="查询" id="pop_systemSearch" type="button" />
+		<input class="btn btn-ecitic" value="重置" id="pop_systemReset" type="button" />
+	</div>
+	<div class="ecitic-title-table modal-body ecitic-new">
+		<div class="tz_btn" style="display:none;">
+			<button class="btn btn-ecitic" type="button" id="systemPOPSureSelected">确认选择</button>
+		</div> 
+		<table id="pop_systemTable" class="table table-bordered table-hover table-center table-th tablr-input-text"></table>
+	</div>
+	<div class="modal-footer"></div>
+</div>

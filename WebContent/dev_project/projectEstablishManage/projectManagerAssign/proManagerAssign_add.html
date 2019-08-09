@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>指派实施项目经理</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<form class="main_iframeFormW" >
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>指派实施项目经理<em></em></span>
+		</div>
+		<div class="ecitic-title-table">
+			<table class="table table-striped table-hover table-bordered tablr-input-text"><!-- table-bor-paw-->
+				<tr>
+					<td class="table-text">项目编号：</td>
+					<td name="project_num"></td>
+					<td class="hide" name="draft_id"></td>
+					<td class="hide" name="project_id"></td>
+					<td class="table-text">项目名称：</td>
+					<td name="project_name"></td>
+				</tr>
+				<tr>
+					<td class="table-text">（前期）项目经理：</td>
+					<td name="pm_name"></td>
+					<td class="table-text">应用：</td>
+					<td>
+						<input id="system_name" readonly type="text" placeholder="点击选择应用..." name="system_namePM" validate="v.required"/>
+						<input id="system_id" type="hidden" name="system_idPM" />
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">实施项目经理：</td>
+					<td>
+						<input id="project_man_name" readonly  placeholder="点击选择" type="text" name="project_man_namePM"   validate="v.required"/>
+						<input id="project_man_id" type="hidden" name="project_man_idPM" />
+					</td>
+					<td class="table-text">指派时间：</td>
+					<td>
+						<input type="text" name="assign_time" validate="v.required" readOnly="readonly"/>
+					</td>		
+				</tr>
+			</table>
+		</div>
+		<div class="ecitic-save" >
+			<input type="button" class="btn btn-ecitic" id="save_assignPM" value="提交"/>
+			<input type="button" class="btn btn-ecitic" id="back_assignPM" value="返回"/>
+	    </div>
+	</div>
+</form>
+<!--应用模态框 -->
+<div id="modal_system" class="modal hide fade" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="">人员信息</h5>
+	</div>
+	<div class="ecitic-title-table modal-body" >
+			<div class="ecitic-table" style="height:48px">
+				<table  class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="table-text">应用名称：</td>
+						<td><input type="text" name="SYSTEM_NAME"/></td>
+						<td>
+						<button class="btn btn-ecitic" id="select_pop">查询</button>
+						<button class="btn btn-ecitic" id="reset_pop">重置</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		<table id="sys_table" class="table table-striped table-hover table-bordered"></table>
+	</div>
+	<div class="modal-footer"></div>
+</div>
+<!-- 项目经理 -->
+<div>
+<div id="project_man_pop"></div>
+</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>  
+<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="dev_application/appUserPop.js"></script>
+<script type="text/javascript" src="dev_project/projectEstablishManage/projectManagerAssign/proManagerAssign_add.js"></script>
+</html>

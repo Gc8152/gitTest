@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>问题管理</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" >
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="main_iframe_con">
+	  <form action=""  class="form-inline" id="questionQueryForm">
+	      <div class="ecitic-inquire" id="ecitic-inquire">
+			 <div class="ecitic-table" id="ecitic-inquire">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">项目编号：</td>
+						<td>
+						  <input type="text" id="project_num" name="project_num" />
+						</td>
+						<td class="ecitic-right">项目名称：</td>
+						<td>
+						   <input type="text" id="project_name" name="project_name" /></td>
+						<td class="ecitic-right">应用名称：</td>
+						<td>
+						   <input type="text" id="system_name" name="system_name" />
+						</td>
+					</tr>
+					<tr>
+					   <td class="ecitic-right">问题名称：</td>
+						<td>
+						  <input type="text" id="risk_name" name="risk_name" />
+						</td>
+						<td class="ecitic-right">问题类型：</td>
+						<td>
+						   <select id="first_classify" name="first_classify" diccode="P_DIC_RISK_TYPE1"></select>
+						</td>
+						<td class="ecitic-right">问题状态：</td>
+						<td>
+						  <select id="risk_status" name="risk_status" diccode="P_DIC_RISK_STATUS"></select>
+						</td>
+					</tr>
+					<tr>
+					    <td class="ecitic-right">问题级别：</td>
+						<td>
+						  <select id="risk_grade" name="risk_grade" diccode="P_DIC_RISK_LEVEL"></select>
+						</td>
+						<td class="ecitic-right">问题影响程度：</td>
+						<td>
+						   <select  id="ponderance" name="ponderance" diccode="P_DIC_RISK_SERIOUS"></select>
+						</td>
+						<td class="ecitic-right"></td>
+						<td></td>
+					</tr>
+					
+				</table>
+		   </div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="query_questionList" value="查询"></li>
+			<li><input type="reset" class="btn btn-ecitic" id="reset_qestionForm" value="重置"></li>
+		</ul>
+	  </div>	
+	</form>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="question_add">新建</button>
+		<button class="btn btn-ecitic" id="question_update">修改</button>
+		<button class="btn btn-ecitic" id="question_submit">提交</button>
+		<button class="btn btn-ecitic" id="question_proving">验证</button>
+		<button class="btn btn-ecitic" id="question_close">关闭</button>
+		<button class="btn btn-ecitic" id="">详情</button>
+	</div>
+
+	<div class="ecitic-new">
+		<table id="questionManageTable" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="dev_project/questionManage/question_queryList.js"></script>
+</html>

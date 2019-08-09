@@ -1,0 +1,32 @@
+<!-- 用户模态框 -->
+<div id="pm_table" class="modal hide fade" tabindex="-1" z-index="1060">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="myModalLabel">用户查询页面</h5>
+	</div>
+	<form action="" class="form-inline" id="proman_userForm">
+		<div class="row">
+			 <div class="span6 h30">
+				<label class="pl60">用户编号：</label>
+				<input type="text" id="EXECUTOR_ID" name="EXECUTOR_ID" placeholder="" />
+			</div> 
+			<div class="span6 h30">
+				<label class="pl60">用户姓名：</label>
+				<input type="text" id="EXECUTOR_NAMEs" name="EXECUTOR_NAMEs" placeholder="" />
+			</div>
+		</div>
+		
+	</form>
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="查询" id="select_emp" type="button" />
+		<input class="btn btn-ecitic" value="重置" id="reset_emp" type="button" />
+	</div>
+	
+	<div class="ecitic-title-table modal-body ecitic-new">
+		<!-- <div class="ecitic-operation">
+			<input class="btn btn-ecitic" id="manPOPSureSelected" value="选择" type="button">
+		</div> -->
+		<table id="table_pmInfo"  title="双击选择一条数据"></table>
+	</div>
+<div class="modal-footer"></div>
+</div>

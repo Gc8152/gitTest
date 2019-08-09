@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>需求提出待审批列表</title>
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<!-- 字体图标 -->
+</head>
+<body>
+<div class="main_iframe_con">
+ <form action=""  class="form-inline" id="reqAddAprQueryListForm">
+		<div class="ecitic-inquire" id="ecitic-inquire" >
+			<div class="ecitic-table" id="ecitic-table">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad requirement-table">
+					<tr>
+					    <td class="ecitic-right">需求编号：</td>
+						<td><input type="text" id="req_code_reqAprQuery" name="req_code" class="requirement-ele-width"/>
+						</td>
+						<td class="ecitic-right">需求名称：</td>
+						<td><input type="text" id="req_name_reqAprQuery" name="req_name" class="requirement-ele-width"/>
+						</td>					
+					</tr>
+					<tr>
+					    <td class="ecitic-right" >需求提出人：</td>
+						<td >
+						  <input type="hidden" id="create_person_reqAprQuery" name="create_person" />
+						  <input type="text" id="create_person_name_reqAddAprQuery" name="create_person_name" class="requirement-ele-width" placeHolder="点击选择" readonly/>
+						</td>
+						<td class="ecitic-right" >提出部门：</td>
+						<td class="positionAb"><input type="hidden" id="req_put_dept_reqAddAprQuery" name="req_put_dept" />
+						    <input type="text" id="reqAddAprQuery_put_org_code" name="org" class="requirement-ele-width" placeholder="点击选择部门 " readonly/>
+						</td>	
+					</tr>
+				</table>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" id="serach_reqAddAprQuery" value="查询"/></li>
+				<li><input type="reset" class="btn btn-ecitic" id="reset_reqAddAprQuery" value="重置"/></li>
+			</ul>
+		</div>
+	</form>
+		<div class="ecitic-operation">
+			<button class="btn btn-ecitic" id="req_add_approve">审批</button>
+			<!-- <button class="btn btn-ecitic" id="view_reqAddApr_detail">查看审批详情</button> -->
+		</div>
+		<div class="ecitic-new">
+			<table id="gReqAddApproveTable" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+	</div>
+	<div id="crp_reqapprove"></div>
+</body>
+<script src="ztree3.5.22/js/jquery.ztree.core.min.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.excheck.min.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.exedit.min.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="pages/approvalflow/afcommons.js"></script>
+<!-- <script src="dev_construction/requirement/requirement_accept/requirement_flow/approval_content.js"></script>
+ --><script type="text/javascript" src="dev_construction/requirement/requirement_input/requirementAddApprove_querylist.js"></script>
+<script type="text/javascript" src="pages/suser/suserPop.js"></script> 
+</html>

@@ -1,0 +1,42 @@
+<!--新增功能点模态框 -->
+<div id="addFuncPoint_Pop" class="modal hide fade modal-big-table" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5>新增功能点</h5>
+	</div>
+	<div class=" ecitic-title-table modal-body ecitic-new">
+		<form id="addFuncForm">
+			<table border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+                    <td class="table-text" style="width:30%">应用名称</td>
+                    <td style="width:70%" ><input type="text" name="SYSTEM_NAME" class="requirement-ele-width" readonly></td>
+                </tr>
+                <tr>
+                    <td class="table-text">功能模块</td>
+                    <td>
+                    	<span style="float:left;"><input type="radio" id="add_module" name="IU.MODULE" class="requirement-ele-width" value="add" checked>新增模块</span>
+                    	<span><input type="radio" id="choose_module" name="IU.MODULE" class="requirement-ele-width" value="choose">选择已有模块</span>
+                    </td>
+                </tr>
+                <tr>
+                	<td id="tdName"  class="table-text">模块名称</td>
+                    <td id="tdAdd"><input type="text" name="IU.MODULE_NAME1" class="requirement-ele-width" validate="v.required" valititle="该项为必填项"></td>
+                    <td id="tdChoose" style="display:none"><select  name="IU.MODULE_NAME2" style="width:100%" validate="v.required" valititle="该项为必填项"></select></td>
+                </tr>
+                <tr>
+                    <td class="table-text">功能点名称</td>
+                    <td ><input type="text" name="IU.FUNC_NAME" class="requirement-ele-width" validate="v.required" valititle="该项为必填项"></td>
+                </tr>
+                <tr>
+                    <td class="table-text">功能点描述</td>
+                    <td rowspaln="3"><textarea  name="IU.FUNC_REMARK" class="requirement-ele-width" ></textarea></td>
+                </tr>
+			</table>
+		</form>
+	</div>
+	 <div class="ecitic-save">
+            <input type="button"  class="btn btn-ecitic" btn="saveFunc" value="保存" />
+            <input type="button" class="btn btn-ecitic" btn="closePop" value="返回" />
+     </div>
+	<div class="modal-footer"></div>
+</div>

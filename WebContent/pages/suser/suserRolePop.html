@@ -1,0 +1,33 @@
+<!--关联角色模态框 -->
+<div id="background_suserRolePop" class="modal hide fade modal-big-table" tabindex="-1" z-index="1060">
+	<div class="modal-header">
+	<!-- <script src="bootstrap/js/select2.min.js"></script> -->
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5>关联角色列表</h5>
+	</div>
+	<div id="ecitic-title-table modal-body ecitic-new">
+		<form id="background_userRolePopForm" class="form-inline">
+			<div class="row">
+				<div class="span6 h30">
+					<label class="pl60">所在部门 ：</label>
+					<!-- <input type="text" id="org_name" name="org_name"  onfocus="javascript:return false;" placeholder="点击选择部门 " readonly/> -->
+					<input type="text" name="org_name" id="org_name"  placeholder="点击选择所属部门" readonly/>
+					<input type="hidden" id="org_code" name="org_code"/>
+				</div>
+				<div class="span6 h30">
+					<label class="pl60">角色名称：</label>
+					<select style="width :180px" id="role_no1" name="role_no"></select>
+				</div>
+			</div>	
+		</form>	
+		<div class="ecitic-save">
+			<input class="btn btn-ecitic" value="查询" id="query_pop" type="button" />
+			<input class="btn btn-ecitic" value="重置" id="reset_pop" type="button" />
+			<input class="btn btn-ecitic" value="关闭" type="button" data-dismiss="modal" />
+		</div>			
+		<div class="ecitic-new" style="padding : 0 10px">
+			<table tb="table_userRole" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+	</div>
+	<div class="modal-footer"></div>
+</div>

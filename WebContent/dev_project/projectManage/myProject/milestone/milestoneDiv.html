@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>详情</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+</head>
+<body>
+<div id="ProjectMilestoneDiv">
+	<div class="ecitic-title">
+		<span>项目里程碑计划<em></em></span>
+		<i></i>
+	</div> 
+	
+		<div class="landmarks">        	
+	       <ul id="project_milestoneProgress">
+	       </ul>
+	    </div>
+	    
+       <!-- <div class="ecitic-inquire ecitic-inquire-sec lessSearch" style="margin-bottom: -30px;">
+	<div class="ecitic-table" id="ecitic-table">
+			<form id="noconfigManageQueryForm">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td style="width:230px;" >
+							<select style="width:230px;" id="selectVers"></select>
+						</td>
+						<td>
+						<input style="margin-left: 15px;" type="button" id="selectVers" class="btn btn-ecitic" value="查询" onclick="refreshProjectMilestone()"/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div> --> 
+	
+	
+	<div class="ecitic-inquire ecitic-inquire-sec lessSearch">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+			<tr>
+				<td width="60%">
+					<input type="hidden" id="d_project_id" />
+				</td>
+				<td width="30%">
+					<select id="selectVers" class="requirement-ele-width" style="width:100%;">
+							<option value=" ">请选择</option>
+						</select>
+				</td>
+				<td width="10%">
+					<input type="button" id="selectVers" class="btn btn-ecitic" value="查询" onclick="refreshProjectMilestone()"/>
+				</td>
+			</tr>
+		</table>
+ </div>
+	    
+	   <div class="landmarks_remarks">
+			<span><i class="icon-finished" style="font: 50px;color: red"></i>项目延迟</span>
+			<span><i class="icon-finishing"></i>项目正常</span>
+			<span><i class="icon-unfinished"></i>项目提前</span>
+		</div>	
+	   <!-- 里程碑计划 -->
+	   <div class="ecitic-new">
+			<table class="table table-hover" id="milestoneListTable">
+			</table>								
+		</div>
+</div>
+</body>
+<script type="text/javascript" src="dev_project/projectManage/myProject/projectConfig/projectConfig_queryList.js"></script>
+</html>

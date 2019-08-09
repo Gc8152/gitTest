@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>需求查询列表</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table id="reqTerm" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">需求编号：</td>
+					<td><input type="text" id="req_codeid" name="req_code"/></td>
+					<td class="ecitic-right">需求名称：</td>
+					<td><input type="text" name="req_name"/></td>
+					<td class="ecitic-right">需求提出人：</td>
+					<td><input type="text" name="req_businesser"/></td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">需求大类：</td>
+					<td><select name="req_type1" style="width:100%;"></select></td>
+					<td class="ecitic-right">需求状态：</td>
+					<td><select name="req_state" multiple="multiple" style="width:100%;"></select></td>
+					<!--<td class="ecitic-right">计划投产日期：</td>
+                    <td>
+                        <span class="ecitic-time">
+                            <input type="text" name="summit_time_st" id="summit_time_st" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                        <span class="ecitic-to">至</span>
+                        <span class="ecitic-time">
+                            <input type="text" name="summit_time_et" id="summit_time_et" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                    </td>-->
+					<td class="ecitic-right">产品经理：</td>
+					<td><input type="text" name="req_product_manager"/></td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">应用名称：</td>
+					<td>
+					  <input type="text" id="system_name_req360" name="system_name" placeHolder="点击选择"/>
+					  <input type="hidden" id="system_id_req360" name="system_id">
+					</td>
+					<td class="ecitic-right" >需求分类：</td>
+					<td>
+					    <select  id="req_acc_classify" name="req_acc_classify" style="width:100%;"></select>
+					</td>
+					<td class="ecitic-right">项目组长：</td>
+					<td><select id="req_product_leaderid" name="req_product_leader"  style="width: 100%;"></select></td>
+					<!-- <td colspan="2"></td> -->
+<!-- 					<td class="ecitic-right">存量需求编号：</td>
+					<td><input type="text" id="" name="old_req_code"/></td> -->
+				</tr>
+				<tr>
+				<td class="ecitic-right">投产状态：</td>
+				<td>
+				<select id="send_state" name="send_state" style="width:100%" >
+							<option value=' '>请选择</option>
+							<option value="00">已投产</option>
+							<option value="01">未投产</option>
+				</select>
+				</td>
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="query" value="查询"/></li>
+			<li><input type="reset" class="btn btn-ecitic" id="reset" value="重置"/></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button type="button" class="btn btn-ecitic" id="view">需求360视图</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover table-text-show" id="reqTable">
+			
+		</table>
+	</div>
+	<div id="system_req360"></div>
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_follower/requirement_queryList.js"></script>
+<script type="text/javascript" src="dev_application/System_pop.js"></script>
+</html>

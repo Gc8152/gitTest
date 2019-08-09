@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SIT测试报告文档上传</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+</head>
+<body>
+<div class="main_iframeFormW">
+	<div class="tab-pane fade in active">
+		<div class="main_iframe_con" id="sitReportInfo">
+			
+			<div class="ecitic-title">
+				<span>SIT任务报告上传列表<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table id="table_SITtaskInfo" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+					<!-- <tbody><tr>
+						<th width="5%"></th>
+						<th>任务名称</th>
+						<th>任务编码</th>
+						<th>任务从属</th>
+						<th>所属应用</th>
+						
+					</tr>
+					
+				</tbody> -->
+				</table>
+			</div>
+		<div class="ecitic-title" style="display:none">
+			<span>接口列表<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table ecitic-new"  style="display:none">
+			<table id="table_interface_editInfo" name="table_TaskInterfaceInfo" class="table table-bordered table-hover table-text-show">
+			</table>
+		</div>
+			<div class="ecitic-title">
+				<span>测试执行情况<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+					<tr>
+						
+						<td width="15%" class="table-text">测试开始日期：</td>
+						<td width="18.333%">
+							<input type="text" id="sit_start_time" name="A.SIT_START_TIME" class="citic-ast" validate="v.required"
+								onclick="WdatePicker({maxDate:'#F{$dp.$D(\'sit_end_time\',{d:0});}'})" placeholder="请选择" readonly="readonly">
+						</td>
+						<td width="15%" class="table-text">测试完成日期：</td>
+						<td width="18.333%">
+							<input type="text" id="sit_end_time" name="A.SIT_END_TIME" class="citic-ast" validate="v.required"
+								onclick="WdatePicker({minDate:'#F{$dp.$D(\'sit_start_time\',{d:0});}'})" placeholder="请选择" readonly="readonly">
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="ecitic-title">
+				<span>测试案例<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table id="text_sum" class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+					<tr id="testNum">
+						<td width="15%" class="table-text">不通过个数：</td>
+						<td width="18.333%">
+							<input type="text" name="A.TEST_UNPASS_NUM" validate="v.isint" class="citic-ast"
+							onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^[0-9]\d*|0$]/g,'')}else{this.value=this.value.replace(/[^0-9]/g,'')}"/>
+						</td>
+						<td width="15%" class="table-text">不适用个数：</td>
+						<td width="18.333%">
+							<input type="text" name="A.UNSUIT_NUM" validate="v.isint" class="citic-ast"
+							onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^[0-9]\d*|0$]/g,'')}else{this.value=this.value.replace(/[^0-9]/g,'')}"/>
+						</td>
+						<td width="15%" class="table-text">未测试个数：</td>
+						<td width="18.333%">
+							<input type="text" name="A.UNTEST_NUM" validate="v.isint" class="citic-ast"
+							onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^[0-9]\d*|0$]/g,'')}else{this.value=this.value.replace(/[^0-9]/g,'')}"/>
+						</td>
+						
+					</tr>
+					<tr id="unsuitNum">
+						<td class="table-text">案例通过个数：</td>
+						<td>
+							<input type="text" name="A.TEST_PASS_NUM" validate="v.isint" class="citic-ast"
+							onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^[0-9]\d*|0$]/g,'')}else{this.value=this.value.replace(/[^0-9]/g,'')}"/>
+						</td>
+						<td class="table-text">案例个数：</td>
+						<td>
+							<input type="text" name="A.TEST_NUM" validate="v.isint" class="citic-ast" readonly/>
+						</td>
+						<td class="table-text">测试通过率（%）：</td>
+						<td>
+							<input type="text" name="A.PASS_RATE" validate="v.isfloat" class="citic-ast" readonly/>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			
+			<div class="ecitic-title-table" id="">
+				<div class="ecitic-title">
+					<span>测试缺陷<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-title-table">
+					<table id="bug_table" class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+						<tr>
+							<th width="25%">缺陷级别</th>
+							<th width="25%">缺陷数</th>
+							<th width="25%">修复验证通过数</th>
+							<th width="25%">遗留缺陷数</th>
+						</tr>
+						<tr>
+							<th>A级(致命)缺陷</th>
+							<td>
+								<input type="text" name="A.ADEFECT_NUM" onkeyup="aCalculateBug()" validate="v.isint">
+							</td>
+							<td>
+								<input type="text" name="A.ADEFECT_PASSNUM" onkeyup="aCalculateBug()" validate="v.isint">
+							</td>
+							<td>
+								<input type="text" name="aleave" readonly>
+							</td>
+						</tr>
+						<tr>
+							<th>B级(严重)缺陷</th>
+							<td>
+								<input type="text" name="A.BDEFECT_NUM" onkeyup="bCalculateBug()" validate="v.isint">
+							</td>
+							<td>
+								<input type="text" name="A.BDEFECT_PASSNUM" onkeyup="bCalculateBug()" validate="v.isint">
+							</td>
+							<td>
+								<input type="text" name="bleave" readonly>
+							</td>
+						</tr>
+						<tr>
+							<th>C级(一般)缺陷</th>
+							<td>
+								<input type="text" name="A.CDEFECT_NUM" onkeyup="cCalculateBug()" validate="v.isint">
+							</td>
+							<td>
+								<input type="text" name="A.CDEFECT_PASSNUM" onkeyup="cCalculateBug()" validate="v.isint">
+							</td>
+							<td>
+								<input type="text" name="cleave" readonly> 
+							</td>
+						</tr>
+						<tr>
+							<th>D级(建议)缺陷</th>
+							<td>
+								<input type="text" name="A.DDEFECT_NUM" onkeyup="dCalculateBug()" validate="v.isint">
+							</td>
+							<td>
+								<input type="text" name="A.DDEFECT_PASSNUM" onkeyup="dCalculateBug()" validate="v.isint">
+							</td>
+							<td>
+								<input type="text" name="dleave" readonly>
+							</td>
+						</tr>
+						<!-- <tr>
+							<th>E级缺陷</th>
+							<td>
+								<input type="text" name="A.EDEFECT_NUM" onkeyup="eCalculateBug()" validate="v.isint">
+							</td>
+							<td>
+								<input type="text" name="A.EDEFECT_PASSNUM" onkeyup="eCalculateBug()" validate="v.isint">
+							</td>
+							<td>
+								<input type="text" name="eleave" readonly>
+							</td>
+						</tr> -->
+						<tr>
+							<th>总缺陷数</th>
+							<td>
+								<input type="text" name="A.ALLDEFECT_NUM" readonly>
+							</td>
+							<td>
+								<input type="text" name="allpass" readonly>
+							</td>
+							<td>
+								<input type="text" name="A.ALLLEFTDEFECT_NUM" readonly>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			
+			
+			<div class="ecitic-title">
+				<span>测试结论<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+					
+					<tr>
+						<td  width="11%" class="table-text">测试结论：</td>
+						<td width="22.333%">
+						<div style = "display:none">
+							<select id="ACCEPT_RESULT" name="A.ACCEPT_RESULT" ></select>
+						</div>	
+							<select id="PUTIN_RESULT" name="A.PUTIN_RESULT" validate="v.required" style="width: 250px!important"></select>
+							
+						</td>
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<td class="table-text">备注：</td>
+						<td colspan="3">
+							<textarea class="textarea2" name="A.ACCEPT_MARK"></textarea>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="ecitic-title">
+				<input name="FILE_ID" type="hidden" value=""/>
+				<span>附件<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<div class="ecitic-operation">
+					<button class="btn btn-ecitic" id="add_file">上传</button>
+					<button class="btn btn-ecitic" id="delete_file">删除</button>
+					<a href="sfile/downloadFTPFile.asp?id=m_021" class="file_template_style" id="noInstancy">测试环境测试报告模板</a>
+					<a href="sfile/downloadFTPFile.asp?id=m_033" class="file_template_style" id="noInstancy">测试环境测试报告模板v1.0（紧急）</a>
+					<!-- <a href="sfile/downloadFTPFile.asp?id=m_033" class="file_template_style" id="instancy">测试报告模板（紧急任务）</a> -->
+					<!-- <a href="sfile/downloadFTPFile.asp?id=m_029" class="file_template_style">非功能文档模版</a> -->
+				</div>
+				<table id="table_file" class="aa table table-bordered table-hover table-center table-th tablr-input-text"></table>
+			</div>
+		</div>
+	</div>
+				
+	<div class="ecitic-save">
+		<!-- <input type="button" class="btn btn-ecitic" id="saveSitReprot" value="保存"/> -->
+	 	<input type="button" class="btn btn-ecitic" id="submitSitReprot" value="保存&提交"/> 
+	 	<input type="button" class="btn btn-ecitic" id="backSitReprot"  value="返回"/>
+	</div>
+</div>
+
+<!--上传附件模态框  -->
+<div id="file_modal"></div>
+<div id="file_view_modal"></div>
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="dev_construction/sit_test_jn/sit_report/sitreport_edit.js"></script>
+<script type="text/javascript" src="dev_construction/sit_test_jn/sit_submit/initqueryInterface.js"></script>
+<script src="pages/approvalflow/afcommons.js"></script>
+</html>

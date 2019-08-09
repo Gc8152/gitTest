@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>外包人员考核项配置</title>
+		<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/form.css" />
+	</head>
+	<body>
+		<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<form action="" id="optDicList">
+					<table class="table table-bordered table-bor-pad">
+						<tr>
+							<td class="ecitic-right">指标编码</td>
+							<td>
+								<input type="text" name="query_diccode" id="query_diccode" class="citic-ast"/>
+							</td>
+							<td class="ecitic-right">指标名称</td>
+							<td>
+								<input type="text" name="query_itemname" id="query_itemname" class="input-txt" />
+							</td>
+		               </tr>
+		               <tr>
+							<td class="ecitic-right">状态</td>
+							<td>
+								<select type="text" name="query_state" id="query_state" class="input-txt" >
+									<option value="">请选择</option>
+									<option value="00">启用</option>
+									<option value="01">禁用</option>
+								</select>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><button type="button" class="btn btn-ecitic" id="queryAllOptDicList">查询</button></li>
+				<li><button type="button" class="btn btn-ecitic" id="reset_optDicList">重置</button></li>
+			</ul>
+		</div>
+		<div class="ecitic-operation">
+			<button type="button" class="btn btn-ecitic" id="addOptDic">新增</button>
+			<button type="button" class="btn btn-ecitic" id="updateOptDic">修改</button>
+			<button type="button" class="btn btn-ecitic" id="deleteOptDic">删除</button>
+			<button type="button" class="btn btn-ecitic" id="detailOptDic">查看</button>
+			<button type="button" class="btn btn-ecitic" id="configOptDic">指标说明</button>
+		</div>
+		<div class="ecitic-new">
+			<table class="table table-bordered table-hover" id="detailOptDicTable"></table>
+		</div>
+		<!-- 新增考核项-->
+			<div id="addOptDicPop_up" class="modal hide fade" style="top: 50%;margin-top: -260px;" tabindex="-1" data-backdrop="static">
+				 <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+					<h5 id="myModalLabel">外包人员考核项</h5>
+				 </div>
+				 <div class="modal-body">
+					  <div class="ecitic-title-table">
+						<div class="tabbable" id="sup_linkman">
+						 <form id="addOptDicForm">
+						      <table class="table table-bordered tablr-input-text" id="SupDicTable">
+									<tbody>
+										<tr>
+											<td   class="ecitic-right">指标编码</td>
+											<td >
+											    <input name="id" id="sd_id" type="hidden"/>
+												<input type="text" name="diccode" id="sd_diccode" class="input-txt"  validate="v.required" valititle="指标编码为必填项" />
+											</td>
+												<td class="ecitic-right">指标名称</td>
+											<td>
+												<input type="text" name="itemname" id="sd_itemname" class="input-txt" validate="v.required" valititle="名称为必填项"  />
+											</td>
+										<!-- 	 <td class="ecitic-right">指标说明编码</td>
+											<td>
+												<input type="text" name="itemcode" id="sd_itemcode" class="input-txt" placeHolder="说明编码与指标编码需一致" validate="v.required" valititle="说明编码为必填项" />
+											</td>  -->
+									    <tr>
+											<!-- <td class="ecitic-right">指标名称</td>
+											<td>
+												<input type="text" name="itemname" id="sd_itemname" class="input-txt" validate="v.required" valititle="名称为必填项"  />
+											</td> -->
+											<td class="ecitic-right">状态</td>
+											<td >
+												<select type="text" name="state" id="sd_state"  validate="v.required" valititle="状态为必填项"  >
+													<option value="">请选择</option>
+													<option value="00">启用</option>
+													<option value="01">禁用</option>
+												</select>
+											</td>
+											<td colspan="2"></td>
+										</tr>
+									    <tr>
+											<td class="ecitic-right">考核得分(分)</td>
+											<td colspan="3">
+												<textarea  name="detail" id="sd_detail" class="citic-text-ast" />
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								</form>
+						    </div>
+					</div>
+				 </div>
+				 <div class="ecitic-save">
+					 <input class="btn btn-ecitic" value="保存" id="saveOptDic" type="button" />
+					 <input class="btn btn-ecitic" value="重置" id="reset_saveOptDic" type="button" />
+					 <input class="btn btn-ecitic" value="返回" id="return_saveOptDic" type="button" style="display:none" />
+				 </div>
+			</div>
+		<!-- 新增考核项-->
+		<script src="bootstrap/js/bootstrap-table.min.js"></script>
+		<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+		<script src="dev_outsource/outsource/optCheckConfig/optDicManage.js"></script>
+	</body>
+</html>

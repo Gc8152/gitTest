@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>问题详情</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="tabbable">
+				   
+					<ul class="nav nav-tabs" style="font-size:13px;">
+						<li class="active">
+						<a href="#qA_info" data-toggle="tab" > <i class="icon-home"></i> 问题信息</a></li>
+						<li>
+						<a href="#qA_operate_log" data-toggle="tab" ><i class="icon-file"></i> 操作日志</a></li>
+					</ul>
+					<div class="tab-content"  style="overflow-x:hidden ">
+<!-- 	******受理信息******   "-->
+	<div class="tab-pane active" id="qA_info" style="padding: 0 20px 0 20px">
+	<div class="ecitic-title">
+					<span>问题基本信息<em></em></span>
+					<i></i>
+				</div>
+	<div class="ecitic-title-table">
+	<table
+		class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+			<colgroup>
+				<col style="width: 20%">
+				<col style="width: 30%">
+				<col style="width: 20%">
+				<col style="width: 30%">
+			</colgroup>
+			<tr>
+			<td class="table-text">问题名称：</td>
+			<td>
+				<div id="risk_name" name="QA.risk_name"></div>
+			</td>
+			<td class="table-text">问题状态：</td>
+			<td>
+				<div id="risk_status"name="QA.risk_status_name"></div>
+			</td>
+		</tr>
+		<tr>
+			<td class="table-text">问题描述：</td>
+			
+			<td colspan="3">
+						  <!--  <textarea id="risk_desc" name="QA.risk_desc" maxlength="500" disabled="disabled"></textarea> -->
+							<span id="risk_desc" name="QA.risk_desc" style="width: 850px; height: 60px;display:block;">
+						</span>
+						
+						
+						</td>
+			
+		</tr>
+		<tr id="qAq_project_tr">
+			<td class="table-text">问题所属项目编号：</td>
+			<td>
+				<div id="project_num" name="QA.project_num"></div>
+			</td>
+			<td class="table-text">问题所属项目名称:</td>
+			<td>
+				<div id="project_name" name="QA.project_name"></div>
+			</td>
+		</tr>
+		<tr>
+			<td class="table-text">问题分类：</td>
+			<td >
+				<div id="first_classify" name="QA.first_classify_name"></div>
+			</td>
+			<td class="table-text">问题严重程度：</td>
+			<td >
+				<div id="ponderance" name="QA.ponderance_name"></div>
+			</td>
+			
+		</tr>
+		<tr>
+			<td class="table-text">问题级别：</td>
+			<td>
+				<div id="risk_grade" name="QA.risk_grade_name"></div>
+			</td>
+			<td class="table-text">责任人：</td>
+			<td>
+				<div id="duty_user_id" name="QA.duty_user_id_name"></div>
+			</td>
+		</tr>
+		<tr>
+			<td class="table-text">提出人：</td>
+			<td>
+				<div id="present_user_id" name="QA.present_user_id_name"></div>
+			</td>
+			<td class="table-text">提出时间：</td>
+			<td>
+				<div id="present_time" name="QA.present_time"></div>
+			</td>
+		</tr>
+		<tr>
+			<!-- <td class="table-text">处理人：</td>
+			<td>
+				<div id="opt_user_id" name="QA.opt_user_id_name"></div>
+			</td> -->
+			<td class="table-text">要求处理完成日期：</td>
+			<td>
+				<div id="req_finish_date" name="QA.req_finish_date"></div>
+			</td>
+				<td class="table-text"></td>
+			<td>
+				
+			</td>
+		</tr>
+		<!-- <tr>
+			<td class="table-text" >问题影响分析：</td>
+			<td colspan="3">
+				<textarea id="question_affect_analyse" name="QA.question_affect_analyse" maxlength="500" disabled="disabled"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td class="table-text" >问题处理方案：</td>
+			<td colspan="3">
+				<textarea id="dispose_measure" name="QA.dispose_measure" maxlength="500" disabled="disabled"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td class="table-text">问题处理情况：</td>
+			<td>
+				<div id="question_dispose_status" name="QA.question_dispose_status_name"></div>
+			</td>
+			<td class="table-text">问题处理完成日期：</td>
+			<td>
+				<div id="dispose_finish_date" name="QA.dispose_finish_date"></div>
+			</td>
+		</tr>
+		<tr>
+			<td class="table-text">问题处理说明：</td>
+			<td colspan="3">
+				<textarea id="question_dispose_explain" name="QA.question_dispose_explain"maxlength="500" disabled="disabled"></textarea>
+			</td>
+			
+		</tr>
+		<tr>
+			<td class="table-text">问题验证结果：</td>
+			<td>
+				<div id="question_verify_result" name="QA.question_verify_result_name"></div>
+			</td>
+			<td class="table-text" colspan="2"></td>
+		</tr>
+		<tr>
+			<td class="table-text">问题重新打开说明：</td>
+			<td colspan="3">
+				<textarea id="question_return_explian" name="QA.question_return_explian" maxlength="500" disabled="disabled"></textarea>
+			</td>
+			
+		</tr> -->
+	</table>
+</div>
+    <div class="ecitic-save">
+ <input type="button" class="btn btn-ecitic" value="返回" name="closePageTabConfirm"  />
+</div>
+</div>
+					<!-- 操作日志 -->
+	<div class="tab-pane" id="qA_operate_log" style="padding: 0 20px 0 20px">
+	<div class="ecitic-title">
+					<span>操作日志<em></em></span>
+					<i></i>
+				</div>
+			<div class="ecitic-new">
+		<table id="qAInfoOperateLogTable" class="table table-bordered table-hover table-text-show" ></table>
+			</div>
+	</div>
+					</div>
+			
+			</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+<script type="text/javascript" src="dev_project/questionManage/questionAccept/questionAccept_queryInfo.js"></script>
+</html>

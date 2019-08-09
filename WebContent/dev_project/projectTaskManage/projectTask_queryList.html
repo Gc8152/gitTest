@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>项目开发任务管理</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="taskForm">
+				<table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">项目编号：</td>
+						<td>
+							<input type="text"  name="PROJECT_NUM"/>
+						</td>
+						<td class="ecitic-right">项目名称：</td>
+						<td>
+							<input type="text"  name="PROJECT_NAME" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" name="queryTask" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" name="resetTask" value="重置"/></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" name="taskAnalyze">开发任务分派</button>
+		<!-- <button class="btn btn-ecitic" name="endAnalyze">分析完成</button> -->
+	</div>
+	<div class="ecitic-new">
+		<table tb="taskTable" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+</body>
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_project/projectTaskManage/projectTask_queryList.js"></script>
+</html>

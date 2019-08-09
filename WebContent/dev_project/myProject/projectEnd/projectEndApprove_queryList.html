@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>项目结项审批</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+	<div class="ecitic-inquire queny_workHight" >
+		<div class="ecitic-table" >
+			<form id="proEnd_query">
+				<table id="table_select" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">项目编号：</td>
+						<td>
+							<input type="text" name="PROJECT_NUM"/>
+						</td>
+						<td class="ecitic-right">项目名称：</td>
+						<td>
+							<input type="text" name="PROJECT_NAME"/>
+						</td>
+						<td class="ecitic-right">项目类型：</td>
+						<td>
+							<select name="PROJECT_TYPE" diccode="SYS_DIC_MILESTONE_PROJECT_TYPE" style="width:100%;"></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">所属处室：</td>
+						<td class="positionAb">
+							<input type="text" name="ORGAN_NAME" placeholder="点击选择处室..."/>
+							<input type="hidden" name="ORGAN_ID"/>
+						</td>
+						<td class="ecitic-right">项目经理：</td>
+						<td class="positionAb">
+							<input type="text" name="PROJECT_MAN_NAME" placeholder="点击选择项目经理..."/>
+							<input type="hidden" name="PROJECT_MAN_ID"/>
+						</td>
+						<td class="ecitic-right">审批状态：</td>
+						<td>
+							<select name="APP_STATUS" diccode="P_DIC_APP_STATUS" style="width:100%;"></select>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="select_proEnd">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset_proEnd">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="projectApprove">项目审批</button>
+		<button class="btn btn-ecitic" id="Approveed">审批通过</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="table_projectApprove" class="table table-bordered table-hover"></table>
+	</div>
+	<div id="proEnd_choosePm"></div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="dev_project/projectEstablishManage/projectEstablish/pmInfoPop.js"></script>
+<script type="text/javascript" src="dev_project/myProject/projectEnd/projectEndApprove_queryList.js"></script>
+</html>

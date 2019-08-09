@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>外包人员新增</title>
+		<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/form.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+	</head>
+	<body>
+		<ul class="nav nav-tabs" style="font-size:13px;">
+			<li class="active" id="ubascInfo"><a href="#ubasic_info" data-toggle="tab"><i class="icon-home"></i>基本信息</a></li>
+			<li id="ueduAndWork" onclick="initMoreMsgPOP()" name="otherMsg"><a href="#uedu_work" data-toggle="tab"><i class="icon-user"></i>教育及工作履历信息</a></li>
+			<li id="uqualCertlif" onclick="certlifDetail()" name="otherMsg"><a href="#uqual_certlif" data-toggle="tab"><i class="icon-list-alt"></i>资质证书与技能</a></li>
+			<li id="uprojrctInfo" onclick="projrctDetail()" name="otherMsg"><a href="#uprojrct_info" data-toggle="tab"><i class="icon-folder-close"></i>项目经历信息</a></li>
+		</ul>
+		<div id="myFrom" class="tab-content">
+			<!-- tab1内容开始 -->
+			<div class="tab-pane active" id="ubasic_info">
+				<div class="ecitic-title">
+					<span>基本信息<em></em></span>
+					<i></i>
+				</div>
+			<div class="ecitic-title-table">
+			<table class="table table-bordered tablr-input-text"><!-- table-bor-paw-->
+				<tr>
+					<td width="11%" class="table-text">外包人员姓名</td>
+					<td width="22.333%">
+						<input type="hidden" name="UP.op_id"/>
+						<input type="text" name="UP.op_name" validate="v.required" valititle="请输入姓名" class="citic-ast" />
+					</td>
+					<td class="table-text">身份证号码</td>
+					<td>
+						<input type="text" name="UP.idcard_no" validate="v.required" valititle="请输入身份证号"class="citic-ast" onchange="changeCode(this.value);"/>
+						<input type="hidden" name="UP.op_code"/>
+					</td>
+					<td width="11%" class="table-text">性别</td>
+					<td width="22.333%">
+						<select name="UP.op_sex" class="citic-sele-ast" placeholder="点击选择性别" validate="v.required" valititle="请选择性别"></select>
+					</td>
+				</tr>
+				<tr>
+					<td width="11%" class="table-text">出生年月</td>
+					<td width="22.333%">
+						<input type="text" name="UP.op_birthday"  onclick="WdatePicker({})" class="citic-ast read"  validate="v.required" valititle="请选择出生年月" readonly/>
+					</td>
+					<td class="table-text">联系电话</td>
+					<td>
+						<input type="text" name="UP.op_phone" class="citic-ast"  validate="v.mobile"/>
+					</td>
+					<td class="table-text">电子邮箱</td>
+					<td>
+						<input type="text" name="UP.op_email" class="citic-ast" validate="v.email"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">最高学历</td>
+					<td>
+						<select name="UP.op_education" class="citic-sele-ast" placeholder="点击选择最高学历"></select>
+					</td>		
+					<td class="table-text">学位</td>
+					<td>
+						<select name="UP.op_degree" class="citic-sele-ast" placeholder="点击选择学位"></select>
+					</td>		
+					<td class="table-text">毕业时间</td>
+					<td>
+						<input type="text" name="UP.graduate_time"  onclick="WdatePicker({})" class="citic-ast read" readonly/>
+					</td>		
+				</tr>
+				<tr>
+					<td class="table-text">毕业院校</td>
+					<td>
+						<input type="text" name="UP.graduate_college" class="citic-ast" />
+					</td>
+					<td class="table-text">毕业院校类型</td>
+					<td>
+						<select name="UP.college_type" class="citic-sele-ast" placeholder="点击选择毕业院校类型"></select>
+					</td>		
+					<td class="table-text">所学专业</td>
+					<td>
+						<input type="text" name="UP.op_special" class="citic-ast read" />
+					</td>
+				</tr>
+
+				<tr>
+					<td class="table-text">参加工作时间</td>
+					<td>
+						<input type="text" name="UP.start_worktime" onclick="WdatePicker({})" class="citic-ast" readonly/>
+					</td>
+					<td class="table-text">工作年限(年)</td>
+					<td>
+						<input type="text" name="UP.year_work" class="number citic-ast"/>
+					</td>
+<!-- 					<td class="table-text">银行金融行业从业时间</td>
+					<td>
+						<input type="text" name="UP.work_finance_time" onclick="WdatePicker({})" class="citic-ast" readonly/>
+					</td> -->
+					<td class="table-text">金融领域工作年限</td>
+					<td>
+						<input type="text" name="UP.year_work_finance" class="number citic-ast"/>
+					</td>
+					
+				</tr>
+				<tr>
+					<td class="table-text">入本行时间</td>
+					<td>
+						<input type="text" name="UP.join_bank_time" onclick="WdatePicker({})" class="citic-ast" readonly/>
+					</td>
+					<td class="table-text">专业分类</td>
+					<td>
+						<select name="UP.op_specialtype"  validate="v.required" valititle="请选择专业分类" onchange="selectOptSkills(this.value);" 
+						placeholder="点击选择专业分类" class="citic-sele-ast" id="uop_specialtype"></select>
+					</td>
+					<td class="table-text">技术特长</td>
+					<td>
+						<select name="UP.op_skills" class="citic-sele-ast" validate="v.required" valititle="请选择技术特长" id="uop_skills" placeholder="点击选择技术特长"></select>
+					</td>
+				</tr>
+				<tr>
+					<td width="11%" class="table-text">供应商</td>
+					<td width="22.333%">
+						<input type="hidden" name="UP.supplier_id"  id="usupplier_id"/>
+						<input type="text" name="UP.supplier_name" id="UP_supplier_name" validate="v.required" valititle="请选择供应商" placeholder="点击选择供应商" class="citic-ast  read" readonly/>
+					</td>
+					<td width="11%" class="table-text">所属公司负责人</td>
+					<td width="22.333%">
+						<input type="text" name="UP.supcontact_man" id="UP_supcontact_man" validate="v.required" valititle="请选择所属公司负责人" class="citic-ast"/>
+					</td>
+					<td width="11%" class="table-text">所属公司联系方式</td>
+					<td width="22.333%">
+						<input type="text" name="UP.supcontact_num" id="UP_supcontact_num" validate="v.required" valititle="请选择所属公司联系方式" class="citic-ast"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">人员采购类型</td>
+					<td>
+						<select name="UP.purch_type" class="citic-sele-ast" validate="v.required" valititle="人员采购类型必填!"></select>
+					</td>
+					<td class="table-text">开发方向</td>
+					<td>
+						<select name="UP.dev_direction" class="citic-sele-ast" validate="v.required" valititle="请选择开发方向" id="udev_direction" placeholder="点击选择开发方向"></select>
+					</td>
+					<td class="table-text">人员级别</td>
+					<td>
+						<select name="UP.dev_grade" class="citic-sele-ast" validate="v.required" valititle="请选择人员级别" id="udev_grade" placeholder="点击选择人员级别"></select>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">所属应用</td>
+					<td style="position:relative;">
+						<input type="hidden" name="UP.op_belongsystem_no" id="ubelongSystem"/>
+						<input type="text" name="UP.op_belongsystem" id="UP_op_belongsystem" validate="v.required" valititle="请选择行所属应用" placeholder="点击选择所属应用" 
+						class="citic-ast  read" readonly/>
+					</td>
+					<td class="table-text">行内归属部门</td>
+					<td style="position:relative;">
+						<input type="hidden" name="UP.op_office" id="uop_office"/>
+						<input type="text" name="UP.ssbm" id="UP_op_office_pop" validate="v.required" valititle="请选择行内归属部门" placeholder="点击选择行内归属部门" 
+						class="citic-ast  read" readonly/>
+					</td>
+					<td class="table-text">行方项目经理</td>
+					<td>
+						<input type="hidden" name="UP.op_staff" id="UP_op_staff" validate="v.required"/>
+						<input type="text" id="UP_op_staff_name"  name="UP.op_staff_name" validate="v.required" valititle="请输入行方项目经理" placeholder="点击选择行方项目经理" 
+						class="citic-ast  read" readonly/>
+					</td>
+					<td colspan = "2"></td>
+				</tr>
+					<tr>
+						<td class="table-text">备注</td>
+						<td colspan="5">
+							<textarea name="UP.memo" class="citic-text-ast"></textarea>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="ecitic-save">
+				<input id="usaveOutPerson" type="button" class="btn btn-ecitic" value="保存" />
+				<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+			</div>
+		</div>
+		<!-- tab1内容结束 -->
+		<!-- tab2内容开始 -->
+		<div class="tab-pane" id="uedu_work">
+			<div class="ecitic-title">
+				<span>教育信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<input id="uadd_eduinfo" type="button" class="btn btn-ecitic" value="新增" />
+				<input id="uupdate_eduinfo" type="button" class="btn btn-ecitic" value="修改" />
+				<input id="udelete_eduinfo" type="button" class="btn btn-ecitic" value="删除" />
+			    <table id="ueduinfo_table" class="mytable-view" width="100%"></table>
+			</div>
+			<div class="ecitic-title">
+				<span>工作履历信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<input id="uadd_workInfo" type="button" class="btn btn-ecitic" value="新增" />
+				<input id="uupdate_workInfo" type="button" class="btn btn-ecitic" value="修改" />
+				<input id="udelete_workInfo" type="button" class="btn btn-ecitic" value="删除" />
+				<table id="uworkInfo_table" class="mytable-view" width="100%"></table>
+			</div>
+		</div>
+		<!-- tab2内容结束 -->
+		<!-- tab3内容开始 -->
+		<div class="tab-pane" id="uqual_certlif">
+			<div class="ecitic-title" >
+				<span>相关资质证书<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<input id="uadd_qualificate_info" type="button" class="btn btn-ecitic" value="新增" />
+				<input id="uupdate_qualificate_info" type="button" class="btn btn-ecitic" value="修改" />
+				<input id="udelete_qualificate_info" type="button" class="btn btn-ecitic" value="删除" />
+			    <table id="uqualificate_info_table" class="mytable-view" width="100%"></table>
+			</div>
+			<div class="ecitic-title">
+				<span>相关技能信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<input id="uadd_skill_info" type="button" class="btn btn-ecitic" value="新增" />
+				<input id="uupdate_skill_info" type="button" class="btn btn-ecitic" value="修改" />
+				<input id="udelete_skill_info" type="button" class="btn btn-ecitic" value="删除" />
+			    <table id="uskill_info_table" class="mytable-view" width="100%"></table>
+			</div>
+		</div>
+		<!-- tab3内容结束 -->
+		<!-- tab4内容开始 -->
+		<div class="tab-pane" id="uprojrct_info">
+			<div class="ecitic-title">
+				<span>项目经历信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<input id="uadd_projrct_info" type="button" class="btn btn-ecitic" value="新增" />
+				<input id="uupdate_projrct_info" type="button" class="btn btn-ecitic" value="修改" />
+				<input id="udelete_projrct_info" type="button" class="btn btn-ecitic" value="删除" />
+			    <table id="uprojrct_info_table" class="mytable-view" width="100%"></table>
+			</div>
+		</div>
+		<!-- tab4内容结束 -->
+		<!-- tab5内容开始 -->
+		<div class="tab-pane" id="uquali_level">
+			<div class="ecitic-title">
+				<span>资质级别信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<input id="uadd_quali_level" type="button" class="btn btn-ecitic" value="新增" />
+				<input id="uupdate_quali_level" type="button" class="btn btn-ecitic" value="修改" />
+				<input id="udelete_quali_level" type="button" class="btn btn-ecitic" value="删除" />
+			    <table id="uquali_level_table" class="table table-bordered table-hover"></table>
+			</div>
+		</div>
+		<!-- tab5内容结束 -->
+	</div>
+	<!-- 行员POP框 -->
+	<div id="uaddOutPersonUserPop"></div>
+	<!-- 供应商POP框 -->
+	<div id="uoutpersonAddSupplierPop"></div>
+	<!-- 所属应用POP框 -->
+	<div id="uoutpersonBelongSystemPop"></div>
+	<!-- 行方项目经理POP框 -->
+	<div id="uuserOrgDivPop"></div>
+	<!-- 任务书pop框 -->
+	<div id="uoutperson_addNoproject_Pop"></div>
+	<!-- 合同pop框 -->
+	<div id="uoutperson_addContract_Pop"></div>
+	<!-- 教育经历模态框 -->
+	<div id="uopModal_eduinfo" class="modal hide fade in" style="top: 50%;margin-top: -300px;width: 780px" tabindex="-1" data-backdrop="static">
+		<div class="modal-header" id="uhed">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="myModalLabel">教育经历</h5>
+		</div>
+		<form id="ueduinfo_form" action="" class="form-inline">
+		<div class="ecitic-title-table">
+			<table style="margin-left:8px;width:98%; " class="table table-bordered tablr-input-text">
+				<tr>
+					<td class="table-text">开始时间</td>
+					<td>
+						<!-- <input type="text" id="edu_start_time" name="start_time" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'edu_end_time\',{d:0});}'})" placeHolder="点击选择" class="citic-ast" validate="v.required" valititle="请填写开始时间" readonly/> -->
+						<input type="text" id="uedu_start_time" name="start_time" onclick="WdatePicker({})" placeHolder="点击选择" class="citic-ast" validate="v.required" valititle="请填写开始时间" readonly/>
+					</td>
+					<td class="table-text">结束时间</td>
+					<td>
+						<!-- <input type="text" id="edu_end_time" name="end_time" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'edu_start_time\',{d:0});}'})" placeHolder="点击选择" class="citic-ast" validate="v.required" valititle="请填写开始时间" readonly/> -->
+						<input type="text" id="uedu_end_time" name="end_time" onclick="WdatePicker({})" placeHolder="点击选择" class="citic-ast" validate="v.required" valititle="请填写开始时间" readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">教育机构</td>
+					<td>
+						<input type="text" name="edu_institution" id="uedu_edu_institution" class="citic-ast" validate="v.required" valititle="请填写教育机构"/>
+					</td>
+					<td class="table-text">专业</td>
+					<td>
+						<input type="text" name="op_special" id="uedu_op_special" class="citic-ast" validate="v.required" valititle="请填写专业"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">学历</td>
+					<td>
+						<select  id="uedu_edu_background" name="edu_background" class="citic-sele-ast" validate="v.required" valititle="请选择学历"  style="width:100%;"></select>
+					</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="table-text">专业叙述</td>
+					<td colspan="3">
+						<textarea id="uedu_special_desc" name="special_desc" class="citic-text-ast"></textarea>
+					</td>
+				</tr>
+			</table>
+		</div>
+		</form>
+		<div class="ecitic-save">
+			<input id="usaveEduInfo" type="button" class="btn btn-ecitic" value="保存" />
+			<button type="button" class="btn btn-ecitic" data-dismiss="modal" >关闭</button>
+		</div>
+	</div>
+	
+	<!--工作履历模态框 -->
+	<div id="uopModal_workinfo" class="modal hide fade in" style="top: 50%;margin-top: -300px;width: 780px" tabindex="-1" data-backdrop="static">
+		<div class="modal-header" id="uhwi">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="myModalLabel">工作履历</h5>
+		</div>
+		<form id="uworkinfo_form" action="" class="form-inline">
+		<div class="ecitic-title-table">
+			<table style="margin-left:8px;width:98%; " class="table table-bordered tablr-input-text">
+				<tr>
+					<td class="table-text">单位名称</td>
+					<td>
+						<input type="text" name="company_name" id="uwork_company_name" class="citic-ast" validate="v.required" valititle="请填写单位名称"/>
+					</td>
+					<td class="table-text">公司性质</td>
+					<td>
+						<select  id="uwork_enterprise_nature" name="enterprise_nature" class="citic-sele-ast" validate="v.required" valititle="请填写公司性质"  style="width:100%;"></select>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">开始时间</td>
+					<td>
+						<!-- <input type="text" name="start_time" id="work_start_time" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'work_end_time\',{d:0});}'})" placeHolder="点击选择" class="citic-ast" validate="v.required" valititle="请填写开始时间" readonly/> -->
+						<input type="text" name="start_time" id="uwork_start_time" onclick="WdatePicker({})" placeHolder="点击选择" class="citic-ast" validate="v.required" valititle="请填写开始时间" readonly/>
+					</td>
+					<td class="table-text">结束时间</td>
+					<td>
+						<!-- <input type="text" name="end_time" id="work_end_time" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'work_start_time\',{d:0});}'})" placeHolder="点击选择" class="citic-ast" readonly/> -->
+						<input type="text" name="end_time" id="uwork_end_time" onclick="WdatePicker({})" placeHolder="点击选择" class="citic-ast" readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">所属行业</td>
+					<td>
+						<input type="text" name="industry_belong" id="uwork_industry_belong" class="citic-ast" validate="v.required" valititle="请填写所属行业"/>
+					</td>
+					<td class="table-text">担任职务</td>
+					<td>
+						<input type="text" id="uwork_position" name="position" class="citic-ast" validate="v.required" valititle="请填写担任职务"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">工作内容描述</td>
+					<td colspan="3">
+						<textarea id="uwork_work_content" name="work_content" class="citic-text-ast"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">离职原因</td>
+					<td colspan="3">
+						<textarea id="uwork_leave_reason" name="leave_reason" class="citic-text-ast"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">备注</td>
+					<td colspan="3">
+						<textarea id="uwork_memo" name="memo" class="citic-text-ast"></textarea>
+					</td>
+				</tr>
+			</table>
+			</div>
+		</form>
+		<div class="ecitic-save">
+			<input id="usaveWorkInfo" type="button" class="btn btn-ecitic" value="保存" />
+			<button type="button" class="btn btn-ecitic" data-dismiss="modal" >关闭</button>
+		</div>
+	</div>
+	<!--工作履历详情模态框 -->
+	<div id="uopModal_workDetail" class="modal hide fade in" style="top: 50%;margin-top: -300px;width: 780px" tabindex="-1" data-backdrop="static">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="myModalLabel">工作履历详情</h5>
+		</div>
+		<div class="ecitic-title-table">
+			<table style="margin-left:8px;width:98%; " class="table table-bordered tablr-input-text">
+			<tr>
+				<td class="table-text">单位名称</td>
+				<td>
+					<div name="COMPANY_NAME"></div>
+				</td>
+				<td class="table-text">公司性质</td>
+				<td>
+					<div name="ENTERPRISE_NATURE_NAME"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="table-text">开始时间</td>
+				<td>
+					<div name="START_TIME"></div>
+				</td>
+				<td class="table-text">结束时间</td>
+				<td>
+					<div name="END_TIME"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="table-text">所属行业</td>
+				<td>
+					<div name="INDUSTRY_BELONG" ></div>
+				</td>
+				<td class="table-text">担任职务</td>
+				<td>
+					<div name="POSITION"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="table-text">工作内容描述</td>
+				<td colspan="3">
+					<div name="WORK_CONTENT"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="table-text">离职原因</td>
+				<td colspan="3">
+					<div name="LEAVE_REASON"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="table-text">备注</td>
+				<td colspan="3">
+					<div name="MEMO"></div>
+				</td>
+			</tr>
+		</table>
+		</div>
+		<div class="ecitic-save">
+			<button type="button" class="btn btn-ecitic" data-dismiss="modal" >关闭</button>
+		</div>
+	</div>
+	
+	<!--资质证书模态框 -->
+	<div id="uopModal_certlifinfo" class="modal hide fade in" style="top: 50%;margin-top: -300px;width: 780px" tabindex="-1" data-backdrop="static">
+		<div class="modal-header" id="uhci">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="myModalLabel">资质证书信息</h5>
+		</div>
+		<form id="ucertlifinfo_form" action="" class="form-inline">
+			<div class="ecitic-title-table">
+			<table style="margin-left:8px;width:98%; " class="table table-bordered tablr-input-text">
+				<tr>
+					<td class="table-text">资质证书</td>
+					<td>
+						<input type="text" name="certificate_name" id="ucer_certificate_name" class="citic-ast" validate="v.required" valititle="请填写资质证书"/>
+					</td>
+					<td class="table-text">发行时间</td>
+					<td>
+						<input type="text" name="issuing_time" id="ucer_issuing_time" onclick="WdatePicker({})" placeHolder="点击选择" class="citic-ast" validate="v.required" valititle="请填写发行时间" readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">有效期</td>
+					<td>
+						<input type="text" name="indate" id="ucer_indate" class="citic-ast" validate="v.required" valititle="请填写有效期"/>
+					</td>
+					<td class="table-text">发行单位</td>
+					<td>
+						<input type="text" name="issuing_unit" id="ucer_issuing_unit" class="citic-ast" validate="v.required" valititle="请填写发行单位"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">备注</td>
+					<td colspan="3">
+						<textarea id="ucer_memo" name="memo" class="citic-text-ast"></textarea>
+					</td>
+				</tr>
+			</table>
+			</div>
+		</form>
+		<div class="ecitic-save">
+			<input id="usaveCertlifInfo" type="button" class="btn btn-ecitic" value="保存" />
+			<button type="button" class="btn btn-ecitic" data-dismiss="modal" >关闭</button>
+		</div>
+	</div>
+	
+	<!--专业技能模态框 -->
+	<div id="uopModal_skillinfo" class="modal hide fade in" style="top: 50%;margin-top: -300px;width: 780px" tabindex="-1" data-backdrop="static">
+		<div class="modal-header" id="uhsk">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="myModalLabel">专业技能信息</h5>
+		</div>
+		<form id="uskillinfo_form" action="" class="form-inline">
+			<div class="ecitic-title-table">
+			<table style="margin-left:8px;width:98%; " class="table table-bordered tablr-input-text">
+				<tr>
+					<td class="table-text" width="11%">技能类型</td>
+					<td width="22%">
+						<select name="skill_type" id="uskill_skill_type" onchange="selectSkillType(this.value);" class="citic-sele-ast" validate="v.required" valititle="请选择技能类型"  style="width:100%;"></select>
+					</td>
+					<td class="table-text" width="11%">技能</td>
+					<td width="22%">
+						<select name="skill" id="uskill_skill" class="citic-sele-ast" validate="v.required" valititle="请选择技能"  style="width:100%;"></select>
+					</td>
+				</tr>
+				<tr>
+					<!-- <td class="table-text">名称</td>
+					<td>
+						<input type="text" name="skill_name" id="skill_skill_name" class="citic-ast" validate="v.required"/>
+					</td> -->
+					<td class="table-text">掌握时间（月）</td>
+					<td>
+						<input type="text" name="using_time" id="uskill_using_time"  class="citic-ast" validate="v.float2" />
+					</td>
+					<td class="table-text">熟练度</td>
+					<td>
+						<select name="proficiency_degree" id="uskill_proficiency_degree" class="citic-sele-ast" validate="v.required" valititle="请选择熟练度"  style="width:100%;"></select>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">备注</td>
+					<td colspan="3">
+						<textarea id="uskill_memo" name="memo" class="citic-text-ast"></textarea>
+					</td>
+				</tr>
+			</table>
+			</div>
+		</form>
+		<div class="ecitic-save">
+			<input id="usaveSkillInfo" type="button" class="btn btn-ecitic" value="保存" />
+			<button type="button" class="btn btn-ecitic" data-dismiss="modal" >关闭</button>
+		</div>
+	</div>	
+	
+	<!--项目经历模态框 -->
+	<div id="uopModal_projectinfo" class="modal hide fade in" style="top: 50%;margin-top: -300px;width: 780px" tabindex="-1" data-backdrop="static">
+		<div class="modal-header" id="uhpi">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="myModalLabel">项目履历</h5>
+		</div>
+		<form id="uprojectinfo_form" action="" class="form-inline">
+			<div class="ecitic-title-table">
+			<table style="margin-left:8px;width:98%; " class="table table-bordered tablr-input-text">
+				<tr>
+					<td class="table-text">项目名称</td>
+					<td>
+						<input type="text" name="project_name" id="upro_project_name" class="citic-ast" validate="v.required" valititle="请填写项目名称"/>
+					</td>
+					<td class="table-text">开始时间</td>
+					<td>
+						<!-- <input type="text" name="start_time" id="pro_start_time" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'pro_end_time\',{d:0});}'})" placeHolder="点击选择" class="citic-ast read"  validate="v.required" valititle="请填写开始时间" readonly/> -->
+						<input type="text" name="start_time" id="upro_start_time" onclick="WdatePicker({})" placeHolder="点击选择" class="citic-ast read"  validate="v.required" valititle="请填写开始时间" readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">结束时间</td>
+					<td>
+						<!-- <input type="text" name="end_time" id="pro_end_time" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'pro_start_time\',{d:0});}'})" placeHolder="点击选择" class="citic-ast read"  validate="v.required" valititle="请填写结束时间" readonly/> -->
+						<input type="text" name="end_time" id="upro_end_time" onclick="WdatePicker({})" placeHolder="点击选择" class="citic-ast read"  validate="v.required" valititle="请填写结束时间" readonly/>
+					</td>
+					<td class="table-text">担任角色</td>
+					<td>
+						<input type="text" name="paly_role" id="upro_paly_role" class="citic-ast" validate="v.required" valititle="请填写担任角色"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">项目职责</td>
+					<td colspan="3">
+						<textarea type="text" name="project_responsibility" id="upro_project_responsibility" class="citic-text-ast" validate="v.required" valititle="请填写项目职责"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">项目简介</td>
+					<td colspan="3">
+						<textarea id="upro_project_abstract" name="project_abstract" class="citic-text-ast"></textarea>
+					</td>
+				</tr>
+			</table>
+			</div>
+		</form>
+		<div class="ecitic-save">
+			<input id="usaveProjectInfo" type="button" class="btn btn-ecitic" value="保存" />
+			<button type="button" class="btn btn-ecitic" data-dismiss="modal" >关闭</button>
+		</div>
+	</div>	
+	
+	<!--资质级别模态框 -->
+	<div id="uopModal_qualiLevelinfo" class="modal hide fade in" style="top: 50%;margin-top: -300px;width: 780px" tabindex="-1" data-backdrop="static">
+		<div class="modal-header" id="uhql">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="myModalLabel">资质级别</h5>
+		</div>
+		<form id="uqualiLevelinfo_form" action="" class="form-inline">
+			<div class="ecitic-title-table">
+			<table style="margin-left:8px;width:98%; " class="table table-bordered tablr-input-text">
+				<tr>
+					<td class="table-text">开发方向</td>
+					<td>
+						<!-- <select name="qualificate_level" id="qu_qualificate_level" onchange="selectQualiLevel(this.value);" class="citic-sele-ast"  validate="v.required" valititle="请选择开发方向"  style="width:100%;"></select> -->
+						<select name="qualificate_level" id="uqu_qualificate_level" class="citic-sele-ast"  validate="v.required" valititle="请选择开发方向"  style="width:100%;"></select>
+					</td>
+					<td class="table-text">人员级别</td>
+					<td>
+						<select name="op_grade" id="uqu_op_grade" class="citic-sele-ast"  validate="v.required" valititle="请选择人员级别"  style="width:100%;"></select>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">是否当前资质</td>
+					<td>
+						<select name="is_current" id="uqu_is_current" class="citic-sele-ast" onchange="changeEndTimeIsMustOrNot(this.value);" validate="v.required" valititle="请选择是否"  style="width:100%;"></select>
+					</td>
+					<td class="table-text">档次开始时间</td>
+					<td>
+						<!-- <input type="text" name="start_time" id="qu_start_time" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'qu_end_time\',{d:0});}'})" placeHolder="点击选择" class="citic-ast read"  validate="v.required" valititle="请填写档次开始时间"readonly/> -->
+						<input type="text" name="start_time" id="uqu_start_time" onclick="WdatePicker({})" placeHolder="点击选择" class="citic-ast read"  validate="v.required" valititle="请填写档次开始时间"readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">档次结束时间</td>
+					<td>
+						<!-- <input type="text" name="end_time" id="qu_end_time" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'qu_start_time\',{d:0});}'})" placeHolder="点击选择" class="citic-ast read"  validate="v.required" valititle="请填写档次结束时间" readonly/> -->
+						<input type="text" name="end_time" id="uqu_end_time" onclick="WdatePicker({})" placeHolder="点击选择" class="citic-ast read"  validate="v.required" valititle="请填写档次结束时间" readonly/>
+					</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="table-text">备注</td>
+					<td colspan="3">
+						<textarea id="uqu_memo" name="memo" class="citic-text-ast"></textarea>
+					</td>
+				</tr>
+			</table>
+			</div>
+		</form>
+		<div class="ecitic-save">
+			<input id="usaveQualiLevelInfo" type="button" class="btn btn-ecitic" value="保存" />
+			<button type="button" class="btn btn-ecitic" data-dismiss="modal" >关闭</button>
+		</div>
+	</div>	
+	<!-- 合同查询模态框 -->
+	<!--非项目任务查询模态框  -->
+	<div id="unoprojetPop"></div>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+	<script type="text/javascript" src="dev_outsource/outsource/outperson/outperson_update.js"></script>
+	<script type="text/javascript" src="dev_outsource/supplier/supplierInfo/supplierPop.js"></script>
+	<script type="text/javascript" src="dev_outsource/outsource/outperson/systemPop.js"></script>
+	<script type="text/javascript" src="pages/suser/suserPop.js"></script>
+	<script type="text/javascript" src="dev_outsource/contract/contractInfo/contractInfoPop.js"></script>
+	<script type="text/javascript">
+	//单选按钮
+	var updSex=getCurrentPageObj().find("input[name='UPD.op_sex']");
+	updSex.unbind("click");
+	updSex.click(function(){
+		getCurrentPageObj().find(".ecitic-radio span").removeClass('checkd');
+		$(this).parent("span").addClass('checkd');
+	});
+	</script>
+	</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>项目查询</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" >
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+	<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+</head>
+<body>
+<div class="ecitic-inquire ecitic-moreNo">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="project_form">
+				<table id="table_select" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<!-- <td class="ecitic-right">项目编号：</td>
+						<td><input type="text" name="PROJECT_NUM"/></td> -->
+						<td class="ecitic-right">项目名称：</td>
+						<td><input type="text" name="PROJECT_NAME"/></td>
+						<td class="ecitic-right">应用名称：</td>
+						<td><input type="text" name="SYSTEM_NAME"/></td>
+						<td class="ecitic-right">项目经理：</td>
+						<td>
+							<input type="text" name="PROJECT_MAN_NAME"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">所属部门：</td>
+						<td class="positionAb">
+							<input type="text" name="ORGAN_NAME" placeholder="点击选择部门..." readonly/>
+							<input type="hidden" name="ORGAN_ID"/>
+						</td>
+						<td class="ecitic-right">项目状态：</td>
+						<td>
+							<select name="STATUS" diccode="P_DIC_PROJECT_STATUS" ></select>
+						</td>
+						<td class="ecitic-right">项目类型：</td>
+						<td>
+							<select name="PROJECT_TYPE" diccode="SYS_DIC_MILESTONE_PROJECT_TYPE" ></select>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="query_Project">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset_ProjectForm">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="projectManageBtn">项目全景视图</button>
+	</div>
+	<!-- table开始 -->
+	<div class="ecitic-new">
+		<table id="projectTable" class="table table-bordered table-hover table-text-show" ></table>
+	</div>
+	<div id="myPro_choosePm"></div>
+	<div id="projectManPOP"></div>
+</body>
+<script type="text/javascript" src="dev_project/projectEstablishManage/projectEstablish/pmInfoPop.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_accept/roleuser_pop.js"></script>
+<script type="text/javascript" src="dev_project/projectManage/myProject/project_queryList.js"></script>
+</html>

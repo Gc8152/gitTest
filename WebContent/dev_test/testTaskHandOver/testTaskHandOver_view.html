@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>查看详情</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-inquire"  id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="HandOverTaskQuerytFormView">
+				<table id="HandOverQuery" style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">任务编号:</td>
+						<td><input type="text" id="TASK_NUM" name="TASK_NUM"/></td>
+						<td class="ecitic-right">任务名称:</td>
+						<td><input type="text" id="TASK_NAME" name="TASK_NAME"></td>
+						<td class="ecitic-right">任务类型:</td>
+						<td><select  name="REQ_TASK_TYPE" diccode="G_REQ_TASK_TYPE" class="requirement-ele-width" style="width: 100%"></select></td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">应用名称</td>
+						<td><input type="text" id="SYSTEM_NAME" name="SYSTEM_NAME"/></td>
+						<td class="ecitic-right">移交受理结论</td>
+						<td>
+							<select  name="ACCEPT_RESULT" diccode="TM_DIC_ACCEPT_RESULT" class="requirement-ele-width" style="width: 100%"></select>
+						</td>
+					</tr>
+				</table>
+			</form>	
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic"   name="queryHandOver" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" name="resetViewTask" value="重置"/></li>
+		</ul>
+	</div>
+		<div class="ecitic-new">
+			<table id="AcceptRangeViewTable" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+</div>
+
+</body>
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_test/testTaskHandOver/testTaskHandOver_view.js"></script>
+</html>
+

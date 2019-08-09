@@ -1,0 +1,179 @@
+<!-- WBSb编辑页面初版，以弹出POP框的形式增加、修改 ，此页面暂时没有用到-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script type="text/javascript" src="js/jquery-easyui-1.5/treegrid-dnd.js"></script>
+</head>
+<style type="text/css">
+ #edit_wbsPlan_add tbody tr td{position: relative;}
+</style>
+<body>
+		<div class="ecitic-title">
+			<span>编辑项目WBS计划<em></em></span>
+			<i></i>
+		</div> 
+		<div class="tableTitle">
+			<span id="A_project_num"></span>
+			<h2 id="A_project_name"></h2>
+		</div>
+		<!-- 悬浮框 -->
+<!-- <form>
+		<div class="toggleBtn fa fa-caret-left"><span>项目范围</span></div>
+		<div class="suspensionFrame">
+			<div class="easyui-tabs">
+
+				<div title="项目工作范围">
+					<ul class="suspensionFrame_contUL">
+						<li class="suspensionFrame_contList">
+							<div class="application">应用一：</div>
+							<ul>
+								<li>1、在《广发银行反洗钱和反恐怖融资名单检测系统》中增加代理行名单模块；</li>
+								<li>2、关于Struts安全漏洞修复改造需求；</li>
+							</ul>
+						</li>
+						<li class="suspensionFrame_contList">
+							<div class="application">应用二：</div>
+							<ul>
+								<li>1、在《广发银行反洗钱和反恐怖融资名单检测系统》中增加代理行名单模块；</li>
+								<li>2、新企业网银；</li>
+							</ul>
+						</li>
+						<li class="suspensionFrame_contList">
+							<div class="application">应用三：</div>
+							<ul>
+								<li>1、新企业网银演示版及限额有限期等紧急业务需求0722；</li>
+								<li>2、利率市场化二期需求；</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div title="关联应用">
+					<ul class="suspensionFrame_contUL">
+						<li class="suspensionFrame_contList">
+							<div class="application">需求一：</div>
+							<ul>
+								<li>1、企业网银应用；</li>
+								<li>2、信用卡账单综合管理应用；</li>
+							</ul>
+						</li>
+						<li class="suspensionFrame_contList">
+							<div class="application">需求二：</div>
+							<ul>
+								<li>1、反洗钱业务系统；</li>
+							</ul>
+						</li>
+						<li class="suspensionFrame_contList">
+							<div class="application">需求三：</div>
+							<ul>
+								<li>1、个人网银应用；</li>
+								<li>2、后台集中作业平台应用；</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+</form> -->
+	
+    <div class="ecitic-operation">
+		<a href="#" id="wbsPlan_add"><button class="btn btn-ecitic"><i class="fa fa-indent"></i>新增</button></a>
+		<a href="#" id="wbsPlan_del"><button class="btn btn-ecitic"><i class="fa fa-trash"></i>删除</button></a>
+		<a href="#" id="wbsPlan_edit"><button class="btn btn-ecitic"><i class="fa fa-pencil"></i>编辑</button></a>
+		<a href="#" id="wbsPlan_add_details"><button class="btn btn-ecitic">详情</button></a>
+		<a href="#" id="wbsPlan_release"><button class="btn btn-ecitic">发布</button></a>
+	</div>
+	<div id="" style="min-height: 400px;">
+	<table class="easyui-treegrid" id="treegridTab_add" style="min-height: 400px;">
+		
+	</table>
+	</div>
+<!-- 弹出框pop -->
+<!-- 编辑任务模态框 -->
+<div id="edit_wbsPlan_add" class="modal hide fade" tabindex="-1" z-index="1060">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h5 id="wbsPlan_add_modal_title"></h5>
+	</div>
+	<div class="ecitic-title-table modal-body">
+		<table class="table table-striped table-hover table-bordered">
+			<tbody>
+				<tr>
+					<td class="table-text"><span>上级名称：</span></td>
+					<td><input type="text" id="parent_name" disabled="disabled"/></td>
+					<td class="table-text"><span>任务名称：</span></td>
+					<td><input type="text" id="plan_name" validate="v.required"
+						value="" valititle="该项为必填项" /></td>
+				</tr>
+				<tr>
+					<td class="table-text"><span>任务类别：</span></td>
+					<td><select class="w90" id="type" validate="v.required"
+						valititle="该项为必填项" onchange="changeType(this)">
+					</select></td>
+					<td class="table-text"><span>负责人：</span></td>
+					<td><input type="text" id="duty_man_name" value=""
+						validate="v.required" valititle="该项为必填项" />
+						<input type="hidden"     id="duty_man">
+					</td> 
+				</tr>
+				<tr>
+					<td class="table-text"><span>任务类型：</span></td>
+					<td><select class="w90" id="task_type" validate="v.required"
+						valititle="该项为必填项">
+					</select></td>
+					<td class="table-text"><span>前置任务：</span></td>
+					<td><input type="text" id="pre_task" value=""
+						validate="v.required" valititle="该项为必填项" /></td>
+				</tr>
+				<tr>
+					<td class="table-text"><span>是否关键任务：</span></td>
+					<td>
+						<div class="ecitic-radio-all" id="is_key_task">
+							<div class="ecitic-radio ecitic-radio-inline">
+								<span><input type="radio" value="00"
+									name="P.is_key_task"></span> <label>是</label>
+							</div>
+							<div class="ecitic-radio ecitic-radio-inline">
+								<span><input type="radio" checked="true" value="01" name="P.is_key_task"></span>
+								<label>否</label>
+							</div>
+						</div> 
+					</td>
+					<td class="table-text"><span>交付物：</span></td>
+					<td><input type="text" id="file_id" value=""
+						validate="v.required" valititle="该项为必填项" /></td>
+				</tr>
+				<tr>
+					<td class="table-text"><span>计划开始时间：</span></td>
+					<td><input type="text" id="start_time"
+						onClick="initStartTime()" validate="v.required"
+						valititle="该项为必填项" /></td>
+					<td class="table-text"><span>计划完成时间：</span></td>
+					<td><input type="text" id="end_time"
+						onClick="initEndTime()" validate="v.required"
+						valititle="该项为必填项" /></td>
+				</tr>
+				<tr>
+					<td class="table-text"><span>任务描述：</span></td>
+					<td colspan="3"><textarea rows="3" resize="none" rows="3"
+							id="describe" validate="v.required" valititle="该项为必填项"></textarea>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="保存" id="save_wbsPlan" type="button" />
+		<input class="btn btn-ecitic" data-dismiss="modal" value="返回" id="" type="button" />
+	</div>
+	<div class="modal-footer">
+		
+	</div>
+</div>
+<div id="duty_man_pop"></div>
+
+
+</body>
+	<script src="dev_planwork/wbs/wbsPlan_add.js"></script>
+	<script src="pages/suser/suserPop.js"></script>
+</html>

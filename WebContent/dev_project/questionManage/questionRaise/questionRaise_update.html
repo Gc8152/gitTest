@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>问题管理》修改</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css">
+</head>
+<body>
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>基本信息<em></em></span> <i></i>
+		</div>
+		<form id="questionRaiseUpdate_form">
+			<div class="ecitic-title-table tab-content bootstrapTabsCont">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+				<colgroup>
+				<col style="width: 20%">
+				<col style="width: 30%">
+				<col style="width: 20%">
+				<col style="width: 30%">
+			</colgroup>
+					<tr>
+						<td  class="table-text">问题名称：</td>
+						<td colspan="3">
+						   <input tagName="input" type="text"   id ="risk_name" name="risk_name" validate="v.required" valititle="请填写问题名称" />
+						   <input tagName="input" type="hidden" id="risk_id" name="risk_id">
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">问题描述：</td>
+						<td colspan="3">
+						   <textarea tagName="textarea" id="risk_desc" name="risk_desc" maxlength="500" validate="v.required" valititle="请填写问题描述" placeholder="问题描述" ></textarea>
+						</td>
+					 </tr>
+					
+					<tr>
+						<td  class="table-text">问题级别：</td>
+						<td >
+						   <select tagName="select" id="risk_grade" name="risk_grade" diccode="P_DIC_RISK_LEVEL" validate="v.required" valititle="请选择问题级别"></select>
+						</td>
+						<td  class="table-text">问题分类：</td>
+						<td >
+						   <select tagName="select" id="first_classify" name="first_classify" diccode="P_DIC_RISK_TYPE1" validate="v.required" valititle="请选择问题类型"></select>
+						</td>
+						
+					</tr>
+					<tr name="question_project" style="display: none">
+						<!-- <td class="table-text">问题所属项目编号：</td>
+						<td >
+						  <input tagName="input" type="text" id="project_num" name="project_num" placeholder="点击选择"  validate="v.required" valititle="请选择项目编号" readonly UNSELECTABLE ='on'/>
+						  <input tagName="input" type="hidden" id="project_id" name="project_id">
+						</td> -->
+						
+						<td  class="table-text">问题所属项目名称：</td>
+						<td>
+						  <input tagName="input" type="text" id="project_name" name="project_name" placeholder="点击选择"  validate="v.required" valititle="请选择项目名称" readonly/>
+						   <input tagName="input" type="hidden" id="project_id" name="project_id">
+						 <input tagName="input" type="hidden" id="project_num" name="project_num">
+						</td>
+						<td  class="table-text"></td>
+						<td>
+						
+						</td>
+					</tr>
+					
+					<tr>
+						<td  class="table-text">问题严重程度：</td>
+						<td ><select  tagName="select" id="ponderance" name="ponderance" diccode="P_DIC_RISK_SERIOUS" validate="v.required" valititle="请选择问题影响程度"></select></td>
+						<td  class="table-text">责任人：</td>
+						<td >
+						   <input tagName="input" type="text" id="duty_user_id_name" name="duty_user_id_name" placeHolder="点击选择" validate="v.required" valititle="请填写责任人" readonly UNSELECTABLE ='on'/>
+						   <input tagName="input" type="hidden" id="duty_user_id" name="duty_user_id"/>
+						</td>
+					</tr>
+					<tr>
+						<td  class="table-text">要求完成时间：</td>
+						
+				      <td><input tagName="input" type="text" name="req_finish_date" id="req_finish_date" onClick="WdatePicker({dateFmt:'yyyy-MM-dd', autoPickDate:true, minDate: '%y-%M-%d'})" readonly UNSELECTABLE ='on' validate="v.required" valititle="该项为必填项" placeholder="请选择"/></td>
+					<td class="table-text"></td>
+					<td class="table-text"></td>
+					
+					</tr>
+				</table>
+			</div>
+		</form>
+		<div class="ecitic-save">
+			<button class="btn btn-ecitic" id="save_questionRaiseUpdate">保存</button>
+			<button class="btn btn-ecitic" id="submit_questionRaiseUpdate">提交</button>
+			<button class="btn btn-ecitic" id="return_questionRaiseUpdate">返回</button>
+		</div>
+	</div>
+	<div id="qru_project_pop"></div>
+	<div id="qru_duty_user_pop"></div>
+	<script src="dev_project/questionManage/questionRaise/questionRaise_projectPop.js"></script>
+	<script src="dev_project/questionManage/questionRaise/questionRaise_pmInfoPop.js"></script>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+ <script type="text/javascript" src="dev_project/questionManage/questionRaise/questionRaise_update.js"></script>
+</html>

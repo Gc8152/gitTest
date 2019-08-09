@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>	
+<script src="js/commons/commons.js"></script>
+<script src="pages/sconfig/sconfig_user.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+			<span>用户阀值配置<em></em></span>
+	</div>
+	<form action="#" method="get" class="form-inline" id="ConUser_from">
+			<div class="ecitic-table mr0" id="ecitic-table" style="height:150px;">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">当前在线数：</td>
+						<td>
+							<input type="text" name="SC.user_online" id="user_online" style="width:60%;" disabled="ture"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">最大设计值：</td>
+						<td>
+							<input type="text" name="SC.user_max" id="user_max" style="width:60%;" disabled="ture"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">当前限制值：</td>
+						<td>
+							<input type="text" name="SC.user_now" id="user_now" style="width:60%;"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+	</form>
+	<div class="ecitic-save">
+			<input type="button" class="btn btn-ecitic" id="saveCUser" value="保存" />
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>投产信息查看</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<style type="text/css">
+	.click_text_sp{color:#c9161d;}
+	.click_text_sp:hover{color:#c9161d;cursor:pointer;text-decoration:underline;}
+	.click_text_sp:active{color:blue;cursor:pointer;text-decoration:underline;}
+</style>
+</head>
+<body class="">
+	<div class="main_iframeFormW"> <!-- Only required for left/right tabs -->
+		<div class="main_iframe_con">
+			<div class="ecitic-title">
+				<span>需求点信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table class="table table-bordered table-center table-th tablr-input-text">
+					<tbody>
+						<tr>
+							<td width="11%" class="table-text">需求点编号：</td>
+							<td width="21.333%">
+								<span id="SUB_REQ_CODE"></span>
+							</td>
+							<td width="11%" class="table-text">需求点名称：</td>
+							<td width="21.333%">
+								<span id="SUB_REQ_NAME"></span>
+							</td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">应用名称：</td>
+							<td width="21.333%">
+								<span id="SYSTEM_NAME"></span>
+							</td>
+							<td width="11%" class="table-text">版本名称：</td>
+							<td width="21.333%">
+								<span id="VERSIONS_NAME"></span>
+							</td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">需求提出人：</td>
+							<td width="21.333%">
+								<span id="REQ_BUSINESSER"></span>
+							</td>
+							<td></td><td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="ecitic-title-table">
+				<div class="ecitic-title">
+					<span>关联需求任务<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-new ecitic-title-table">
+					<table id="reqTaskTable" class="table-text-show table table-bordered table-hover table-center table-th tablr-input-text">
+					</table>
+				</div>
+				<div class="ecitic-title">
+					<span>关联接口列表<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-new ecitic-title-table">
+					<table id="table_interface_info_updata" name="table_TaskInterfaceInfo" class="table table-bordered table-hover table-text-show">
+					</table>
+				</div>
+			</div>
+			<div class="ecitic-title-table" id="">
+				<div class="ecitic-title">
+					<span>业务验证信息<em></em></span><i></i>
+				</div>
+				<div class="ecitic-title-table">
+				  <input type="hidden" name="proManId">
+					<table id="query_table" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover table-center table-th tablr-input-text">
+						<tr style="height:75px;">
+							<td width="18%" class="table-text"><span>业务验证结论：</span></td>
+							<td width="32%">
+								<span id="VERIFY_RESULT"></span>
+							</td>
+							<td width="18%"></td><td width="32%"></td>
+						</tr>
+						<tr style="height:75px;">
+							<td width="11%" class="table-text"><span>业务验证说明：</span></td>
+							<td colspan="3">
+								<span id="VERIFY_DESC"></span>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="ecitic-save">
+				<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/send_produce/sendproduceverify/sendProduceVerify_detail.js"></script>
+<script type="text/javascript" src="dev_construction/sit_test_jn/sit_submit/initqueryInterface.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_analyze/task_accept/view_taskdetail.js"></script>
+</html>

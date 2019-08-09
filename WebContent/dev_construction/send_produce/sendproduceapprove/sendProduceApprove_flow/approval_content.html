@@ -1,0 +1,59 @@
+<!-- 审批处理模态框 -->
+<div id="approvalPop"  class="modal hide fade" style="top: 50%;margin-top: -285px; width: 780px;" tabindex="-1">
+  	<div class="modal-header">
+		<button type="button" class="close" onclick="doApprovalCancel();" title="点击关闭">×</button>
+		<h5 id="gridMatrixModalLabelAdd"><span id="auditTitle">审批</span></h5>
+	</div>
+     	<form id="approvalFlowAuditForm" style="padding: 0px">
+     		<input type="hidden" id="instance_id" name="instance_id"/>
+     		<input type="hidden" id="auditState" name="auditState" />
+     		<input type="hidden" id="n_id" name="n_id" />
+     		<table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+	      	 <tr>
+				<td><span id="auditStateName"></span></td>
+	      	 </tr>
+	      	 <tr>
+      	 		<td class="ecitic-right">
+					<textarea rows="6" maxlength="1000" name="auditContent" id="auditContent" validate="v.required"></textarea>
+					<input type="hidden" id="new_app_person" name="new_app_person">
+				</td>
+	      	 </tr>
+      	 </table>
+     	</form>
+     	<div id="userSelect" style="display: none">
+		<form action="" class="form-inline" id="selectParam" style="padding: 0px">
+			<div class="row">
+				<div class="span6 h50">
+					<label class="pl60">用户编号：</label>
+					<input type="text" id="pop_userCode" name="user" placeholder="用户编号" />
+				</div>
+				<div class="span6 h50">
+					<label class="pl60">用户姓名：</label>
+					<input type="text" id="pop_username" name="user" placeholder="用户名 " />
+				</div>
+			</div>
+			<div class="row">
+				<div class="span6 h50">
+					<label class="pl60">登录名：</label>
+					<input type="text" id="pop_userLoginName" name="user" placeholder="登录名" />
+				</div>
+				<div class="span6 h50">
+					<label class="pl60">所在部门 ：</label>
+					<input type="text" id="user_pop_org_name" name="org" onfocus="javascript:return false;" placeholder="点击选择部门 " readonly />
+					<input type="hidden" id="user_pop_org_code" name="org" />
+				</div>
+			</div>
+		</form>
+		<div class="ecitic-save" style="margin:0px">
+			<input class="btn btn-ecitic" value="查询" id="pop_userSearch" type="button" />
+			<input class="btn btn-ecitic" value="重置" id="pop_userReset" type="button" />
+		</div>
+		<div class="modal-body">
+			<table id="pop_userTable" title="双击选择一条数据" ></table>
+		</div>
+	</div>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="提交" onclick="doApprovalSubmit();" />
+		<input type="button" class="btn btn-ecitic" value="取消" onclick="doApprovalCancel();" />
+	</div>
+</div>

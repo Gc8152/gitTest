@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>新增缺陷</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/form.css" />
+    <script src="pages/suser/suserPop.js"></script>
+</head>
+
+<body>
+    <div class="main_iframe_con">
+        <div class="ecitic-title">
+            <span>新增缺陷</span> <i></i>
+        </div>
+        <div class="ecitic-title-table">
+        	<input id="FILE_ID_ADD" name="IU.FILE_ID" type="hidden" />
+        	<input type="hidden" name="IU.DEFECT_ID">
+            <table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+                <tr>
+                    <td class="table-text">摘要：</td>
+                    <td colspan="8"><input type="text" name="IU.SUMMARY" class="requirement-ele-width" validate="v.200_mzhi" valititle="该项为必填项"></td>
+                </tr>
+                <tr>
+                	<td class="table-text">所属应用：</td>
+					<td colspan="2">
+                    	<input type="hidden" id="SYSTEM_ID" name="IU.SYSTEM_ID" >
+						<input type="text" id="SYSTEM_NAME" name="IU.SYSTEM_NAME" class="requirement-ele-width" validate="v.required"
+							valititle="该项为必填项" readonly="readonly" placeholder="请选择应用" >
+                    </td>                    	
+                    <td class="table-text">所属模块：</td>
+                    <td colspan="2">
+                    <select id="MODULE_ID" name="IU.MODULE_ID"  class="requirement-ele-width" style="width: 100%" validate="v.required" onchange="selectFunc()" >
+                     <option value="">请选择</option>
+                    </select>
+	                </td>
+                	<td class="table-text">所属功能点：</td>
+ 					<td colspan="2">
+ 					 <select id="FUNCPOINT_ID" name="IU.FUNCPOINT_ID"  class="requirement-ele-width" style="width: 100%" validate="v.required" onchange="selectCase()">
+                     <option value="">请选择</option>
+                    </select>
+                    </td>                
+                </tr>
+                <tr>
+                 	<td class="table-text">关联测试案例：</td>
+                    <td colspan="2">
+						<input type="hidden" id="TESTPOINT_ID" name="IU.TESTPOINT_ID">
+						<input type="text" id="TESTPOINT_NAME" name="IU.TESTPOINT_NAME" class="requirement-ele-width" readonly="readonly" placeholder="请选择测试案例">                    
+                    </td>
+                	<td class="table-text">测试类型：</td>
+                    <td colspan="2">
+                    <select name="IU.TEST_TYPE" diccode="TM_DIC_CASE_TYPE1" class="requirement-ele-width" style="width: 100%" validate="v.required" ></select>
+                    </td>
+                    <td class="table-text">出现频率：</td>
+                    <td colspan="2"><select name="IU.FREQUENCY" diccode="TM_DIC_FREQUENCY" class="requirement-ele-width" style="width: 100%" validate="v.required" ></select></td>
+                   
+                </tr>
+                <tr>
+                    <td class="table-text">缺陷等级：</td>
+                    <td colspan="2"><select name="IU.SEVERITY_GRADE"  diccode="TM_DIC_SEVERITY_GRADE" class="requirement-ele-width" style="width: 100%" validate="v.required" ></select></td>
+                    <td class="table-text">缺陷优先级：</td>
+                    <td colspan="2"><select name="IU.PRIORITY_LEVEL" diccode="TM_DIC_PRIORITY_LEVEL" class="requirement-ele-width" style="width: 100%" validate="v.required" ></select></td>
+                    <td class="table-text">责任人：</td>
+                    <td colspan="2">
+                    <input type="text" name="IU.DUTY_PERSON_NAME" id="DUTY_PERSON_NAME"  validate="v.required" valititle="该项为必填项" class="citic-ast" readonly="readonly">
+					<input type="hidden" name="IU.DUTY_PERSON" id="DUTY_PERSON" >
+					<strong class="high">*</strong>
+                    </td>
+                </tr>
+                <tr>
+                 	<td class="table-text">可否重现：</td>
+                    <td colspan="2">
+                   <!--  <select name="IU.IS_REAPPEAR" diccode="TM_DIC_IS_REAPPEAR" class="requirement-ele-width" style="width: 100%" validate="v.required" ></select> -->
+                    		&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="IU.IS_REAPPEAR" id="IS_REAPPEAR0" value="00" checked="checked"> 是
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="IU.IS_REAPPEAR" id="IS_REAPPEAR1" value="01" > 否
+                    </td>
+                    <td class="table-text">测试版本：</td>
+                    <td colspan="2">
+                    <select name="IU.TEST_VERSION_ID" diccode="TM_DEFECT_VERSION" class="requirement-ele-width" style="width: 100%" validate="v.required" ></select>
+                    </td>
+                      <td colspan="3">
+                      </td>
+                </tr>
+                 <tr>
+                 	<td class="table-text">上传附件：</td>
+                    <td colspan="8">
+	                <input type="button" value="上传附件" id="ETA_out_resume" class="btn btn-ecitic" /> 
+	            	<input type="hidden" name="IU.FILE_ID" id="ETA_out_resume_file" />
+                	</td>
+                </tr>
+                <tr>
+                 	<td class="table-text">缺陷描述：</td>
+                    <td colspan="8">
+                    <textarea name="IU.DEFECT_DESCRIPTION" class="requirement-ele-width" validate="v.500_mzhi" valititle="该项为必填项" style="height: 80px"></textarea>
+                    </td>
+                	
+                </tr>
+            </table>
+        </div>
+        
+     <div class="ecitic-title" id="defectAttr">
+            <span>自定义属性<em></em></span> <i></i>
+        </div>
+        <div class="ecitic-title-table" id="defectAttr_table">
+		<table tb="defectAttrTable" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+		<tbody>
+	   </tbody>
+	 </table>
+	 </div>
+        <div class="ecitic-title">
+            <span>实际操作步骤<em></em></span> <i></i>
+        </div>
+         <div>
+        <div class="ecitic-operation">
+			<button class="btn btn-ecitic my" name="addOpt" >增加操作步骤</button>
+		</div>
+        <div class="ecitic-title-table">
+            <table tb="realOptTable" class="table table-bordered table-hover table-text-show"></table>
+        </div>
+		</div>
+       <!--  <div class="ecitic-title">
+            <span>附件列表信息<em></em></span> <i></i>
+        </div>
+        <div class="ecitic-title-table">
+            <div class="ecitic-operation">
+                <button type="button" class="btn btn-ecitic" btn="defect_upFile">上传截图</button>
+                <button type="button" class="btn btn-ecitic" btn="defect_delFile">删除</button>
+            </div>
+            <table tb="defect_fileTable" class="table table-bordered table-hover table-text-show"></table>
+        </div> -->
+
+        <div class="ecitic-save">
+            <input type="button"  class="btn btn-ecitic" btn="saveAddInfo" value="保存" />
+            <input type="button"  class="btn btn-ecitic" btn="submitAddInfo" value="保存&提交" />
+            <input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="返回" />
+        </div>
+        
+        <!--上传附件模态框  -->
+    	<div id="file_modal"></div>
+    	 <!--选择功能点  -->
+ 		<div mod="FuncPop"></div>
+ 		 <!--选择应用  -->
+		<div id="sendProduceSystemPop"></div>
+		
+		 <!--选择测试案例  -->
+		<div id="testPop"></div>
+ 		<!-- 查询人员POP框 -->
+ 		<div id="userOrgDivPop"></div>
+    </div>
+</body>
+<script type="text/javascript" src="dev_test/defectManagement/add/defect_add.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="dev_test/defectManagement/add/FuncPop.js"></script>
+<script type="text/javascript" src="dev_test/defectManagement/add/systemPop.js"></script>
+<script type="text/javascript" src="dev_test/defectManagement/add/testPop.js"></script>
+<script type="text/javascript" src="dev_test/defectManagement/add/suserPop.js"></script>
+<script src="upload/uploadFileInfo.js"></script>
+
+
+</html>

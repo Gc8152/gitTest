@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sit测试报告管理</title>
+
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<!-- 字体图标 -->
+</head>
+<body>
+<div  class="main_iframe_con">
+   <form class="form-inline" id="sitReport_View">
+	 <div class="ecitic-inquire ecitic-moreNo" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad" >
+						<tr>
+							<td class="ecitic-right" width="13%">需求点编号：</td>
+							<td width="20%">
+							<input type="text" id="sub_req_code" name="sub_req_code" />
+							</td>
+							<td class="ecitic-right" width="13%">需求点名称：</td>
+							<td width="20%"><input type="text" id="sub_req_name" name="sub_req_name" />
+							</td>
+							<td class="ecitic-right" width="13%">任务状态：</td>
+							<td width="20%">
+							<select id="req_task_state" name="req_task_state" style="width:100%;" diccode="G_DIC_REQTASK_STATE">
+							</select>
+							</td>
+						    </tr>
+		
+						<tr>
+							<td class="ecitic-right" >申请纳入版本：</td>
+							<td><input type="text" id="version_name" name="version_name"  placeholder="点击选择 " readonly/>
+							    <input type="hidden" id="version_id" name="version_id" />
+							</td>
+							<td class="ecitic-right" >应用名称：</td>
+							<td>
+							    <input type="text" id="system_name" name="system_name" />
+							</td>
+							<td class="ecitic-right" >当前责任人：</td>
+							<td>
+							    <input type="text" id="p_owner_name" name="p_owner_name" />
+							</td>
+							<td class="ecitic-right" ><!-- 计划投产日期： --></td>
+							<td>
+								<!-- <div style="float:left; width:45%;">
+								<input type="text" id="plan_onlinetime" name="plan_onlinetime" onClick="WdatePicker({});" placeHolder="点击选择" class="requirement-ele-width"/>
+								</div>
+								<div style="float:left; width:10%;line-height:26px;">&nbsp至&nbsp</div>	
+								<div style="float:left; width:45%;">
+								<input type="text" id="plan_onlinetime1" name="plan_onlinetime1" class="requirement-ele-width" onClick="WdatePicker({});" placeHolder="点击选择" />
+								</div> -->
+							</td>
+						</tr>
+					</table>
+		     </div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="sitview_query" value="查询"></li>
+			<li><input type="reset" class="btn btn-ecitic" id="sitview_reset" value="重置"></li>
+			<!-- <li class="ecitic-more"></li> -->
+		</ul>
+	  </div>
+	</form>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="sitreport_view">查看报告详情</button>
+	</div>
+	<!-- table开始 -->
+	<div class="ecitic-new">
+		<table id="sitreport_tableView" class="table table-bordered table-hover table-text-show" style="min-width:1500px;"></table>
+	</div>
+ </div>
+ <div id="vsersion_pop"></div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>  
+<script type="text/javascript" src="dev_construction/sit_test_jn/sit_report/sitreport_queryListView.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_intoVersion/taskVersion_pop.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_phased/task_phased_jury.js"></script>
+</html>

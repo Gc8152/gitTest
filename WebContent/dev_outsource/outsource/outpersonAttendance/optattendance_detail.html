@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>外包人员考勤基本信息</title>
+		<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/form.css" />
+	</head>
+	<body  style="overflow:auto;">
+		<div class="main_iframe_con">
+			<div class="ecitic-title">
+				<span>外包人员考勤基本信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table class="table table-bordered tablr-input-text"><!-- table-bor-paw-->
+					<tr>
+						<td width="11%" class="table-text">人员姓名</td>
+						<td width="22.333%">
+							<div id="user_nameDE"></div>
+						</td>
+						<td width="11%" class="table-text">考勤类型</td>
+						<td width="22.333%">
+							<div id="acc_type_nameDE"></div>
+						</td>
+						<td width="11%" class="table-text">考勤日期</td>
+						<td width="22.333%">
+							<div id="work_dateDE"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">上班时间</td>
+						<td width="22.333%">
+							<div id="berw_timeDE"></div>
+						</td>
+						<td class="table-text">下班时间</td>
+						<td width="22.333%">
+							<div id="aftw_timeDE" ></div>
+						</td>
+						<td class="table-text">考勤状态</td>
+						<td width="22.333%">
+							<div id="acc_status_nameDE"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">标准工时</td>
+						<td width="22.333%">
+							<div id="work_hoursDE"></div>
+						</td>
+						<td class="table-text">加班工时</td>
+						<td width="22.333%">
+							<div id="work_overhoursDE"></div>
+						</td>
+						<td  class="table-text"></td>
+						<td width="22.333%"><div></div></td>
+					</tr>
+					<tr>
+						<td class="table-text">备注</td>
+						<td>
+							<div id="memoDE"></div>
+						</td>
+						<td colspan="4"></td>
+					</tr>
+				</table>
+			</div>
+			<div class="ecitic-save">
+				<input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭">
+			</div>
+		</div>
+		<script src="bootstrap/js/bootstrap-table.min.js"></script>
+		<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+		<script type="text/javascript" src="dev_outsource/outsource/outpersonAttendance/optattendance_detail.js"></script> 
+	</body>
+</html>

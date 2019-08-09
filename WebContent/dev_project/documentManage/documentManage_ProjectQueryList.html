@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>我的项目</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" >
+
+</head>
+<body>
+	<div class="ecitic-inquire ecitic-moreNo" id="ecitic-inquire_lookup">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="docManageQueryList_form">
+				<table id="table_select" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">项目名称：</td>
+						<td><input type="text" maxlength="50" name="PROJECT_NAME"/></td>
+						<td class="ecitic-right">应用名称：</td>
+						<td><input type="text" maxlength="50" name="SYSTEM_NAME"/></td>
+						<td class="ecitic-right">项目状态：</td>
+						<td>
+							<select name="STATUS" diccode="P_DIC_PROJECT_STATUS" style="width:100%"></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">项目类型：</td>
+						<td><select name="PROJECT_TYPE" diccode="SYS_DIC_MILESTONE_PROJECT_TYPE" style="width:100%"></select></td>
+						<td></td>
+						<td></td>
+					    <td></td>
+						<td></td>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="query_docManageQueryList">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset_docManageQueryList">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="docManageQueryListBtn">文档管理</button>
+	</div>
+	<!-- table开始 -->
+	<div class="ecitic-new">
+		<table id="docManageProjectTable" class="table table-bordered table-hover table-text-show" ></table>
+	</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+	<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+	<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="dev_project/documentManage/documentManage_ProjectQueryList.js"></script>
+</html>

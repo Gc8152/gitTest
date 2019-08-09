@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>需求变更审批</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<link href="pages/approvalflow/afcommons.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="widget-box">
+		<div class="widget-content nopadding">
+			<div class="control-group">
+				<div class="controls">
+					<ul class="nav nav-tabs">
+						<li><a href="#reqchange_apply_info" data-toggle="tab"><i class="icon-folder-open"></i>变更申请信息</a></li>
+						<li><a href="#reqchange_apply_Approve" data-toggle="tab"><i class="icon-folder-open"></i>变更申请分析</a></li>
+						<li class="active"><a href="#change_Approve" data-toggle="tab"><i class="icon-home"></i>变更申请审批</a></li>
+						<li><a href="#opt_history_Approve" data-toggle="tab"><i class="icon-folder-open"></i>历史操作记录</a></li>
+					</ul>
+					<div class="tab-content">
+<!-- 	******变更审批 ******    -->			
+					<div class="tab-pane active" id="change_Approve">
+					  	<div id="apptitlePop"></div>
+					  	<div id="apphistoryPop"></div>
+						<div id="appOptPop"></div>
+						<div class="ecitic-save">
+							<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+						</div>
+					</div>
+<!-- 	******变更申请信息******     -->
+					<div class="tab-pane fade" id="reqchange_apply_info">
+						<div class="ecitic-title-table">
+						 <input type="hidden" id="REQ_CHANGE_ID_H">
+						 <input type="hidden" id="REQ_NAME_H">
+						 <input type="hidden" id="REQ_ID_H">
+						 <input type="hidden" id="CREATE_ID_H">
+						 <input type="hidden" id="REQ_PRODUCT_MANAGER_H">
+							<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+								<colgroup>
+											<col style="width: 20%">
+									        <col style="width: 30%">
+									        <col style="width: 20%">
+									        <col style="width: 30%">
+								</colgroup>
+								<tr>
+									<td class="table-text">需求编号：</td>
+									<td>
+										<div id="REQ_CODE"></div>
+									</td>
+									<td class="table-text">需求名称：</td>
+									<td >
+										<div id="REQ_NAME"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text">业务联系人：</td>
+									<td >
+										<div id="CHANGE_BUSINESSER"></div>
+									</td>
+									<td class="table-text">业务联系人电话：</td>
+									<td>
+										<div id="CHANGE_BUSINESS_PHONE"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text">变更原因分类：</td>
+									<td colspan="3">
+										<div id="CHANGE_REASON_TYPE_NAME"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text" >变更原因：</td>
+									<td colspan="3">
+										<div id="CHANGE_REASON"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text" >变更描述：</td>
+									<td colspan="3">
+										<div id="CHANGE_DESCRIPTION"></div>
+									</td>
+								</tr>
+							</table>
+						</div>
+
+						<div class="ecitic-title">
+								<span>需求点列表信息<em></em></span> <i></i>
+						</div>
+						<div class="ecitic-title-table">
+								<table id="approve_reqSubsTable"
+									class="table table-bordered table-hover table-text-show"></table>
+						</div>
+
+							<div class="ecitic-title">
+							<span>附件列表信息<em></em></span> <i></i>
+						</div>
+						<div class="ecitic-title-table">
+							<table id="approve_fileTable" class="table table-bordered table-hover table-text-show"></table>
+						</div>
+						<!--上传附件模态框  -->
+						<div id="file_approve_modal"></div>
+				</div>
+<!-- 	******变更分析信息******     -->
+				<div class="tab-pane fade" id="reqchange_apply_Approve">
+						<div class="ecitic-title-table">
+							<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+								<tr>
+									<td class="table-text">变更分析人：</td>
+									<td colspan="3">
+										<div id="CHANGE_ANALYZE_NAME"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text">变更分析结论：</td>
+									<td colspan="3">
+										<div id="CHANGE_ANALYZE_RESULT_NAME"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text" >变更影响分析：</td>
+									<td colspan="3">
+										<div id="CHANGE_AFFECT_ANALYZE"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text" >建议变更实施方案：</td>
+									<td colspan="3">
+										<div id="CHANGE_SOLUTION"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text" >变更实施计划：</td>
+									<td colspan="3">
+										<div id="CHANGE_PLAN"></div>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-text">变更预计完成日期：</td>
+									<td colspan="3">
+										<div id="CHANGE_ESTIMATED_FINISHTIME"></div>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="ecitic-save">
+							<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+						</div>
+			</div>
+			
+<!-- 	******操作历史 ******    -->
+					<div class="tab-pane fade" id="opt_history_Approve">
+						<div class="ecitic-new">
+							<table id="OptHistoryTableAppr" class="table table-bordered table-hover table-text-show"></table>
+						</div>
+					</div>
+					
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_construction/requirement/requirement_change/approve/changeApprove_edit.js"></script>
+<script src="pages/approvalflow/approval_title.js"></script>
+<script src="pages/approvalflow/approval_content.js"></script>
+<script src="pages/approvalflow/afcommons.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+</html>

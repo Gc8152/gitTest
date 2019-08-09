@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>外包人员考核报告</title>
+		<style type="text/css">
+			.head{
+				width: 100%;
+    			text-align: center;
+    			font-size:14px;
+			}
+			.xxx{
+    			text-align: left;
+			}
+			table{
+			    border: 1px solid black;
+			    border-right: none;
+			    border-bottom: none;
+			}
+			td{
+			    border-right: 1px solid black;
+			    border-bottom: 1px solid black;
+			    height:40px;
+			    font-size:12px;
+			}
+			.bottomC{
+				margin-top:15px;
+				text-align: right;
+    			margin-right: 120px;
+			}
+			/* 应用这个样式的，从那个标签结束开始另算一页，之后在遇到再起一页，以此类推 */  
+           .page {  
+               page-break-after: always;  
+            }  
+            body{
+            	 display: block;
+   				 margin: 8px;
+            	 margin-top: 0;
+                 margin-bottom: 0;
+            }
+		</style>
+		<script type="text/javascript" src="../../js/jquery/jquery-1.9.1/jquery.min.js"></script>
+	</head>
+	<body>
+	<div class="head" style="font-weight:bold;padding-bottom:15px;padding-top: 10px;font-size:18px;font-weight: 100;" id="headDiv">
+		中原银行总行非项目外包技术人员季度考核表（外包开发人员）
+	</div>
+	<div class="head" style="padding-top: 10px;">
+		<table width="100%" cellspacing="0">
+			<tr>
+				<td width="25%">外包公司名称</td>
+				<td width="25%">
+					<div id="sup_name"></div>
+				</td>
+				<td  width="25%">技术人员姓名</td>
+				<td width="25%">
+					<div id="op_name"></div>
+				</td>
+			</tr>
+			<tr>
+				<td width="25%">考核周期</td>
+				<td width="25%">
+					<div id="check_type"></div>
+				</td>
+				<td width="25%">考核得分</td>
+				<td width="25%">
+					<div id="check_score"></div>
+				</td>
+			</tr>
+		</table>
+		<table width="100%" cellspacing="0">
+			<tr>
+				<td>考核项目</td>
+				<td>考核得分区间</td>
+				<td>考核依据</td>
+				<td>考核得分</td>
+			</tr>
+			<tr>
+				<td style="font-weight:bold" rowspan="4">遵章守纪（10分）</td>
+				<td>10分</td>
+				<td class="xxx">本季度无迟到早退和矿工现象</td>
+				<td rowspan="4">
+					<div id="C_4e90a655-aa80-4d0d-8224-4b39520020aa"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>8-9分</td>
+				<td class="xxx">本季度迟到、早退小于等于3次</td>
+			</tr>
+			<tr>
+				<td>7-8分</td>
+				<td class="xxx">本季度迟到、早退小于4次或有1次旷工</td>
+			</tr>
+			<tr>
+				<td><7分</td>
+				<td class="xxx">本季度迟到、早退大于4次且1次以上旷工</td>
+			</tr>
+			<tr>
+				<td style="font-weight:bold" rowspan="6">人员素质（10分）</td>
+				<td rowspan="3">专业技术能力（6分）</td>
+				<td class="xxx">6分：技术能力强，能独立按时完成工作任务</td>
+				<td rowspan="3">
+					<div id="C_783d8483-e21b-43c3-a461-935304f9f277"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="xxx">5分：技术能力一般，学习能力强在指导下可以按时完成工作</td>
+			</tr>
+			<tr>
+				<td class="xxx">小于4分：技术能力一般，学习能力一般需要在督促和指导下才能完成工作任务</td>
+			</tr>
+			<tr>
+				<td rowspan="3">团队协调和沟通能力（4分）</td>
+				<td class="xxx">4分：主动沟通协调能力强，能牵头协调相关团队完成工作任务</td>
+				<td rowspan="3">
+					<div id="C_2ab0b03c-49aa-4d21-8aee-f36f61a10e62"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="xxx">3分：主动沟通协调能力一般，在工作能积极配合相关团队，团队沟通比较融洽</td>
+			</tr>
+			<tr>
+				<td class="xxx">2分：沟通协调能力一般，在工作中需在督促指导下才能完成团队工作</td>
+			</tr>
+			<tr>
+				<td style="font-weight:bold" rowspan="13">工作业绩（55分）</td>
+				<td rowspan="4">文档完整性和规范性（10分）</td>
+				<td class="xxx">9-10：初次提交的文档98%以上满足我行技术文档完整性和规范性要求，修改后全部满足技术文档完整性和规范性要求</td>
+				<td rowspan="4">
+					<div id="C_56bf3ce8-5fdc-499e-ad98-18efcd8940e8"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="xxx">8-9：初次提交的文档95%以上满足我行技术文档完整性和规范性要求，修改后全部满足技术文档完整性和规范性要求</td>
+			</tr>
+			<tr>
+				<td class="xxx">7-8：初次提交的文档90%以上满足我行技术文档完整性和规范性要求，修改后全部满足技术文档完整性和规范性要求</td>
+			</tr>
+			<tr>
+				<td class="xxx">7-8：初次提交的文档85%以上满足我行技术文档完整性和规范性要求，修改后全部满足技术文档完整性和规范性要求</td>
+			</tr>
+			<tr>
+				<td rowspan="4">工作任务完成及时性（20分）</td>
+				<td class="xxx">18-20：本季度负责工作任务能按时完成，无延迟现象。</td>
+				<td rowspan="4">
+					<div id="C_7ab52df9-05d1-4024-8a13-597e8c09dcc1"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="xxx">16-18：本季度负责任务未按时完成次数小于等于1次</td>
+			</tr>
+			<tr>
+				<td class="xxx">14-16：本季度负责任务未按时完成次数小于等于2次</td>
+			</tr>
+			<tr>
+				<td class="xxx">&lt;14本季度负责任务未按时完成次数大于2次</td>
+			</tr>
+			<tr>
+				<td rowspan="5">交付成果质量（25分）</td>
+				<td class="xxx">23-25：本季度无责任事故,所负责的事项无重大失误，文档满足完整规范性要求</td>
+				<td rowspan="5">
+					<div id="C_d2840d8f-3dbb-41fd-a48a-d605b7b0da7d"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="xxx">本考核周期发生4级事故，每次扣10分</td>
+			</tr>
+			<tr>
+				<td class="xxx">本考核周期发生3级事故，每次扣15分</td>
+			</tr>
+			<tr>
+				<td class="xxx">本考核周期发生2级事故，每次扣20分</td>
+			</tr>
+			<tr>
+				<td class="xxx">本考核周期发生1级事故，每次扣25分</td>
+			</tr>
+			<tr>
+				<td style="font-weight:bold" rowspan="4">工作饱满度（25分）</td>
+				<td>25分</td>
+				<td class="xxx">工作效率高，主动承担项目之外的工作</td>
+				<td rowspan="4">
+					<div id="C_996a5996-74de-4553-87bf-07e92c4e1aab"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>22-25分</td>
+				<td class="xxx">积极主动能按时完成本职工作</td>
+			</tr>
+			<tr>
+				<td>20-22分</td>
+				<td class="xxx">在项目组协调合指导下可以按时完成工作</td>
+			</tr>
+			<tr>
+				<td>&lt;20分</td>
+				<td class="xxx">在项目组协调合指导下仍出现未按时完成工作现象</td>
+			</tr>
+		</table>
+		<br/>
+		<div  style="border:1px solid #000;text-align:left">
+			<p style="margin-left: 10px;font-size:15px;">项目经理总体评价（附加分：0-5分）：</p>
+			<p style="margin-left: 10px;font-size:12px;font-style:italic;color:#99B1DF">考核结果分为优（90-100分）、良（80-89分）、中（70-79分）和差（0-69分）四档，请根据总体得分进行评价。</p>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<p style="margin-left: 10px;">项目经理签字：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日 </p>
+			<p style="margin-left: 10px;">职能组组长签字：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</p>
+			
+		</div>
+	</div>
+	</body>
+	<script type="text/javascript">
+	function baseAjax(url, param, callback, async) {
+		$.ajax({
+			type : "post",
+			url : url,
+			async : async == undefined ? true : false,
+			data : param,
+			dataType : "json",
+			success : function(msg) {
+				callback(msg);
+			},
+			error : function() {
+				callback();
+			}
+		});
+	}
+	function getParamString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null)
+			return unescape(r[2]);
+		return null;
+	}
+	$(document).ready(function(){
+		$("#check_score").html(getParamString("check_score"));
+		$("#op_name").html(getParamString("op_name"));
+		$("#sup_name").html(getParamString("sup_name"));
+		$("#check_type").html(getParamString("check_type"));
+		baseAjax("../../OptCheck/findAlloptCheckDetail.asp",{id:getParamString("check_id")},function(data){
+			if(data&&data["rows"]){
+				var rows=data["rows"];
+				for(var i=0;i<rows.length;i++){
+					var row = rows[i];
+					for(var k in row){
+						if(k=="ID"){
+							var item = row["ID"];
+							$("#C_"+item).html(row["CHECK_SCORE"]);
+						}	
+					}
+				}
+			}
+		});
+	});
+	</script>
+</html>

@@ -1,0 +1,69 @@
+/*html {overflow-x:hidden;}*/
+* {margin:0;padding:0;}
+body,html {font-size:12px;font-family:"微软雅黑", arial;min-width:1200px;overflow:auto;}
+ul,li {list-style:none;vertical-align:bottom;}
+img {border:none;display:block;}
+a {color:#363636;text-decoration:none;}
+a:hover {color:#c00;text-decoration:underline;}
+/*清除谷歌浏览器下的input叉号*/
+input::-webkit-search-cancel-button {display:none;}
+/*清除IE下的input叉号*/
+input::-ms-clear{display:none;}
+/*清除IE下的input眼睛*/
+input::-ms-reveal{display:none;}
+/*框架*/
+.ecitic-login-all {width:100%;min-width:1200px;height:100%;min-height:674px;margin:0 auto;position:absolute;top:0;left:0;margin:0;z-index:1;}
+/*logo*/
+.ecitic-logo {width:100%;height:87px;padding:20px 40px;overflow:hidden;box-sizing:border-box;}
+	.ecitic-logo img {float:left;margin-right:15px;margin-top:-4px;}
+	.ecitic-logo span {float:left;display:inline-block;border-left:1px solid #3b3b3b;color:#3b3b3b;padding-left:15px;margin-top:3px;overflow:hidden;}
+		.ecitic-logo span h2 {font-size:20px;font-weight:normal;height:20px;line-height:20px;letter-spacing:4px;margin-bottom:1px;overflow:hidden;padding-top: 5px;}
+		.ecitic-logo span p {font-size:12px;overflow:hidden;}
+/*背景图*/
+.ecitic-bg {width:100%;min-height:500px;position:relative;margin-top:87px;background:#fff;overflow:hidden;}
+	.ecitic-bg-img {margin:0 auto;position:relative;z-index:0;overflow:hidden;}
+		.ecitic-bg-img ul {width:100% !important;min-height:500px;}
+			.ecitic-bg-img ul li {width:100% !important;min-height:500px;float:left;overflow:hidden;text-align:center;background-position:center center;background-repeat:no-repeat;background-size:cover;}
+	.ecitic-bg-circle {width:100%;position:absolute;z-index:1;bottom:20px;left:0;height:30px;line-height:30px;text-align:center;}
+		.ecitic-bg-circle ul {height:30px;text-align:center;padding:4px 0;overflow:hidden;}
+			.ecitic-bg-circle ul li {cursor:pointer;display:inline-block;*display:inline;zoom:1;width:20px;height:20px;margin:0 5px;background:#fff;border-radius:50%;overflow:hidden;line-height:9999px;}
+/*登录框*/
+.ecitic-user-password {width:462px;height:340px;padding:45px 20px 50px 20px;margin:-170px 0 0 0;background:#fff;border:1px solid #ddd;position:absolute;top:50%;right:10%;z-index:99;box-sizing:border-box;}
+/*用户框+密码框*/
+	.ecitic-user-password li {height:70px;overflow:hidden;}
+		.ecitic-user-password li input {width:339px;height:24px;border:1px solid #cdcdcd;font:16px/24px "微软雅黑", arial;padding:8px 35px 8px 44px;outline:none;margin-bottom:5px;overflow:hidden;}
+		/*标题*/
+		.ecitic-user-password .ecitic-title {color:#606060;font-size:26px;height:30px;line-height:30px;margin-bottom:30px;text-align:center;overflow:hidden;}
+		.ecitic-user-password .ecitic-user, .ecitic-user-password .ecitic-password {position:relative;}
+			/*图标-人物-密码*/
+			.ecitic-user-password .ecitic-user i, .ecitic-user-password .ecitic-password i {position:absolute;top:1px;left:1px;width:40px;height:40px;line-height:40px;text-align:center;display:block;background:url(../images/icon_ecitic.png) no-repeat;overflow:hidden;}
+				.ecitic-user-password .ecitic-user .user {background-position:4px 4px;}
+				.ecitic-user-password .ecitic-password .password {background-position:-39px 4px;}
+	/*选中填写内容*/
+	.ecitic-user-password .open {}
+		.ecitic-user-password .open input {border:1px solid #a9a9a9;}
+		.ecitic-user-password .open .user {background-position:4px -42px;}
+		.ecitic-user-password .open .password {background-position:-39px -42px;}
+		/*登录按钮*/
+		.ecitic-user-password .ecitic-btn {height:40px;margin-bottom:15px;}
+			.ecitic-user-password .ecitic-btn button {width:420px;height:40px;font:16px/40px "微软雅黑", arial;color:#fff;outline:none;display:inline-block;text-align:center;white-space:nowrap;vertical-align:middle;cursor:pointer;border:1px solid transparent;}
+				.ecitic-user-password .ecitic-btn button:hover {color:#fff;}
+		/*错误提示*/
+		.ecitic-user-password .ecitic-error {height:14px;line-height:14px;overflow:hidden;display:none;}
+			.ecitic-user-password .ecitic-error i {position:static;width:14px;height:14px;display:block;float:left;background:url(../images/icon_ecitic.png) no-repeat -5px -126px;margin:1px 3px 0 0;}
+				.ecitic-user-password .ecitic-error-prompt {height:64px;line-height:16px;margin:-24px 0 10px 0;padding:0;background:#fff;overflow:hidden;display:none;}
+		.ecitic-user-password .error-open {}
+			.ecitic-user-password .error-open .ecitic-error {display:block;}
+		/*删除图标*/
+		.ecitic-user-password .ecitic-del {width:13px;height:13px;overflow:hidden;display:block;position:absolute;top:14px;right:12px;background:url(../images/icon_ecitic.png) no-repeat;background-position:-5px -93px;display:none;}
+			.ecitic-user-password .ecitic-del:hover {background-position:-28px -93px;cursor:pointer;}
+	.ecitic-user-password .open {display:block;}
+	/*placeholder设置颜色*/
+	input::-webkit-input-placeholder {color:#d3d3d3 !important;}
+	input:-moz-placeholder {color:#d3d3d3 !important;}
+	input::-moz-placeholder {color:#d3d3d3 !important;}
+	input:-ms-input-placeholder {color:#d3d3d3 !important;}
+	/*禁止选择文字*/
+	.unselectable {-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+/*版权信息*/
+.ecitic-footer {width:100%;height:87px;color:#606060;padding:61px 40px 10px 40px;position:absolute;bottom:0;left:0;right:0;text-align:center;overflow:hidden;box-sizing:border-box;}

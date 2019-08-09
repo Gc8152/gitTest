@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>缺陷查询</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link href="css/form.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="main_iframe_con">
+        <div class="ecitic-inquire" id="ecitic-inquire">
+            <div class="ecitic-table" id="ecitic-table">
+                <form id="defectForm">
+                    <table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+                        <tr>
+                           <td class="ecitic-right">模块名称：</td>
+                            <td>
+                                <input type="text" name="MODUEL_NAME" />
+                                <input type="hidden" id="CASE_ID" />
+                                 <input type="hidden" id="FUNC_ID" />
+                                 <input type="hidden" id="TEST_ROUND" />
+                            </td>
+                            <td class="ecitic-right">功能点名称：</td>
+                            <td>
+                                <input type="text" name="FUNCPOINT_ID" />
+                            </td>
+                            <td class="ecitic-right">缺陷摘要：</td>
+                            <td>
+                                <input type="text" name="SUMMARY" />
+                            </td>
+                            
+                        </tr>
+                        
+                    </table>
+                </form>
+            </div>
+            <ul class="ecitic-btn-all">
+                <li><input type="button" class="btn btn-ecitic" name="queryDefect" value="查询" /></li>
+                <li><input type="button" class="btn btn-ecitic" name="resetDefect" value="重置" /></li>
+            </ul>
+        </div>
+        <div class="ecitic-operation">
+            <button class="btn btn-ecitic" name="chooseDefect">选择</button>
+            <input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+        </div>
+        <div class="ecitic-new">
+            <table tb="defectTable" class="table table-bordered table-hover table-text-show"></table>
+        </div>
+    </div>
+</body>
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_test/testTaskExecute/releDefect_view.js"></script>
+</html>

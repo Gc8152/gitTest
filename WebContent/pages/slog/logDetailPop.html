@@ -1,0 +1,26 @@
+<div id="logDetailPop" class="modal hide fade" style="top: 50%;margin-top: -250px; width:700px;" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="myModalLabel">操作日志详情</h5>
+	</div>
+	<br>
+	<table style="width:100%;border:0;cellspacing:0;cellpadding:0;" class="table table-bordered table-bor-pad">
+		<tr>
+			<td class="ecitic-right">操作人</td>
+			<td><input id="opt_person" readonly="readonly"/></td>
+			<td class="ecitic-right">操作时间</td>
+			<td><input id="opt_time" readonly="readonly"/></td>
+		</tr>
+		<tr>
+			<td class="ecitic-right">业务ID</td>
+			<td><input id="business_id" readonly="readonly"/></td>
+		</tr>
+		<tr>
+			<td class="ecitic-right">日志详情</td>
+			<td colspan="3"><textarea contenteditable="true" id="memo" ></textarea></td>
+		</tr>
+	</table>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="关闭" id="closeLogDetailPop"/>
+	</div>
+</div>

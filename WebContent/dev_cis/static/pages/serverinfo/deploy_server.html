@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../css/select2.css"/>
+<link rel="stylesheet" href="../../css/zebra_dialog.css" />
+<link rel="stylesheet" href="../../css/public.css" />
+<link rel="stylesheet" href="../../css/style.css" />
+<link rel="stylesheet" href="../../css/form.css" />
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/select2.min.js"></script>
+<script type="text/javascript" src="../../js/zebra_dialog.js"></script>
+<script type="text/javascript" src="../../js/alertAndConfirm.js"></script>
+<script type="text/javascript" src="../../js/Math.uuid.js"></script>
+<script type="text/javascript" src="../../js/commons.js"></script>
+</head>
+
+<body style="overflow:auto;">
+	<div class="main_iframe_con">
+		<div class="yourLocation">
+					<i></i>
+					<span>您所在的位置：服务器配置》部署服务器</span>
+				</div>
+		<div class="ecitic-title">			
+			<span>部署服务器信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<form id="serverInfoForm" method="post" onsubmit="return false;">
+				<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table"><!-- table-bor-paw-->
+					<tr>
+						<td width="22%" class="table-text">服务器ip地址</td>
+						<td width="78%">
+							<input type="hidden" name="id"/>
+							<input type="text" name="serverIp" validate="v.ip" valititle="该项必填，格式为191.168.1.1"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">操作系统</td>
+						<td>
+							<select id="serverOs" name="serverOs" validate="v.required" valititle="该项必选">
+								<option value=" ">请选择</option>
+								<option value="01">unix</option>
+								<option value="02">linux</option>
+								<option value="03">windows</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">版本号</td>
+						<td>
+							<select id="serverVersion" name="serverVersion" validate="v.required" valititle="该项必选">
+								<option value=" ">请选择</option>
+								<option value="01">version 1</option>
+								<option value="02">version 2</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">用户名</td>
+						<td>
+							<input type="text" name="serverUsername" validate="v.required" valititle="该项必填"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">密码</td>
+						<td>
+							<input type="text" name="serverPassword" validate="v.required" valititle="该项必填"/>
+						</td>
+					</tr>
+					<!-- <tr>
+						<td class="table-text">FTP用户名</td>
+						<td>
+							<input type="text" name="serverFtpUsername" />
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">FTP密码</td>
+						<td>
+							<input type="text" name="serverFtpPassword" />
+						</td>
+					</tr> -->
+					<tr>
+						<td class="table-text">部署服务器根目录</td>
+						<td>
+							<input type="text" name="serverinfoAdditional.rootPath" validate="v.required" valititle="该项必填"/>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="table-text">服务器说明</td>
+						<td >
+							<textarea cols="90" rows="5" name="serverDesc" validate="v.1000_zhi" valititle="不超过1000字"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">服务器状态</td>
+						<td>
+							<select id="serverStatus" name="serverStatus" validate="v.required" valititle="该项必选">
+								<option value="00">启用</option>
+								<option value="01">停用</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div class="ecitic-operation ecitic-operation-bg" style="text-align: center;">
+				<button class="btn btn-ecitic" id="save">保存</button>
+				<button class="btn btn-ecitic" id="close">关闭</button>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="deploy_server.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>问题列表</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+		<form id="problem_commit_form">
+			<table id="problem_committable" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">问题单流水号：</td>
+					<td><input type="text" name="SERNO"/></td>
+					<!-- <td class="ecitic-right">问题来源</td>
+					<td><input type="text" id="" name="PROBLEMORIGIN"/></td> -->
+					<td class="ecitic-right" >创建时间：</td>
+						<td>
+							<div class="dateSelectZ_From">
+							<input type="text" id="req_finish_time_useInterApp" name="req_finish_time" class="requirement-ele-width"  onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'req_finish_time1_useInterApp\',{d:0});}'})" placeHolder="点击选择"   readonly/>
+							</div>
+							<div class="dateSelectZ_W">&nbsp至&nbsp</div>
+							<div class="dateSelectZ_From">
+							<input type="text" id="req_finish_time1_useInterApp" name="req_finish_time1" class="requirement-ele-width" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'req_finish_time_useInterApp\',{d:0});}'})" placeHolder="点击选择"  readonly/>
+							</div>
+						</td>
+					<td class="ecitic-right">当前环节：</td>
+					<td>
+						<select style="width:100%;"  name="APPROVE_NODE"  diccode="G_DIC_PROBLEM_TACHE">
+						</select>
+					</td>
+					<!-- <td class="ecitic-right">问题发生日期 ：</td>
+                    <td>
+                        <span class="ecitic-time">
+                            <input type="text" name="PSTAR_TIME" id="plan_onlinetime_st" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                        <span class="ecitic-to">至</span>
+                        <span class="ecitic-time">
+                            <input type="text" name="PEND_TIME" id="plan_onlinetime_et" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                    </td> -->
+					
+					
+				</tr>
+			<!-- 	<tr>
+					<td class="ecitic-right">问题发生日期 ：</td>
+                    <td>
+                        <span class="ecitic-time">
+                            <input type="text" name="PSTAR_TIME" id="plan_onlinetime_st" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                        <span class="ecitic-to">至</span>
+                        <span class="ecitic-time">
+                            <input type="text" name="PEND_TIME" id="plan_onlinetime_et" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                    </td>
+					
+					<td class="ecitic-right">当前责任人：</td>
+					<td>
+						<input type="hidden" name="APPROVE_OWNER"/>
+						<input type="text" name="APPROVE_OWNER_NAME"  placeholder="点击选择" readonly/>
+					</td>
+				</tr> -->
+				
+			</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="commit">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="problem_Info">查看</button>
+		<button class="btn btn-ecitic" id="problem_handle">处理</button>
+		<!-- <button class="btn btn-ecitic" id="problem_add">新增</button>
+		<button class="btn btn-ecitic" id="importProblemJury">导入</button> -->
+		<button class="btn btn-ecitic" id="">导出</button>
+		<button class="btn btn-ecitic" id="">重新提交到数据库中心</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover" id="problem_InfoTable">
+			
+		</table>
+	</div>
+<!--负责人模态框 -->
+<!-- 获取人员的POP -->
+<div id="problem_man_pop"></div>
+
+
+<div id="supplier_import" class="modal hide fade" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">×</button>
+		<h3>问题单导入</h3>
+	</div>
+	<div class="modal-body" style="overflow-x: hidden; max-height: 450px;padding-top:0px;">
+		<table id="supplier_info_import" class="table table-bordered tablr-input-text">
+			<tr>
+				<td width="120" class="table-text">选择附件：</td>
+				<td width="430">
+					<div class="upload-checkfile-all">
+						<input type="text" name="supplierfield" id="supplierfield" class="input-txt" />
+						<input type="button" value="浏览" class="input-btn" />
+						<input type="file" name="file" class="input-file" id="summaryfile" onchange="getCurrentPageObj().find('#supplierfield').val(this.value)" />
+					</div>
+				</td>
+				<td width="120" class="table-text">
+					<a href="prefile/问题单.xls">下载模板</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="modal-footer" style="text-align:center">
+			<button class="btn" aria-hidden="true"  data-dismiss="modal">关闭</button>
+			<button  onclick="importJury('05','problem_InfoTable','summaryfile')" class="btn btn-ecitic">导入问题单</button>
+	</div>
+</div>
+	
+<script src="pages/suser/suserPop.js"></script>	
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/fault/problem/problem_queryList.js"></script>
+<script type="text/javascript" src="js/commons/ajaxfileupload.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!--新增需求任务下的开发任务 -->
+<div id="addTaskPoint_Pop" class="modal hide fade modal-big-table" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="新增开发任务"></button>
+		<h5>新增开发任务</h5>
+	</div>
+	<div class=" ecitic-title-table modal-body ecitic-new">
+		<form id="addFuncForm">
+			<table border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+                    <td class="table-text" style="width:20%">开发任务名称</td>
+                    <td style="width:20%"><input type="text" name="TASK_NAME" class="requirement-ele-width" validate="v.required" valititle=""></td>
+
+                    <td class="table-text" style="width:20%">任务优先级</td>
+                    <td style="width:20%">
+                    <select type="text" name="TASK_LEVEL" class="requirement-ele-width" validate="v.required" valititle="">
+                    </select>
+                    </td>
+                </tr>
+              <tr>
+                    <td class="table-text" style="width:30%">任务类型</td>
+                    <td >
+                    <select type="text" name="TASK_TYPE" class="requirement-ele-width" validate="v.required" valititle="">
+                    </select>
+                    </td>
+               
+                    <td class="table-text" style="width:30%">任务状态</td>
+                    <td >
+                    <select type="text" name="TASK_STATE" class="requirement-ele-width" validate="v.required" valititle="">
+                    </select>
+                    </td>
+                </tr>           
+                       
+                <tr>
+                    <td class="table-text">计划开始时间</td>
+                   
+                	<td ><input type="text" name="PLAN_STARTTIME" readonly="readonly" onclick="checkTimeSupCompare()" class="requirement-ele-width" validate="v.required" valititle=""></td>
+                    <td class="table-text">计划结束时间</td>
+                   
+                     <td ><input type="text" name="PLAN_ENDTIME" readonly="readonly" onclick="checkTimeSupCompare()" class="requirement-ele-width" validate="v.required" valititle=""></td>
+                </tr>
+                   <tr>
+                    <td class="table-text" style="width:30%">执行人</td>
+                    <td >
+                    <input type="text" name="EXECUTOR_NAME" class="requirement-ele-width" validate="v.required" valititle=""></td>
+               		<input type="hidden" name="EXECUTOR">
+                </tr>
+                <tr> 
+                    <td class="table-text" style="width:70%">任务描述</td>
+                    <td rowspaln="3"><textarea  name="TASK_DESC" class="requirement-ele-width" ></textarea></td>
+                </tr>
+			</table>
+		</form>
+	</div>
+	 <div class="ecitic-save">
+            <input type="button"  class="btn btn-ecitic" btn="saveFunc" value="保存" />
+            <input type="button" class="btn btn-ecitic" btn="closePop" value="关闭" />
+     </div>
+	<div class="modal-footer"></div>	
+</div>
+<div id="choosePm"></div>

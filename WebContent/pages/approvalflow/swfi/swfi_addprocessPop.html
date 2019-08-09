@@ -1,0 +1,48 @@
+<div id="myPop_addProcess" class="modal hide fade" style="top: 50%; margin-top: -200px; width: 780px; tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" onclick="closefileUploadPop();" title="点击关闭">×</button>
+		<h5 id="addAFProcessTitle">新增流程</h5>
+		<h5 id="updateAFProcessTitle">修改流程</h5>
+	</div>
+	<form id="addOrUpdateprocessForm" method="post">
+		<table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;padding-right: 60px" class="table table-bordered table-bor-pad">
+			<tr>
+				<td class="ecitic-right">流程名称：</td>
+				<td colspan="3">
+				    <input type="hidden" id="af_id">
+					<input type="text" validate="v.required" valititle="请输入流程名称" maxlength="30" name="af_namePop" id="af_namePop" />
+				</td>
+			</tr>
+			<tr>
+				<td class="ecitic-right">流程状态：</td>
+				<td>
+					<div class="ecitic-radio-all" id="af_state">
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span class="checkd"><input type="radio" value="00" checked="checked" id="af_state_qy" name="af_state"/></span>
+							<label>启用</label>
+						</div>
+						<div class="ecitic-radio ecitic-radio-inline">
+							<span style="margin-left:14px;"><input type="radio" value="01" id="af_state_ty" name="af_state"/></span>
+							<label>停用</label>
+						</div>
+					</div>
+				</td>
+				<td class="ecitic-right">业务系统：</td>
+				<td>
+					<select id="af_sys_namePop" name="af_sys_namePop"></select>
+				</td>
+			</tr>
+			<tr>
+				<td class="ecitic-right">备注：</td>
+				<td colspan="3">
+					<textarea name="af_memo" id="af_memo" maxlength="50"></textarea>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="保存" id="addAFProcess" />
+		<input type="button" class="btn btn-ecitic" value="保存" id="updateAFProcess" />
+		<input type="button" class="btn btn-ecitic" value="关闭" id="goBackafList" onclick="closeSwfiProcessPop();" />
+	</div>
+</div>

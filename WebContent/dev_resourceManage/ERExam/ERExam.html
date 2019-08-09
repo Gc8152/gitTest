@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>环境资源审批</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_resourceManage/ERExam/ERExam.js"></script>
+<script src="js/commons/commons.js"></script>
+<link href="dev_resourceManage/rmcss.css" rel="stylesheet">
+<script src="dev_resourceManage/rmjs.js"></script>
+</head>
+<body>
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form action="" class="form-inline" id="queryParam">
+				<table class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">审批状态：</td>
+						<td>
+							<select>
+					        	<option selected="selected">待审批</option>
+					        	<option>已批准</option>
+			       			</select>
+		       			</td>
+		       			<td class="ecitic-right">系统名称：</td>
+						<td>
+							<input type="text"/>
+		       			</td>
+		       			<td class="ecitic-right">申请人：</td>
+						<td>
+							<input type="text"/>
+		       			</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">资源状态：</td>
+						<td>
+							<input type="text"/>
+		       			</td>
+		       			<td class="ecitic-right">项目组名称：</td>
+						<td>
+							<input type="text"/>
+		       			</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="queryERManager" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" id="reset" value="重置"/></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<!-- <button class="btn btn-ecitic" id="seniorQuery"><span class="seniorQuery"></span>高级查询</button> -->
+		<button class="btn btn-ecitic" id="ERaddexam">新建审批</button>
+		<button class="btn btn-ecitic" id="ERadjustExam">调整审批</button>
+		<button class="btn btn-ecitic" id="">查看审批</button>
+		<button class="btn btn-ecitic ilshA" id="moreIlsh" onclick="moreIlsh()"></button>
+	</div>
+	<div class="ecitic-new">
+		<table id="managerERTable" class="table table-bordered table-hover">
+			<tbody>
+				<tr class="tableFirTR">
+					<td class="newStyle">
+						<input name="chkAll" id="chkAll" title="全选" onClick="ChkAllClick('chkSon','chkAll')" type="checkbox" />
+					</td>
+					<td class="newStyle">
+						<span>序号</span>
+					</td>
+					<td class="newStyle">
+						<span>资源池编号</span>
+					</td>
+					<td class="newStyle">
+						<span>资源申请编号</span>
+					</td>
+					<td class="newStyle">
+						<span>申请人</span>
+					</td>
+					<td class="newStyle">
+						<span>项目组名称</span>
+					</td>
+					<td class="newStyle">
+						<span>系统名称</span>
+					</td>
+					<td class="newStyle">
+						<span>环境类别</span>
+					</td>
+					<td class="newStyle">
+						<span>申请日期</span>
+					</td>
+					<td class="newStyle">
+						<span>申请类型</span>
+					</td>
+					<td class="newStyle">
+						<span>审批状态</span>
+					</td>
+					<td class="newStyle">
+						<span>操作</span>
+					</td>
+					
+				</tr>
+				<tr class="tit">
+					<td rowspan="" id="combine">
+						<input name="chkSon" id="chkSon1" type="checkbox"  value='1' onclick="ChkSonClick('chkSon','chkAll')" />
+					</td>
+					
+					<td rowspan="" id="combine2">
+						<span>1</span>
+					</td>
+					<td style="width:250px;">
+					  <span>HJZY-0001</span>
+					</td>
+					<td>
+					  <div class="tit">
+						  <span>HJZY16-002</span>
+					  </div>
+					</td>
+					<td>
+						<span>王五</span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td >
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td >
+						<span><a>审批</a></span>
+					</td>
+				</tr>
+				<tr class="tit" id="">
+					<td rowspan="" id="combine">
+						<input name="chkSon" id="chkSon1" type="checkbox"  value='1' onclick="ChkSonClick('chkSon','chkAll')" />
+					</td>
+					
+					<td rowspan="" id="combine2">
+						<span>1</span>
+					</td>
+					<td style="width:250px;">
+					  <span>HJZY-0001</span>
+					</td>
+					<td>
+					  <div class="tit">
+						  <span>HJZY16-002</span>
+					  </div>
+					</td>
+					<td>
+						<span>张三</span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td >
+						<span></span>
+					</td>
+					<td >
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td >
+						<span><a>审批</a></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

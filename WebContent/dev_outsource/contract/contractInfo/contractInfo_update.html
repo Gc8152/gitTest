@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>合同基本信息修改</title>
+		<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/form.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+	</head>
+	<body>
+		<form action="" id="updateContractInfoForm">
+			<div class="main_iframe_con">
+				<div class="ecitic-title">
+					<span>合同基本信息<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-title-table">
+					<table class="table table-bordered tablr-input-text"><!-- table-bor-paw-->
+						<tr>
+							<td class="table-text" width="11%" >合同编号</td>
+							<td  width="22.333%">
+								<div class="pos-rel"><!-- 必填提示需加此div -->
+								<input type="text" id="contract_code" name="UC.contract_code" validate="v.required" valititle="合同编号为必填项" readonly="readonly"/>
+								<input type="hidden" id="contract_id" name="UC.contract_id">
+								</div>
+							</td>
+							<td width="11%" class="table-text">合同名称</td>
+							<td>
+								<input type="text" name="UC.contract_name" id="contract_name" class="citic-ast" 
+									validate="v.required" valititle="合同名称为必填项" />
+							</td>
+							<td width="11%" class="table-text">签约时间</td>
+							<td width="22.333%">
+								<div class="pos-rel">
+								<input type="text" id="sign_time" placeholder="请选择" name="UC.sign_time"   onClick="WdatePicker({})" class="citic-ast" readonly="readonly"/>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text" width="11%" >合同类别</td>
+							<td width="22.333%">
+								<select id="contract_sort" name="UC.contract_sort" class="citic-sele-ast" onchange="changeContractTypeDicUpdate(this.value);"   validate="v.required" valititle="合同类别为必填项">
+								</select>
+							</td>
+							<td class="table-text" width="11%" >合同类型</td>
+							<td width="22.333%">		
+								<div class="pos-rel">
+								<select id="contract_type" name="UC.contract_type" class="citic-sele-ast" onchange="changeContractTypeUpdate(this.value);"    validate="v.required" valititle="合同类型为必填项">
+								</select>
+								</div>
+							</td>
+							<td width="11%" class="table-text">项目编号</td>
+							<td>
+								<div class="pos-rel">
+									<input type="text" name="UC.project_code" id="project_code"  class="citic-ast" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text">总金额(不含税:元)</td>
+							<td>
+								<div class="pos-rel">
+								<input type="text" id="con_money" onchange="u_changeConMoney(this);"   name="UC.con_money" 
+									class="citic-ast" />
+								</div>
+							</td>
+							<td class="table-text">总金额(含税:元)</td>
+							<td>
+								<div class="pos-rel">
+								<input type="text" id="con_taxmoney" onchange="u_changeConTaxMoney(this);"   name="UC.con_taxmoney" class="citic-ast" readonly="readonly">
+								</div>
+							</td>
+							<td width="11%" class="table-text">折扣（%）</td>
+							<td width="22.333%"  class="table-rate-td">
+								<div class="pos-rel">
+									<input type="text" name="UC.discount_rate" id="discount_rate" onchange="checkUpRateNum(this);" class="citic-ast"/>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text">需求一级部门</td>
+							<td style="width:22.333%;">
+								<input type="hidden" id="demand_deptno_one" name="UC.demand_deptno_one"/>
+								<input type="text" placeholder="点击选择需求一级部门" name="UC.demand_deptname_one" id="demand_deptname_one"  readonly/>
+							</td>
+							<td class="table-text">责任一级部门</td>
+							<td style="width:22.333%;">
+								<input type="hidden" id="responsibility_deptno_one" name="UC.responsibility_deptno_one"/>
+								<input type="text" placeholder="点击选择责任一级部门" name="UC.responsibility_deptname_one" id="responsibility_deptname_one" readonly="readonly"  onclick="clickUpDeptOne(this.value)"/>
+							</td>
+							<td class="table-text">责任二级部门</td>
+							<td style="width:22.333%;"  onclick="clickuptTwoDept()">
+								<input type="hidden" id="responsibility_deptno_two" name="UC.responsibility_deptno_two"/>
+								<input type="text" placeholder="点击选择责任二级部门" name="UC.responsibility_deptname_two" id="responsibility_deptname_two" readonly/>
+							</td>
+						</tr>
+						<tr>
+							<td width="13.3%" class="table-text">项目经理编号</td>
+							<td width="20%">
+								<div class="pos-rel">
+									<input type="text" name="UC.res_person_no" id="res_person_no" />
+								</div>
+							</td>
+							<td width="13.3%" class="table-text">项目经理</td>
+							<td width="20%">
+								<div class="pos-rel">
+									<input type="text" name="UC.res_person" id="res_person" />
+								</div>
+							</td>
+							<td class="table-text" width="13.3%">供应商</td>
+							<td width="20%">
+								<input type="text" id="supplier_name" name="UC.supplier_name" readonly="readonly" placeholder="点击选择" validate="v.required" valititle="供应商为必填项" readonly="readonly" />
+								<input type="hidden" id="supplier_ids" name="UC.supplier_ids" />
+							</td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">计划验收时间</td>
+							<td width="22.333%">
+								<div class="pos-rel">
+								<input type="text" id="plan_arrivaltime" placeholder="请选择"   name="UC.plan_arrivaltime" onClick="WdatePicker({})"  class="citic-ast" readonly="readonly"/>
+								</div>
+							</td>
+							<td class="table-text">保修开始时间</td>
+							<td>
+								<div class="pos-rel">
+								<input type="text" id="guarantee_starttime" placeholder="请选择"   readonly="readonly" name="UC.guarantee_starttime" onClick="WdatePicker({maxDate:'#F{$dp.$D(\'guarantee_endtime\',{d:0});}'})" class="citic-ast" />
+								</div>
+							</td>
+							<td width="11%" class="table-text">保修结束时间</td>
+							<td width="22.333%">
+								<div class="pos-rel">
+								<input type="text" id="guarantee_endtime" placeholder="请选择"   name="UC.guarantee_endtime" onClick="WdatePicker({minDate:'#F{$dp.$D(\'guarantee_starttime\',{d:0});}'})"  class="citic-ast" readonly="readonly"/>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">产品名称</td>
+							<td>
+								<input type="text" name="UC.product_name" id="product_name" class="citic-ast"   />
+							</td>
+							<td width="11%" class="table-text">产品型号</td>
+							<td>
+								<input type="text" name="UC.product_model" id="product_model" class="citic-ast" />
+							</td>
+							<td width="11%" class="table-text">制造商</td>
+							<td>
+								<input type="text" name="UC.manufacturers" id="manufacturers" class="citic-ast" />
+							</td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">附件</td>
+							<td colspan="5">
+								<input type="button" value="上传" id="updateContractFileButton" class="btn btn-ecitic" />
+								<input type="hidden" name="UC.file_id" id="normalUpdateContractFile" />
+							</td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">备注</td>
+							<td colspan="5">
+								<div class="pos-rel">
+									<textarea id="meet_memo" name="UC.meet_memo" class="citic-text-ast"></textarea>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="ecitic-title" id="updateCon_phase_add_title">
+					<span>付款阶段<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-new" id="updateCon_phase_add_table">
+					<div class="ecitic-operation ecitic-operation-bg">
+						<button type="button" class="btn btn-ecitic" id="contractPhase_update_add">新增</button>
+					</div>
+					<table class="table table-bordered table-center table-th tablr-input-text" id="contractPhase_update_table">
+						<tr>
+							<th width="15%" style="display:none">付款阶段编号</th>
+							<th width="15%">付款阶段名称</th>
+							<th width="10%">付款条件</th>
+							<th width="15%">付款类型</th>
+							<th width="10%">占比（%）</th>
+							<th width="10%">付款金额(元)</th>
+							<th width="10%">操作</th>
+						</tr>
+					</table>
+				</div>
+				
+<!-- 			<div id="purchase_Up" style="display:none;">
+				<div class="ecitic-title" id="addCon_purchase_title_Up">
+					<span>软硬件采购<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-new" id="upCon_purchase_table">
+					<div class="ecitic-operation ecitic-operation-bg">
+						<button type="button" class="btn btn-ecitic" id="contractPurchase_add_Up">新增</button>
+					</div>
+					<table class="table table-bordered table-center table-th tablr-input-text" id="contractPurchase_table_Up">
+						<tr>
+							<th width="12%">名称</th>
+							<th width="15%">型号</th>
+							<th width="15%">材质</th>
+							<th width="10%">数量</th>
+							<th width="10%">备注</th>
+							<th width="10%">操作</th>
+						</tr>
+					</table>
+				</div>
+			</div> -->
+				<div class="ecitic-save">
+					<input id="contractInfoUpdate" onclick="updateContractInfoMsg('save')" type="button" class="btn btn-ecitic" value="保存" />
+					<input id="contractInfoUpSubmit" type="button" onclick="updateContractInfoMsg('submit')" class="btn btn-ecitic" value="保存并执行" />
+					<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+				</div>
+				<div id="updateContractResPersonPop"></div>
+				<div id="contractSupplier_Pop"></div><!-- 增加供应商pop框 -->
+			</div>
+		</form>
+		<script src="bootstrap/js/bootstrap-table.min.js"></script>
+		<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+		<script src="dev_outsource/contract/contractInfo/contractInfo_update.js"></script>
+		<script src="pages/sorg/sorgPop.js"></script>
+		<script src="upload/uploadFileInfo.js"></script>
+	<!-- 	<script src="resources/staffLeave/staffLeavePop.js"></script>用户pop框 -->
+		<script type="text/javascript" src="dev_outsource/supplier/supplierInfo/supplierPop.js"></script><!-- 增加供应商pop框 -->
+	</body>
+</html>

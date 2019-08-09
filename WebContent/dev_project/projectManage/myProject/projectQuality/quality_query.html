@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>不符合项目提出</title>
+<link rel="stylesheet" type="text/css"
+	href="bootstrap/css/bootstrap-table.min.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+<body>
+	<div class="ecitic-inquire ecitic-inquire-sec lessSearch">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="noConformItem_query">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">不符合项名称：</td>
+						<td>
+						  <input type="text" name="no_conform_name" id="no_conform_name" />
+						</td>
+						 <td class="ecitic-right">不符合项分类：</td>
+						<td><select name="typ" id="typ" diccode="P_DIC_QUALITY_TYP"></select></td>
+						<td class="ecitic-right">不符合项等级：</td>
+						<td><select id="grade" name="grade" diccode="P_DIC_QUALITY_GRADE"></select></td>
+						<!-- <td class="ecitic-right">业务编号：</td>
+						<td>
+						  <input type="text" name="BUSINESS_CODE" id="business_code" />
+						</td> -->
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="raiseCommit">查询</button></li>
+			<li><button class="btn btn-ecitic" id="raiseReset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic my" id="quality_accept">受理</button>
+		<button class="btn btn-ecitic my" id="quality_handle">处理</button>
+		<button class="btn btn-ecitic" id="view_auditdetail">查看详情</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover table-text-show" id="noConformItemTable"></table>
+	</div>
+</body>
+<script type="text/javascript" src="dev_project/projectManage/myProject/projectQuality/quality_query.js"></script>
+</html>

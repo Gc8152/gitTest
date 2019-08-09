@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_planwork/work/work_bookingPop.js"></script>
+
+<script type="text/javascript" src="dev_planwork/work/work_booking.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<form action=""  class="form-inline">
+	      <div class="ecitic-inquire ecitic-inquire-sec" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<table id="queryTable" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">项目名称：</td>
+						<td>
+							<input type="text" name="pro_name" id="pro_name" class="citic-ast"/>
+							<input type="hidden" name="staff_code" id="staff_code"  />
+						</td>
+						<td class="ecitic-right">项目编号：</td>
+						<td>
+							<input type="text" name="pro_code" id="pro_code" />
+						</td>
+					</tr>
+					<tr>
+						<!-- <td class="ecitic-right">人员姓名：</td>
+						<td>
+							<input type="text" name="staff_name" id="staff_name" class="citic-ast" placeholder="请选择"/>
+							<input type="hidden" name="staff_code" id="staff_code"  />
+						</td> -->
+						<td class="ecitic-right">月份：</td>
+						<td>
+							<input type="text" name="pro_date" id="pro_date" readonly="readonly" onclick="initDate(this)"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" id="work_booking_serch" value="查询" /></li>
+				<li><input type="reset" class="btn btn-ecitic" id="reset" value="重置" /></li>
+			</ul>
+	  </div>
+	</form>
+	<div class="ecitic-operation">
+		<!-- <button class="btn btn-ecitic" id="allSelect">全选</button> -->
+		<button class="btn btn-ecitic" id="passThough">通过</button>
+		<button class="btn btn-ecitic" id="beatBack">退回</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="projectList" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+<div id='workBookingPOP'></div>
+
+</body>
+</html>

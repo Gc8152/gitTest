@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>项目质量管理</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" >
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire ecitic-moreNo">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="riskQuestionManage_query">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">风险描述：</td>
+						<td><input type="text" name="RISK_DESC"/></td>
+						<td class="ecitic-right">风险状态：</td>
+						<td><select name="RISK_STATUS" diccode="P_DIC_RISK_STATUS"></select></td>
+						<td class="ecitic-right">优先级：</td>
+						<td><select name="PRIORITY" diccode="P_DIC_RISK_PRIORITY"></select></td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">一级分类：</td>
+						<td><select name="FIRST_CLASSIFY" diccode="P_DIC_RISK_TYPE1"></select></td>
+						<td class="ecitic-right">二级分类：</td>
+						<td><select name="SECOND_CLASSIFY" diccode="P_DIC_RISK_TYPE2"></select></td>
+						<td></td><td></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="commit">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<!-- <button class="btn btn-ecitic" id="riskManage_add">新建</button> -->
+		<button class="btn btn-ecitic" id="riskManage_follow">跟踪</button>
+		<!-- <button class="btn btn-ecitic" id="riskManage_validate">验证</button> -->
+		<button class="btn btn-ecitic" id="riskManage_queryInfo">详情</button>
+	</div>
+	<!-- table开始 -->
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover" id="riskQuestionManage_table"></table>
+		<!-- <table class="table table-bordered table-hover">
+			<tr>
+				<th width="24"></th>
+				<th>序号</th>
+				<th>标记</th>
+				<th>QA审计任务编号</th>
+				<th>QA审计任务名称</th>
+				<th>不符合项个数</th>
+				<th>未关闭不符合项个数</th>
+				<th>已关闭不符合项个数</th>
+				<th>QA</th>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" value="">
+				</td>
+				<td>1</td>
+				<td></td>
+				<td>QA201702201</td>
+				<td>XXXXXX审计</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>王艳</td>
+			</tr>	
+			<tr>
+				<td>
+					<input type="checkbox" value="">
+				</td>
+				<td>2</td>
+				<td>！</td>
+				<td>QA201702202</td>
+				<td>需求审计</td>
+				<td>16</td>
+				<td>6</td>
+				<td>10</td>
+				<td>张三</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" value="">
+				</td>
+				<td>3</td>
+				<td></td>
+				<td>QA201702203</td>
+				<td>投产管理审计</td>
+				<td>5</td>
+				<td>1</td>
+				<td>4</td>
+				<td>李四</td>
+			</tr>					
+	</table> -->
+	<!-- 分页开始 -->
+	<!-- <div class="ecitic-page-all">
+			<div class="ecitic-page-every">
+				<span>每页显示5条</span>
+				<span>共4条</span>
+			</div>
+			<div class="ecitic-page-select">
+				<div class="ecitic-page-select-btn">
+					<button class="btn">首页</button>
+					<button class="btn">上一页</button>
+					<button class="btn">下一页</button>
+					<button class="btn">末页</button>
+				</div>
+				<div class="ecitic-page-select-go">
+					<span>第</span>
+					<input type="text" value="" />
+					<span>页</span>
+					<button class="btn">GO</button>
+				</div>
+			</div>
+		</div> -->
+		<!-- 分页结束 -->
+	</div>
+	<script src="bootstrap/js/bootstrap-table.min.js"></script>
+	<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>  
+	<script type="text/javascript" src="dev_project/riskQuestionManage/riskQuestionManagetrack_queryList.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>问题管理</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" >
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="main_iframe_con">
+	  <form action=""  class="form-inline" id="questionRaiseForm">
+	      <div class="ecitic-inquire" id="ecitic-inquire">
+			 <div class="ecitic-table" id="ecitic-inquire">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				
+					<tr>
+					   <td class="ecitic-right">问题名称：</td>
+						<td>
+						  <input type="text" id="question_name" name="question_name" />
+						</td>
+						<td class="ecitic-right">问题状态：</td>
+						<td>
+						  <select id="question_status" name="question_status" diccode="P_DIC_RISK_STATUS" style="width:100%"></select>
+						</td>
+						  <td class="ecitic-right">问题级别：</td>
+						<td>
+						  <select id="question_grade" name="question_grade" diccode="P_DIC_RISK_LEVEL" style="width:100%"></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">项目名称：</td>
+						<td>
+						   <input type="text" id="project_name" name="project_name" /></td>
+						   
+					<td class="ecitic-right">问题严重程度：</td>
+						<td>
+						   <select  id="ponderance" name="ponderance" diccode="P_DIC_RISK_SERIOUS" style="width:100%"></select>
+						</td>
+						<td class="ecitic-right">问题分类：</td>
+						<td>
+						   <select id="first_classify" name="first_classify" diccode="P_DIC_RISK_TYPE1" style="width:100%"></select>
+						</td>
+					</tr>
+					<tr>
+					   <td class="ecitic-right">提出人：</td>
+						<td>
+						  <input type="text" id="raise_user_name" name="raise_user_name" />
+						</td>
+						 <td class="ecitic-right">责任人：</td>
+						<td>
+						  <input type="text" id="duty_user_name" name="duty_user_name" />
+						</td>
+						 <td class="ecitic-right">提出日期：</td>
+						<td>
+						<div class="dateSelectZ">
+							<input type="text" id="question_raise_time" name="question_raise_time" class="requirement-ele-width"  onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'question_raise_time\',{d:0});}'})" placeHolder="点击选择"   readonly/>
+						</div>
+						</td>
+						<!--  <td class="ecitic-right">处理人：</td>
+						<td>
+						  <input type="text" id="handle_user_name" name="handle_user_name" />
+						</td> -->
+						
+					</tr>
+				<!-- 	<tr>
+						 <td class="ecitic-right">提出日期：</td>
+						<td>
+						<div class="dateSelectZ">
+							<input type="text" id="question_raise_time" name="question_raise_time" class="requirement-ele-width"  onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'question_raise_time\',{d:0});}'})" placeHolder="点击选择"   readonly/>
+						</div>
+						</td>
+						<td class="ecitic-right"></td>
+						<td></td>
+						<td class="ecitic-right"></td>
+						<td></td>
+					</tr> -->
+					
+				</table>
+		   </div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="query_questionRaiseList" value="查询"></li>
+			<li><input type="reset" class="btn btn-ecitic" id="reset_qestionRaiseList" value="重置"></li>
+		</ul>
+	  </div>	
+	</form>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="questionRaise_add">提出</button>
+		<button class="btn btn-ecitic" id="questionRaise_update">修改</button>
+		<button class="btn btn-ecitic" id="questionRaise_submit">提交</button>
+		<button class="btn btn-ecitic" id="questionRaise_delete">删除</button>
+		<button class="btn btn-ecitic" id="questionRaise_detail">详情</button>
+	</div>
+
+	<div class="ecitic-new">
+		<table id="questionRaiseTable" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="dev_project/questionManage/questionRaise/questionRaise_queryList.js"></script>
+</html>

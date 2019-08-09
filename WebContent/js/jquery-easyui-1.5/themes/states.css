@@ -1,0 +1,12 @@
+.icon-finished{
+	width:10px;height:10px;margin-top:4px;border-radius:50%;
+	background:red;
+}
+.icon-unfinished{
+	width:10px;height:10px;margin-top:4px;border-radius:50%;
+	background:gray;
+}
+.icon-finishing{
+	width:10px;height:10px;margin-top:4px;border-radius:50%;
+	background:green;
+}

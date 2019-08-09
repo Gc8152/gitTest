@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/public.css" />
+</head>
+<body>
+	<div id="update_assortment" class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>督办类别信息<em></em></span>
+		</div>
+		<div id="myTabContent" class="ecitic-title-table ecitic-title-table-application">
+			<div class="tab-pane active" >
+				<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+				<tr>
+					<td width="11%" class="table-text">督办类别编号：</td>
+					<td width="22.333%">
+						<input type="hidden" id="assortid" name="ASS.assortid"/>
+						<input type="text" name="ASS.assortmark" id="" validate="v.required" valititle="该项为必填项" class="citic-ast" readonly="readonly"/>
+					</td>
+					<td width="11%" class="table-text">督办类别名称：</td>
+					<td width="22.333%">
+						<input type="text" name="ASS.assortname" id="" validate="v.required" valititle="该项为必填项" class="citic-ast"/>
+					</td>
+				</tr>
+				<tr>
+					<td width="11%" class="table-text">状态：</td>
+					<td width="22.333%">
+						<select type="text" name="ASS.flag"  diccode="S_DIC_OC"  id="" validate="v.required" valititle="该项为必填项" class="citic-ast"></select>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">说明：</td>
+					<td colspan="5">
+						<textarea name="ASS.instruction"  validate="v.charCountLimit" class="citic-text-ast"></textarea>
+					</td>
+					
+				</tr>
+				</table>
+				<div class="ecitic-save">
+					<button id="assortment_updateButton" class="btn btn-ecitic">保存</button>
+					<button type="button" name="globeBack" id="closePageAssortment_update" class="btn btn-ecitic">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="supervision/assortment/assortment_update.js"></script>
+</body>
+</html>

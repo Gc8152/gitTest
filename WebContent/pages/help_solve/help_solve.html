@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>知识库</title>
+<!-- 字体图标 -->
+</head>
+<body>
+<div id="requirementListPart" class="main_iframe_con">
+	<form action=""  class="form-inline" id="form-list">
+		<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<table width="100%" style="border:1px; cellspacing:0px; cellpadding:0px;"class="table table-bordered table-bor-pad requirement-table">
+					<tr>
+						<td class="ecitic-right"  style="width:10%">问题名称：</td>
+						<td style="width:20%">
+						<input type="text" id="problem_name" name="problem_name" class="requirement-ele-width"/>
+						</td >
+						<td class="ecitic-right"  style="width:10%">创建时间：</td>
+						<td>
+						<div style="float:left; width:45%;">
+						<input type="text" id="req_operation_date_reqquery" name="req_operation_date" class="requirement-ele-width"  onFocus="WdatePicker({})" placeHolder="点击选择"   readonly/>
+						</div>
+						<div style="float:left;width:10%;line-height:26px;">&nbsp至&nbsp</div>
+						<div style="float:left;width:45%;">
+						<input type="text" id="req_operation_date1_reqquery" name="req_operation_date1" class="requirement-ele-width" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'req_operation_date_reqquery\',{d:0});}'})" placeHolder="点击选择"  readonly/>
+						</div>
+						</td>
+						<td></td>
+					</tr>					
+				</table>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" id="serach" value="查询"/></li>
+				<li><input type="reset" class="btn btn-ecitic" id="reset" value="重置"/></li>
+			</ul>
+		</div>
+		</form>
+		<div class="ecitic-operation">
+			<button class="btn btn-ecitic" id="add" onclick="addProblem(this,'ProblemAdd','')">新增</button>
+			<button class="btn btn-ecitic" id="delete">删除</button>
+			<button class="btn btn-ecitic" id="update" >修改</button>
+			<button class="btn btn-ecitic" id="serachAll" >详情查询</button>
+		</div>
+		<div class="ecitic-new">
+			<table id="problemList" class="table table-bordered table-hover"></table>
+		</div>
+	</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="pages\help_solve\help_solve.js"></script>
+</html>

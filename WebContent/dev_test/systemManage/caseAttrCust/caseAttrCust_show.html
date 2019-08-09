@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link href="css/form.css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">
+		<div class="ecitic-title">
+            <span>查看案例属性</span>
+        </div>
+		<form  id="addAttrManage_from" class="form-inline">
+			<div class="ecitic-title-table" id="ecitic-table">
+				<table style="width:100%" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+					<tr>
+						<td width="14%" class="table-text">属性ID：</td>
+						<td width="35.444%" ><div name="I.ATTR_ID" id="ATTR_ID"></div></td>
+					</tr>
+					<tr>
+						<td width="14%" class="table-text">属性名称：</td>
+						<td width="35.444%"><div name="I.ATTR_NAME" id="ATTR_NAME"></div></td>
+					</tr>	
+					<tr>
+						<td class="table-text">是否必填：</td>
+						<td id="NECESSARY">
+							
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">属性类型：</td>
+						<td>
+							<div id="ATTR_TYPE_NAME"   name="I.ATTR_TYPE"></div>
+						</td>
+					</tr>
+					<tr id="text" style="display:none">
+						<td width="14%" class="table-text">最大长度：</td>
+						<td width="35.444%"><div name="I.MAX_LENGTH" id="MAX_LENGTH" ></div></td>
+					</tr>
+					<tr id="drop_down_box" style="display:none">
+						<td width="14%" class="table-text">字典项编号：</td>
+						<td width="35.444%"><div name="I.DICTIONARY_NUM" id="DICTIONARY_NUM" ></div></td>
+					</tr>
+					<tr id="tr3" style="display:none">
+						<td class="table-text">默认值：</td>
+						<td><div name="I.DEFAULT_NUM" id="DEFAULT_NUM"></div></td>
+					</tr>
+					<tr>
+						<td class="table-text">排序序号：</td>
+						<td><div name="I.SORT_NUM" id="SORT_NUM" ></div></td>	
+					</tr>
+					
+				</table>			
+			</div>
+		</form>
+	<div class="ecitic-save">
+		<!-- <input type="button" class="btn btn-ecitic" value="确定" id="addAttrManage" /> -->
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+	</div>
+	
+	<!-- POP框 -->
+<div class="modal fade"  id="myModal" tabindex="-1" role="dialog" style="display: none">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">字典项信息</h4>
+      </div>
+      <div class="modal-body">
+      <!-- 查询条件框 -->
+      		<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table" style="height:60px;">
+				<form id="contractInfo" action="">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad" style="table-layout:fixed;width:100%">
+						<tr>
+							<td class="ecitic-right" style="width:11%;">类别编码</td>
+							<td style="width:22.333%;">
+								<input type="text" id="user_name_pop" name="F.user_name"/>
+							</td>
+							<td class="ecitic-right" style="width:11%;">类别名称</td>
+							<td style="width:22.333%;">
+								<input type="text" id="user_mobile_pop" name="F.user_mobile" />
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><button class="btn btn-ecitic" id="queryPer" type="button">查询</button></li>
+				<li><button class="btn btn-ecitic" id="resetPer" type="button">重置</button></li>
+			</ul>
+		</div>
+
+			<table class="table table-bordered table-hover" id="conPerTableAdd"></table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ecitic" name="closePageTabConfirm" data-dismiss="modal">关闭</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+	
+</div>
+
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_test/systemManage/caseAttrCust/caseAttrCust_show.js"></script>
+</html>
+		

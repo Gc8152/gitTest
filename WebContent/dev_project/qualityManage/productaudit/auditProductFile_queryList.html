@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>不符合项目提出</title>
+<link rel="stylesheet" type="text/css"
+	href="bootstrap/css/bootstrap-table.min.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+<body>
+	<div class="ecitic-inquire ecitic-moreNo">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="auditProductFileForm">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">产品类型：</td>
+						<td><select type="text" name="product_type" id="product_type" diccode="P_DIC_QUALITY_WORK_PRODUCT" style="width:100%"></select></td>
+						<td class="ecitic-right">审计状态：</td>
+						<td><select type="text" name="audit_state" id="audit_state" diccode="P_DIC_AUDIT_STATE" style="width:100%"></select></td>
+						<td class="ecitic-right">业务编号：</td>
+						<td><input type="text" name="business_code" id="business_code" />
+						</td>
+					</tr>
+					<tr>
+					   <td class="ecitic-right">文档所处阶段：</td>
+					   <td><select name="task_state" id="task_state" diccode="G_DIC_REQTASK_STATE" style="width:100%"></select></td>
+					   <td class="ecitic-right">责任人：</td>
+					   <td><input type="text" name="p_owner_name" id="p_owner_name" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="audit_search">查询</button></li>
+			<li><button class="btn btn-ecitic" id="audit_reset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="excute_audit">执行审计</button>
+		<button class="btn btn-ecitic" id="view_auditdetail">查看审计情况</button>
+	</div>
+	<!-- table开始 -->
+	<div class="ecitic-new">
+		<table id="auditProductFileTable" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</body>
+<script type="text/javascript" src="dev_project/qualityManage/productaudit/auditProductFile_queryList.js"></script>
+</html>

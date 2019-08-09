@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SIT测试受理列表</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire">
+		<div class="ecitic-table">
+			<form id="sitSubmit">
+				<table id="table_select" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">需求点编号：</td>
+						<td><input type="text" name="SUB_REQ_CODE"/></td>
+						<td class="ecitic-right">需求点名称：</td>
+						<td><input type="text" name="SUB_REQ_NAME"/></td>
+						<td class="ecitic-right">应用名称：</td>
+						<td><input type="text" name="SYSTEM_NAME"/></td>
+						
+					</tr>
+					<tr>
+					<td class="ecitic-right">当前责任人：</td>
+						<td><input type="text" name="TEST_MAN_NAME"/></td>
+						<td class="ecitic-right">移交时间：</td>
+						<td><input type="text" name="CREATE_TIME" onClick="WdatePicker({})" class="citic-ast"  placeholder="请选择" readonly="readonly"/></td>
+<!-- 						<td class="ecitic-right">测试版本号：</td>
+						<td><input type="text" name="TEST_VERSION_ID"/></td>
+						<td class="ecitic-right">版本发布日期：</td>
+						<td><input type="text" name="VERSION_PUSH_DATA" onclick="WdatePicker({})" 
+						    placeholder="请选择" readonly="readonly"/>
+					    </td>
+					    <td class="ecitic-right">投产包名称：</td> 
+						<td><input type="text" name="TEST_PACKAGE_NAME"/></td> -->
+						<td class="ecitic-right">移交状态：</td>
+						<td>
+						<!-- <input type="text" name="STATUS_NAME" diccode="G_DIC_SIT_SUBMIT_STATE"/> -->
+						<select  type="text" id="SUBMIT_STATE" class="requirement-ele-width" name="SUBMIT_STATE"  diccode="G_DIC_SIT_SUBMIT_STATE" style="width:100%;">
+						   </select>
+						</td>
+					</tr>
+					<tr>
+				<!-- 		<td class="ecitic-right">配置管理员：</td>
+						<td><input type="text" name="CONFIG_MAN_NAME"/></td> -->
+						<td class="ecitic-right">测试轮次：</td>
+						<td><input type="text" name="TEST_COUNT_NAME"/></td> 
+						<td class="ecitic-right">配置时间：</td>
+						<td><input type="text" name="CONFIG_TIME" onClick="WdatePicker({})" class="citic-ast"  placeholder="请选择" readonly="readonly"/></td>
+						<td class="ecitic-right">任务状态：</td>
+						<td width="20%">
+						   <select id="REQ_TASK_STATE" name="REQ_TASK_STATE" style="width:100%" diccode="G_DIC_REQTASK_STATE"></select>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="query">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="view_Sit">查看详情</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="sitAllTable" class="table table-bordered table-hover"></table>
+	</div>
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/sit_test_jn/sit_submit/sitsubmit_queryAllList.js"></script>
+</html>

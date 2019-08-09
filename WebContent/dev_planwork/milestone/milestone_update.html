@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+<style type="text/css">
+ /* #add_projectModelForm tbody tr td{position: relative;} */
+</style>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+		<span id="modelSpan">模板信息<em></em></span><i></i>
+	</div>
+	<!-- 模板信息 -->
+	<form action=""  class="form-inline" id="update_projectModelForm">
+	<div class="ecitic-title-table modal-body">
+		<table class="table table-striped table-hover table-bordered requirement-table">
+			<tbody>
+				<tr>
+					<td class="table-text" style="width: 15%;"><span>模板名称：</span></td>
+					<td style="width: 35%;"><div><div class="must-content-reminder"><input type="text" name="model_name" id="P_model_name" maxlength="50" validate="v.required" valititle="该项为必填项" /></div></div></td>
+					<td class="table-text" style="width: 15%;"><span>模板状态：</span></td>
+					<td style="width: 35%;"><div><div class="must-content-reminder"><select id="P_is_use" name="is_use" validate="v.required" valititle="该项为必填项" style="width:100%;"></select></div></div></td>
+				</tr>
+				
+				<tr>
+					<td class="table-text"><span>模板说明：</span></td>
+					<td colspan="3">
+						<div>
+							<div class="must-content-reminder">
+								<textarea rows="3" resize="none" rows="3"
+							id="P_description" name="description" validate="v.required" valititle="该项为必填项"></textarea>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</form>
+	<!-- 模板信息 -->
+	<!--配置模板属性  -->
+	
+	<div class="ecitic-title">
+		<span>配置模板属性<em></em></span><i></i>
+	</div>
+	<div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="add_milestoneAttr">新增</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover requirement-table" id="milestoneAttrTab">
+			<tr>
+				<th width="25%">项目类型</th>
+				<th width="25%">子分类</th>
+				<th width="25%">说明</th>
+				<th width="25%">操作</th>
+			</tr>
+		</table>
+	</div></div>
+	<!--配置模板属性  -->
+	<!-- 配置里程碑 -->
+	<div class="ecitic-title">
+		<span>配置里程碑<em></em></span><i></i>
+	</div>
+	<div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="add_milestoneInfo">新增</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover requirement-table" id="milestoneInfoTab">
+			<tr>
+				<th width="6%">序号</th>
+				<th width="12%">里程碑编号</th>
+				<th width="12%">里程碑名称</th>
+				<th width="13%">里程碑类型</th>
+				<th width="12%">是否必选</th>
+				<th width="13%">状态</th>
+				<th width="13%">交付物</th>
+				<th width="10%">参考模板</th>
+				<th width="9%">操作</th>
+			</tr>
+		</table>
+	</div></div>
+	<!-- 配置里程碑 -->
+	
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="保存" id="saveModel" type="button"/>
+		<input class="btn btn-ecitic" type="button" name="closePageTabConfirm" value="返回"/>
+	</div>
+	
+</div>
+</body>
+
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="dev_planwork/milestone/milestone_add.js"></script>
+</html>

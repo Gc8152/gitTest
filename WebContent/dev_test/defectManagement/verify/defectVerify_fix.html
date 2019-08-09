@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>接口使用受理</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="widget-box">
+		<div class="widget-content nopadding">
+			<div class="control-group">
+				<div class="controls">
+					<ul class="nav nav-tabs">
+						<!-- <li class="active"><a href="#defect_verify_info" data-toggle="tab" >缺陷验证</a></li> -->
+						<li class="active"><a href="#defect_info" data-toggle="tab" >缺陷信息</a></li>
+						<li><a href="#defect_history" data-toggle="tab" >操作历史</a></li>
+					</ul>
+	<div class="tab-content">
+	
+<!-- 	******缺陷验证******   -->
+			<!-- <div class="tab-pane active" id="defect_verify_info" >
+				<div class="ecitic-title">
+		            <span>执行案例<em></em></span> <i></i>
+		        </div>
+		        <div class="ecitic-title-table">
+		            <table tb="caseTable" class="table table-bordered table-hover table-text-show"></table>
+		        </div>
+
+				<div class="ecitic-title">
+					<span>附件列表信息<em></em></span> <i></i>
+				</div>
+				<div class="ecitic-title-table">
+					<div class="ecitic-operation">
+						<button type="button" class="btn btn-ecitic"
+							id="reqChange_upFile">上传截图</button>
+						<button type="button" class="btn btn-ecitic"
+							id="reqChange_delFile">删除</button>
+					</div>
+					<table tb="fixFileTable" class="table table-bordered table-hover table-text-show"></table>
+				</div>
+				<div class="ecitic-title-table">
+				 <table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+	                <tr>
+	                    <td width="20%" class="table-text">备注：</td>
+                        <td width="80%">
+                            <textarea class="textarea3"  name="IU.REMARK"></textarea>
+                        </td>
+	                </tr>
+	              </table>
+				</div>
+				<div class="ecitic-save">
+		            <input type="button"  class="btn btn-ecitic" btn="close_defect" value="关闭缺陷" />
+		            <input type="button"  class="btn btn-ecitic" btn="reopen_defect" value="重新打开" />
+		            <input type="button"  class="btn btn-ecitic" name="closePageTabConfirm" value="返回" />
+		        </div>
+			</div> -->
+			
+		<!-- 	******缺陷信息 ******  -->
+			<div class="tab-pane active" id="defect_info" >
+				<div class="ecitic-title">
+		            <span>基本信息</span><i></i>
+		        </div>
+		          <div class="ecitic-title-table">
+		        	<input type="hidden" name="IU.DEFECT_ID">
+		            <table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+		            <colgroup>
+						<col style="width: 20%">
+						<col style="width: 30%">
+						<col style="width: 20%">
+						<col style="width: 30%">
+					</colgroup>
+		            <tr>
+	                    <td class="table-text">摘要：</td>
+	                    <td colspan="4">
+	                    	<div id="SUMMARY"></div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="table-text">所属应用：</td>
+	                    <td >
+	                    	<div id="SYSTEM_NAME"></div>
+	                    </td>
+	                    <td class="table-text">所属模块：</td>
+	                    <td >
+	                    	<div id="MODULE_NAME"></div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                 	<td class="table-text">所属功能点：</td>
+	                    <td >
+	                    	<div id="FUNCPOINT_NAME"></div>
+	                    </td>
+	                    <td class="table-text">测试版本：</td>
+	                    <td >
+	                    	<div id="TEST_VERSION_NAME"></div>
+	                    </td>
+	                   
+	                </tr>
+	                <tr>
+	                    <td class="table-text">出现频率：</td>
+	                    <td >
+	                    	<div id="FREQUENCY_NAME"></div>
+	                    </td>
+	                    <td class="table-text">可否重现：</td>
+	                    <td >
+	                    	<div id="IS_REAPPEAR_NAME"></div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="table-text">缺陷等级：</td>
+	                    <td >
+	                    	<div id="SEVERITY_GRADE_NAME"></div>
+	                    </td>
+	                    <td class="table-text">缺陷优先级：</td>
+	                    <td >
+	                    	<div id="PRIORITY_LEVEL_NAME"></div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                	<td class="table-text">提出人：</td>
+	                    <td >
+	                    	<div id="CREATE_MAN_NAME"></div>
+	                    </td>
+	                    <td class="table-text">提出时间：</td>
+	                    <td >
+	                    	<div id="CREATE_TIME"></div>
+	                    </td>
+						
+	                </tr>
+	                 <tr>
+	                	<td class="table-text">处理人：</td>
+	                    <td >
+	                    	<div id="DISPOSE_MAN_NAME"></div>
+	                    </td>
+	                    <td class="table-text">处理时间：</td>
+	                    <td >
+	                    	<div id="DISPOSE_TIME"></div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                	<td class="table-text">要求完成时间：</td>
+	                    <td >
+	                    	<div id="COMPLETE_TIME"></div>
+	                    </td>
+	                    <td class="table-text"></td>
+	                    <td >
+	                    </td>
+						
+	                </tr>
+	                 <tr>
+		               <td class="table-text">附件：</td>
+		                  <td colspan="5">
+		               		<input type="hidden" value="上传附件" id="ETA_out_resume" class="btn btn-ecitic" /> 
+		           			<input type="hidden" name="IU.FILE_ID" id="ETA_out_resume_file" />
+		              	</td>
+                	 </tr>
+	                <tr>
+	                   	
+	                    <td class="table-text">缺陷描述：</td>
+	                    <td colspan="4">
+	                    	<div>
+	                    	<pre id="DEFECT_DESCRIPTION" style="border: none;background-color: white; font-family: '微软雅黑', arial;">--</pre>
+	                    	</div>
+	                    </td>
+	                </tr>
+	               
+		            </table>
+		        </div>
+		   <div class="ecitic-title" id="defectAttr">
+            <span>自定义属性<em></em></span> <i></i>
+        </div>
+        <div class="ecitic-title-table" id="defectAttr_table">
+		<table tb="verInfoAttrTable" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+		<tbody>
+	   </tbody>
+	 </table>
+	 </div>
+		        <div class="ecitic-title">
+		            <span>实际操作步骤<em></em></span> <i></i>
+		        </div>
+		        <div class="ecitic-title-table">
+		            <table tb="realOptTable" class="table table-bordered table-hover table-text-show"></table>
+		        </div>
+		
+		       <!--  <div class="ecitic-title">
+		            <span>附件列表信息<em></em></span> <i></i>
+		        </div>
+		        <div class="ecitic-title-table">
+		            <table tb="defectFileTable" class="table table-bordered table-hover table-text-show"></table>
+		        </div> -->
+		        
+				<div class="ecitic-title">
+		            <span>缺陷分析</span><i></i>
+		        </div>
+		          <div class="ecitic-title-table">
+		            <table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+		                <tr>
+		                    <td width="20%" class="table-text">缺陷原因分析：</td>
+		                    <td width="80%">
+		                    	<div id="DEFECT_ANALYZE"></div>
+		                    </td>
+		                </tr>
+		                 <tr>
+		                    <td width="20%" class="table-text">缺陷分类：</td>
+		                    <td width="80%">
+		                    	<div id="DEFECT_CLASS_NAME"></div>
+		                    </td>
+		                </tr>
+		                 <tr>
+		                    <td width="20%" class="table-text">解决方法：</td>
+		                    <td width="80%">
+		                    	<div id="DEFECT_SOLUTION"></div>
+		                    </td>
+		                </tr>
+		            </table>
+		        </div>
+		        <div class="ecitic-save">
+		            <input type="button"  class="btn btn-ecitic" btn="close_defect" value="关闭缺陷" />
+		            <input type="button"  class="btn btn-ecitic" btn="reopen_defect" value="重新打开" />
+		            <input type="button"  class="btn btn-ecitic" name="closePageTabConfirm" value="返回" />
+		   	 	</div>
+			</div>
+			
+			<div class="tab-pane fade" id="defect_history" >
+				   <div class="ecitic-title">
+          					 <span>操作历史<em></em></span> <i></i>
+       				</div>
+			        <div class="ecitic-title-table">
+			            <table tb="optHistoryTable" class="table table-bordered table-hover table-text-show"></table>
+			        </div>
+			</div>		
+			
+			<!--  附件显示模态框 
+			<div id="file_fix_modal"></div>
+			 上传附件模态框 
+			<div id="file_verify_modal"></div>
+			 -->
+			 <!--    重新打开  -->
+        <div id="refuseDefect_modal" class="modal hide fade" tabindex="-1" z-index="1060" style="width:850px;" aria-hidden="true">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="processModalLabel">重新打开</h3>
+            </div>
+            <div class="ecitic-title-table modal-body">
+                <table width="100%" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+                    <tbody>
+                     	<tr>
+			               <td class="table-text" style="width:140px;">上传附件：</td>
+			                  <td>
+			               		<input type="button" value="上传附件" id="ETA_out_resume" class="btn btn-ecitic" /> 
+			           			<input type="hidden" name="IU.FILE_ID" id="ETA_out_resume_file" />
+			              	</td>
+                	 	</tr>
+                	 	<tr>
+                	 		 <td colspan="2" id="file_showTd">
+                	 		 	
+                	 		 </td>
+                	 	</tr>
+                        <tr>
+                            <td class="table-text">重新打开原因：</td>
+                            <td>
+                                <textarea class="textarea3" name="IU.DISPOSE_REASON" validate="v.200_mzhi" valititle="该项为必填项"></textarea>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="ecitic-save">
+                <button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <input type="button" class="btn btn-ecitic" value="保存" btn="refuse_save">
+            </div>
+
+
+            <div class="modal-footer"></div>
+        </div>
+					
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script src="dev_test/defectManagement/verify/defectVerify_fix.js"></script>
+<script type="text/javascript" src="upload/uploadFileInfo.js"></script>
+
+</html>

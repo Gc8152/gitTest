@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<!-- <script type="text/javascript" src="dev_cis/static/js/index/index2.js"></script> -->
+</head>
+<body>
+	<script type="text/javascript">
+		//处理菜单页面重复的情况
+		var tabPageMap={	"appinfo.evnbuild_query":"appinfo/evnbuild_query.html?evnBuildType=0",
+							"appinfo.evnbuild_query1":"appinfo/evnbuild_query.html?evnBuildType=1",
+							"appinfo.evnbuild_query2":"appinfo/evnbuild_query.html?evnBuildType=2"}; 
+		$(document).ready(function(){
+			var curentPageTab=$("[page]:visible");
+			var tabid=curentPageTab.attr("page").substring(5);
+			var pageList="";
+			if(tabPageMap[tabid]){
+				pageList='dev_cis/static/pages/'+tabPageMap[tabid];
+			}else{
+				pageList='dev_cis/static/pages/'+tabid.replace(/\./gi,"/")+'.html'+getCisGlobalParam();//serverInfo.build_server 替换成serverInfo/build_server
+			}
+			curentPageTab.append($('<iframe scrolling="no" frameborder="no" class="citic-iframe" style="height:700px;width:100%;" src="'+pageList+'" style="display: block;"></iframe>'));
+		});
+		//页签打开
+		function openTab(id, pageUrl, title){
+			if(pageUrl&&pageUrl.indexOf(".html")>0){
+				var urls=pageUrl.split(".html");
+				setCisGlobalParam(urls[1]);
+				closeAndOpenInnerPageTab(urls[0].replace(/\//gi,".").toLowerCase(),title,"dev_cis/div_cis_dispatch.html");
+			}else{
+				
+			}
+		}
+		//设置参数
+		function setCisGlobalParam(param_url){
+			window.cis_global_param="";
+			if(param_url){
+				cis_global_param=param_url;
+			}
+		}
+		//获取参数
+		function getCisGlobalParam(){
+			if(window.cis_global_param){
+				return window.cis_global_param;
+			}
+			return "";
+		}
+		//关闭当前页签
+		function closeCurrentTab(){
+			closeCurrPageTab();
+		}
+	</script>
+</body>
+</html>

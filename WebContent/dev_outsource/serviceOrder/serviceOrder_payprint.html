@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>核算单</title>
+		<link href="../../bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<style type="text/css">
+			.head{
+				width: 100%;
+    			text-align: left;
+    			font-size:14px;
+			}
+			.xxx{
+    			text-align: center;
+			}
+			table{
+			    border: 1px solid black;
+			    border-right: none;
+			    border-bottom: none;
+			}
+			td{
+			    border-right: 1px solid black;
+			    border-bottom: 1px solid black;
+			    height:40px;
+			    font-size:12px;
+			}
+			th{
+			    border-right: 1px solid black;
+			    border-bottom: 1px solid black !important;
+			}
+			.bottomC{
+				margin-top:15px;
+				text-align: right;
+    			margin-right: 120px;
+			}
+			/* 应用这个样式的，从那个标签结束开始另算一页，之后在遇到再起一页，以此类推 */  
+           .page {  
+               page-break-after: always;  
+            }  
+            body{
+            	 display: block;
+   				 margin: 8px;
+            	 margin-top: 0;
+                 margin-bottom: 0;
+            }
+           	.tdTitle{
+           		font-weight:bold;text-align: center; width: 160px;
+           	}
+           	.tdContent{
+           		font-weight:bold;text-align: left; 
+           		padding-left:5px;
+           	}
+           	.tdPaddingTopBottom{
+           		padding:5px 0px 5px 5px;
+           	}
+           	#prompt{
+           		height:125px;
+           		width:100%;
+           	}
+           	.personInfo{
+           		text-align: center;
+           	}
+		</style>
+	<script type="text/javascript" src="../../js/jquery/jquery-1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../../bootstrap/js/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../bootstrap/js/bootstrap-table-zh-CN.js"></script>
+	<script type="text/javascript" src="../../dev_outsource/serviceOrder/serviceOrder_payDetail.js"></script>
+	<script type="text/javascript" src="../../js/commons/commons.js"></script>
+	</head>
+	<body>
+	<div class="head" style="padding-bottom:15px;padding-top: 10px;font-size:18px;font-weight: 100;"></div>
+	<div class="head">
+		<table width="100%" cellspacing="0">
+			<tr>
+				<td colspan="7" style="font-weight:bold;font-size:18px;font-weight: 100;" class='xxx'>外包项目人员工作确认单</td>
+			</tr>
+			<tr>
+				<td class="tdTitle"  colspan="1" >项目名称：</td>
+				<td class="tdContent" colspan="6">
+					<div id="ACC_NAME"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="tdTitle" colspan="1" >甲方名称：</td>
+				<td class="tdContent" colspan="3">
+					<div>山西省农村信用社联合社</div>
+				</td>
+				<td class="tdTitle"  colspan="1" >乙方名称：</td>
+				<td class="tdContent" colspan="2">
+					<div id="SUPLIER_NAME"></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="tdTitle"  colspan="1" >统计周期：</td>
+				<td class="tdContent" colspan="6">
+					<div id="cycle"></div>
+				</td>
+			</tr>
+			<tr id="outpersonTitle">
+				<td class="tdTitle">序号</td>
+				<td class="tdTitle">姓名</td>
+				<td class="tdTitle">方向</td>
+				<td class="tdTitle">级别</td>				
+				<td class="tdTitle">工作量(天)</td>
+				<td class="tdTitle">金额(元)</td>
+				<td class="tdTitle">开发项目内容</td>
+			</tr>
+			<tr id="outpersonSum">
+				<td class="tdTitle">小计</td>
+				<td class="tdContent"></td>
+				<td class="tdContent"></td>
+				<td class="tdContent"></td>				
+				<td id="sumDay" class="personInfo"></td>
+				<td id="sumMoney" class="personInfo"></td>
+				<td class="tdContent"></td>
+			</tr>
+			<tr>
+				<td class="tdContent">乙方人员签字：</td>
+				<td class="tdContent" colspan="2"></td>
+				<td class="tdContent">甲方项目负责人：</td>
+				<td class="tdContent" colspan="3"></td>	
+			</tr>
+			<tr>
+				<td class="tdPaddingTopBottom tdContent">
+					乙方盖章/负责人签字：</br></br>
+					日期：
+				</td>
+				<td class="tdContent" colspan="2"></td>
+				<td class="tdPaddingTopBottom tdContent">甲方盖章/负责人签字：</br></br>
+					日期：
+				</td>
+				<td class="tdContent" colspan="3"></td>	
+			</tr>
+		</table>
+		<div id="prompt">
+<pre>
+	注：此服务人员级别根据合同所列要求级别派遣，人月单价核算均以此办法为准。
+	工作日：国家法定工作日，每月按照22工作日计算；
+	节假日：国家法定节假日；
+	人月级别：按照合同要求的工作年限、项目经验等要求派遣；
+	人天价格：人月单价/22工作日；
+	服务天数*人天价格＝金额，法定节假日加班的核算办法为：法定节假日加班天数*
+	人天价格*3=加班金额，两个金额相加得出最终确认金额。
+</pre>
+		</div>
+	</div>
+	</body>
+</html>

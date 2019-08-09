@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>填写配置页面</title>
+<style type="text/css">
+</style>
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+	  <span>应用基本信息<em></em></span>
+		      <i></i>
+	</div>
+	<form class="main_iframeFormW">
+		<div class="ecitic-title-table">
+			<table id="testAddrConfigTable" class="table table-striped table-hover table-bordered tablr-input-text"><!-- table-bor-paw-->
+				<tr>
+					<td width="14%" class="table-text">应用名称：</td>
+					<td width="36%"><span id="system_name" name="system_name"></span></td>
+					<td width="14%" class="table-text">英文简称：</td>
+					<td width="36%"><span id="system_short" name="system_short"></span></td>
+				</tr>
+				<tr>
+					<td class="table-text">测试小组：</td>
+					<td><span id="test_group" name="test_group_display"></span></td>
+					<td class="table-text">投产类型：</td>
+					<td><span id="yield_type" name="yield_type_name"></span></td>
+				</tr>
+				<tr>
+					<td class="table-text">业务条线：</td>
+					<td><span id="business_line" name="business_line_display"></span></td>
+					<td class="table-text">是否新建系统：</td>
+					<td><span id="is_new_system" name="is_new_system_display"></span></td>
+				</tr>
+				<tr>
+					<td class="table-text">负责组：</td>
+					<td><span id="res_Group_Name" name="res_group_name"></span></td>
+					<td class="table-text">业务管理部门：</td>
+					<td><span id="project_id" name="project_group_name"></span></td>
+				</tr>
+				<tr>
+					<td class="table-text">环境类型：</td>
+					<td class="litterSelectsTD" colspan="3">
+						<div id="addrType"></div>
+						<input id="system_id" name="system_id" type="hidden">
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+	
+	
+	<div class="ecitic-save" >
+<!-- 		<input type="button" class="btn btn-ecitic" onclick="saveTestAddr('00')" id="chaeinterApp1" value="保存"/> -->
+		<input type="button" class="btn btn-ecitic" onclick="saveTestAddr()" value="保存并提交"/>
+	 	<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="dev_application/systemAddrConfig/testAddress_config.js"></script>
+</html>

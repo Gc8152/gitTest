@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>生产版本同步确认</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id=cmSyncForm>
+				<table  width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">投产单编号：</td>
+						<td><input type="text" name="AUDIT_NO"/></td>
+						<td class="ecitic-right">应用名称：</td>
+						<td><input type="text" name="SYSTEM_NAME"/></td>
+						<td class="ecitic-right">版本名称：</td>
+						<td><input type="text" name="VERSIONS_NAME"/></td>
+					</tr>
+					<tr>
+						<td class="ecitic-right" >投产日期：</td>					
+						<td>
+							<div class="dateSelectZ_From">
+							<input type="text" id="PRODUCE_TIME3" name="PRODUCE_TIME1" class="requirement-ele-width"  onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'PRODUCE_TIME4\',{d:0});}'})" placeHolder="点击选择"   readonly/>
+							</div>
+							<div class="dateSelectZ_W">&nbsp至&nbsp</div>
+							<div class="dateSelectZ_From">
+							<input type="text" id="PRODUCE_TIME4" name="PRODUCE_TIME2" class="requirement-ele-width" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'PRODUCE_TIME3\',{d:0});}'})" placeHolder="点击选择"  readonly/>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="queryCMSync">查询</button></li>
+			<li><button class="btn btn-ecitic" id="resetCMSync">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="editCMSync">同步完成确认</button>
+		<button class="btn btn-ecitic" id="viewCMSync">查看</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover table-text-show" id="cmSyncTab"></table>
+	</div>
+	
+</body>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+	<script type="text/javascript" src="dev_construction/send_produce/produceversionsync/configManVersionSync_queryList.js"></script>
+</html>

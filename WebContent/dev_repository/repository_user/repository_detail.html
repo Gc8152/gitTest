@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>  
+<script src="js/commons/commons.js"></script>
+<script src="dev_repository/repository_user/repository_detail.js"></script>
+</head>
+<body>
+<div class="container-fluid" id="org_mm" style="position:relative;">
+	<div class="widget-content nopadding">
+		<div class="control-group">
+			<div class="controls">
+				<ul id="myTab" class="nav nav-tabs">
+					<li class="active"><a href="#repository_info" data-toggle="tab">知识详情</a></li>
+					<li><a href="#version_div" data-toggle="tab">版本信息</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="repository_info">
+						<div class="widget-content nopadding">
+							<form id="org_from" action="#" method="get" class="org_from">
+								<div class="ecitic-title-table">
+									<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table"><!-- table-bor-paw-->
+										<tr >
+											<td class="ecitic-right">类别:</td>
+												<td>
+													<input type="text" id="category_name"class="requirement-ele-width" name="REP.CATEGORY_NAME"  style="width: 100%" disabled="disabled">
+												</td>
+												<td class="ecitic-right">标题:</td>
+												<td>
+													<input type="text" name="REP.TITLE"  validate="v.required" valititle="该项为必填项" disabled="disabled"/>
+												</td>
+										</tr>
+									
+										
+										<tr>
+											<td class="table-text" >内容:</td>
+											<td colspan="3">
+												<textarea cols="90" rows="3" name="REP.CONTENT" placeholder="请填写内容"  disabled="disabled"></textarea>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</form>
+						</div>
+						 <!-- 文件上传-->
+						<div class="tab-pane " id="upFileDiv">
+							<div class="ecitic-title">
+								<span>附件<em></em></span>
+								<input id="file_id" name="FILE_ID" type="hidden" />
+							</div>
+							
+							<div class="ecitic-title-table ecitic-new">
+								<table id="table_file" class="table table-bordered table-hover">
+								</table>
+							</div>
+						</div>
+					   
+						<div class="ecitic-save" >
+							<!-- <input type="button"  name="repository_edit" class="btn btn-ecitic" btn="saveRepositoryInfo" value="保存"/>
+							 <input type="button"  name="repositry_edit" class="btn btn-ecitic" btn="submitRepositoryInfo" value="提交"/>  -->
+						 	<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+					    </div>
+					    
+						<div id="fileview_modal"></div>
+					</div>
+					<div class="tab-pane fade" id="version_div">
+						<table tb="version_Table"></table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<html> 
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/select2.min.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+<script src="pages/sauthorize/sauthorize_queryInfo.js"></script>
+<script src="pages/sauthorize/sauthorize_add.js"></script>
+<script src="pages/sauthorize/sauthorize_update.js"></script>
+<script src="pages/suser/suserPop.js"></script>
+<script src="pages/srole/srolePop.js"></script>
+<script src="pages/sorg/sorgPop.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="factConfigForm">
+				<!-- <table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad"> -->
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">授权人：</td>
+						<td>
+							<input type="text" name="" id="auth_name" readonly/>
+							<input type="hidden" id="auth_no">
+						</td>
+						<td class="ecitic-right">被授权人：</td>
+						<td>
+							<input type="text" name="" id="bauth_name" readonly/>
+							<input type="hidden" id="bauth_no">
+						</td>
+						<td class="ecitic-right">授权角色：</td>
+						<td>
+							<input type="text" name="" id="role_name"  readonly/>
+							<input type="hidden" id="role_no">
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">授权机构：</td>
+						<td>
+							<input type="text" name="" id="org_name"  readonly/>
+							<input type="hidden" id="org_no">
+						</td>
+						<td class="ecitic-right">授权类型：</td>
+						<td>
+							<select id="auth_type" name="" >
+								<option value="" >--请选择--</option>			
+							</select>
+						</td>
+						<td class="ecitic-right">授权操作：</td>
+						<td>
+							<select id="option_op" name="">
+								<option value="" >--请选择--</option>			
+							</select>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="Authorize_search" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" id="Authorize_reset" value="重置"/></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" onclick="pageDispatch_authorize_add(this)">授权</button>
+		<button class="btn btn-ecitic" onclick="pageDispatch_authorize_update(this)">修改</button>
+		<button class="btn btn-ecitic" id="del_authorize">删除</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="table_authorize" class="table table-bordered table-hover"></table>
+	</div>
+	<div id="userDivAuthorize"></div>
+	 <div id="orgDivAuthorize"></div>
+	 <div id="roleDivAuthorize"></div>
+</div>
+</body>
+</html>

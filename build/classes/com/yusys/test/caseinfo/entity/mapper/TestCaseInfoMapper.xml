@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.test.caseinfo.dao.TestCaseInfoDao">
+	<!-- 查询功能信息id -->
+	<select id="findTestFunctionInfo" parameterType="java.util.Map" resultType="java.lang.String">
+		select func_id from tm_test_func_info	
+		where module_name=#{module_name} and func_name=#{func_name} and task_num=#{task_num}
+	</select>
+	<!-- 查询测试要点信息id -->
+	<select id="findTestPointInfo" parameterType="java.util.Map" resultType="java.lang.String">
+		select testpoint_id from tm_test_point_info 
+		where test_attribute=#{test_attribute} and testpoint_name=#{testpoint_name} and func_id=#{func_id}
+	</select>
+	<!-- 查询测试案例编号 -->
+	<select id="findTestCaseInfo" parameterType="java.lang.String" resultType="java.lang.String">
+		select case_num from tm_case_info where testpoint_id=#{testpoint_id}
+	</select>
+		<!-- 查询用户编号 -->
+	<select id="findUserNoInfo" parameterType="java.lang.String" resultType="java.lang.String">
+		select user_no from s_user where user_name=#{user_name}
+	</select>
+	  <!--start 保存设计案例-->
+	<insert id="saveDesignTestCases" parameterType="java.util.Map">
+		insert into tm_case_info
+		(case_id,case_num,case_version,case_name,case_type1,case_type2,pre_condition,testpoint_id,opt_person,opt_time,execute_state,
+		pri_level,design_person,design_date,task_num,func_no)
+		values
+		(#{case_id},#{case_num},#{case_version},#{case_name},#{case_type1},#{case_type2},#{pre_condition},#{testpoint_id},#{opt_person},#{opt_time},#{execute_state},
+		#{pri_level},#{design_person},#{design_date},#{task_num},#{func_no})
+	</insert>
+	<!-- 更新测试案例信息 -->
+	<update id="updateDesignTestCases" parameterType="java.util.Map">
+		update tm_case_info set case_name=#{case_name},case_type1=#{case_type1},case_type2=#{case_type2},pre_condition=#{pre_condition},testpoint_id=#{testpoint_id},
+		opt_person=#{opt_person},opt_time=#{opt_time},pri_level=#{pri_level},design_person=#{design_person},design_date=#{design_date},task_num=#{task_num},func_no=#{func_no} 
+		where case_id=#{case_id}
+	</update>
+	<!-- 增加操作步骤 -->
+	<insert id="addRealOpt" parameterType="java.util.Map">
+		insert into tm_case_opt_step
+		(step_id,case_id,opt_order,opt_descript,input_data,expect_result,opt_time,opt_person,case_version)
+		values
+		(#{step_id},#{case_id},#{opt_order},#{opt_descript},#{input_data},#{expect_result},#{opt_time},#{opt_person},#{case_version})
+	</insert>
+	<!-- 删除操作步骤 -->
+	<delete id="delRealOpt" parameterType="java.lang.String">
+		delete from tm_case_opt_step where case_id=#{case_id}
+	</delete>
+		 <!-- 新增测试要点-->
+	<insert id="addMainPoint" parameterType="java.util.Map">
+		insert into TM_TEST_POINT_INFO
+		(TESTPOINT_ID,FUNC_ID,TEST_ATTRIBUTE,TESTPOINT_NAME,OPT_PERSON,OPT_TIME)
+		values
+		(#{TESTPOINT_ID},#{FUNC_ID},#{TEST_ATTRIBUTE},#{TESTPOINT_NAME},#{OPT_PERSON},#{OPT_TIME})
+	</insert>
+	<!-- 更新测试要点 -->
+	<update id="updateMainPoint" parameterType="java.util.Map">
+		update TM_TEST_POINT_INFO set FUNC_ID=#{FUNC_ID},TEST_ATTRIBUTE=#{TEST_ATTRIBUTE},
+		TESTPOINT_NAME=#{TESTPOINT_NAME},OPT_PERSON=#{OPT_PERSON},OPT_TIME=#{OPT_TIME}
+		where TESTPOINT_ID=#{TESTPOINT_ID}
+	</update>
+	<!-- 根据案例编号查询案例信息 -->
+	<select id="findDesignTestCases" parameterType="java.lang.String" resultType="java.util.Map">
+		select case_id,case_num,case_name,execute_state,testpoint_id from tm_case_info where case_num=#{case_num}
+	</select>
+</mapper>

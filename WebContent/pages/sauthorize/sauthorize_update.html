@@ -1,0 +1,85 @@
+<html> 
+	<head>
+		<link  href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+		<script src="bootstrap/js/bootstrap-table.min.js"></script>
+		<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+		<script src="bootstrap/js/select2.min.js"></script>
+		<script src="js/commons/commons.js"></script>
+		<script src="pages/sauthorize/sauthorize_queryInfo.js"></script>
+		<script src="pages/sauthorize/sauthorize_add.js"></script>
+		<script src="pages/sauthorize/sauthorize_update.js"></script>
+		<script src="pages/sauthorize/userPop.js"></script>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<div >
+			<h3 class="header-h3">
+				授权信息
+			</h3>
+			<form action="" class="form-inline" id="authorize_form_update">
+			<div class="row">
+				<div class="span6 h50">
+					<label class="pl60">授权人：</label>
+					<input type="text" name="" id="auth_name_update" validate="v.required" valititle="该项为必填项" readonly/>
+					<input type="hidden" id="auth_no_update">
+					<input type="hidden" id="authorize_id">
+				</div>
+				<div class="span6 h50">
+					<label class="pl60">被授权人 :	</label>
+					<input type="text" name="" id="bauth_name_update"  validate="v.required" valititle="该项为必填项" readonly/>
+					<input type="hidden" id="bauth_no_update">
+				</div>
+			</div>
+			<div class="row">
+	 			<div class="span6 h50">
+	 				<label class="pl60">授权角色 :	</label>
+	 				<select id="role_no_update" name=""  validate="v.required" style="width:220px;" valititle="该项为必填项">
+					</select>
+	 			</div>
+				<div class="span6 h50">
+					<label class="pl60" style="float:left;">	授权机构 ：</label>
+	 				<select id="org_no_update" name=""  validate="v.required" style="width:220px;" valititle="该项为必填项">
+					</select>
+				</div>
+	 		</div>
+	 		<div class="row">
+	 			<div class="span6 h50">
+	 				<label class="pl60">授权类型  :	</label>
+	 				<select id="auth_type_update" name=""  validate="v.required" style="width:220px;" valititle="该项为必填项">
+					</select>				
+	 			</div>
+				<div class="span6 h50">
+					<label class="pl60" style="float:left;">应用系统 :</label>
+	 				<select id="system_id_update" name=""  validate="v.required" style="width:220px;" valititle="该项为必填项">
+					</select>	
+				</div>
+	 		</div>
+	 		<div class="row">
+	 			<div class="span12 h50">
+	 				<label class="pl60" style="float:left;">授权操作 :	</label>
+	 				<label style="margin-left:40px;display:inline"><input  type="checkbox"  name ="op" value="0"   id="query_op_update" />查询权限</label>  
+	 				<label style="margin-left:80px;display:inline"><input  type="checkbox"  name ="op" value="0"   id="option_op_update" />操作权限 </label> 
+					<label style="margin-left:80px;display:inline"><input  type="checkbox"  name ="op" value="0"   id="approve_op_update"/>审批权限 </label>
+					<span id=x1 style="color:red;display:none ;margin-left:40px;" >*授权操作为必选项</span>
+	 			</div>
+	 		</div>
+	 		<div class="row">
+	 			<div class="span6 h50">
+	 				<label class="pl60">开始时间 :</label>
+	 				<input type="text" name="" id="start_time_update" validate="v.required" valititle="该项为必填项" onClick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd ',minDate:'2008-03-08'})" />
+	 			</div>
+				<div class="span6 h50">
+					<label class="pl60">结束时间 :</label>
+					<input type="text" name="" id="end_time_update" validate="v.required"    valititle="该项为必填项"  onClick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd ',minDate:'2008-03-08'})"/>
+				</div>
+	 		 </div>
+			</form>
+			<div class="main_btn">
+		    		<button type="button" class="btn-gray"  id="authorization_update_save">保存</button>      				
+<!-- 	 	    		<button type="button" class="btn  btn-gray" id="toback_authoriza_update" >返回</button> 
+ -->			</div>
+		</div>	
+	    <div id="userDiv"></div>
+    </body>
+ </html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>人员离场</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<form action="" id="leaveOptApproveList">
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>基本信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<span>
+				<input type="hidden" id="OCLD_op_id" name="OCLD.op_id"/>
+			</span>
+			<table class="table table-bordered tablr-input-text" id="leaveOptApproveTable">
+				<tr>
+					<td width="11%" class="table-text">身份证</td>
+					<td width="22.333%">
+						 <div id="OCLD_idcard_no"></div>
+					</td>
+					<td width="11%" class="table-text">人员姓名</td>
+					<td width="22.333%">
+						 <div id="OCLD_op_name"></div>
+					</td>
+					<td width="11%" class="table-text">性别</td>
+					<td width="22.333%">
+						<div id="OCLD_sex_name"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">出生年月</td>
+					<td width="22.333%">
+						<div id="OCLD_op_birthday"></div>
+					</td>
+					<td class="table-text">供应商全称</td>
+					<td style="width:22.333%;">
+							<div id="OCLD_supplier_name"></div>
+						</td>
+					<td class="table-text">联系电话</td>
+					<td>
+						<div id="OCLD_op_phone"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">行内项目经理</td>
+					<td>
+						<div id="OCLD_op_staff_name"></div>
+					</td>
+					<td class="table-text">所在项目</td>
+					<td>
+						<div id="OCLD_belongproject"></div>
+					</td>
+					<td class="table-text">资质级别</td>
+					<td>
+						<div id="OCLD_qualificate_level_name"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">人员档次</td>
+					<td>
+						<div id="OCLD_op_grade_name"></div>
+					</td>
+					<!-- <td class="table-text">岗位类型</td>
+					<td>
+						<div id="OCLD_job_type"></div>
+					</td> -->
+					<td class="table-text">专业分类</td>
+					<td>
+						<div id="OCLD_op_specialtype_name"></div>	
+					</td>
+					<td class="table-text">技术特长</td>
+					<td>
+						<div id="OCLD_op_skills_name"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">人员采购类型</td>
+					<td>
+						<div id="OCLD_purch_type_name"></div>
+					</td>
+					<td colspan="4"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="ecitic-title">
+			<span>工作交接情况<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<span>
+				<input type="hidden" id="op_id" name="O.op_id"/>
+			</span>
+			<table class="table table-bordered tablr-input-text"><!-- table-bor-paw-->
+				<tr>
+					<td width="15%" class="table-text">工作交接是否完成</td>
+					<td width="21%">
+						<select  id="OCLD_is_handover" validate="v.required" readonly></select>
+					</td>
+					<td width="15%" class="table-text">确认人</td>
+					<td width="21%">
+						<input type="text" id="OCLD_confirm_man" readonly  validate="v.required" class="citic-ast" />
+					</td>
+				</tr>
+				<tr>
+					<td width="15%" class="table-text">工作交接情况</td>
+					<td colspan="3">
+						<textarea name="OCLD.work_handover_info" readonly validate="v.required"  class="citic-text-ast"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">设备是否归还</td>
+					<td >
+						<select  id="OCLD_is_device_back" readonly  validate="v.required"></select>
+					</td>
+					<td class="table-text">确认人</td>
+					<td >
+						<input type="text" id="OCLD_device_back_man" readonly  validate="v.required"/>
+					</td>
+				</tr>
+				<tr>
+					<td width="15%" class="table-text">归还设备情况</td>
+					<td colspan="3">
+						<textarea name="OCLD.device_back_info" readonly class="citic-text-ast" validate="v.required"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">门禁是否收回</td>
+					<td>
+						<select  id="OCLD_is_entrance_back" readonly  validate="v.required"></select>
+					</td>
+					<td class="table-text">确认人</td>
+					<td >
+						<input type="text" id="OCLD_entrance_back_man" readonly  validate="v.required"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">备注</td>
+					<td colspan="3">
+						<textarea name="OCLD.memo" readonly class="citic-text-ast"></textarea>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="ecitic-save">
+			<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+		</div>
+	</div>
+</form>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="dev_outsource/outsource/outperson/outperson_leaveDetailInfo.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>添加SIT测试配置</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="tabbable"> 
+	<ul class="nav nav-tabs" style="font-size:13px;">
+	    <li ><a href="#tab1_sit_info" data-toggle="tab"><i class="icon-home"></i>SIT测试信息</a></li>
+	    <li class="active"><a href="#tab2_sit_config" data-toggle="tab" ><i class="icon-folder-open"></i>SIT测试配置</a></li>
+	</ul>
+	<div class="tab-content" style="overflow-x:hidden ">
+	<!-- tab1 sit测试信息 -->
+	<div class="tab-pane" id="tab1_sit_info" style="padding: 0 20px 0 20px">
+		<div class="ecitic-title">
+			<span>SIT测试信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table" id="">
+			<table class="table table-striped table-hover table-bordered tablr-input-text">
+				<tr>
+					<td class="table-text">任务名称：</td>
+					<td >
+						<input type="hidden" id="req_task_id" name="REQ_TASK_ID">
+						<div id="req_task_name" name="REQ_TASK_NAME" ></div>
+					</td>
+					<td class="table-text">版本名称：</td>
+					<td>
+						<input type="hidden" id="versions_id" name="VERSIONS_ID">
+						<div id="versions_name" name="VERSIONS_NAME" ></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">需求点编号：</td>
+					<td>
+						<div id="SUB_REQ_CODE" name="SUB_REQ_CODE" ></div>
+					</td>
+					<td class="table-text">需求点名称：</td>
+					<td>
+						<div id="SUB_REQ_NAME" name="SUB_REQ_NAME" ></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">测试轮次：</td>
+					<td>
+						<div type="text" id="TEST_COUNT_NAME" name="TEST_COUNT_NAME" ></div>
+					</td>
+					<td class="table-text">测试经理：</td>
+					<td>
+						<div type="text" id="TEST_MAN_NAME" name="TEST_MAN_NAME" ></div>
+					</td>
+					
+				</tr>
+				<tr>
+					<td class="table-text">测试版本号：</td>
+					<td class="textalignL">
+						<div name="TEST_VERSION_ID"></div>
+					</td>
+					<td class="table-text">版本发布日期：</td>
+					<td class="textalignL">
+						<div name="VERSION_PUSH_DATA"></div>
+				    </td>
+				</tr>
+				<tr>
+					<td class="table-text">测试环境类型：</td>
+					<td colspan="3" class="textalignL">
+						<input type="hidden" id="test_type" name="TEST_TYPE">
+						<div name="TEST_TYPE_NAME" diccode='G_DIC_SYSTEM_CONFIG_TYPE'></div>
+					</td>		
+				</tr>
+				<tr>
+					<td class="table-text">测试版本描述：</td>
+					<td colspan="3" class="textalignL">
+						<div name="EXAM_VERSION_DESCRIBE"></div>
+					</td>		
+				</tr>
+				<tr>
+					<td class="table-text">新增修复bug说明：</td>
+					<td colspan="3" class="textalignL">
+						<div name="ADDBUG_DESCRIBE"></div>
+					</td>		
+				</tr>
+				<tr>
+					<td class="table-text">版本当前存在问题：</td>
+					<td colspan="3" class="textalignL">
+						<div name="VERSION_PEOBLEM"></div>
+					</td>		
+				</tr>
+				<tr>
+					<td class="table-text">版本测试注意事项：</td>
+					<td colspan="3" class="textalignL">
+						<div name="EXAM_REMARK"></div>
+					</td>		
+				</tr>
+			</table>
+		</div>
+		<div class="ecitic-title">
+			<span>SIT移交任务列表<em></em></span>
+			<i></i>
+		</div>
+		<div>
+			<div class="ecitic-title-table ecitic-new">
+				<table id="sitSubmitTable" class="table table-bordered table-hover table-text-show"></table>
+			</div>
+		</div>
+		<div class="ecitic-title">
+			<span>相关附件<em></em></span>
+			<i></i>
+		</div>
+		<div>
+			<div class="ecitic-title-table ecitic-new">
+				<table id="table_file" class="table table-bordered table-hover table-text-show">
+				</table>
+			</div>
+		</div>
+		<div id="fileview_modal"></div>
+	</div>
+	<!-- tab2 sit测试配置 -->
+	<div class="tab-pane active" id="tab2_sit_config" style="padding: 0 20px 0 20px">	
+		<div class="ecitic-title">
+			<span>SIT测试配置<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table" id="">
+			<table id="table_info" class="table table-bordered table-center table-th tablr-input-text">
+				<tr>
+					<td width="12%" class="table-text">配置结论：</td>
+					<td width="21.3%">
+						<input type="radio" name="CONFIGSTATUS" value="00" checked="checked"/>接受&nbsp;&nbsp;
+						<input type="radio" name="CONFIGSTATUS" value="01"/>打回&nbsp;&nbsp;
+					</td>
+					<td width="12%" class="table-text">配置管理员：</td>
+					<td width="21.3%">
+						<div name="CONFIG_MAN_NAME"></div>
+					</td>
+					<td width="12%" class="table-text">配置时间：</td>
+					<td width="21.3%">
+						<div name="CONFIG_TIME"></div>
+				    </td>
+				</tr>
+				<tr name="conifgInfo">
+					<td width="12%"  class="table-text">测试基线信息：</td>
+					<td colspan="5" >
+						<textarea  style=" resize: none; height:150px;" id="sit_base_desc" name="SIT_BASE_DESC" validate="v.required"></textarea>
+					</td>		
+				</tr>
+				<tr name="describe">
+					<td width="12%"  class="table-text">处理原因：</td>
+					<td colspan="5" >
+						<textarea class="writer" placeHolder="请说明配置打回原因。"  id="acceot_describe" name="ACCEOT_DESCRIBE"></textarea>
+					</td>		
+				</tr>
+			</table>
+	    </div>
+	    <div class="ecitic-save" >
+	    	<input type="button" class="btn btn-ecitic" id="submit_save" value="保存"/>
+		 	<input type="button" class="btn btn-ecitic" id="submit_sit" value="保存&提交"/>
+		 	<input type="button" class="btn btn-ecitic" id="back_sit"  value="返回"/>
+	    </div>
+	</div>
+	</div>    
+</div>
+<!--测试地址模态框 -->
+<div id="test_addr_modal" class="modal hide fade modal-big-table" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="">测试地址信息</h5>
+	</div>
+	<div class=" ecitic-title-table modal-body ecitic-new">
+		<table id="testAddrTable" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+			<tr>
+				<td width="14%" class="table-text"></td>
+				<td width="36%"></td>
+				<td width="14%" class="table-text"></td>
+				<td width="36%"></td>
+			</tr>
+		</table>
+		
+	</div>
+	<div class="modal-footer"></div>
+</div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script> 
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>  
+<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="dev_construction/sit_test_jn/sit_config/sitconfig_config.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_analyze/task_accept/view_taskdetail.js"></script>
+<script type="text/javascript" src="dev_construction/sit_test_jn/sit_submit/initqueryInterface.js"></script>
+<script type="text/javascript" src="dev_construction/sit_test_jn/initMultiSelect.js"></script>
+</html>

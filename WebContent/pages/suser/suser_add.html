@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<script src="js/commons/commons.js"></script>
+<script src="pages/sorg/sorgPop.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+		<span>用户信息<em></em></span>
+	</div>
+	<form action="" class="form-inline" id="adduser_from">
+		<div class="ecitic-title-table">
+				<table id="adduser_table" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered tablr-input-text table-bor-paw">
+				<tr>
+					<td  style="padding-left:6%" colspan="6">
+					<a><font color=red>新增用户规则：科技信息中心：10+工号；业务：20+工号；外包：30+工号。</font></a>
+					</td>
+				</tr>
+				<tr>
+					<td width="11%" class="table-text">用户编号</td>
+					<td width="22.333%">
+						<input type="text" name="U.user_no" id="Auser_no" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+					</td>
+					<td width="11%" class="table-text">用户名称</td>
+					<td width="22.333%">
+						<input type="text" name="U.user_name" id="Auser_name"  validate="v.required" valititle="该项为必填项" class="citic-ast" />
+					</td>
+					<!--  <td width="11%" class="table-text">登陆名</td>
+					<td width="22.333%">
+						<input type="text" name="U.login_name" id="Alogin_name"  onkeyup="keyUp()" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+					</td>
+					-->
+					<td width="11%" class="table-text">密码</td>
+					<td width="22.333%">
+						<input type="text" name="U.password" id="Apassword"  validate="v.required" valititle="该项为必填项" class="citic-ast" />
+					</td>
+				</tr>
+				<tr>
+<!-- 					<td class="table-text">cq对接用户名</td>
+					<td>
+						<input type="text" name="U.nick_name" id="Anick_name" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+					</td> -->
+					<td class="table-text">状态</td>
+					<td>
+						<select id="Astate" name="U.state" validate="v.required" valititle="该项为必填项" class="citic-sele-ast"></select>
+					</td>
+					<td class="table-text">用户岗位</td>
+					<td>
+						<select id="Auser_post" name="U.user_post"  class="citic-sele-ast"></select>
+					</td>
+					<td class="table-text">用户等级</td>
+					<td>
+						<select name="U.user_level" id="Auser_level"  class="citic-sele-ast"></select>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">所属部门</td>
+					<td>
+						<input type="text" name="U.org_no_name" id="Aorg_no_name" placeholder="请选择" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+							<input type="hidden" name="U.org_no_code" id="Aorg_no_code" />
+					</td>
+					<td class="table-text">邮箱</td>
+					<td>
+						<input type="text" name="U.user_mail" id="Auser_mail" validate="v.email" class="citic-ast" />
+					</td>
+					<td class="table-text">电话</td>
+					<td>
+						<input type="text" name="U.user_mobile" id="Auser_mobile"  class="citic-ast" />
+					</td>
+				</tr>
+				<tr>
+					 <td class="table-text">登陆名</td>
+					<td>
+						<input type="text" name="U.login_name" id="login_name"  validate="v.required" valititle="该项为必填项" class="citic-ast" />
+					</td> 
+					<td class="table-text">是否行员</td>
+					<td>
+						<select name="U.is_banker" id="Ais_banker" validate="v.required" valititle="该项为必填项" class="citic-sele-ast"></select>
+					</td>
+					<!-- <td width="11%" class="table-text">登陆名</td>
+					<td width="22.333%">
+						<input type="text" name="U.login_name" id="Alogin_name"  onkeyup="keyUp()" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+					</td> -->
+					<td class="table-text" name="outperson" style="display:none">外包人员</td>
+					<td style="display:none" name="outperson">
+					<input type="text"  id="op_nameAD" readonly="" class="citic-ast" />	
+					   <input type="hidden" name="AD.op_code"/>
+					    <div id="outPersonInfoPop" ></div>
+					</td>
+					<td class="table-text" name="work_no" style="display:none">工号</td>
+					<td style="display:none" name="work_no">
+						<input type="text"  id="work_no" name="U.work_no" class="citic-ast" />	
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">备注</td>
+					<td colspan="5">
+						<textarea name="U.memo" placeholder="备注" id="Amemo" class="citic-text-ast"></textarea>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="保存" id="addSUser" />
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+		<!-- <input type="button" class="btn btn-ecitic" value="返回" name="globeBack" /> -->
+	</div>
+</div>
+<div id="addUserOrg"></div>
+</body>
+<script type="text/javascript" src="dev_outsource/outsource/outperson/optPop_new.js"></script>
+<!-- <script src="js/commons/Math.uuid.js"></script> -->
+<script src="pages/suser/suser_add.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//getCurrentPageObj().find("#Auser_no").val(Math.randomByNum(6));
+		initVlidate($("#adduser_from"));
+		var obj=getCurrentPageObj().find("#op_nameAD");
+		obj.unbind("click");
+		obj.click(function(){
+			openOptPopBySUser("outPersonInfoPop",{singleSelect:true,op_name:getCurrentPageObj().find("#op_nameAD"),no:getCurrentPageObj().find("input[name='AD.op_code']")});
+		});
+	});
+	
+</script>
+</html>

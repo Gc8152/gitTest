@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>任务查看页面</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="main_ifme_con">
+	   <div class="ecitic-title">
+			<span>任务信息<em></em></span>
+			<i></i>
+		</div>
+	<div class="form_inline" id="g_reqtask_joinVersion">
+			<div class="ecitic-title-table">
+				<table style="width: 100%" class="table table-striped table-hover table-bordered tablr-input-text">
+					<!-- table-bor-paw-->
+					<tr>
+					    <td class="table-text">任务编号：</td>
+					    <td>
+					    <input type="text" id="req_task_code" name="req_task_code"  readonly/>
+					    <input type="hidden" id="req_task_id" name="req_task_id"/>
+					    </td>
+						<td class="table-text">任务名称：</td>
+						<td>
+						<input id="req_task_name" type="text" name="req_task_name" style="width="  readonly>
+						</td>
+						 <td colspan="2"></td> 
+					</tr>
+					<tr>
+						<td class="table-text">需求点编号：</td>
+						<td><a id="sub_req_code" style="color:blue"></a>
+						   <input type="hidden" id="sub_req_id" name="sub_req_id">
+						</td>
+						<td  class="table-text">需求点名称：</td>
+						<td><input type="text" id="sub_req_name" name="sub_req_name" readonly></td>
+						<td class="table-text">需求点计划投产时间：</td>
+						<td><input type="text" id="plan_onlinetime" name="plan_onlinetime" readonly></td>
+					</tr>
+					<tr>
+						<td class="table-text">业务需求编号：</td>
+						<td><a id="req_code" style="color:blue"></a></td>
+						<td class="table-text">业务需求名称：</td>
+						<td><input id="req_name" type="text" name="req_name"  readonly/></td>
+						<td class="table-text">提出部门：</td>
+						<td>
+						<input type="text" id="req_put_dept" name="req_put_dept"  readonly>	
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">任务从属关系：</td>
+						<td>
+						<input type="text" id="req_task_relation_name" name="req_task_relation_name"  readonly /> 
+						<td class="table-text">任务状态：</td>
+						<td ><input type="text" id="req_task_state" name="req_task_state_display" readonly></td>
+						<td class="table-text">任务来源：</td>
+						<td><input type="text" id="req_task_type" name="req_task_type"  readonly></td>
+					</tr>
+					<tr>
+						<td class="table-text">任务项目经理：</td>
+						<td><input type="text" id="p_owner_name"name="p_owner_name" readonly/></td>
+						<td class="table-text">应用负责人：</td>
+						<td><input type="text" id="project_man_name"name="project_man_id" readonly/></td>
+						<td class="table-text">应用名称：</td>
+						<td ><input type="text" id="system_name" name="system_name" readonly/></td>
+						 <td colspan="4"></td>
+					</tr>
+				</table>
+			</div>
+			<div class="ecitic-title">
+				<input name="FILE_ID" type="hidden" value=""/>
+				<span>文档列表信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				
+				<table id="table_file" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover table-center table-th tablr-input-text"></table>
+			</div>
+		</div>
+		
+		<div class="ecitic-save">
+			 <input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭" />
+		</div>
+	</div>
+	<!-- 用于版本pop框弹出 -->
+	<div id="getTaskVersion"></div>
+	<div id="file_modal"></div>
+<div id="file_view_modal"></div>
+</body>
+<script type="text/javascript" src="bootstrap/js/select2.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_phased/task_phased_jury.js"></script>
+</html>

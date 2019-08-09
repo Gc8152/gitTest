@@ -1,0 +1,25 @@
+<!--接口模态框 -->
+<div id="inforMaintenace_seleDataPop" class="modal hide fade modal-big-table" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5>现有标准列表</h5>
+	</div>
+	<div class="ecitic-title-table modal-body ecitic-new">
+			<form id="inforMaintenace_seleDataPopForm">
+				<table border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td width="13.333%" class="table-text">中文名称：</td>
+						<td width="25%"><input type="text" id="data_chnname" name="data_chnname"/></td>
+						<td width="13.333%" class="table-text">英文名称：</td>
+						<td width="25%"><input type="text" id="data_engname" name="data_engname"/></td>
+						<td><input type="button" class="btn btn-ecitic" id="query_data" value="查询"></td>
+						<td><input type="button" class="btn btn-ecitic" id="reset_data" value="重置"></td>
+					</tr>
+				</table>
+			</form>	
+		<div class="ecitic-new">
+			<table tb="table_data" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+	</div>
+	<div class="modal-footer"></div>
+</div>

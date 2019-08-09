@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<title>受理不符合项</title>
+</head>
+<body>
+<div class="tabbable">
+<ul class="nav nav-tabs" style="font-size:13px;">
+						<li class="active">
+						<a href="#nA_accept" data-toggle="tab" > <i class="icon-home"></i> 问题信息</a></li>
+						
+						<li>
+						<a href="#nA_acceptOperate_log" data-toggle="tab" ><i class="icon-file"></i>历史跟踪记录</a></li>
+					</ul>
+<div class="tab-content"  style="overflow-x:hidden ">
+	<div class="tab-pane active" id="nA_accept" style="padding: 0 20px 0 20px">
+
+    <div>
+    <form class=" main_iframe_con" id="configManage_accept_form">
+	
+			<div class="ecitic-title">
+				<span>基本信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table tab-content bootstrapTabsCont">
+				<table width="100%" class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+						<colgroup>
+				<col style="width: 20%">
+				<col style="width: 30%">
+				<col style="width: 20%">
+				<col style="width: 30%">
+				</colgroup>
+					<tr>
+						<td class="table-text">发现日期：</td>
+						<td><div align="left" name="FIND_DATE" ></div> </td>
+						<td class="table-text">提出人：</td>
+						<td><input type="hidden" name="PRESENT_USER_ID" />
+						<div align="left" name="PRESENT_USER_NAME" ></div>
+						</td>				
+					</tr>
+					<tr>
+						<td class="table-text">项目编号：</td>
+						<td><div align="left" name="PROJECT_NUM" ></div></td>
+						<td class="table-text">项目名称：</td>
+						<td>
+							<input type="hidden" name="PROJECT_ID" />
+							<div align="left" name="PROJECT_NAME" ></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">不符合项描述：</td>
+						<td colspan="3"  ><div align="left" name="DESCR" style="width: 850px; height: 60px;display:block;"></div> </td>
+					</tr>
+					<tr>
+						<td class="table-text">建议解决措施：</td>
+						<td colspan="3" ><div align="left" name="SUGGEST_MEASURES" style="width: 850px; height: 60px;display:block;"></div> </td>
+					</tr>
+					<tr>
+					<td class="table-text">所属阶段：</td>
+					<td><div align="left" name="PHASES_NAME" ></div></td>
+					<td class="table-text">审计配置库：</td>
+					<td><div align="left" name="AUDIT_CONFIG" ></div></td>
+				</tr>
+				<tr>
+					<td  class="table-text">不符合项等级：</td>
+					<td>
+						<div align="left" name="GRADE_NAME" ></div>
+					</td>	
+					<td class="table-text">是否重现：</td>
+					<td><div align="left" name="IS_REAPPEAR_NAME" ></div></td>
+				</tr>
+				<tr>
+					<td class="table-text">责任人：</td>
+					<td>
+						<input type="hidden" name="DUTY_USER_ID"/>
+						<div align="left" name="DUTY_USER_NAME"></div>
+					</td>
+					<td class="table-text">建议解决日期：</td>
+					<td>
+						<div align="left" name="SUGGEST_SOLVE_TIME"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">不符合项状态：</td>
+					<td>
+						<div align="left" name="STATUS_NAME"></div>
+					</td>
+					<td class="table-text"></td>
+					<td>
+					</td>
+				</tr>
+				</table>
+			</div>
+		
+		
+		   	<div class="ecitic-title titil_margintop">
+				<span>受理结果<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table tab-content bootstrapTabsCont" id="ecitic-table">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+					<colgroup>
+				<col style="width: 20%">
+				<col style="width: 30%">
+				<col style="width: 20%">
+				<col style="width: 30%">
+			    </colgroup>
+					<tr>
+						<td class="table-text">确认不符合项：</td>
+						<td>
+							<select name="CONFIRM_INCON" diccode="P_DIC_QUALITY_CONFIRM_INCON" id="CONFIRM_INCON_CONFIG"></select>
+							<input type="hidden" name="CONFIG_ID" />
+						</td>
+						<td class="table-text">是否要修正：</td>
+						<td>
+							<select name="REVISE" diccode="P_DIC_QUALITY_REVISE" id="REVISE_CON"></select>
+						</td>
+					</tr>
+					<tr id="dispose_user_tr">
+						<td  class="table-text">处理人：</td>
+						<td>
+							<input type="hidden" name="DISPOSE_USER_ID"/>
+							<input type="text" name="DISPOSE_USER_NAME" reqc="reqc"  readonly UNSELECTABLE ='on' validate="v.required" valititle="该项为必填项"/>
+						</td>	
+						<td class="table-text">计划解决时间：</td>
+						<td>
+							<input type="text" name="DISPOSE_PLAN_TIME" reqc="reqc" onClick="WdatePicker()" readonly UNSELECTABLE ='on' validate="v.required" valititle="该项为必填项"/>
+						</td>
+					</tr>
+					<tr id="problem_analyse_tr">
+						<td class="table-text">原因分析：</td>
+						<td colspan="3">
+							<textarea name="PROBLEM_ANALYSE" reqc="reqc" validate="v.required" valititle="该项为必填项"  placeholder="请填写原因分析"></textarea>
+						</td>
+					</tr>
+					<tr id="solve_measures_tr">
+						<td class="table-text">解决措施：</td>
+						<td colspan="3">
+							<textarea name="SOLVE_MEASURES" reqc="reqc" validate="v.required" valititle="该项为必填项"  placeholder="请填写解决措施"></textarea>
+						</td>
+					</tr>
+					<tr id="record_descr_tr">
+						<td class="table-text">备注：</td>
+						<td colspan="3">
+							<textarea name="RECORD_DESCR" id="RECORD_DESCR_ID"  placeholder="请填写备注"></textarea>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+	</form>
+	</div>
+	<div class="ecitic-save">
+				<input type="button" class="btn btn-ecitic" id="configManage_accept_sumit"  value="提交" />
+				<input type="button" class="btn btn-ecitic" id="configManage_accept_back"  value="返回" />
+	</div>
+	</div>
+	 <div class="tab-pane" id="nA_acceptOperate_log" style="padding: 0 20px 0 20px">
+		<div class="ecitic-title titil_margintop">
+			<span>历史跟踪记录<em></em></span>
+				<i></i>
+		</div>
+		<div class="ecitic-new">
+			<table id="noconfigAccept_operate_table" class="table table-bordered table-hover"></table>
+		</div>
+       </div>
+    </div>
+    </div>
+<!--处理人模态框 -->
+<div id="dispose_user_table" class="modal hide fade modal-big-table" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="">项目经理信息</h5>
+	</div>
+	<div class=" ecitic-title-table modal-body ecitic-new">
+		<table border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+			<tr>
+				<td width="13.333%" class="table-text">用户编号：</td>
+				<td width="20%"><input type="text" name="EMP_ID"/></td>
+				<td width="13.333%" class="table-text">用户姓名：</td>
+				<td width="20%"><input type="text" name="EMP_NAME"/></td>
+				<td><button class="btn btn-ecitic" id="select_emp">查询</button></td>
+				<td><button class="btn btn-ecitic" id="reset_emp">重置</button></td>
+			</tr>
+		</table>
+		<div class="ecitic-new">
+			<table id="table_dispose_userInfo" class="table table-bordered table-hover"></table>
+		</div>
+	</div>
+	<div class="modal-footer"></div>
+</div>
+<div id="choosePm"></div>
+<script type="text/javascript" src="dev_project/configManage/noConfigManageAccept/noConfigManageAccept_accept.js"></script>
+<script type="text/javascript">
+	initVlidate($("#configManage_accept_form"));
+</script>
+</body>
+</html>

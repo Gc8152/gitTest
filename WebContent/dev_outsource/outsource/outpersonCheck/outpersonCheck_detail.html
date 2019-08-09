@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>人员入行信息登记</title>
+		<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/form.css" />
+	</head>
+	<body>
+<form action="" id="detailOptCheckList">
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>基本信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<span>
+				<input type="hidden" id="op_id" name="OCD.op_id"/>
+				<input type="hidden" id="check_id" />
+			</span>
+			<table class="table table-bordered tablr-input-text" id="detailOptCheckTable"><!-- table-bor-paw-->
+				<tr>
+					<td width="11%" class="table-text">身份证</td>
+					<td width="22.333%">
+						<input type="text" id="OCD_op_code" name="OCD.op_code" class="citic-ast"  
+						placeholder="点击选择考核外包人员" readonly="readonly" validate="v.required"/> 
+					</td>
+					<td width="11%" class="table-text">人员姓名</td>
+					<td width="22.333%">
+						  <div class="pos-rel">
+							<input type="text" id="OCD_op_name" name="OCD.op_name" class="citic-ast" readonly="readonly"/>
+						 </div> 
+					</td>
+					<td width="11%" class="table-text">性别</td>
+					<td width="22.333%">
+						<input type="text" class="citic-sele-ast" id="OCD_sex_name"readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">出生年月</td>
+					<td width="22.333%">
+						<input type="text" id="OCD_op_birthday"  class="citic-ast read" readonly="readonly"/>
+					</td>
+					<td class="table-text">联系电话</td>
+					<td>
+						<input type="text" id="OCD_op_phone" class="citic-ast" readonly="readonly"/>
+					</td>
+					<td class="table-text">电子邮件</td>
+					<td>
+						<input type="text" id="OCD_op_email" class="citic-ast" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">技术特长</td>
+					<td>
+						<input type="text" name="OCD.op_skills" class="citic-sele-ast" id="OCD_op_skills" readonly="readonly"/>
+					</td>
+<!-- 					<td class="table-text">人员采购类型</td>
+					<td>
+						<input  type="text" id="OCD_purch_type_name" name="OCD.purch_type_name" class="citic-sele-ast" readonly="readonly"/>
+					</td> -->
+					<td class="table-text">供应商全称</td>
+					<td style="width:22.333%;">
+							<input type="hidden" id="OCD_supplier_id" name="OCD.supplier_id"/>
+							<input type="text" id="OCD_supplier_name" readonly="readonly"/>
+					</td>
+					<td colspan = "2"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="ecitic-title">
+			<span>行内信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<span>
+				<input type="hidden" id="op_id" name="O.op_id"/>
+			</span>
+			<table class="table table-bordered tablr-input-text"><!-- table-bor-paw-->
+				<tr>
+					<td width="13%" class="table-text">人员采购类型</td>
+					<td width="20%">
+						<div class="pos-rel">
+							<div id="purch_type_name"></div>
+						</div>
+					</td>
+					<td width="13%" class="table-text">开发方向</td>
+					<td width="20%">
+						<div class="pos-rel">
+							<div id="OCD_qualificate_level_name"></div>
+						</div>
+					</td>
+					<td class="table-text">人员级别</td>
+					<td>
+						<div class="pos-rel">
+							<div id="OCD_op_grade_name"></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="13%" class="table-text">行方项目经理</td>
+					<td width="20%">
+						<div class="pos-rel">
+							<div id="OCD_op_staff_name"></div>
+						</div>
+					</td>
+					<td width="13%" class="table-text">行内归属部门</td>
+					<td width="20%">
+						<div class="pos-rel">
+							<div id="OCD_org_name"></div>
+						</div>
+					</td>
+					<td colspan = "2"></td>
+<!-- 					<td class="table-text">项目/非项目任务</td>
+					<td>
+						<div class="pos-rel">
+							<div id="OCD_project_name"></div>
+						</div>
+					</td>
+					<td class="table-text">项目/非项目开始时间</td>
+					<td>
+							<div id="OCD_stt_time"></div>
+					</td> -->
+				</tr>
+<!-- 				<tr>
+					<td class="table-text">项目/非项目结束时间</td>
+					<td>
+						<div class="pos-rel">
+							<div id="OCD_edd_time"></div>
+						</div>
+					</td>
+					<td class="table-text">服务开始时间</td>
+					<td>
+						<div class="pos-rel">
+							<div id="OCD_st_time"></div>
+						</div>
+					</td>
+					<td class="table-text">服务结束时间</td>
+					<td>
+						<div id="OCD_ed_time"></div>
+					</td>
+				</tr> -->
+			</table>
+		</div>
+		<div class="ecitic-title">
+			<span>考核项<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+		<table class="table table-bordered tablr-input-text" id="validate_table">
+			<tr>
+				<td  width="9%" class="table-text">专业分类</td>
+				<td width="15%" >
+					<select name="OCD.op_specialtype" disabled="disabled" id="op_specialtype"  readonly  class="citic-sele-ast"></select>
+				</td>	
+				<td width="9%"  class="table-text">考核类别</td>
+				<td width="15%"  >
+					<input type="text" id="OCD_check_type_display" name="OCD.check_type_display" class="citic-ast" readonly />
+				</td>	
+				<td  width="9%" class="table-text">考核开始日期</td>
+				<td width="15%" >
+					<input type="text" id="OCD_check_starttime" name="OCD.check_starttime" class="citic-ast"  validate="v.required" readonly/>
+				</td>
+				<td  width="9%" class="table-text">考核结束日期</td>
+				<td width="15%" >
+					<input type="text" id="OCD_check_endtime" name="OCD.check_endtime" class="citic-ast"  validate="v.required" readonly/>
+				</td>
+			</tr>
+			<tr>
+				<td  width="9%" class="table-text">考核人</td>
+				<td width="15%" >
+					<input type="text" id="OCD_check_person" name="OCD.check_person" class="citic-ast"  validate="v.required" readonly/>
+				</td>
+				<td  width="9%" class="table-text">考核日期</td>
+				<td width="15%" >
+					<input type="text" id="OCD_check_date" name="OCD.check_date" class="citic-ast"  validate="v.required" readonly/>
+				</td>	
+				<td  width="9%" class="table-text">考核总分</td>
+				<td width="15%" >
+					<input type="text" id="OCD_check_score" name="OCD.check_score" class="citic-ast"  validate="v.required" readonly/>
+				</td>
+				<td colspan="2"></td>
+			</tr>
+		</table>
+			<table class="table table-bordered table-hover" id="det_optTemplateDetailTable"></table>
+		</div>
+		<div class="ecitic-save">
+			<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+		</div>
+	</div>
+</form>
+<div id="checkItemDetailD"></div>
+        <script type="text/javascript" src="bootstrap/js/select2.min.js"></script>
+		<script src="bootstrap/js/bootstrap-table.min.js"></script>
+		<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+		<script src="dev_outsource/outsource/outpersonCheck/outpersonCheck_detail.js"></script>
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>业务要素配置列表</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+<script src="pages/approvalflow/sbscfig/sbscfig_querylist.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="factConfigForm">
+				<!-- <table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad" > -->
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">业务系统</td>
+						<td>
+							<select id="system_code" name="system_code"></select>
+						</td>
+						<td class="ecitic-right">流程状态</td>
+						<td>
+							<select id="b_state" name="b_state"></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">要素类别</td>
+						<td>
+							<select id="b_category" name="b_category"></select>
+						</td>
+						<td class="ecitic-right">要素名称</td>
+						<td>
+							<input type="text" name="b_name" id="b_name"/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="querySqfi" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" id="reset" value="重置"/></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="addBusConfig">新增</button>
+		<button class="btn btn-ecitic" id="updateBusConfig">修改</button>
+		<button class="btn btn-ecitic" id="deleteBusConfig">删除</button>
+		<button class="btn btn-ecitic" id="viewBusConfig">查看</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="SBsCfigTableInfo" class="table table-bordered table-hover"></table>
+	</div>
+</div>
+</body>
+</html>

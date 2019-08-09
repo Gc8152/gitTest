@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sit测试报告管理</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<!-- 字体图标 -->
+</head>
+<body>
+<div  class="main_iframe_con">
+   <form class="form-inline" id="sittestreport">
+	 <div class="ecitic-inquire ecitic-moreNo" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad" >
+						<tr>
+							<td class="ecitic-right" width="13%">需求点编号：</td>
+							<td width="20%">
+							<input type="text" id="sub_req_codeCD" name="sub_req_code" />
+							</td>
+							<td class="ecitic-right" width="13%">需求点名称：</td>
+							<td width="20%"><input type="text" id="sub_req_nameCD" name="sub_req_name" />
+							</td>
+							<td class="ecitic-right" >主办应用名称：</td>
+							<td>
+							   <input type="text" id="system_name" name="system_name"/>
+							   <input type="hidden" id="system_no" name="system_no" />
+							</td>
+					   </tr>
+						<tr>
+							<td class="ecitic-right" width="13%">测试结论：</td>
+							<td width="20%">
+								<select id="putin_result" name="putin_result" style="width:100%;" diccode="G_DIC_PUTIN_RESULT">
+							</td>
+							<td class="ecitic-right" width="13%">测试负责人：</td>
+							<td>
+								<input type="text" id="test_owner_name" name="test_owner_name" />
+							</td>
+						</tr>
+					</table>
+		     </div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="query" value="查询"></li>
+			<li><input type="reset" class="btn btn-ecitic" id="str_reset" value="重置"></li>
+		</ul>
+	  </div>
+	</form>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="edit">上传测试报告</button>
+		<!-- <button class="btn btn-ecitic" id="audit">审核</button> -->
+		<!-- <button class="btn btn-ecitic" id="queryInfo">查看报告详情</button> -->
+	</div>
+	<!-- table开始 -->
+	<div class="ecitic-new">
+		<table id="sitreport_table" class="table table-bordered table-hover table-text-show" style="min-width:1500px;"></table>
+	</div>
+ </div>
+ <div id="vsersion_pop"></div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>  
+<script type="text/javascript" src="dev_construction/sit_test_jn/sit_report/sitreport_queryList.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_intoVersion/taskVersion_pop.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_phased/task_phased_jury.js"></script>
+<script type="text/javascript" src="dev_application/System_pop.js"></script>
+
+</html>

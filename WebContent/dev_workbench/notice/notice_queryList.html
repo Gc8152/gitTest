@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_workbench/notice/notice_queryList.js"></script>
+<script src="js/commons/commons.js"></script>
+<script src="pages/suser/suserPop.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form action="" class="form-inline" id="queryParam">
+				<table class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">标题：</td>
+						<td><input type="text" name="notice_title" id="notice_title" /></td>
+						<td class="ecitic-right">通知状态：</td>
+						<td>
+							<select id="notice_publish" name="notice_publish"></select>
+						</td>
+						<td class="ecitic-right">发送人：</td>
+						<td>
+							<input type="hidden" name="send_person"/>
+						    <input type="text" id="send_person" placeholder="点击选择发送人" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">发送时间：</td>
+						<td>
+							<span class="ecitic-time">
+								<input type="text" placeholder="点击选择" name="start_time" id="start_time" readonly="readonly" onclick="initDate()"/>
+							</span>
+							<span class="ecitic-to">至</span>
+							<span class="ecitic-time">
+								<input type="text" name="end_time" placeholder="点击选择" id="end_time" readonly="readonly" onclick="initDate()"/>
+							</span>
+						</td>
+						
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="queryNotic" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" id="reset" value="重置"/></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="addNotice" >新增</button>
+		<button class="btn btn-ecitic" id="updateNotice">修改</button>
+		<button class="btn btn-ecitic" id="delete">删除</button>
+		<button class="btn btn-ecitic" id="queryDetail">查看</button>
+		<button class="btn btn-ecitic" id="publish">发布</button>
+		<button class="btn btn-ecitic" id="cancelPublish">取消发布</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="NoticeTableInfo" class="table table-bordered table-hover"></table>
+	</div>
+	<div id="userPop"></div>
+</div>
+</body>
+</html>

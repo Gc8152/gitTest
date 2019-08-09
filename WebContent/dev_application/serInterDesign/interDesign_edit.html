@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>服务方接口设计</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script src="dev_application/serInterDesign/interDesign_edit.js"></script>
+
+<!-- <style type="text/css">
+	#design_mess_tab strong {
+    width: 8px !important;
+    height: 26px;
+    line-height: 26px;
+    color: #c00;
+    font-weight: normal;
+    text-align: left;
+    display: inline-block;
+    position: relative;
+    right: 0;
+    top: 50%;
+    margin-top: -10px;
+}
+#design_mess_tab .tag-content {
+    font-size: 12px;
+    height: 26px;
+    line-height: 26px;
+    position: relative;
+    right: 9px;
+    top: 50%;
+    color: rgb(204, 0, 0);
+    padding-right: 8px;
+    word-break: keep-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: -13px 0px 0px;
+    overflow: hidden;
+}
+</style> -->
+<style type="text/css">
+.file_template_style {color:#4b39d8 !important; float:right;text-decoration: underline;margin-left: 10px;}
+.file_template_style:hover{color:#4b39d8 !important;text-decoration: underline;}
+</style> 
+</head>
+<body>
+	<div class="widget-box">
+		<div class="widget-content nopadding">
+			<div class="control-group">
+				<div class="controls">
+					<ul class="nav nav-tabs" id="InterDesign">
+						<li class="active"><a href="#design_app_tab" data-toggle="tab">申请信息</a></li>
+						<li><a href="#design_anal_tab" data-toggle="tab">基础属性</a></li>
+						<li><a href="#design_mess_tab" data-toggle="tab">报文内容</a></li>
+						<li><a href="#apply_oper_history" data-toggle="tab" >操作历史</a></li>
+					</ul>
+					<div class="tab-content">
+						<!-- 	******申请信息******     -->
+						<div class="tab-pane active" id="design_app_tab">
+							<div class="ecitic-title-table" id="">
+								<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+									
+									<tr>
+										<td class="table-text">申请编号:</td>
+										<td>
+											<div id="APP_INTER_NUM"></div>
+										</td>
+										<td class="table-text">申请日期：</td>
+										<td>
+											<div id="APP_TIME"></div>
+										</td>
+									</tr>
+									<tr>
+										<td class="table-text">申请类型:</td>
+										<td>
+											<div id="APP_TYPE_NAME"></div>
+										</td>
+										<td class="table-text">消费方应用名称：</td>
+										<td>
+											<div id="CON_SYSTEM_NAME"></div>
+										</td>
+	
+									</tr>
+									<tr>
+										<td class="table-text">服务方应用:</td>
+										<td>
+											<div id="SER_SYSTEM_NAME"></div>
+										</td>
+										<td class="table-text">接口业务类型：</td>
+										<td>
+											<div id="INTER_OFFICE_TYPE_NAME"></div>
+										</td>
+	
+									</tr>
+									<tr>
+										<td class="table-text">关联需求任务编号：</td>
+										<td>
+											<div id="REQ_TASK_CODE"></div>
+										</td>
+										<td class="table-text">关联需求任务名称：</td>
+										<td>
+											<div id="REQ_TASK_NAME"></div>
+										</td>
+									</tr>
+									<tr>
+										<td class="table-text">接口编码：</td>
+										<td>
+											<div id="INTER_CODE"></div>
+										</td>
+										<td class="table-text">接口名称：</td>
+										<td>
+											<div id="INTER_NAME"></div>
+										</td>
+									</tr>
+	
+									<tr>
+										<td class="table-text">申请人：</td>
+										<td>
+											<div id="APP_USER_NAME"></div>
+										</td>
+										<td class="table-text">联系电话：</td>
+										<td>
+											<div id="TEL_PHONE"></div>
+										</td>
+									</tr>
+									<tr>
+										<td class="table-text">要求完成时间:</td>
+										<td>
+											<div id="REQ_FINISH_TIME"></div>
+										</td>
+										<td class="table-text">申请状态:</td>
+										<td>
+											<div id="INTER_APP_STATUS_NAME"></div>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div class="ecitic-title">
+								<input id="file_id_reqAdd" name="RA.file_id" type="hidden" />
+								<span>接口内容信息<em></em></span>
+								<i></i>
+							</div>
+							<div class="ecitic-title-table" id="">
+								<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+									<tr>
+										<td class="table-text">输入内容:</td>
+										<td colspan="3">
+											<div id="INPUT_MSG"></div>
+										</td>
+									</tr>
+									<tr>
+										<td class="table-text">输出内容:</td>
+										<td colspan="3">
+											<div id="RETURN_MSG"></div>
+										</td>
+									</tr>
+								</table>
+							</div>
+							
+							<div class="ecitic-save">
+								 <input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+							</div>
+						</div>
+						
+						<!-- 接口信息 -->
+						<div class="tab-pane fade" id="design_anal_tab">
+							<div class="ecitic-title-table" id="interBasicInfo">
+								<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+									<tr>
+										<td class="table-text">接口名称:</td>
+										<td >
+											<input type="hidden" id="inter_id" name="I.INTER_ID">
+											<input type="hidden" id="app_id" name="I.APP_ID">
+											<input type="text" id="inter_name" name="I.INTER_NAME" validate="v.required" valititle="该项为必填项">
+										</td>
+										<td class="table-text">接口交易码:</td>
+										<td >
+											<input type="text" id="trade_code" name="I.TRADE_CODE" validate="v.required" valititle="该项为必填项">
+										</td>
+										
+									</tr>
+									<tr>
+										<td class="table-text">服务方应用名称:</td>
+										<td><input type="hidden" id="ser_system_id" name="I.SER_SYSTEM_ID" >
+										<input type="text" id="ser_system_name" name="I.SER_SYSTEM_NAME"></td>
+										<td class="table-text">接口业务类型：</td>
+										<td><select id="inter_office_type" name="I.INTER_OFFICE_TYPE" style="width:100%" validate="v.required" valititle="该项为必填项"></select></td>
+									</tr>
+									<tr>
+										<td class="table-text">接口描述:</td>
+										<td colspan="3"><textarea id="inter_descr" name="I.INTER_DESCR" validate="v.required" valititle="该项为必填项"></textarea></td>
+									</tr>
+								</table>
+							</div>
+							<div class="ecitic-title">
+								<input id="file_id_reqAdd" name="RA.file_id" type="hidden" />
+								<span>基础属性信息<em></em></span>
+								<i></i>
+							</div>
+							<div class="ecitic-title-table" id="designAttr">
+								<table tb="attrTable" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+									<tbody>
+									</tbody>
+								  </table>
+						   </div>
+							<div class="ecitic-save">
+								<input type="button" class="btn btn-ecitic" id="next_step"  value="下一步"/>
+								<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+							</div>
+						</div>
+
+						<!-- 	******报文内容******    -->
+						<div class="tab-pane fade" id="design_mess_tab">
+							<div class="ecitic-operation">
+								<button class="btn btn-ecitic" btn="message_into">报文内容导入</button>
+								<button class="btn btn-ecitic" btn="message_clear">清空报文内容</button>
+							</div>
+							<div class="ecitic-title">
+								<span>输入内容<em></em></span>
+								<i></i>
+							</div>
+							<div class="ecitic-operation">
+								<button class="btn btn-ecitic" onclick="addContent('InputContentTable','inputData_from','')">新增</button>
+								<button class="btn btn-ecitic" id="input_selectData">添加标准项</button>
+							</div>
+							<form action="" class="form-inline" id="inputData_from">
+								<div class="ecitic-new">
+									<table id="InputContentTable"
+										class="aa table table-bordered table-hover tablr-input-text"></table>
+								</div>
+							</form>
+							
+							
+							<div class="ecitic-title">
+								<span>输出内容<em></em></span>
+							</div>
+							<div class="ecitic-operation">
+								<button class="btn btn-ecitic" onclick="addContent('OutputContentTable','outputData_from','_')">新增</button>
+								<button class="btn btn-ecitic" id="out_selectData">添加标准项</button>
+							</div>
+							<form action="" class="form-inline" id="outputData_from">
+								<div class="ecitic-new">
+									<table id="OutputContentTable"
+										class="aa table table-bordered table-hover tablr-input-text"></table>
+								</div>
+							</form>
+							
+							<div id="input_import" class="modal hide fade" tabindex="-1">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">×</button>
+									<h3>报文内容导入</h3>
+								</div>
+								<div class="modal-body" style="overflow-x: hidden; max-height: 450px;padding-top:0px;">
+									<table id="supplier_info_import" class="table table-bordered tablr-input-text">
+										<tr>
+											<td width="120" class="table-text">选择附件：</td>
+											<td width="430">
+												<div class="upload-checkfile-all">
+													<input type="text" name="supplierfield" id="supplierfield" class="input-txt" />
+													<input type="button" value="浏览" class="input-btn" />
+													<input type="file" name="file" class="input-file" id="summaryfile" onchange="getCurrentPageObj().find('#supplierfield').val(this.value)" />
+												</div>
+											</td>
+											<td width="120" class="table-text">
+												<a href="sfile/downloadFTPFile.asp?id=m_040" class="file_template_style">下载模板</a>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div class="modal-footer" style="text-align:center">
+										<button class="btn" aria-hidden="true"  data-dismiss="modal">关闭</button>
+										<button  onclick="importInput('summaryfile')" class="btn btn-ecitic">导入报文内容</button>
+								</div>
+							</div>
+							<!-- 文件列表 -->
+							<!--  <div class="ecitic-title">
+								<span>附件列表信息<em></em></span>
+								<i></i>
+							</div>
+							<div class="ecitic-title-table">
+								<div class="ecitic-operation">
+									<button type="button" class="btn btn-ecitic" id="add_file">上传</button>
+									<button type="button" class="btn btn-ecitic" id="delete_file">删除</button>
+									<a href="sfile/downloadFTPFile.asp?id=m_027" class="file_template_style">接口设计文档模版</a>
+						            <a href="sfile/downloadFTPFile.asp?id=m_028" class="file_template_style">服务方接口使用文档模版</a>
+								</div>
+								<table id="filetable"  class="table table-bordered table-hover table-text-show"></table>
+							</div> -->
+							
+							<div class="ecitic-save">
+								<input type="button" class="btn btn-ecitic" id="save_data"  value="保存"/>
+							 	<input type="button" class="btn btn-ecitic" id="submit_data"  value="保存并提交"/>
+								<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+							</div>
+						</div>						
+						<div class="tab-pane fade" id="apply_oper_history"" name="applyOperationHistory">
+							<div class="ecitic-new">
+								<table id="OptHistoryTable" class="table table-bordered table-hover table-text-show"></table>
+							</div>
+						</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div mod="seleInterPop"></div>
+		<!--上传附件模态框  -->
+		<div id="add_modalfile"></div>
+		<div id="add_fileview_modal"></div>
+	</div>
+</body>
+<script src="dev_application/changeInterfaceApply/inforMaintenace_seleDataPop.js"></script>
+<script type="text/javascript" src="js/commons/ajaxfileupload.js"></script>
+</html>

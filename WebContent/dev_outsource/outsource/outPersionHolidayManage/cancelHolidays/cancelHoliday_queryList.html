@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>请假申请</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+				<form action="" id="celHolidayList">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+						<tr>
+							<td class="ecitic-right">人员姓名：</td>
+							<td>
+								<input type="text" name="op_name"/>
+							</td>
+							<td class="ecitic-right">供应商名称：</td>
+							<td>
+								<input type="text" name="sup_name"/>
+							</td>
+							<td class="ecitic-right">请假类别：</td>
+							<td>
+								<div class="ecitic-input-all" style="position: static;">
+									<select id="leave_category" name="leave_category" style="width:100%;"  class="citic-sele-ast" diccode="C_DIC_STAFFLEAVE_LEAVETYPE"></select>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="ecitic-right">销假状态：</td>
+							<td>
+								<select id="leave_state" name="leave_state"  style="width:100%;" class="citic-sele-ast" diccode="P_DIC_OUTPERSON_HOLIDAYAPPROVE"></select>
+							</td>
+							<td class="ecitic-right">销假起止时间：</td>
+							<td>
+								<span class="ecitic-time">
+									<input type="text"  id="clear_startdate" name="clear_startdate" onclick="checkTimeSupCompare_common('leave_startdate','leave_enddate')" readonly/>
+								</span>
+								<span class="ecitic-to">至</span>
+								<span class="ecitic-time">
+									<input type="text"  id="clear_enddate" name="clear_enddate" onclick="checkTimeSupCompare_common('leave_startdate','leave_enddate')" readonly/>
+								</span>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><button type="button" class="btn btn-ecitic" id="queryOpsCelHoliday">查询</button></li>
+				<li><button type="button" class="btn btn-ecitic" id="cancelHoliday_reset">重置</button></li>
+			</ul>
+		</div>
+		<div class="ecitic-operation">
+			<button type="button" class="btn btn-ecitic" id="celHoliday_add" >新增</button>
+			<button type="button" class="btn btn-ecitic" id="celHoliday_update" >修改</button>
+			<button type="button" class="btn btn-ecitic" id="celHoliday_submitToApprove" >提交</button>
+			<button type="button" class="btn btn-ecitic" id="celHoliday_del" >删除</button>
+			<button type="button" class="btn btn-ecitic" id="celHoliday_view">查看</button>
+		</div>
+		<div class="ecitic-new">
+			<table id="celHolidayTable" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="pages/approvalflow/afcommons.js"></script>
+<script src="dev_outsource/outsource/outPersionHolidayManage/cancelHolidays/cancelHoliday_queryList.js"></script>
+</html>

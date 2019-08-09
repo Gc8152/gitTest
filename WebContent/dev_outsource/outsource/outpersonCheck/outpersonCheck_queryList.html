@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>外包人员考核</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+				<form action="" id="optCheckList">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+						<tr>
+							<td class="ecitic-right">人员姓名</td>
+							<td>
+								<input type="text" name="OCQ.op_name"/>
+							</td>
+							<td class="ecitic-right">行方项目经理</td>
+							<td>
+								<input type="text" name="OCQ.op_staff_name"/>
+							</td>
+							<td class="ecitic-right">考核类别</td>
+							<td>
+								<div class="ecitic-input-all" style="position: static;">
+									<select id="check_type" name="OCQ.check_type" class="citic-sele-ast" diccode="C_DIC_STAFF_CHECKTYPE"></select>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="ecitic-right">供应商名称</td>
+							<td>
+								<input type="hidden"  name="OCQ.supplier_id"/>
+								<input type="text" placeholder="点击选择供应商" id="supplier_id" readonly/>
+							</td>
+							<td class="ecitic-right">考核时间</td>
+							<td>
+								<div class="ecitic-input-all">
+									<input type="text" onclick="WdatePicker({})" name="OCQ.check_date" readonly/>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><button type="button" class="btn btn-ecitic" id="queryOptCheck">查询</button></li>
+				<li><button type="button" class="btn btn-ecitic" id="check_reset">重置</button></li>
+			</ul>
+		</div>
+		<div class="ecitic-operation">
+			<button type="button" class="btn btn-ecitic" id="optCheckAdd">新增</button>
+			<button type="button" class="btn btn-ecitic" id="optCheckUpdate">修改</button>
+			<button type="button" class="btn btn-ecitic" id="optCheckDel">删除</button>
+			<button type="button" class="btn btn-ecitic" id="optCheckDetail">查看</button>
+		    <!-- <button type="button" class="btn btn-ecitic" id="optCheckPrint">打印</button> -->
+			<button type="button" class="btn btn-ecitic" id="optCheckImp">考核导入</button>
+		</div>
+		<div class="ecitic-new">
+			<table class="table table-bordered table-hover table-text-show" id="optCheckTable"></table>
+		</div>
+		<!-- 考核导入模态框 -->
+		<div id="optCheck_import" class="modal hide fade" tabindex="-1">
+			<div class="modal-header">
+				<h3>外包人员考核信息导入</h3>
+			</div>
+			<div class="modal-body" style="overflow-x: hidden; max-height: 450px;padding-top:0px;">
+				<table id="opcheck_info_import" class="table table-bordered tablr-input-text">
+					<tr>
+						<td width="120" class="table-text">选择附件：</td>
+						<td width="430">
+							<div class="upload-checkfile-all1">
+								<input type="text" name="opcheckfield" id="opcheckfield" class="input-txt" readonly/>
+								<span>浏览
+								   <input type="file" name="file" class="input-file" id="opCheckfile" onchange="document.getElementById('opcheckfield').value=this.value" />
+								</span>
+							</div>
+						</td>
+						<td width="120" class="table-text">
+							<a href="sfile/downloadFTPFile.asp?id=m_048" style="color:blue">下载模板</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer" style="text-align:center">
+				<button class="btn btn-ecitic" aria-hidden="true"  data-dismiss="modal">关闭</button>
+				<button id="importOptCheck" class="btn btn-ecitic">导入</button>
+			</div>
+		</div>
+		<div id="supNamePop"></div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="js/commons/ajaxfileupload.js"></script>
+<script type="text/javascript" src="js/commons/print.js"></script>
+<script src="dev_outsource/outsource/outpersonCheck/outpersonCheck_queryList.js"></script>
+<script src="dev_outsource/supplier/supplierInfo/supplierPop.js"></script>
+</html>

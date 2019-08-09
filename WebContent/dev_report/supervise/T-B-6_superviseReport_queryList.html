@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>信息安全管理情况表</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<style type="text/css">
+	.click_text_sp{color:#c9161d;}
+	.click_text_sp:hover{color:#c9161d;cursor:pointer;text-decoration:underline;}
+	.click_text_sp:active{color:blue;cursor:pointer;text-decoration:underline;}
+	
+</style>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire ecitic-inquire-sec lessSearch" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table id="superviseTerm" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<!-- <td class="ecitic-right" style="border:none;">报表类型：</td>
+					<td style="border:none;"><select id="" name="supervise_type"></select></td> -->
+					<td style="border:none;" class="ecitic-right">填报人：</td>
+					<td style="border:none;"><input type="text" id="" name="fill_person_name"/></td>
+					<td style="border:none;" class="ecitic-right">填表时间：</td>
+                    <td style="border:none;">
+                        <span class="ecitic-time">
+                            <input type="text" name="fill_time_st" id="fill_time_st" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                        <span class="ecitic-to">至</span>
+                        <span class="ecitic-time">
+                            <input type="text" name="fill_time_et" id="fill_time_et" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                    </td>
+				</tr>
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="query">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button type="button" class="btn btn-ecitic" id="add">新建</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover" id="superviseReportTable">
+			
+		</table>
+	</div>
+	
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_report/supervise/T-B-6_superviseReport_queryList.js"></script>
+</html>

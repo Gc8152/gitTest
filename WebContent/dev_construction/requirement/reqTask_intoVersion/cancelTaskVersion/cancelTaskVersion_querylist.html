@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>任务列表查询》》</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<!-- 字体图标 -->
+</head>
+<body>
+<div  class="main_iframe_con">
+	<form action=""  class="form-inline" id="taskCancelVersionQuery">
+		<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<table style="width:100%;border:1px; cellspacing:0px; cellpadding:0px"
+					class="table table-bordered table-bor-pad" >
+					<tr>
+						<td class="ecitic-right" width="13%">任务编号：</td>
+						<td width="20%">
+						  <input type="text" id="req_task_codeTV" name="req_task_code" class="requirement-ele-width"/>
+						</td>
+						<td class="ecitic-right" width="13%">任务名称：</td>
+						<td width="20%">
+						  <input type="text" id="req_task_nameTV" name="req_task_name" class="requirement-ele-width"/>
+						</td>
+						<td class="ecitic-right" width="13%">任务状态：</td>
+						<td width="20%">
+						   <select id="req_task_stateTV" name="req_task_state" style="width:100%" diccode="G_DIC_REQTASK_STATE"></select>
+						</td>
+						<!--<td class="ecitic-right">任务类型：</td>
+					    <td>
+					      <select id="req_task_typeTV" name="req_task_type_display" class="requirement-ele-width" diccode="G_REQ_TASK_TYPE" style="width:100%"></select>
+					    </td> -->
+					    </tr>
+					    <tr>
+						<td class="ecitic-right" >申请纳入版本：</td>
+						<td>
+						   <input type="text" id="version_nameTV" name="version_name" class="requirement-ele-width" placeholder="点击选择 " readonly/>
+						   <input type="hidden" id="version_idTV" name="version_id" />
+						</td>
+						<td class="ecitic-right" >实施应用：</td>
+						<td colspan="1">
+						    <input type="text" id="system_nameTV" name="system_name" class="requirement-ele-width"  placeholder="点击选择" readonly/>
+						    <input type="hidden" id="system_noTV" name="system_no" />
+						</td>
+						<td class="ecitic-right">任务分析评审状态：</td>
+						<td>
+						  <select id="analyze_stateTV" name="analyze_state" class="requirement-ele-width" diccode="G_DIC_REQ_TASK_PHASED_JURY" style="width:100%"></select>
+						</td>
+					</tr>
+					<tr>
+						<!--<td class="ecitic-right" width="13%">任务从属关系：</td>
+						<td width="20%">
+						   <select id="req_task_relationTV" name="req_task_relation" style="width:100%" diccode="G_DIC_TASK_RELATION"></select>
+						</td>-->
+					   <td class="ecitic-right" >计划投产日期：</td>
+					   <td class="dateSelectZ">
+						 <div class="dateSelectZ_From">
+							<input type="text" id="plan_onlinetimeTV" name="plan_onlinetime" onClick="WdatePicker({maxDate:'#F{$dp.$D(\'plan_onlinetimeTV\',{d:0});}'});" placeHolder="点击选择" class="requirement-ele-width" readonly/>
+						 </div>
+						 <div class="dateSelectZ_W"><span>至</span></div>		
+						 <div class="dateSelectZ_To">
+							<input type="text" id="plan_onlinetimeTV1" name="plan_onlinetime1" onClick="WdatePicker({minDate:'#F{$dp.$D(\'plan_onlinetimeTV\',{d:0});}'});" placeHolder="点击选择"  readonly/>
+						 </div>
+					    </td>
+					</tr>
+				</table>
+			</div>
+
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" id="serach_TversionQuery" value="查询"/></li>
+				<li><input type="reset" class="btn btn-ecitic" id="reset_TversionQuery" value="重置"/></li>
+			</ul>
+		</div>
+		</form>
+		<div class="ecitic-operation">
+			<!-- <button class="btn btn-ecitic" id="advance_versionAdd">入版</button> -->
+			<button class="btn btn-ecitic" id="cancel_version">取消入版</button>
+			<button class="btn btn-ecitic" id="versionDetail_view">查看详情</button>
+		</div>
+		<div class="ecitic-new">
+			<table id="gReqTaskTableForCancelVersion" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+		<!-- 系统应用pop -->
+		<div id="tvsystem_pop"></div>
+		<!-- 版本pop -->
+		<div id="tvVsersion_pop"></div>
+		<!-- 未受理协办任务pop -->
+		<div id="joinlytask_pop"></div>
+	</div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_intoVersion/cancelTaskVersion/cancelTaskVersion_querylist.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_intoVersion/taskVersion_pop.js"></script>
+<script type="text/javascript" src="dev_application/System_pop.js"></script>
+</html>

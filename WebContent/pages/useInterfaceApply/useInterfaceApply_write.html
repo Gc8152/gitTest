@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>需求提出页面</title>
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+<script src="pages/apiUse/apiUse_write.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>接口使用申请</span>
+		</div>
+<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-left">消费方应用名称：</td>
+					`	<td><div style="display:inline;"><input type="text" name="S.user_no" id="user_no"/><span id="equip_specSpan" style="color:red;font-size:11px;">*</span></div></td>
+						<td class="ecitic-left">服务方应用名称：</td>
+						<td><input type="text" name="S.user_name" id="user_name"/></td>
+						<td class="ecitic-right"></td>
+						<td class="ecitic-right"></td>
+					</tr>
+					<tr>
+						<td class="ecitic-left">关联任务需求编号：</td>
+						<td><input type="text" name="" id="" /></td>
+						<td class="ecitic-left">关联需求任务名称：</td>
+						<td><input type="text" name="" id="" /></td>
+					</tr>
+					<tr>
+						<td class="ecitic-left">要求完成时间：</td>
+						<td><input type="text" name="" id=""/></td>
+						<td class="ecitic-left"></td>
+						<td class="ecitic-left"></td>
+					</tr>
+					<tr>
+				         <td class="ecitic-left">备注：</td>
+				         <td colspan="3">
+					     <textarea rows="4" maxlength="50"  name="memo" id="memo"></textarea>
+				         </td>
+			        </tr>
+				</table>
+			</div>
+		</div>
+<form class="form-inline" id="gRequirementInfo_add">
+		   <div class="ecitic-title">
+				<input id="file_id_reqAdd" name="RA.file_id" type="hidden" />
+				<span>申请接口清单<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<div class="ecitic-operation">
+					<button type="button" class="btn btn-ecitic" id="Select_interface">选择现有接口</button>
+					<button type="button" class="btn btn-ecitic" id="add_interface">新增接口</button>
+				</div>
+				<table id="infatable"  class="table table-bordered table-hover table-text-show"></table>
+			</div>
+		</form>
+		<div class="ecitic-save" >
+	   		
+	  			<input type="button" class="btn btn-ecitic" id="save_gRequirementInfo" value="保存"/>
+	  			
+	  			<input type="button" class="btn btn-ecitic" id="submit_gRequirementInfo" value="提交"/>
+
+	  		 	<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+	  		
+	   </div>
+	   <!-- 会签部门pop -->
+	   <div id="req_countersign_dept"></div>
+	   <!--上传附件模态框  -->
+       <div id="reqadd_modalfile"></div>
+       <div id="reqadd_fileview_modal"></div>
+	</div>
+</body>
+</html>

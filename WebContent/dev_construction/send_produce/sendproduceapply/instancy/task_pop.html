@@ -1,0 +1,28 @@
+<!-- 角色模态框 -->
+<div id="myModal_instancyTask" class="modal hide fade" tabindex="-1" style="top:50%;margin-top: -250px;">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="myModalLabel">紧急任务页面</h5>
+	</div>
+	<form action="" class="form-inline" id="taskBox">
+		<div class="row">
+			<div class="span6 h50">
+				<label class="pl60">任务名称：</label>
+				<input type="text" id="pop_taskName" name="user" >
+			</div>
+			<div class="span6 h50">
+				<label class="pl60">任务编号：</label>
+				<input type="text" id="pop_taskNo" name="user">
+			</div>
+		</div>
+	</form>
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="查询" id="pop_instanctTaskSearch" type="button" />
+		<input class="btn btn-ecitic" value="重置" id="pop_instanctTaskReset" type="button" />
+		<input class="btn btn-ecitic" value="选中并返回" id="pop_instanctTaskSave" type="button" style="margin-left:-452px;margin-bottom: -50px;margin-right:350px"/>
+	</div>
+	<div class="modal-body">
+		<table id="pop_instanctTaskTable" title="双击选择一条数据"></table>
+	</div>
+<div class="modal-footer"></div> 
+</div>

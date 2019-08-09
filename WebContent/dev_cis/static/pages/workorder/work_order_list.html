@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+<link rel="stylesheet" href="../../css/bootstrap-table.min.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/select2.css"/>
+<link rel="stylesheet" href="../../css/public.css" />
+<link rel="stylesheet" href="../../css/form.css" />
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../../js/select2.min.js"></script>
+<script type="text/javascript" src="../../js/Math.uuid.js"></script>
+<script type="text/javascript" src="../../js/commons.js"></script>
+</head>
+
+<body style="overflow:auto;">
+	<div class="main_iframe_con">
+		<div class="yourLocation">
+			<i></i><span>您所在的位置：服务器配置》应用服务器</span>
+		</div>
+		
+		<form id="query_form" class="form-inline">
+			<div class="ecitic-inquire" id="ecitic-inquire">
+				<div class="ecitic-table" id="ecitic-table">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad requirement-table" >
+						<tr>
+						    <td class="ecitic-right" >工单号：</td>
+							<td>
+								<input type="text" name="workOrderCode" value=""/>
+							</td>
+							<td class="ecitic-right">流程名称：</td>
+							<td>
+								<input type="text" name="workOrderCodedfdfd" value=""/>
+							</td >
+							<!-- <td class="ecitic-right"  style="width:15%">需求大类：</td>
+							<td style="width:25%">
+							<select id="req_type1_reqquery" name="req_type1" class="requirement-ele-width" diccode="G_DIC_REQUIREMENT_TYPE1" style="width:100%;">
+							</select>
+							</td> -->
+							<td class="ecitic-right" >执行状态：</td>
+							<td >
+							    <select id="serverStatus" name="serverStatus" validate="v.required" valititle="该项必选">
+									<option value="00">待执行</option>
+									<option value="01">执行中</option>
+									<option value="02">暂停</option>
+									<option value="03">终止</option>
+									<option value="04">异常终止</option>
+									<option value="05">执行完成</option>
+								</select>
+							</td>
+					    </tr>
+						<tr>
+							<td class="ecitic-right">应用名称：</td>
+							<td class="positionAb">
+							    <input type="text" name="systemName" value=""/>
+							</td>
+							<td class="ecitic-right">子应用名称：</td>
+							<td class="positionAb">
+							    <input type="text" name="appName" value=""/>
+							</td>
+							<td colspan="2" class="ecitic-right" ></td>
+						</tr>
+					</table>
+				</div>
+				<ul class="ecitic-btn-all">
+					<li><input type="button" class="btn btn-ecitic" id="query" value="查询"/></li>
+					<li><input type="reset" class="btn btn-ecitic" id="reset" value="重置"/></li>
+				</ul>
+			</div>
+		</form>
+		
+		<div class="ecitic-operation">
+			<button class="btn btn-ecitic" id="work_order_flow">工单流程详情</button>
+			<button class="btn btn-ecitic" id="stop">修改服务器</button>
+			<button class="btn btn-ecitic" id="continue">继续执行</button>
+			<button class="btn btn-ecitic" id="stop">停止</button>
+		</div>
+		<div class="ecitic-new">
+			<table id="app_server_table" class="table table-bordered table-hover" ></table>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="work_order_list.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>仲裁不符合项</title>
+<link rel="stylesheet" type="text/css" href="../../../../bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../../../../css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="../../../../css/style.css" />
+<link rel="stylesheet" type="text/css" href="../../../../css/form.css"/>
+<link rel="stylesheet" type="text/css" href="../../../../css/zebra_dialog.css"/>
+</head>
+<body>
+<form class="main_iframeFormW" action="">
+		<div class="main_iframe_con">
+			<div class="ecitic-title">
+				<span>基本信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table tab-content bootstrapTabsCont">
+				<table width="100%" class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+					<tr>
+						<td width="12%" class="table-text">发现日期：</td>
+						<td width="21.333%">
+							<div name="">2017-02-20</div>
+						</td>
+						<td width="12%" class="table-text">提出人：</td>
+						<td width="21.333%">
+							<div name="">王艳</div>
+						</td>				
+					</tr>
+					<tr>
+						<td class="table-text">项目编号：</td>
+						<td>
+							<div name="">XM-2017-001</div>
+						</td>
+						<td class="table-text">项目名称</td>
+						<td>
+							<div name="">2016年网上银行项目</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">不符合项描述：</td>
+						<td colspan="3">
+							<div name="">没有完成需求说明书评审</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">建议措施：</td>
+						<td colspan="3">
+							<div name="">需求说明书审批</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">建议解决时间：</td>
+						<td>
+							<div name="">2017-03-01</div>
+						</td>
+						<td class="table-text">不符合项等级：</td>
+						<td>
+							<div name="">严重</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		<div class="ecitic-new" id="">
+			<div class="ecitic-title">
+				<span>仲裁信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table tab-content bootstrapTabsCont">
+				<table border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover table-center table-th tablr-input-text">
+						<tr>
+							<th>日期</th>
+							<th>角色</th>
+							<th>不符合项状态</th>
+							<th>仲裁内容</th>
+						</tr>
+						<tr>
+							<td>2017-01-10</td>
+							<td>项目经理</td>
+							<td>已受理-拒绝</td>
+							<td>
+								【原因分析】由于XXXXX的原因，不需要进行需求说明书评审；【备注】XXXXXXXX
+							</td>
+						</tr>
+						<tr>
+							<td>2017-01-20</td>
+							<td>QA</td>
+							<td>待仲裁</td>
+							<td>
+								****************
+							</td>
+						</tr>
+				</table>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+					<tr>
+						<td width="12%" class="table-text">确认不符合项：</td>
+						<td width="21.333%">
+							<select name="">
+								<option>请选择</option>
+								<option selected="selected">同意关闭</option>
+								<option>不同意关闭</option>
+								<option>上升仲裁</option>
+							</select>
+						</td>
+						<td width="12%"></td>
+						<td width="21.333%"></td>
+					</tr>
+					<tr>
+						<td class="table-text">仲裁意见说明：</td>
+						<td colspan="3">
+							<textarea></textarea>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="ecitic-save">
+				<input type="button" class="btn btn-ecitic" id="commit_nonconformityManage_arbitrate"  value="提交"/>
+				<input type="button" class="btn btn-ecitic" id="nonconformityManage_arbitrate_back"  value="返回"/>
+			</div>
+		</div>
+		</div>
+	</form>
+</body>
+<script type="text/javascript" src="../../../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../../../bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../../js/select2.js"></script>
+<script type="text/javascript" src="../../../../js/common.js"></script>
+<script type="text/javascript" src="../../../../js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../../../../js/alertAndConfirm.js"></script>
+<script type="text/javascript" src="../../../../js/zebra_dialog.js"></script>
+<script type="text/javascript" src="nonconformityManage_arbitrate.js"></script>
+</html>

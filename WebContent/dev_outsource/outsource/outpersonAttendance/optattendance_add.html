@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>外包人员考勤新增</title>
+		<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/form.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+	</head>
+<body>
+<div class="main_iframe_con">
+       <form class="form-inline" id="optAttendance_add">	
+       <div class="ecitic-title">
+				<span>外包人员考勤信息新增<em></em></span>
+				<i></i>
+			</div>	
+		<div class="ecitic-title-table">
+			<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+			<colgroup>
+					<col style="width: 11%">
+			        <col style="width: 22%">
+			        <col style="width: 12%">
+			        <col style="width: 22%">
+			        <col style="width: 11%">
+			        <col style="width: 22%">
+		        </colgroup>
+				<tr>
+				    <td class="ecitic-right">人员姓名：</td>
+				    <td>
+					   <input type="text" name="AD.op_name" id="op_nameAD" validate="v.required" valititle="请选择外包人员" placeholder="点击选择外包人员" class="citic-ast  read" readonly/>
+ 				       <input type="hidden" name="AD.user_no"  id="user_noAD"/>
+ 				       <input type="hidden" name="AD.op_code"  id="op_codeAD"/>
+				    </td>
+					<td class="ecitic-right">考勤类型：</td>
+					<td>
+						<select id="acc_typeAD" name="AD.acc_type" style="width:100%" class="requirement-ele-width" validate="v.required" valititle="该项为必填项" dic_code="C_DIC_ATTENDANCE_TYPE">
+						</select>
+					</td>
+					<td class="ecitic-right">考勤日期：</td>
+					<td>
+						<input type="text" id="work_dateAD" name="AD.work_date" class="input" onclick ="WdatePicker({dateFmt:'yyyy-MM-dd'});" placeholder="点击选择时间" validate="v.required" valititle="该项为必填项" />
+					</td>					
+				</tr>
+				<tr>
+					<td class="ecitic-right">上班时间：</td>
+					<td >
+						<input type="text" id="berw_timeAD" name="AD.berw_time" class="input" onclick ="WdatePicker({dateFmt:'HH:mm:ss'});" placeholder="点击选择时间" validate="v.required" valititle="该项为必填项" />
+					</td>
+					<td class="ecitic-right">下班时间：</td>
+					<td>
+						<input type="text" id="aftw_timeAD" name="AD.aftw_time" class="input"  onclick ="WdatePicker({dateFmt:'HH:mm:ss'});" placeholder="点击选择时间"  validate="v.required" valititle="该项为必填项" />
+					</td>
+					<td class="ecitic-right">考勤状态：</td>
+					<td>
+						<select id="acc_statusAD" name="AD.acc_status" style="width:100%" class="requirement-ele-width" validate="v.required" valititle="该项为必填项" dic_code="C_DIC_ATTENDANCE_TYPE">
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">标准工时：</td>
+					<td>
+						<input type="text" id="work_hoursAD" name="AD.work_hours" class="input"  placeholder="请输入0~8之间数字" validate="v.required"  valititle="该项为必填项" />
+					</td>
+					<td class="ecitic-right">加班工时</td>
+					<td>
+					    <input type="text" id="work_overhoursAD" name="AD.work_overhours" class="input"  placeholder="请输入0~24之间数字" />
+					</td>
+					<td class="ecitic-right"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="ecitic-right" style="height: 80px">备注：</td>
+					<td colspan="5">
+						<textarea id="memoAD" name="AD.memo" class="requirement-ele-width" placeHolder="" style="height:80px"></textarea>
+					</td>
+				</tr>
+		 </table>
+		 </div>
+		 </form>
+		<div class="ecitic-save" >
+	   		<div>
+	  			<input type="button" class="btn btn-ecitic" id="add_optattendance" value="保存"/>
+	  		 	<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+	  		</div>
+	   </div>
+	</div>
+	<div id="outPersonInfoPop"></div>
+</body>
+<script type="text/javascript" src="bootstrap/js/select2.min.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="dev_outsource/outsource/outpersonAttendance/optattendance_add.js"></script>
+<!-- <script type="text/javascript" src="dev_outsource/outsource/outperson/optPop.js"></script> -->
+<script type="text/javascript" src="dev_outsource/outsource/outpersonAttendance/designateManPop.js"></script>
+</html>
+<script type="text/javascript">
+	initVlidate($("#optAttendance_update"));
+</script>

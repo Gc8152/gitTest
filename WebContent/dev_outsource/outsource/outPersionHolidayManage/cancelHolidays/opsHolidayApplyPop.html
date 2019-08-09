@@ -1,0 +1,36 @@
+
+<div id="myModal_opsHoliday" class="modal hide fade in" style="top: 50%;margin-top: -300px;width: 780px" tabindex="-1" data-backdrop="static" >
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="myModalLabel">请假单列表信息</h5>
+	</div>
+	<form action="" class="form-inline" id="opsHoliday_popForm">
+		<div class="row">
+			<div class="span6 h50">
+				<label class="pl60">请假开始时间：</label>
+				<input type="text" name="leave_startdate" id="leave_startdate_pop" onclick="checkTimeSupCompare_common('leave_startdate_pop','leave_enddate_pop')">
+			</div>
+			<div class="span6 h50">
+				<label class="pl60">请假结束时间：</label>
+				<input type="text" name="leave_enddate" id="leave_enddate_pop" onclick="checkTimeSupCompare_common('leave_startdate_pop','leave_enddate_pop')"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span6 h50">
+				<label class="pl60">请假类别：</label>
+				<label  style="width:48.5%;padding-left:0px;">
+				  <select type="text" name="leave_category" id="leave_category_pop" diccode="C_DIC_STAFFLEAVE_LEAVETYPE" style="width:100%"></select>
+				</label>
+			</div>
+		</div>
+	</form>
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="查询" id="pop_opsSearch" type="button" />
+		<input class="btn btn-ecitic" value="重置" id="pop_opsReset" type="button" />
+	</div>
+	<div class="ecitic-title-table modal-body ecitic-new">
+		<table id="pop_opsHolidayTable" title="双击选择一条数据" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+	<div class="modal-footer"></div>
+</div>
+

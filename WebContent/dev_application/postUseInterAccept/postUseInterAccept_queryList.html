@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>接口使用申请受理(接口管理岗)</title>
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="postUseInterAcceptForm">
+				<table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">申请编号：</td>
+						<td>
+							<input type="text" id="RECORD_APP_NUM" name="RECORD_APP_NUM"/>
+						</td>
+						<td class="ecitic-right">申请人：</td>
+						<td>
+							<input type="text" id="APP_USER_NAME" name="APP_USER_NAME"/>
+						</td>
+						<td class="ecitic-right">申请名称：</td>
+						<td>
+							<input type="text" id="APP_NAME" name="APP_NAME"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">消费方应用名称：</td>
+						<td>
+							<input type="text" id="CON_SYSTEM_NAME" name="CON_SYSTEM_NAME" readonly/>
+						</td>
+						<td class="ecitic-right">服务方应用名称：</td>
+						<td>
+							<input type="text" id=SER_SYSTEM_NAME name="SER_SYSTEM_NAME" readonly/>
+						</td>
+						<td class="ecitic-right" >要求完成日期：</td>
+						<td>
+							<div class="dateSelectZ_From">
+							<input type="text" id="req_finish_time_postAccept" name="REQ_FINISH_TIME" class="requirement-ele-width"  onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'req_finish_time1_postAccept\',{d:0});}'})" placeHolder="点击选择"   readonly/>
+							</div>
+							<div class="dateSelectZ_W">&nbsp至&nbsp</div>
+							<div class="dateSelectZ_From">
+							<input type="text" id="req_finish_time1_postAccept" name="REQ_FINISH_TIME1" class="requirement-ele-width" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'req_finish_time_postAccept\',{d:0});}'})" placeHolder="点击选择"  readonly/>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="queryUseAccept" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" id="reset" value="重置"/></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="interfaceAccept">接口申请受理</button>
+<!-- 		<button class="btn btn-ecitic" id="interfaceCheck">查看</button> -->
+	</div>
+	<div class="ecitic-new">
+		<table id="postUseInterAcceptInfoTable" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+	<div mod="systemPop"></div>
+</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+<script src="dev_application/postUseInterAccept/postUseInterAccept_queryList.js"></script>
+<script src="dev_application/useInterfaceApply/useInterfaceApply_systemPop.js"></script>
+</html>

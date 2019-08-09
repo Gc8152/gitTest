@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link  href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script src="ztree3.5.22/js/jquery.ztree.core.min.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.excheck.min.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.exedit.min.js"></script>
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="pages/sdic/sdicItem_queryInfo.js"></script>
+<script src="pages/sdic/sdic_queryInfo.js"></script>
+<script src="pages/sdic/sdic_add.js"></script>
+<script src="pages/sdic/sdic_update.js"></script>
+</head>
+<body>
+
+<div class="main_iframe_con">
+	<form action=""  class="form-inline">
+		<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">类别编码</td>
+						<td><input type="text" name="dic_code" id="dic_code" /></td>
+						<td class="ecitic-right">类别名称</td>
+						<td><input type="text" name="dic_name" id="dic_name" /></td>
+						<td class="ecitic-right">类别状态</td>
+						<td><select id="dic_state" name="dic_state"></select></td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">所属菜单</td>
+						<td>
+							<input type="text" name="" id="dic_query_menuname" placeholder="点击选择" readonly />
+							<input type="hidden" id="dic_query_menucode" />
+						</td>
+						<td class="ecitic-right">管理角色</td>
+						<td><select id="manager_role" name="manager_role"></select></td>
+					</tr>
+				</table>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" id="dic_search" value="查询" /></li>
+				<li><input type="reset" class="btn btn-ecitic" id="dic_reset" value="重置" /></li>
+			</ul>
+	  </div>
+	</form>
+	<div class="ecitic-operation" id="opt_button"></div>
+	<div class="ecitic-new">
+		<table id="table_sdic" class="table table-bordered table-hover"></table>
+	</div>
+</div>
+</body>
+</html>

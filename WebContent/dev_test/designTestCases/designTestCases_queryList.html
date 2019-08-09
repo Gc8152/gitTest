@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>设计测试案例</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main_iframe_con">
+        <div class="ecitic-inquire" id="ecitic-inquire">
+            <div class="ecitic-table" id="ecitic-table">
+                <form id="designForm">
+                    <table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+                        <tr>
+                            <td class="ecitic-right">项目编号：</td>
+                            <td>
+                                <input type="text" name="PROJECT_NUM" />
+                            </td>
+                            <td class="ecitic-right">项目名称：</td>
+                            <td>
+                                <input type="text" name="PROJECT_NAME" />
+                            </td>
+                            <!-- <td class="ecitic-right">应用名称：</td>
+                            <td>
+                                <input type="text" name="SYSTEM_NAME" />
+                            </td> -->
+                            <td class="ecitic-right">项目状态：</td>
+                           	<td colspan="1">
+                           		<select name="ACCEPT_STATE"  diccode="TM_DIC_ACCEPT_STATE" class="requirement-ele-width" style="width: 100%" validate="v.required" ></select>
+                           	</td>
+                        </tr>
+                        <tr>
+                            <td class="ecitic-right">版本名称：</td>
+                            <td>
+                                <input type="text" name="VERSION_NAME" />
+                            </td>
+                            <td class="ecitic-right">测试经理：</td>
+                            <td>
+                                <input type="text" name="TEST_MAN_NAME" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <ul class="ecitic-btn-all">
+                <li><input type="button" class="btn btn-ecitic" name="queryCases" value="查询" /></li>
+                <li><input type="button" class="btn btn-ecitic" name="resetDesign" value="重置" /></li>
+            </ul>
+        </div>
+        <div class="ecitic-operation">
+            <button class="btn btn-ecitic" name="testCasesDedign">测试案例设计</button>
+<!--             <button class="btn btn-ecitic" name="testCasesReview">测试案例评审</button> -->
+            <button class="btn btn-ecitic" name="testCasesEnd">测试案例完成</button>
+        </div>
+        <div class="ecitic-new">
+            <table tb="testCases" class="table table-bordered table-hover table-text-show"></table>
+        </div>
+    </div>
+</body>
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_test/designTestCases/designTestCases_queryList.js"></script>
+
+</html>

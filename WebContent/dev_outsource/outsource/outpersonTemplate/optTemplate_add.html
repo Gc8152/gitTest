@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>外包人员考核模板维护</title>
+	<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+	<form action="" id="addOptTemplateForm">
+			<div class="main_iframe_con">
+				<div class="ecitic-title">
+					<span>模板信息<em></em></span>
+					<i></i>
+				</div>
+				<div  class="ecitic-title-table">
+					<table class="table table-bordered tablr-input-text"><!-- table-bor-paw-->
+						<tr>
+							<td width="11%" class="table-text">模板类别</td>
+							<td width="22.333%">
+								<input  type="hidden" id="OTD_template_id"/>
+								<input type="hidden" id="OTD_detail_id"/>
+								<div id="OTD_specialtype_name"></div>
+							</td>
+							<td width="11%" class="table-text">创建时间</td>
+							<td width="22.333%">
+								<div id="OTD_create_time"></div>
+							</td>
+							<td width="11%" class="table-text">创建人</td>
+							<td width="22.333%">
+								<div id="OTD_create_person"></div>
+							</td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">生效时间</td>
+							<td width="22.333%">
+								<div id="OTD_start_time"></div>
+							</td>
+							<td width="11%" class="table-text">终止时间</td>
+							<td width="22.333%">
+								<div id="OTD_end_time"></div>
+							</td>
+							<td colspan="2"></td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">备注</td>
+							<td colspan="5" width="89%">
+								<div  id="OTD_remark"></div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="tab-pane" id="edu_work">
+					<div class="ecitic-title">
+						<span>考核项<em></em></span>
+						<i></i>
+					</div>
+					<div class="ecitic-operation">
+						<div class="ecitic-operation">    
+						    <input id="add_assess" type="button" class="btn btn-ecitic" value="新增" />
+						</div>
+						<div  class="ecitic-title-table">
+					        <table id="template_assess_table" class="table table-bordered table-hover"></table>
+					    </div>
+					</div> 
+				</div>
+				<div class="ecitic-save">
+					<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+				</div>
+		  </div>
+		</form>
+			<!-- 考核项模态框-->
+		<div id="opModal_template_assess" class="modal hide" style="top: 50%;margin-top: -250px;width: 780px" tabindex="-1" >
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+				<h5 id="myModalLabel">新增考核项</h5>
+			</div>
+			<form id="template_form" action="" class="form-inline">
+				<table id="template_table" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td width="15%" class="ecitic-right">考核项</td>
+						<td width="35%">
+						   <input type="text"  id="check_item_name" name="OTDD.check_item_name" class="citic-sele-ast" placeHolder="点击选择" validate="v.required" >
+						   <input type="hidden" id="check_item_one" name="OTDD.check_item_one" class="citic-sele-ast" validate="v.required" >
+						   <input type="hidden" id="tem_detailid" name="OTDD.tem_detailid" class="citic-sele-ast" >
+						</td>
+						<td width="15%" class="ecitic-right">考核评分</td>
+						<td width="35%">
+							<input type="text" id="one_score" name="OTDD.one_score" class="citic-sele-ast"  validate="v.required" >
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">考核依据说明</td>
+						<td colspan="3">
+							<textarea id="rank_desc" name="OTDD.rank_desc" class="citic-text-ast"></textarea>
+						</td>
+					</tr>
+				</table>
+				</form>
+			    <div class="ecitic-save">
+				   <input id="saveTemplateInfo" type="button" class="btn btn-ecitic" value="保存" />
+				   <button type="button" class="btn btn-ecitic" data-dismiss="modal" >关闭</button>
+			    </div>
+			<div id="checkDic_pop"></div><!-- 人员考核字典pop -->
+		</div> 
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_outsource/outsource/outpersonTemplate/checkDic_pop.js"></script>
+<script type="text/javascript" src="dev_outsource/outsource/outpersonTemplate/optTemplate_add.js"></script>
+</html>

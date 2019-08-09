@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>投产信息查看</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link href="pages/approvalflow/afcommons.css" rel="stylesheet">
+<style type="text/css">
+	.click_text_sp{color:#c9161d;}
+	.click_text_sp:hover{color:#c9161d;cursor:pointer;text-decoration:underline;}
+	.click_text_sp:active{color:blue;cursor:pointer;text-decoration:underline;}
+</style>
+</head>
+<body class="">
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+	  <ul class="nav nav-tabs" style="font-size:13px;">
+	    <li><a href="#tab1_sendProduceApply_detail" data-toggle="tab"><i class="icon-home"></i>投产申请信息</a></li>
+	    <li id="sendTaskInfo"><a href="#tab2_sendProduceApply_detail" data-toggle="tab"><i class="icon-folder-open"></i>投产任务信息</a></li>
+	    <li class="active"><a href="#tab5_sendProduceApply_Approve" data-toggle="tab"><i class="icon-user"></i>投产审批</a></li>
+	  </ul>
+	<div class="tab-content" style="overflow-x:hidden ">
+	  	<!-- tab1内容开始 -->
+	    <div class="tab-pane" id="tab1_sendProduceApply_detail" style="padding: 0 20px 0 20px">
+    	  <div class="ecitic-title">
+			<span>投产申请信息<em></em></span>
+			<i></i>
+		  </div>
+			<div class="ecitic-title-table">
+				<table class="table table-bordered table-center table-th tablr-input-text">
+					<tbody>
+						<tr>
+							<td width="11%" class="table-text">投产单编号：</td>
+							<td width="21.333%">
+								<span id="audit_no"></span>		
+							</td>
+							<td width="11%" class="table-text">应用名称：</td>
+							<td width="21.333%">
+								<span id="system_name"></span>	
+							</td>
+							<td width="11%" class="table-text">版本名称：</td>
+							<td width="21.333%">
+								<span id="versions_name"></span>	
+							</td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">是否新应用：</td>
+							<td width="21.333%">
+								<span id="is_new_system"></span>		
+							</td>
+							<td width="11%" class="table-text">是否演练：</td>
+							<td width="21.333%">
+								<span id="is_drill"></span>
+							</td>
+							<td width="11%" class="table-text">申请人：</td>
+							<td width="21.333%">
+								<span id="apply_person_name"></span>
+								<span id="apply_person"></span>
+							</td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">计划投产日期：</td>
+							<td width="21.333%">
+								<span id="plan_date"></span>
+							</td>
+							<td width="11%" class="table-text">变更类别：</td>
+							<td width="21.333%">
+								<span id="change_type_name"></span>
+							</td>
+							<td colspan="2"></td>
+						</tr>
+					</tbody>
+				</table>
+		</div>
+		<div class="ecitic-title-table" id="">
+			<div class="ecitic-title">
+				<span>当前投产任务清单<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-new ecitic-title-table">
+				<table id="sendProContent1" class="table-text-show table table-bordered table-hover table-center table-th tablr-input-text">
+				</table>
+			</div>
+			<div class="ecitic-title">
+				<span>当前版本已发起投产的任务清单<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-new ecitic-title-table">
+				<table id="produceTaskInSameAuctiNo" class="table-text-show table table-bordered table-hover table-center table-th tablr-input-text"></table>
+			</div>
+			<div class="ecitic-title">
+				<span>接口列表<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-new ecitic-title-table">
+				<table id="table_interface_info_updata" name="table_TaskInterfaceInfo" class="table table-bordered table-hover table-text-show">
+				</table>
+			</div>
+		</div>
+		<!-- 投产相关文件 -->
+		<div class="ecitic-title">
+			<input name="FILE_ID" type="hidden" value=""/>
+			<span>文档列表信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table id="table_file" class="aa table table-bordered table-hover table-center table-th tablr-input-text"></table>
+		</div>
+		<!-- End of 投产相关文件 -->
+		<div class="ecitic-title-table" id="">
+			<div class="ecitic-title">
+				<span>投产变更说明<em></em></span>
+			</div>
+			<div class="ecitic-title-table">
+				<table id="query_table" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover table-center table-th tablr-input-text">
+					<tr style="height:75px;">
+						<td width="11%" class="table-text"><span>变更功能说明及要点：</span></td>
+						<td colspan="3">
+							<span id="change_remark"></span>
+						</td>
+					</tr>
+					<tr style="height:75px;">
+						<td class="table-text"><span>变更影响：</span></td>
+						<td colspan="3">
+							<span id="change_affect"></span>
+						</td>
+					</tr>
+					<tr style="height:75px;">
+						<td class="table-text"><span>变更风险说明：</span></td>
+						<td colspan="3">
+							<span id="change_risk_remark"></span>
+						</td>
+					</tr>
+					<tr style="height:75px;">
+						<td class="table-text"><span>业务影响说明：</span></td>
+						<td colspan="3">
+							<span id="ser_affect_remark"></span>
+						</td>
+					</tr>
+					<tr style="height:75px;">
+						<td class="table-text"><span>业务试运行及推广计划：</span></td>
+						<td colspan="3">
+							<span id="ser_try_run"></span>
+						</td>
+					</tr>
+
+				</table>
+			</div>
+		</div>
+		<br>
+		</div>
+	    <!-- tab1结束 -->
+	    
+	    <!-- tab2开始 -->
+	    <div class="tab-pane" id="tab2_sendProduceApply_detail" style="padding: 0 20px 0 20px">
+			<div class="ecitic-title-table" id="">
+				<div class="ecitic-title">
+					<span>投产内容<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-title-table">
+					<table id="sendProContentApp2" class="table-text-show table table-bordered table-hover table-center table-th tablr-input-text">
+					</table>
+				</div>
+			</div>    
+			<div class="ecitic-title-table" id="">
+				<div class="ecitic-title">
+					<span>投产材料列表<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-new ecitic-title-table">
+					<table id="sendProContentDetail" name="addtask" style="width:100%" class="table table-bordered table-hover table-center table-th tablr-input-text" >
+						<input type="hidden" id="material_req_task_id"/>
+						<thead>
+							<tr>
+								<th align="center" width="10%">序号</th>
+								<th align="center" width="15%">过程</th>
+								<th align="center" width="30%">检查项</th>
+								<th align="center" width="15%">现状</th>
+								<th align="center" width="15%">结论</th>
+								<!-- <th align="center" width="15%">查看</th> -->
+							</tr>
+						</thead>
+						<tbody>
+							<tr name="S_DIC_REQ_PUT_FILE010101" type="doc">
+								<td align="center" rowspan="2">1</td>
+								<td rowspan="2">业务需求</td>	
+								<td>需求申请书</td>
+								<td name="phase" file_id="">**文档</td>
+								<td name="result">不满足</td>
+							</tr>
+							<tr name="S_DIC_REQ_ACC_FILE010201" type="doc">
+								<td>业务需求说明书</td>
+								<td name="phase" file_id="">**文档</td>
+								<td name="result">不满足</td>
+							</tr>
+							<tr name="S_DIC_REQ_ANL_FILE03sj_01" type="doc">
+								<td align="center" rowspan="2">2</td>
+								<td rowspan="2">需求分析</td>	
+								<td>需求分析说明书</td>
+								<td name="phase" file_id="">**文档</td>
+								<td name="result">不满足</td>
+							</tr>
+							<tr name="ANALYZE_STATE" type="appr">
+								<td>需求评审报告</td>
+								<td name="phase">**通过</td>
+								<td name="result">不满足</td>
+							</tr>
+							<tr name="S_DIC_SYS_DESIGN_FILE05sj_01" type="doc">
+								<td rowspan="2">3</td>
+								<td rowspan="2">开发设计</td>	
+								<td>总体设计说明书</td>
+								<td name="phase" file_id="">**文档</td>
+								<td name="result">不适用</td>
+							</tr>
+							<tr name="S_DIC_SYS_DESIGN_FILE05sj_03" type="doc">
+								<td>任务开发说明书</td>
+								<td name="phase" file_id="">**文档</td>
+								<td name="result">不适用</td>
+							</tr>
+							<!-- <tr name="TOTAL_DESIGN_STATE" type="appr">
+								<td>总体设计评审报告</td>
+								<td name="phase" file_id="">**通过</td>
+								<td name="result">不满足</td>
+							</tr> -->
+							<tr name="S_DIC_UNIT_TEST_FILE07sj_01" type="doc">
+								<td>4</td>
+								<td>单元测试</td>	
+								<td>单元测试报告</td>
+								<td name="phase" file_id="">**文档</td>
+								<td name="result">不适用</td>
+							</tr>
+							<tr name="S_DIC_JOINT_TEST_FILE08sj_01" type="doc">
+								<td>5</td>
+								<td>联调测试</td>	
+								<td>联调测试报告</td>
+								<td name="phase" file_id="">**文档</td>
+								<td name="result">不适用</td>
+							</tr>
+							<tr name="S_DIC_SIT_CASE_FILE09001sj_01" type="doc">
+								<td rowspan="4">6</td>
+								<td rowspan="4">SIT测试</td>	
+								<td>SIT测试案例</td>
+								<td name="phase" file_id="">**文档</td>
+								<td name="result">不通过</td>
+							</tr>
+							<tr name="SIT_STATE" type="appr">
+								<td>SIT测试案例评审</td>
+								<td name="phase">**通过</td>
+								<td name="result">不满足</td>
+							</tr>
+							<tr name="S_DIC_SIT_TEST_FILE09003sj_01" type="doc">
+								<td>SIT测试报告</td>
+								<td name="phase" file_id="">**通过</td>
+								<td name="result">不满足</td>
+							</tr>
+							<tr name="SITSTATUS" type="test">
+								<td>SIT测试结论</td>
+								<td name="phase" file_id="">**通过</td>
+								<td name="result">不满足</td>
+							</tr>
+							<tr name="S_DIC_UAT_TEST_FILE10sj_02" type="doc">
+								<td rowspan="2">7</td>
+								<td rowspan="2">UAT测试</td>	
+								<td>UAT测试报告</td>
+								<td name="phase" file_id="">**文档</td>
+								<td name="result">不满足</td>
+							</tr>
+							<tr name="UATSTATUS" type="test">
+								<td>UAT测试结论</td>
+								<td name="phase" file_id="">**通过</td>
+								<td name="result">不满足</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>    
+	    </div>
+	    <!-- tab2结束 -->
+	    
+	    <!-- tab5开始  -->
+    <div class="tab-pane fade in active" style="padding: 0 20px 0 20px" id="tab5_sendProduceApply_Approve">
+	 	<div id="apptitlePop"></div>
+	 	<div id="apphistoryPop"></div>
+		<div id="appOptPop"></div>
+				
+		<!--审批操作模态框 -->
+		<div id="modal_projectApprove" class="modal hide fade" tabindex="-1">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+				<h5 id="">审批</h5>
+			</div>
+			<div class="ecitic-title-table modal-body" id="" >
+				<table class="table table-striped table-hover table-bordered">
+					<tr>
+						<td class="table-text">审批意见：</td>
+						<td><span id="approve"></span></td>
+					</tr>
+					<tr>
+						<td class="table-text">审批说明：</td>
+						<td colspan="3"><textarea rows="5" resize="none"></textarea></td>
+					</tr>
+				</table>
+			</div>
+			<div class="ecitic-save">	
+				<button class="btn btn-ecitic" data-dismiss="modal">提交</button>
+				<button class="btn btn-ecitic" data-dismiss="modal" id="resetApprove">重置</button>
+				<button class="btn btn-ecitic" data-dismiss="modal" id="close">关闭</button>
+			</div>
+			<div class="modal-footer"></div>
+		</div>
+	</div>
+	    <!-- tab结束  -->
+	</div>
+</div>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+	</div>
+	<div id="file_view_modal"></div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="pages/approvalflow/approval_title.js"></script>
+<script type="text/javascript" src="pages/approvalflow/approval_content.js"></script>
+<script type="text/javascript" src="dev_construction/send_produce/sendproduceapprove/sendProduceApprove_flow/approval_content.js"></script>
+<script type="text/javascript" src="dev_construction/send_produce/sendproduceapprove/sendProduceApprove_update.js"></script>
+<script type="text/javascript" src="dev_construction/sit_test_jn/sit_submit/initqueryInterface.js"></script>
+</html>

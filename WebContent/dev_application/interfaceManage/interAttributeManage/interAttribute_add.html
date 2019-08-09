@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link href="css/form.css" rel="stylesheet">
+<link href="dev_application/interfaceManage/interAttributeManage/interAttribute.css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">
+		<form action="" id="addAttrManage_from" class="form-inline">
+			<div class="ecitic-title-table" id="ecitic-table">
+				<table style="width:100%" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+					<tr>
+						<td width="14%" class="ecitic-right">属性名称：</td>
+						<td width="35.444%"><input type="text" name="I.attr_name" id="attr_name" validate="v.required" valititle="该项为必填项"/></td>
+						<td class="ecitic-right">是否必填：</td>
+						<td>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="I.is_necessary" value="00" checked="checked"/> 是
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+							<input type="radio" name="I.is_necessary" value="01"/> 否
+						</td>
+					<tr>
+						<td class="ecitic-right">排序序号：</td>
+						<td><input type="text" name="I.order_num" id="I.order_num" validate="v.isint" valititle="该项为必填项"/></td>
+						<td class="ecitic-right">默认值：</td>
+						<td><input type="text" name="I.default_value" id="default_value"/></td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">属性类型：</td>
+						<td>
+							<select id="attr_type" name="I.attr_type" validate="v.required" valititle="该项为必填项" style="width:100%;">
+							</select>
+						</td>
+						<td colspan="2"></td>
+					</tr>
+					<tr id="maxlength">
+						<td class="ecitic-right" >最大长度：</td>
+						<td><input type="text" name="I.max_long" id="max_long" validate="v.isint" valititle="该项为必填项"/></td>
+						<td colspan="2"></td>
+					</tr>
+					<tr class="hide">
+						<td class="ecitic-right">隐藏</td>
+						<td>隐藏</td>
+						<td class="ecitic-right">隐藏</td>
+						<td>隐藏</td>
+					</tr>
+					<tr id="dic">
+						<td class="ecitic-right">字典项编号：</td>
+						<td><input type="text" name="I.dic_info" id="dic_info" validate="v.required" valititle="该项为必填项"/></td>
+						<td colspan="2">					
+							<div id="recallMsg"></div>
+						</td>
+					</tr>
+				</table>			
+			</div>
+		</form>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="确定" id="addAttrManage" />
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+		<!-- <input type="button" class="btn btn-ecitic" value="返回" name="globeBack" /> -->
+	</div>
+</div>
+
+</body>
+
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_application/interfaceManage/interAttributeManage/interAttribute_add.js"></script>
+</html>
+

@@ -1,0 +1,21 @@
+<script src="dev_planwork/work/taskDetailsPop.js"></script>
+<!-- 个人报工明细模态框 -->
+<div id="myModal_taskDetails" class="modal hide fade" style="top: 50%;margin-top: -285px; width:900px;" z-index="1000" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="myModalLabel2">个人报工明细页面</h5>
+	</div>
+	<div class="ecitic-operation">
+	   <h3>个人报工明细列表</h3>
+		<!-- <button class="btn btn-ecitic" id="checkAll" onclick="pageDispatchSRole(this,'SRoleAdd','')">全选</button> -->
+		<button class="btn btn-ecitic" id="details_pass">审批通过</button>
+		<button class="btn btn-ecitic" id="details_back">审批打回</button>
+	 </div>
+	<div class="modal-body">
+		<div class="tz_btn" style="display:none;">
+			<button class="btn btn-ecitic" type="button" id="taskDetailsPOPSureSelected">确认选择</button>
+		</div>
+		<table id="pop_taskDetailsTable" title="双击选择一条数据"></table>
+	</div>
+<!-- 	<div class="modal-footer"></div> -->
+</div>

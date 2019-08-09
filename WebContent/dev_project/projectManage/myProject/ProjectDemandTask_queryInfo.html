@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>关联需求任务</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="main_ifme_con">
+    <div class="ecitic-title">
+		<span>需求任务列表<em></em></span>
+		    <i></i>
+	</div>
+	<div class="ecitic-new">        
+		<table id="table_demandtask" class="table table-bordered table-hover table-text-show">
+		</table>
+	</div>
+	<div id="task_INFO" style="display: none">
+		<div class="ecitic-title">
+			<span>关联需求任务<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table id="table_demand_taskInfo" class="table table-bordered table-hover table-text-show">
+			</table>
+		</div>
+	</div>
+	
+	<input type="hidden" name="req_task_id" id="req_task_id">
+	<div class="ecitic-save">
+	 	<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+	</div>
+
+</div>
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="dev_project/projectManage/myProject/ProjectDemandTask_queryInfo.js"></script>
+<!-- <script type="text/javascript" src="dev_construction/requirement/reqTask_phased/task_phased_jury.js"></script> -->
+</html>

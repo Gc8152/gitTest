@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>UAT测试审批列表</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table id="reqSubsInfoTerm" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">需求点编号：</td>
+					<td><input type="text" id="" name="sub_req_code"/></td>
+					<td class="ecitic-right">需求点名称：</td>
+					<td><input type="text" id="" name="sub_req_name"/></td>
+					<td class="ecitic-right">计划投产日期：</td>
+                    <td>
+                        <span class="ecitic-time">
+                            <input type="text" name="plan_onlinetime_st" id="plan_onlinetime_st" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                        <span class="ecitic-to">至</span>
+                        <span class="ecitic-time">
+                            <input type="text" name="plan_onlinetime_et" id="plan_onlinetime_et" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                    </td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">需求编号：</td>
+					<td><input type="text" id="" name="req_code"/></td>
+					<td class="ecitic-right">需求名称：</td>
+					<td><input type="text" id="" name="req_name"/></td>
+					<td class="ecitic-right">提出部门：</td>
+					<td class="positionAb"><input type="text" id="req_put_dept" readonly="readonly" placeholder="点击选择提出部门"/>
+						 <input type="hidden" name="req_put_dept">
+					</td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">业务联系人：</td>
+					<td><input type="text" id="" name="req_businesser"/></td>
+					<td class="ecitic-right">主管部门：</td>
+					<td class="positionAb"><input type="text" id="req_dept" readonly="readonly" placeholder="点击选择主管部门"/>
+						<input type="hidden" name="req_dept">
+					</td>
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="queryReqSubs">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+			<li class="ecitic-more"></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="reviewDocUpload">UAT测试案例上传</button>
+		<button class="btn btn-ecitic" id="detail">查看详情</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover table-text-show" id="reqSubsInfoTable">
+			
+		</table>
+	</div>
+
+	
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/uat_test/uatreview/uatReview_queryList.js"></script>
+</html>

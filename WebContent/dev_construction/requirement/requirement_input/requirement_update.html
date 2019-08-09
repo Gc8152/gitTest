@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>需求修改页面</title>
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="main_iframe_con">
+       <form class="form-inline" id="gRequirementInfo_update">	
+       <div class="ecitic-title">
+				<input id="file_id_reqUpdate" name="RU.file_id" type="hidden" />
+				<span>需求提出>>修改<em></em></span>
+				<i></i>
+			</div>	
+		<div class="ecitic-title-table">
+			<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table"><!-- table-bor-paw-->
+			<colgroup>
+					<col style="width: 11%">
+			        <col style="width: 22%">
+			        <col style="width: 12%">
+			        <col style="width: 22%">
+			        <col style="width: 11%">
+			        <col style="width: 22%">
+		        </colgroup>
+				<tr>
+				    <td class="table-text">需求编号：</td>
+				    <td>
+				       <input type="text" id="req_codeRU" name="RU.req_code" class="requirement-ele-width" readonly>
+				    </td>
+					<td class="table-text">需求名称：</td>
+					<td  colspan="3">
+						<input id="req_name_reqUpdate" type="text" name="RU.req_name" class="requirement-ele-width" validate="v.required" valititle="该项为必填项">
+						<input type="hidden" id="req_id_reqUpdate" name="RU.req_id" >
+						<input type="hidden" id="req_code_reqUpdate" name="RU.req_code">
+					</td>
+				</tr>
+				<!-- <tr>
+					<td class="table-text" colspan="1">需求大类：</td>
+					<td >
+						<select id="req_type1_reqUpdate" name="RU.req_type1" style="width:100%" class="requirement-ele-width" validate="v.required" valititle="该项为必填项" dic_code="G_DIC_REQUIREMENT_TYPE1">
+						</select>
+					</td>
+					<td class="table-text" colspan="1">需求子类：</td>
+					<td>
+						<select id="req_type2_reqUpdate" name="RU.req_type2" style="width:100%" class="requirement-ele-width"  dic_code="G_DIC_REQUIREMENT_TYPE2" validate="v.required" style="width:100%" valititle="该项为必填项">
+						</select>
+					</td>
+					<td  class="table-text" colspan="1">需求来源：</td>
+					<td>
+					<select id="req_come_reqUpdate" name="RU.req_come" style="width:100%" class="requirement-ele-width" validate="v.required" valititle="该项为必填项" dic_code="G_DIC_REQUIREMENT_SOURCE">
+						</select>
+					</td>
+					
+				</tr> -->
+				<tr>
+					<td class="table-text">业务联系人：</td>
+					<td>
+						<input id="req_businesser_reqUpdate" type="text" name="RU.req_businesser" class="requirement-ele-width" validate="v.required" valititle="该项为必填项"/>
+						
+					</td>
+					<td class="table-text">业务联系电话：</td>
+					<td>  
+						<input id="req_business_phone_reqUpdate" type="text" name="RU.req_business_phone" class="requirement-ele-width"/>
+						
+					</td>
+					<td class="table-text">提出部门：</td>
+					<td>
+					<input type="hidden" id="req_put_dept_reqUpdate" name="RU.req_put_dept" >
+					<input type="text" id="req_put_dept_reqUpdate_org" name="RU.req_put_dept_display" class="requirement-ele-width" placeHolder="点击选择" validate="v.required" valititle="该项为必填项" readonly>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">主管部门：</td>
+					<td>
+						<input type="hidden" id="req_dept_reqUpdate" name="RU.req_dept" />
+						<input type="text" id="req_dept_reqUpdate_org" name="RU.req_dept_display" class="requirement-ele-width" placeHolder="点击选择" validate="v.required" valititle="该项为必填项" readonly>
+					</td>
+					<td class="table-text">会签部门：</td>
+					<td colspan="3">
+						<input type="hidden" id="req_countersign_dept_reqUpdate" name="RU.req_countersign_dept" >
+						<input type="text" id="req_countersign_dept_org" name="RU.req_countersign_dept_display"  class="requirement-ele-width" placeholder="点击选择" readonly>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">要求投产日期：</td>
+					<td >
+						<input type="text" id="req_operation_date_reqUpdate" name="RU.req_operation_date" onClick="WdatePicker({dateFmt:'yyyy-MM-dd', autoPickDate:true});" placeHolder="点击选择"  class="requirement-ele-width" validate="v.required" valititle="该项为必填项" />
+						
+					</td>
+					<!--<td class="table-text">文书审核人：</td>
+					<td>
+						<input type="text" id="req_clerk_reqUpdate" name="RU.req_clerk" class="requirement-ele-width" >	
+					</td>
+					<td class="table-text">是否提供数据标准明细报表：</td>
+					<td>
+					<input type="radio" id="req_datatable_flag_reqUpdate1" name="RU.req_datatable_flag" value="00">是&nbsp;&nbsp;&nbsp;
+					<input type="radio" id="req_datatable_flag_reqUpdate2" name="RU.req_datatable_flag" value="01">否
+					</td>-->
+					<td class="table-text">业务优先级：</td>
+					<td>
+					  <div id="req_level_reqUpdate" style="float:left"></div>
+						<!--<input type="radio" id="req_level_reqUpdate1" name="RU.req_level" value="01"/>高&nbsp;&nbsp;&nbsp;
+						<input type="radio" id="req_level_reqUpdate2" name="RU.req_level" value="02"/>中&nbsp;&nbsp;&nbsp;
+						<input type="radio" id="req_level_reqUpdate3" name="RU.req_level" value="03"/>低-->
+					</td>
+					<td colspan="2"></td>
+				</tr>
+				<!--<tr>
+					<td class="table-text">需求收益评估：</td>
+					<td>
+						<input type="radio" id="req_income_flag1" name="RU.req_income_flag" value="00"/>是&nbsp;&nbsp;&nbsp;
+						<input type="radio" id="req_income_flag2" name="RU.req_income_flag" value="01"/>否	
+					</td>
+					<td class="table-text" ><span  id="req_income_Update">需求收益估算：</span></td>
+					<td colspan="3">
+					<div style="float:left" id="req_incomeupdate_hide">
+					<input type="text" id="req_income_reqUpdate" name="RU.req_income" class="requirement-ele-width" validate="v.isfloat" valititle="该项为必填项" placeholder="请输入"/>
+					</div>
+					<div style="float:left;color:red" id="remark_reqUpdate">（元/年）</div>	
+					</td>
+				</tr>-->
+				<tr>
+					<td class="table-text" style="height: 80px">需求收益评估：<input type="hidden" id="req_income_doc_Update"/></td>
+					<td colspan="5">
+						<textarea id="req_income_doc_reqUpdate" name="RU.req_income_doc" placeholder="请业务人员简述收益计算过程，以便开发中心进行投入产出比合理性评估及后续评价工作。" class="requirement-ele-width" style="height:80px"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text" style="height: 80px">需求概述：</td>
+					<td colspan="5">
+						<textarea id="req_description_reqUpdate" name="RU.req_description" class="requirement-ele-width" placeHolder="简明扼要的概述业务需求说明书中关键需求点的内容，可以摘录《业务需求书》中的相关内容" style="height:80px" validate="v.required" valititle="该项为必填项"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text" >主管部门意见：</td>
+					<td colspan="5">
+						<textarea cols="90" rows="5" id="put_dept_opinion_reqUpdate" name="RU.put_dept_opinion" class="requirement-ele-width" style="height:80px"  placeHolder="若需求关联部门有明确意见，需要需求提出部门对该意见进行最终确认"></textarea>
+					</td>
+				</tr>
+				<!--<tr>
+					<td class="table-text">附件：</td>
+					<td colspan="3">
+					 <div style="float:left">
+						<button id="file_id_reqUpdate" class="btn btn-ecitic" name="RU.file_id" >上传</button>&nbsp;&nbsp;&nbsp;
+						</div>
+						<div style="float:left">
+						<a style="font-weight:bold">需求说明书</a>
+						</div> 
+						<div class="upload-checkfile-all">
+							<input class="input-txt" type="text">
+							<input value="上传" id="file_id_reqUpdate" name="RU.file_id" class="input-btn" type="button">
+							<input name="file" class="input-file" type="file">
+						</div>
+					</td>
+				</tr>-->
+			  </table>
+			</div>
+			 <div class="ecitic-title">
+				<input id="file_id_reqUpdate" name="RU.file_id" type="hidden" />
+				<input id="assfile_id_reqUpdate" name="RU.assfile_id" type="hidden" />
+				<span>附件列表信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<div class="ecitic-operation">
+					<button type="button" class="btn btn-ecitic" id="reqUpdate_addfile">上传需求申请书</button>
+					<button type="button" class="btn btn-ecitic" id="reqUpdate_deletefile">删除</button>
+					<a href="sfile/downloadFTPFile.asp?id=m_015" class="file_template_style">需求申请书模版</a>
+				</div>
+				<table id="reqUpdate_tablefile" class="aa table table-bordered table-hover table-text-show"></table>
+			</div>
+			<!-- 业务需求说明书 -->
+			<div class="ecitic-title-table">
+				<div class="ecitic-operation">
+					<button type="button" class="btn btn-ecitic" id="reqUpdate_assAddfile">上传业务需求说明书</button>
+					<button type="button" class="btn btn-ecitic" id="reqUpdate_assDelfile">删除</button>
+					<a href="sfile/downloadFTPFile.asp?id=m_001" class="file_template_style">业务需求说明书模版</a>
+				</div>
+				<table id="reqAssUpdate_filetable" class="aa table table-bordered table-hover table-text-show"></table>
+			</div>
+			
+		 </form>
+		<div class="ecitic-save" >
+	   		<div>
+	  			<input type="button" class="btn btn-ecitic" id="update_gRequirementInfo" value="更新"/>
+	  			
+	  			<input type="button" class="btn btn-ecitic" id="submit_gRequirementInfo" value="保存&提交审批"/>
+	  			 <!-- 
+	  			<input type="button" class="btn btn-ecitic" id="submit_gRequAppoverInfo" value="保存&提交审批">
+	  			 -->
+	  		 	<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+	  		</div>
+	   </div>
+	   <!-- 会签部门pop -->
+	   <div id="req_countersign_dept_update"></div>
+	   <!--上传附件模态框  -->
+       <div id="reqUpdate_filemodal"></div>
+       <div id="reqUpdate_fileview_modal"></div>
+       <!--业务需求说明书附件上传模态框  -->
+       <div id="reqAssUpdate_modalfile"></div>
+       <div id="reqAssUpdate_fileview_modal"></div>
+	</div>
+</body>
+<script src="ztree3.5.22/js/jquery.ztree.core.min.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.excheck.min.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.exedit.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/select2.min.js"></script>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="pages/approvalflow/afcommons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_input/requirement_update.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_input/select_orgPop.js"></script>
+</html>
+<script type="text/javascript">
+	initVlidate($("#gRequirementInfo_update"));
+</script>

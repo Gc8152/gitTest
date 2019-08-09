@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>UAT跟踪列表</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table id="reqSubsInfoTerm" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">需求点编号：</td>
+					<td><input type="text" id="" name="sub_req_code"/></td>
+					<td class="ecitic-right">需求点名称：</td>
+					<td><input type="text" id="" name="sub_req_name"/></td>
+					<td class="ecitic-right">计划投产日期：</td>
+                    <td>
+                        <span class="ecitic-time">
+                            <input type="text" name="plan_onlinetime_st" id="plan_onlinetime_st" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                        <span class="ecitic-to">至</span>
+                        <span class="ecitic-time">
+                            <input type="text" name="plan_onlinetime_et" id="plan_onlinetime_et" onClick="WdatePicker({});" class="citic-ast" placeholder="点击选择" readonly>
+                        </span>
+                    </td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">需求编号：</td>
+					<td><input type="text" id="" name="req_code"/></td>
+					<td class="ecitic-right">需求名称：</td>
+					<td><input type="text" id="" name="req_name"/></td>
+					<td class="ecitic-right">提出部门：</td>
+					<td ><input type="text" id="req_put_dept" readonly="readonly" placeholder="点击选择提出部门"/>
+						<input type="hidden" name="req_put_dept">
+					</td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">业务联系人：</td>
+					<td><input type="text" id="" name="req_businesser"/></td>
+					<td class="ecitic-right">主管部门：</td>
+					<td><input type="text" id="req_dept" readonly="readonly" placeholder="点击选择主管部门"/>
+						<input type="hidden" name="req_dept">
+					</td>
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="queryReqSubs">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+			<li class="ecitic-more"></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="weeklyImport">UAT周报导入</button>
+		<button class="btn btn-ecitic" id="assignResperson">指定UAT负责人</button>
+		<button class="btn btn-ecitic" id="weeklyQuery">UAT周报查看</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover table-text-show" id="reqSubsInfoTable">
+			
+		</table>
+	</div>
+
+<!-- UAT周报导入弹框 -->	
+	<div id="modal_weekly_import" class="modal hide fade">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">×</button>
+			<h3>UAT周报导入</h3>
+		</div>
+		<div class="modal-body" style="overflow-x: hidden; max-height: 450px;">
+			<table id="ass_info_export" class="table table-bordered tablr-input-text">
+				<tbody><tr>
+					<td class="table-text">选择附件：</td>
+					<td>
+						<div class="upload-checkfile-all">
+							<input type="text" name="file_weekly_import_id" id="file_weekly_import_id" class="input-txt" />
+							<input type="button" value="浏览" class="input-btn" />
+							<input name="file" type="file" class="input-file" onchange="document.getElementById('file_weekly_import_id').value=this.value"  id="file_weekly_import">
+						</div>
+					</td>
+					<td class="table-text">
+						<a href="templet/UAT周报导入模板.xlsx">下载模板</a>
+					</td>
+				</tr>
+			</tbody></table>
+			<div class="ecitic-save">
+			<button class="btn btn-ecitic" aria-hidden="true" data-dismiss="modal">关闭</button>
+			<button id="import_weekly_button" class="btn btn-ecitic">导入</button>
+			</div>
+		</div>
+		<div class="modal-footer" style="text-align:center">
+		</div>
+	</div>
+	
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="js/commons/ajaxfileupload.js"></script>
+<script type="text/javascript" src="dev_construction/uat_test/uattracking/uatTracking_queryList.js"></script>
+</html>

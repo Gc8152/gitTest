@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.SHolidaysDao">
+	<!-- 查询所有节假日标记  -->
+	<select id="queryHolidays" parameterType="java.util.Map" resultType="java.util.Map">
+		select sc.s_type,sc.s_date,sc.opt_person,sc.opt_time  from s_cfg_holidays sc
+		where 1=1
+		<if test="null != s_date and s_date != ''">
+			and sc.s_date like #{s_date}
+		</if>
+	</select>
+	
+	<!-- 插入节假日标记  -->
+	<insert id="insertHoliday" parameterType="java.util.Map">
+	 	insert into s_cfg_holidays(s_type,s_date,opt_person,opt_time) 
+	 	values(#{s_type},#{s_date},#{opt_person},#{opt_time})
+	</insert>
+	
+	<!-- 删除节假日标记  -->
+	<delete id="deleteHoliday" parameterType="java.util.Map">
+		delete from s_cfg_holidays sc where sc.s_date = #{s_date}
+	</delete>
+	
+	<!-- 删除本月节假日数据  -->
+	<delete id="deletePatch" parameterType="java.util.Map">
+		delete from s_cfg_holidays sc where sc.s_date like #{s_date}
+	</delete>
+	<!-- 查询所有工作日  -->
+	<select id="queryWork" parameterType="java.util.Map" resultType="java.util.Map">
+		select to_char(wm_concat(substr(sc.s_date,9,10))) sdata from s_cfg_holidays sc
+		where sc.s_type='1'
+		<if test="null != s_date and s_date != ''">
+			and sc.s_date like #{s_date}
+		</if>
+	</select>
+	
+	<!-- 查询某月日期是否配置  -->
+	<select id="queryWorkConfig" parameterType="java.util.Map" resultType="java.util.Map">
+		select count(1) total from s_cfg_holidays sc
+		<where>
+			<if test="null != s_date and s_date != ''">
+				and sc.s_date like #{s_date}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查询每个月已报工的日期 -->
+	<select id="queryBookedDate"   parameterType="java.util.Map"	 resultType="java.util.Map">
+	   select to_char(wm_concat(distinct(substr(t.w_date, 9, 10)))) bookday
+		  from p_t_attendance t
+	   <where>
+	     t.status = '01'
+	       <if test="null != w_date and w_date != ''">
+	          and t.w_date like '%' || #{w_date} || '%'
+	       </if>
+	       <if test="null != staff_id and staff_id != ''">
+	          and t.staff_id = #{staff_id}
+	       </if>
+	   </where>
+	</select>
+	
+</mapper>

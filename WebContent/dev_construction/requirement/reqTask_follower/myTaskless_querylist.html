@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>我的任务</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div>
+		<div class="ecitic-inquire ecitic-moreNo"  id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad" id="myTask_Query">
+					<tr>
+						<td class="ecitic-right"  style="width:10%">任务编号：</td>
+						<td width="20%">
+						<input type="text" id="req_task_code" name="req_task_code" />
+						</td>
+						<td class="ecitic-right"  style="width:10%">任务名称：</td>
+						<td width="20%"><input type="text" id="req_task_name" name="req_task_name" />
+						</td>
+						<td class="ecitic-right" >申请纳入版本：</td>
+						<td><input type="text" id="version_name" name="version_name" />
+						</td>
+					    </tr>
+					<tr>
+						<td class="ecitic-right"   style="width:15%">任务状态：</td>
+						<td style="width:25%">
+							<select id="req_task_state" name="req_task_state" diccode="G_DIC_REQTASK_STATE" style="width:100%;">
+							</select>
+						</td>
+						<td class="ecitic-right" >应用名称：</td>
+						<td>
+						    <input type="text" id="system_name" name="system_name"  />
+						</td>
+						<td class="ecitic-right"  style="width:10%">从属关系：</td>
+						<td>
+							<select  id="req_task_relation" name="req_task_relation" diccode="G_DIC_TASK_RELATION" style="width:100%;"></select>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" id="serach_myTask_Query" value="查询"/></li>
+				<li><input type="reset" class="btn btn-ecitic" id="reset_myTask_Query" value="重置"/></li>
+			</ul>
+		</div>
+		 <div class="ecitic-operation">
+	       <button class="btn btn-ecitic" id="tosee_taskDetail">查看详情</button>
+        </div>
+		<div class="ecitic-new">
+			<table id="g_myTaskTable" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+
+	</div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_follower/myTaskless_querylist.js"></script>
+</html>

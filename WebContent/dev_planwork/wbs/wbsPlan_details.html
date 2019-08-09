@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+<body>
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>任务基本信息<em></em></span> <i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table class="table table-bordered tablr-input-text">
+				<tr>
+					<td class="table-text">任务编号</td>
+					<td><input type="text" disabled="disabled" id="D_plan_id"/></td>
+					<td class="table-text">任务名称</td>
+					<td><input type="text" id="D_plan_name" disabled="disabled"/></td>
+				</tr>
+				<tr>
+					<td class="table-text">任务类别</td>
+					<td><input type="text" id="D_type_name" disabled="disabled"/></td>
+					<td class="table-text">是否完成确认</td>
+					<td><input type="text" id="D_is_finish_affirm_name" disabled="disabled"/></td>
+				</tr>
+				<tr>
+					<td class="table-text">是否关键任务</td>
+					<td><input type="text" id="D_is_key_task_name" disabled="disabled"/></td>
+					<td class="table-text">前置任务</td>
+					<td><input type="text" id="D_pre_task" disabled="disabled"/></td>
+				</tr>
+				<tr>
+					<td class="table-text">任务类型</td>
+					<td><input type="text" id="D_task_type_name" disabled="disabled"/></td>
+					<td class="table-text">交付物</td>
+					<td><input type="text" id="D_file_id" disabled="disabled"/></td>
+				</tr>
+				<tr>
+					<td class="table-text">创建人</td>
+					<td><input type="text" id="D_create_user_name" disabled="disabled"/></td>
+					<td class="table-text">责任人</td>
+					<td><input type="text" id="D_duty_man_name" disabled="disabled"/></td>
+				</tr>
+				<tr>
+					<td class="table-text">任务描述</td>
+					<td colspan="3"><textarea id="D_describe" rows="3" resize="none" rows="3"
+							disabled="disabled"></textarea>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		
+		
+		<div class="ecitic-title">
+			<span>任务进度信息<em></em></span> <i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table class="table table-bordered tablr-input-text">
+				<tr>
+					<td class="table-text">计划开始日期</td>
+					<td><input type="text" id="D_start_time" disabled="disabled"/></td>
+					<td class="table-text">计划结束日期</td>
+					<td><input type="text" id="D_end_time" disabled="disabled"/></td>
+				</tr>
+				<tr>
+					<td class="table-text">计划工期</td>
+					<td><input type="text" id="D_plan_work_day" disabled="disabled"/></td>
+					<td class="table-text">计划工作量</td>
+					<td><input type="text" id="D_plan_work_hour" disabled="disabled"/></td>
+				</tr>
+				<tr>
+					<td class="table-text">实际开始日期</td>
+					<td><input type="text" id="D_reality_start_time" disabled="disabled"/></td>
+					<td class="table-text">实际结束日期</td>
+					<td><input type="text" id="D_reality_end_time" disabled="disabled"/></td>
+				</tr>
+				<tr>
+					<td class="table-text">实际工期</td>
+					<td><input type="text" id="D_reality_work_day" disabled="disabled"/></td>
+					<td class="table-text">实际工作量</td>
+					<td><input type="text" id="D_reality_work_hour" disabled="disabled"/></td>
+				</tr>
+				<tr>
+					<td class="table-text">工作量完成比例</td>
+					<td><input type="text" id="D_work_percentage" disabled="disabled"/></td>
+					<td class="table-text">任务完成比例</td>
+					<td><input type="text" id="D_task_percentage" disabled="disabled"/></td>
+				</tr>
+				<tr>
+					<td class="table-text">任务状态</td>
+					<td><input type="text" id="D_release_status_name" disabled="disabled"/></td>
+					<td class="table-text"></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="dev_planwork/wbs/wbsPlan_details.js"></script>
+</html>

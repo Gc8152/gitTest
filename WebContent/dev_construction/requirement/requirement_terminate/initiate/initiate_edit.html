@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="dev_application/useInterfaceApply/useInterfaceApply.css" rel="stylesheet">
+<title>填写申请页面</title>
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+		<span>需求终止>>终止申请</span>
+	</div>
+	<div class="ecitic-title-table">
+		<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table"><!-- table-bor-paw-->
+				<tr>
+					<td width="20%" class="table-text">需求编号：</td>
+					<td width="30%">
+						<input placeholder="请选择" readonly type="text" name="IU.REQ_CODE" class="requirement-ele-width"  validate="v.required" valititle="该项为必填项">
+						<input type="hidden"  name="IU.REQ_ID" />
+						<input type="hidden"  name="IU.REQ_PRODUCT_MANAGER" />
+					</td>
+					<td width="20%" class="table-text">需求名称：</td>
+					<td width="30%" >
+						<input type="text" name="IU.REQ_NAME" class="requirement-ele-width"  validate="v.required" valititle="该项为必填项"  readonly>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">终止原因：</td>
+					<td>
+					<select id="TERMINATE_REASON" name="IU.TERMINATE_REASON" diccode="G_DIC_REQ_TERMINATE_REASON"  style="width:100%" validate="v.required"  valititle=""></select>					
+					</td>
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<td class="table-text" >终止描述：</td>
+					<td colspan="3">
+						<textarea cols="90" rows="3" name="IU.INITIATE_EXPLAIN" placeholder="请填写需求终止描述" class="requirement-ele-width" validate="v.required" valititle="该项为必填项"></textarea>
+					</td>
+				</tr>
+		</table>
+	</div>
+	<!-- <div class="ecitic-title">
+		  <span>需求点信息<em></em></span>
+			    <i></i>
+		</div> -->
+	<div class="ecitic-title">
+		<span>需求点信息</span>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover table-text-show" id="subReqTab"/>
+	</div> 
+	<div class="ecitic-save" >
+		<input type="button"  name="useInterfaceApply_edit" class="btn btn-ecitic" btn="saveti" value="发起申请"/>
+	 	<input type="button"  class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+    </div>
+    <!--需求模态框  -->
+    <div mod="reqTerminatePop"></div>
+    <!--需求点模态框  -->
+    <div mod="subTerminatePop"></div>
+</div>
+</body>
+<script src="dev_construction/requirement/requirement_terminate/initiate/initiate_edit.js"></script>
+<script src="dev_construction/requirement/requirement_terminate/initiate/reqTerminatePop.js"></script>
+<script src="dev_construction/requirement/requirement_terminate/initiate/subTerminatePop.js"></script>
+
+</html>

@@ -1,0 +1,260 @@
+@CHARSET "UTF-8";
+
+body {
+	padding: 0;
+	margin: 0;
+	font: normal 14px/25px "\5FAE\8F6F\96C5\9ED1";
+	color: #555;
+}
+
+ul,li {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+.day {
+	max-width: 99%;
+	margin: 5px auto;
+}
+
+.day table {
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+	border-spacing: 0;
+	line-height: 60px;
+	height: 80px;
+}
+
+.day table th {
+	background: #F5F5F5;
+	font-weight: bold;
+	line-height: 30px;
+	font-size: 14px;
+}
+
+.day table td,.day th {
+	border: 1px solid #D5D5D5;
+}
+
+.day table td:nth-child(1),table td:nth-child(7),table th:nth-child(1),table th:nth-child(7)
+	{
+	color: gray
+}
+
+.day table td.now {
+	background: rgb(77, 131, 136);
+	color: #FFF;
+	vertical-align: top;
+}
+
+.day table td.nonow {
+	vertical-align: top;
+}
+
+/* .dayH:hover {
+	background-color: #D5D5D5;
+	border-radius: 4px;
+	cursor: pointer;
+} */
+.alltitle_aft_today:hover {
+	background-color: #D5D5D5;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.alltitle_bef_today:hover {
+	background-color: #D5D5D5;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.day table td div.dayH {
+	height: 20px;
+	line-height: 20px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.spanday {
+	float: right;
+	padding: 0px 2px 0px 2px;
+	border-radius: 3px;
+	/* background-color:red; */
+}
+
+
+
+.DaySelect {
+	margin-bottom: 2px;
+}
+
+.DaySelect>div {
+	display: inline-block;
+	float: left;
+}
+
+.DaySelect i {
+	cursor: pointer;
+	float: left;
+}
+
+.DaySelect i:hover {
+	color: gray;
+}
+
+.dayInfoRed {
+	height: 25px;
+	line-height: 25px;
+	background-color: #fb7a2c;
+	text-align: left;
+	cursor: pointer;
+	border-radius: 5px;
+	margin-top: 2px;
+}
+.dayInfoRed .dayTitle{
+	height: 25px;
+	line-height: 25px;
+	text-align: left;
+	word-break: break-all;
+	width:85%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	float:left;
+	padding-left:5px;
+}
+.dayInfoRed .close{
+	height: 25px;
+	line-height: 25px;
+	float:right;
+	padding-right:5px;
+}
+.alltitle{
+    overflow-y: auto;
+    height: 94px;	
+}
+.dayInfoRed .close:hover img{
+	border-radius: 5px;
+	border: 1px solid #ccc; 
+}
+.DaySelect .lr {
+	width: 30px;
+	display: inline-block;
+	text-align: center;
+	font-size: 18px;
+}
+
+.select {
+	width: 72px;
+	text-indent: 10px;
+	position: relative;
+	cursor: pointer
+}
+
+.selectm {
+	width: 48px;
+	position: relative;
+	cursor: pointer
+}
+
+.stop {
+	border: 1px solid #EEE;
+	text-align: center;
+}
+
+.sbox {
+	width: 88px;
+	max-height: 0;
+	overflow: auto;
+	cursor: pointer;
+	position: absolute;
+	top: 25px;
+	left: 0;
+	background: #FFF;
+	font-size: 12px;
+	text-align: center;
+}
+
+.sbox li:hover {
+	background: #EEE;
+}
+
+.select:hover .stop {
+	background: #EEE;
+}
+
+.select:hover .stop:before {
+	transform: rotate(225deg);
+	margin-top: 10px;
+	transition: transform .2s linear
+}
+
+.select:hover .sbox {
+	max-height: 200px;
+	border: 1px solid #EEE;
+	border-top-color: #FFF;;
+	transition: max-height .2s ease-in-out;
+}
+
+.workday:hover {
+	background-color: #999
+}
+
+#DayAll tr {
+	height: 115px;
+}
+
+#DayAll tr th {
+	height: 30px;
+	width: 14.3%;
+}
+
+/* #cy:after {
+	content: " 年";
+} */
+
+/* .cm:after {
+	content: " 月";
+} */
+
+#sm {
+	width: 70px;
+}
+
+#mm {
+	width: 68px;
+}
+
+.datagrid-header-inner {
+	width: 100%;
+}
+
+.wtime:hover {
+	background: #EEE;
+	height: 20px;
+	line-height: 20px;
+}
+
+.del {
+	display: none;
+}
+
+.wtime:hover .del {
+	display: block;
+	cursor: pointer;
+}
+#DayAll tr:hover{
+	background-color:white;
+}
+.is67{
+	background-color: #F8FAFB;
+}
+.stateday{
+	float: left;
+	color:#3AA2FD;
+}
+.is67 .stateday{
+	color:red;
+}

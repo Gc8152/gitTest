@@ -1,0 +1,25 @@
+<!--任务模态框 -->
+<div id="useInterfaceApply_taskPop" class="modal hide fade modal-big-table" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5>需求任务列表</h5>
+	</div>
+	<div class=" ecitic-title-table modal-body ecitic-new">
+		<form id="taskPopForm">
+			<table border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td width="13.333%" class="table-text">任务编号：</td>
+					<td width="25%"><input type="text" name="req_task_code"/></td>
+					<td width="13.333%" class="table-text">任务名称：</td>
+					<td width="25%"><input type="text" name="req_task_name"/></td>
+					<td><input type="button" class="btn btn-ecitic" id="query_task" value="查询"/></td>
+					<td><input type="button" class="btn btn-ecitic" id="reset_task" value="重置"></td>
+				</tr>
+			</table>
+		</form>
+		<div class="ecitic-title-table ecitic-new">
+			<table tb="table_task" class="table table-bordered table-hover table-text-show" ></table>
+		</div>
+	</div>
+	<div class="modal-footer"></div>
+</div>

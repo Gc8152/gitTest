@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>接口列表</title>
+<link href="css/form.css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">	
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="interInfoRepairForm">
+				<table class="table table-bordered table-bor-pad">
+					<tr>
+						<td width="11%" class="ecitic-right">接口编号：</td>
+						<td width="22.333%"><input type="text" name="inter_code" id="inter_code"/></td>
+						<td width="11%" class="ecitic-right">接口名称：</td>
+						<td width="22.333%"><input type="text" name="inter_name" id="inter_name"/></td>
+						<td width="11%" class="ecitic-right">接口状态：</td>
+						<td width="22.333%">
+							<select id="inter_status" name="inter_status" style="width:100%;"></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">接口交易码：</td>
+						<td ><input type="text" name="trade_code" id="trade_code"/></td>
+						<td class="ecitic-right">服务方应用名称：</td>
+						<td><input type="text" name="ser_system_name" id="ser_system_name" readonly/></td>
+						<td class="ecitic-right">接口描述：</td>
+						<td><input type="text" name="inter_descr" id="inter_descr"/></td>
+					</tr>
+				</table>
+			</form>	
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="queryInfoRepair" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" id="resetInfoRepair" value="重置"/></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="intiInterReCheck_in" >补登接口</button>
+		<button class="btn btn-ecitic" id="interInfoChange" >修改接口信息</button>
+		<!-- <button class="btn-gray" type="button" id="synchronizationUser">同步OA用户</button> -->
+	</div>
+	<div class="ecitic-new">
+		<table id="interRepairTableInfo" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+	<div mod="systemPop"></div>
+</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+<script src="dev_application/interfaceManage/interInfoRepair/interInfoRepair_queryList.js"></script>
+<script src="dev_application/useInterfaceApply/useInterfaceApply_systemPop.js"></script>
+</html>

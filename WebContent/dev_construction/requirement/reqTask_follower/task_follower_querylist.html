@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>任务列表查询》》</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div>
+			<div class="ecitic-inquire ecitic-moreNo"  id="ecitic-inquire">
+				<div class="ecitic-table" id="ecitic-table">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad" id="followerQuery">
+						<tr>
+							<td class="ecitic-right">任务编号：</td>
+							<td >
+							<input type="text" id="req_task_codeTO" name="req_task_code" />
+							</td>
+							<td class="ecitic-right" >任务名称：</td>
+							<td ><input type="text" id="req_task_nameTO" name="req_task_name" />
+							</td>
+							<td class="ecitic-right" >申请纳入版本：</td>
+							<td><input type="text" id="version_nameTO" name="version_name"  />
+<!-- 							    <input type="hidden" id="version_idTO" name="version_id" /> -->
+							</td>
+						</tr>
+						<tr>
+							<td class="ecitic-right" >任务状态：</td>
+							<td >
+							<select id="req_task_stateTO" multiple="multiple" name="req_task_state" diccode="G_DIC_REQTASK_STATE" style="width:100%;">
+							</select>
+							</td>
+							<td class="ecitic-right" >应用名称：</td>
+							<td>
+							    <input type="text" id="system_nameTO" name="system_name"  />
+							   <!--  <input type="hidden" id="system_noTO" name="system_no" /> -->
+							</td>
+							<td class="ecitic-right" >计划投产日期：</td>
+							<td>
+								<div style="float:left; width:45%;">
+								<input type="text" id="plan_onlinetimeTO" name="plan_onlinetime" onClick="WdatePicker({});" placeHolder="点击选择" class="requirement-ele-width" readonly/>
+								</div>
+								<div style="float:left; width:10%;line-height:26px;">&nbsp至&nbsp</div>	
+								<div style="float:left; width:45%;">
+								<input type="text" id="plan_onlinetimeTO1" name="plan_onlinetime1" class="requirement-ele-width" onClick="WdatePicker({});" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'plan_onlinetimeTO\',{d:0});}'})" placeHolder="点击选择"  readonly/>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="ecitic-right" >从属关系：</td>
+							<td>
+								<select  id="req_task_relationid" name="req_task_relation" diccode="G_DIC_TASK_RELATION" style="width:100%;"></select>
+							</td>
+							<td class="ecitic-right" >任务来源：</td>
+							<td>
+								<select  id="req_task_typeid" name="req_task_type" diccode="G_DIC_REQTASK_COME" style="width:100%;"></select>
+							</td>
+							<td class="ecitic-right" >项目组：</td>
+							<td>
+								<select  id="req_task_teamid" name="req_task_team"  style="width:100%;"></select>
+							</td>
+							 <!-- <td style="width:20px;"></td>   -->
+							<!-- <td class="ecitic-right"   style="width:15%">存量任务编号：</td>
+							<td style="width:25%">
+							<input type="text" id="old_task_idTO" name="old_task_id" />
+							</td>
+							 -->
+						</tr>
+					</table>
+				</div>
+				
+				<ul class="ecitic-btn-all">
+					<li><input type="button" class="btn btn-ecitic" id="serach_TversionQuery" value="查询" hidden="hidden"/></li>
+					<li><input type="reset" class="btn btn-ecitic" id="reset_TversionQuery" value="重置"/></li>
+				</ul>
+			</div>
+	
+		<div class="ecitic-new">
+			<table id="gGFollowerTaskTable" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+		<!-- 系统应用pop -->
+		<div id="tvsystem_pop"></div>
+		<!-- 版本pop -->
+<!-- 		<div id="tvVsersion_pop"></div> -->
+	</div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_intoVersion/taskVersion_pop.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_follower/task_follower_querylist.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_phased/task_phased_jury.js"></script>
+<script type="text/javascript" src="dev_application/System_pop.js"></script>
+</html>

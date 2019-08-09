@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/public.css"/>
+</head>
+<style>
+<!--
+/* .select2-container{
+margin-left:4px;
+margin-right:1px;
+} */
+-->
+</style>
+<body>
+	<div class="main_iframe_con">
+		<form id=messstrategy_queryList_form action="" class="form-inline">
+			<div class="ecitic-inquire" id="ecitic-inquire">
+				<div class="ecitic-table" id="ecitic-table">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0"
+						class="table table-bordered table-bor-pad">
+						<tr>
+							<td class="ecitic-right">模型编号：</td>
+							<td><input type="text" name="MTQ.category_code"
+								id="queryList_category_code" /></td>
+							<td class="ecitic-right">模型名称：</td>
+							<td><input type="text" name="MTQ.category_name"
+								id="queryList_category_name" /></td>
+							<td class="ecitic-right">模型状态：</td>
+							<td><select id="queryList_category_state"
+								name="MTQ.category_state"></select></td>
+
+						</tr>
+						<tr>
+							<td class="ecitic-right">模型类别：</td>
+							<td><select id="queryList_category_assortid"
+								name="MTQ.assortid" class="citic-sele-ast"></select></td>
+							<td class="ecitic-right">发送人邮箱：</td>
+							<td><input type="text" name="MTQ.assortid"
+								id="queryList_category_mail" /></select></td>
+						</tr>
+					</table>
+				</div>
+				<ul class="ecitic-btn-all">
+					<li><button type="button" id="MTQqueryList" class="btn btn-ecitic">查询</button></li>
+					<li><button type="button" id="MTQReset" class="btn btn-ecitic">重置</button></li>
+				</ul>
+			</div>
+		</form>
+		<div class="ecitic-operation">
+			<button class="btn btn-ecitic" type="button"
+				id="messstrategy_queryList_add">新增</button>
+			<button class="btn btn-ecitic" type="button"
+				id="messstrategy_queryList_update">修改</button>
+			<button class="btn btn-ecitic" type="button"
+				id="messstrategy_queryList_delete">删除</button>
+			<button class="btn btn-ecitic" type="button"
+				id="messstrategy_queryList_frequency">频率配置</button>
+		</div>
+		<table id="messstrategyModal_Table"></table>
+		<div id="messstrategy_userDiv"></div>
+	</div>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="pages/suser/suserPop.js"></script>
+<script src="supervision/messcategory/messcategory_queryList.js"></script>
+</body>
+</html>

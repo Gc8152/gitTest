@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.SolutionDao">
+
+	<!--查询全部数据 -->
+	<select id="findSolutionInfoAll" resultType="java.util.Map" parameterType="java.util.Map">
+     	select h.problem_name problem_name,h.problem_description problem_description,
+     	 h.problem_solution problem_solution,
+     	 h.create_time create_time ,h.file_id file_id,s.user_name create_name,h.create_id create_id
+     	 from g_help_solve h left join S_USER s on s.user_no=h.create_id
+     	 where 1=1 
+	 	order by  h.create_time  desc
+	</select>
+	<!--条件查询 -->
+	<select id="findSolutionInfoOne" resultType="java.util.Map" parameterType="java.util.Map">
+     	select h.problem_name problem_name,h.problem_description problem_description,
+     	 h.problem_solution problem_solution,
+     	 h.create_time create_time ,h.file_id file_id,s.user_name create_name,h.create_id create_id
+     	 from g_help_solve h  left join S_USER s on s.user_no=h.create_id
+     	 where 1=1  
+     	  <if test="problem_name!=null and problem_name!=''">
+				and  h.problem_name like #{problem_name}
+		</if>
+		 <if test="req_operation_date!=null and req_operation_date!=''">
+				and to_date(h.create_time,'yyyy-mm-dd hh24:mi:ss') >= to_date(#{req_operation_date},'yyyy-mm-dd hh24:mi:ss')
+		</if>
+		<if test="req_operation_date1!=null and req_operation_date1!=''">
+				and to_date(h.create_time,'yyyy-mm-dd hh24:mi:ss')  &lt;= to_date(#{req_operation_date1},'yyyy-mm-dd hh24:mi:ss')
+		</if>
+		order by  h.create_time desc
+	</select>
+	<!-- 添加信息 -->
+	<select id="findSolutionInfoAdd" resultType="java.util.Map" parameterType="java.util.Map">
+	 	insert into
+		g_help_solve(problem_id,problem_name,problem_description,problem_solution,create_time,file_id,create_id)
+		values(#{problem_id},#{problem_name},#{problem_description},#{problem_solution},#{create_time},#{file_id},#{create_id}) 
+	</select>
+	<!-- 删除信息 -->
+	<delete id="findSolutionInfoDelete"  parameterType="java.util.Map">
+	delete from	g_help_solve h where h.problem_name=#{problem_name}
+	</delete>
+	<!-- 修改信息 -->
+	<update id="findSolutionInfoUpdate"  parameterType="java.util.Map">
+		update g_help_solve  set 
+        problem_name=#{problem_name},
+        problem_description=#{problem_description},
+        problem_solution=#{problem_solution}
+   	    where 1=1 	and  problem_name = #{problem_name}
+	</update>
+	<!--查询business_code的file_id -->
+	<select id="findSolutionInfoFile" resultType="java.util.Map" parameterType="java.util.Map">
+	select s.file_id,r.path_name,r.file_name,r.id
+     	 from s_ftp_fileinfo_rel s left join s_ftp_fileinfo r on s.file_id=r.file_id where  
+     	  business_code=#{business_code}
+	</select>
+	<!-- 删除business_code -->
+	<delete id="findSolutionFileDelete"  parameterType="java.util.Map">
+		delete from s_ftp_fileinfo_rel where business_code=#{business_code}
+	</delete>
+	<!-- 根据id删除附件  -->
+	<delete id="findSolutionInfoFileDelete"  parameterType="java.util.Map">
+		delete from	s_ftp_fileinfo s where s.file_id=#{file_id}
+	</delete>
+	
+</mapper>

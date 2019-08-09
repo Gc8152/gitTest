@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+ 
+<mapper namespace="com.yusys.repository.config.dao.RepositoryDao">
+	<!-- 插入数据 -->
+	<insert id="insertRepository" parameterType="java.util.Map" >
+		insert into K_INTELL_INFO (
+			INTELL_ID,
+			INTELL_CODE,
+			TITLE,
+			CATEGORY_CODE,
+			STATUS,
+			CREATE_PERSON,
+			FILE_ID,
+			CONTENT)
+			values(#{INTELL_ID}, #{INTELL_CODE}, #{TITLE},#{CATEGORY_CODE},
+			#{STATUS}, #{CREATE_PERSON},#{FILE_ID},#{CONTENT})
+	</insert> 
+	<insert id="insertRepositoryContent" parameterType="java.util.Map" >
+		insert into k_intell_content (
+			INTELL_ID,
+			VERSION_CODE,
+			CONTENT,
+			UPDATE_PERSON,
+			UPDATE_TIME,
+			TITLE,
+			UPDATE_EXPLAIN
+			)
+			values(#{INTELL_ID,jdbcType=VARCHAR}, #{VERSION_CODE,jdbcType=VARCHAR},
+			#{CONTENT,jdbcType=VARCHAR}, #{UPDATE_PERSON,jdbcType=VARCHAR},
+			#{UPDATE_TIME,jdbcType=VARCHAR}, #{TITLE,jdbcType=VARCHAR},
+			#{UPDATE_EXPLAIN,jdbcType=VARCHAR}
+			)
+			
+			
+	</insert> 
+	<!-- <insert id="insertRepositoryCategory" parameterType="java.util.Map" >
+		insert into k_intell_category (
+			CATEGORY_CODE,
+			CATEGORY_NAME
+			)
+			values(#{CATEGORY_CODE,jdbcType=VARCHAR}, #{CATEGORY_NAME,jdbcType=VARCHAR})
+	</insert> --> 
+	
+	<!-- 根据id查询全部的版本 -->
+	<select id="queryAllVersionList" parameterType="java.util.Map" resultType="java.util.Map">
+		select  kic.*,SU.USER_NAME as RELEASE_PERSON_NAME  from 
+		k_intell_content kic 
+		left join s_user su on su.user_no=kic.update_person
+		WHERE 1=1
+		 <if test="INTELL_ID !=null and INTELL_ID!=''">
+			and kic.INTELL_ID =#{INTELL_ID} 
+		</if> 
+		
+	</select>
+	<!-- 查询全部 -->
+	<select id="queryAllRepositoryList" parameterType="java.util.Map" resultType="java.util.Map">
+		select  kii.INTELL_ID,
+				kii.INTELL_CODE,
+				kii.TITLE,
+				kii.CATEGORY_CODE,
+				kii.STATUS,
+				(select item_name from s_dic_item where dic_code = 'K_DIC_INTELL_STATUS' and item_code = kii.STATUS) STATUS_NAME,
+				kii.VERSION_CODE,
+				kii.CREATE_PERSON,su.user_name as create_person_name,
+				kii.RELEASE_TIME,
+				kii.RELEASE_PERSON,su1.user_name as release_person_name,
+				kii.FILE_ID,
+				kic.CATEGORY_NAME,
+				kii.CONTENT,
+				 (select listagg(to_char(ash.category_name), '/') within group(order by ash.category_code asc)
+		     from k_intell_category ash
+		    where ash.category_code in
+          (select ashh.category_code
+             from k_intell_category ashh
+           connect by prior ashh.category_code_top = ashh.category_code start with ashh.category_code = kii.CATEGORY_CODE)) ALL_CATEGORY_NAME
+    
+		 from K_INTELL_INFO kii
+		left join K_INTELL_CATEGORY kic on kii.CATEGORY_CODE=kic.CATEGORY_CODE
+		left join s_user su on su.user_no=kii.CREATE_PERSON
+		left join s_user su1 on su1.user_no=kii.RELEASE_PERSON
+
+		WHERE  kii.status !='04' 
+		
+		<if test="TITLE!=null and TITLE!=''">
+			and kii.TITLE  like '%' || #{TITLE} || '%'
+		</if >
+		<if test="CATEGORY_CODE !=null and CATEGORY_CODE !=''">
+			and kii.CATEGORY_CODE  =#{CATEGORY_CODE}
+		</if >
+		<if test="STATUS !=null and STATUS !=''">
+			and kii.STATUS =#{STATUS}
+		</if >
+	</select>
+	<!-- 查询所属该类别下的全部 -->
+	<select id="queryBelongCategoryList" parameterType="java.util.Map" resultType="java.util.Map">
+		select  kii.INTELL_ID,
+				kii.INTELL_CODE,
+				kii.TITLE,
+				kii.CATEGORY_CODE,
+				kii.STATUS,
+				(select item_name from s_dic_item where dic_code = 'K_DIC_INTELL_STATUS' and item_code = kii.STATUS) STATUS_NAME,
+				kii.VERSION_CODE,
+				kii.CREATE_PERSON,su.user_name as create_person_name,
+				kii.RELEASE_PERSON,su1.user_name as release_person_name,
+				kii.FILE_ID,
+				kic.CATEGORY_NAME,
+				kii.CONTENT,
+				kii.RELEASE_TIME 
+		 from K_INTELL_INFO kii
+		left join K_INTELL_CATEGORY kic on kii.CATEGORY_CODE=kic.CATEGORY_CODE
+		left join s_user su on su.user_no=kii.CREATE_PERSON
+		left join s_user su1 on su1.user_no=kii.RELEASE_PERSON
+
+		WHERE  kii.status in ('01','03')
+		
+		<if test="TITLE!=null and TITLE!=''">
+			and kii.TITLE  like '%' || #{TITLE} || '%'
+		</if>
+		<if test="CATEGORY_CODE !=null and CATEGORY_CODE !=''">
+			and kii.CATEGORY_CODE  =#{CATEGORY_CODE}
+		</if>
+		<if test="STATUS !=null and STATUS !=''">
+			and kii.STATUS =#{STATUS}
+		</if>
+		<!-- <if test="START_TIME !=null and START_TIME!=''">
+				and to_date(kii.RELEASE_TIME,'yyyy-mm-dd hh:MM:ss') &gt;= to_date(#{START_TIME},'yyyy-mm-dd')
+		</if>
+		<if test=" END_TIME !=null and END_TIME !=''">
+				and to_date(kii.RELEASE_TIME,'yyyy-mm-dd')  &lt;= to_date(#{END_TIME},'yyyy-mm-dd')
+		</if> -->
+	</select>
+	<!-- 根据版本查询知识详情-->
+	<select id="queryIntellByVersion" parameterType="java.util.Map" resultType="java.util.Map">
+		select  kii.INTELL_ID,
+				kii.INTELL_CODE,
+				kii.TITLE,
+				kii.CATEGORY_CODE,
+				kii.STATUS,
+				(select item_name from s_dic_item where dic_code = 'K_DIC_INTELL_STATUS' and item_code = kii.STATUS) STATUS_NAME,
+				kii.VERSION_CODE,
+				kii.CREATE_PERSON,su.user_name as CREATE_PERSON_NAME,
+				kii.RELEASE_TIME,
+				kii.RELEASE_PERSON,su1.user_name as RELEASE_PERSON_NAME,
+				kii.FILE_ID,
+				kic.CATEGORY_NAME,
+				kii.CONTENT
+		 from K_INTELL_INFO kii
+		left join K_INTELL_CATEGORY kic on kii.CATEGORY_CODE=kic.CATEGORY_CODE
+		left join s_user su on su.user_no=kii.CREATE_PERSON
+		left join s_user su1 on su1.user_no=kii.RELEASE_PERSON
+		WHERE 1=1  
+	</select>
+	
+	<!-- 查询类别 -->
+	<select id="getCategoryCode"  resultType="java.util.Map" parameterType="java.util.Map">
+		select * from k_intell_category where flag='00' and CATEGORY_CODE_TOP=#{CATEGORY_CODE_TOP}
+	
+	</select>
+	
+	<!-- 取消过期删除修改状态 -->
+	<update id="cannelOroverdueOrDelete" parameterType="java.util.Map">
+		update k_intell_info set STATUS=#{STATUS,jdbcType=VARCHAR}
+		where INTELL_ID=#{INTELL_ID,jdbcType=VARCHAR}
+	</update>
+	<!-- 物理删除 -->
+	<delete id="delete" parameterType="java.util.Map">
+		delete from k_intell_info where INTELL_ID=#{INTELL_ID}
+	</delete>
+	<!-- 审核发布知识 -->
+	<update id="releaseRepository" parameterType="java.util.Map">
+		update k_intell_info set 
+								STATUS=#{STATUS},RELEASE_PERSON=#{RELEASE_PERSON},
+								RELEASE_TIME=#{RELEASE_TIME},VERSION_CODE=#{VERSION_CODE}
+		where INTELL_ID=#{INTELL_ID}
+	</update>
+	<update id="releaseRepositoryContent" parameterType="java.util.Map">
+		update k_intell_content set VERSION_CODE=#{VERSION_CODE}
+		where INTELL_ID=#{INTELL_ID}
+	</update>
+<!-- 修改基本知识表 -->
+	<update id="updateRepositoryInfo" parameterType="java.util.Map">
+		update k_intell_info set 
+				TITLE=#{TITLE,jdbcType=VARCHAR},
+				CATEGORY_CODE=#{CATEGORY_CODE,jdbcType=VARCHAR},
+				RELEASE_PERSON=#{RELEASE_PERSON,jdbcType=VARCHAR},
+				RELEASE_TIME=#{RELEASE_TIME,jdbcType=VARCHAR},
+				CONTENT=#{CONTENT}
+		where INTELL_ID=#{INTELL_ID}						
+	</update> 
+	<!-- 修改知识内容表 -->
+	<update id="updateRepositoryContent" parameterType="java.util.Map">
+		update k_intell_content set 
+				CONTENT=#{CONTENT,jdbcType=VARCHAR},
+				UPDATE_PERSON=#{UPDATE_PERSON,jdbcType=VARCHAR},
+				UPDATE_TIME=#{UPDATE_TIME,jdbcType=VARCHAR}
+		where INTELL_ID=#{INTELL_ID}
+	</update> 
+	<!-- 根据类别编号查询该类别下全部的列表  -->
+	<select id="queryOneCategoryTreeList" parameterType="java.lang.String" resultType="java.util.Map">
+		select CATEGORY_CODE as "id",CATEGORY_CODE_TOP as "pid" , CATEGORY_NAME "name", CATEGORY_NAME_TOP as "name_top" from k_intell_category where flag='00' CONNECT BY  PRIOR  
+ 		CATEGORY_CODE=CATEGORY_CODE_TOP START WITH CATEGORY_CODE = #{CATEGORY_CODE}
+	</select>
+	
+	<!-- *********************类别配置****************************** -->
+	
+	<!-- 查询所有类别 -->
+	<select id="queryAllCategory" parameterType="java.lang.String" resultType="java.util.Map">
+		
+ select CATEGORY_CODE as "id",CATEGORY_CODE_TOP "pid",CATEGORY_NAME_TOP,CATEGORY_NAME "name",CATEGORY_EXPLAIN ,
+		
+    (select listagg(to_char(ash.category_name), '/') within group(order by ash.category_code asc)
+		     from k_intell_category ash
+		    where ash.category_code in
+          (select ashh.category_code
+             from k_intell_category ashh
+           connect by prior ashh.category_code_top = ashh.category_code start with ashh.category_code = k.CATEGORY_CODE)) ALL_CATEGORY_NAME
+    
+    from k_intell_category k  where flag='00'  order by ORDER_NO   
+		
+	</select>
+	 <!-- 根据编号查询详情 -->
+	<select id="findOneCategoryByNo" parameterType="java.util.Map" resultType="java.util.Map">
+		<!-- CATEGORY_CODE ,CATEGORY_CODE_TOP  ,CATEGORY_NAME ,CATEGORY_NAME_TOP,CATEGORY_EXPLAIN,ORDER_NO,MENU_ICON -->
+		select *
+		from k_intell_category  where  CATEGORY_CODE=#{CATEGORY_CODE,jdbcType=VARCHAR} 
+	</select>
+	<!-- 创建类别 -->
+	<insert id="createCategory" parameterType="java.util.Map" >
+		insert into k_intell_category (
+			CATEGORY_CODE,
+			CATEGORY_NAME,
+			CATEGORY_EXPLAIN,
+			CATEGORY_CODE_TOP,
+			CATEGORY_NAME_TOP,
+			ORDER_NO,
+			UPDATE_PERSON,
+			UPDATE_TIME,
+			FLAG,
+			MENU_ICON
+			)
+		values(
+				#{CATEGORY_CODE}, 
+				#{CATEGORY_NAME}, 
+				#{CATEGORY_EXPLAIN}, 
+				#{CATEGORY_CODE_TOP}, 
+				#{CATEGORY_NAME_TOP}, 
+				#{ORDER_NO},
+				#{UPDATE_PERSON},
+				#{UPDATE_TIME},
+				#{FLAG},
+				#{MENU_ICON,jdbcType=VARCHAR}
+			)
+	</insert> 
+	<!-- 删除类别 -->
+	<update id="deleteCategory" parameterType="java.util.Map">
+		update k_intell_category set FLAG=#{FLAG} where CATEGORY_CODE 
+		<!-- =#{CATEGORY_CODE} -->
+		in (select CATEGORY_CODE from k_intell_category where flag='00' CONNECT BY  PRIOR  
+ 		CATEGORY_CODE=CATEGORY_CODE_TOP START WITH CATEGORY_CODE = #{CATEGORY_CODE})
+	</update> 
+	<!--修改类别 -->
+	<update id="updateCategory" parameterType="java.util.Map">
+	update k_intell_category set
+			CATEGORY_NAME=#{CATEGORY_NAME},
+			CATEGORY_CODE_TOP=#{CATEGORY_CODE_TOP},
+			CATEGORY_NAME_TOP=#{CATEGORY_NAME_TOP},
+			CATEGORY_EXPLAIN=#{CATEGORY_EXPLAIN},
+			UPDATE_PERSON=#{UPDATE_PERSON},
+			UPDATE_TIME=#{UPDATE_TIME},
+			ORDER_NO=#{ORDER_NO},
+			MENU_ICON=#{MENU_ICON}
+	where CATEGORY_CODE=#{CATEGORY_CODE}
+		
+	</update> 
+	
+	<select id="queryLatestFtpFile" parameterType="java.lang.String" resultType="java.util.Map">
+		    select sff.id,sff.* from k_intell_info t
+			left join s_ftp_fileinfo_rel sf on t.file_id = sf.BUSINESS_CODE
+			left join s_ftp_fileinfo sff on sf.file_id = sff.file_id
+			 where t.intell_code=#{id}
+	</select>
+	
+</mapper>

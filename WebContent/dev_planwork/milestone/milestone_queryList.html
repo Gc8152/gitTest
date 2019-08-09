@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<style type="text/css">
+ #setProjectModelModal tbody tr td{position: relative;}
+</style>
+</head>
+<body>
+<div class="ecitic-inquire ecitic-moreNo" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0"
+				class="table table-bordered table-bor-pad requirement-table">
+				<tr>
+					<td class="ecitic-right" style="width: 11%;">模板编号：</td>
+					<td style="width: 22%;"><input type="text" name="M.model_id" id="m_model_id" /></td>
+					<td class="ecitic-right" style="width: 12%;">模板名称：</td>
+					<td style="width: 22%;"><input type="text" name="M.model_name" id="m_model_name" /></td>
+					<td class="ecitic-right" style="width: 11%;">模板状态：</td>
+					<td style="width: 22%;"><select id="m_is_use" name="M.is_use" style="width:100%;"></select></td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">项目类型：</td>
+					<td><select id="M_project_type" name="M.project_type" onchange="change_ProjectType(this)" style="width:100%;"></select></td>
+					<td class="ecitic-right">子分类：</td>
+					<td><select id="M_child" name="M.child" disabled=true style="width:100%;"></select>
+					</td>
+				</tr>
+			</table>
+		</div>
+	
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="queryProjectModel">查询</button></li>
+			<li><button class="btn btn-ecitic" id="resetProjectModel">重置</button></li>
+		</ul>
+	</div> 
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="addMilestoneModel">新增模板</button>
+		<button class="btn btn-ecitic" id="editMilestoneModel">修改模板</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="ProjectModelTableInfo" class="table table-bordered table-hover table-striped"></table>
+	</div>
+
+</body>
+<script src="dev_planwork/milestone/milestone_queryList.js"></script>
+</html>

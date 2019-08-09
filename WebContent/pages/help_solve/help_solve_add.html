@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+		<span>新增问题解决方案信息<em></em></span>
+		 <i></i>
+	</div>
+	<form action="" class="form-inline" id="problem_from">
+		<div class="ecitic-title-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" id="problem_table" class="table table-bordered tablr-input-text table-bor-paw">
+				<tr>
+					<td width="2%" class="table-text">问题名称</td>
+					<td width="22%">
+						<input type="text" name="problem_name" id="problem_name" validate="v.required" valititle="该项为必填项"  class="citic-ast" />
+				</tr>
+			  	 <tr>
+					<td class="table-text">问题描述</td>
+					<td>
+						<textarea name="problem_description" placeholder="请详细输入您所问的问题" id="PROBLEM_DESCRIPTION" style="height:80px"  class="citic-text-ast" validate="v.required" valititle="该项为必填项"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">解决方案</td>
+					<td>
+						<textarea name="problem_solution" placeholder="请输入该问题的解决方案" id="PROBLEM_SOLUTION" style="height:140px"  class="citic-text-ast" validate="v.required" valititle="该项为必填项"></textarea>
+					</td>
+			   </tr>
+			   <tr>
+
+			   </tr>
+			</table>
+		</div>
+	 	<div class="ecitic-title">
+			<span>附件信息列表<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table" id="uploadWord" >
+				<div class="ecitic-operation">
+					<button type="button" class="btn btn-ecitic" id="reqadd_file">上传</button>
+					<button type="button" class="btn btn-ecitic" id="reqdelete_file">删除</button>
+					<!-- <a href="sfile/downloadFTPFile.asp?id=m_015" class="file_template_style">需求申请书模版</a> -->
+				</div>
+				<table id="reqadd_filetable"  class="table table-bordered table-hover table-text-show"></table>
+			</div>
+		</form>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="保存" id="problem_save" />
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+		<!-- <input type="button" class="btn btn-ecitic" value="返回" name="globeBack" /> -->
+	</div>
+
+		<!--上传附件模态框  -->
+       <div id="reqadd_modalfile"></div>
+       <div id="reqadd_fileview_modal"></div>
+	 
+</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="pages/help_solve/help_solve_add.js"></script>
+</html>
+<script type="text/javascript">
+	initVlidate($("#probllem_from"));
+	hideVlidate();
+</script>

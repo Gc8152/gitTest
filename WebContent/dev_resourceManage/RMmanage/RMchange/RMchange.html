@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>环境资源池变更</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_resourceManage/RMmanage/RMchange/RMchange.js"></script>
+<script src="js/commons/commons.js"></script>
+<style type="text/css">
+.tableContMore li{padding:0 15px;margin:3px 0;}
+.tableContMore li:not(:first-child){float:left;border-right:1px solid #000;}
+</style>
+</head>
+<body>
+	<div class="main_iframe_con">
+		<form action="" class="form-inline" id="" style="margin-bottom: 10px">
+			<div class="ecitic-title">
+				<span>环境资源池变更<em></em></span>
+		    </div>
+		    <div class="ecitic-title-table">
+		    	<table class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">资源编号：</td>
+						<td><input type="text" name="" id="" /></td>
+						<td class="ecitic-right">环境类别：</td>
+						<td>
+							<select>
+		        				<option selected="selected">开发环境</option>
+		        				<option>测试环境</option>
+		        			</select>
+		        		</td>
+		        		<td class="ecitic-right">资源编号：</td>
+						<td><input type="text" name="" id="" /></td>					
+					</tr>
+					<tr>
+						<td class="ecitic-right">机柜号：</td>
+						<td><input type="text" name="" id="" /></td>
+						<td class="ecitic-right">开始位置：</td>
+						<td><input type="text" name="" id="" /></td>
+		        		<td class="ecitic-right">结束位置：</td>
+						<td><input type="text" name="" id="" /></td>					
+					</tr>
+				</table>
+		    </div>
+		</form>
+	</div>
+	<div class="ecitic-title">
+		<span>资源池设备清单<em></em></span>
+    </div>
+	<div class="ecitic-operation">
+		<!-- <button class="btn btn-ecitic" id="seniorQuery" >高级查询</button> -->
+		<button class="btn btn-ecitic" id="changeRM">添加</button>
+		<button class="btn btn-ecitic" id="upchangeRM">修改</button>
+		<button class="btn btn-ecitic" id="">删除</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="" class="table table-bordered table-hover">
+			<tbody>
+				<tr class="tableFirTR">
+					<td class="newStyle">
+						<input name="chkAll" id="chkAll" title="全选" onClick="ChkAllClick('chkSon','chkAll')" type="checkbox" />
+					</td>
+					<td class="newStyle">
+						<span>序号</span>
+					</td>
+					<td class="newStyle">
+						<span>设备编号</span>
+					</td>
+					<td class="newStyle">
+						<span>设备类别</span>
+					</td>
+					<td class="newStyle">
+						<span>设备名称</span>
+					</td>
+					<td class="newStyle">
+						<span>品牌</span>
+					</td>
+					<td class="newStyle">
+						<span>型号</span>
+					</td>
+					<td class="newStyle">
+						<span>服务器数量</span>摆放位置
+					</td>
+					<td class="newStyle">
+						<span>序列号</span>
+					</td>
+					<td class="newStyle">
+						<span>摆放位置</span>
+					</td>
+					<td class="newStyle">
+						<span>CPU数量/核</span>
+					</td>
+					<td class="newStyle">
+						<span>内存大小/G</span>
+					</td>
+					<td class="newStyle">
+						<span>硬盘大小/G</span>
+					</td>
+					<td class="newStyle">
+						<span>网卡/个</span>
+					</td>
+				</tr>
+				<tr class="tit">
+					<td rowspan="" id="combine">
+						<input name="chkSon" id="chkSon1" type="checkbox"  value='1' onclick="ChkSonClick('chkSon','chkAll')" />
+					</td>
+					
+					<td rowspan="" id="combine2">
+						<span>1</span>
+					</td>
+					<td style="width:250px;">
+					  <span>HJZY-0001</span>
+					</td>
+					<td>
+					  <div class="tit">
+						  <span>开发环境</span>
+					  </div>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td >
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td >
+						<span></span>
+					</td>
+					
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="保存"  />
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+	</div>
+</body>
+</html>

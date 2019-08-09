@@ -1,0 +1,25 @@
+<!--SIT测试经理模态框  -->
+<div id="man_modal" class="modal hide fade modal-big-table" tabindex="-1">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" style="color:blue" title="点击关闭">×</button>
+            <h5>项目信息</h5>
+        </div>
+       <div class=" ecitic-title-table modal-body ecitic-new">
+        	 <form id="manQuery">
+	             <table border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+                     <tr>
+                         <td class="ecitic-right" width="13.333%">用户姓名：</td>
+                         <td width="20%"><input name="USER_NAME" type="text"></td>
+                         <td class="ecitic-right" width="13.333%">登录名：</td>
+                         <td width="20%"><input  name="LOGIN_NAME" type="text"></td>
+                         <td><input type="button" class="btn btn-ecitic" id="manSearch" value="查询"/></td>
+						<td><input type="button" class="btn btn-ecitic" id="manReset" value="重置"/></td>
+                     </tr>
+	             </table>
+			</form>
+			<div class="ecitic-new">
+				<table tb="manTable" class="table table-bordered table-hover table-text-show" ></table>
+			</div>
+        </div>
+        <div class="modal-footer"></div>
+</div>

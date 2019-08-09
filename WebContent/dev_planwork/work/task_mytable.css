@@ -1,0 +1,62 @@
+.mytable-view{
+	border-left:2px solid #ddd;
+	border-top:2px solid #ddd;
+}
+.mytable-header{
+	font-size:14px;
+	height:24px;
+	width:auto;
+	text-align:center;
+	border-bottom: 2px solid #ddd;
+	font-weight: bold!important;
+	height:40px;
+}
+.mytable-header td{
+	border-right:1px solid #ddd;
+	border-bottom:1px solid #ddd;
+}
+.mytable-row{
+	line-height:30px;
+	height:36px;s
+	font-size:14px;
+	text-align:center;
+}
+.mytable-row-th{
+	font-weight: bold!important;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.mytable-row-td,.mytable-row-th{
+	min-width:50px;
+	text-alian:center;
+	border-bottom:2px solid #ddd;
+	border-right:2px solid #ddd;
+}
+.mytable-qishu{
+	/* background:#ebebeb; */
+}
+.mytable-selected{
+	line-height:30px;
+	height:36px;
+	font-size:14px;
+	text-align:center;
+	background:#eadfdf;
+}
+.noDataTd{
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    border-right: 2px solid #ddd;
+    color: black;
+    height:30px;
+}
+.mytable-column-div{
+	width:auto;
+	max-width:220px;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.mytable-view .select2-container{
+	margin-left:1px;
+}

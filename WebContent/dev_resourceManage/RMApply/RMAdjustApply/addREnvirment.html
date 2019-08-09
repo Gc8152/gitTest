@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>添加环境资源</title>
+
+</head>
+<body>
+<div class="main_iframe_con">
+	<form action="" class="form-inline" id="add_notice" style="margin-bottom: 10px">
+		<div class="ecitic-title">
+			<span>添加环境资源<em></em></span>
+	    </div>
+	    <div class="ecitic-title-table">
+	    	<table class="table table-bordered table-hover">
+				<tr>
+					<td width="11%" class="ecitic-right">系统名称：</td>
+					<td><input type="text"/></td>
+					<td class="ecitic-right">申请人：</td>
+					<td><input type="text"/></td>
+					<td class="ecitic-right">环境类别：</td>
+					<td>
+						<select>
+		        			<option selected="selected">开发环境</option>
+		        			<option>测试环境</option>
+		        		</select>
+		        	</td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">资源状态：</td>
+					<td><input type="text"></td>
+					<td class="ecitic-right">项目组名称：</td>
+					<td><input type="text"></td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</div>
+<div class="ecitic-title">
+	<span>选择环境资源<em></em></span>
+</div>
+<div class="ecitic-operation">
+	<button class="btn btn-ecitic" id="" >选择</button>
+</div>
+<div class="ecitic-new">
+	<table class="table table-bordered table-hover">
+		<tbody>
+			<tr class="tableFirTR">
+				<td class="newStyle">
+					<input name="chkAll" id="chkAll" title="全选" onClick="ChkAllClick('chkSon','chkAll')" type="checkbox" />
+				</td>
+				<td class="newStyle">
+					<span>序号</span>
+				</td>
+				<td class="newStyle">
+					<span>资源编号</span>
+				</td>
+				<td class="newStyle">
+					<span>资源申请编号</span>
+				</td>
+				<td class="newStyle">
+					<span>申请人</span>
+				</td>
+				<td class="newStyle">
+					<span>项目组名称</span>
+				</td>
+				<td class="newStyle">
+					<span>系统名称</span>
+				</td>
+				<td class="newStyle">
+					<span>环境类型</span>
+				</td>
+				<td class="newStyle">
+					<span>申请日期</span>
+				</td>
+				<td class="newStyle">
+					<span>实际开始使用日期</span>
+				</td>
+				<td class="newStyle">
+					<span>预计使用结束日期</span>
+				</td>
+				<td class="newStyle">
+					<span>资源状态</span>
+				</td>
+			</tr>
+			<tr class="tit">
+				<td rowspan="" id="combine">
+					<input name="chkSon" id="chkSon1" type="checkbox"  value='1' onclick="ChkSonClick('chkSon','chkAll')" />
+				</td>
+				
+				<td rowspan="" id="combine2">
+					<span>HJZY16-002-01</span>
+				</td>
+				<td style="width:250px;">
+				  <span>HJZY16-002</span>
+				</td>
+				<td>
+				  <div class="tit">
+					  <span>张三</span>
+				  </div>
+				</td>
+				<td>
+					<span>核心项目组</span>
+				</td>
+				<td>
+					<span>核心项目组</span>
+				</td>
+				<td>
+					<span>测试环境</span>
+				</td>
+				<td>
+					<span></span>
+				</td>
+				<td >
+					<span></span>
+				</td>
+				<td>
+					<span></span>
+				</td>
+				<td>
+					<span></span>
+				</td>
+				<td >
+					<span>使用中</span>
+				</td>
+			</tr>
+			
+		</tbody>
+	</table>
+</div>
+<div class="ecitic-save">
+	<input type="button" class="btn btn-ecitic" value="保存"  />
+	<input type="button" class="btn btn-ecitic" value="提交"  />
+	<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+</div>
+</body>
+</html>

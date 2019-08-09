@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>接口调用关系</title>
+<!-- <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />-->
+<link rel="stylesheet" type="text/css" href="css/index_insidePage.css" />
+<!-- 字体图标 -->
+<link rel="stylesheet" href="bootstrap/font-awesome-4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" src="pages/sfunction/sfunction.js"></script>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="js/echarts-2.2.7/echarts-all.js"></script>
+<script type="text/javascript" src="dev_application/interfaceInfo/interfaceinfo_invoking.js"></script>	
+</head>
+<body>
+<input type="hidden" id="SID"/>
+<div class="indexContent">
+	<div class="tabWrap">
+		<ul class="content" style="margin-right: 30px;">
+			<!--tab1-->
+			<li class="tabContList on"></li>
+		</ul>
+		<!--tab2-->
+		<li class="">
+			<div class="manageView_tab2Main">
+				<div class="tabContListTab2_left MVtabContListTab2_left">
+					<div class="ecitic-title">
+						<span class="title"><i class="fa fa-cogs"
+							aria-hidden="true"></i>接口调用关系</span>
+					</div>
+					<div id="myTabContent" class="tab-content bootstrapTabsCont">
+						<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+						<!-- 用户图表 -->
+						<div class="echartsWrapH">
+							<div id="invoking_echarts" class="echartsWrapContH"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</li>
+	</div>
+</div>
+
+</body>
+</html>

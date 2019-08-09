@@ -1,0 +1,152 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>核算单新增</title>
+		<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+	</head>
+	<body style="overflow:auto;">
+		<div class="main_iframe_con">
+			<div class="ecitic-title">
+				<span>核算单基本信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<form id="serviceOrder_add">
+					<div class="ecitic-title-table">
+						<table class="table table-bordered tablr-input-text" id="base_table">
+							<tr>
+								<td width="11%" class="table-text">订单年度</td>
+								<td width="22.333%">
+									<input type="text" id="acc_year" name="so.acc_year" validate="v.required" valititle="订单年度必填" readonly/>
+								</td>
+								<td class="table-text">订单名称</td>
+								<td>
+									<input type="text" id="acc_name" name="so.acc_name" validate="v.required" valititle="订单名称必填"/> 
+								</td>
+								<td width="11%" class="table-text">订单编号</td>
+								<td width="22.333%">
+									<div id="acc_code_show"> </div> 
+									<input type="hidden" id="acc_code" name="so.acc_code"/> 
+									<input type="hidden" id="acc_id" name="so.acc_id">
+									<input type="hidden" id="acc_state" name="so.acc_state" value="00">
+								</td>
+							</tr>
+							<tr>
+								<td width="11%" class="table-text">订单季度</td>
+								<td width="22.333%">
+									<select  id="acc_quarter" name="so.acc_quarter" style="width:375px;" validate="v.required" valititle="订单季度必填"></select>
+								</td>
+								<td width="11%" class="table-text">开始日期</td>
+								<td width="22.333%">
+									<input type="text" id="acc_starttime" name="so.acc_starttime" validate="v.required" valititle="开始日期必填" readonly/> 
+								</td>
+								<td width="11%" class="table-text">结束日期</td>
+								<td width="22.333%">
+									<input type="text" name="so.acc_endtime" id="acc_endtime"	validate="v.required" valititle="结束日期必填" readonly/>
+								</td>
+							</tr>
+							<tr>
+								<td width="11%" class="table-text">供应商</td>
+								<td width="22.333%">
+									<input type="hidden" id="suplier_id" name="so.suplier_id"/>
+									<input type="text" placeholder="点击选择供应商" name="so.suplier_name" id="suplier_name"validate="v.required" valititle="请填写供应商" readonly/>
+								</td>
+								<td width="11%" class="table-text">框架合同号</td>
+								<td width="22.333%">
+									<select id="contract_code" style="width:375px;" validate="v.required" valititle="框架合同必填"></select>
+									<!-- <input type="text" id="contract_code" name="so.contract_code"  placeholder="输入合同编号" validate="v.required" valititle="框架合同编号必填"/> -->
+								</td>
+								<td width="11%" class="table-text">订单金额(元)</td>
+								<td width="22.333%">
+									<div id="acc_money_show"></div>
+									<input type="hidden" id="acc_money" name="so.acc_money"/> 
+								</td>
+							</tr>
+						</table>
+					</div>
+				</form>
+			</div>
+			<div class="ecitic-title">
+				<span>人员清单信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-new">
+				<div class="ecitic-operation ecitic-operation-bg">
+					<div class="ecitic-operation">
+					        <button type="button" class="btn btn-ecitic" id="bookInfo_add" style="display:none">增加</button>
+					</div>
+					<div class="ecitic-title-table">	
+							<table  class="table table-bordered tablr-input-text" id="assInfo_table">
+							</table>
+				    </div>
+				</div>
+			</div>
+			<div id="hideMoth" style="display:none;">
+				<div class="ecitic-title">
+					<span>采购人月数<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-title-table">
+					<table class="table table-bordered tablr-input-text" id="purchase_mouth"></table>
+				</div>
+			</div>
+			<div class="ecitic-save">
+				<input type="button" class="btn btn-ecitic"  id="save" value="保存" />
+				<input type="button" class="btn btn-ecitic"  id="save_submit" value="确认生成" />
+				<input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭"/>
+			</div>
+		</div>
+		<!--供应商pop -->
+		<div id="sorderContractSupplier_Pop"></div>
+		<!--合同POP框 -->
+		<div id="addSorderContract_Pop"></div>
+		<!-- 非项目任务Pop框 -->
+		<div id="addnoprojectPOP"></div>
+		<!-- 外包人员详情模态框 -->
+		<div id="myModal_outPerson_add" class="modal hide fade" tabindex="-1">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>人员详细信息</h3>
+			</div>
+			<div class="modal-body" style="overflow-x: hidden; max-height: 450px;padding-top:0px;">
+				<table  class="table table-bordered tablr-input-text" id="outPersontable_add"></table>
+			</div>
+			<div class="modal-footer" style="text-align:center">
+					<button class="btn btn-ecitic" aria-hidden="true"  data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+		<!-- 模态框结束 -->
+		<div id="assInfo_pop" class="modal hide fade" tabindex="-1">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>人员清单信息</h3>
+			</div>
+			<div class="modal-body">
+				<div class="ecitic-title">
+					<span>任务实施计划</span>
+				</div>
+				<table id="ass_plan_info" class="table table-bordered table-center table-th tablr-input-text"></table>
+				<div class="ecitic-title">
+					<span>拟投入资源外包清单</span>
+				</div>
+				<table id="ass_in_info" class="table table-bordered table-center table-th tablr-input-text"></table>
+			</div>
+			
+			<div class="modal-footer" style="text-align:center">
+				<button class="btn" aria-hidden="true"  data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+		<script type="text/javascript" src="js/commons/Math.uuid.js"></script>
+		<script type="text/javascript" src="dev_outsource/serviceOrder/serviceOrder_add.js"></script>
+		<!-- <script type="text/javascript" src="contract/contractInfo/contractInfoPop.js"></script> -->
+		<!-- <script type="text/javascript" src="dev_outsource/assignment/assignmentPop.js"></script> -->
+		<script type="text/javascript" src="dev_outsource/supplier/supplierInfo/supplierPop.js"></script>
+		<script type="text/javascript" src="dev_outsource/serviceOrder/serviceOrder_pop.js"></script>
+		<!-- <script type="text/javascript" src="dev_outsource/serviceOrder/serviceOrder_method.js"></script> -->
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+<body>
+<div class="tab-content bootstrapTabsCont">
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>项目里程碑计划<em></em></span>
+			<i></i>
+		</div> 
+		<div>
+			<div class="ecitic-operation">
+				<!--  <button class="btn btn-ecitic" id="initWbsMile">里程碑计划</button>-->
+				<button class="btn btn-ecitic" id="changeWbsMile">计划变更</button>
+			</div>
+			<div class="ecitic-inquire ecitic-inquire-sec lessSearch" id="versionDiv">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+						<tr>
+							<td width="60%">
+								<input type="hidden" id="project_id" />
+							</td>
+							<td width="30%">
+								<select id="versionSelect" class="requirement-ele-width" style="width:100%;">
+ 									<option value=" ">请选择</option>
+ 								</select>
+							</td>
+							<td width="10%">
+								<input type="button" id="queryMilestoneButton" class="btn btn-ecitic" value="查询" onclick="queryMilestones()"/>
+								<input type="hidden" id="queryProject_id"/>
+							</td>
+						</tr>
+					</table>
+		</div>
+		   <!-- 里程碑计划 -->
+		   <div class="ecitic-new">
+				<table class="table table-hover" id="milestoneListTab">
+				</table>
+				
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script src="dev_project/projectManage/myProject/wbsPlan/wbsPlan_milestone.js"></script>
+
+</html>

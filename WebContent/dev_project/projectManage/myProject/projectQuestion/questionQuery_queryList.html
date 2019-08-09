@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>问题查询</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" >
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="main_iframe_con">
+	  <form action=""  class="form-inline" id="proQuestionQueryForm">
+	      <div class="ecitic-inquire" id="ecitic-inquire">
+			 <div class="ecitic-table" id="ecitic-inquire">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+					    <td class="ecitic-right">问题名称：</td>
+					    <td>
+						  <input type="text" id="qQ_risk_name" name="qQ_risk_name" />
+						</td>
+						<td class="ecitic-right">问题状态：</td>
+						<td>
+						  <select id="qQ_risk_status" name="qQ_risk_status" diccode="P_DIC_RISK_STATUS"></select>
+						</td>
+						<td class="ecitic-right">问题严重程度：</td>
+						<td>
+						   <select  id="qQ_ponderance" name="qQ_ponderance" diccode="P_DIC_RISK_SERIOUS"></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">问题分类：</td>
+						<td>
+						   <select id="qQ_first_classify" name="qQ_first_classify" diccode="P_DIC_RISK_TYPE1"></select>
+						</td>
+						<td class="ecitic-right">提出人：</td>
+						<td>
+						  <input type="text" id="qQ_present_user_id_name" name="qQ_present_user_id_name" />
+						</td>
+						<td class="ecitic-right">责任人：</td>
+						<td>
+						  <input type="text" id="qQ_duty_user_id_name" name="qQ_duty_user_id_name" />
+						</td>
+					</tr>
+				</table>
+		   </div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="query_questionQueryList" value="查询"></li>
+			<li><input type="reset" class="btn btn-ecitic" id="reset_qestionQueryList" value="重置"></li>
+		</ul>
+	  </div>	
+	</form>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic my" id="question_add">提出</button>
+		<button class="btn btn-ecitic my" id="question_update">修改</button>
+		<button class="btn btn-ecitic my" id="question_sumbit">提交</button>
+		<button class="btn btn-ecitic my" id="question_accept">受理</button>
+		<button class="btn btn-ecitic my" id="question_handle">处理问题</button>
+		<button class="btn btn-ecitic my" id="question_track">处理跟踪</button>
+		<button class="btn btn-ecitic my" id="question_finish">处理完成</button>
+		<button class="btn btn-ecitic my" id="question_validate">验证</button>
+		<button class="btn btn-ecitic my" id="question_delete">删除</button>
+		<button class="btn btn-ecitic" id="questionQuery_detail">查看详情</button>
+	</div>
+
+	<div class="ecitic-new">
+		<table id="proQuestionQueryTable" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="dev_project/projectManage/myProject/projectQuestion/questionQuery_queryList.js"></script>
+</html>

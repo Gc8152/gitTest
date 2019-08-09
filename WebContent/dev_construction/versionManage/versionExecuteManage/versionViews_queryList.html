@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>版本360视图 </title>
+<link rel="stylesheet" href="css/index_insidePage.css"/>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+</head>
+<body>
+<form class="main_iframeFormW">	
+	<ul id="myTab" class="nav nav-tabs bootstrapTabs">
+	    <li class="active"><a href="#home" data-toggle="tab">版本总览</a></li>
+	    <li><a href="#tab2" data-toggle="tab">版本需求</a></li>
+	    <li><a href="#tab3" data-toggle="tab">版本进度信息</a></li>
+	    <li><a href="#tab4" data-toggle="tab">版本人员信息</a></li>
+	    <li><a href="#tab5" data-toggle="tab">版本质量</a></li>
+	    <li><a href="#tab6" data-toggle="tab">问题风险</a></li>
+	    <li><a href="#tab7" data-toggle="tab">版本变更</a></li>
+	    <li><a href="#tab8" data-toggle="tab">商务信息</a></li>
+	    <li><a href="#tab9" data-toggle="tab">版本文档</a></li>
+	    <li><a class="on-back" id="back_versionExecute">返回</a></li>
+	</ul>
+<div id="myTabContent" class="tab-content bootstrapTabsCont">
+    <div class="tab-pane fade in active" id="home">
+        <div class="main_iframe_con">
+		<div class="ecitic-title-table">
+		</div>
+	 </div>
+    </div>
+    <div class="tab-pane fade" id="tab2">
+    	<div class="tab-pane fade in active">
+		<div class="main_iframe_con">
+			<div class="ecitic-title">
+				<span>版本需求点统计信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-new">
+				<table class="table table-bordered table-hover" width="100%" id="table_versionReqChild">
+				</table>
+			</div>
+		</div>
+		<div class="ecitic-title-table">
+			<div class="ecitic-title">
+				<span>需求点清单<em></em></span>
+				<i></i>
+			</div>	
+			<div class="ecitic-new tab-content bootstrapTabsCont">
+				<table id="childDemand_table" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover">
+				</table>
+			</div>
+		</div>
+	</div>
+    </div>
+     <div class="tab-pane fade" id="tab3">
+    	<div class="container-fluid" id="menu_mm" style="position:relative;">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="span6 citic-tree">
+				<div class="widget-box">
+					<div class="widget-title">
+						<span class="icon"><i class="icon-align-justify"></i></span>
+						<h5>里程碑信息</h5>
+					</div>
+					<div class="controlsOverFlow">
+						<ul id="treeVersionInfo" class="ztree"></ul>
+					</div>
+				</div>
+			</div>
+			<div class="stepView">        	
+		       <ul>
+		           <li class="col-xs-4 on">
+		               <span class="num"><em class="f-r5 "></em><i>1</i></span>                	
+		               <span class="line_bg lbg-r"></span>
+		               <p class="lbg-txt">提交一级评审</p>
+		           </li>
+		           <li class="col-xs-4">
+		               <span class="num"><em class="f-r5"></em><i>2</i></span>
+		               <span class="line_bg lbg-l"></span>
+		               <span class="line_bg lbg-r"></span>
+		               <p class="lbg-txt">提交二级评审</p>
+		           </li>
+		           <li class="col-xs-4">
+		               <span class="num"><em class="f-r5"></em><i>3</i></span>
+		               <span class="line_bg lbg-l"></span>
+		               <span class="line_bg lbg-r"></span>
+		               <p class="lbg-txt">第一轮sit提交</p>
+		           </li>
+		            <li class="col-xs-4">
+		               <span class="num"><em class="f-r5"></em><i>4</i></span>
+		               <span class="line_bg lbg-l"></span>
+		               <span class="line_bg lbg-r"></span>
+		               <p class="lbg-txt">第二轮sit提交</p>
+		           </li>
+		            <li class="col-xs-4">
+		               <span class="num"><em class="f-r5"></em><i>5</i></span>
+		               <span class="line_bg lbg-l"></span>
+		               <span class="line_bg lbg-r"></span>
+		               <p class="lbg-txt">第三轮sit提交</p>
+		           </li>
+		           <li class="col-xs-4">
+		               <span class="num"><em class="f-r5"></em><i>6</i></span>
+		               <span class="line_bg lbg-l"></span>
+		               <span class="line_bg lbg-r"></span>
+		               <p class="lbg-txt">sit完成/提交投产审批</p>
+		           </li>
+		           <li class="col-xs-4">
+		               <span class="num"><em class="f-r5"></em><i>7</i></span>
+		               <span class="line_bg lbg-l"></span>
+		               <p class="lbg-txt">投产完成</p>
+		           </li>
+		       </ul>
+			</div>
+			<div class="span6 citic-add">
+				<div class="ecitic-title-table">
+					<div class="ecitic-title">
+						<i></i>
+					</div>	
+					<div class="ecitic-new tab-content bootstrapTabsCont">
+						<table id="VersionInfo" class="table table-bordered table-hover" border="0" cellspacing="0" cellpadding="0"></table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+    </div>
+     <div class="tab-pane fade" id="tab4">
+    	<div class="tab-pane fade in active">
+		<div class="main_iframe_con">
+			<div class="ecitic-title">
+				<span>人员信息统计<em></em></span>
+				<i></i>
+			</div>
+			<div class="tab-content bootstrapTabsContMy">
+				<div class="echartsWrap" id="ManCharts">
+					<p id="Man_echarts" class="echartsWrapCont"></p>
+				</div>
+				<div class="echartsWrap" id="ManCategoryCharts">
+					<p id="manCategory_echarts" class="echartsWrapCont"></p>
+				</div>
+				<div class="echartsWrap" id="ManPlaceCharts">
+					<p id="manPlace_echarts" class="echartsWrapCont"></p>
+				</div>
+			</div>
+		</div>
+		<div class="ecitic-title-table">
+			<div class="ecitic-title">
+				<span>项目人员信息<em></em></span>
+				<i></i>
+			</div>	
+			<div class="ecitic-new tab-content bootstrapTabsCont">
+				<table id="project_man_table" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover">
+				</table>
+			</div>
+		</div>
+		<div class="ecitic-title-table">
+			<div class="ecitic-title">
+				<span>项目干系人信息<em></em></span>
+				<i></i>
+			</div>	
+			<div class="ecitic-new tab-content bootstrapTabsCont">
+				<table id="table_ProjectResponsibility" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover">
+				</table>
+			</div>
+		</div>
+	</div>
+    </div>
+     <div class="tab-pane fade" id="tab5">
+    	<div class="tab-pane fade in active">
+		<div class="main_iframe_con">
+			<div class="ecitic-title">
+				<span>项目质量统计<em></em></span>
+				<i></i>
+			</div>
+			<div class="tab-content bootstrapTabsContMy">
+				<div class="echartsWrap" id="fault_conditionCharts">
+					<p id="faultConditionCharts" class="echartsWrapCont"></p>
+				</div>
+				<div class="echartsWrap" id="inconformityCharts">
+					<p id="inconformity_Charts" class="echartsWrapCont"></p>
+				</div>
+				<div class="echartsWrap" id="inconformityCharts_NumCharts">
+					<p id="inconformityCharts_Num_Charts" class="echartsWrapCont"></p>
+				</div>
+				<div class="echartsWrap" id="inconformity_rank_Charts">
+					<p id="inconformity_rankCharts" class="echartsWrapCont"></p>
+				</div>
+			</div>
+		</div>
+		<div class="ecitic-title-table">
+			<div class="ecitic-title">
+				<span>故障清单<em></em></span>
+				<i></i>
+			</div>	
+			<div class="ecitic-new tab-content bootstrapTabsCont">
+				<table id="fault_list_table" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover">
+				</table>
+			</div>
+		</div>
+		<div class="ecitic-title-table">
+			<div class="ecitic-title">
+				<span>不符合项清单<em></em></span>
+				<i></i>
+			</div>	
+			<div class="ecitic-new tab-content bootstrapTabsCont">
+				<table id="table_inconformity" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover">
+				</table>
+			</div>
+		</div>
+	</div>
+    </div>
+     <div class="tab-pane fade" id="tab6">
+    	<div class="tab-pane fade in active">
+		<div class="main_iframe_con">
+			<div class="ecitic-title">
+				<span>项目风险问题统计<em></em></span>
+				<i></i>
+			</div>
+			<div class="tab-content bootstrapTabsContMy">
+				<div class="echartsWrap" id="risk_solveCharts">
+					<p id="riskSolveCharts" class="echartsWrapCont"></p>
+				</div>
+				<div class="echartsWrap" id="risk_typeCharts">
+					<p id="riskTypeCharts" class="echartsWrapCont"></p>
+				</div>
+				<div class="echartsWrap" id="question_typeCharts">
+					<p id="questionTypeCharts" class="echartsWrapCont"></p>
+				</div>
+			</div>
+		</div>
+		<div class="ecitic-title-table">
+			<div class="ecitic-title">
+				<span>风险清单<em></em></span>
+				<i></i>
+			</div>	
+			<div class="ecitic-new tab-content bootstrapTabsCont">
+				<table id="risk_table" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover">
+				</table>
+			</div>
+		</div>
+		<div class="ecitic-title-table">
+			<div class="ecitic-title">
+				<span>问题清单<em></em></span>
+				<i></i>
+			</div>	
+			<div class="ecitic-new tab-content bootstrapTabsCont">
+				<table id="table_problem" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover">
+				</table>
+			</div>
+		</div>
+	</div>
+    </div>
+    <div class="tab-pane fade" id="tab7">
+    	
+    </div>
+    <div class="tab-pane fade" id="tab8">
+    	<div class="tab-pane fade in active">
+		<div class="main_iframe_con">
+			<div class="ecitic-title">
+				<span>项目商务基本信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table id="project_business"class="table table-striped table-hover table-bordered tablr-input-text" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="table-text" width="14%">合同签订状态：</td>
+						<td class="textalignL"><span name=""></span></td>
+						<td class="table-text" width="14%">合同类型：</td>
+						<td class="textalignL"><span name=""></span></td>
+					</tr>
+					<tr>
+						<td class="table-text" width="14%">合同编号：</td>
+						<td class="textalignL"><span name=""></span></td>
+						<td class="table-text" width="14%">合同名称：</td>
+						<td class="textalignL"><span name=""></span></td>
+					</tr>
+					<tr>
+						<td class="table-text" width="14%">合同金额：</td>
+						<td class="textalignL"><span name=""></span></td>
+						<td class="table-text" width="14%">已派单金额：</td>
+						<td class="textalignL"><span name=""></span></td>
+					</tr>
+					<tr>
+						<td class="table-text" width="14%">已支付金额：</td>
+						<td class="textalignL"><span name=""></span></td>
+						<td class="table-text" width="14%">待支付金额：</td>
+						<td class="textalignL"><span name=""></span></td>
+					</tr>
+					<tr>
+						<td class="table-text" width="14%">未支付金额：</td>
+						<td class="textalignL"><span name=""></span></td>
+						<td colspan="2"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="ecitic-title-table">
+			<div class="ecitic-title">
+				<span>工作量确认信息(如果是人月类型)<em></em></span>
+				<i></i>
+			</div>	
+			<div class="ecitic-new tab-content bootstrapTabsCont">
+				<table id="workload_table" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover">
+				</table>
+			</div>
+		</div>
+		<div class="ecitic-title-table">
+			<div class="ecitic-title">
+				<span>派单信息(如果是工作包类型)<em></em></span>
+				<i></i>
+			</div>	
+			<div class="ecitic-new tab-content bootstrapTabsCont">
+				<table id="table_dispatch" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover">
+				</table>
+			</div>
+		</div>
+		<div class="ecitic-title-table">
+			<div class="ecitic-title">
+				<span>付款信息<em></em></span>
+				<i></i>
+			</div>	
+			<div class="ecitic-new tab-content bootstrapTabsCont">
+				<table id="table_payment_info" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover">
+				</table>
+			</div>
+		</div>
+	</div>
+    </div>
+    <div class="tab-pane fade" id="tab9">
+    	
+    </div>
+</div>
+</form>
+</body>
+<script src="js/echarts-2.2.7/echarts-all.js"></script>
+<script type="text/javascript" src="dev_construction/versionManage/versionExecuteManage/echarts.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.core.min.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.excheck.min.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.exedit.min.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="dev_construction/versionManage/versionExecuteManage/versionViews_queryList.js"></script>
+</html>

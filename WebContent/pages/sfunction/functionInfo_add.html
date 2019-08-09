@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>新增常用功能</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+
+<form action="" id="addStaffList">
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>创建常用功能<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table id="functionTable" style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">常用功能编号:</td>
+					<td>
+						<input type="text" id="menu_code" name="S.menu_code" validate="v.required"  class="citic-ast" />
+					</td>				
+					<td class="ecitic-right">常用功能名称:</td>
+					<td>
+						<input type="text" id="menu_name" name="S.menu_name" validate="v.required"  class="citic-ast" />
+					</td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">常用功能地址:</td>
+					<td>
+						<input type="text" id="menu_url" name="S.menu_url" validate="v.required" class="citic-ast" />
+					</td>
+					<td class="ecitic-right">图片地址:</td>
+					<td>
+						<input type="text" id="menu_img" name="S.menu_img" validate="v.required" class="citic-ast" />
+					</td>
+					
+				</tr>
+			 <tr>
+				<td class="ecitic-right">备注：</td>
+				<td colspan="3">
+					<textarea rows="4" maxlength="500"  name="S.menu_memo" id="menu_memo"></textarea>
+				</td>
+			</tr>
+			</table>
+		</div>
+		<div class="ecitic-save">
+			<input id="functionInfoSave" type="button" class="btn btn-ecitic" value="保存" />
+			<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+		</div>
+	</div>
+</form>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="pages/sfunction/functionInfo_add.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>不符合项管理页</title>
+</head>
+<link rel="stylesheet" href="bootstrap/css/select2.css" />
+<body>
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>新增不符合项<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table tab-content bootstrapTabsCont" id="ecitic-table">
+			<form id="noConformItemRaise_add" class="main_iframe_con">
+				<table width="100%" id="noConformItemRaise_table" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+				 	<tr>
+						<td class="table-text" width="20%">项目名称：</td>
+						<td width="30%">
+						    <input type="hidden" name="PROJECT_ID" id="project_id"/>
+							<input type="hidden" name="QUALITY_ID" id="quality_id"/>
+						    <input type="text" name="PROJECT_NAME" placeholder="请点击选择..." id="project_name_add"  readonly UNSELECTABLE ='on' onclick="showProjectPop()"/>
+						    <input type="hidden" id="project_name_update"  name="PROJECT_NAME"  readonly UNSELECTABLE ='on'/>
+						</td>
+						<td class="table-text" width="20%">责任人：</td>
+						<td width="30%">
+							<input type="hidden" name="DUTY_USER_ID"  id="duty_user_id"  validate="v.required" valititle="该项为必填项" readonly/>
+							<input type="text"   name="DUTY_USER_NAME" id="duty_user_name" onclick="showProjectPop1(this)" readonly/>	
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">不符合项分类：</td>
+						<td>
+							<select name="TYP" diccode="P_DIC_QUALITY_TYP" id="typ" validate="v.required" valititle="该项为必填项" onchange="changeTYP()"></select>
+						</td>
+						<td class="table-text" id="qualityTypChildTD"></td>
+						<td id="qualityTypChildSelect"></td>
+					</tr>
+					<tr>
+					    <td class="table-text">关联检查项：</td>
+					    <td>
+					      <input type="text" id="check_name" name="CHECK_NAME" readonly>
+					      <input type="hidden" id="check_id" name="CHECK_ID" readonly>
+					    </td>
+					    <td class="table-text">关联业务编号：</td>
+					    <td>
+					      <input type="text" id="business_code" name="BUSINESS_CODE" readonly>
+					    </td>
+					</tr>
+					<tr>
+						<td class="table-text">不符合项名称(50字)：</td>
+						<td colspan="3">
+						  <input type="text" name="NO_CONFORM_NAME" maxlength="50" id="no_conform_name" validate="v.required" valititle="该项为必填项" >
+						</td>
+				    </tr>
+				    <tr>
+						<td class="table-text">不符合项描述(500字)：</td>
+						<td colspan="3">
+						  <textarea name="QUALITY_DESC" id="quality_desc" maxlength="500" style="height:70px" validate="v.required" valititle="该项为必填项"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td  class="table-text">不符合项等级：</td>
+						<td>
+							<select name="GRADE" id="grade" diccode="P_DIC_QUALITY_GRADE" validate="v.required" valititle="该项为必填项" ></select>
+						</td>
+		
+						<!-- <td class="table-text">是否重现：</td>
+						<td>
+							<select name="IS_REAPPEAR" id="is_reappear" diccode="P_DIC_QUALITY_IS_REAPPEAR" validate="v.required" valititle="该项为必填项"></select>
+						</td> -->
+						<td class="table-text">建议解决时间：</td>
+						<td><input type="text" name="SUGGEST_SOLVE_TIME" id="suggest_solve_time" onClick="WdatePicker({dateFmt:'yyyy-MM-dd', autoPickDate:true, minDate: '%y-%M-%d'})" readonly UNSELECTABLE ='on' validate="v.required" valititle="该项为必填项" placeholder="请选择"/></td>
+					</tr>
+					<tr>
+						<td class="table-text">建议解决措施：</td>
+						<td colspan="3"><textarea name="SUGGEST" id="suggest" ></textarea></td>
+					</tr>
+					<!-- 隐藏项 -->
+					<input type="hidden" id="phases" name="PHASES">
+					<input type="hidden" id="system_name" name="SYSTEM_NAME">
+					<input type="hidden" id="typselect"><!-- 隐藏不符合项类型在input中，避免ie8有时候不能读取select值的情况 -->
+				</table>	
+			</form>
+		</div>
+		<div class="ecitic-save">
+			<button class="btn btn-ecitic" id="noConformItemRaise_add_submit">提交&保存</button>
+			<button class="btn btn-ecitic" id="noConformItemRaise_add_save">保存</button>
+			<button class="btn btn-ecitic" id="noConformItemRaise_add_back">返回</button>
+		</div>
+	</div>
+	<div id="project_pop"></div>
+	<div id="duty_user_pop"></div>
+</body>
+<script type="text/javascript" src="bootstrap/js/select2.min.js"></script>
+<script type="text/javascript" src="dev_project/projectPop.js"></script>
+<script type="text/javascript" src="pages/suser/suserPop.js"></script>
+<script type="text/javascript" src="dev_project/qualityManage/noConformItemRaise/noConformItemRaise_add.js"></script>
+</html>

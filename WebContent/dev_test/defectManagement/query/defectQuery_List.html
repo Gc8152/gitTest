@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>缺陷查询</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link href="css/form.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="main_iframe_con">
+        <div class="ecitic-inquire" id="ecitic-inquire" style="height: 95px">
+            <div class="ecitic-table" id="ecitic-table" style="height:95px">
+                <form id="detailForm">
+                    <table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+                         <tr>
+                            <td class="ecitic-right">缺陷编号：</td>
+                            <td>
+                                <input type="text" name="DEFECT_NUM" />
+                            </td>
+                            <td class="ecitic-right">缺陷摘要：</td>
+                            <td>
+                                <input type="text" name="SUMMARY" />
+                            </td>
+                            <td class="ecitic-right">缺陷状态：</td>
+                            <td>
+                                <select name="DEFECT_STATE" diccode="TM_DIC_DEFECT_STATE" class="requirement-ele-width" style="width: 100%"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ecitic-right">应用名称：</td>
+                            <td>
+								<input type="hidden" id="SYSTEM_ID" name="SYSTEM_ID">
+								<input type="text" id="SYSTEM_NAME" name="SYSTEM_NAME" class="requirement-ele-width" readonly="readonly" placeholder="请选择应用" >                           
+							 </td>
+                            <td class="ecitic-right">模块名称：</td>
+                            <td>
+                    			<select id="MODULE_ID" name="MODULE_ID"  class="requirement-ele-width" style="width: 100%"  onchange="selectFunc()" >
+                              <option value="">请选择</option>
+                    			</select>
+                            </td>
+                            <td class="ecitic-right">功能点：</td>
+                            <td>
+ 								 <select id="FUNCPOINT_ID" name="FUNCPOINT_ID"  class="requirement-ele-width" style="width: 100%"  >
+                            	  <option value="">请选择</option>
+                   				 </select>
+                            </td>
+                        </tr>
+                        <!--  <tr>
+                           <td class="ecitic-right">优先级：</td>
+                            <td>
+                                <select name="PRIORITY_LEVEL" diccode="TM_DIC_PRIORITY_LEVEL" class="requirement-ele-width" style="width: 100%"></select>
+                            </td>
+                            <td class="ecitic-right">缺陷等级：</td>
+                            <td>
+                                <select name="SEVERITY_GRADE" diccode="TM_DIC_SEVERITY_GRADE" class="requirement-ele-width" style="width: 100%"></select>
+                            </td>
+                            <td class="ecitic-right">测试类型：</td>
+                            <td>
+                                <select name="TEST_TYPE" diccode="TM_DIC_CASE_TYPE1" class="requirement-ele-width" style="width: 100%"></select>
+                            </td>
+                        </tr> -->
+                        <tr>
+		                	<td class="ecitic-right">提出人：</td>
+		                    <td >
+		                    	<input type="text" name="CREATE_MAN_NAME">
+		                    	<!-- <input placeholder="请选择提出人" type="text" name="CREATE_MAN_NAME" class="requirement-ele-width" validate="v.required" valititle="该项为必填项" readonly > -->
+		                    </td>
+		                    <td class="ecitic-right">提出时间：</td>
+		                   
+		                    <td>
+ 								<div style="float:left; width:45%;">
+									<input placeholder="点击选择" type="text" id="req_operation_date_reqquery" name="CREATE_TIME" class="requirement-ele-width"  validate="v.required" valititle="该项为必填项"  readonly>
+								</div>
+								<div style="float:left;width:10%;line-height:26px;">&nbsp;至&nbsp;</div>
+								<div style="float:left;width:45%;">
+									<input placeholder="点击选择" type="text" id="req_operation_date1_reqquery" name="CREATE_TIME1" class="requirement-ele-width"  validate="v.required" valititle="该项为必填项" readonly>
+								</div>							
+							</td>
+							<td class="ecitic-right">是否按时完成：</td>
+                            <td>
+                                <select name="COMPLETE" diccode="T_DIC_YN" class="requirement-ele-width" style="width: 100%"></select>
+                            </td>
+	                	</tr>
+	                	 <tr>
+		                	<td class="ecitic-right">指派人：</td>
+		                    <td >
+		                    	<input type="text" name="DUTY_PERSON_NAME">
+		                    	<!-- <input placeholder="请选择提出人" type="text" name="CREATE_MAN_NAME" class="requirement-ele-width" validate="v.required" valititle="该项为必填项" readonly > -->
+		                    </td>
+		                    <td class="ecitic-right">指派时间：</td>
+		                   
+		                    <td>
+ 								<div style="float:left; width:45%;">
+									<input placeholder="点击选择" type="text" id="req_operation_date_reqquery" name="DUTY_TIME" class="requirement-ele-width"  validate="v.required" valititle="该项为必填项"  readonly>
+								</div>
+								<div style="float:left;width:10%;line-height:26px;">&nbsp;至&nbsp;</div>
+								<div style="float:left;width:45%;">
+									<input placeholder="点击选择" type="text" id="req_operation_date1_reqquery" name="DUTY_TIME1" class="requirement-ele-width"  validate="v.required" valititle="该项为必填项" readonly>
+								</div>							
+							</td>
+						 <td class="ecitic-right">缺陷等级：</td>
+                            <td>
+                                <select name="SEVERITY_GRADE" diccode="TM_DIC_SEVERITY_GRADE" class="requirement-ele-width" style="width: 100%"></select>
+                            </td>
+	                	</tr>
+	                	<tr>
+		                	<td class="ecitic-right">处理人：</td>
+		                    <td >
+		                    	<input type="text" name="DISPOSE_MAN_NAME">
+		                    	<!-- <input placeholder="请选择处理人" type="text" name="DISPOSE_MAN_NAME" class="requirement-ele-width" validate="v.required" valititle="该项为必填项" readonly > -->
+		                    </td>
+		                    <td class="ecitic-right">处理时间：</td>
+		                    <td>
+								<div style="float:left; width:45%;">
+<!-- 									<input placeholder="点击选择" type="text" id="req_operation_date_reqquery1" name="DISPOSE_TIME" class="requirement-ele-width" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" validate="v.required" valititle="该项为必填项" readonly>
+ -->									<input placeholder="点击选择" type="text" id="req_operation_date_reqquery1" name="DISPOSE_TIME" class="requirement-ele-width"  validate="v.required" valititle="该项为必填项" readonly>
+								</div>
+								<div style="float:left;width:10%;line-height:26px;">&nbsp;至&nbsp;</div>
+								<div style="float:left;width:45%;">
+<!-- 									<input placeholder="点击选择" type="text" id="req_operation_date1_reqquery" name="DISPOSE_TIME1" class="requirement-ele-width" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'req_operation_date_reqquery1\',{d:0});}'})" validate="v.required" valititle="该项为必填项" readonly >
+ -->									<input placeholder="点击选择" type="text" id="req_operation_date1_reqquery" name="DISPOSE_TIME1" class="requirement-ele-width"  validate="v.required" valititle="该项为必填项" readonly >
+								</div>
+							</td>
+						<td class="ecitic-right">测试类型：</td>
+                            <td>
+                                <select name="TEST_TYPE" diccode="TM_DIC_CASE_TYPE1" class="requirement-ele-width" style="width: 100%"></select>
+                            </td>
+	                	</tr>
+                	 <tr>
+                	 	<td class="ecitic-right">优先级：</td>
+                           <td>
+                               <select name="PRIORITY_LEVEL" diccode="TM_DIC_PRIORITY_LEVEL" class="requirement-ele-width" style="width: 100%"></select>
+                           </td>
+                         <td class="ecitic-right">转交应用：</td>
+                            <td>
+								<input type="hidden" id="DISCOVER_SYSTEM_ID" name="DISCOVER_SYSTEM_ID">
+								<input type="text" id="DISCOVER_SYSTEM_NAME" name="DISCOVER_SYSTEM_NAME" class="requirement-ele-width" readonly="readonly" placeholder="请选择应用" >                           
+							</td>
+							 <td class="ecitic-right">提出部门：</td>
+							<td style="position: static;">
+								<input type="hidden" id="user_pop_org_code" name="ORG_CODE" />
+                   				<input type="text" id="user_pop_org_name" name="ORG_NAME" onfocus="javascript:return false;" placeholder="点击选择部门 " readonly />
+	                   
+							</td>
+                     </tr>
+                    </table>
+                </form>
+            </div>
+            <ul class="ecitic-btn-all">
+                <li><input type="button" class="btn btn-ecitic" name="queryDetail" value="查询" /></li>
+                <li><input type="button" class="btn btn-ecitic" name="resetDetail"" value="重置" /></li>
+           		<li class="ecitic-more"></li>
+            </ul>
+        </div>
+         <!--选择应用  -->
+		<div id="sendProduceSystemPop"></div>
+		<!-- 选择人 -->
+		<div mod="proManPop"></div>
+        <div class="ecitic-operation">
+            <button class="btn btn-ecitic" name="viewQueryDetail">查看详情</button>
+      		<button class="btn btn-ecitic"  name="export">导出</button>
+            
+        </div>
+        <div class="ecitic-new">
+            <table tb="detailTable" class="table table-bordered table-hover table-text-show"></table>
+        </div>
+    </div>
+</body>
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_test/defectManagement/query/defectQuery_List.js"></script>
+<script type="text/javascript" src="dev_test/defectManagement/query/systemPop.js"></script>
+<script src="dev_test/defectManagement/designate/designateManPop.js"></script>
+</html>

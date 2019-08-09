@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+<script src="pages/suser/suserPop.js"></script>
+<script src="pages/srole/srolePop.js"></script>
+<script src="pages/sorg/sorgPop.js"></script>
+<style type="text/css">
+.ecitic-btn-all-fir {width:98px;right:0;}
+	.ecitic-btn-all-fir li {width:98px;height:26px;}
+		.ecitic-btn-all-fir li .btn {width:98px;height:26px;}
+</style>
+</head>
+
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+		<span>用户权限生成<em></em></span>
+	</div>
+	<form action="#" method="get" class="form-inline">
+		<div class="ecitic-inquire-user" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">按用户生成权限</td>
+						<td>
+							<input name="byuser" id="byuser" type="hidden" />
+							<input type="text" id="username" name="users_name" placeholder="点击选择用户">
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">按角色生成权限</td>
+						<td>
+							<input name="roles" id="byrole" type="hidden" />
+							<input type="text" name="roles" id="rolename" placeholder="点击选择角色">
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">按机构生成权限</td>
+						<td>
+							<input name="orgs" id="byorg" type="hidden" />
+							<input type="text" name="orgs" id="sorgname" placeholder="点击选择机构" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<ul class="ecitic-btn-all ecitic-btn-all-fir">
+				<li><input type="button" class="btn btn-ecitic" onclick="addUserPerm('byuser')" value="生成权限" /></li>
+				<li><input type="button" class="btn btn-ecitic" onclick="addUserPerm('byrole')" value="生成权限" /></li>
+				<li><input type="button" class="btn btn-ecitic" onclick="addUserPerm('byorg')" value="生成权限" /></li>
+			</ul>
+		</div>
+		<div class="ecitic-save">
+			<input type="button" class="btn btn-ecitic" id="all" onclick="addUserPerm('all')" value="全部生成权限" />
+		</div>
+	</form>
+</div>
+<div id="myPermissModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">提示...</h3>
+	</div>
+	<div class="modal-body">
+		<p id="ms_context">权限生成成功</p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">确定</button>
+	</div>
+</div>
+<div id="userDivPermiss"></div>
+<div id="roleDivPermiss"></div>
+<div id="sorgDivPermiss"></div>
+</body>
+</html>
+<script type="text/javascript">
+function initPermissionEvent(){
+	$("#username").click(function(){ 
+		openUserPop("userDivPermiss",{name:$("#username"),no:$("#byuser")});
+	});
+	$("#rolename").click(function(){
+		openRolePop("roleDivPermiss",{name:$("#rolename"),no:$("#byrole")});
+	});
+	$("#sorgname").click(function(){
+		openSOrgPop("sorgDivPermiss",{name:$("#sorgname"),no:$("#byorg")});
+	});
+}
+
+	function addUserPerm(id){
+		var u=$("#"+id).val();
+		if("all"!=id&&(u==""||$.trim(u)=="")){
+			alert("请输入要生成权限的对象!");
+			return;
+		}
+		startLoading();
+		baseAjax("SPerm/addUserPerm.asp",{crtype:id,crobj:u},function(data){
+			endLoading();
+			if(data==undefined||data.result=="false"){
+				$("#ms_context").text("权限生成失败!");
+			}
+			$("#myPermissModal").modal("show");
+		});		
+	}
+	initPermissionEvent();
+</script>

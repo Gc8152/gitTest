@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.SPermissionDao">
+	<!-- 增加用户权限 -->
+	<insert id="addUserPermiss" parameterType="java.util.Map">
+	 	insert into s_permission(user_no,user_roles,perm_menu,perm_opt,perm_data,perm_property,flag,opt_no,opt_time)
+	 	values(#{user_no},#{user_roles},#{perm_menu},#{perm_opt},#{perm_data},#{perm_property},#{flag},#{opt_no},#{opt_time})
+	</insert>
+	
+	<!-- 删除用户权限 -->
+	<delete id="delUserPermiss" parameterType="java.lang.String">
+		delete from s_permission where user_no=#{user_no}
+	</delete>
+	
+	<!-- 查询用户权限信息  -->
+	<select id="queryUserPermiss" parameterType="java.util.Map" resultType="java.util.Map">
+		select user_no,user_roles
+		<if test="null != PERM_MENU and PERM_MENU != ''">
+			,perm_menu
+		</if>
+		<if test="null != PERM_OPT and PERM_OPT != ''">
+			,perm_opt
+		</if>
+		<if test="null != PERM_PROPERTY and PERM_PROPERTY != ''">
+			,perm_property
+		</if>
+		<if test="null != PERM_DATA and PERM_DATA != ''">
+			,perm_data
+		</if>
+		<if test="null != all and all != ''">
+			,perm_menu,perm_opt,perm_property,perm_data
+		</if>
+		,flag,opt_no,opt_time from  s_permission
+		<if test="null != user_no and user_no != ''">
+			where user_no=#{user_no}
+		</if>
+	</select>
+
+	<!-- 查询用户角色信息  -->
+	<select id="queryUserRoles" parameterType="java.lang.String" resultType="java.util.Map">
+		select distinct uorgrole.role_no,r.role_name from (select role_no from s_roleuser where user_no=#{user_no}) uorgrole
+		 left join s_role r on uorgrole.role_no=r.role_no
+		where r.flag='00'
+	</select>
+	
+	<!-- 查询用户菜单信息 -->
+	<select id="queryUserMenus" parameterType="java.util.List" resultType="java.util.Map">
+		select distinct CONNECT_BY_ISLEAF, menu_no,menu_name,order_id,supmenu_no,menu_url,menu_level,menu_icon
+		from s_menu where flag='00' and  menu_no in(
+			select menu_no from s_rolemenu where state='00' and  role_no in
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.ROLE_NO}
+			</foreach>
+		)
+        start with supmenu_no is null
+        connect by supmenu_no = prior menu_no
+		order by menu_level,order_id
+	</select>
+	
+	
+	<!-- 查询用户操作信息 根据用户对应的角色 -->
+	<select id="queryUserMenuActions" parameterType="java.util.List" resultType="java.util.Map">
+		select distinct rm.role_no,rm.menu_no,ra.action_no from s_rolemenu rm left join s_roleaction ra on rm.menu_no=ra.menu_no and rm.role_no=ra.role_no
+		where ra.state='00' and rm.role_no  in
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.ROLE_NO}
+			</foreach>
+		and (rm.menu_no,ra.action_no) in(select menu_no,action_no from s_menu_action where flag='00')
+		order by rm.role_no
+	</select>
+	
+	<!-- 查询用户菜单对应数据操作级别信息 -->
+	<select id="queryUserMenuDataLevel" parameterType="java.util.List" resultType="java.util.Map">
+		select distinct menu_no,data_no from s_roledata where state='00' and  role_no in 
+			<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.ROLE_NO}
+			</foreach>
+	</select>
+	
+	<!-- 查询用户菜单字段信息-->
+	<select id="queryUserMenuPropertys" parameterType="java.util.List" resultType="java.util.Map">
+		  select role_no,menu_no,property_no from s_rolefield where state='00' and  role_no in
+		   <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item.ROLE_NO}
+		   </foreach>
+		  and (menu_no,property_no) in(select menu_no,property_no from s_menu_property where flag='00') order by role_no,menu_no
+	</select>
+
+	<!-- 查询所有用户的编号-->
+	<select id="queryAllUsers" parameterType="java.lang.String" resultType="java.lang.String">
+		    select user_no from s_user 
+	</select>
+	
+	<!-- 根据角色编号查询用户编号-->
+	<select id="queryUsersByParam" parameterType="java.util.Map" resultType="java.lang.String">
+		    select distinct user_no from s_roleuser where
+		    <if test="null != role_no and role_no != ''"> 
+		    	role_no=#{role_no}
+		    </if>
+		    <if test="null != org_code and org_code != ''"> 
+		    	org_code in(select org_code  from s_org t start with t.org_code=#{org_code} connect by prior t.org_code = t.suporg_code) 
+		    </if>
+	</select>
+
+</mapper>

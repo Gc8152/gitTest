@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>测试移交列表</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire">
+		<div class="ecitic-table">
+			<form id="sitSubmit">
+				<table id="table_select" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">项目编号：</td>
+						<td><input type="text" name="PROJECT_NUM"/></td>
+						<td class="ecitic-right">项目名称：</td>
+						<td><input type="text" name="PROJECT_NAME"/></td>  
+						<td class="ecitic-right">版本名称：</td>
+						<td><input type="text" name="VERSION_NAME"/></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="query">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="add_Sit">测试任务移交</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="sitTable" class="table table-bordered table-hover table-text-show" style="min-width:1200px;"></table>
+	</div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_test/sitHandOver/sit_queryList.js"></script>
+</html>

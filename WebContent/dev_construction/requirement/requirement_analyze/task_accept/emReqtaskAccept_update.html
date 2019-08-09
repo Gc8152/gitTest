@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>紧急需求任务受理页面</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="main_iframeFormW main_ifme_con">
+<ul id="myTab" class="nav nav-tabs bootstrapTabs">
+    <li class="active">
+        <a href="#emreqTaskAcceptInfo" data-toggle="tab">
+                                  紧急需求任务
+        </a>
+    </li>
+ </ul>
+ <div id="emreqtaskAcceptTabContent" class="tab-content bootstrapTabsCont">
+ <!-- 需求任务信息tab开始 -->
+  <div class="tab-pane fade in active" id="#emreqTaskAcceptInfo">
+		<form class="form_inline" id="g_emreqtask_accept">
+			<div class="ecitic-title">
+				<span>紧急需求信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table  class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+					<!-- table-bor-paw-->
+					<colgroup>
+						<col style="width: 15%">
+				        <col style="width: 17%">
+				        <col style="width: 15%">
+				        <col style="width: 17%">
+				        <col style="width: 18%">
+				        <col style="width: 18%">
+		       		 </colgroup>
+					<tr>
+						<td class="table-text">需求点编号：</td>
+						<td><a id="ETAsub_req_code" href="javascript:void(0)" style="color:blue" onclick="viewSubReqDetailETA();"></a>
+						   <input type="hidden" id="ETAsub_req_id"  name="ETA.sub_req_id">
+						   <input type="hidden" id="ETAconfig_man_id"  name="ETA.config_man_id">
+						   
+						</td>
+						<td  class="table-text">需求点名称：</td>
+						<td ><input type="text" id="ETAsub_req_name"  class="requirement-ele-width"name="ETA.sub_req_name" readonly></td>
+						<td class="table-text">需求点计划投产时间：</td>
+						<td ><input type="text" id="ETA.plan_onlinetime" class="requirement-ele-width" name="ETA.plan_onlinetime" readonly></td>
+					</tr>
+					<tr>
+						<td class="table-text">业务需求编号：</td>
+						<td><a id="ETAreq_code" style="color:blue" onclick="viewReqDetailETA()"></a>
+						    <input type="hidden" id="ETAreq_id" name="ETA.req_id">
+						    <input type="hidden" id="ETAreq_acc_classify" name="ETA.req_acc_classify">
+						    <input type="hidden" id="req_id" name="req_id">
+						</td>
+						<td class="table-text">业务需求名称：</td>
+						<td><input id="ETAreq_name"  type="text" name="ETA.req_name" class="requirement-ele-width" readonly/></td>
+						<td class="table-text">提出部门：</td>
+						<td>
+						  <input type="text" id="ETAreq_put_dept"  name="ETA.req_put_dept_display" class="requirement-ele-width" readonly>	
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="ecitic-title">
+				<span>任务信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table  class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+					<!-- table-bor-paw-->
+					<colgroup>
+						<col style="width: 15%">
+				        <col style="width: 17%">
+				        <col style="width: 15%">
+				        <col style="width: 17%">
+				        <col style="width: 18%">
+				        <col style="width: 18%">
+		       		 </colgroup>
+					<tr>
+					    <td  class="table-text">任务编号：</td>
+					    <td >
+					      <input type="text" class="requirement-ele-width" id="ETAreq_task_code" name="ETA.req_task_code"  readonly/>
+					      <input type="hidden" id="ETAreq_task_id" name="ETA.req_task_id"/>
+					    </td>
+						<td  class="table-text">任务名称：</td>
+						<td colspan="3">
+						<input id="ETAreq_task_name" class="requirement-ele-width" type="text" name="ETA.req_task_name"  readonly> 
+					</tr>
+					<tr>
+						<td class="table-text">任务从属关系：</td>
+						<td>
+						  <input type="text" id="ETAreq_task_relation_name" class="requirement-ele-width" name="ETA.req_task_relation_display"  readonly />
+						  <input type="hidden" id="ETAreq_task_relation" class="requirement-ele-width" name="ETA.req_task_relation" > 
+						<td class="table-text">任务状态：</td>
+						<td ><input type="text" id="ETAreq_task_state" class="requirement-ele-width" name="ETA.req_task_state_display" readonly></td>
+						<td class="table-text">任务来源：</td>
+						<td>
+						  <input type="text" id="ETAreq_task_type_display"  class="requirement-ele-width" name="ETA.req_task_type_display"  readonly>
+						  <input type="hidden" id="ETAis_inter" name="ETA.is_inter">
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">任务项目经理：</td>
+						<td><input type="text" id="ETAp_owner_name"name="ETA.task_owner_name"  class="requirement-ele-width" readonly/></td>
+						 <input type="hidden" id="ETAp_owner" name="ETA.p_owner"/>
+						   <input type="hidden" id="ETAreq_analysis" name="ETA.req_analysis"/>
+						<td class="table-text">应用负责人：</td>
+						<td><input type="text" id="ETAproject_man_name" class="requirement-ele-width" name="ETA.project_man_name" readonly/>
+						    <input type="hidden" id="ETAproject_man_id" name="ETA.project_man_id"/>
+						</td>
+						<td class="table-text">应用名称：</td>
+						<td colspan="5"><input type="text" id="ETAsystem_name" class="requirement-ele-width" name="ETA.system_name" readonly/>
+						                <input type="hidden" id="ETAsystem_no" name="ETA.system_no">
+						</td>
+					</tr>
+					<tr>
+					 <td class="table-text">任务内容：</td>
+					 <td colspan="5">
+					   <textarea id="ETAtask_content" name="ETA.task_content" style="height:90px" readonly></textarea>
+					 </td>
+					</tr>
+				</table>
+			</div>
+			 <div class="ecitic-title">
+			    <span>关联任务信息<em></em></span>
+			      <i></i> 
+			 </div>
+		    <div class="ecitic-title-table">
+		      <div class="ecitic-operation">
+			    <input type="button" class="btn btn-ecitic" id="emReqtaskDetail_view" value="查看任务详情">
+		      </div>
+			    <table id="gEmReqTaskTableList"  class="table table-bordered table-hover" ></table>
+			</div>
+			<div class="ecitic-title">
+				<span>受理信息<em></em></span>
+			         <i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table style="width: 100%" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+					<!-- table-bor-paw-->
+					<tr>
+						<td class="table-text" width="15%">受理结论：</td>
+						<td  align="left">
+						  <div style="float:left;with:20%">
+						     <input type="radio" id="ETAaccept_result1" name="ETA.accept_result" value="01" validate="v.required" valititle="该项为必填项">接受&nbsp;&nbsp;&nbsp;&nbsp; 
+							 <input type="radio" id="ETAaccept_result2" name="ETA.accept_result" value="02" >退回
+					       </div>
+						</td>
+						<td colspan="4" width="65%"></td>
+					</tr>
+					<tr>
+						<td class="table-text">结论意见：</td>
+						<td colspan="5">
+						<textarea id="ETAaccept_view" name="ETA.accept_view" style="height:90px"  validate="v.required" valititle="该项为必填项"></textarea>
+					</tr>
+				</table>
+			</div>
+		</form>
+		<div class="ecitic-save">
+			 <input type="button" class="btn btn-ecitic" id="emtaskAccept_save" value="保存&提交" />
+			 <input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭" />
+		</div>
+	</div>
+	<!-- 需求任务分析师pop -->
+	<div id="emtask_analyzer_pop"></div>
+   </div><!--tab content结束 -->
+</div>
+</body>
+<script type="text/javascript" src="bootstrap/js/select2.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_analyze/task_accept/emReqtaskAccept_update.js"></script>
+<script type="text/javascript">
+	initVlidate($("#g_reqtask_accept"));
+</script>
+</html>

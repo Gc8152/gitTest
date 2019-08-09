@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+<body>
+<div class="">
+<div class="ecitic-title">
+	<span>项目里程碑计划<em></em></span>
+	<i></i>
+</div> 
+<div>
+<div class="tableTitle" id="milestoneNameDiv">
+	<span id="M_project_num"></span>
+	<h2 id="M_project_name"></h2>
+</div>
+	<div class="landmarks">        	
+       <ul id="milestone_progress">
+       </ul>
+   </div>   
+	    <div class="ecitic-inquire ecitic-inquire-sec lessSearch">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+						<tr>
+							<td width="60%">
+								<input type="hidden" id="project_id" />
+							</td>
+							<td width="30%">
+								<select id="selectVers" class="requirement-ele-width" style="width:100%;">
+ 									<option value=" ">请选择</option>
+ 								</select>
+							</td>
+							<td width="10%">
+								<input type="button" id="submit_selectVers" class="btn btn-ecitic" value="查询" onclick="refreshMilestone()"/>
+							</td>
+						</tr>
+					</table>
+		</div>
+   <div class="landmarks_remarks">
+		<span><i class="icon-finished" style="font: 50px;color: red"></i>项目延迟</span>
+		<span><i class="icon-finishing"></i>项目正常</span>
+		<span><i class="icon-unfinished"></i>项目提前</span>
+	</div>	
+   <!-- 里程碑计划 -->
+   <div class="ecitic-new">
+		<table class="table table-hover" id="milestoneListTab">
+		</table>
+		
+	</div></div>
+	</div>
+</body>
+
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="dev_planwork/wbs/wbsPlan_milestone.js"></script>
+</html>

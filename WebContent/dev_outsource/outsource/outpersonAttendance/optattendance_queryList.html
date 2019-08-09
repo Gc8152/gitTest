@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>外包人员考勤管理</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script type="text/javascript" src="js/commons/dic_item.js"></script>
+<script type="text/javascript" src="dev_outsource/supplier/supplierInfo/supplierPop.js"></script>
+<script type="text/javascript" src="js/commons/importExcelUtil.js"></script>
+</head>
+<body>
+<form action="" id="optattendanceInfoList">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">供应商名称</td>
+					<td>
+						<div class="ecitic-input-all">
+							<input type="hidden"  name="FD.supplier_num" id="supplier_num" />
+							<input type="text" placeholder="点击选择供应商" id="FDsupplier_name" readonly/>
+						</div>
+					</td>
+					<td class="ecitic-right">人员名称</td>
+					<td>
+						<input type="text" name="FD.op_name" id="op_name"/>
+<!--  				       <input type="hidden" name="FD.op_code"  id="op_codeFD"/>
+					   <input type="text" name="FD.op_name" id="op_nameFD" validate="v.required" valititle="请选择外包人员" placeholder="点击选择外包人员" class="citic-ast  read" readonly/> -->
+					</td>
+					<td class="ecitic-right">考勤类型</td>
+					<td>
+						<select  id="acc_type" name="FD.acc_type" style="width:100%;"></select>
+					</td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">考勤状态</td>
+					<td>
+						<select  id="acc_status" name="FD.acc_status" style="width:100%;"></select>
+					</td>
+					<td class="ecitic-right">考勤起止时间：</td>
+					<td>
+						<span class="ecitic-time">
+							<input type="text"  name="FD.berw_date" id="berw_date" onclick="checkTimeSupCompare_common('FD.berw_date','FD.aftw_date')" readonly/>
+						</span>
+						<span class="ecitic-to">至</span>
+						<span class="ecitic-time">
+							<input type="text"  name="FD.aftw_date" id="aftw_date" onclick="checkTimeSupCompare_common('FD.berw_date','FD.aftw_date')" readonly/>
+						</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button type="button" class="btn btn-ecitic" id="queryOptAttendanceList">查询</button></li>
+			<li><button type="button" class="btn btn-ecitic" id="resetOptAttendanceList">重置</button></li>
+		</ul>
+	</div>
+</form>
+	<div class="ecitic-operation">
+		<button type="button" class="btn btn-ecitic" id="optAttendance_Add">新增</button>
+		<button type="button" class="btn btn-ecitic" id="optAttendance_Edit">修改</button>
+		<button type="button" class="btn btn-ecitic" id="optAttendance_Del">删除</button>
+		<button type="button" class="btn btn-ecitic" id="optAttendance_Detaill">查看</button>
+		<button type="button" class="btn btn-ecitic" id="optAttendance_Import">批量导入</button>
+	</div>
+		<div class="ecitic-new">
+		<table class="table table-bordered table-hover" id="optAttendanceTableInfo"></table>
+	</div>
+<div id="outperson_supplier_Pop"></div>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="js/commons/ajaxfileupload.js"></script>
+<script src="dev_outsource/outsource/outpersonAttendance/optattendance_queryList.js"></script>
+</body>
+</html>

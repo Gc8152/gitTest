@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>应用流程</title>
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div id="applicationListPart" class="main_iframe_con">
+	<form action=""  class="form-inline">
+		<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<table id="querySystem" style="border:1px; cellspacing:0px; cellpadding:0px;"class="table table-bordered table-bor-pad requirement-table">
+					<tr>
+						<td class="ecitic-right">应用名称：</td>
+						<td ><input type="text" id="system_name_applicationquerylist" name="system_name" /></td>
+					
+						<td class="ecitic-right">应用简称：</td>
+						<td ><input type="text" id="system_short_applicationquerylist" name="system_short" /></td>
+					
+						<td class="ecitic-right">应用负责人：</td>
+						<td  ><input type="text" id="project_name_applicationquerylist" name="project_man" /></td>
+						
+					<tr>
+						<td class="ecitic-right">产品经理：</td>
+						<td ><input type="text" id="product_man_applicationquerylist" name="product_man" /></td>
+ 						<td class="ecitic-right">测试经理：</td> 
+						<td ><input type="text" id="test_man_applicationquerylist" name="test_man" /></select></td>
+ 						<td class="ecitic-right">应用状态：</td> 
+						<td ><select id="system_status_applicationquerylist" name="system_status" dic_code="G_DIC_SYSTEM_STATUS" style="width:100%"></select></td>
+						<td></td>
+					</tr> 
+					<tr>
+					     <td class="ecitic-right">负责组：</td>
+						 <td ><select id="res_group_name_applicationquerylist" name="res_group_name" style="width:100%" ></td>
+						 <td class="ecitic-right">是否科技管理：</td> 
+						 <td ><select id="isKeJi_applicationquerylist" name="isKeJi" dic_code="G_DIC_SECIENTIFIC_MANAGEMENT" style="width:100%"></select></td>
+					</tr>
+				</table>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" id="serach_applicationlist" value="查询"/></li>
+				<li><input type="button"  class="btn btn-ecitic" id="reset_applicationlist" value="重置"/></li>
+				<!-- <li class="ecitic-more"></li> -->
+			</ul>
+		</div>
+		</form>
+		<div class="ecitic-operation">
+		    <button class="btn btn-ecitic" id="view_sysDetail">查看应用详情</button>
+		    <button class="btn btn-ecitic"  id="export">导出</button>
+		</div>
+		<div class="ecitic-new">
+			<table id="gSystemInfoTable" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+	</div>
+	<div id="openPop"></div
+	><div id="allHisPop"></div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="dev_application/applicationManager_report.js"></script>
+</html>

@@ -1,0 +1,67 @@
+
+<!-- 投产模态框 -->
+<div id="myModal_sendPro" class="modal hide fade" style="top: 50%;margin-top: -260px;" tabindex="-1" z-index="1060">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="myModalLabel">投产单查询页面</h5>
+	</div>
+	<!-- <form action="" class="form-inline" id="pop_sendPro_condition">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">投产单编号：</td>
+					<td><input type="text" name="P_audit_no"/></td>
+					<td class="ecitic-right">项目名称：</td>
+					<td><input type="text" name="p_project_name"/></td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">提交状态：</td>
+					<td>
+						<select name="P_root_status" diccode="G_DIC_ROOT_STATUS"></select>
+					</td>
+					<td class="ecitic-right">工单状态：</td>
+					<td>
+						<select name="P_data_root_status" diccode="G_DIC_SYSTEM_STATUS"></select>
+					</td>
+					<td></td>
+					<td></td>
+				</tr>
+		</table>
+	</form> -->
+	
+	<form action="" class="form-inline" id="pop_sendPro_condition">
+		<div class="row">
+			<div class="span6 h30">
+				<label class="pl60">投产单编号：</label>
+			<input type="text" name="P_audit_no"/>
+			</div>
+			<div class="span6 h30">
+				<label class="pl60">应用名称：</label>
+				<input type="text" name="p_system_name"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span6 h30">
+				<label class="pl60">提交状态：</label>
+				<select style="width:188px!important;" name="P_root_status" diccode="G_DIC_ROOT_STATUS"></select>
+			</div>
+			<div class="span6 h30">
+				<label class="pl60">工单状态：</label>
+				<select style="width:188px!important;" name="P_data_root_status" diccode="G_DIC_SYSTEM_STATUS"></select>
+			</div>
+		</div>
+	</form>
+	
+	
+	
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="查询" id="pop_sendProSearch" type="button" />
+		<input class="btn btn-ecitic" value="重置" id="pop_sendProReset" type="button" />
+	</div>
+	<div class="ecitic-title-table modal-body ecitic-new">
+		<div class="tz_btn" style="display:none;">
+			<button class="btn btn-ecitic" type="button" id="sendProducePOPSureSelected">确认选择</button>
+		</div> 
+		<table id="pop_sendProTable" class="table table-bordered table-hover table-center table-th tablr-input-text"></table>
+	</div>
+	<div class="modal-footer"></div>
+</div>

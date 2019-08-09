@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.SMenuDao">
+
+	<!-- 查询页面菜单 -->
+	<select id="queryAllPageMenu" parameterType="java.lang.String" resultType="java.util.Map">
+			select menu_no id,menu_name name,supmenu_no pId from s_menu where flag='00' order by order_id
+    </select>
+    
+	<!-- 创建菜单-->
+	<insert id="createMenuInfo" parameterType="java.util.Map">
+       insert into s_menu(menu_no,menu_name,supmenu_no,menu_url,menu_type,menu_level,menu_icon,system_id,order_id,memo,create_no,create_time,update_no,update_time,flag)
+       values(#{menu_no},#{menu_name},#{supmenu_no},#{menu_url},#{menu_type},#{menu_level},#{menu_icon},#{system_id},#{order_id},#{memo},#{create_no},#{create_time},#{create_no},#{create_time},#{flag})
+    </insert>
+    
+    <!-- 标示位删除菜单 -->
+    <update id="deleteMenuInfo" parameterType="java.util.Map">
+		update s_menu set flag='01',update_no=#{update_no},update_time=#{update_time} where menu_no in
+		<foreach item="item" index="index" collection="menu_nos" open="(" separator="," close=")">
+				#{item}
+		</foreach>
+	</update>
+	
+	<!-- 修改菜单 -->
+    <update id="updateMenuInfo" parameterType="java.util.Map">
+		update s_menu set 
+			menu_no=#{menu_no},menu_name=#{menu_name},supmenu_no=#{supmenu_no},menu_url=#{menu_url},
+			menu_type=#{menu_type},menu_level=#{menu_level},menu_icon=#{menu_icon},order_id=#{order_id},memo=#{memo},update_no=#{update_no},
+			update_time=#{update_time}
+		 where menu_no=#{old_menu_no}
+	</update>
+		<!-- 清空菜单父节点 -->
+    <update id="clearMenuSupNoInfo" parameterType="java.lang.String">
+		update s_menu set supmenu_no=''  where menu_no=#{haveId}
+	</update>
+	
+	<!-- 修改子菜单的父级菜单编号 -->
+    <update id="updateChilMenuSupNo" parameterType="java.util.Map">
+		update s_menu set supmenu_no=#{menu_no},update_no=#{update_no},update_time=#{update_time}
+		where supmenu_no=#{old_menu_no} and supmenu_no!=#{menu_no}
+	</update>
+	<!-- 修改子菜单的菜单级别-->
+    <update id="updateChilMenuLevel" parameterType="java.util.Map">
+		update s_menu set update_no=#{update_no},update_time=#{update_time},
+		menu_level=to_number(menu_level)+to_number(#{gap}) where menu_no in(
+			select menu_no from s_menu t start with t.menu_no = #{menu_no}
+			connect by prior t.menu_no=t.supmenu_no and t.flag='00'		
+		)
+	</update>
+		<!-- 修改菜单按钮的菜单编号 -->
+    <update id="updateMenuButtonMenuNo" parameterType="java.util.Map">
+		update s_menu_action set menu_no=#{menu_no},opt_no=#{update_no},opt_time=#{update_time}
+		where menu_no=#{old_menu_no} and menu_no!=#{menu_no}
+	</update>
+		<!-- 修改子菜单属性的菜单编号 -->
+    <update id="updateMenuPropertyMenuNo" parameterType="java.util.Map">
+		update s_menu_property set menu_no=#{menu_no},opt_no=#{update_no},opt_time=#{update_time}
+		where menu_no=#{old_menu_no} and menu_no!=#{menu_no}
+	</update>
+
+	<!-- 根据菜单编号 查询一个菜单 -->
+	<select id="findOneMenuInfoByNo" parameterType="java.lang.String" resultType="com.yusys.entity.SMenu">
+       select * from s_menu where menu_no=#{menu_no}
+	</select>
+
+	<!-- 创建页面按钮-->
+	<insert id="createPageButton" parameterType="java.util.Map">
+       insert into s_menu_action(menu_no,action_no,action_descr,flag,alert_info,opt_no,opt_time)
+       values(#{menu_no},#{action_no},#{action_descr},#{flag},#{alert_info},#{opt_no},#{opt_time})
+    </insert>
+    	<!-- 修改按钮 -->
+    <update id="updateButtonInfo" parameterType="java.util.Map">
+		update s_menu_action set 		
+		action_no=#{action_no},action_descr=#{action_descr},
+		alert_info=#{alert_info},opt_no=#{opt_no},opt_time=#{opt_time}
+		where menu_no=#{menu_no} and action_no=#{old_action_no}
+	</update>
+	 	<!-- 修改按钮标识 -->
+    <update id="updateButtonFlag" parameterType="java.util.Map">
+		update s_menu_action set flag=#{flag},opt_no=#{opt_no},opt_time=#{opt_time}
+		where menu_no=#{menu_no} and action_no=#{action_no}
+	</update>
+	<!-- 删除页面按钮 -->
+	<delete id="deletePageButton" parameterType="java.util.Map">
+		delete from s_menu_action where menu_no=#{menu_no} and action_no=#{action_no}
+	</delete>
+	<!-- 查询页面按钮 -->
+	<select id="queryOnePageButton" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from s_menu_action where action_no=#{action_no}
+			<if test="null != menu_no and menu_no != ''">
+				 and menu_no=#{menu_no}
+			</if>
+		
+    </select>
+	<!-- 查询页面按钮 -->
+	<select id="queryPageButton" parameterType="java.lang.String" resultType="java.util.Map">
+		select * from s_menu_action where menu_no=#{menu_no}
+    </select>
+    
+	<!-- 创建页面属性数据字段-->
+	<insert id="createPageProperty" parameterType="java.util.Map">
+       insert into s_menu_property(menu_no,property_no,property_name,flag,opt_no,opt_time)
+       values(#{menu_no},#{property_no},#{property_name},#{flag},#{opt_no},#{opt_time})
+    </insert>
+    	<!-- 修改属性字段-->
+    <update id="updatePropertyInfo" parameterType="java.util.Map">
+		update s_menu_property set 		
+		property_no=#{property_no},property_name=#{property_name},
+		opt_no=#{opt_no},opt_time=#{opt_time}
+		where menu_no=#{menu_no} and property_no=#{old_property_no}
+	</update>
+	 	<!-- 修改属性标记 -->
+    <update id="updatePropertyFlag" parameterType="java.util.Map">
+		update s_menu_property set flag=#{flag},opt_no=#{opt_no},opt_time=#{opt_time}
+		where menu_no=#{menu_no} and property_no=#{property_no}
+	</update>
+	<!-- 删除属性字段 -->
+	<delete id="deletePageProperty" parameterType="java.util.Map">
+		delete from s_menu_property where menu_no=#{menu_no} and property_no=#{property_no}
+	</delete>
+	<!-- 查询页面属性字段-->
+	<select id="queryOnePageProperty" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from s_menu_property where property_no=#{property_no} and menu_no=#{menu_no}
+    </select>
+    
+	<!-- 查询页面属性字段 -->
+	<select id="queryPageProperty" parameterType="java.lang.String" resultType="java.util.Map">
+		select * from s_menu_property where menu_no=#{menu_no}
+    </select>
+    <!-- 菜单关联角色查询 -->
+	<select id="TableRoleMenu" parameterType="java.lang.String" resultType="java.util.Map">
+		select s.role_no ,r.role_name from s_rolemenu s left join s_role r on s.role_no=r.role_no where s.menu_no=#{menu_no}
+    </select>
+</mapper>

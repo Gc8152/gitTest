@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>合同基本信息查看</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link rel="stylesheet" type="text/css" href="css/public.css" />
+<!-- <script src="js/commons/commons.js"></script> -->
+</head>
+<body>
+<form action="" id="queryInfoContractInfoForm">
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>部门信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table class="table table-bordered tablr-input-text"><!-- table-bor-paw-->
+				<tr>
+					<td width="11%" class="table-text">模板类别</td>
+					<td width="22.333%">
+						<input  type="hidden" id="OTDI_template_id"/>
+						<input type="hidden" id="OTDI_detail_id"/>
+						<div id="OTDI_specialtype_name"></div>
+					</td>
+					<td width="11%" class="table-text">创建时间</td>
+					<td width="22.333%">
+						<div id="OTDI_create_time"></div>
+					</td>
+					<td width="11%" class="table-text">创建人</td>
+					<td width="22.333%">
+						<div id="OTDI_create_person"></div>
+					</td>
+				</tr>
+				<tr>
+					<td width="11%" class="table-text">生效时间</td>
+					<td width="22.333%">
+						<div id="OTDI_start_time"></div>
+					</td>
+					<td width="11%" class="table-text">终止时间</td>
+					<td width="22.333%">
+						<div id="OTDI_end_time"></div>
+					</td>
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<td  width="11%" class="table-text">备注</td>
+					<td colspan="5" width="89%">
+						<div id="OTDI_remark"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="ecitic-title">
+			<span>考核项信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table id="template_assess_table_info" class="table table-bordered table-hover"></table>
+		</div>
+		<div class="ecitic-save">
+			<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+		</div>
+	</div>
+</form>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_outsource/outsource/outpersonTemplate/optTemplate_detail.js"></script>
+<script src="upload/uploadFileInfo.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>新增或修改业务要素</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+<script src="pages/approvalflow/swfi/swfi_noteconfig.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+		<span>流程基本信息<em></em></span>
+    </div>
+	<table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+		<tr>
+			<td class="ecitic-right">流程名称：</td>
+			<td>
+				<div id="AF_NAME"></div>
+				<input type="hidden" id="af_id"/>
+			</td>
+			<td class="ecitic-right">业务系统：</td>
+			<td>
+				<div id="A_SYS_NAME"></div>
+			</td>
+			<td class="ecitic-right">流程状态：</td>
+			<td>
+				<div id="A_STATE"></div>
+			</td>
+		</tr>
+	</table>
+	<div class="ecitic-title">
+		<span>节点基本信息<em></em></span>
+    </div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="addAFNote" >新增</button>
+		<button class="btn btn-ecitic" id="updateAFNote">修改</button>
+		<button class="btn btn-ecitic" id="deleteAFNote">删除</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="noteInfoTable" class="table table-bordered table-hover"></table>
+	</div>
+	
+	<!-- 新增节点模态框开始 -->
+	<!-- <div id="addNoteInfoModalPOP" class="modal hide fade" style="top: 50%; margin-top: -200px; width: 780px; height:400px" tabindex="-1">
+   		<div class="modal-header">
+			<button type="button" class="close" onclick="closeNoteInfoModalPOP('addNoteInfoModalPOP','addNoteInfoModalForm');" title="点击关闭">×</button>
+			<h5 id="gridSystemModalLabelAdd">新增节点</h5>
+		</div>
+      	<div class="modal-body">
+      		<form id="addNoteInfoModalForm" class="form-inline">
+				<table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;padding-right: 60px" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">节点启用状态</td>
+						<td>
+							<select id="n_state" name="n_state" validate="v.required"></select>
+						</td>
+						<td class="ecitic-right">节点类型</td>
+						<td>
+							<select id="n_type" name="n_type" validate="v.required"></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">备注</td>
+						<td colspan="3">
+							<textarea rows="4" maxlength="50" name="memo" id="memo"></textarea>
+						</td>
+					</tr>
+				</table>
+			</form>
+      		根据节点要素选择节点
+      		<span style="float:left;font-size:12px;">请根据支撑的节点要素选择节点</span>
+      		<div class="ecitic-new">
+				<table id="nodeModalTabList" class="table table-bordered table-hover"></table>
+			</div>
+			<div class="ecitic-save">
+				<input type="button" class="btn btn-ecitic" value="确定" id="addPOPNote"/>
+				<input type="button" class="btn btn-ecitic" value="取消" id="addCancelBtn"/>
+			</div>
+		</div>
+	</div> -->
+	<div id="addNoteInfoModalPOP" class="modal hide fade" style="top: 50%; margin-top: -200px; width: 780px; height:400px" tabindex="-1">
+   		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="gridSystemModalLabelAdd">新增节点</h5>
+			<h5 id="gridSystemModalLabelUpdate">修改节点</h5>
+		</div>
+      	<div class="modal-body">
+      		<form id="addNoteInfoModalForm" class="form-inline">
+				<table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;padding-right: 60px" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">节点名称：</td>
+						<td>
+							<input type="text" validate="v.required" valititle="请填写节点名称" name="add.n_name" id="add_n_name" /> 
+						    <input type="hidden" name="add.n_id" id="add_n_id" /> 
+						</td>
+						<td class="ecitic-right">节点启用状态：</td>
+						<td>
+							<select id="add_n_state" diccode="AF_DIC_STATE" name="add.n_state" validate="v.required" valititle="请选择节点状态"></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">节点类型：</td>
+						<td>
+							<select id="add_n_type" diccode="AF_DIC_NODE_TYPE" name="add.n_type" validate="v.required" valititle="请选择节点类型"></select>
+						</td>
+						<td class="ecitic-right">节点审批人：</td>
+						<td>
+						  <label><input class="n_person" type="radio" value="01" id="factor" checked name="add_n_person"/></label>
+						  <label>节点要素</label>
+						   <label><input class="n_person" type="radio" value="02" id="role" name="add_n_person"/></label>
+						  <label>角色</label>
+						</td>
+					</tr>
+					<tr id="factorAndRole">
+						<td class="ecitic-right">节点要素：</td>
+						<td>
+						    <select id="add_n_factor" name="add.n_factor" validate="v.required" valititle="请选择节点要素"></select>
+						</td>
+						<td class="role ecitic-right"">角色：</td>
+						<td class="role">
+						    <input type="text" id="add_n_roleName" name="add.n_roleName" validate="v.required" valititle="角色名称必填" placeholder="点击选择角色" readonly>
+							<input type="hidden" id="add_n_roleCode" name="add.n_roleCode">
+						</td>						
+					</tr>
+					<tr>
+						<td class="ecitic-right">备注：</td>
+						<td colspan="3">
+							<textarea rows="4" maxlength="50" name="add.memo" id="add_memo"></textarea>
+						</td>
+					</tr>
+				</table>
+			</form>
+			<div class="ecitic-save">
+				<input type="button" class="btn btn-ecitic" value="添加" id="addPOPNote"/>
+				<input type="button" class="btn btn-ecitic" value="修改" id="updatePOPNote"/>
+				<input type="button" class="btn btn-ecitic" value="取消" id="addCancelBtn"/>
+			</div>
+		</div>
+	</div>
+	<!-- 新增节点模态框结束 -->
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="返回" id="goBackafList"/>
+	</div>
+	<!--修改节点模态框开始 -->
+<!-- 	<div id="updateNoteInfoModalPOP" class="modal hide fade" style="top: 50%; margin-top: -200px; width: 780px; height: 400px" tabindex="-1">
+    	<div class="modal-header">
+			<button type="button" class="close" onclick="closeNoteInfoModalPOP('updateNoteInfoModalPOP','updateNoteInfoModalForm');" title="点击关闭">×</button>
+			<h5 id="gridSystemModalLabelUpdate">修改节点</h5>			
+		</div>
+		<div class="modal-body">
+			<form id="updateNoteInfoModalForm">
+				<table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;padding-right: 60px" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">节点名称：</td>
+						<td>
+							<input type="text" validate="v.required" valititle="请选择节点名称" name="n_name" id="n_name" /> 
+							<input type="hidden" name="n_id" id="n_id" /> 
+						</td>
+						<td class="ecitic-right">节点启用状态：</td>
+						<td>
+							<select id="update_n_state" name="n_state" validate="v.required" valititle="请选择节点状态"></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">节点类型：</td>
+						<td>
+							<select id="update_n_type" name="n_type" validate="v.required" valititle="请选择节点类型"></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">备注：</td>
+						<td colspan="3">
+							<textarea rows="4" maxlength="50" name="updateMemo" id="updateMemo"></textarea>
+						</td>
+					</tr>
+				</table>
+			</form>
+			<div class="ecitic-save">
+				<input type="button" class="btn btn-ecitic" value="确定" id="updatePOPNote"/>
+				<input type="button" class="btn btn-ecitic" value="取消" id="updateCancelBtn"/>
+			</div>
+		</div>
+	</div> -->
+</div>
+<div id="rolePop"></div>
+<script src="supervision/messstrategy/sAllRolePop.js"></script>
+</body>
+</html>

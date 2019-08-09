@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>人员单价信息维护查看</title>
+		<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/form.css"/>
+	</head>
+	<body style="overflow:auto;">
+		<div class="main_iframe_con">
+			<div class="ecitic-title">
+				<span>类别信息<em></em></span>
+				<i></i>
+			</div>
+			<form id="pprice_au">
+				<div class="ecitic-title-table">
+						<div class="ecitic-title-table">
+							<table class="table table-bordered tablr-input-text">
+								<tr>
+									<td class="table-text" style="width:11%;">供应商</td>
+									<td style="width:22.333%;"><div id="SUPPLIER_NAME"></div></td>
+									<td class="table-text" style="width:11%;">框架合同号</td>
+									<td style="width:22.333%;"><div id="CONTRACT"></div></td>
+								</tr>
+								<tr>
+									
+									<td class="table-text" style="width:11%;">开始时间</td>
+									<td style="width:22.333%;"><div id="P_STARTTIME"></div></td>
+									<td class="table-text" style="width:11%;">结束时间</td>
+									<td style="width:22.333%;"><div id="P_ENDTIME"></div></td>
+								</tr>
+							</table>
+						</div>
+				</div>
+				<div class="ecitic-title">
+					<span>人员单价信息<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-new">
+					<table class="table table-bordered table-hover" id="pprice_detail_table">
+						<tr>
+							<th width="25%">开发方向</th>
+							<th width="25%">人员级别</th>
+							<th width="25%">单价(含税:万元)</th>
+							<th width="25%">备注</th>
+						</tr>
+					</table>
+				</div>
+			</form>
+			<div class="ecitic-save">
+				<input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭"/>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+	<script type="text/javascript" src="dev_outsource/serviceOrder/personnelPrice/personnelPrice_detail.js"></script>
+</html>

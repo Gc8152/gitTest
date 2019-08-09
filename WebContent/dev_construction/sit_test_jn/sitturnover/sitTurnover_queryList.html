@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SIT测试移交列表（江南）</title>
+
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div class="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form action="" id="sitTurnover">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad" id="summaryQury">
+				<tr>
+					<td class="ecitic-right" width="13%">任务编号：</td>
+					<td width="20%">
+					<input type="text" id="req_task_codeTO" name="req_task_code" />
+					</td>
+					<td class="ecitic-right" width="13%">任务名称：</td>
+					<td width="20%"><input type="text" id="req_task_nameTO" name="req_task_name" />
+					</td>
+					<td class="ecitic-right" width="13%">任务状态：</td>
+					<td style="width:25%">
+					<select id="req_task_stateTO" name="req_task_state" dic_code="G_DIC_REQTASK_STATE" style="width:100%;">
+					</select>
+					</td>
+				    </tr>
+
+				<tr>
+					<td class="ecitic-right" >申请纳入版本：</td>
+					<td><input type="text" id="version_nameTO" name="version_name"  placeholder="点击选择 " readonly/>
+					    <input type="hidden" id="version_idTO" name="version_id" />
+					</td>
+					<td class="ecitic-right" >实施应用：</td>
+					<td>
+					    <input type="text" id="system_nameTO" name="system_name"  placeholder="点击选择" readonly/>
+					    <input type="hidden" id="system_noTO" name="system_no" />
+					</td>
+					
+				</tr>
+			</table>
+			</form>
+		</div>
+		
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="serach_turnoverQuery" value="查询"/></li>
+			<li><input type="reset" class="btn btn-ecitic" id="reset_turnoverQuery" value="重置"/></li>
+		</ul>
+	
+		
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="add_Sit">SIT移交</button>
+		
+		<button class="btn btn-ecitic" id="view_Sit">查看详情</button>
+		<!-- 
+		<button class="btn btn-ecitic" id="submit_Sit">提交</button>
+		<button class="btn btn-ecitic" id="update_Sit">修改</button>
+		<button class="btn btn-ecitic" id="delete_Sit">删除</button>
+		 -->
+	</div>
+	<div class="ecitic-new">
+		<table id="sitTable" class="table table-bordered table-hover"></table>
+	</div>
+	<!-- 系统应用pop -->
+		<div id="tvsystem_pop"></div>
+		<!-- 版本pop -->
+		<div id="tvVsersion_pop"></div>
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/sit_test_jn/sitturnover/sitTurnover_queryList.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_intoVersion/taskVersion_pop.js"></script>
+<script type="text/javascript" src="dev_application/System_pop.js"></script>
+</html>

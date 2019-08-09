@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>中信银行综合管理系统</title>
+<link rel="stylesheet" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/select2.css"/>
+<link rel="stylesheet" href="../css/public.css" />
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../js/select2.min.js"></script>
+</head>
+<body style="overflow:auto;">
+			<div class="main_iframe_con">
+				<div class="yourLocation">
+					<i></i>
+					<span>您所在的位置：客户服务数据结构登记及查询</span>
+				</div>
+				<div class="ecitic-inquire" id="ecitic-inquire">
+					<div class="ecitic-table" id="ecitic-table">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+							<tr>
+								<td class="ecitic-right">客户姓名</td>
+								<td><input type="text" /></td>
+								<td class="ecitic-right">客户联系电话</td>
+								<td>
+									<div class="ecitic-input-all">
+										<input type="text" />
+									</div>
+								</td>
+								<td class="ecitic-right">客户地址</td>
+								<td>
+									<input type="text" />
+								</td>
+							</tr>
+							<tr>
+								<td class="ecitic-right">所属街道</td>
+								<td><input type="text" /></td>
+								<td class="ecitic-right">所在社区</td>
+								<td><input type="text" /></td>
+								<td class="ecitic-right">录入人工号/姓名</td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td class="ecitic-right">客户来源</td>
+								<td><input type="text" /></td>
+								<td class="ecitic-right">录入开始时间</td>
+								<td><input type="text" /></td>
+								<td class="ecitic-right">录入结束时间</td>
+								<td><input type="text" /></td>							
+							</tr>
+						</table>
+					</div>
+					<ul class="ecitic-btn-all">
+						<li><button class="btn btn-ecitic">查询</button></li>
+						<li><button class="btn btn-ecitic">重置</button></li>
+						<li class="ecitic-more"></li>
+					</ul>
+				</div>
+				<div class="ecitic-operation">
+					<button class="btn btn-ecitic">登记</button><button class="btn btn-ecitic">评估</button>
+				</div>
+				<div class="ecitic-new">
+					<table class="table table-bordered table-hover">
+						<tr>
+					<td>
+						<div class="ecitic-checkbox">
+									<span><input type="checkbox" value=""></span>
+								</div>
+					</td>
+					<td>
+						<span>序号</span>
+					</td>
+					<td>
+						<span>姓名</span>
+					</td>
+					<td>
+						<span>电话</span>
+					</td>
+					<td>
+						<span>地址</span>
+					</td>
+					<td>
+						<span>政采项目</span>
+					</td>
+					<td>
+						<span>工作站</span>
+					</td>
+					<td>
+						<span>街道</span>
+					</td>
+					<td>
+						<span>社区</span>
+					</td>
+					<td>
+						<span>服务项目</span>
+					</td>
+					<td>
+						<span>服务次数</span>
+					</td>
+					<td>
+						<span>初期评估</span>
+					</td>
+					<td>
+						<span>末期效果</span>
+					</td>
+					<td>
+						<span>录入人</span>
+					</td>
+					<td>
+						<span>录入时间</span>
+					</td>
+					
+				</tr>
+					<tr class="tit" id="toSee">
+					<td>
+						<div class="ecitic-checkbox">
+									<span><input type="checkbox" value=""></span>
+								</div>
+					</td>
+					<td>
+						<span>1</span>
+					</td>
+					<td>
+						<span>张三</span>
+					</td>
+					<td>
+						<span>13810101010</span>
+					</td>
+					<td>
+						<span>朝阳区酒仙桥东路</span>
+					</td>
+					<td>
+						<span>2016年朝阳区残联</span>
+					</td>
+					<td>
+						<span>通州</span>
+					</td>
+					<td>
+						<span>电子城研发中心</span>
+					</td>
+					<td>
+						<span>--</span>
+					</td>
+					<td>
+						<span>康复（集中、入户）</span>
+					</td>
+					<td>
+						<span>2</span>
+					</td>
+					<td>
+						<span>好</span>
+					</td>
+					<td>
+						<span>好</span>
+					</td>
+					<td>
+						<span>李斯</span>
+					</td>
+					<td>
+						<span>2015-09-28</span>
+					</td>					
+				</tr>
+					</table>
+					<div class="ecitic-page-all">
+						<div class="ecitic-page-every">
+							<span>每页显示5条</span>
+							<span>共4条</span>
+						</div>
+						<div class="ecitic-page-select">
+							<div class="ecitic-page-select-btn">
+								<button class="btn">首页</button>
+								<button class="btn">上一页</button>
+								<button class="btn">下一页</button>
+								<button class="btn">末页</button>
+							</div>
+							<div class="ecitic-page-select-go">
+								<span>第</span>
+								<input type="text" value="" />
+								<span>页</span>
+								<button class="btn">GO</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+</body>
+</html>
+
+<script type="text/javascript">
+	//点击标题隐藏内容
+	$(".ecitic-title i").click(function(){
+		if($(this).is(".open")){
+			$(this).removeClass("open");
+		}else{
+			$(this).addClass("open");
+		}
+		$(this).parent().next().slideToggle();
+	});
+	//标签切换(注解：变量tab_li是点击的元素,变量tab_ul切换的主题内容元素)
+	function Tag_tab(tab_li,tab_ul){
+		tab_li.click(function(){
+			var $this = $(this);
+			var $t = $this.index();
+			tab_li.removeClass("current");
+			$this.addClass("current");
+			tab_ul.removeClass("open");
+			tab_ul.eq($t).addClass("open");
+		});
+	};
+	//多选按钮
+	var SinCS_C=$(".ecitic-checkbox span");
+	SinCS_C.bind("click",function(){
+		if($(this).is(".checkd")){
+			$(this).removeClass("checkd");
+		}else{
+			$(this).addClass("checkd");
+		}
+	});
+	//单选按钮
+	var SinCS_R=$(".ecitic-radio span");
+	SinCS_R.bind("click",function(){
+		var $this = $(this);
+		var $t = $this.index();
+		SinCS_R.removeClass('checkd');
+		$this.addClass('checkd');
+	});
+	//下拉菜单select2
+	$("select").select2();
+	
+	//查询条件隐藏显示
+	$(".ecitic-more").click(function(){
+		var EciticInquire=document.getElementById("ecitic-inquire");
+		var EciticTable=document.getElementById("ecitic-table");
+		if($(this).is(".open")){
+			$(this).removeClass("open");
+			EciticInquire.style.height="134px";
+			EciticTable.style.height="96px";
+		}else{
+			$(this).addClass("open");
+			EciticInquire.style.height="auto";
+			EciticTable.style.height="auto";
+		}
+	});
+	
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

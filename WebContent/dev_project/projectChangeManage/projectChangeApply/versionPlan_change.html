@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>版本计划变更</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+	<div class="main_iframeFormW">
+		<div class="tab-pane fade in active">
+			<div class="main_iframe_con">
+				<div class="ecitic-title-table">
+					<div class="ecitic-title">
+						<span>里程碑变更信息<em></em></span>
+							<i></i>
+						</div>
+						<div>
+							<div class="ecitic-operation">
+								<button class="btn btn-ecitic" id="select_Need">选择需求点</button>
+								<button class="btn btn-ecitic" id="batch_update">批量修改</button>
+							</div>
+						<div class="ecitic-new tab-content bootstrapTabsCont">
+							<table id="table_task" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover table-center table-th tablr-input-text">
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+		<div class="ecitic-title-table">
+			<div class="ecitic-title">
+				<span>变更影响评估<em></em></span>
+				<i></i>
+			</div>
+			<div>
+				<div class="ecitic-new tab-content bootstrapTabsCont">
+					<table id="table_milestone" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover table-center table-th tablr-input-text">
+						<tr>
+							<td colspan="2">评估内容</td>
+							<td colspan="3">评估结果</td>
+							<td>影响程度等级</td>
+							<td>评估值</td>
+							<td>变更总体影响评估值</td>
+						</tr>
+						<tr>
+							<td colspan="2">工期影响评估</td>
+							<td><input type="text"/></td>
+							<td>天</td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td rowspan="6"></td>
+						</tr>
+						<tr>
+							<td colspan="2">规模影响评估</td>
+							<td><input type="text"/></td>
+							<td>FP</td>
+							<td><input type="text"/></td>
+							<td colspan="2"></td>
+						</tr>
+						<tr>
+							<td colspan="2">工作量影响评估</td>
+							<td><input type="text"/></td>
+							<td>人日</td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+						</tr>
+						<tr>
+							<td rowspan="3">关联系统影响评估</td>
+							<td>关联系统影响评估</td>
+							<td><input type="text"/></td>
+							<td>天</td>
+							<td><input type="text"/></td>
+							<td rowspan="3" colspan="2"></td>
+						</tr>
+						
+						<tr>
+							<td>关联系统影响评估</td>
+							<td><input type="text"/></td>
+							<td>FP</td>
+							<td><input type="text"/></td>
+						</tr>
+						<tr>
+							<td>关联系统影响评估</td>
+							<td><input type="text"/></td>
+							<td>人月</td>
+							<td><input type="text"/></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="ecitic-save">
+			<button class="btn btn-ecitic" id="back_versionPlan">上一步</button>
+			<button class="btn btn-ecitic" id="save_versionPlan">保存</button>
+			<button class="btn btn-ecitic" id="commit_versionPlan">提交</button>
+			<button class="btn btn-ecitic" id="close_versionPlan">关闭</button>
+		</div>
+	</div>
+	
+	<!--选择需求模态框 -->
+	<div id="demand_model" class="modal hide fade modal-big-table" tabindex="-1">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="">选择需求点</h5>
+		</div>
+		<div class=" ecitic-title-table modal-body ecitic-new">
+			<table border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="table-text">需求点编号：</td>
+					<td><input type="text" name="SUB_REQ_CODE"/></td>
+					<td class="table-text">需求点名称：</td>
+					<td><input type="text" name="SUB_REQ_NAME"/></td>
+					<td><button class="btn btn-ecitic" id="search_demand">查询</button></td>
+					<td><button class="btn btn-ecitic" id="reset_demand">重置</button></td>
+				</tr>
+			</table>
+			<div class="ecitic-operation">
+				<input type="button" class="btn btn-ecitic" id="choose" value="选择"/>
+			</div>
+			<div class="ecitic-new">
+				<table id="modelTable_demandInfo" class="table table-bordered table-hover"></table>
+			</div>
+		</div>
+		<div class="modal-footer"></div>
+	</div>
+	<!--里程碑查看模态框 -->
+	<div id="milestone_model" class="modal hide fade modal-big-table" tabindex="-1">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="modalHead">里程碑查看</h5>
+		</div>
+		<div class=" ecitic-title-table modal-body ecitic-new">
+			<input type="hidden" name="index"/>
+			<div class="ecitic-current">
+				<span>需求任务编号：</span><span id="REQ_TASK_CODE"></span>
+				<i></i>
+				<span>需求任务名称：</span><span id="REQ_TASK_NAME"></span>
+			</div>
+			<div class="ecitic-new">
+				<table id="modelTable_milestoneInfo" class="table table-bordered table-hover"></table>
+			</div>
+		</div>
+		<div class="ecitic-save">
+			<button class="btn btn-ecitic" id="update_milestone">确定</button>
+			<button class="btn btn-ecitic" id="close_milestone">返回</button>
+		</div>
+		<div class="modal-footer"></div>
+	</div>
+	<!--批量修改模态框 -->
+	<div id="batch_model" class="modal hide fade modal-big-table" tabindex="-1">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5>里程碑批量修改</h5>
+		</div>
+		<div class=" ecitic-title-table modal-body ecitic-new">
+			<div class="ecitic-new">
+				<table id="batchMilestoneInfo" class="table table-bordered table-hover"></table>
+			</div>
+		</div>
+		<div class="ecitic-save">
+			<button class="btn btn-ecitic" id="batch_save">确定</button>
+			<button class="btn btn-ecitic" id="batch_close">返回</button>
+		</div>
+		<div class="modal-footer"></div>
+	</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="dev_project/projectChangeManage/projectChangeApply/versionPlan_change.js"></script>
+<script type="text/javascript" src="dev_project/projectChangeManage/projectChangeApply/projectInfoPop.js"></script>
+</html>

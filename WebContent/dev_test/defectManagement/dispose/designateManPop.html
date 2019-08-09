@@ -1,0 +1,25 @@
+<!--指派缺陷模态框  -->
+<div id="defect_designate_modal" class="modal hide fade modal-big-table" style="top:10%;z-index:1111"; tabindex="-1">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" style="color:blue" title="点击关闭">×</button>
+            <h5>指派人员</h5>
+        </div>
+       <div class=" ecitic-title-table modal-body ecitic-new">
+        	 <form id="manQuery">
+	             <table border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+                     <tr>
+                         <td class="ecitic-right" width="13.333%">人员编号：</td>
+                         <td width="20%"><input name="USER_NO" type="text"></td>
+                         <td class="ecitic-right" width="13.333%">人员名称：</td>
+                         <td width="20%"><input  name="USER_NAME" type="text"></td>
+                         <td><input type="button" class="btn btn-ecitic" id="manSearch" value="查询"/></td>
+						<td><input type="button" class="btn btn-ecitic" id="manReset" value="重置"/></td>
+                     </tr>
+	             </table>
+			</form>
+			<div class="ecitic-new">
+				<table tb="projectManPopTable" title="双击选择一条数据" class="table table-bordered table-hover table-text-show" ></table>
+			</div>
+        </div>
+        <div class="modal-footer"></div>
+</div>

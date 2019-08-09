@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>我的项目</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" >
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+	<div class="ecitic-inquire ecitic-moreNo">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="myProject_query">
+				<table id="table_select" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">项目编号：</td>
+						<td><input type="text" name="PROJECT_NUM"/></td>
+						<td class="ecitic-right">项目名称：</td>
+						<td><input type="text" name="PROJECT_NAME"/></td>
+						<td class="ecitic-right">项目经理：</td>
+						<td>
+							<input type="text" name="PROJECT_MAN_NAME" placeholder="点击选择项目经理..."/>
+							<input type="hidden" name="PROJECT_MAN_ID"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">所属处室：</td>
+						<td class="positionAb">
+							<input type="text" name="ORGAN_NAME" placeholder="点击选择处室..."/>
+							<input type="hidden" name="ORGAN_ID"/>
+						</td>
+						<td class="ecitic-right">项目状态：</td>
+						<td>
+							<select name="STATUS" diccode="P_DIC_PROJECT_STATUS" style="width:100%;"></select>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="commit">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="proEmpManage">项目管理</button>
+<!-- 		<button class="btn btn-ecitic" id="wbsPlan">WBS计划</button> -->
+<!-- 		<button class="btn btn-ecitic" id="aa">风险问题管理</button> -->
+<!-- 		<button class="btn btn-ecitic" id="changeManage">变更管理</button> -->
+<!-- 		<button class="btn btn-ecitic" id="projectEnd">项目结项</button> -->
+<!-- 		<button class="btn btn-ecitic" id="excuteProjectManager">指派实施项目经理</button> -->
+<!-- 		<button class="btn btn-ecitic" id="projectDetail">项目360视图</button> -->
+	</div>
+	<!-- table开始 -->
+	<div class="ecitic-new">
+		<table id="myProject_table" class="table table-bordered table-hover" ></table>
+	</div>
+	<div id="myPro_choosePm"></div>
+</body>
+	<script src="bootstrap/js/bootstrap-table.min.js"></script>
+	<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+	<script type="text/javascript" src="dev_project/projectEstablishManage/projectEstablish/pmInfoPop.js"></script> 
+	<script type="text/javascript" src="dev_project/myProject/myProject_queryList.js"></script>
+</html>

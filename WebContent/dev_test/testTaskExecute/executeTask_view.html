@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>执行案例</title>
+    <link rel="stylesheet" type="text/css" href="dev_planwork/wbs/wbsPlan_public.css" />
+    <link rel="stylesheet" type="text/css" href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css">
+    <link rel="stylesheet" type="text/css" href="css/form.css" />
+    <script type="text/javascript" src="ztree3.5.22/js/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="ztree3.5.22/js/jquery.ztree.excheck.js"></script>
+    <script src="bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+
+<body>
+    <div class="main_iframeFormW">
+
+        <ul id="" class="nav nav-tabs" style="font-size:14px;">
+            <li id="panoramicView_one" class="active"><a href="#tab1_caseView" data-toggle="tab"><i class="fa fa-crosshairs"></i> 案例基本信息</a></li>
+            <li id="panoramicView_two"><a href="#tab2_caseView" data-toggle="tab"><i class="fa fa-flag"></i> 执行案例</a></li>
+        </ul>
+
+        <div id="programBasicInfoDiv" class="tab-content bootstrapTabsCont">
+
+            <div class="tab-pane fade in active" id="tab1_caseView">
+                <div class="main_iframe_con">
+                    <br/>
+                    <div class="ecitic-title">
+                        <span>项目基本信息</span>
+                        <i></i>
+                    </div>
+                    <div class="ecitic-title-table">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+                            <tbody>
+                                <tr>
+                                    <td width="20%" class="table-text">案例编号：</td>
+                                    <td width="30%"><div id="CASE_NUM"></div></td>
+                                    <td width="20%" class="table-text">案例版本：</td>
+                                    <td width="30%"><div id="CASE_VERSION"></div></td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" class="table-text">案例名称：</td>
+                                    <td width="30%"><div id="CASE_NAME"></div></td>
+                                    <td width="20%" class="table-text">案例类型：</td>
+                                    <td width="30%"><div id="CASE_TYPE1"></div></td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" class="table-text">案例类型：</td>
+                                    <td width="30%"><div id="CASE_TYPE2"></div></td>
+                                    <td width="20%" class="table-text"></td>
+                                    <td width="30%"></td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" class="table-text">前置条件：</td>
+                                    <td width="30%"><div id="PRE_CONDITION"></div></td>
+                                    <td width="20%" class="table-text"></td>
+                                    <td width="30%"></td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                        <div class="ecitic-save">
+                    <input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭" />
+                   </div>
+                    </div>
+                    
+
+
+
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab2_caseView">
+                <div class="main_iframe_con">
+                    </br>
+                    <div class="ecitic-operation">
+            <button class="btn btn-ecitic" name="defectFind">发现缺陷</button>
+            <button class="btn btn-ecitic" name="defectRele">关联缺陷</button>
+            <button class="btn btn-ecitic" name="testEnd">结束测试</button>
+        </div>
+                     <div class="ecitic-title">
+                        <span>操作步骤</span>
+                        <i></i>
+                     </div>
+                     <div class="ecitic-new">
+                         <table tb="casesStep" class="table table-bordered table-hover table-text-show"></table>
+                      </div>
+                     <div class="ecitic-title">
+                        <span>发现的缺陷</span>
+                        <i></i>
+                     </div>
+                    <div class="ecitic-new">
+                         <table tb="defectFind" class="table table-bordered table-hover table-text-show"></table>
+                    </div>
+                    <div class="ecitic-save">
+                    <button class="btn btn-ecitic" name="saveTask">保存</button>
+          <!--   <input type="button" class="btn btn-ecitic" value="保存" name="saveTask" /> -->
+            <input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭" />
+        </div>
+        
+                <!--指派缺陷模态框1  -->
+ 		<div mod="proManPop"></div>
+ 		  <!--上传附件模态框  -->
+		<div id="file_designate_modal"></div>
+          
+          
+        
+                </div>
+            </div>
+
+            
+
+            
+
+        
+    </div>
+    </div>
+    <script type="text/javascript" src="dev_project/projectManage/myProject/ProjectTaskView_queryInfo.js"></script>
+    <script type="text/javascript" src="dev_project/projectManage/programQuery/programQuery_queryInfo.js"></script>
+    <script type="text/javascript" src="dev_project/projectManage/programQuery/ProjectMilestoneDiv.js"></script>
+    <script type="text/javascript" src="dev_project/projectManage/programQuery/taskPop.js"></script>
+    
+	<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+    <script src="dev_test/testTaskExecute/endTest_view.js"></script>
+    <script src="dev_test/testTaskExecute/executeTask_view.js"></script>
+     <script src="dev_test/testTaskExecute/defectViewPop.js"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>不符合项目管理</title>
+<link rel="stylesheet" type="text/css"
+	href="bootstrap/css/bootstrap-table.min.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+<body>
+	<div class="ecitic-inquire ecitic-moreNo">
+	  <form id="noConformItemManage_query">
+		<div class="ecitic-table" id="ecitic-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<!-- <td class="ecitic-right">项目编号：</td>
+						<td><input type="text" name="PROJECT_NUM" id="project_num" /></td> -->
+						<td class="ecitic-right">项目名称：</td>
+						<td>
+						  <input type="text" name="project_name" id="project_name" />
+						</td>
+						<td class="ecitic-right">不符合项名称：</td>
+						<td>
+						   <input type="text" name="no_conform_name" id="no_conform_name" />
+						</td>
+						<td class="ecitic-right">业务编号：</td>
+						<td>
+						   <input type="text" name="business_code" id="business_code" />
+						</td>
+					</tr>
+					<tr>
+					<td class="ecitic-right">不符合项分类：</td>
+						<td><select name="typ" id="typ" diccode="P_DIC_QUALITY_TYP"></select></td>
+						<td class="ecitic-right">不符合项等级：</td>
+						<td><select id="grade" name="grade" diccode="P_DIC_QUALITY_GRADE"></select></td>
+					</tr>
+				</table>
+		  </div>
+		</form>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="manageCommit" value="查询"></li>
+			<li><input type="button" class="btn btn-ecitic" id="manageReset" value="重置"></li>
+		</ul>
+	  
+	<div class="ecitic-operation">
+		<button  class="btn btn-ecitic" id="qualityManageManage_handle" >处理</button>
+		<button  class="btn btn-ecitic" id="qualityManageManage_detail" >详情</button>
+	</div>
+	<!-- table开始 -->
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover table-text-show" id="noConformItemManageTable"></table>
+	</div>
+ </div>
+</body>
+	<script type="text/javascript" src="dev_project/qualityManage/noConformItemManage/noConformItemManage_queryList.js"></script>
+</html>

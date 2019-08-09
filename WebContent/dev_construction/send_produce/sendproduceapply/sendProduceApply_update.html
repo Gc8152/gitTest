@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>一般投产申请</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<link rel="stylesheet" type="text/css" href="css/public.css" />
+<style type="text/css">
+	.click_text_sp{color:#c9161d;}
+	.click_text_sp:hover{color:#c9161d;cursor:pointer;text-decoration:underline;}
+	.click_text_sp:active{color:blue;cursor:pointer;text-decoration:underline;}
+</style>
+</head>
+<body>	
+<div class="main_iframe_con" id="sendProDiv">
+	<div class="ecitic-title">
+		<span>投产申请信息<em></em></span>
+		<i></i>
+	</div>
+	<div class="ecitic-title-table">
+		<table class="table table-bordered table-center table-th tablr-input-text">
+			<tbody>
+				<tr>
+					<td width="11%" class="table-text">投产单编号：</td>
+					<td width="21.333%">
+						<input type="text" id="audit_no" name="audit_no"  class="citic-ast" validate="v.required"
+							readonly="readonly">
+					</td>
+					<td width="11%" class="table-text">应用名称：</td>
+					<td width="21.333%">
+						<input type="hidden" id="system_id" name="system_id">
+						<input type="text" id="system_name" name="system_name" class="citic-ast" validate="v.required"
+							readonly="readonly" placeholder="点击选择">
+							<input type="hidden" id="system_is_cc" name="system_is_cc"/>
+					</td>
+					<td width="11%" class="table-text">版本名称：</td>
+					<td width="21.333%">
+						<input type="hidden" id="versions_id" name="versions_id">
+						<input type="text" id="versions_name" name="versions_name" class="citic-ast" validate="v.required"
+							readonly="readonly" placeholder="点击选择">
+					</td>
+				</tr>
+				<tr>
+					<td width="11%" class="table-text">是否新应用：</td>
+					<td width="21.333%">
+						<input type="text" id="is_new_system" name="is_new_system"  class="citic-ast" validate="v.required"
+							readonly="readonly">
+					</td>
+					<td width="11%" class="table-text">是否演练：</td>
+					<td width="21.333%" id="is_drill">
+						<label style="display:inline;"><input type="radio" value="00" name="is_drill">是</label>
+						<label style="display:inline; margin-left:20px;"><input type="radio" checked="checked" value="01" name="is_drill">否</label>
+					</td>
+					<td width="11%" class="table-text">申请人：</td>
+					<td width="21.333%">
+						<input type="hidden" id="apply_person" name="apply_person">
+						<input type="text" id="apply_person_name" name="apply_person_name" class="citic-ast" validate="v.required" readonly="readonly">
+					</td>
+				</tr>
+				<tr>
+					<td width="11%" class="table-text">计划投产日期：</td>
+					<td width="21.333%">
+						<input type="text" id="plan_date" name="plan_date"  class="citic-ast" onClick="WdatePicker({});"
+							readonly="readonly" placeholder="点击选择" validate="v.required">
+					</td>
+					<td width="11%" class="table-text">变更类别：</td>
+					<td width="21.333%">
+						<select id="change_type" name="change_type" dic_code="G_DIC_CHANGE_TYPE"></select>
+					</td>
+					<td colspan="2"></td>
+				</tr>
+				<!-- <tr>
+					<td width="11%" class="table-text">投产包类型：</td>
+					<td width="21.333%" id="pakage_type">
+						<label style="display:inline;"><input type="radio" value="01" checked="checked" name="pakage_type">基线包</label>
+						<label style="display:inline; margin-left:20px;"><input type="radio" value="02" name="pakage_type">补丁包</label>
+					</td>
+					<td  width="11%" class="table-text"><span class="hide_show_relate_id" style="display:none;">关联审批单号：</span></td>
+					<td  width="21.333%">
+						<span class="hide_show_relate_id" style="display:none;"><input type="text" id="relate_audit_no" name="relate_audit_no" class="citic-ast"
+							readonly="readonly"></span>
+					</td>
+					<td colspan="2"></td>
+				</tr> -->
+			</tbody>
+		</table>
+	</div>
+	
+	
+	<div class="ecitic-title-table" id="">
+		<div class="ecitic-title">
+			<span>当前投产任务清单<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-new ecitic-title-table">
+			<table id="sendProContent" class="table table-bordered table-hover table-text-show" style="min-width:1165px;">
+			</table>
+		</div>
+		<div class="ecitic-title">
+			<span>当前版本已发起投产的任务清单<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-new ecitic-title-table">
+			<table id="produceTaskInSameAuctiNo" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+		<div style="display:none" class="ecitic-title">
+			<span>接口列表<em></em></span>
+			<i></i>
+		</div>
+		<div style="display:none" class="ecitic-new ecitic-title-table">
+			<table id="table_interface_info_updata" class="table table-bordered table-hover table-text-show">
+			</table>
+		</div>
+	</div>
+	
+	<!-- 投产相关文件 -->
+	<div class="ecitic-title">
+		<input name="FILE_ID" type="hidden" value=""/>
+		<span>文档列表信息<em></em></span>
+		<i></i>
+	</div>
+	<div class="ecitic-title-table">
+		<div class="ecitic-operation">
+			<button class="btn btn-ecitic" id="add_file">上传</button>
+			<button class="btn btn-ecitic" id="delete_file">删除</button>
+			<a href="sfile/downloadFTPFile.asp?id=m_019" class="file_template_style" name="file_template_project">投产变更操作手册模板</a>
+			<!-- <a href="sfile/downloadFTPFile.asp?id=m_018" class="file_template_style" name="file_template_project">投产变更操作审批表模板</a>
+			<a href="sfile/downloadFTPFile.asp?id=m_017" class="file_template_style" name="file_template_task">二级投产评审记录表模板</a>
+			<a href="sfile/downloadFTPFile.asp?id=m_020" class="file_template_style" name="file_template_project">一级投产评审记录表模板</a> -->
+		</div>
+		<table id="table_file" class="aa table table-bordered table-hover table-center table-th tablr-input-text"></table>
+	</div>
+	<!-- End of 投产相关文件 -->
+	
+	<div class="ecitic-title-table" id="">
+		<div class="ecitic-title">
+			<span>投产变更说明<em></em></span>
+		</div>
+		<div class="ecitic-title-table">
+			<table id="query_table" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover table-center table-th tablr-input-text">
+				<tr>
+					<td width="18%" class="table-text"><span>变更功能说明及要点：</span></td>
+					<td colspan="3">
+					<textarea id="change_remark" name="change_remark" ></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text"><span>变更影响：</span></td>
+					<td colspan="3">
+					<textarea id="change_affect" name="change_affect" ></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text"><span>变更风险说明：</span></td>
+					<td colspan="3">
+					<textarea id="change_risk_remark" name="change_risk_remark" ></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text"><span>业务影响说明：</span></td>
+					<td colspan="3">
+					<textarea id="ser_affect_remark" name="ser_affect_remark"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text"><span>业务试运行及推广计划：</span></td>
+					<td colspan="3">
+					<textarea id="ser_try_run" name="ser_try_run"></textarea>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>	
+</div>	
+	<div class="ecitic-save">
+		<!-- <input id="save" type="button" class="btn btn-ecitic" value="保存 "> -->
+		<input id="submit" type="button" class="btn btn-ecitic" value="保存 并提交审计">
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭">
+	</div>
+	
+	<!-- 需求任务相关评审及文档查看模态框 -->
+	<div id="modal_req_approve_and_doc_update" class="modal hide fade" tabindex="-1">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="myModalLabel">需求任务相关评审及文档</h5>
+		</div>
+		<div class="ecitic-new ecitic-title-table modal-body">
+			<table id="sendProContentDetail" name="addtask" style="width:100%" class="table table-bordered table-hover table-center table-th tablr-input-text" >
+				<input type="hidden" id="material_req_task_id"/>
+				<thead>
+					<tr>
+						<th align="center" width="10%">序号</th>
+						<th align="center" width="15%">过程</th>
+						<th align="center" width="25%">检查项</th>
+						<th align="center" width="20%">现状</th>
+						<th align="center" width="15%">结论</th>
+						<!-- <th align="center" width="15%">查看</th> -->
+					</tr>
+				</thead>
+				<tbody>
+					<tr name="S_DIC_REQ_PUT_FILE010101" type="doc">
+						<td align="center" rowspan="2">1</td>
+						<td rowspan="2">业务需求</td>	
+						<td>需求申请书</td>
+						<td name="phase" file_id="">**文档</td>
+						<td name="result">不满足</td>
+					</tr>
+					<tr name="S_DIC_REQ_ACC_FILE010201" type="doc">
+						<td>业务需求说明书</td>
+						<td name="phase" file_id="">**文档</td>
+						<td name="result">不满足</td>
+					</tr>
+					<tr name="S_DIC_REQ_ANL_FILE03sj_01" type="doc">
+						<td align="center" rowspan="2">2</td>
+						<td rowspan="2">需求分析</td>	
+						<td>需求分析说明书</td>
+						<td name="phase" file_id="">**文档</td>
+						<td name="result">不满足</td>
+					</tr>
+					<tr name="S_DIC_REQ_ANL_FILE0305" type="doc">
+						<td>需求评审报告</td>
+						<td name="phase">**通过</td>
+						<td name="result">不满足</td>
+					</tr>
+				<!-- 	<tr name="S_DIC_SYS_DESIGN_FILE05sj_01" type="doc">
+						<td rowspan="2">3</td>
+						<td rowspan="2">开发设计</td>	
+						<td>总体设计说明书</td>
+						<td name="phase" file_id="">**文档</td>
+						<td name="result">不适用</td>
+					</tr>
+					<tr name="S_DIC_SYS_DESIGN_FILE05sj_03" type="doc">
+						<td>任务开发说明书</td>
+						<td name="phase" file_id="">**文档</td>
+						<td name="result">不适用</td>
+					</tr> -->
+					<!-- <tr name="TOTAL_DESIGN_STATE" type="appr">
+						<td>总体设计评审报告</td>
+						<td name="phase" file_id="">**通过</td>
+						<td name="result">不满足</td>
+					</tr> -->
+					<tr name="S_DIC_UNIT_TEST_FILE07sj_01" type="doc">
+						<td>4</td>
+						<td>单元测试</td>	
+						<td>单元测试报告</td>
+						<td name="phase" file_id="">**文档</td>
+						<td name="result">不适用</td>
+					</tr>
+					<!-- <tr name="S_DIC_JOINT_TEST_FILE08sj_01" type="doc">
+						<td>5</td>
+						<td>联调测试</td>	
+						<td>联调测试报告</td>
+						<td name="phase" file_id="">**文档</td>
+						<td name="result">不适用</td>
+					</tr> -->
+				<!-- 	<tr name="S_DIC_SIT_CASE_FILE09001sj_01" type="doc">
+						<td rowspan="4">6</td>
+						<td rowspan="4">SIT测试</td>	
+						<td>SIT测试案例</td>
+						<td name="phase" file_id="">**文档</td>
+						<td name="result">不通过</td>
+					</tr> -->
+					<!-- <tr name="SIT_STATE" type="appr">
+						<td>SIT测试案例评审</td>
+						<td name="phase">**通过</td>
+						<td name="result">不满足</td>
+					</tr> -->
+					<tr name="S_DIC_SIT_TEST_FILE09003sj_01" type="doc">
+						<td>6</td>
+						<td>SIT测试</td>	
+						<td>SIT测试报告</td>
+						<td name="phase" file_id="">**通过</td>
+						<td name="result">不满足</td>
+					</tr>
+					<!-- <tr name="SITSTATUS" type="test">
+						<td>SIT测试结论</td>
+						<td name="phase" file_id="">**通过</td>
+						<td name="result">不满足</td>
+					</tr> -->
+					<tr name="S_DIC_UAT_TEST_FILE10sj_02" type="doc">
+						<td >7</td>
+						<td>UAT测试</td>	
+						<td>UAT测试报告</td>
+						<td name="phase" file_id="">**文档</td>
+						<td name="result">不满足</td>
+					</tr>
+					<!-- <tr name="UATSTATUS" type="test">
+						<td>UAT测试结论</td>
+						<td name="phase" file_id="">**通过</td>
+						<td name="result">不满足</td>
+					</tr> -->
+				</tbody>
+			</table>
+		</div>
+		<div class="ecitic-save">	
+			<button class="btn btn-ecitic" data-dismiss="modal">关闭</button>
+		</div>
+		<div class="modal-footer"></div>
+	</div>
+<!-- 模态框 -->
+	<div id="file_modal"></div>
+	<div id="file_view_modal"></div>
+	<div id="sendProduceSendProPop_update"></div>
+	<div id="sendProduceTaskProblemPop_update"></div>
+
+</body>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script src="pages/approvalflow/afcommons.js"></script>
+<script type="text/javascript" src="dev_construction/send_produce/sendproduceapprove/sendProduceApprove_flow/approval_content.js"></script>
+<script type="text/javascript" src="dev_construction/send_produce/sendproduceapply/sendProduceApply_add.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/send_produce/sendproduceapply/sendProduceApply_common.js"></script>
+<script type="text/javascript" src="dev_construction/send_produce/sendproduceapply/sendProduceApply_update.js"></script>
+<script type="text/javascript" src="dev_construction/send_produce/sendproduceapply/sendProPop.js"></script>
+<script type="text/javascript" src="dev_construction/send_produce/sendproduceapply/taskProblemPop.js"></script>
+</html>

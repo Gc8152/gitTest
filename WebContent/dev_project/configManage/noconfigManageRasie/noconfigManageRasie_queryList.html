@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>不符合项目提出</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+</head>
+<body>
+	<div class="ecitic-inquire ecitic-moreNo">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="noconfigManageRasieForm">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">不符合项描述：</td>
+						<td><input type="text" id="R_descr" name="descr"/></td>
+						<td class="ecitic-right">项目名称：</td>
+						<td>
+							<input type="text" name="project_name" id="R_project_name"/>
+						</td>
+						<td class="ecitic-right">不符合项状态：</td>
+						<td>
+							<select id="R_status_name" name="status_name" diccode="P_DIC_CONFIG_NOCONFORM_STATUS" style="width:100%;"></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">不符合等级：</td>
+						<td><select id="R_grade_name" name="grade_name" diccode="P_DIC_QUALITY_GRADE" style="width:100%;"></select></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="querynoconfigManageRasie">查询</button></li>
+			<li><button class="btn btn-ecitic" id="resetnoconfigManageRasie">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="noconfigManageRasie_add">新增</button>
+		<button class="btn btn-ecitic" id="noconfigManageRasie_update">修改</button>
+		<button class="btn btn-ecitic" id="noconfigManageRasie_delete">删除</button>
+		<button class="btn btn-ecitic" id="noconfigManageRasie_submit">提交</button>
+		<button class="btn btn-ecitic" id="noconfigManageRasie_info">详情</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover table-text-show" id="noconfigManageRasieTab"></table>
+	</div> 
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="dev_project/configManage/noconfigManageRasie/noconfigManageRasie_queryList.js"></script>
+</html>

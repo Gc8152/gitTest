@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>外包人员考勤报表</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script type="text/javascript" src="js/commons/dic_item.js"></script>
+<script type="text/javascript" src="dev_outsource/supplier/supplierInfo/supplierPop.js"></script>
+<script type="text/javascript" src="js/commons/importExcelUtil.js"></script>
+</head>
+<body>
+<form action="" id="staffInfoList">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">人员名称</td>
+					<td>
+						<input type="text" name="FD.op_name" id="op_name"/>
+					</td>
+					<td class="ecitic-right">供应商名称</td>
+					<td>
+						<div class="ecitic-input-all">
+							<input type="hidden"  name="FD.supplier_id" id="supplier_id" />
+							<input type="text" placeholder="点击选择供应商" id="FDsupplier_name" readonly/>
+						</div>
+					</td>
+					<td class="ecitic-right">所属应用</td>
+					<td>
+						<input type="text" name="FD.op_belongsystem" id="op_belongsystem"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">考勤年月</td>
+					<td>
+						<input type="text" id="date" name="FD.date"  onclick ="WdatePicker({dateFmt:'yyyy-MM'});" placeholder="点击选择年月" readonly="readonly"/>
+					</td>
+					<td class="ecitic-right">行内归属部门</td>
+					<td>
+						<div class="ecitic-input-all" style="position: static;">
+							<input type="hidden" name="FD.op_office" id="op_office"/>
+							<input type="text" placeholder="点击选择行内归属部门" name="FD.a" id="FD_op_office" readonly/>
+						</div>
+					</td>
+					<td class="ecitic-right">人员采购类型</td>
+					<td>
+						<select  id="purch_type" name="FD.purch_type" class="citic-sele-ast" style="width:100%;"></select>
+					</td> 
+				</tr>
+				<tr>
+					<td class="ecitic-right">人员状态</td>
+					<td>
+						<select  id="op_state" name="FD.op_state" class="citic-sele-ast" style="width:100%;"></select>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button type="button" class="btn btn-ecitic" id="queryOutPersonInfo">查询</button></li>
+			<li><button type="button" class="btn btn-ecitic" id="resetOutPersonInfo">重置</button></li>
+		</ul>
+	</div>
+</form>
+	<div class="ecitic-operation">
+		<button type="button" class="btn btn-ecitic" id="outperson_export">导出</button>
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover table-text-show" id="outpersonTableInfo1"></table>
+	</div>
+<div id="outperson_contractSupplier_Pop1"></div>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_outsource/outsource/report/outperson_report.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>投产信息查看</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<style type="text/css">
+	.click_text_sp{color:#c9161d;}
+	.click_text_sp:hover{color:#c9161d;cursor:pointer;text-decoration:underline;}
+	.click_text_sp:active{color:blue;cursor:pointer;text-decoration:underline;}
+</style>
+</head>
+<body class="">
+	<div class="main_iframeFormW"> <!-- Only required for left/right tabs -->
+		<div class="main_iframe_con">
+			<div class="ecitic-title">
+				<span>需求点信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table class="table table-bordered table-center table-th tablr-input-text">
+					<tbody>
+						<tr>
+							<td width="11%" class="table-text">需求点编号：</td>
+							<td width="21.333%">
+								<input type="text" id="SUB_REQ_CODE" name="SUB_REQ_CODE"  class="citic-ast" readonly="readonly">
+								<input type="hidden" id="SUB_REQ_ID" name="SUB_REQ_ID"/>	
+								<input type="hidden" id="PRODUCE_NO" name="PRODUCE_NO"/>
+								<input type="hidden" id="ID" name="ID"/>
+							</td>
+							<td width="11%" class="table-text">需求点名称：</td>
+							<td width="21.333%">
+								<input type="text" id="SUB_REQ_NAME" name="SUB_REQ_NAME"  class="citic-ast" readonly="readonly">	
+							</td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">应用名称：</td>
+							<td width="21.333%">
+								<input type="text" id="SYSTEM_NAME" name="SYSTEM_NAME"  class="citic-ast" readonly="readonly">
+								<input type="hidden" id="SYSTEM_ID" name="SYSTEM_ID">	
+							</td>
+							<td width="11%" class="table-text">版本名称：</td>
+							<td width="21.333%">
+								<input type="text" id="VERSIONS_NAME" name="VERSIONS_NAME"  class="citic-ast" readonly="readonly">
+								<input type="hidden" id="VERSIONS_ID" name="VERSIONS_ID">	
+								<input type="hidden" id="VERSIONS_TYPE" name="VERSIONS_TYPE">
+							</td>
+						</tr>
+						<tr>
+							<td width="11%" class="table-text">需求提出人：</td>
+							<td width="21.333%">
+								<input type="text" id="REQ_BUSINESSER" name="REQ_BUSINESSER"  class="citic-ast" readonly="readonly">
+							</td>
+							<td></td><td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="ecitic-title-table">
+				<div class="ecitic-title">
+					<span>关联需求任务<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-new ecitic-title-table">
+					<table id="reqTaskTable" class="table-text-show table table-bordered table-hover table-center table-th tablr-input-text">
+					</table>
+				</div>
+				<div class="ecitic-title">
+					<span>关联接口列表<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-new ecitic-title-table">
+					<table id="table_interface_info_updata" name="table_TaskInterfaceInfo" class="table table-bordered table-hover table-text-show">
+					</table>
+				</div>
+			</div>
+			<div class="ecitic-title-table" id="">
+				<div class="ecitic-title">
+					<span>业务验证信息<em></em></span><i></i>
+				</div>
+				<div class="ecitic-title-table">
+				  <input type="hidden" name="proManId">
+					<table id="query_table" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover table-center table-th tablr-input-text">
+						<tr style="height:35px;">
+							<td width="12%" class="table-text"><span>业务验证结论：</span></td>
+							<td width="21.333%">
+								<select id="VERIFY_RESULT" name="VERIFY_RESULT" validate="v.required" style="width: 250px!important"></select>
+							</td>
+							<td colspan="2"></td>
+						</tr>
+						<tr style="height:75px;">
+							<td width="12%" class="table-text"><span>业务验证说明：</span></td>
+							<td colspan="3">
+								<textarea id="VERIFY_DESC" name="VERIFY_DESC" ></textarea>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="ecitic-save">
+				<input type="button" class="btn btn-ecitic" id="save"  value="保存"/>
+				<input type="button" class="btn btn-ecitic" id="commit"  value="保存&提交"/>
+				<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/send_produce/sendproduceverify/sendProduceVerify_update.js"></script>
+<script type="text/javascript" src="dev_construction/sit_test_jn/sit_submit/initqueryInterface.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_analyze/task_accept/view_taskdetail.js"></script>
+</html>

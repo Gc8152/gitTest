@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>UAT测试报告管理列表</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<!-- 字体图标 -->
+</head>
+<script type="text/javascript">
+		/* 查询的URL */
+		var create_person = $("#currentLoginNo").val();
+		var url_type = '&create_person='+create_person;
+</script>
+<body>
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table id="reqSubReportTerm" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">应用名称：</td>
+					<td><input type="text" name="system_name"/></td>
+					<td class="ecitic-right">需求点名称：</td>
+					<td><input type="text" name="sub_req_name"/></td>
+					<td class="ecitic-right">需求编号：</td>
+					<td><input type="text" id="" name="req_code"/></td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">需求名称：</td>
+					<td><input type="text" id="" name="req_name"/></td>
+					<td class="ecitic-right">上传状态：</td>
+					<td><select id="upload_state" name="upload_state"></select></td>
+					<td class="ecitic-right">验收结论：</td>
+					<td><select id="accept_result" name="accept_result"></select></td>
+				</tr>
+			<!-- 	<tr>
+					<td class="ecitic-right">提交人：</td>
+					<td><input type="text" id="" name="submit_person_name"/></td>
+					<td class="ecitic-right">审核状态：</td>
+					<td><select id="verify_result" name="verify_result"></select></td>
+				</tr> -->
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="query">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset">重置</button></li>
+			<!-- <li class="ecitic-more"></li> -->
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="upload">上传</button>
+		<button class="btn btn-ecitic" style="display:none;" id="update">修改</button>		
+		<!-- <button class="btn btn-ecitic" id="startApprove">发起审核</button>
+		<button class="btn btn-ecitic" id="approve">审核</button>
+		<button class="btn btn-ecitic" id="phasedJury1" onclick="sponsorJury('10','01','reqSubReportTable','发起需求分析一级评审');">发起一级评审</button>
+		<button class="btn btn-ecitic" id="phasedJury2" onclick="sponsorJury('10','02','reqSubReportTable','发起需求分析二级评审');">发起二级评审</button>
+		 -->	
+		<button class="btn btn-ecitic" id="detail">查看详情</button>
+		<!-- <button class="btn btn-ecitic" id="bugImport">缺陷导入</button> -->
+	</div>
+	<div class="ecitic-new">
+		<table class="table table-bordered table-hover table-text-show" id="reqSubReportTable" style="min-width:987px;">
+			
+		</table>
+	</div>
+	
+<!-- UAT缺陷导入弹框 -->	
+	<div id="modal_bug_import" class="modal hide fade">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">×</button>
+			<h3>UAT缺陷导入</h3>
+		</div>
+		<div class="modal-body" style="overflow-x: hidden; max-height: 450px;">
+			<table id="ass_info_export" class="table table-bordered tablr-input-text">
+				<tbody><tr>
+					<td class="table-text">选择附件：</td>
+					<td>
+						<div class="upload-checkfile-all">
+							<input type="text" name="file_bug_import_id" id="file_bug_import_id" class="input-txt" />
+							<input type="button" value="浏览" class="input-btn" />
+							<input name="file" type="file" class="input-file" onchange="document.getElementById('file_bug_import_id').value=this.value"  id="file_bug_import">
+						</div>
+					</td>
+					<td class="table-text">
+						<a href="templet/UAT缺陷导入模版.xlsx">下载模板</a>
+					</td>
+				</tr>
+			</tbody></table>
+			
+			<div class="ecitic-save">
+			<button class="btn btn-ecitic" aria-hidden="true" data-dismiss="modal">关闭</button>
+			<button id="import_bug_button" class="btn btn-ecitic">导入</button>
+			</div>
+		</div>
+		<div class="modal-footer" style="text-align:center">
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="js/commons/ajaxfileupload.js"></script>
+<script type="text/javascript" src="dev_construction/uat_test/uatreport/uatReport_queryList.js"></script>
+	<script type="text/javascript" src="dev_construction/requirement/reqTask_phased/task_phased_jury.js"></script>
+</html>

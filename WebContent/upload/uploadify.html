@@ -1,0 +1,20 @@
+
+<div id="myModalFileUpload" class="modal hide fade" tabindex="-1"
+	role="dialog">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true">×</button>
+		<h3 id="myModalLabel">附件上传</h3>
+	</div>
+	<div class="modal-body">
+		<p id="msmenu_context" style="max-height:110px;">
+			<input type="file" id="file_upload" />
+		</p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn-gray" onclick="javascript:$('#file_upload').uploadify('cancel', '*')">清空列表</button>
+		<button class="btn-gray" onclick="javascript:$('#file_upload').uploadify('upload', '*')">开始上传</button>
+		<button class="btn-gray" data-dismiss="modal" id="menu_sure"
+			aria-hidden="true">确定</button>
+	</div>
+</div>

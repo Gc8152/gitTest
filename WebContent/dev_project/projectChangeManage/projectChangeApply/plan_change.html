@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>计划变更</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="main_iframeFormW">
+	<div class="tab-pane fade in active">
+		<div class="ecitic-title-table">
+			<div class="ecitic-title">
+				<span>里程碑变更信息<em></em></span>
+				<i></i>
+			</div>
+			<div>
+				<div class="ecitic-operation">
+					<button class="btn btn-ecitic" id="milepost_Add">新增</button>
+					<button class="btn btn-ecitic" id="milepost_Delete">删除</button>
+				</div>
+				<div class="ecitic-new tab-content bootstrapTabsCont">
+					<table id="plan_table_milestone" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover table-center table-th tablr-input-text">
+						<tr>
+							<th>序号</th>
+							<th>里程碑名称</th>
+							<th>开始日期</th>
+							<th>完成日期/里程碑点</th>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="ecitic-title-table">
+			<div class="ecitic-title">
+				<span>变更影响评估<em></em></span>
+				<i></i>
+			</div>
+			<div>
+				<div class="ecitic-new tab-content bootstrapTabsCont">
+					<table id="table_milestone" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover table-center table-th tablr-input-text">
+						<tr>
+							<td colspan="2">评估内容</td>
+							<td colspan="3">评估结果</td>
+							<td>影响程度等级</td>
+							<td>评估值</td>
+							<td>变更总体影响评估值</td>
+						</tr>
+						<tr>
+							<td colspan="2">工期影响评估</td>
+							<td><input type="text"/></td>
+							<td>天</td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td rowspan="6"></td>
+						</tr>
+						<tr>
+							<td colspan="2">规模影响评估</td>
+							<td><input type="text"/></td>
+							<td>FP</td>
+							<td><input type="text"/></td>
+							<td colspan="2"></td>
+						</tr>
+						<tr>
+							<td colspan="2">工作量影响评估</td>
+							<td><input type="text"/></td>
+							<td>人日</td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+						</tr>
+						<tr>
+							<td rowspan="3">关联系统影响评估</td>
+							<td>工期影响</td>
+							<td><input type="text"/></td>
+							<td>天</td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+						</tr>
+						<tr>
+							<td>规模影响</td>
+							<td><input type="text"/></td>
+							<td>FP</td>
+							<td><input type="text"/></td>
+							<td colspan="2"></td>
+						</tr>
+						<tr>
+							<td>工作量影响</td>
+							<td><input type="text"/></td>
+							<td>人日</td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="ecitic-save">
+			<button class="btn btn-ecitic" id="save_versionPlan">保存</button>
+			<button class="btn btn-ecitic" id="commit_versionPlan">提交</button>
+			<button class="btn btn-ecitic" id="close_versionPlan">返回</button>
+		</div>
+	</div>
+</div>
+<div id="choosePro"></div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_project/projectChangeManage/projectChangeApply/plan_change.js"></script>
+<script type="text/javascript" src="dev_project/projectChangeManage/projectChangeApply/projectInfoPop.js"></script>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>需求分发页面详情</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="tabbable">
+<ul id="myTab" class="nav nav-tabs" style="font-size:13px;">
+    <li >
+        <a href="#requirementInfo_detail" data-toggle="tab">
+        <i class="icon-home"></i>
+                                  需求信息
+        </a>
+    </li>
+    <li>
+        <a href="#requirementAssess_detail" data-toggle="tab">
+        <i class="icon-asterisk"></i>
+                                  需求评估
+        </a>
+    </li>
+    <li class="active">
+        <a href="#reqAnalzed_detail" data-toggle="tab">
+        <i class="icon-th-list"></i>
+                                  需求分析
+        </a>
+    </li>
+ </ul>
+ <div id="requirementAssessTabContent" class="tab-content bootstrapTabsCont">
+ <!-- 需求信息tab开始 -->
+  <div class="tab-pane fade" id="requirementInfo_detail">
+	   
+		<form class="form_inline" id="g_requirement_distribute">
+		<div class="ecitic-title">
+			<span>需求信息<em></em></span>
+			<i></i>
+		</div>
+			<div class="ecitic-title-table">
+				<table style="width: 100%" class="table table-striped table-hover table-bordered tablr-input-text">
+					<!-- table-bor-paw-->
+					<tr>
+					    <td width="11%" class="table-text">需求编号：</td>
+					    <td width="22%">
+					    <span  id="req_code_reqSPD" name="SPD.req_code" ></span>
+					    
+					    </td>
+					    <input type="hidden" id="req_id_reqSPD" name="SPD.req_id">
+						<td width="12%" class="table-text">需求名称：</td>
+						<td colspan="3" width="55%">
+						<span id="req_name_reqSPD"  name="SPD.req_name" ></span> 
+					</tr>
+					<!-- <tr>
+						<td class="table-text">需求大类：</td>
+						<td><span  id="req_type1_reqSPD" name="SPD.req_type1_display" ></span></td>
+						<td  class="table-text">需求子类：</td>
+						<td><span  id="req_type2_reqSPD" name="SPD.req_type2_display" ></span></td>
+						<td width="11%" class="table-text">需求来源：</td>
+						<td width="22%"><span  id="req_come_reqSPD" name="SPD.req_come_display"  ></span></td>
+					</tr> -->
+					<tr>
+						<td class="table-text">业务联系人：</td>
+						<td><span id="req_businesser_reqSPD"  name="SPD.req_businesser" ></span></td>
+						<td class="table-text">业务联系电话：</td>
+						<td><span id="req_business_phone_reqSPD"  name="SPD.req_business_phone" ></span></td>
+						<td class="table-text">提出部门：</td>
+						<td>
+						<span  id="req_put_dept_reqSPD" name="SPD.req_put_dept_display" ></span>	
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">主管部门：</td>
+						<td>
+						<span  id="req_dept_reqSPD" name="SPD.req_dept_display" style="width: 180px" ></span> 
+						<td class="table-text">会签部门：</td>
+						<td colspan="3"><span  id="req_countersign_dept_reqSPD" name="SPD.req_countersign_dept_display" style="width: 550px" ></span></td>
+					</tr>
+					<tr>
+						<td class="table-text">要求投产日期：</td>
+						<td><span  id="req_operation_date_reqSPD" name="SPD.req_operation_date" style="width: 180px" ></span></td>
+						<!--<td class="table-text">文书审核人：</td>
+						<td><span  id="req_clerk_reqSPD" name="SPD.req_clerk" style="width: 180px" ></span></td>-->
+						<!--<td class="table-text">是否提供数据标准明细报表：</td>
+						<td>
+						<input disabled="disabled" type="radio" id="req_datatable_flag_reqSPD1" name="SPD.req_datatable_flag" value="00" >是&nbsp;&nbsp;&nbsp;
+						<input disabled="disabled" type="radio" id="req_datatable_flag_reqSPD2" name="SPD.req_datatable_flag" value="01" >否</td>
+						<td colspan="2"></td>-->
+						<td class="table-text">业务优先级：</td>
+						<td>
+						  <div id="req_level_reqSPD" readonly></div>
+						</td>
+						<!--<input disabled="disabled" type="radio" id="req_level_reqSPD1"name="SPD.req_level" value="01" />高&nbsp;&nbsp;&nbsp; 
+						<input disabled="disabled" type="radio" id="req_level_reqSPD2" name="SPD.req_level" value="02" />中&nbsp;&nbsp;&nbsp;
+						<input disabled="disabled" type="radio" id="req_level_reqSPD3" name="SPD.req_level" value="03" />低</td>-->
+	                    <td colspan="2"></td>
+					</tr>
+					<!--<tr>
+						<td class="table-text">需求收益评估：</td>
+						<td>
+						<input disabled="disabled" type="radio" id="req_income_reqSPD1" name="SPD.req_income_flag" value="00" />是&nbsp;&nbsp;&nbsp; 
+						<input disabled="disabled" type="radio" id="req_income_reqSPD2" name="SPD.req_income_flag"value="01" />否
+						</td>
+						<td class="table-text"><span id="req_income_spd">需求收益估算：</span></td>
+						<td colspan="3">
+							<div style="float: left">
+								<span  id="req_income_reqSPD" name="SPD.req_income" ></span>
+							</div>
+							<div style="float: left; color: red" id="req_remark_spd">（万元/年）</div>
+						</td>
+					</tr> -->
+					<tr>
+						<td class="table-text" style="height: 80px">需求收益评估理由：</td>
+						<td colspan="5" height="90px">
+						<span id="req_income_doc_reqSPD" name="SPD.req_income_doc" >
+						</span></td>
+					</tr>
+					<tr>
+						<td class="table-text" style="height: 80px">需求概述：</td>
+						<td colspan="5" height="90px">
+						<span id="req_description_reqSPD" name="SPD.req_description"  >
+						</span></td>
+					</tr>
+					<tr>
+						<td class="table-text" style="height: 80px">需求提出部门意见：</td>
+						<td colspan="5" height="90px">
+						<span id="put_dept_opinion_reqSPD" name="SPD.put_dept_opinion"  >
+						</span></td>
+					</tr>
+				</table>
+			</div>
+			<div class="ecitic-title">
+				<input id="file_id_reqSPD" name="SPD.file_id" type="hidden" />
+				<span>附件列表信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table id="reqSpd_tablefile" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover table-center table-th tablr-input-text"></table>
+			</div>
+			<div class="ecitic-title">
+				<span>需求分发信息<em></em></span>
+			         <i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table style="width: 100%" class="table table-striped table-hover table-bordered tablr-input-text">
+					<!-- table-bor-paw-->
+					<tr>
+						<td class="table-text" width="11%">分发结论：</td>
+						<td width="12%">
+						    <input disabled="disabled" type="radio" id="req_dis_resultSPD1" name="SPD.req_dis_result" value="01" >接受&nbsp;&nbsp;&nbsp; 
+							<input disabled="disabled" type="radio" id="req_dis_resultSPD2" name="SPD.req_dis_result" value="02" >退回
+						</td>
+						<td class="table-text" width="12%">需求优先级：</td>
+						<td width="13%" colspan="3"><span  id="req_scoreSPD1" name="SPD.req_score_display" ></span></td>
+						<!-- <td class="table-text">需求等级：</td>
+						<td>
+						  <span  id="req_scaleSPD" name="SPD.req_scale_display"  ></span>
+						</td> -->
+						<td class="table-text"  width="12%">产品经理：</td>
+						<td >
+						   <span  id="req_product_managerSPD" name="SPD.req_product_manager_display"  ></span>
+					    </td>
+					   </tr>
+					<tr>
+						<td class="table-text">分发意见：</td>
+						<td colspan="10" height="90px" width="90%">
+						<span id="req_dis_viewSPD" name="SPD.req_dis_view"  style="height:90px" ></span>
+					</tr>
+				</table>
+			</div>
+		</form>
+		<div class="ecitic-save">
+			 <input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭" />
+		</div>
+		<!--附件模态框  -->
+       <div id="reqSpd_fileview_modal"></div>
+	</div>
+<!--需求信息tab结束 -->
+<!-- 需求评估tab开始 -->
+<div class="tab-pane fade" id="requirementAssess_detail">
+  <form class="form_inline" id="g_requirement_accept">
+	       <div class="ecitic-title">
+				<span>受理信息<em></em></span>
+			        <i></i>
+			</div>
+		<div class="ecitic-title-table">
+			<table style="width: 100%" class="table table-striped table-hover table-bordered tablr-input-text">
+				<tr>
+				<td class="table-text" width="11%">受理结论：</td>
+				<td width="89%">
+				  <div style="float:left">
+				    <input disabled="disabled" type="radio" id="SPDreq_acc_result1" name="SPD.req_acc_result" value="01" >受理&nbsp;&nbsp;&nbsp;
+				    <input disabled="disabled" type="radio" id="SPDreq_acc_result2" name="SPD.req_acc_result" value="02" >退回&nbsp;&nbsp;&nbsp;
+				    <input disabled="disabled" type="radio" id="SPDreq_acc_result3" name="SPD.req_acc_result" value="03" >转交
+				  </div>
+				</td>
+				</tr>
+				<tr>
+			    <td class="table-text">结论说明：</td>
+			    <td colspan="5" height="90px">
+			      <span id="SPDreq_analytic_result" name="SPD.req_analytic_result"  style="height:90px" ></span>
+			    </td>
+			    </tr>
+			 </table>
+		  </div>
+		  	
+		  	 <div class="ecitic-title">
+		     <span id="req_feasibility_title">可行性分析<em></em></span>
+			   <i></i>
+		 </div>
+		 <div class="ecitic-title-table">
+		    <table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+			  <tr>
+				<td class="table-text" style="width: 11%"><span id="SPD_acc_feasibility_hide">分析结论：</span></td>
+				<td style="width: 25%">
+				  <span id="SPD_acc_feasibility"></span>
+				</td>
+				<td colspan="4"></td>
+			  </tr>
+			  <tr>
+			    <td class="table-text" style="width: 11%">备注：</td>
+			    <td colspan="5" height="90px">
+			      <span  id="SPDreq_feasibility_explain" name="SPD.req_feasibility_explain" style="height:120px" ></span>
+			    </td>
+			  </tr>
+			 </table>
+		  </div>
+		  <div class="ecitic-title">
+		     <span id="req_access_title">需求属性<em></em></span>
+			   <i></i>
+		  </div>
+		  <div class="ecitic-title-table ecitic-title-table-application" >
+		    <table   class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+			  <tr>
+			    <td class="table-text" style="width: 12%">流程分类：</td>
+			    <td style="width: 20%">
+			      <span id="SPDreq_acc_classify" name="SPD.req_acc_classify_display"  class="requirement-ele-width" >
+			      </span>
+			    </td>
+			    <td class="table-text" style="width: 14%">需求质量：</td>
+			    <td style="width: 19%">
+			        <span id="SPDreq_quality" name="SPD.req_quality_display" class="requirement-ele-width" >
+			        </span>
+			    </td>  
+			    <td class="table-text">需求来源：</td>
+				<td>
+					  <span id="SPDreq_come" name="SPD.req_acc_come_display"  class="requirement-ele-width" ></span>
+				</td>
+			  </tr>
+			  <tr>
+				<td class="table-text">需求大类：</td>
+				<td>
+				  <span id="SPDreq_acc_type1" name="SPD.req_acc_type1_display"  class="requirement-ele-width"></span>
+				</td>
+				<td  class="table-text">需求子类：</td>
+				<td>
+					<span id="SPDreq_acc_type2" name="SPD.req_acc_type2_display" class="requirement-ele-width" ></span>
+				</td>
+				<td class="table-text">开发模式：</td>
+			     <td>
+			        <span id="SPDreq_develop_mode" name="SPD.req_develop_mode_display" class="requirement-ele-width" diccode="G_DIC_REQ_DEVELOP_MODE"  validate="v.required" valititle="该项为必填项" style="width:100%">
+			        </span>
+			     </td>
+				</tr>
+			    <tr>
+			      <td class="table-text">需求规模：</td>
+			      <td>
+			        <span id="SPDreq_demand_size" name="SPD.req_demand_size_display" class="requirement-ele-width" ></span>
+			      </td>
+			      <td class="table-text"><!-- 是否1618： --></td>
+			      <td>
+			        <span id="SPDis_1618" name="SPD.is_1618_display"  style="display:none" class="requirement-ele-width" ></span>
+			      </td>
+			      <td class="table-text"><span id="business_org_hide">主管业务部门:</span></td>
+			      <td>
+			        <span  id="SPDproject_id_display"  name="SPD.project_id_display" ></span>
+			      </td>   
+			     </tr>
+			</table>
+		 </div>
+		<div class="ecitic-title">
+		  <span>评估信息<em></em></span>
+			    <i></i>
+		</div>
+			<div class="ecitic-title-table">
+			  <table style="width: 100%" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+			    <tr>
+			      <td class="table-text" width="14%">需求分析岗(主办方)：</td>
+			      <td width="20%">
+			        <span  id="SPDreq_analysis_name" name="SPD.req_analysis_name" class="requirement-ele-width" ></span>
+			      </td>
+			      <td class="table-text" style="width: 14%"><span id="system_name_hide">应用名称(主办方)：</span></td>
+			      <td style="width: 19%">
+			          <span  id="SPDsystem_name" name="SPD.system_name" class="requirement-ele-width" ></span>
+			      </td>
+			      <!-- <td class="table-text" width="14%">需求预计投产版本：</td>
+			      <td width="19%">
+			        <span  id="SPDreq_version_name" name="SPD.req_version_name" class="requirement-ele-width" ></span>
+			      </td> -->
+			      <td colspan="2"></td>
+			    </tr>
+			    <tr>
+                  <td class="table-text">开发工作量(人日):</td>
+			      <td>
+			        <span id="SPDdev_workload" name="SPD.dev_workload"></span>
+			      </td>
+			      <td class="table-text">测试工作量(人日):</td>
+			      <td>
+			        <span  id="SPDtest_workload" name="SPD.test_workload" class="requirement-ele-width" ></span>
+			      </td>
+			      <td class="table-text">总工作量(人日):</td>
+			      <td>
+			        <span  id="SPDreq_total_workload" name="SPD.req_total_workload" class="requirement-ele-width"></span>
+			      </td>
+			    </tr>
+			  </table>
+			</div>
+			<!-- 
+			<div class="ecitic-title">
+			    <span>实施计划<em></em></span>
+			      <i></i> 
+			</div>
+		    <div class="ecitic-title-table">
+			  <table id="gReqPlanTable"  class="table table-bordered table-hover" ></table>
+			</div>-->
+			   
+			<div class="ecitic-title" style="display:none">
+				<input id="file_id_reqAssSPD" name="SPD.file_id_assess" type="hidden" />
+				<span>附件列表信息<em></em></span>
+				<i></i>
+			</div>
+			<!-- <div class="ecitic-title-table">
+				<table id="reqSpdAss_tablefile" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover table-center table-th tablr-input-text"></table>
+			</div> -->
+		</form>
+		<div class="ecitic-save">
+			 <input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭" />
+		</div>
+		<!--附件模态框  -->
+       <div id="reqSpdAss_fileview_modal"></div>
+	 </div>
+	 <!--需求评估tab结束 -->
+	 <!--需求分析tab开始 -->
+	 <div class="tab-pane fade in active" id="reqAnalzed_detail">
+	 <form class="form_inline" id="g_requirement_sub">
+	       <div class="ecitic-title">
+				<span>需求点信息<em></em></span>
+			        <i></i>
+			</div>
+		<div class="ecitic-title-table">
+		  
+			<table id="gReqSubDetail"  class="table table-bordered table-hover" ></table>
+			
+	    </div>
+	    </form>
+	    <div class="ecitic-save">
+			 <input type="button" class="btn btn-ecitic" name="closePageTabConfirm" value="关闭" />
+		</div>
+	 </div>
+	<!--需求分析tab结束 -->
+	</div>
+	<!--tab content结束 -->
+ </div>
+</body>
+
+<script type="text/javascript" src="bootstrap/js/select2.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_analyze/split_subreq/splitSubreq_detail.js"></script>
+</html>

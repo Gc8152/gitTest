@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="dev_application/useInterfaceApply/useInterfaceApply.css" rel="stylesheet">
+<title>填写申请页面</title>
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title-table">
+		<input id="FILE_ID_EDIT" name="IU.FILE_ID" type="hidden" />
+		<div class="ecitic-title">
+<span>需求变更>>变更申请<em></em></span><i></i>
+</div>
+		
+		<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table"><!-- table-bor-paw-->
+				<tr>
+					<td width="20%" class="table-text">需求编号：</td>
+					<td width="30%">
+						<input placeholder="请选择" readonly type="text" name="IU.REQ_CODE" class="requirement-ele-width"  validate="v.required" valititle="该项为必填项">
+						<input type="hidden"  name="IU.REQ_ID" />
+						<input type="hidden"  name="IU.REQ_CHANGE_ID" />
+						<input type="hidden"  name="IU.REQ_CHANGE_NUM" />
+						<input type="hidden"  name="IU.REQ_PRODUCT_MANAGER" />
+						<input type="hidden"  name="IU.SYSTEM_NAME" />
+					</td>
+					<td width="20%" class="table-text">需求名称：</td>
+					<td width="30%" >
+						<input type="text" name="IU.REQ_NAME" class="requirement-ele-width"  validate="v.required" valititle="该项为必填项"  readonly>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">业务联系人：</td>
+					<td >
+						<input type="text" name="IU.CHANGE_BUSINESSER" class="requirement-ele-width"  validate="v.required" valititle="该项为必填项">
+					</td>
+					<td class="table-text">业务联系人电话：</td>
+					<td>
+						<input type="text" name="IU.CHANGE_BUSINESS_PHONE" class="requirement-ele-width" validate="v.required" valititle="该项为必填项"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">变更原因分类：</td>
+					<td>
+					<select id="CHANGE_REASON_TYPE" name="IU.CHANGE_REASON_TYPE" diccode="G_DIC_CHANGE_REASON_TYPE"  style="width:100%" validate="v.required"  valititle=""></select>					
+					</td><td colspan="2"></td>
+				</tr>
+				<tr>
+					<td class="table-text" >变更原因：</td>
+					<td colspan="3">
+						<textarea cols="90" rows="3" name="IU.CHANGE_REASON" placeholder="请填写变更原因" class="requirement-ele-width" validate="v.required" valititle="该项为必填项"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text" >变更描述：</td>
+					<td colspan="3">
+						<textarea cols="90" rows="3" name="IU.CHANGE_DESCRIPTION" placeholder="请填写变更描述" class="requirement-ele-width" validate="v.required" valititle="该项为必填项"></textarea>
+					</td>
+				</tr>
+					<tr>
+					<td class="table-text">变更分析人：</td>
+					<td>
+						<input type="text" name="IU.CHANGE_ANALYZE_NAME" class="requirement-ele-width" validate="v.required" valititle="该项为必填项" readonly/>
+						<input type="hidden"  name="IU.CHANGE_ANALYZE_ID" />
+					</td><td colspan="2"></td>
+				</tr>
+		</table>
+	</div>
+	 <div class="ecitic-title">
+				<span>需求点列表信息<em></em></span>
+				<i></i>
+	</div>
+	<div class="ecitic-title-table">
+			<table id="initiate_reqSubsTable"  class="table table-bordered table-hover table-text-show"></table>
+	</div>
+ 	 <div class="ecitic-title">
+				<span>附件列表信息<em></em></span>
+				<i></i>
+	</div>
+	<div class="ecitic-title-table">
+		<div class="ecitic-operation">
+			<button type="button" class="btn btn-ecitic" id="reqChange_upFile">上传</button>
+			<button type="button" class="btn btn-ecitic" id="reqChange_delFile">删除</button>
+			<a href="sfile/downloadFTPFile.asp?id=m_031" class="file_template_style">需求变更申请书模版</a>
+		</div>
+			<table id="initiate_fileTable"  class="table table-bordered table-hover table-text-show"></table>
+	</div>
+	<div class="ecitic-save" >
+		<input type="button"  name="useInterfaceApply_edit" class="btn btn-ecitic" btn="saveAppInfo" value="保存"/>
+		<input type="button"  name="useInterfaceApply_edit" class="btn btn-ecitic" btn="submitAppInfo" value="保存&提交"/>
+	 	<input type="button"  class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+    </div>
+    <!--需求编号模态框  -->
+    <div mod="requirementPop"></div>
+    <!--变更分析人模态框  -->
+    <div mod="changeAnalyzePop"></div>
+    <!--上传附件模态框  -->
+    <div id="file_modal"></div>
+	<div id="file_initiate_modal"></div>
+</div>
+</body>
+
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="dev_construction/requirement/requirement_change/initiate/changeInitiate_edit.js"></script>
+<script src="dev_construction/requirement/requirement_change/initiate/requirementPop.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script src="dev_construction/requirement/requirement_change/initiate/userPop.js"></script>
+</html>

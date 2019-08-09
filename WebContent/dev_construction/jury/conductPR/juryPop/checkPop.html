@@ -1,0 +1,29 @@
+<!-- 角色模态框 -->
+<div id="myModal_check" class="modal hide fade" tabindex="-1" style="top:50%;margin-top: -210px;">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="myModalLabel">选择检查项页面</h5>
+	</div>
+	<form action="" class="form-inline" id="check_query">
+		<div class="row">
+			<div class="span6 h50">
+				<label class="pl60">评审检查项：</label>
+				<input type="text" id="pop_checkName" name="G.check_name">
+			</div>
+			<div class="span6 h50">
+				<label class="pl60">评审级别：</label>
+				<select id="pop_checkGrade" class="citic-sele-ast" name="G.check_grade" style="width: 188px"></select>
+				
+			</div>
+		</div>
+	</form>
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="查询" id="pop_checkSearch" type="button" />
+		<input class="btn btn-ecitic" value="重置" id="pop_checkReset" type="button" />
+		<input class="btn btn-ecitic" value="选中并返回" id="pop_checkSave" type="button" />
+	</div>
+	<div class="modal-body">
+		<table id="pop_checkTable" title="双击选择一条数据"></table>
+	</div>
+	<div class="modal-footer"></div> 
+</div>

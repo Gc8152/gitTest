@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>外包人员重定级申请</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<form action="" id="OptRankist">
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>申请信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table class="table table-bordered tablr-input-text" id="OptRankTable">
+				<tr>
+					<td width="11%" class="table-text">申请职能组</td>
+					<td>
+						<input type="hidden" name="UPG.id" id="rank_id">
+						<input type="text" name="UPG.apply_group" id="apply_group" validate="v.required" valititle="申请职能组为必填项"  /> 
+						<input type="hidden" name="UPG.group_code" id="group_code" readonly/> 
+						<input type="hidden" name="UPG.group_manager_project" id="group_manager_project" readonly/> 
+						<input type="hidden" name="UPG.core_manager" id="core_manager" readonly/> 
+					</td>
+					<td width="11%" class="table-text">申请人</td>
+					<td width="22.333%">
+						<input type="text" name="UPG.opt_manager" id="Up_opt_manager" validate="v.required" valititle="申请人为必填项"  /> 
+					</td>
+					<td width="11%" class="table-text">申请时间</td>
+					<td>
+						<input type="text" name="UPG.rank_apply_time"  id="Up_rank_apply_time" onClick="WdatePicker({})" readonly validate="v.required" valititle="申请时间为必填项" />
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">申请原因</td>
+					<td colspan="5">
+						<textarea class="citic-text-ast" name="UPG.apply_reason" id="apply_reason" validate="v.required"
+							valititle="申请原因为必填项"></textarea>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="ecitic-title">
+			<span>拟引入人员情况<em></em></span> <i></i>
+		</div>
+		<div class="ecitic-new">
+			<div class="ecitic-operation ecitic-operation-bg">
+				<button type="button" class="btn btn-ecitic" id="outpersoUpGrade_add">增加</button>
+			</div>
+			<div class="ecitic-title-table">
+				<table id="rankUpGradeTable" class="table table-bordered table-hover">
+					<tr>
+						<th width="6%">人员姓名</th>
+						<th width="11%">所属应用</th>
+						<!-- <th width="11%">所在项目</th> -->
+						<!-- <th width="8%">考核分数</th> -->
+						<th width="5%">开发方向</th>
+						<th width="5%">原有级别</th>
+						<th width="5%">人员级别</th>
+						<th width="15%">公司名称</th>
+						<th width="8%">评定日期</th>
+						<th width="5%" style="text-align:center">操作</th>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+		<div class="ecitic-title">
+			<span>人员情况说明文档<em></em></span> <i></i>
+		</div>
+		<div class="ecitic-new">
+			<div class="ecitic-title-table">
+				<table class="table table-bordered tablr-input-text">
+					<tr>
+						<td width="11%" class="table-text">附件</td>
+						<td colspan="5">
+							<input type="button" value="上传" id="file_button_state" class="btn btn-ecitic" />
+							<input type="hidden" name="UPG.file_id_state" id="file_id_state" />
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+<!-- 		<div class="ecitic-title">
+			<span>S级说明文档<em></em></span> <i></i>
+		</div>
+		<div class="ecitic-new">
+			<div class="ecitic-title-table">
+				<table class="table table-bordered tablr-input-text">
+					<tr>
+						<td width="11%" class="table-text">附件</td>
+						<td colspan="5">
+							<input type="button" value="上传" id="file_button_SE" class="btn btn-ecitic" />
+							<input type="hidden" name="UPG.file_id_SE" id="file_id_SE" />
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div> -->
+		<div class="ecitic-save">
+			<input id="rankUpGrade_optSave" type="button" class="btn btn-ecitic" value="保存" />
+			<input id="rankUpGrade_optSubmit" type="button" class="btn btn-ecitic" value="保存并提交" />
+			<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+		</div>
+	</div>
+</form>
+	<!-- 人员-->
+	<div id="chooseUpRankPersonPop" class="modal hide fade" style="top: 50%; margin-top: -300px; width: 780px" tabindex="-1" data-backdrop="static">
+		<div class="modal-header">
+			<button type="button" class="close" id="modalCloseUp" title="点击关闭">×</button>
+			<h5 id="myModalLabel">升级人员选择</h5>
+		</div>
+		<form action="" class="form-inline">
+			<div class="row">
+				<div class="span6 h50">
+					<label class="pl60">人员名称&nbsp;&nbsp;</label>
+					<input type="text" id="op_name" name="op_name"/>
+				</div>
+				<div class="span6 h50">
+					<label class="pl60">供应商名称&nbsp;&nbsp;</label>
+					<input type="text" id="sup_name" name="sup_name"/>
+					<!-- <select name="iscanlevelup" id="iscanlevelup"></select> -->
+				</div>
+			</div>
+		</form>
+		<div class="ecitic-save">
+			<input class="btn btn-ecitic" value="查询" id="pop_UpGradeSearch" type="button" />
+			<input class="btn btn-ecitic" value="重置" id="pop_UpGradeReset" type="button" />
+		</div>
+		<div class="ecitic-new">
+			<div style="padding: 1px; margin: 1px;">
+				<table id="chooseUpPersonPopTable" title="双击选择一条数据"></table>
+			</div>
+		</div>
+		<div class="ecitic-save">
+			<button type="button" class="btn btn-ecitic" data-dismiss="modal">关闭</button>
+		</div>
+	</div>
+	<!--人员 -->
+<div id="checkScoreA"></div>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_outsource/outsource/outperson/outperson_rankEvaUpGrade.js"></script>
+<script src="pages/approvalflow/afcommons.js"></script>
+<script src="dev_outsource/outsource/outperson/checkScorePop.js"></script>
+<script src="upload/uploadFileInfo.js"></script>
+</body>
+</html>

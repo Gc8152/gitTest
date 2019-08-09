@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link  href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="pages/slog/slog_loginQueryList.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<form action=""  class="form-inline">
+		<div class="ecitic-title">
+			<span>登陆日志查询<em></em></span>
+	    </div>
+		<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<table style="width:100%;border:0;cellspacing:0;cellpadding:0;" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">登陆账号：</td>
+						<td><input type="text" name="L.login_name" id="Llogin_name" /></td>
+						<td class="ecitic-right">用户名称：</td>
+						<td><input type="text" name="L.user_name" id="Luser_name" /></td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">登陆日期：</td>
+						<td>
+							<span class="ecitic-time">
+								<input type="text" name="L.opt_time1" id="Lopt_time1" readonly="readonly" onclick="initDate(this)"/>
+							</span>
+							<span class="ecitic-to">至</span>
+							<span class="ecitic-time">
+								<input type="text" name="L.opt_time2" id="Lopt_time2" readonly="readonly" onclick="initDate(this)"/>
+							</span>
+						</td>
+					</tr>					
+				</table>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" id="queryLogin" value="查询" /></li>
+				<li><input type="reset" class="btn btn-ecitic" id="resetLogin" value="重置" /></li>
+			</ul>
+		</div>
+	</form>
+	
+	<div class="ecitic-new">
+		<table id="SLogTableInfo" class="table table-bordered table-hover"></table>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>供应商尽职调查模板-维护</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link rel="stylesheet" type="text/css" href="css/public.css" />
+<style>
+#bindCategorycb{width:100%;border:0;overflow:hidden}
+#bindCategorycb li{border:0;text-align:left;height:16px;margin:5px 20px 5px 0;float:left;display:inline;}
+</style>
+</head>
+<body>
+<form action="" id="addsupConfigForm">
+	<div class="main_iframe_con">
+		<div class="ecitic-title-table">
+			<table class="table table-bordered tablr-input-text"><!-- table-bor-paw-->
+   				<tr>
+					<td width="11%" class="table-text">供应商分类</td>
+					<td colspan="5">
+						<div class="pos-rel">
+						    <input type="hidden" id="config_id" name="id">
+							<select name="category" id="category" class="citic-ast"  validate="v.required" valititle="请选择供应商"></select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="11%" class="table-text">重要程度</td>
+					<td colspan="5">
+						<div class="pos-rel">
+							<select name="importdegree" id="importdegree" class="citic-ast" validate="v.required" valititle="选择重要程度"></select>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	<div class="ecitic-operation">
+		<button type="button" class="btn btn-ecitic" id="addSupplierConfigBtn">新增</button>
+	</div>
+		<div class="ecitic-new" id="">
+			<table class="table table-bordered table-center table-th tablr-input-text" id="addSupplierConfig_table">
+				<tr>
+					<th width="18%">分类一</th>
+					<th width="18%">分类二</th>
+					<th width="18%">分类三</th>
+					<th width="18%">检查项</th>
+					<th width="18%">检查方式</th>
+					<th width="10%">操作</th>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="ecitic-save">
+			<input id="save_addSupplierConfig" type="button" class="btn btn-ecitic" value="保存" />
+			<input type="button" class="btn btn-ecitic" name="close_addSupplierConfig" id="close_addSupplierConfig"  value="关闭"/>
+		</div>
+	</div>
+</form>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_outsource/outsource/optCheckConfig/optCheck_addConfig.js"></script>
+</body>
+</html>

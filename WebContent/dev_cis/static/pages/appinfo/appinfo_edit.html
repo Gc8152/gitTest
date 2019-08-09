@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+<link rel="stylesheet" href="../../css/bootstrap-table.min.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/zebra_dialog.css"/>
+<link rel="stylesheet" href="../../css/public.css" />
+<link rel="stylesheet" href="../../css/style.css" />
+<link rel="stylesheet" href="../../css/form.css" />
+
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../../js/select2.min.js"></script>
+<script type="text/javascript" src="../../js/commons.js"></script>
+<script type="text/javascript" src="../../js/zebra_dialog.js"></script>
+<script type="text/javascript" src="../../js/alertAndConfirm.js"></script>
+<script type="text/javascript" src="../../js/Math.uuid.js"></script>
+<script type="text/javascript" src="appInfo_edit.js"></script>
+
+</head>
+
+<body style="overflow:auto;">
+	<div class="main_iframe_con">
+		<div class="yourLocation">
+					<i></i>
+					<span>您所在的位置：子应用维护</span>
+				</div>
+		<div class="ecitic-title">			
+			<span>子应用录入<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<form id="appInfoForm">
+				<input type="hidden" id="id" name="id">
+			<table id="appInfoTable"class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+				<tr>
+					<td class="table-text">子应用名称</td>
+					<td>
+						<input type="text" id="appName"  name="appName" 	 validate="v.required"/>
+					</td>
+					<td class="table-text">子应用缩写</td>
+					<td >
+						<input type="text"  id="appShortName"  name="appShortName"  validate="v.required"/>
+					</td>
+					<td width="11%" class="table-text">所属应用</td>
+					<td width="22.333%">
+					    <input type="hidden" id="systemId"  name="systemId"/>
+						<input type="text" id="systemName"  name="systemName" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">应用负责人</td>
+					<td>
+						<input type="text" id="dutyUserId"  name="dutyUserId" readonly="readonly"/>
+					</td>
+					<td class="table-text">子应用状态</td>
+					<td >
+						<!-- <input type="text" id="status"  name="status"/> -->
+					    <select id="status" name="status" disabled="true">
+                            <option value=" ">请选择</option>
+                            <option value="00">启用</option>
+                            <option value="01">停用</option>
+						</select>
+					</td>
+					<td width="11%" class="table-text">创建日期</td>
+					<td width="22.333%">
+						<input type="text" id="createTime"  name="createTime" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">构建环境服务器</td>
+					<td>
+						<select id="evnBuildKind" name="evnBuildKind"  validate="v.required" valititle="该项必选">
+							<option value=" ">请选择</option>
+                            <option value="0" id="Ant">Ant</option>
+                            <option value="1" id="Maven">Maven</option>
+                            
+						</select>
+					</td>
+					<td class="table-text">名称</td>
+					<td >
+						<select id="evnBuildId" name="evnBuildId" validate="v.required" valititle="该项必选">
+						</select>
+						
+					</td>
+					<td class="table-text">JDK版本</td>
+					<td>
+						<div id="JDKVersion">
+						<select id="evnBuildJDK" name="evnBuildJDK" validate="v.required" valititle="该项必选">
+						</select>
+						</div>
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>
+		<div class="ecitic-operation ecitic-operation-bg" style="text-align: center;">
+				<button class="btn btn-ecitic" id="save">保存</button>
+				<button class="btn btn-ecitic" id="close">关闭</button>
+		</div>
+		
+		<!-- modal of 应用流程  -->
+	    <div id="systemSelect_modal" class="modal hide fade" style="top: 50%;margin-top: -285px; width:900px;" z-index="980" tabindex="-1">
+	        <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+	            <h3 class="header-h3">应用选择</h3>
+	        </div>
+	        <div class="modal-body" style="max-height:400px;">
+	            <form action="" class="form-inline" id="query_form">
+	                <div class="ecitic-title-table tab-content bootstrapTabsCont" id="ecitic-table">
+	                    <table id="planOutter" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text planOutter">
+	                        <tr>
+	                            <td class="table-text">应用名称：</td>
+	                            <td>
+	                                <div class="planOutter_form_add_position"><input name="systemName" value=""/></div>
+	                            </td>
+	                            <td class="table-text">应用简称：</td>
+	                            <td>
+	                                <div class="planOutter_form_add_position"><input name="systemShort" value=""/></div>
+	                            </td>
+	                            <td class="table-text">
+	                                <input type="button" id="querySystem" value="查询"/>
+	                            </td>
+	                        </tr>
+	                     </table>   
+	                 </div>
+	            </form>
+	            <div class="ecitic-new">
+	                <table id="systemSelectTable" class="table table-bordered table-hover"></table>
+	            </div>
+	            <div class="ecitic-save">
+	                <button class="btn btn-ecitic"  id="systemSelectSure">确定</button>
+	                <button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+	            </div>
+	        </div>
+	        <div class="modal-footer"></div>
+	    </div>
+	    <!-- end of modal -->
+		
+	</div>
+</body>
+</html>

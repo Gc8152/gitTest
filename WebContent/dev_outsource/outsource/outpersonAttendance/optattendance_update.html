@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>需求修改页面</title>
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="main_iframe_con">
+       <form class="form-inline" id="optAttendance_update">	
+       <div class="ecitic-title">
+				<span>外包人员考勤信息修改<em></em></span>
+				<i></i>
+			</div>	
+		<div class="ecitic-title-table">
+			<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table" id = "">
+			<colgroup>
+					<col style="width: 11%">
+			        <col style="width: 22%">
+			        <col style="width: 12%">
+			        <col style="width: 22%">
+			        <col style="width: 11%">
+			        <col style="width: 22%">
+		        </colgroup>
+				<tr>
+				    <td class="table-text">人员姓名：</td>
+				    <td>
+				       <input type="text" id="user_nameRU" name="RU.user_name" class="requirement-ele-width" readonly>
+				       <input type="hidden" id="op_codeRU" name="RU.op_code" class="requirement-ele-width">
+				       <input type="hidden" id="acc_idRU" name="RU.acc_id" class="requirement-ele-width">
+				       <input type="hidden" id="user_noRU" name="RU.user_no" class="requirement-ele-width">
+				    </td>
+					<td class="table-text">考勤类型：</td>
+					<td>
+						<select id="acc_typeRU" name="RU.acc_type" class="requirement-ele-width" validate="v.required" valititle="该项为必填项" dic_code="C_DIC_OUTPERSON_ATTENDANCE">
+						</select>
+					</td>
+					<td class="ecitic-right">考勤日期：</td>
+					<td>
+						<input type="text" id="work_dateRU" name="RU.work_date" class="input" onclick ="WdatePicker({dateFmt:'yyyy-MM-dd'});" placeholder="点击选择时间" validate="v.required" valititle="该项为必填项" />
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">上班时间：</td>
+					<td >
+						<input type="text" id="berw_timeRU" name="RU.berw_time" onclick ="WdatePicker({dateFmt:'HH:mm:ss'});"  placeHolder="点击选择"  class="requirement-ele-width" validate="v.required" valititle="该项为必填项" />
+					</td>
+					<td class="table-text">下班时间：</td>
+					<td>
+						<input type="text" id="aftw_timeRU" name="RU.aftw_time" onclick ="WdatePicker({dateFmt:'HH:mm:ss'});"  placeHolder="点击选择"  class="requirement-ele-width" validate="v.required" valititle="该项为必填项" />
+					</td>
+					<td class="ecitic-right">考勤状态：</td>
+					<td>
+						<select id="acc_statusRU" name="RU.acc_status" style="width:100%" class="requirement-ele-width" validate="v.required" valititle="该项为必填项" dic_code="C_DIC_ATTENDANCE_TYPE">
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">标准工时：</td>
+					<td>
+						<input type="text" id="work_hoursRU" name="RU.work_hours" class="input"  placeholder="请输入0~8之间数字" validate="v.required"  valititle="该项为必填项" />
+					</td>
+					<td class="ecitic-right">加班工时</td>
+					<td>
+					    <input type="text" id="work_overhoursRU" name="RU.work_overhours" class="input"  placeholder="请输入0~24之间数字"  />
+					</td>
+					<td class="ecitic-right"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="table-text" style="height: 80px">备注：</td>
+					<td colspan="5">
+						<textarea id="memoRU" name="RU.memo" class="requirement-ele-width" placeHolder="300字以内" style="height:80px"></textarea>
+					</td>
+				</tr>
+		 	</table>
+		 </div>
+		 </form>
+		<div class="ecitic-save" >
+	   		<div>
+	  			<input type="button" class="btn btn-ecitic" id="update_optattendance" value="更新"/>
+	  		 	<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+	  		</div>
+	   </div>
+	</div>
+	<div id="outPersonInfoPop"></div>
+</body>
+<script type="text/javascript" src="bootstrap/js/select2.min.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="dev_outsource/outsource/outpersonAttendance/optattendance_update.js"></script>
+<script type="text/javascript" src="dev_outsource/outsource/outperson/optPop.js"></script>
+</html>
+<script type="text/javascript">
+	initVlidate($("#optAttendance_update"));
+</script>

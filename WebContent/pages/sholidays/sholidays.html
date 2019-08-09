@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>节假日配置</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>	
+	<link rel="stylesheet" type="text/css" href="css/form.css"/>
+	<link rel="stylesheet" type="text/css" href="pages/sholidays/sholidays.css" />
+	<script type="text/javascript" src="js/commons/alertAndConfirm.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="js/commons/commons.js"></script>
+	<script type="text/javascript" src="bootstrap/js/select2.min.js"></script>
+</head>
+<body>
+<form class="main_iframeFormW">	
+<ul id="myTab" class="nav nav-tabs bootstrapTabs">
+    <li class="active"><a href="#home" data-toggle="tab">工作日配置</a></li>
+    <li><a href="#workCfg" data-toggle="tab">工作时间配置</a></li>
+    <li><a href="#solutionAnd" data-toggle="tab">报工期限配置</a></li>
+    <li><a href="#punchCfg" data-toggle="tab">打卡时间配置</a></li>
+</ul>
+<div id="myTabContent" class="tab-content bootstrapTabsCont">
+    <div class="tab-pane fade in active" id="home">
+       
+        <div class="main_iframe_con">
+        <div class="ecitic-operation">
+		   <h3>工作日配置</h3>
+			<input type="button" id="holidaySaveBtn" class="btn btn-ecitic"  value="保存"/>
+		</div>
+		  <div id="myworkcalendar"></div>
+		</div>
+	
+    </div>
+    <div class="tab-pane fade" id="workCfg">
+        <div class="main_iframe_con">
+        	<div class="ecitic-operation">
+			   <h3>工作时间配置</h3>
+				<input type="button" id="workTimeSaveBtn" class="btn btn-ecitic"  value="保存"/>
+			</div>
+		<div class="ecitic-title-table tablewidth50">
+			<table class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+			  <tbody>
+				<tr>
+					<td class="table-text text-center">名称：</td>
+					<td class="table-text text-center">开始时间</td>
+					<td class="table-text text-center">结束时间</td>
+				</tr>
+				<tr>
+					<td class="table-text">上午：</td>
+					<td class="table-text">
+					  <input id="am_work_up_time" name="am_work_up_time" type="text"/>
+					  <input type="hidden" id="serNo" name="serNo">
+					 </td>
+					<td class="table-text"><input id="am_work_down_time" name="am_work_down_time" type="text"/></td>
+				</tr>
+				<tr>
+					<td class="table-text">下午：</td>
+					<td class="table-text"><input id="pm_work_up_time" name="pm_work_up_time" type="text"/></td>
+					<td class="table-text"><input id="pm_work_down_time" name="pm_work_down_time" type="text"/></td>
+				</tr>
+				<tr>
+					<td class="table-text">加班：</td>
+					<td class="table-text"><input id="ot_start_time" name="ot_start_time" type="text"/></td>
+					<td class="table-text"><input id="ot_end_time" name="ot_end_time" type="text"/></td>
+				</tr>
+				</tbody>
+				</table>
+		</div>
+		
+	</div>
+    </div>
+    <div class="tab-pane fade" id="solutionAnd">
+    	<div class="main_iframe_con">
+			<div class="ecitic-operation">
+			  <h3>报工期限配置</h3>
+			  <input type="button" id="workTerminalSaveBtn" class="btn btn-ecitic"   value="保存"/>
+		     </div>
+			<div class="ecitic-title-table tablewidth50">
+			     <table class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+			      <tbody>
+			    	<tr>
+					 <!--  <td class="table-text" width="30%">是否允许提前报工：</td>
+					  <td>
+					  <span class="litterSelects">
+					    <input type="radio" name="is_allow" value="01"/>是
+					    <input type="hidden" id="serNo" name="serNo">
+					   </span>
+					  <span class="litterSelects"><input type="radio" value="02" name="is_allow"/>否</span>
+					</td> -->
+					<td width="11%" class="table-text">是否允许提前报工：</td>
+					<td width="22.333%">
+						<div class="ecitic-radio-all" id="staff_sex">
+							<div class="ecitic-radio ecitic-radio-inline">
+								<span class="checkd"><input type="radio" value="01"  name="is_allow"/></span>
+								<input type="hidden" id="serNo2" name="serNo">
+								<label>是</label>
+							</div>
+							<div class="ecitic-radio ecitic-radio-inline">
+								<span style="margin-left:14px;"><input type="radio" value="02" name="is_allow"/></span>
+								<label>否</label>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+				     <td class="table-text">补漏报期限：</td>
+					 <td><div ><input type="text" id="deadline" name="deadline" style="width:60%"/>天之内</div></td>
+				</tr>
+				</tbody>
+				</table> 
+			</div>
+            </div>
+    </div>
+     <div class="tab-pane fade" id="punchCfg">
+        <div class="main_iframe_con">
+        	<div class="ecitic-operation">
+			   <h3>打卡时间配置</h3>
+				<input type="button" id="punchTimeSaveBtn" class="btn btn-ecitic"  value="保存"/>
+			</div>
+		<div class="ecitic-title-table tablewidth50" style="width: 800px">
+			<table class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+			  <tbody>
+				<tr>
+					<td class="table-text text-center">名称：</td>
+					<td class="table-text text-center">开始时间</td>
+					<td class="table-text text-center">结束时间</td>
+					<td class="table-text text-center">规定时间</td>
+				</tr>
+				<tr>
+					<td class="table-text">上班打卡区间：</td>
+					<td class="table-text">
+					  <input id="am_work_up_time_punch" name="am_work_up_time_punch" type="text"/>
+					 </td>
+					<td class="table-text">
+						<input id="am_work_down_time_punch" name="am_work_down_time_punch" type="text"/>
+					</td>
+					<td class="table-text">
+						<input id="am_late_time_punch" name="am_late_time_punch" type="text"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">下班打卡区间：</td>
+					<td class="table-text"><input id="pm_work_up_time_punch" name="pm_work_up_time_punch" type="text"/></td>
+					<td class="table-text"><input id="pm_work_down_time_punch" name="pm_work_down_time_punch" type="text"/></td>
+					<td class="table-text"><input id="pm_late_time_punch" name="pm_late_time_punch" type="text"/></td>
+				</tr>
+				</tbody>
+				</table>
+		</div>
+		
+	</div>
+    </div>
+</div>
+    </form>
+</body>
+<script type="text/javascript">
+
+var staSex=getCurrentPageObj().find("input[name='is_allow']");
+ 	staSex.unbind("click"); 
+ 	staSex.click(function(){ 
+ 	getCurrentPageObj().find("input[name='is_allow']").parent().removeClass('checkd');
+ 	$(this).parent("span").addClass('checkd'); 
+ });
+ 
+		baseAjax("SHolidays/getCurrentDate.asp",{},function(dt){
+			$("#myworkcalendar").WorkCalendar({
+				date:new Date(dt.currentDateJ),
+				onSwitch:function(ym){
+					initMDayState(ym);
+				},onClick:function(type,data){
+					 updateMDayState(data); 
+				},onSuccess:function(){
+					initMDayState(dt.currentDate.substr(0,7));
+				}
+			});
+		});
+	
+		
+		/**
+		 ***初始化月份中的日期的状态
+		**/
+		function initMDayState(yymm){
+			baseAjax("SHolidays/queryHolidays.asp",{s_date:yymm},function(data){
+				if(data!=undefined&&data.length>0){
+					for(var i=0;i<data.length;i++){//1工作日 2休息日
+						if("1"==data[i]["s_type"]){//工作日
+							$("#"+data[i]["s_date"]).removeClass("is67");
+							$("#"+data[i]["s_date"]+" .stateday").text("工作日");
+						}else if("2"==data[i]["s_type"]){
+							$("#"+data[i]["s_date"]).addClass("is67");
+							$("#"+data[i]["s_date"]+" .stateday").text("休息日");
+						}
+					}
+				}
+			});
+		}
+		
+		/**
+		 *var date = new Date(Y,M-1,1);
+			return date.getDay();
+		 *修改月份工作日的工作状态
+		 ****/		
+		function updateMDayState(ymd){
+			//var url="SHolidays/insertHoliday.asp";
+			var mday=$("#"+ymd +" .stateday");
+			var s_type="休息日"==mday.text()?"1":"2";
+			/* if($("#"+ymd).attr("is67")==s_type){//如果本来就是工作日 或者本来就是休息日
+				url="SHolidays/deleteHoliday.asp";
+			} */
+			/* baseAjax(url,{s_date:ymd,s_type:s_type},function(data){
+				if(data!=undefined&&data.result=="true"){ */
+				 	if(s_type=="1"){//则转变成工作日
+						$("#"+ymd).removeClass("is67");
+						$("#"+ymd).attr("is67","1")
+						mday.text("工作日");
+						s_type="1";
+					}else if("2"==s_type){
+						$("#"+ymd).addClass("is67");
+						$("#"+ymd).attr("is67","2")
+						mday.text("休息日");
+						s_type="2";
+					} 
+				/* }
+			},"async"); */
+		}
+		$("#holidaySaveBtn").click(function(){
+		var nods=$("#myTabContent td[is67]");
+		var Myear=nods.attr("id").substr(0,7);
+		var da="";
+		for (var i = 0; i < nods.length; i++) {
+		  if(nods.eq(i).hasClass("is67")){
+			da+=nods.eq(i).attr("id")+":"+2+";";
+		  }else{
+		    da+=nods.eq(i).attr("id")+":"+1+";";
+		  }
+		}
+		var url="SHolidays/savePatch.asp";
+		  nconfirm("确定要保存本月节假日信息吗?",function(){
+			baseAjax(url,{data:da,year:Myear},function(msg){
+				if('true'==msg.result){
+				alert("已保存成功！");
+				}
+				
+			},"async");
+			
+			
+		});
+		
+		});
+	
+</script>
+<script type="text/javascript" src="pages/sholidays/sholidays.js"></script>
+<script type="text/javascript" src="pages/sholidays/workTime.js"></script>
+</html>

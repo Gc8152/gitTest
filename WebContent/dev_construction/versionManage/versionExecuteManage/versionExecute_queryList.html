@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>版本执行管理 </title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="ecitic-inquire ecitic-moreNo ecitic-inquire-sec lessSearch">
+	<div class="ecitic-table">
+		<table id="version_table" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+			<tr>
+				<td class="ecitic-right">版本类型：</td>
+				<td>
+					<select name="version_type" diccode="SYS_DIC_VERSION_PROJECT" ></select>
+				</td>
+				<td class="ecitic-right">版本名称：</td>
+				<td>
+					<input type="text" name="version_name"/>
+				</td>
+				<td class="ecitic-right">版本状态：</td>
+				<td>
+					<select name="version_status" diccode="P_DIC_VERSIONS_STATUS"/></select>
+				</td>
+			</tr>
+			
+		</table>
+	</div>
+	<ul class="ecitic-btn-all">
+		<li><button class="btn btn-ecitic" id="query_versionExecute">查询</button></li>
+		<li><button class="btn btn-ecitic" id="reset_versionExecute">重置</button></li>
+	</ul>
+</div>
+<div class="ecitic-operation">
+	<button class="btn btn-ecitic" id="open_versionPlan">开启</button>
+	<button class="btn btn-ecitic" id="freeze_versionPlan">冻结</button>
+	<button class="btn btn-ecitic" id="unfreeze_versionPlan">解冻</button>
+	<button class="btn btn-ecitic" id="closePageTabConfirm">关闭</button>
+	<!-- <button class="btn btn-ecitic" id="export_versionPlan">导出版本计划清单</button>
+	<button class="btn btn-ecitic" id="start_review">发起评审</button>
+	<button class="btn btn-ecitic" id="update_dataCenter">同步到数据中心</button>
+	<button class="btn btn-ecitic" id="version_views">版本360视图</button> -->
+	<button class="btn btn-ecitic" id="query_versionTask">版本任务详情</button>
+	
+</div>
+<div class="ecitic-new">
+	<table class="table table-bordered table-hover table-text-show" id="table_versionExecution">
+		
+	</table>
+</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="dev_construction/versionManage/versionExecuteManage/versionExecute_queryList.js"></script>
+</html>

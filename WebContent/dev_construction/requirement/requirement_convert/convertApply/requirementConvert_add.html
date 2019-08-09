@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>计划变更申请编辑</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="tab-content bootstrapTabsCont">
+	<div class="main_iframe_con">
+			<div class="ecitic-title">
+				<span>变更基本信息<em></em></span>
+				<i></i>
+			</div>
+				<div class="ecitic-title-table">
+					<table id="table_basicInfo" class="table table-striped table-hover table-bordered table-center table-th tablr-input-text">
+						<tr>
+							<td width="14%" class="table-text">任务名称：</td>
+							<td width="36%">
+								<input type="text" id="REQ_TASK_NAME" name="REQ_TASK_NAME" validate="v.required" readonly="readonly" placeholder="点击选择主线任务">
+								<input type="hidden" id="REQ_TASK_ID" name="REQ_TASK_ID">
+								<input type="hidden" id="CONVERT_NO" name="CONVERT_NO">
+								<input type="hidden" id="IS_INSERT" name="IS_INSERT">
+							</td>
+							<td width="14%" class="table-text">应用名称：</td>
+							<td width="36%">
+							    <input type="hidden" id="RES_GROUP_ID" NAME = "RES_GROUP_ID">
+								<input type="hidden" id="SYSTEM_ID" name="SYSTEM_ID">
+								<input type="text" id="SYSTEM_NAME" name="SYSTEM_NAME" validate="v.required" readonly="readonly" placeholder="选择任务时自动填充">
+							</td>
+						</tr>
+						<tr>
+							<td width="14%" class="table-text">紧急版本：</td>
+							<td width="36%">
+								<input type="text" id="VERSION_NAME" name="VERSION_NAME" validate="v.required" readonly="readonly">
+								<input type="hidden" id="VERSION_ID" name="VERSION_ID">
+							</td>
+							<td colspan="2"></td>
+						</tr>
+						<tr>
+							<td class="table-text">变更影响及原因：</td>
+							<td colspan="3">
+								<textarea id="CONVERT_DESC" name="CONVERT_DESC" validate="v.required" valititle="该项为必填项"></textarea>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="ecitic-title">
+					<span>转紧急任务列表<em></em></span>
+					<i></i>
+				</div>
+				<div class="ecitic-title-table ecitic-new">
+					<table id="ConvertAddTaskTable" class="table table-bordered table-hover table-text-show"></table>
+				</div>
+			 <div class="ecitic-save">
+				<input type="button" class="btn btn-ecitic" value="保存&提交" id="submitConvert" />
+				<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+			 </div>
+		</div>
+	</div>
+	<!--需求任务模态框 -->
+	<div id="req_task_modal" class="modal hide fade modal-big-table" tabindex="-1">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="">任务信息</h5>
+		</div>
+		<div class=" ecitic-title-table modal-body ecitic-new">
+			<table border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="table-text">任务编号：</td>
+					<td><input type="text" name="TASK_CODE"/></td>
+					<td class="table-text">任务名称：</td>
+					<td><input type="text" name="TASK_NAME"/></td>
+					<td><button class="btn btn-ecitic" id="select_req">查询</button></td>
+					<td><button class="btn btn-ecitic" id="reset_req">重置</button></td>
+				</tr>
+			</table>
+			<div class="ecitic-new">
+				<table id="reqtaskTabInfo" class="table table-bordered table-hover table-text-show"></table>
+			</div>
+		</div>
+		<div class="modal-footer"></div>
+	</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script src="pages/approvalflow/afcommons.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_analyze/task_accept/view_taskdetail.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_convert/convertApply/requirementConvert_add.js"></script>
+</html>

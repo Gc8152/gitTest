@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<style type="text/css">
+/* .reposit{width:150px;height: 200px;margin-left:8%;float:left;margin-top: 15px;
+position: relative;color:black;background-color:#e4a6a6;
+text-align:center;line-height:200px;font-size: 22px} */
+/* #initRepositoty {width:102%;overflow:hidden;margin:0 -1%;}
+	#initRepositoty li {width:25%;height:150px;float:left;display:inline-table;padding:1%;overflow:hidden;box-sizing:border-box;cursor:pointer;}
+		#initRepositoty li .reposit-div {height:100%;font-size:14px;border:1px solid #ddd;box-sizing:border-box;text-align:center;vertical-align:middle;display:table-cell;}
+			#initRepositoty li:hover .reposit-div{color:#ae0a29;border:1px solid #ae0a29;}
+		#initRepositoty li .reposit-div i {width:48px;height:48px;display:block;margin:0 auto 5px auto;background-image:url(images/category/reposit_w.png);background-repeat:no-repeat;}
+			#initRepositoty li:hover .reposit-div i {background-image:url(images/category/reposit.png);} */
+	/*滚动图*/
+	.hotPic {padding:0 50px;overflow:hidden;position:absolute;left:20px;right:20px;top:235px;}
+		.hotPic .JQ-slide {position:relative;height:180px;margin:0;padding:0;}
+			.hotPic .JQ-slide .wrap {height:180px;overflow:hidden;position:relative;}
+				.hotPic .JQ-slide-content {position:absolute;}
+					.hotPic .imgList {overflow:hidden;margin:0;padding:0;}
+						.hotPic .imgList li {width:285px;height:180px;margin:0;padding:0 5px;float:left;display:inline-table;overflow:hidden;box-sizing:border-box;cursor:pointer;}
+							.hotPic .imgList li .reposit-div {height:100%;font-size:14px;/*border:1px solid #ddd;background:#f5f9fc;*/box-sizing:border-box;text-align:center;vertical-align:middle;display:table-cell;}
+								.hotPic .imgList li:hover .reposit-div{color:#ae0a29;border:1px solid #ae0a29;}
+							/* .hotPic .imgList li .reposit-div i {width:128px;height:128px;display:block;margin:0 auto 5px auto;background-image:url(images/category/reposit_b.png);background-repeat:no-repeat;} */
+							/* 	.hotPic .imgList li:hover .reposit-div i {background-image:url(images/category/reposit_r.png);} */ 
+							 	.hotPic .imgList li:hover .reposit-div i {transform:scale(1.05,1.05);} 
+			.hotPic .JQ-slide-nav a {display:block;z-index:99;width:48px;height:48px;overflow:hidden;text-indent:-999em;text-decoration:none;position:absolute;top:50%;margin-top:-24px;background:url(images/category/arrow_pic.png) no-repeat;}
+				.hotPic .JQ-slide-nav a.prev {left:-50px;background-position:0 0;}
+					.hotPic .JQ-slide-nav a.prev:hover {background-position:-100px 0;}
+				.hotPic .JQ-slide-nav a.next {right:-50px;background-position:-50px 0;}
+					.hotPic .JQ-slide-nav a.next:hover {background-position:-150px 0;}
+	.hotPic_img {width:100%;height:804px;background:url(images/category/500743866.png) no-repeat center center;background-size:100% 100%;overflow:hidden;position:relative;}
+	.hotPic_title {height:60px;color:#000;font-size:50px;line-height:60px;text-align:center;margin-top:30px;}
+</style>
+<script type="text/javascript">
+	$(".hotPic_img").css("height",$(window).height()-100);
+	//$(".hotPic_img").css("height",$(window).width()+132);
+</script>
+</head>
+<body>
+<div id="myTabContenttt" class="tab-content bootstrapTabsCont" style="padding-bottom:0;">
+	<div class="main_iframe_con">
+		<!-- <div class="ecitic-title">
+			<span id="repository_desc">知识库<em></em></span>
+		</div> -->
+		<div class="hotPic_img" style="background:none;">
+			<img alt="" src="images/category/500743866.png" 
+				style="width: 100%;height: 100%;position: absolute;">
+			<div class="hotPic_title">知识库</div>
+			<div class="hotPic">
+				<div class="JQ-slide">
+		            <div class="JQ-slide-nav">
+		            	<a class="prev" href="javascript:void(0);">‹</a>
+		            	<a class="next" href="javascript:void(0);">›</a>
+		            </div>
+		            <div class="wrap">
+		                <ul class="JQ-slide-content imgList" id="initRepositoty"></ul>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="ecitic-save"  style="display:none" id="RRRR_display" >
+				<input type="button" class="btn btn-ecitic" id="back_top" name="back_top" value="返回"/>
+			</div>
+	    </div>
+	</div>
+</div>
+</body>
+<script src="dev_repository/repository_user/user_repository_queryList.js"></script>
+<script src="js/commons/commons.js"></script>
+<script src="dev_repository/repository_user/slide.js"></script>
+<script type="text/javascript">
+$(function (){  
+    /* 用按钮控制图片左右滚动 */  
+    $(".hotPic .JQ-slide").Slide({  
+        effect:"scroolLoop",  
+        autoPlay:false,  
+        speed:"normal",  
+        timer:3000,  
+        steps:1  
+    });
+});
+</script>
+</html>
+
+
+

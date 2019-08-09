@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>缺陷处理</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link href="css/form.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="main_iframe_con">
+        <div class="ecitic-inquire" id="ecitic-inquire">
+            <div class="ecitic-table" id="ecitic-table">
+                <form id="disposeForm">
+                    <table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+                        <tr>
+                            <td class="ecitic-right">缺陷编号：</td>
+                            <td>
+                                <input type="text" name="DEFECT_NUM" />
+                            </td>
+                            <td class="ecitic-right">缺陷摘要：</td>
+                            <td>
+                                <input type="text" name="SUMMARY" />
+                            </td>
+                            <td class="ecitic-right">缺陷状态：</td>
+                            <td>
+                                <select name="DEFECT_STATE" diccode="TM_DIC_DEFECT_STATE" class="requirement-ele-width" style="width: 100%"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ecitic-right">应用名称：</td>
+                            <td>
+								<input type="hidden" id="SYSTEM_ID" name="SYSTEM_ID" >
+								<input type="text" id="SYSTEM_NAME" name="SYSTEM_NAME" class="requirement-ele-width" readonly="readonly" placeholder="请选择应用" >                           
+							 </td>
+                            <td class="ecitic-right">模块名称：</td>
+                            <td>
+                    			<select id="MODULE_ID" name="MODULE_ID"  class="requirement-ele-width" style="width: 100%"  onchange="selectFunc()" >
+                              <option value="">请选择</option>
+                    			</select>
+                            </td>
+                            <td class="ecitic-right">功能点：</td>
+                            <td>
+ 								 <select id="FUNCPOINT_ID" name="FUNCPOINT_ID"  class="requirement-ele-width" style="width: 100%"  >
+                            	  <option value="">请选择</option>
+                   				 </select>
+                            </td>
+                        </tr>
+                         <tr>
+                           <td class="ecitic-right">优先级：</td>
+                            <td>
+                                <select name="PRIORITY_LEVEL" diccode="TM_DIC_PRIORITY_LEVEL" class="requirement-ele-width" style="width: 100%"></select>
+                            </td>
+                            <td class="ecitic-right">缺陷等级：</td>
+                            <td>
+                                <select name="SEVERITY_GRADE" diccode="TM_DIC_SEVERITY_GRADE" class="requirement-ele-width" style="width: 100%"></select>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <ul class="ecitic-btn-all">
+                <li><input type="button" class="btn btn-ecitic" name="queryDispose" value="查询" /></li>
+                <li><input type="button" class="btn btn-ecitic" name="resetDispose"" value="重置" /></li>
+            </ul>
+        </div>
+         <!--选择应用  -->
+		<div id="sendProduceSystemPop"></div>
+        <div class="ecitic-operation">
+            <button class="btn btn-ecitic" name="disposeDefect">处理缺陷</button>
+            <!-- <button class="btn btn-ecitic" name="disposeDetail">查看详情</button> -->
+        </div>
+        <div class="ecitic-new">
+            <table tb="disposeTable" class="table table-bordered table-hover table-text-show"></table>
+        </div>
+    </div>
+</body>
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_test/defectManagement/dispose/defectDispose_queryList.js"></script>
+<script type="text/javascript" src="dev_test/defectManagement/query/systemPop.js"></script>
+
+</html>

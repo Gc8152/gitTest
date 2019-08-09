@@ -1,0 +1,25 @@
+<!--应用模态框 -->
+<div id="changeInterfaceApply_systemPop" class="modal hide fade modal-big-table" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5>应用列表</h5>
+	</div>
+	<div class=" ecitic-title-table modal-body ecitic-new">
+	<form id="changeApplyForm">
+		<table border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+			<tr>
+				<td width="13.333%" class="table-text">应用名称：</td>
+				<td width="25%"><input type="text" name="system_name"/></td>
+				<td width="13.333%" class="table-text">应用负责人：</td>
+				<td width="25%"><input type="text" name="project_man_name"/></td>
+				<td><input type="button" class="btn btn-ecitic" id="query_system" value="查询"></td>
+				<td><input type="button" class="btn btn-ecitic" id="reset_system" value="重置"></td>
+			</tr>
+		</table>
+	</form>
+		<div class="ecitic-new">
+			<table tb="table_system" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+	</div>
+	<div class="modal-footer"></div>
+</div>

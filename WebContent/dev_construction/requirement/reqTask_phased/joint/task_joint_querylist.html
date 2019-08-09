@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>任务列表查询》》</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+<!-- 字体图标 -->
+</head>
+<body>
+	<div>
+		<form action="" id="reqTaskJointForm">
+			<div class="ecitic-inquire ecitic-moreNo"  id="ecitic-inquire">
+				<div class="ecitic-table" id="ecitic-table">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad" id="summaryQury">
+						<!-- <tr>
+							<td class="ecitic-right" width="13%">任务编号：</td>
+							<td width="20%">
+							<input type="text" id="req_task_codeTO" name="req_task_code" />
+							</td>
+							<td class="ecitic-right" width="13%">任务名称：</td>
+							<td width="20%"><input type="text" id="req_task_nameTO" name="req_task_name" />
+							</td>
+							<td class="ecitic-right" width="13%">任务状态：</td>
+							<td  style="width:25%">
+							<select id="req_task_stateTO" name="req_task_state" dic_code="G_DIC_REQTASK_STATE" style="width:100%;">
+							</select>
+							</td>
+						    </tr> -->
+						<tr>
+							<td class="ecitic-right" width="13%">需求点编号：</td>
+							<td width="20%">
+							<input type="text" id="sub_req_codeJo" name="sub_req_code" />
+							</td>
+							<td class="ecitic-right" width="13%">需求点名称：</td>
+							<td width="20%"><input type="text" id="sub_req_nameJo" name="sub_req_name" />
+							</td>
+							<td class="ecitic-right" width="13%">主办应用名称：</td>
+							<td>
+							    <input type="text" id="system_nameTO" name="system_name"  placeholder="点击选择" readonly/>
+							    <input type="hidden" id="system_noTO" name="system_no" />
+							</td>
+					   </tr>
+						<tr>
+							<td class="ecitic-right" >申请纳入版本：</td>
+							<td><input type="text" id="version_nameTO" name="version_name"  placeholder="点击选择 " readonly/>
+							    <input type="hidden" id="version_idTO" name="version_id" />
+							</td>
+							<!-- <td class="ecitic-right" >实施应用：</td>
+							<td>
+							    <input type="text" id="system_nameTO" name="system_name"  placeholder="点击选择" readonly/>
+							    <input type="hidden" id="system_noTO" name="system_no" />
+							</td> -->
+							<td class="ecitic-right" >计划投产日期：</td>
+							<td>
+								<div style="float:left; width:45%;">
+								<input type="text" id="plan_onlinetime_joint" name="plan_onlinetime" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'plan_onlinetime_joint1\',{d:0});}'})" class="requirement-ele-width"/>
+								</div>
+								<div style="float:left; width:10%;line-height:26px;">&nbsp至&nbsp</div>	
+								<div style="float:left; width:45%;">
+								<input type="text" id="plan_onlinetime_joint1" name="plan_onlinetime1" class="requirement-ele-width" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'plan_onlinetime_joint\',{d:0});}'})"/>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<ul class="ecitic-btn-all">
+					<li><input type="button" class="btn btn-ecitic" id="serach_TversionQuery" value="查询"/></li>
+					<li><input type="reset" class="btn btn-ecitic" id="reset_TversionQuery" value="重置"/></li>
+				</ul>
+			</div>
+			</form>
+		<div class="ecitic-operation">
+			<button class="btn btn-ecitic" id="reqAnalyzeFileUP">上传联调测试文档</button>
+			<!-- 
+			<button class="btn btn-ecitic" id="phasedJury1" onclick="sponsorJury('08','01','gGTaskJointTable','发起联调测试一级评审');">发起一级评审</button>
+			<button class="btn btn-ecitic" id="phasedJury2" onclick="sponsorJury('08','02','gGTaskJointTable','发起联调测试二级评审');">发起二级评审</button>
+			<button class="btn btn-ecitic" id="phasedJury3" onclick="sponsorJury('08','03','gGTaskJointTable','发起联调测试三级评审');">发起三级评审</button>
+			 -->
+			 
+			 <button class="btn btn-ecitic" onclick="phasedInfo('08','gGTaskJointTable')">查看</button>
+		</div>
+		<div class="ecitic-new">
+			<table id="gGTaskJointTable" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+		<!-- 系统应用pop -->
+		<div id="tvsystem_pop"></div>
+		<!-- 版本pop -->
+		<div id="tvVsersion_pop"></div>
+	</div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_phased/joint/task_joint_querylist.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_intoVersion/taskVersion_pop.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/reqTask_phased/task_phased_jury.js"></script>
+<script type="text/javascript" src="dev_application/System_pop.js"></script>
+</html>

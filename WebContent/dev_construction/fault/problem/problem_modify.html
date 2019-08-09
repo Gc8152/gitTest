@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>问题单修改</title>
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>问题单修改</span>
+		</div>
+<form class="form-inline" id="gProblemInfo_add">
+		<div class="ecitic-title-table">
+			<table  class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+			<input id="problem_id" name="PA.PROBLEM_ID" type="hidden"   />
+				<colgroup>
+					<col style="width: 11%">
+			        <col style="width: 22%">
+			        <col style="width: 12%">
+			        <col style="width: 22%">
+			        <col style="width: 11%">
+			        <col style="width: 22%">
+		        </colgroup>
+				<tr>
+					<td class="table-text">流水号：</td>
+					<td>
+						<input id="serno" type="text" name="PA.SERNO" class="requirement-ele-width" validate="v.required" valititle="该项为必填项" />
+						
+					</td>
+					<td class="table-text">创建人：</td>
+					<td >
+							<input id="input_id" type="text" name="PA.INPUT_ID" class="requirement-ele-width" validate="v.required" valititle="该项为必填项"/>
+					</td>
+					
+					<td class="table-text">创建时间：</td>
+					<td >
+						<input id="input_date" type="text" name="PA.INPUT_DATE" class="requirement-ele-width" onClick="WdatePicker()" readonly  validate="v.required" valititle="该项为必填项"/>
+				
+					</td>
+				</tr>
+				<tr>
+				
+				<td class="table-text">状态：</td>
+					<td >
+						<input id="status" type="text" name="PA.STATUS" class="requirement-ele-width" validate="v.required" valititle="该项为必填项"/>
+					</td>
+					
+				<td class="table-text">重要程度：</td>
+					<td>  
+						<input  type="text" id="importance_level"  name="PA.IMPORTANCE_LEVEL" class="requirement-ele-width" validate="v.required" valititle="该项为必填项"/>
+						
+					</td>
+					<td class="table-text">紧急程度：</td>
+					<td>
+					<input  type="text" id="urgency_level" name="PA.URGENCY_LEVEL" class="requirement-ele-width" validate="v.required" valititle="该项为必填项"  />
+					</td>	
+				</tr>
+				<tr>
+				<td class="table-text">优先级：</td>
+					<td>						
+						<input  type="text" id="priority" name="PA.PRIORITY" class="requirement-ele-width" validate="v.required" valititle="该项为必填项" />
+					</td>
+					<td class="table-text">问题类别：</td>
+					<td colspan="3">						
+				        <input type="text" id="pbmtype" name="PA.PBMTYPE" class="requirement-ele-width"  validate="v.required" valititle="该项为必填项">
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">问题标题：</td>
+					<td colspan="5">
+				        <input type="text" id="problem_title" name="PA.PROBLEM_TITLE" class="requirement-ele-width" validate="v.required" valititle="该项为必填项" />
+					</td>
+				
+				<tr>
+					<td class="table-text" >问题描述：</td>
+					<td colspan="5">
+						<textarea cols="90" rows="3" id="detailed_decription" name="PA.DETAILED_DECRIPTION"  class="requirement-ele-width" style="height:80px" validate="v.required" valititle="该项为必填项"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text" >调查原因：</td>
+					<td colspan="5">
+						<textarea cols="90" rows="5" id="investigate_case" name="PA.INVESTIGATE_CASE" class="requirement-ele-width" style="height:80px;"  validate="v.required" valititle="该项为必填项"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text" >制定解决方案：</td>
+					<td colspan="5">
+						<textarea cols="90" rows="5" id="implemented_solution" name="PA.IMPLEMENTED_SOLUTION" class="requirement-ele-width" style="height:80px;"  validate="v.required" valititle="该项为必填项"></textarea>
+					</td>
+				</tr>
+			  </table>
+		   </div>
+		  
+		</form>
+		<div class="ecitic-save" >	   			  				  			
+	  			<input type="button" class="btn btn-ecitic" id="submit_gProblemInfo" value="保存并提交"/>	  				  			
+	  		 	<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>	  		
+	   </div>
+	</div>
+</body>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="dev_construction/fault/problem/problem_modify.js"></script>
+<script type="text/javascript" src="js/commons/ajaxfileupload.js"></script>
+
+<script type="text/javascript">
+	initVlidate($("#gProblemInfo_add"));
+</script>
+</html>

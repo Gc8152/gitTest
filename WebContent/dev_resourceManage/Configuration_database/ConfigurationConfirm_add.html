@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>配置库分配</title>
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link href="pages/approvalflow/afcommons.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+		<span>配置库确认</span>
+	</div>
+	<ul id="myTabC" class="nav nav-tabs" style="font-size:13px;">
+	   <li class="active"><a href="#mainInfoConfirmAdd" data-toggle="tab"><i class="icon-home"></i>申请信息</a></li>
+	   <!-- <li ><a href="#configInfo" data-toggle="tab">配置库信息</a></li> -->
+	   <li><a href="#attriBasicEdConfirmAdd" data-toggle="tab"><i class="icon-file"></i>配置库信息</a></li>
+	</ul>	
+	<div id="configApplyTabContent" class="tab-content bootstrapTabsCont">
+		 <div class="tab-pane active"  id="mainInfoConfirmAdd">
+			<form class="form_inline" id="gConfigInfo_add">
+				<div class="ecitic-title-table">
+					<table id="confBasicInfo"  class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+								  <input type="hidden" id="CONFIG_ID1" type="hidden" name="C.CONFIG_ID"/>
+								  <input type="hidden" id="CONFIG" name="C.CONFIG_ID"/>
+								 <input type="hidden" id="STATU1" type="hidden" name="C.STATU"/>
+								  <input type="hidden" id="P_OWNER1" type="hidden" name='C.P_OWNER'/>
+								
+								 <input type="hidden" id="P_OWNER_ID"/>
+						
+								  <input type="hidden" id="APPLICANT1" name="C.APPLICANT"/>
+								 <input type="hidden" id="APPLICANT_ID" name="C.APPLICANT"/>
+								  <input type="hidden" id="APP_TIME1" name="C.APP_TIME"/>
+								  <input type="hidden" id="time" name="C.APP_TIME"/>
+							
+						<tr>
+							<td class="table-text" style="width: 11%">标题：</td>
+							<td colspan="5" >
+								<textarea readonly rows="4" cols="90" id="config_title" name="C.CONFIG_TITLE" class="requirement-ele-width"  > </textarea> 
+							</td>
+						</tr>
+						<tr>
+						    <td class="table-text">应用名称：</td>
+							<td >
+								 <input id="system_name" readonly type="text"  name="C.SYSTEM_NAME"  />
+								 <input id="system_id" type="hidden" name="C.SYSTEM_ID" />
+							</td>
+							<td class="table-text">应用英文简称：</td>
+							<td  >
+								 <input   id="system_short" type="text" disabled  name="C.SYSTEM_SHORT" /> 
+							</td>
+							<td class="table-text">配置管理员：</td>
+							<td >
+								 <input id="config_man_name" readonly  type="text" name="C.CONFIG_MAN_NAME"   />
+								 <input id="config_man_id" type="hidden" name="C.CONFIG_MAN_ID" />
+							 	 <!-- <input id="flag_man" type="hidden" name="C.FLAG_MAN" value="" /> -->
+							</td>
+						</tr>
+						<tr>
+							 <td class="table-text">应用负责人：</td>
+							<td >
+								 <input readonly id="project_man" type="text"  name="C.PROJECT_MAN_NAME" />
+								 <input id="project_man_id" type="hidden" name="C.PROJECT_MAN_ID" />
+							</td>
+							<td class="table-text">技术经理：</td>
+							<td  >
+								 <input readonly id="skill_man" type="text"  name="C.SKILL_MAN_NAME" />
+								 <input id="skill_man_id" type="hidden" name="C.SKILL_MAN_ID" />
+							</td>
+							
+							<td class="table-text">外包公司：</td>
+							<td >
+								 <input readonly id="outsource_company"  type="text"  name="C.OUTSOURCE_COMPANY" />
+							</td>
+						</tr>
+						<tr>
+							<!-- <textarea cols="90" rows="5" id="user_information" name="C.user_information" class="requirement-ele-width" style="height:80px;"  placeHolder="项目经理：李四 
+技术经理：张三 
+开发人员：王五"></textarea> -->
+							</td>
+						</tr>
+						
+					  </table>
+				   </div>
+		<div>
+			<div class="ecitic-title">
+					<span>人员信息</span>
+				</div>
+			<div class="ecitic-new ecitic-title-table">
+				<table id="user_tableConfirmAdd"  ></table>
+			</div>
+		</div>
+				  <!-- 用于应用人员选择弹出pop -->
+	  			 <div id="app_user_add"></div>
+	  			 
+				</form>
+				
+				<div class="ecitic-save" >
+	   		<div>
+	  		 	<input type="button" class="btn btn-ecitic" id="next_stepConfirm" name="next_step"  value="下一步"/>
+	  		 	<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="返回"/>
+	  		</div>
+	   </div>
+		</div>
+		<div class="tab-pane fade" id="attriBasicEdConfirmAdd">
+			<form  class="form-inline" id="gConfirm_add">
+				
+				<div class="ecitic-title-table">
+				<table id="changeAttrTable" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+				<tr>
+				
+					 <td class="table-text" >CC服务器URL：</td>
+							<td colspan="5" >
+								<textarea readonly id="ccserverurl" name="C.CC_SERVER_URL" class="requirement-ele-width" style="height:35px"></textarea>
+							</td>
+							
+				</tr>
+				<tr>
+			    <td class="table-text">VOB信息：</td>
+			    <td colspan="5">
+			      <textarea rows="4" readonly cols="90" id="vobinfo" name="C.VOB_INFO" class="requirement-ele-width" style="height:80px" ></textarea>
+			    </td>
+			    </tr>
+				<!--  <tr>
+					 <td class="table-text">：</td>
+					 <td >
+					 <textarea  id="CCSERVERURL"  name="C.CCSERVERURL" ></textarea>
+					 </td>
+				 </tr> -->
+				</table>
+				</div>
+			</form>
+				<div class="ecitic-save" >
+	  			<input type="button" class="btn btn-ecitic" id="save_button" value="确认"/>
+			</div>
+		</div>
+			
+			<!--应用模态框 -->
+		<div id="modal_system" class="modal hide fade" tabindex="-1">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+				<h5 id="">应用信息</h5>
+			</div>
+			<div class="ecitic-title-table modal-body" >
+					<div class="ecitic-table" style="height:48px">
+						<table  class="table table-bordered table-bor-pad">
+							<tr>
+								<td class="table-text">应用名称：</td>
+								<td><input type="text" name="SYSTEM_NAME"/></td>
+								<td>
+								<button class="btn btn-ecitic" id="select_pop">查询</button>
+								<button class="btn btn-ecitic" id="reset_pop">重置</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+				<table id="sys_table" class="table table-striped table-hover table-bordered"></table>
+			</div>
+			<div class="modal-footer"></div>
+		</div>
+			
+		</div>
+	</div>
+		<!--开发人员模态框 -->
+		<div id="dev_modal" class="modal hide fade" tabindex="-1">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+				<h5 id="">人员信息</h5>
+			</div>
+			<div class="ecitic-title-table modal-body" >
+					<div class="ecitic-table" style="height:48px">
+						<table  class="table table-bordered table-bor-pad">
+							<tr>
+								<td class="table-text">人员名称：</td>
+								<td><input type="text" name="SYSTEM_NAME"/></td>
+								<td>
+								<button class="btn btn-ecitic" id="select_pop">查询</button>
+								<button class="btn btn-ecitic" id="reset_pop">重置</button>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="ecitic-operation">
+			<input type="button" class="btn btn-ecitic" id="select" value="选择"/>
+		</div>
+				<table id="dev_tableConfirmAdd" class="table table-striped table-hover table-bordered"></table>
+			</div>
+		</div>
+		<!-- 开发人员选择弹出pop -->
+	  			 <div id="app_user_dev"></div>
+	  			 
+	  			 
+	  			 
+</body>
+
+
+
+
+<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="dev_application/appUserPop.js"></script>
+<script src="dev_resourceManage/Configuration_database/ConfigurationConfirm_add.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="pages/suser/suserPop.js"></script>
+
+
+<script type="text/javascript">
+	initVlidate($("#gConfirm_add"));
+</script>
+</html>

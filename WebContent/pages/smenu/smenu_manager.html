@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+</head>
+<body>
+<div class="container-fluid" id="menu_mm" style="position:relative;">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="span6 citic-tree">
+				<div class="widget-box">
+					<div class="widget-title">
+						<span class="icon"><i class="icon-align-justify"></i></span>
+						<h5>菜单管理</h5>
+						<button type="button" id="addMenu" class="btn btn-ecitic">创建菜单</button>
+					</div>
+					<div class="controlsOverFlow">
+						<ul id="treeMenuManager" class="ztree"></ul>
+					</div>
+				</div>
+			</div>
+			<div class="span6 citic-add">
+				<div class="widget-box">
+					<div class="widget-content nopadding">
+						<div class="control-group">
+							<div class="controls">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#menu_info" data-toggle="tab">菜单基本信息</a></li>
+									<li><a href="#menu_opt" data-toggle="tab">菜单操作配置</a></li>
+									<!-- <li><a href="#menu_property" data-toggle="tab">菜单属性配置</a></li> -->
+									<li><a href="#menu_rolemenu" data-toggle="tab">菜单关联角色</a></li>
+								</ul>
+								<div id="mymenuTabContent" class="tab-content">
+									<div class="tab-pane active" id="menu_info">
+										<div class="widget-content nopadding">
+											<form id="menu_form" action="#" method="get" class="form-horizontal">
+												<div class="ecitic-title-table">
+													<table width="100%" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+														<tr>
+															<td class="ecitic-right">菜单编号 :</td>
+															<td>
+																<input type="text" validate="v.required" valititle="菜单编号必填" name="M.menu_no" placeholder="菜单编号 " class="citic-ast" />
+																<input type="hidden" id="old_menu_no" name="M.old_menu_no" />
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">菜单名称 :</td>
+															<td>
+																<input type="text" name="M.menu_name" valititle="菜单名称必填" validate="v.required"  placeholder="菜单名称" class="citic-ast" />
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">菜单图标 :</td>
+															<td>
+																<input type="text" name="M.menu_icon" placeholder="菜单图标" class="citic-ast" />
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">上级菜单:</td>
+															<td>
+																<input type="hidden" name="M.supmenu_no" id="supmenu_no" placeholder="上级菜单" class="citic-ast" >
+																<input type="text" id="supmenu_name" name="M.supmenu_name" placeholder="上级菜单" readonly="true" class="citic-ast" />
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">URL:</td>
+															<td>
+																<input type="text" name="M.menu_url" placeholder="菜单URL" class="citic-ast" />
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">菜单类型:</td>
+															<td>
+																<select id="menu_type" diccode="S_DIC_MENUTYPE" valititle="菜单类型必填" value="" validate="v.required" name="M.menu_type" class="citic-sele-ast" /></select>
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">排序序号:</td>
+															<td>
+																<input type="text" name="M.order_id" valititle="排序序号必填" validate="v.required"  placeholder="排序序号" class="citic-ast" />
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">备注:</td>
+															<td>
+																<textarea name="M.memo" placeholder="备注" class="citic-ast citic-textarea"></textarea>
+															</td>
+														</tr>
+													</table>
+												</div>
+												<div class="ecitic-save">
+													<input type="button" class="btn btn-ecitic" value="保存" id="saveMenu" />
+													<input type="button" class="btn btn-ecitic" value="重置" id="resetMenu" />
+													<input type="button" class="btn btn-ecitic" value="删除" id="delMenu" />
+												</div>
+											</form>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="menu_opt">
+										<button type="button" id="addButton" class="btn btn-ecitic btn-new-mb5" style="display:none;">新增</button>
+										<table id="buttonTableMenu" class="table table-bordered table-hover table-text-show"></table>
+									</div>
+									<div class="tab-pane fade" id="menu_property">
+										<button type="button" id="addProperty" class="btn btn-ecitic btn-new-mb5" style="display:none;">新增</button>
+										<table id="propertyTableMenu" class="table table-bordered table-hover table-text-show"></table>
+									</div>
+									<div class="tab-pane fade" id="menu_rolemenu">
+										<table id="propertyTableRoleMenu"  class="table table-bordered table-hover"></table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="myModalMenu" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">提示...</h3>
+	</div>
+	<div class="modal-body">
+		<p id="msmenu_context">One fine body…</p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" id="cancel" style="display:none;" aria-hidden="true">取消</button>
+		<button class="btn btn-ecitic" data-dismiss="modal" id="menu_sure" aria-hidden="true">确定</button>
+	</div>
+</div>
+</body>
+<script src="pages/smenu/smenu_manager.js"></script>
+</html>

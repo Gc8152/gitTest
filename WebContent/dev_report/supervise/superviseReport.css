@@ -1,0 +1,15 @@
+body{position:relative;}
+.table-title{font-size:17px;line-height: 35px;height: 35px;text-align:center;margin-top:30px;font-weight:bolder;}
+.myExcelTable.table-bordered {border-collapse: collapse;}
+.myExcelTable.table-bordered th, .myExcelTable.table-bordered td {border-left: 1px solid #000;border-right: 1px solid #000;}
+.myExcelTable.table th, .myExcelTable.table td{border-top: 1px solid #000;}
+.myExcelTable.table-bordered{border: 1px solid #000;border-right: none;border-left: none;}
+.table_base{/*! margin-top:30px; */border-top: none;margin-bottom:40px;margin:0 5px;margin-bottom:50px;}
+.table_base tr td,.table_base tr th{text-align:center;vertical-align: middle;}
+.projectT{width:100px;}
+.table_base .titleSub{border:none;line-height: 35px;}
+.table_base .titleSub span input{width:auto;vertical-align: inherit;max-width:110px;border:none;border-bottom:1px solid #444;background:none;padding: 2px 8px;}
+.table_base .titleSub i{display:inline-block;height:10px;margin:0 3px 0 8px;/*! border-right:1px solid #232222; */}
+.table_base .content input{width:20px;text-align:center;border:none;border-bottom:1px solid #777;background:none;}
+.table_base .content {text-align:left;line-height: 30px;}
+.table_base .content .leftradio{padding-left:10px;}

@@ -1,0 +1,110 @@
+/*右上角个人信息*/
+.headerArea .rightTopHelp li:hover {color:#ae0a29;}
+/*头部颜色值*/
+.main_header {border-bottom: 4px solid #ae0a29;background-image:url(../../images/bg/banner1.png);}
+.main_header .list_tree_nav .tree_first {background-color:#ae0a29;}
+.main_header .list_tree_nav li .list_tree_1nav .current {background: #ae0a29;}
+.main_header .list_tree_nav .tree_last {background: url(../../images/icon_ecitic.png) no-repeat -91px 1px #a80e15;}
+.main_header .list_tree_nav .tree_last:hover {background: url(../../images/icon_ecitic.png) no-repeat -91px 1px #8c070d;}
+/*按钮的颜色*/
+.ecitic-operation button {border-right: 1px solid #a80e15;}
+.btn-ecitic {background-color: #ae0a29 !important;border-color: #ae0a29 !important;}
+.btn {border: 2px solid #a80e15;}
+/*按钮hover或者激活状态*/
+.btn-ecitic:hover {background-color: #90142b !important;border-color: #90142b !important;}
+.btn-ecitic:active:hover, .btn-ecitic.active:hover, .open > .dropdown-toggle.btn-ecitic:hover, .btn-ecitic:active:focus, .btn-ecitic.active:focus, .open > .dropdown-toggle.btn-ecitic:focus, .btn-ecitic:active.focus, .btn-ecitic.active.focus, .open > .dropdown-toggle.btn-ecitic.focus{background-color: #a80e15 !important ;border-color: #a80e15 !important;}
+.btn-ecitic:active, .btn-ecitic.active, .open > .dropdown-toggle.btn-ecitic {background-color: #c9161d !important;border-color: #c9161d !important;}
+.btn-ecitic:focus, .btn-ecitic.focus {background-color: #c9161d !important; border-color: #c9161d !important;}
+/*左侧收缩按钮*/
+.suo {background-position: -137px -115px;}
+.marginLeft0 {background-color: #c9161d; background-position: -175px -115px;}
+/*提示框*/
+.ZebraDialog .ZebraDialog_Title {background: #ae0a29;}
+.ZebraDialog .ZebraDialog_Buttons a {background: #ae0a29;}
+.ZebraDialog .ZebraDialog_Buttons a:hover {background: #90142b;}
+/*各页面标题*/
+.ecitic-title span {color: #ae0a29;border-bottom: 3px solid #ae0a29;}
+/*iframe颜色*/
+.ecitic-title span.title {color:#ae0a29;border-bottom:3px solid #ae0a29}
+.ecitic-title .more {color:#ae0a29;}
+.ecitic-title em {color:#ae0a29;}
+.work-backlog-content li i, .work-remind-content li i, .work-remind-more li i {background:#D23131;}
+.work-backlog-content li:hover, .work-remind-content li:hover, .work-remind-more li:hover{color:#ae0a29;}
+.work-remind-content li:hover em {background-color:#ae0a29}
+.word-content li:hover {color:#ae0a29;}
+.word-content li:hover span{color:#ae0a29;}
+.work-backlog-content li:hover i, .work-remind-content li:hover i, .work-remind-more li:hover i {background:#ae0a29;}
+/*日历框的颜色*/
+.WdateDiv .MTitle {background-color: #ae0a29 !important;}
+.WdateDiv .MTitle td {color:#fff;}
+.WdateDiv .dpButton {background-color: #ae0a29 !important;color:#fff;}
+.WdateDiv .Wselday {background-color: #c9161d !important;color:#fff;}
+.WdateDiv .WwdayOn {background-color: #90142b !important;}
+.WdateDiv .WdayOn {background-color: #90142b !important;}
+.WdateDiv .WotherDayOn {background-color: #90142b !important;}
+/*下拉框的选中和hover颜色*/
+.select2-container--default .select2-results__option--highlighted[aria-selected] {background-color:#ae0a29 !important;}
+/*首页个人视图-管理视图*/
+.tab li.tabBtn {background:#ae0a29;}
+	.tab li.tabBtn:hover {background:#90142b;}
+.tabsArrow {border-right-color:#ae0a29;}
+	.tab li.tabBtn:hover .tabsArrow {border-right-color:#90142b;}
+/*表格每页显示多少条*/
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {background-color:#ae0a29 !important;}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-submenu:hover > a, .dropdown-submenu:focus > a {background:#90142b !important;}
+/*换肤颜色*/
+.cgb-system-content .cgb-system-list, .ecitic-user-content {background:#ae0a29;}
+.user-astSYS, .user-ast {border-color:transparent transparent #ae0a29 transparent;opacity:.85;}
+.user-Info ul li, .editCodeand span font {color:#fff;}
+.editCodeand span a:hover {text-decoration:underline;}
+/*主页我的提醒*/
+.work-remind-content li em.project-backlog-num-special {background:#ae0a29;}
+/*常用功能添加*/
+.work-add-popup-all, .work-add-popup-all i {border:1px solid #ae0a29;}
+.work-add-popup li:hover {background:#ae0a29;}
+/*输入框选中颜色*/
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
+border-color: rgba(201,22,29,0.8) !important;
+-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(201,22,29,0.6) !important;
+-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(201,22,29,0.6) !important;
+box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(201,22,29,0.6) !important;}
+/*菜单管理*/
+.nav > li > a:hover, .nav > li > a:focus {color:#ae0a29 !importantx;}
+/*上传附件*/
+.upload-checkfile-all {background:#ae0a29;}
+	.upload-checkfile-all:hover {background:#90142b;}
+.upload-checkfile-all-text {color:#ae0a29;}
+/*我的待办*/
+.work-backlog-content li em.project-backlog-num-special {background-color:#ae0a29;}
+/*选择附件*/
+.upload-checkfile-all1 span {background:#ae0a29;}
+.upload-checkfile-all1 span:hover {background:#90142b;}
+/*文件路径配置*/
+#dragSortSelect.selectbox .select-bar .chooseBarList, #dragSortSelect.selectbox .select-bar .chooseBarList1, #dragSortSelect.selectbox .select-bar .chooseBarList2 {border:1px #ae0a29 solid !important;}
+#dragSortSelect.selectbox .select-bar li:not(.placeHolder) {background:#ae0a29 !important;}
+/*标题折叠*/
+.ecitic-title i {background-image:url(../../images/nav00/icon_ecitic.png) !important;}
+
+.fileInfo a{color:#ae0a29;}
+
+/*datetimepicker日历组件选中元素的样式*/
+.datetimepicker .active{
+	background-image:none!important;
+	background-color: #ae0a29!important;
+}
+/*datetimepicker日历组件选中元素的hover样式*/
+.datetimepicker .active:hover{
+	background-color: #ae0a29!important;
+	color: #fff!important;
+}
+/*datetimepicker日历组件当天的样式*/
+.datetimepicker table tr td.today{
+    background-image: none!important;
+    background-color: #f34848!important;
+}
+/*datetimepicker日历组件鼠标hover样式*/
+.datetimepicker .day:hover,.datetimepicker .datetimepicker-hours span:hover,.datetimepicker .datetimepicker-months span:hover,.datetimepicker .datetimepicker-years span:hover{
+	background-image:none!important;
+	background-color: #ae0a29!important;
+	color: #fff!important;
+}

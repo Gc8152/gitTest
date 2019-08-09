@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>需求变更审批</title>
+<link href="css/form.css" type="text/css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="changeApproveForm">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad requirement-table">
+					<tr>
+						<td class="ecitic-right">需求名称：</td>
+						<td>
+							<input type="text"  name="REQ_NAME"/>
+						</td>
+						<td class="ecitic-right">需求编号：</td>
+						<td>
+							<input type="text"  name="REQ_CODE" />
+						</td>
+						<td class="ecitic-right">业务联系人：</td>
+						<td>
+							<input type="text"  name="CHANGE_BUSINESSER"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right" >申请日期：</td>					
+						<td>
+							<div class="dateSelectZ_From">
+							<input type="text" id="SUBMIT_TIME5" name="SUBMIT_TIME1" class="requirement-ele-width"  onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'SUBMIT_TIME6\',{d:0});}'})" placeHolder="点击选择"   readonly/>
+							</div>
+							<div class="dateSelectZ_W">&nbsp至&nbsp</div>
+							<div class="dateSelectZ_From">
+							<input type="text" id="SUBMIT_TIME6" name="SUBMIT_TIME2" class="requirement-ele-width" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'SUBMIT_TIME5\',{d:0});}'})" placeHolder="点击选择"  readonly/>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="queryApprove" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" id="resetApprove" value="重置"/></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button type="button" class="btn btn-ecitic" id="changeApprove" >变更审批</button>
+		<button type="button" class="btn btn-ecitic" id="viewApprove" >查看详情</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="ChangeApproveTable" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_construction/requirement/requirement_change/approve/changeApprove_queryList.js"></script>
+</html>
+
+
+
+

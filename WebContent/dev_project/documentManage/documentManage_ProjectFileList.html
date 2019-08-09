@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>项目文档管理</title>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link href="pages/approvalflow/afcommons.css" rel="stylesheet">
+</head>
+<body>
+<div class="tabbable">	
+	<ul id="docmanageTopButton" class="nav nav-tabs my">
+	    <li id="docmanage_demandFile_li" class="active"><a href="#tab_docmfirst" data-toggle="tab">
+	 <i class="icon-home"></i>   
+	    需求文档</a></li>
+	    <li id="docmanage_project_li"><a href="#tab_docmsecond" data-toggle="tab">
+	  <i class="icon-file"></i>   
+	    项目工作范围</a></li>
+	</ul>
+<div id="docmanageUpfileDiv" class="tab-content bootstrapTabsCont">
+    <div class="tab-pane active" id="tab_docmfirst">
+	<div class="ecitic-inquire" id="ecitic-inquire_lookup">
+		<div class="ecitic-table" id="ecitic-table" width="50%">
+			<form id="docmUploadfile_form">
+				<table id="table_select" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">文档名称：</td>
+					
+						<td><input type="text" maxlength="50" name="file_name"/></td>
+						
+						<td class="ecitic-right">阶段：</td>
+						<td>
+							<select name="stage" diccode="G_DIC_REQTASK_STATE" style="width:100%"></select>
+						</td>
+						<td class="ecitic-right">上传人：</td>
+						<td><input type="text" maxlength="50" name="opt_person_name"/></td>
+						
+					</tr>
+					<tr>
+						<td class="ecitic-right" >上传时间：</td>
+						<td>
+							<div class="dateSelectZ_From">
+							<input type="text" id="dm_uploadfile_time_min" name="dm_uploadfile_time_min" class="requirement-ele-width"  onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'dm_uploadfile_time_max\',{d:0});}'})" placeHolder="点击选择"   readonly/>
+							</div>
+							<div class="dateSelectZ_W">&nbsp至&nbsp</div>
+							<div class="dateSelectZ_From">
+							<input type="text" id="dm_uploadfile_time_max" name="dm_uploadfile_time_max" class="requirement-ele-width" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'dm_uploadfile_time_min\',{d:0});}'})" placeHolder="点击选择"  readonly/>
+							</div>
+						</td>
+						<td><input type="hidden" maxlength="50" name="project_id"/></td>
+						<td></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all"> 
+			<li><button class="btn btn-ecitic" id="query_docManageQueryList">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset_docManageQueryList">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic my" id="docMuploadBtn">文档上传</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="docmUploadFileListTable" class="table table-bordered table-hover table-text-show" ></table>
+	</div>
+	
+   </div>
+	<div class="tab-pane" id="tab_docmsecond">
+	</div>
+		 <div id="docm_modalfile"></div>
+		  <div id="requirement_pointPop"></div>
+		   <div id="docmview_sub_req_info"></div>
+</div><!-- 分页结束 -->
+	 
+</div>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script type="text/javascript" src="dev_project/documentManage/documentManage_ProjectFileList.js"></script>
+<script src="dev_project/documentManage/requirement_pointPop.js"></script>
+</body>
+</html>

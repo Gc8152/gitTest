@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.SConfigDao">
+	<!-- 增加 邮箱配置信息-->
+	<update id="updateEmail" parameterType="java.util.Map">
+	  update s_config set 
+		conf_value=#{conf_value},
+		opt_no=#{opt_no},
+		opt_time=#{opt_time}
+	  where conf_code=#{conf_code}
+	</update>
+	<!--查询整个邮箱短信配置信息-->
+	<select id="findEmailInfoHtoC" resultType="java.util.Map">
+	 select max(email_ip) email_ip,max(email_name) email_name,max(email_num) email_num,
+	 max(email_password) email_password,max(mobile_address) mobile_address,max(contentManager_address) contentManager_address
+	 from (
+	      select 
+	      case when 
+	           sc.conf_code='email_ip' then sc.conf_value
+	           end email_ip,
+	      case when 
+	           sc.conf_code='email_name' then sc.conf_value 
+	           end email_name,
+	      case when 
+	           sc.conf_code='email_num' then sc.conf_value 
+	           end email_num,
+	      case when 
+	           sc.conf_code='email_password' then sc.conf_value  
+	           end email_password,
+	      case when 
+	           sc.conf_code='mobile_address' then sc.conf_value  
+	           end mobile_address,
+	      case when 
+	           sc.conf_code='contentManager_address' then sc.conf_value  
+	           end contentManager_address
+	      from s_config sc where sc.conf_type in('email','mobile','contentManager')
+	)
+	</select>
+	<!--查询整个邮箱配置信息-->
+	<select id="findEmailInfo" resultType="java.util.Map">
+	 	select * from s_config where conf_type in('mobile','email','contentManager')
+	</select>		
+	<!-- 增加 增加一条角色信息-->
+	<insert id="saveEmail" parameterType="java.util.Map">
+		insert into s_role(role_no,role_name,flag,order_no,memo,
+		create_no,create_time,safe_level) values( 
+		#{role_no},#{role_name},
+		#{flag},#{order_no},
+		#{memo},#{create_no},
+		#{create_time},#{safe_level}
+		)	
+	</insert>
+	
+	<!-- 查询阀值信息  -->
+	<select id="queryConUser"  resultType="java.util.Map">
+		select conf_code,conf_value from s_config where conf_type='user'
+	</select>
+	
+	<!-- 修改当前限制值 -->
+	<update id="updateConUser" parameterType="java.lang.String">
+		update s_config set conf_value = #{user_now} where conf_code = 'user_now'
+	</update> 
+	
+	<!-- 查询当前限制人数 -->
+	<select id="queryUserNow" resultType="java.lang.String">
+		select conf_value from s_config where conf_code = 'user_now'
+	</select>
+	
+	<!-- 查询session超时,用于配置超时时间 -->
+	<select id="queryMaxSessionActive" resultType="java.lang.String">
+		select conf_value from s_config where conf_type = 'session'
+	</select>
+	
+	<!-- 查询session超时  -->
+	<select id="queryConSession"  resultType="java.util.Map">
+		select conf_code,conf_value from s_config where conf_type='session'
+	</select>
+	
+	<!-- 修改session超时 -->
+	<update id="updateConSession" parameterType="java.lang.String">
+		update s_config set conf_value = #{session_now} where conf_code = 'session_now'
+	</update> 
+	<!-- 通过配置编码，查新配置参数信息 -->
+	<select id="queryConByConfCode" parameterType="java.lang.String" resultType="java.util.Map">
+		select conf_type, conf_code,conf_name,conf_value from s_config where conf_code=#{0}
+	</select>
+</mapper>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>项目变更信息</title>
+	<link rel="stylesheet" type="text/css" href="css/form.css"/>
+</head>
+<body>
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>需求变更<em></em></span>
+			<i></i>
+		</div>
+		<div>
+			<div class="ecitic-operation">
+				<button class="btn btn-ecitic my" id="reqChange_assess">变更分析</button>
+				<button class="btn btn-ecitic my" id="reqChange_app">变更审批</button>
+				<button class="btn btn-ecitic" id="reqChange_detail">查看详情</button>
+			</div>
+			<div class="ecitic-new">
+				<table id="reqChangeTable" class="table table-bordered table-hover table-text-show">
+				</table>                          
+			</div>
+		</div>
+		
+		<div class="ecitic-title">
+			<span>版本范围变更<em></em></span>
+			<i></i>
+		</div>
+		<div>
+			<div class="ecitic-operation">
+			    <button class="btn btn-ecitic my" id="versionChange_ver">申请版本加塞</button>
+			    <button class="btn btn-ecitic my" id="versionChange_join">申请补充协办</button>
+			    <button class="btn btn-ecitic my" id="versionChange_out">申请版本调出</button>
+				<button class="btn btn-ecitic" id="versionChange_detail">查看详情</button>
+			</div>
+			<div class="ecitic-new">
+				<table id="versionChangeTable" class="table table-bordered table-hover table-text-show">
+				</table>
+			</div>
+		</div>
+		
+		<div class="ecitic-title">
+			<span>计划变更<em></em></span>
+			<i></i>
+		</div>
+		<div>
+			<div class="ecitic-operation">
+			    <button class="btn btn-ecitic my" id="planChange_add">发起变更</button>
+				<button class="btn btn-ecitic" id="planChange_detail">查看详情</button>
+			</div>
+			<div class="ecitic-new">
+				<table id="planChangeTable" class="table table-bordered table-hover table-text-show">
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="dev_project/projectManage/myProject/projectChange/projectChange_queryList.js"></script>
+</html>

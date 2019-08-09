@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<script src="js/commons/commons.js"></script>
+<script src="pages/suser/suser_update.js"></script>
+<script src="pages/sorg/sorgPop.js"></script>
+</head>
+
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+		<span>修改用户信息<em></em></span>
+	</div>
+	<form action="" class="form-inline" id="updateuser_from">
+		<div class="ecitic-title-table">
+			<table id="updateuser_table" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered tablr-input-text table-bor-paw">
+				<tr>
+					<td width="11%" class="table-text">用户编号</td>
+					<td width="22.333%">
+						<input type="text" name="Up.user_no" id="Uuser_no" disabled="disabled" class="citic-ast" />
+					</td>
+					<td width="11%" class="table-text">用户名称</td>
+					<td width="22.333%">
+						<input type="text" name="Up.user_name" id="Uuser_name" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+					</td>
+					<td width="11%" class="table-text">登陆名</td>
+					<td width="22.333%">
+						<input type="text" name="Up.login_name" id="Ulogin_name" disabled="disabled" valititle="该项为必填项" class="citic-ast" />
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">电话</td>
+					<td>
+						<input type="text" name="Up.user_mobile" id="Auser_mobile"  class="citic-ast" />
+					</td>
+<!-- 					<td class="table-text">cq对接用户名</td>
+					<td>
+						<input type="text" name="Up.nick_name" id="Unick_name" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+					</td> -->
+					<td class="table-text">状态</td>
+					<td>
+						<select id="Ustate" name="Up.state" validate="v.required" valititle="该项为必填项" class="citic-sele-ast"></select>
+					</td>
+					<td class="table-text">用户岗位</td>
+					<td>
+						<select id="Uuser_post" name="Up.user_post" class="citic-sele-ast"></select>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">用户等级</td>
+					<td>
+						<select name="Up.user_level" id="Uuser_level"  class="citic-sele-ast"></select>
+					</td>
+					<td class="table-text">所属部门</td>
+					<td>
+						<input type="text" name="Up.org_no_name" id="Uorg_no_name" placeholder="请选择" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+ 						<input type="hidden" name="Up.org_no_code" id="Uorg_no_code" />
+					</td>
+					<td class="table-text">邮箱</td>
+					<td>
+						<input type="text" name="Up.user_mail" id="Uuser_mail" validate="v.email" class="citic-ast" />
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">是否行员</td>
+					<td>
+						<select name="Up.is_banker" id="Uis_banker" validate="v.required" valititle="该项为必填项" class="citic-sele-ast"></select>
+					</td>
+					<td class="table-text" name="outperson" style="display:none">外包人员</td>
+					<td style="display:none" name="outperson">
+						<input type="text"  id="op_nameAD" readonly="" class="citic-ast"/>
+					   	  <input type="hidden" name="AD.op_code"/>
+					</td>
+					<td class="table-text" name="work_no" style="display:none">工号</td>
+					<td style="display:none" name="work_no">
+						<input type="text" name="Up.work_no" id="Uwork_no" validate="v.required" valititle="该项为必填项" class="citic-ast">
+					 </td> 
+				</tr>
+				<tr>
+					<td class="table-text">备注</td>
+					<td colspan="5">
+						<textarea name="Up.memo" placeholder="备注" id="Umemo" class="citic-text-ast"></textarea>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="保存" id="updateSUser" />
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/> 
+		<!-- <input type="button" class="btn btn-ecitic" value="返回" name="globeBack" /> -->
+	</div>
+</div>
+<div id="orgDivPopU"></div>
+<div id="outPersonInfoPop"></div>
+</body>
+<script type="text/javascript" src="dev_outsource/outsource/outperson/optPop_new.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		initVlidate($("#updateuser_from"));
+		var obj=getCurrentPageObj().find("#op_nameAD");
+		obj.unbind("click");
+		obj.click(function(){
+			openOptPopBySUser("outPersonInfoPop",{singleSelect:true,op_name:getCurrentPageObj().find("#op_nameAD"),no:getCurrentPageObj().find("input[name='AD.op_code']")});
+		});
+	});
+</script>
+</html>

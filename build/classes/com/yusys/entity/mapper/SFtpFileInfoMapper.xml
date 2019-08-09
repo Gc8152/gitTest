@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.yusys.dao.SFtpFileInfoDao">
+	<!-- <select id="getFilePathById"   parameterType="java.lang.String" resultType="java.util.Map">
+			select * from s_cfg_filepath where path_id=#{pathId}
+	</select> -->
+	
+	<!-- 增加附件信息  -->
+	<insert id="addFileInfo" parameterType="java.util.Map">
+		insert into S_FTP_FILEINFO
+			(id,path_id, path_name,file_name,file_type,file_id,
+			 opt_person,opt_time, module_flag
+			 <if test="FILE_VERSION!=null and FILE_VERSION!=''">
+				,file_version
+			 </if>
+			 <if test="DESCR!=NULL and DESCR!=''">
+				,descr
+			 </if>
+			)
+		values
+			(S_SEQ_FTP_FILEID.NextVal,#{PATH_ID},#{PATH_NAME},#{FILE_NAME},#{FILE_TYPE},#{FILE_ID},
+			 #{OPT_PERSON},#{OPT_TIME},#{MODULE_FLAG}
+			 <if test="FILE_VERSION!=null and FILE_VERSION!=''">
+				,#{FILE_VERSION}
+			 </if>
+			 <if test="DESCR!=NULL and DESCR!=''">
+				,#{DESCR}
+			 </if>
+			)
+	</insert>
+	
+	<!-- 增加业务关联附件信息  -->
+	<insert id="addFileRelInfo" parameterType="java.util.Map">
+		insert into S_FTP_FILEINFO_REL
+			(id,business_code, phase, file_id)
+		values
+			(S_SEQ_FTP_FILE_REL_ID.NextVal,#{BUSINESS_CODE},#{PHASE},#{FILE_ID})
+	</insert>
+	
+	<!-- 查询附件信息business_code  -->
+	<select id="findFileInfo"   parameterType="java.util.Map" resultType="java.util.Map">
+		select  f.*, fr.id fr_id, fr.phase phase,
+	       (select item_name from s_dic_item where item_code = f.file_type and dic_code = f.module_flag) module_flag_name,
+	       u.user_name OPT_PERSON_name,
+	       (select di.item_name from s_dic_item di where f.file_type=di.item_code and f.module_flag=di.dic_code) dic_name
+	    from S_FTP_FILEINFO f, S_FTP_FILEINFO_REL fr, s_user u
+	    where 
+	       f.file_id= fr.file_id
+	       and fr.business_code = #{BUSINESS_CODE} 
+	       <if test="PHASE!=null and PHASE!=''">
+		       and fr.phase = #{PHASE} 
+	       </if>
+	       and u.user_no = f.opt_person
+		   order by f.opt_time desc
+	    <!-- 
+	    select  f.*,
+	       (select item_name from s_dic_item where item_code = f.file_type and dic_code = f.path_type) file_TYPE_name,
+	       u.user_name OPT_PERSON_name
+	    from S_FTP_FILEINFO f 
+	       left join s_user u on u.user_no=f.opt_person
+	    where 
+	       f.file_id= #{file_id}
+		   order by f.opt_time desc
+		 -->
+	</select>
+	
+	<!-- 查询附件信息file_id  -->
+	<select id="findFileInfoByFileId"   parameterType="java.util.Map" resultType="java.util.Map">
+		select  f.*,
+	       (select item_name from s_dic_item where item_code = f.file_type and dic_code = f.module_flag) module_flag_name,
+	       u.user_name OPT_PERSON_name
+	    from S_FTP_FILEINFO f, s_user u
+	    where 
+	       f.file_id in ( ${file_id} )
+	       and u.user_no = f.opt_person
+		   order by f.opt_time desc
+	</select>
+	
+	<update id="updateFileRelInfo" parameterType="java.util.Map">
+		update S_FTP_FILEINFO_REL fr
+		set BUSINESS_CODE=#{BUSINESS_CODE} where id=#{fr_id} 
+	</update>
+	
+	<update id="updateFileInfo" parameterType="java.util.Map">
+		update S_FTP_FILEINFO f
+		set path_name=#{path_name} where file_id=#{file_id} 
+	</update>
+	<!-- 修改到此处 -->
+	
+	<!-- 通过id查询附件  -->
+	<select id="findFileInfoByIds"  resultType="java.util.Map">
+		select 
+			f.*
+		from 
+			S_FTP_FILEINFO f 
+		where 
+			f.id in (${idsStr})
+	</select>
+	
+	<delete id="deleteFileInfo">  
+	   		delete from S_FTP_FILEINFO where id = #{id}
+	</delete>
+	
+	<!-- 删除文件关联信息 -->
+	<delete id="deleteFileInfoRel">  
+	   		delete from S_FTP_FILEINFO_REL where file_id = #{file_id}
+	</delete>
+	
+	<delete id = "delFildInfoByFileId"  parameterType="java.lang.String">  
+	   <![CDATA[  
+	   		delete from S_FTP_FILEINFO where file_id=#{file_id}
+	    ]]>  
+	</delete>
+	<!-- 设置附件可以预览 -->
+ 	<update id="setFileIsView" parameterType="java.lang.String">
+		update S_FTP_FILEINFO set is_view='00' where id=#{id}
+	</update>
+	
+	<!-- 设置附件可以预览 -->
+ 	<update id="setContentManagerDocId" parameterType="java.util.Map">
+		update S_FTP_FILEINFO set doc_id=#{doc_id} where id=#{id}
+	</update>
+	<!-- 查询附件信息 -->
+	<select id="getFileInfoByFId"   parameterType="java.lang.String" resultType="java.util.Map">
+			select * from S_FTP_FILEINFO where file_id=#{file_id}
+	</select>
+	<!-- 查询附件信息 -->
+	<select id="getFileInfoById"   parameterType="java.lang.String" resultType="java.util.Map">
+			select * from S_FTP_FILEINFO where id=#{id}
+	</select>
+		<!-- 查询附件信息  -->
+	<select id="queryFileInID"   parameterType="java.util.Map" resultType="java.util.Map">
+		select rownum rn,sf.*,cf.path from S_FTP_FILEINFO sf left join s_cfg_filepath cf on sf.path_id=cf.path_id
+		where 1=1
+		<if test="id!=null and id!=''">
+				and sf.id in ${id}
+		</if>
+	</select>
+	
+	<!-- 通过文件名字查询文件记录 -->
+	<select id="getFileListByFileName" parameterType="java.util.Map" resultType="java.util.Map">
+		select sf.* from s_ftp_fileinfo sf where sf.file_name=#{filename} and sf.path_id=#{PATH_ID} and sf.path_name=#{path_name}
+	</select>
+	
+	<!-- 查询附件信息business_code  -->
+	<select id="findFileInfoByBusinessCodes"   parameterType="java.util.Map" resultType="java.util.Map">
+		select  f.*, fr.id fr_id, fr.phase phase, FR.business_code BUSINESS_CODE,
+	       (select item_name from s_dic_item where item_code = f.file_type and dic_code = f.module_flag) module_flag_name,
+	       u.user_name OPT_PERSON_name,
+	       (select di.item_name from s_dic_item di where f.file_type=di.item_code and f.module_flag=di.dic_code) dic_name
+	    from S_FTP_FILEINFO f, S_FTP_FILEINFO_REL fr, s_user u
+	    where 
+	       f.file_id= fr.file_id
+	       and fr.business_code in (${BUSINESS_CODE}) 
+	       <if test="PHASE!=null and PHASE!=''">
+		       and fr.phase = #{PHASE} 
+	       </if>
+	       and u.user_no = f.opt_person
+		   order by f.opt_time desc
+	</select>
+</mapper>

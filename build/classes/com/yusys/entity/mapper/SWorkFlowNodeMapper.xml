@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.WorkFlowNodeDao">
+    <!-- 查询流程下所有节点 -->
+	<select id="queryAllNodeAF" parameterType="java.util.Map" resultType="java.util.Map">
+ 		select wn.*,
+		(select sd.item_name from s_dic_item sd where sd.dic_code='AF_DIC_NODE_TYPE' and sd.item_code = wn.n_type) as n_type_name,
+		(select sd.item_name from s_dic_item sd where sd.dic_code='AF_DIC_STATE' and sd.item_code = wn.n_state) as n_state_name,
+		(select user_name from s_user where user_no=wn.opt_person) as opt_personname
+		from af_node_info wn 
+		where af_id = #{af_id}
+		order by to_number(wn.n_id)
+	</select>
+    <!--根据条件查询对应的节点信息 -->
+	<select id="queryOneNodeInfo" parameterType="java.util.Map" resultType="java.util.Map">
+ 		select a.n_id,a.af_id,a.n_name,a.n_type,a.n_state,a.opt_person,
+        a.opt_time,a.memo,a.n_value as n_factor,a.n_role as n_roleCode,s.role_name as n_roleName,
+        a.n_person from af_node_info a 
+        left join s_role s on a.n_role=s.role_no where 1 = 1
+ 		<if test="null != n_id and n_id != ''">
+			and a.n_id = #{n_id}
+		</if>
+ 		<if test="null != af_id and af_id != ''">
+			and a.af_id = #{af_id}
+		</if>
+	</select>
+    <!-- 插入一个节点-->
+    <insert id="addNodeInfo" parameterType="java.util.Map">
+		insert into af_node_info (n_id,af_id,r_id,n_name,n_type,
+			n_rule_type,n_state,opt_person,opt_time,memo,n_value,n_role,n_person)  
+		values(#{n_id},#{af_id},#{r_id},#{n_name},#{n_type},#{n_rule_type},
+			#{n_state},#{opt_person},#{opt_time},#{memo},#{n_factor},#{n_roleCode},#{n_person})
+	</insert>
+    <!-- 更新节点-->
+    <update id="updateNodeInfo" parameterType="java.util.Map">
+      update af_node_info set af_id = #{af_id},n_name = #{n_name},
+      n_type = #{n_type},n_state = #{n_state},
+      opt_person = #{opt_person},opt_time = #{opt_time},memo=#{memo},
+      n_value = #{n_factor},n_role = #{n_roleCode},n_person = #{n_person}
+      where n_id = #{n_id}
+	</update>
+	<!-- 根据选择的id删除该节点 -->
+	<delete id="deleteNodeInfo" parameterType="java.util.Map">
+		delete from af_node_info where n_id = #{n_id}
+	</delete>	
+	<!-- 根据流程ID查询所属业务系统下的节点要素 -->
+	<select id="queryNodeFactorById" parameterType="java.util.Map" resultType="java.util.Map">
+ 		select f.*,
+		(select sd.item_name from s_dic_item sd 
+		        where sd.dic_code = 'AF_DIC_STATE' 
+		        and f.b_state = sd.item_code) b_state_name,
+		(select sd.item_name from s_dic_item sd 
+		        where sd.dic_code = 'AF_DIC_FAC_TYPE' 
+		        and f.b_type = sd.item_code) b_type_name,
+		(select sd.item_name from s_dic_item sd 
+		        where sd.dic_code = 'AF_DIC_FAC_CATEGORY' 
+		        and f.b_category = sd.item_code) b_category_name,
+		(select sd.item_name from s_dic_item sd 
+		        where sd.dic_code = 'AF_DIC_SYSTEM' 
+		        and f.system_code = sd.item_code) system_code_name,
+		(select user_name from s_user where user_no=f.opt_person) as opt_personname
+		from af_factors f 
+		where f.system_code in(select af.af_sys_name from af_info af where af.af_id = #{af_id})
+		and f.b_category = '00'
+	</select>
+</mapper>

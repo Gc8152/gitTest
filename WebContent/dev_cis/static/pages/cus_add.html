@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/select2.css"/>
+<link rel="stylesheet" href="../css/public.css" />
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../js/select2.min.js"></script>
+</head>
+
+<body style="overflow:auto;">
+	<div class="main_iframe_con">
+		<div class="yourLocation">
+					<i></i>
+					<span>您所在的位置：客户信息录入</span>
+				</div>
+		<div class="ecitic-title">			
+			<span>客户信息录入<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table class="table table-bordered"><!-- table-bor-paw-->
+				<tr>
+					<td width="11%" class="table-text">录入人名称</td>
+					<td width="22.333%">
+						
+					</td>
+					<td width="11%" class="table-text">录入人工号</td>
+					<td width="22.333%">
+						
+					</td>
+					<td class="table-text">录入时间</td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">客户姓名</td>
+					<td>
+							<input type="text" />
+					</td>
+					<td class="table-text">身份证号码</td>
+					<td >
+						<input type="text" />
+					</td>
+					<td width="11%" class="table-text">联系电话</td>
+					<td width="22.333%">
+						<input type="text" />
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">客户地址</td>
+					<td colspan="5">
+						<input type="text" />
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">所属街道</td>
+					<td colspan="5">
+						<input type="text" />
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">所在社区</td>
+					<td colspan="5">
+						<input type="text" />
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">备注</td>
+					<td colspan="5">
+						<textarea style="height: 50px;"></textarea>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="ecitic-operation ecitic-operation-bg" style="text-align: center;">
+				<button class="btn btn-ecitic">保存</button>
+				<button class="btn btn-ecitic">关闭</button>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function(){
+			$("select").select2();
+		});
+		
+	</script>
+</body>
+</html>

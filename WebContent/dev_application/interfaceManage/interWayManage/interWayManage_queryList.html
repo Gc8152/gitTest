@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>接入和调用方式管理</title>
+<link href="css/form.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="js/commons/commons.js"></script>
+<script src="dev_application/interfaceManage/interWayManage/interWayManage_queryList.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">	
+	<div class="ecitic-inquire ecitic-inquire-sec lessSearch" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="factEsbForm">
+				<table  align="center" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">					
+					<tr>
+						<td class="ecitic-right">应用编号：</td>
+						<td>
+							<input type="hidden" id="WAY_ID" name="way_id" />
+							<input type="text"id="W_system_id" name="system_id"/>
+						</td>
+						<td class="ecitic-right">应用名称：</td>
+						<td>
+							<input type="text"id="W_system_name" name="system_name"/>
+						</td>
+						<td class="ecitic-right">类型：</td>
+						<td>
+							<select id="W_way_type" name="way_type" style="width:100%;"></select>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="queryEsb" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" id="resetEsb" value="重置"/></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="addEsb">新增</button>
+		<button class="btn btn-ecitic" id="updateEsb">修改</button>
+		<button class="btn btn-ecitic" id="deleteEsb">删除</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="EsbTableInfo" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+</div>
+</body>
+</html>

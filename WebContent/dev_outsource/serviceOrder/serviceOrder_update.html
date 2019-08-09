@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>服务订单管理列表</title>
+		<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/form.css" />
+	</head>
+	<body>
+		<div class="ecitic-inquire" id="ecitic-inquire">
+			<div class="ecitic-table" id="ecitic-table">
+				<form id="sorder_queryData">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+						<tr>
+							<td class="ecitic-right">订单编号</td>
+							<td><input type="text" id="acc_code" name="sq.acc_code"/></td>
+							<td class="ecitic-right">订单金额(元)_从</td>
+							<td>
+								<span class="ecitic-time">
+									<input type="text"  id="order_money_from" name="sq.order_money_from" onchange="checkNum(this);"/>
+								</span>
+								<span class="ecitic-to">至</span>
+								<span class="ecitic-time">
+									<input type="text" id="order_money_to" name="sq.order_money_to" onchange="checkNum(this);"/>
+								</span>
+							</td>
+							<td class="ecitic-right">框架合同号</td>
+							<td><input type="text" id="contract_code" name="sq.contract_code"/></td>
+						</tr>
+						<tr>
+							<td class="ecitic-right">订单状态</td>
+							<td>
+								<select id="acc_state"  class="citic-sele-ast" style="width:100%;" name="sq.acc_state"></select>
+							</td>
+							<td class="ecitic-right">供应商</td>
+							<td>
+								<input type="hidden" id="supplier_id" name="sq.supplier_id"/>
+								<input type="text" id="supplier_name_sq" name="supplier_name" readonly="readonly" placeholder="点击选择"/>
+							</td>
+							<td colspan="2"></td>
+							<!-- <td class="ecitic-right">所属部门</td>
+							<td>
+								<input type="hidden" id="dept_no" name="sq.dept_no"/>
+								<input type="text" id="dept_name" placeholder="点击选择部门"  readonly="readonly"/>
+							</td> -->
+						</tr>
+					</table>
+				</form>
+			</div>
+			<ul class="ecitic-btn-all">
+				<li><button class="btn btn-ecitic" id="order_query">查询</button></li>
+				<li><button class="btn btn-ecitic" id="order_reset">重置</button></li>
+			</ul>
+		</div>
+		<div class="ecitic-operation">
+			<button class="btn btn-ecitic" id="order_add">新增</button>
+			<button class="btn btn-ecitic" id="order_update">修改</button>
+			<button class="btn btn-ecitic" id="order_delete">删除</button>
+			<button class="btn btn-ecitic" id="order_detail">查看</button>
+			<button class="btn btn-ecitic" id="order_print">打印</button>
+		</div>
+		<div class="ecitic-new">
+			<table class="table table-bordered table-hover" id="sOrder_query"></table>
+		</div>
+		<div id="querySoContract_Pop"></div><!-- 合同POP框 -->
+		<div id="serverSupplier_Pop"></div><!-- 供应商POP框 -->
+		<script type="text/javascript" src="bootstrap/js/bootstrap-table.min.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+		<script type="text/javascript" src="dev_outsource/contract/contractInfo/contractInfoPop.js"></script>
+		<script type="text/javascript" src="dev_outsource/supplier/supplierInfo/supplierPop.js"></script>
+		<script type="text/javascript" src="dev_outsource/serviceOrder/serviceOrder_query.js"></script>
+		<script type="text/javascript" src="js/commons/print.js"></script> 
+	</body>
+</html>

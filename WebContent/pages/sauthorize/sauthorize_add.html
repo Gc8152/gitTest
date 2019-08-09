@@ -1,0 +1,90 @@
+<html lang="en">
+<html>
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="bootstrap/js/select2.min.js"></script>
+<script src="js/commons/commons.js"></script>
+<script src="pages/sauthorize/sauthorize_queryInfo.js"></script>
+<script src="pages/sauthorize/sauthorize_add.js"></script>
+<script src="pages/sauthorize/sauthorize_update.js"></script>
+<script src="pages/suser/suserPop.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+			<span>授权信息<em></em></span>
+	</div>
+	<form action="#" method="get" class="form-inline" id="authorize_form_add">
+			<div class="ecitic-table mr0" id="ecitic-table" style="height:250px;">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">授权人：</td>
+						<td>
+							<input type="text" name="" id="auth_name_save" validate="v.required" readonly/>
+							<input type="hidden" id="auth_no_save">
+						</td>
+						<td class="ecitic-right">被授权人 ：</td>
+						<td>
+							<input type="text" name="" id="bauth_name_save"  validate="v.required" readonly/>
+							<input type="hidden" id="bauth_no_save">
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">授权角色 ：</td>
+						<td>
+							<select id="role_no_save"  name=""  validate="v.required">
+			 					 <option value=""  selected>-- 请选择 --</option>					
+							</select>
+						</td>
+						<td class="ecitic-right">授权机构：</td>
+						<td>
+							<select id="org_no_save" name=""  validate="v.required">
+			 					 <option value=""  selected>-- 请选择 --</option>					
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">授权类型：</td>
+						<td>
+							<select id="auth_type_save" name=""  validate="v.required">
+			 					 <option value=""  selected>-- 请选择 --</option>					
+							</select>
+						</td>
+						<td class="ecitic-right">应用系统：</td>
+						<td>
+							<select id="system_id_save" name=""  validate="v.required">
+			 					 <option value=""  selected>-- 请选择 --</option>					
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">授权操作：</td>
+						<td>
+							<input  type="checkbox"  name ="op" value="01"   id="query_op_save" validate="v.required"/>查询权限
+							<input  type="checkbox"  name ="op" value="02"   id="option_op_save" />操作权限 
+							<input  type="checkbox"  name ="op" value="03"   id="approve_op_save"/>审批权限
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">开始时间：</td>
+						<td>
+							<input type="text" name="" id="start_time_save" validate="v.required" onClick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd ',minDate:'2008-03-08'})"   />
+						</td>
+						<td class="ecitic-right">结束时间：</td>
+						<td>
+							<input type="text" name="" id="end_time_save" validate="v.required"  onClick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd ',minDate:'2008-03-08'})"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+	</form>
+	<div class="ecitic-save">
+			<input type="button" class="btn btn-ecitic" id="authorization_save" value="保存" />
+			<input type="button" class="btn btn-ecitic" id="toback_authorize_add"  value="返回"/>
+	</div>
+</div>
+</body>		
+</html>   

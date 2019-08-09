@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/public.css" />
+
+</head>
+<body>
+	<div class="main_iframe_con">
+		<div class="ecitic-title">
+			<span>督办模型信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+			       <colgroup>
+						<col style="width: 10%">
+				        <col style="width: 20%">
+				        <col style="width: 10%">
+				        <col style="width: 20%">
+				        <col style="width: 10%">
+				        <col style="width: 20%">
+			        </colgroup>
+				<tr>
+					<td >	
+						<label class="taskLabel">模型名称：</label>
+						<input type="hidden" id="category_code_cfg"/>
+					</td>
+					<td ><div id = "CATEGORY_NAME" ></div></td>				
+				    <td >
+					    <label class="taskLabel">模型编号：</label> 
+					</td>
+					<td >
+					    <div id="CATEGORY_CODE"></div>
+					</td>
+				    <td>
+					    <label class="taskLabel">模型状态：</label> 
+					</td>
+					<td><div id="CATEGORYSTATENAME"></div></td>
+				</tr>
+				<tr>
+					<td>
+					    <label class="taskLabel">督办类别：</label>
+					</td>
+					<td><div id="ASSORTNAME"></div></td>
+					<td>
+					    <label class="taskLabel">模型类型：</label>
+					</td>
+					<td><div id="CATEGORY_TYPENAME"></div></td>
+				    <td>
+					    <label class="taskLabel">发件人姓名：</label> 
+					</td>
+					<td><div id="SENDER"></div></td>
+				</tr>
+				<tr>
+					<td>
+					    <label class="taskLabel">发件人邮箱：</label>
+					</td>
+					<td><div id="SENDER_MAIL"></div></td>
+				    <td>
+					    <label class="taskLabel">邮件标题：</label> 
+					</td>
+					<td><div id="SENDER_TITLE"></div></td>
+					<td>
+					    <label class="taskLabel">模型描述：</label>
+					</td>
+				    <td><div id="RULE_INSTRUCTION"></div></td>
+				</tr>
+			</table>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" type="button" id="messstrategy_add" >新增频率</button>
+		<button class="btn btn-ecitic" type="button" id="messstrategy_update" >修改</button>
+		<button class="btn btn-ecitic" type="button" id="messstrategy_delete" >删除</button>
+		<button type="button" name="globeBack" id="closePageMessstrategy_cfg" class="btn btn-ecitic">关闭</button>
+	</div>
+	<table id="messstrategy_Table"></table>
+	
+	
+	
+	<div id="addmesssTrategyCFGRolePop"></div>
+
+	<!-- 新建督办频率模态框 -->
+	<div id="myModal_addStrategy" class="modal hide fade" tabindex="-1"		style="width: 950px; left: 50%; margin-left:-475px;z-index: 1000;">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="addstrategy">新增频率</h5>
+			<h5 id="updatestrategy">修改频率</h5>
+		</div>
+		<div class="modal-body" style="overflow-x: hidden; max-height: 500px;"> 
+		    <input type="hidden" id="operationState"/>		   		  
+			<input type="hidden" id="pid"/>
+			<div>
+				<div class="tab-content" style="margin-left: 0px; overflow: auto; height: 461px;">
+					<div class="tab-pane active">
+						<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+							<tr>
+								<td width="11%" class="table-text">模型编号：</td>
+								<td width="22.333%">
+								 	<input type="text" id="category_code" name="MTR.category_code"	class="input" readonly>
+								</td>
+								<td width="11%" class="table-text">角色名称：</td>
+								<td width="22.333%">
+									<input type="text" id="MTRRoleName" name="MTR.sendername"		class="input" validate="v.required" valititle="角色名称必填" placeholder="点击选择角色" readonly>
+									<input type="hidden" id="MTRRole_code" name="MTR.role_code">
+								</td>
+							</tr>
+							<tr>
+								<td width="11%"  class="table-text">发送短信：</td>
+								<td width="22.333%"><div id="MTRis_sendmessageTD"></div></td>
+								<td width="11%"  class="table-text">发送邮件：</td>
+								<td width="22.333%"><div id="MTRis_sendmailTD"></td>
+							</tr>
+							<tr>
+								<td  width="11%"  class="table-text">执行频度：</td>
+								<td width="22.333%"><select	id="MTRfrequency_value" name="MTR.frequency_value"		diccode="T_DIC_FREQUENCY" class="citic-sele-ast" 	validate="v.required" valititle="发送频度必填"></select></td>
+								<td  width="11%"  class="table-text">执行时间点：</td> 
+								<td  width="22.333%"><select id="MTRSend_time" name="MTR.send_time" class="citic-sele-ast"	validate="v.required" valititle="发送时间必填"></select></td>
+							</tr>
+							<tr id="MTRDayTDHoliday">
+								<td width="11%"  class="table-text">假期是否发送：</td>
+								<td width="22.333%"><div id="MTRis_holiday"></div></td>
+								 <!-- 发送日期 -->
+								 <td class="MTRDayTD" colspan="2"></td>
+							</tr>
+							<tr>
+								<td width="11%"  class="table-text">短信模板：</td>
+								<td colspan="3">
+									<textarea	class="citic-text-ast" id="MTRMessage_content"		name="MTR.message_content"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td  width="11%"  class="table-text">邮件模板：</td>
+								<td colspan="3">
+									<textarea class="citic-text-ast" id="MTRMail_content"	name="MTR.mail_content"></textarea>
+								</td>
+							</tr>
+						</table>
+						<div class="ecitic-save">
+							<button id="messStrategy_popButtonAdd" class="btn btn-ecitic">保存</button>
+							<button id="messStrategy_popButtonupdate" class="btn btn-ecitic">修改</button>
+							<button class="btn btn-ecitic" id="messStrategy_popButtonClose">关闭</button>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<script src="supervision/messstrategy/sAllRolePop.js"></script>
+	<script type="text/javascript" src="supervision/messstrategy/messstrategy_cfg.js"></script>
+</body>
+</html>

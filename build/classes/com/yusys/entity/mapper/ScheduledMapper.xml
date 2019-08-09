@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.ScheduledDao">
+	<!-- 如果反馈周期为每天则判断当天是否已经反馈，如果为每周 判断七天内是否有反馈 如果为每月 判断一个月内是否有反馈  无反馈则发送消息提醒(全部任务)-->
+	<select id="getNeedWorkBenchInfoFBTask"    parameterType="java.util.Map"	resultType="java.util.Map">
+		 <![CDATA[  
+		 select * from (select rownum as row_num,a.* from (
+				select * from t_taskinfo ti where ti.task_state in ('02','09') and ti.is_review='00'
+				and ti.plan_endtime> #{ymd}
+				and not exists(select 1 from t_workbench where w_id='3' and task_id=ti.task_id and (send_person=ti.task_executor or send_person=ti.task_coordinator))
+				and (
+					(ti.fbk_cycle='00'
+						and not exists(select 1  from t_feedback tf where  task_id=ti.task_id and tf.fb_time=#{ymd})
+					) or (ti.fbk_cycle='01' and (ti.freq_value=#{week}
+						or (not exists(select 1  from t_feedback tf where  task_id=ti.task_id and tf.fb_time>#{ymd7} and tf.fb_time<=#{ymd})) and  (ti.fbk_cycle='01' and ti.plan_starttime<=#{ymd7}))
+					) or (ti.fbk_cycle='02' and (ti.freq_value=#{day}
+						or (not exists(select 1  from t_feedback tf where  task_id=ti.task_id and tf.fb_time>#{ymd30} and tf.fb_time<=#{ymd})) and (ti.fbk_cycle='02' and ti.plan_starttime<=#{ymd30}))
+					)
+				)
+		) a) where row_num between 0 and 10
+		]]>
+	</select>
+
+	<!--还在执行中的并且明天或者明天之前就是任务计划结束日期并且 还没有被发送任务完成提醒(普通任务、周期任务、协同任务) -->
+	<select id="getNeedWorkBenchInfoFSTask"    parameterType="java.util.Map"	resultType="java.util.Map">
+	 <![CDATA[
+		select * from (select rownum as row_num,a.* from (
+			select * from t_taskinfo ti where ti.task_state in ('02','09') and ti.task_type  in ('00','01','03') and ti.plan_endtime<=#{ymd}
+	      	and not exists(select 1 from t_workbench where w_id='5' and task_id=ti.task_id and (send_person = ti.task_executor or send_person=ti.task_coordinator))
+	    ) a) where row_num between 0 and 10
+	]]>
+	</select>
+	
+	<!--还在执行中的并且到期还没有完成的任务(普通任务、周期任务、协同任务) -->
+	<select id="getWorkBenchInfoNoFSTask"   parameterType="java.util.Map"	resultType="java.util.Map">
+	 <![CDATA[
+		select * from (select rownum as row_num,a.* from (
+			select * from t_taskinfo ti where ti.task_state in ('02','09') and ti.task_type  in ('00','01','03') and ti.plan_endtime<#{ymd}
+	      	and not exists(select 1 from t_workbench where w_id='13' and task_id=ti.task_id and send_person=ti.task_creator)
+	    ) a) where row_num between 0 and 10
+	]]>
+	</select>
+</mapper>

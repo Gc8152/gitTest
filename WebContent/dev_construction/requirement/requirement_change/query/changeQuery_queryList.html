@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>需求变更查询</title>
+<link href="css/form.css" type="text/css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<input type="hidden"  id="RV_ID" />
+			<form id="queryForm">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad requirement-table">
+					<tr>
+						<td class="ecitic-right">需求编号：</td>
+						<td>
+							<input type="text"  name="REQ_CODE" />
+						</td>
+						<td class="ecitic-right">需求名称：</td>
+						<td>
+							<input type="text"  name="REQ_NAME"/>
+						</td>
+						<td class="ecitic-right">需求变更状态：</td>
+						<td>
+							<select class="requirement-ele-width" name="REQ_CHANGE_STATUS" diccode="G_DIC_REQ_CHANGE_STATUS" style="width: 100%"></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">业务联系人：</td>
+						<td>
+							<input type="text"  name="CHANGE_BUSINESSER"/>
+						</td>
+						<td class="ecitic-right" >申请日期：</td>					
+						<td>
+							<div class="dateSelectZ_From">
+							<input type="text" id="SUBMIT_TIME7" name="SUBMIT_TIME1" class="requirement-ele-width"  onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'SUBMIT_TIME8\',{d:0});}'})" placeHolder="点击选择"   readonly/>
+							</div>
+							<div class="dateSelectZ_W">&nbsp至&nbsp</div>
+							<div class="dateSelectZ_From">
+							<input type="text" id="SUBMIT_TIME8" name="SUBMIT_TIME2" class="requirement-ele-width" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'SUBMIT_TIME7\',{d:0});}'})" placeHolder="点击选择"  readonly/>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="queryQ" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" id="resetQ" value="重置"/></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<input type="button" class="btn btn-ecitic" id="viewQuery" value="查看详情">
+	</div>
+	<div class="ecitic-new">
+		<table id="QueryTable" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+	<div id="appOptPop"></div>
+</div>
+</body>
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_construction/requirement/requirement_change/query/changeQuery_queryList.js"></script>
+<script src="pages/approvalflow/approval_content.js"></script>
+<script src="pages/approvalflow/afcommons.js"></script>
+</html>
+
+
+
+

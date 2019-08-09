@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../../css/select2.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/zebra_dialog.css"/>
+<link rel="stylesheet" href="../../css/public.css" />
+<link rel="stylesheet" href="../../css/style.css" />
+<link rel="stylesheet" href="../../css/form.css" />
+
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../../js/select2.min.js"></script>
+<script type="text/javascript" src="../../js/commons.js"></script>
+<script type="text/javascript" src="../../js/zebra_dialog.js"></script>
+<script type="text/javascript" src="../../js/alertAndConfirm.js"></script>
+<script type="text/javascript" src="../../js/Math.uuid.js"></script>
+
+</head>
+
+<body style="overflow:auto;">
+<div class="main_iframe_con">
+	<div class="yourLocation">
+		<i></i>
+		<span>您所在的位置：子应用管理》环境配置</span>
+	</div>
+	<div style="margin-bottom:10px;height:500px;overflow-y: scroll">
+		<div class="ecitic-title">
+			<span>环境配置信息<em></em></span>
+			<i></i>
+		</div>
+		<div class="ecitic-title-table">
+			<form id="evnConfigForm" method="post" onsubmit="return false;">
+				<input type="hidden" name="id" id="id"/>
+				<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table"><!-- table-bor-paw-->
+					<tr>
+						<td width="22%" class="table-text">子应用名称</td>
+						<td width="78%">
+							<input type="hidden" name="appId" id="appId"/>
+							<select id="appInfo" name="appInfo.id" validate="v.required" valititle="该项必选">
+								<option value=" ">请选择</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">应用名称</td>
+						<td>
+	                        <input type="text" name="appInfo.systemId" id="systemName" disabled="disabled"/>
+						</td>
+						<td>
+	                        <input type="hidden" name="appInfo.systemId" id="systemId" disabled="disabled"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">子应用名缩写</td>
+						<td>
+							<input type="text" name="appInfo.appShortName" id="appShortName" disabled="disabled"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">环境类型</td>
+						<td>
+							<select id="evnType" name="evnType" validate="v.required" valititle="该项必选">
+								<option value=" ">请选择</option>
+								<option value="01">SIT环境</option>
+								<option value="02">UAT环境</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">环境名称</td>
+						<td>
+							<input type="text" name="evnName"  id="evnName" validate="v.required" valititle="该项必填"/>
+						</td>
+					</tr>
+				</table>
+				<div class="ecitic-title">
+					<span>AP环境<em></em></span>
+					<i></i>
+				</div>
+				<div>
+					<table class="table table-striped table-hover table-bordered tablr-input-text ">
+						<tr>
+							<td class="table-text">中间件类型</td>
+							<td colspan="2">
+								<select id="idcType" name="idcType" validate="v.required" valititle="该项必选">
+									<option value=" ">请选择</option>
+									<option value="01">tomcat</option>
+									<option value="02">weblogic</option>
+									<option value="03">jboss</option>
+									<option value="04">weblogic</option>
+									<option value="05">jetty</option>
+									<option value="06">WebSphere</option>
+								</select>
+							</td>
+						</tr>
+						<!-- <tr>
+							<td width="22%" class="table-text">AP服务器</td>
+							<td width="78%" colspan="2">
+								<input type="hidden" name="apServerInfoId" id="apServerInfoId"/>
+								<select id="apServerInfoName" name="apServerInfoName.id" validate="v.required" valititle="该项必选">
+									<option value=" ">请选择</option>
+								</select>
+							</td>
+						</tr> -->
+						<tr>
+							<td class="table-text">端口</td>
+							<td colspan="2">
+								<input type="text" name="apPort" id="apPort" validate="v.required" valititle="该项必填"/>
+							</td>
+							<!-- <td>
+								<span><button class="btn btn-ecitic" id="queryPort">检查端口是否可用</button></span>
+							</td> -->
+						</tr>
+						<tr>
+							<td class="table-text">WAR包存放路径</td>
+							<td colspan="2">
+								<input type="text" name="warFilePath" id="warFilePath" validate="v.required" valititle="该项必填"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-text">Config文件目录</td>
+							<td colspan="2">
+								<input type="text" name="configFilePath"  id="configFilePath" validate="v.required" valititle="该项必填"/>
+							</td>
+						</tr>
+					</table>
+					<div class="ecitic-new">
+				    	<button class="btn btn-ecitic" id="ap_server_add">新增</button>
+				        <button class="btn btn-ecitic" id="ap_server_delete">删除</button>
+						<table class="table table-bordered table-hover" id="evnConfigApTable"></table>
+					</div>
+				</div>
+			    
+				<div class="ecitic-title">
+					<span>DB环境<em></em></span>
+					<i></i>
+				</div>
+				<div>
+					<table class="table table-striped table-hover table-bordered tablr-input-text ">
+						<tr>
+							<td class="table-text">DB服务器类型</td>
+							<td>
+								<select id="dbType" name="dbType"  validate="v.required" valititle="该项必选">
+									<option value=" ">请选择</option>
+									<option value="01">ORACLE</option>
+									<option value="02">MYSQL</option>
+									<option value="03">DB2</option>
+								</select>
+							</td>
+						</tr>
+						<!-- <tr>
+							<td width="22%" class="table-text">DB服务器</td>
+							<td width="78%">
+								<input type="hidden" name="dbServerInfoId" id="dbServerInfoId"/>
+								<select id="dbServerInfoName" name="dbServerInfoName.id" validate="v.required" valititle="该项必选">
+									<option value=" ">请选择</option>
+								</select>
+							</td>
+						</tr> -->
+						<tr>
+							<td class="table-text">SQL脚本路径</td>
+							<td>
+								<input type="text" name="sqlFilePath" id="sqlFilePath" validate="v.required" valititle="该项必填"/>
+							</td>
+						</tr>
+					</table>
+					<div class="ecitic-new">
+				    	<button class="btn btn-ecitic" id="db_server_add">新增</button>
+				        <button class="btn btn-ecitic" id="db_server_delete">删除</button>
+						<table class="table table-bordered table-hover" id="evnConfigDbTable"></table>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="ecitic-operation ecitic-operation-bg" style="text-align: center;">
+		<button class="btn btn-ecitic" id="save">保存</button>
+		<button class="btn btn-ecitic" id="close">关闭</button>
+	</div>
+	
+	<!-- modal of ap服务器  -->
+    <div id="apServerSelect_modal" class="modal hide fade" style="top: 50%;margin-top: -285px; width:900px;" z-index="980" tabindex="-1">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+            <h3 class="header-h3">AP服务器</h3>
+        </div>
+       	<div class="modal-body" style="max-height:400px;">
+			<table class="table table-bordered table-hover" id="evnConfigApSelect"></table>
+       	</div>
+        <div class="modal-footer" style="text-align: center;">
+        	<button class="btn btn-ecitic" id="ap_select">选择</button>
+			<button class="btn btn-ecitic" id="ap_close">关闭</button>
+        </div>
+    </div>
+    <!-- end of modal -->
+	
+	<!-- modal of db服务器  -->
+    <div id="dbServerSelect_modal" class="modal hide fade" style="top: 50%;margin-top: -285px; width:900px;" z-index="980" tabindex="-1">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+            <h3 class="header-h3">DB服务器</h3>
+        </div>
+       	<div class="modal-body" style="max-height:400px;">
+			<table class="table table-bordered table-hover" id="evnConfigDbSelect"></table>
+       	</div>
+        <div class="modal-footer" style="text-align: center;">
+        	<button class="btn btn-ecitic" id="db_select">选择</button>
+			<button class="btn btn-ecitic" id="db_close">关闭</button>
+        </div>
+    </div>
+    <!-- end of modal -->
+</div>
+<script type="text/javascript" src="evnConfig_edit.js"></script>
+</body>
+</html>

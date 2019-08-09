@@ -1,0 +1,62 @@
+
+<!-- 问题单任务模态框 -->
+<div id="myModal_taskProblem" class="modal hide fade" style="top: 50%;margin-top: -260px;" tabindex="-1" z-index="1060">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="myModalLabel">问题单任务查询页面</h5>
+	</div>
+	<!-- <form action="" class="form-inline" id="pop_taskProblem_condition">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+			<tr>
+				<td class="ecitic-right">任务编号：</td>
+				<td><input type="text" name="P_req_task_code"/>
+				</td>
+				<td class="ecitic-right">任务名称：</td>
+				<td>
+					<input type="text" name="P_req_task_name"/>
+				</td>
+			</tr>		
+			<tr>
+				<td class="ecitic-right">任务类型：</td>
+				<td><select name="P_req_task_type" diccode="G_DIC_REQTASK_COME"></select>
+				</td>
+			</tr>		
+		</table>
+	</form> -->
+	
+	<form action="" class="form-inline" id="pop_taskProblem_condition">
+		<div class="row">
+			<div class="span6 h30">
+				<label class="pl60">任务编号：</label>
+				<input type="text" name="P_req_task_code"/>
+			</div>
+			<div class="span6 h30">
+				<label class="pl60">任务名称：</label>
+				<input type="text" name="P_req_task_name"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span6 h30">
+				<label class="pl60">任务类型：</label>
+				<select style="width:188px!important;" name="P_req_task_type" diccode="G_DIC_REQTASK_COME"></select>
+			</div>
+			
+		</div>
+	</form>
+	
+	
+	
+	
+	
+	<div class="ecitic-save">
+		<input class="btn btn-ecitic" value="查询" id="pop_taskProblemSearch" type="button" />
+		<input class="btn btn-ecitic" value="重置" id="pop_taskProblemReset" type="button" />
+	</div>
+	<div class="ecitic-title-table modal-body ecitic-new">
+		<div class="tz_btn">
+			<button class="btn btn-ecitic" type="button" id="taskProblemPOPSureSelected">确认选择</button>
+		</div>
+		<table id="pop_taskProblemTable"  class="table-text-show table table-bordered table-hover table-center table-th tablr-input-text"></table>
+	</div>
+	<div class="modal-footer"></div>
+</div>

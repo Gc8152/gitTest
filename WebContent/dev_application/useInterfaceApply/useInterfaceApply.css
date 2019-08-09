@@ -1,0 +1,8 @@
+/* 点击查看详情*/
+.viewDetail{color:blue;}
+.viewDetail:hover{color:blue;cursor:pointer;text-decoration:underline;}
+.viewDetail:active{color:red;cursor:pointer;text-decoration:underline;}
+
+/*接口信息模态框样式*/
+.pop-padding{padding :0px 10px}
+.modal-max-div{width:60%;height:75%;overflow:auto}

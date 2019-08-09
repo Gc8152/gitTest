@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>信息技术外包人员级别评定确认表</title>
+		<link href="../../../bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+		<script type="text/javascript" src="../../../js/jquery/jquery-1.9.1/jquery.min.js"></script>
+		<script type="text/javascript" src="../../../bootstrap/js/bootstrap-table.min.js"></script>
+		<script type="text/javascript" src="../../../bootstrap/js/bootstrap-table-zh-CN.js"></script>
+		<script type="text/javascript" src="../../../js/commons/commons.js"></script>
+		<style type="text/css">
+			.head{
+				width: 100%;
+    			text-align: left;
+    			font-size:14px;
+			}
+			.xxx{
+    			text-align: center;
+			}
+			table{
+			    border: 1px solid black;
+			    border-right: none;
+			    border-bottom: none;
+			}
+			td{
+			    border-right: 1px solid black;
+			    border-bottom: 1px solid black;
+			    height:40px;
+/* 			    font-size:12px; */
+			}
+			th{
+			    border-right: 1px solid black;
+			    border-bottom: 1px solid black !important;
+			}
+			.bottomC{
+				margin-top:15px;
+				text-align: right;
+    			margin-right: 120px;
+			}
+			/* 应用这个样式的，从那个标签结束开始另算一页，之后在遇到再起一页，以此类推 */  
+           .page {  
+               page-break-after: always;  
+            }  
+            body{
+            	 display: block;
+   				 margin: 8px;
+            	 margin-top: 0;
+                 margin-bottom: 0;
+            }
+		</style>
+	</head>
+	<body>
+	<div class="head"  class="head" style="text-align:center;padding-bottom:15px;padding-top: 10px;font-size:18px;font-weight: 100;">外包人员级别评定确认表</div>
+	<div align="right" id="apply_time"></div>
+	<div class="head">
+		<table width="100%"  cellspacing="0">
+			<tr>
+				<td rowspan="3" width="2%" colspan="1">申请人填写</td>
+				<td  width="8%"  colspan="1">申请职能组</td>
+				<td  width="32%" colspan="4">
+					<div  id="apply_group"></div>
+				</td>
+				<td  width="8%"  colspan="1">申请人</td>
+				<td width="32%" colspan="4">
+					<div  id="opt_manager"></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1" >申请原因</td>
+				<td  colspan="9">
+					<div id="apply_reason"></div>
+				</td>
+			</tr>
+			<tr  >
+				<td width="2%"  >拟引入人员情况</td>
+				<td colspan="9">
+					<table  class="table table-bordered table-hover"  style="overflow:hidden; border:0px dashed transparent" width="100%" id="rankUpGradePrintTable">
+						<tr id="rankPersonList">
+							<td  class="tdTitle">姓名</td>
+							<td  class="tdTitle">开发方向</td>
+							<td  class="tdTitle">原有级别</td>
+							<td  class="tdTitle">申请级别</td>
+							<td  class="tdTitle">公司名称</td>
+							<td  class="tdTitle">评定日期</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td  colspan="11">
+					<div id="out_manager"></div>
+				</td>
+			</tr>
+			<tr>
+				<td  colspan="11">
+					<div id="pro_leader"></div>
+				</td>
+			</tr>
+			<tr>
+				<td   colspan="11">
+					<div id="center_leader"></div>
+				</td>
+			</tr>
+<!-- 			<tr>
+				<td  colspan="11">
+					<div id="project_manager"></div>
+				</td>
+			</tr>
+			<tr>
+				<td  colspan="11">
+					<div id="science_leader"></div>
+				</td>
+			</tr>
+			<tr>
+				<td   colspan="11">
+					<div id="business_leader"></div>
+				</td>
+			</tr>
+			<tr>
+				<td   colspan="11">
+					<div id="science_two"></div>
+				</td>
+			</tr>
+			<tr>
+				<td   colspan="11">
+					<div id="business_two"></div>
+				</td>
+			</tr>
+			<tr>
+				<td   colspan="11">
+					<div id="science_one"></div>
+				</td>
+			</tr>
+			<tr>
+				<td   colspan="11">
+					<div id="business_one"></div>
+				</td>
+			</tr> -->
+		</table>
+		
+	</div>
+	<script type="text/javascript" src="../../../js/jquery/jquery-1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/bootstrap-table-zh-CN.js"></script>
+	<script type="text/javascript" src="../../../dev_outsource/outsource/outperson/outperson_rankEvaUpPrint.js"></script>
+	<script type="text/javascript" src="../../../js/commons/commons.js"></script>
+</body>
+</html>

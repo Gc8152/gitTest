@@ -1,0 +1,121 @@
+/*办公楼-楼层*/
+.work-inquire {font-size:14px;height:46px;margin-bottom:15px;position:relative;}
+	.work-inquire .ecitic-table {width:540px;height:46px;margin:0;float:left;overflow:hidden;}
+		.ecitic-table table {margin:0;}
+			.work-inquire .table .ecitic-right {width:44px;text-align:right;padding:10px 0;}
+				.work-inquire .table-bor-pad td {padding:10px 18px 10px 8px;}
+/*办公楼汇总-楼层汇总*/
+.work-floor-all {float:right;}
+	.work-floor-num {overflow:hidden;height:22px;}
+		.work-floor-num li {float:left;display:inline;height:22px;line-height:22px;padding-left:10px;}
+			.work-floor-num .work-floor-sum {width:100px;text-align:right;}
+			.work-floor-num li span, .work-floor-num li em {float:left;display:inline;}
+				.work-floor-num li span {margin-right:3px;}
+				.work-floor-num li em {font-style:normal;min-width:16px;height:16px;font-size:12px;line-height:16px;text-align:center;border-radius:50%;background:#000;opacity:.5;filter:alpha(opacity=50);color:#fff;margin-top:4px;}
+/*工位全景图-工位区域图*/
+.tabWrap {width:100%;overflow:hidden;min-height:460px;}
+	/*标签分类*/
+	.tabD {width:100%;height:30px;margin-bottom:15px;border-bottom:3px solid #ccc;}
+		.tabD li {float:left;display:inline;font-size:20px;height:26px;line-height:26px;margin-right:15px;padding-bottom:4px;}
+			.tabD li em {width:11px;height:6px;display:block;margin:-2px auto 0 auto;}
+			.tabD .tabBtn_Bg {color:#c9161d;border-bottom:3px solid #c9161d;}
+				.tabD li:hover {cursor:pointer;}
+				.tabD .tabBtn_Bg em {background:url(../images/icon_ecitic.png) no-repeat;background-position:-187px -192px;}
+	/*删除按钮*/
+	.img_delete {width:32px;height:32px;position:absolute;right:10px;top:10px;text-align:center;font-size:16px;line-height:32px;color:#fff;background:#c9161d;z-index:9;border-radius:50%;}
+		.img_delete:hover {background:#a80e15;color:#fff;cursor:pointer;}
+	/*上传图片*/
+	.uploadImg {background:#F5F5F5;min-height:430px;width:100%;position:relative;overflow:auto;}
+		.uploadImg .uploadImg_btns {width:220px;height:56px;position:absolute;left:50%;top:50%;margin:-28px 0 0 -110px;}
+			.uploadImg .uploadImg_btns span {width:220px;height:56px;font-size:18px;line-height:56px;text-align:center;color:#fff;position:absolute;left:0;top:0;z-index:1;border-radius:5px;background:#c9161d;opacity:.8;filter:alpha(opacity=80);display:block;}
+				.uploadImg .uploadImg_btns input {width:220px;height:56px;background:none;border:none;opacity:0;filter:alpha(opacity=0);font-size:100px;position:absolute;top:0;right:0;z-index:10;}
+					.uploadImg .uploadImg_btns input:hover {cursor:pointer;}
+			.uploadImg img {width:100%;}
+/*内容区*/
+.tabContListD {display:none;overflow:hidden;position:relative;padding-bottom:15px;}
+	/*当前状态*/
+	.on {display:block;}
+	/*隐藏*/
+	.whide {display:none;}
+/*工作区域-颜色区块*/
+.areaAndPS {overflow:hidden;margin-bottom:15px;padding:0 15px;}
+	/*工作区域*/
+	.workArea {width:259px;float:left;overflow:hidden;}
+		.workArea span, .workArea .select2-container {float:left;}
+			.workArea span {height:26px;line-height:26px;margin-right:10px;}
+			.workArea .select2-container {width:74%;}
+	/*颜色区块*/
+	.psArea {height:26px;line-height:26px;float:right;overflow:hidden;}
+		.psArea li {height:26px;line-height:26px;float:left;display:inline;margin-left:10px;}
+			.psArea li i {width:12px;height:12px;float:left;display:block;margin:8px 5px 0 0;}
+				.psArea .usedICON {background:#e7666e;}
+				.psArea .UNusedICON {background:#eee;}
+				.psArea .BIusedICON {background:#4fc646}
+/*坐标轴-工位框架*/
+.coordinate {font-size:14px;color:#9d9c9c;position:relative;overflow:auto;}
+	/*坐标轴*/
+	.Xcoordinate {/*width:100%;*/margin-left:39px;overflow:hidden;}
+		.Xcoordinate li {float:left;width:50px;height:14px;line-height:14px;text-align:center;margin-right:8px;}
+	.Ycoordinate {width:25px;margin-top:14px;overflow:hidden;}
+		.Ycoordinate li {width:25px;height:50px;line-height:50px;text-align:right;margin-bottom:8px;}
+	/*工位框架*/
+	.stationDet {padding:4px;position:absolute;top:17px;left:28px;border:1px solid #eee;height:325px;}
+		/*关闭按钮*/
+		.sta-layer {text-align:center;position:relative;height:100%;/*display:none;*/}
+			.sta-layer i {position:absolute;background:url(../images/icon_ecitic.png) no-repeat -122px -82px;width:12px;height:12px;top:0;right:0;display:none;}
+				.sta-layer i:hover {background-position:-150px -82px;cursor:pointer;}
+				.sta-layer:hover i {display:block;}
+		/*设备-人物*/
+		.sta-layer .sta2, .sta-layer .sta3 {position:absolute;bottom:2px;display:inline-block;width:12px;height:12px;background-size:12px;}
+		.sta-layer .sta1, .sta-layer .sta2, .sta-layer .sta3 {display:none;}
+			.sta-layer .sta1 {display:none;background:url(../images/icon_ecitic.png) no-repeat -174px -286px;width:24px;height:24px;position:absolute;top:50%;left:50%;margin:-12px 0 0 -12px;}
+			.sta-layer .sta2 {background:url(../images/icon_ecitic.png) no-repeat -186px -264px;right:2px;}
+			.sta-layer .sta3 {background:url(../images/icon_ecitic.png) no-repeat -186px -243px;left:2px;}
+			.sta-layer .sta4 {width:20px;height:20px;position:absolute;left:50%;top:50%;margin:-10px 0 0 -10px;display:block;background:url(../images/icon_ecitic.png) no-repeat -157px -250px;display:none;}
+				.sta-layer:hover .sta1, .sta-layer:hover .sta2, .sta-layer:hover .sta3 {display:block;}
+				.sta-layer .sta1:hover, .sta-layer .sta2:hover, .sta-layer .sta3:hover, .sta-layer .sta4:hover, .sta-layer i:hover {cursor:pointer;}
+			.stationDet .seatArea .hasStation:hover .sta-layer .sta1 {display:none;}
+				.stationDet .seatArea .hasStation:hover .sta-layer .sta2, .stationDet .seatArea .hasStation:hover .sta-layer .sta3, .stationDet .seatArea .hasStation:hover .sta-layer .sta4, .stationDet .seatArea .hasStation:hover .sta-layer i {display:block;}
+			.stationDet .seatArea li:hover .sta-layer .sta1 {display:block;}
+				.stationDet .seatArea li:hover .sta-layer .sta2, .stationDet .seatArea li:hover .sta-layer .sta3, .stationDet .seatArea li:hover .sta-layer .sta4, .stationDet .seatArea li:hover .sta-layer i {display:none;}
+			.stationDet .seatArea .hasStation .sta-layer .sta4 {display:block;}
+	/*工位区块*/
+	.stationDet .seatArea {margin:0;overflow:hidden;}
+		.stationDet .seatArea li {position:relative;float:left;color:#fff;width:48px;height:48px;margin:4px;border-style:solid;border-width:1px;border-color:transparent;} 
+			.seatArea li:hover {width:48px;height:48px;border:1px solid #ddd;}
+		.stationDet .seatArea .hasStation {background:#eee;}
+			.stationDet .seatArea .hasStation:hover {background-color:#ddd;border:1px solid #ddd;}
+				.stationDet .seatArea .hasStation:hover .sta-layer {display:block;}
+		.stationDet .seatArea .hasStation.hasStationed {background-color:#e7666e !important;}
+			.stationDet .seatArea .hasStation.hasStationed:hover {background-color:#f77a82 !important;border:1px solid #f77a82;}
+		.stationDet .seatArea .hasStation.hasBind {background-color:#4fc646;}
+			.stationDet .seatArea .hasStation.hasBind:hover {background-color:#69cc62 !important;border:1px solid #69cc62;}
+/*工位详情pop*/
+.popLayer-all {overflow:hidden;height:158px;min-width:331px;/*width:292px;*/position:absolute;display:none;}
+	.popLayer-all i {position:absolute;width:0;height:0;border-width:8px;border-style:solid;border-color:transparent transparent #dc8f8f transparent;}
+		.popLayer-all .pop-i01 {top:0;left:18px;z-index:98;}
+		.popLayer-all .pop-i02 {top:1px;left:18px;z-index:99;border-color:transparent transparent #fff transparent;}
+	.popLayer {/*width:270px;*/height:120px;border-radius:3px;padding:10px;/*position:absolute;top:0;left:0;z-index:11;*/margin-top:16px;/*box-sizing:border-box;*/background:#fff;border:1px solid #dc8f8f;overflow:hidden;overflow-y:auto;}
+	.popLayer-bottom {}
+		.popLayer-bottom i {border-color:#dc8f8f transparent transparent transparent;}
+			.popLayer-bottom .pop-i01 {top:auto;bottom:0;left:18px;z-index:98;}
+			.popLayer-bottom .pop-i02 {top:auto;bottom:1px;left:18px;z-index:99;border-color:#fff transparent transparent transparent;}
+		.popLayer-bottom .popLayer {top:auto;left:0;bottom:15px;}
+		/*人员名称--人员编号-所在部门\处室*/
+		.wp_person_detail, .wp_device_detail_head {overflow:hidden;margin-bottom:6px;}
+			.wp_device_detail_head {box-sizing:border-box;}
+		.wp_person_detail {padding:0 20px 0 0;width:100%;}
+			.wp_person_detail li {height:24px;line-height:24px;overflow:hidden;display:table;}
+				.wp_person_detail li h3, .wp_person_detail li span {float:left;display:table-cell;word-break:keep-all;white-space:nowrap;}
+					.wp_person_detail li h3, .wp_device_detail_head li h3 {font-size:14px;font-weight:normal;margin:0;padding:0;height:24px;line-height:24px;}
+					.wp_person_detail li span, .wp_device_detail_head li span {height:24px;line-height:24px;}
+		/*设备编号-设备名称-设备状态*/
+		.wp_device_detail_head li {float:left;display:inline;width:33.555%;text-align:center;border:1px solid #ccc;border-collapse:collapse;margin:0 -1px 0 0;position:relative;z-index:0;word-break:keep-all;white-space:nowrap;box-sizing:border-box;}
+			.wp_device_detail_head li h3, .wp_device_detail_head li span {padding:0 5px;}
+				.wp_device_detail_head li h3 {display:block;border-bottom:1px solid #ccc;background:#f5f5f5;}
+				.wp_device_detail_head li span {display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+/*工位详情pop1*/
+.pop-table {margin-bottom:10px;border-collapse:collapse;border-top:1px solid #ccc;border-left:1px solid #ccc;}
+	.pop-table th, .pop-table td {word-break:keep-all;white-space:nowrap;text-overflow:ellipsis;text-align:center;border:1px solid #ccc;height:26px;line-height:26px;}
+		.pop-table th {padding:0 15px;font-size:14px;background:#f5f5f5;}
+	.pop-table .pop-title {font-weight:bold;}

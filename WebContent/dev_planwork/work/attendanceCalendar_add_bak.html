@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>考勤日历表</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<link rel="stylesheet" type="text/css" href="dev_planwork/work/attendanceCalendar.css" />
+
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>  
+<script src="js/commons/commons.js"></script>
+<!-- <script src="bootstrap/js/bootstrap-editable.js"></script>
+
+<script src="bootstrap/js/bootstrap-table-editable.js"></script> -->
+<!-- <script src="bootstrap/js/rawgit-bootstrap-editable.js"></script> -->
+<!-- <script src="../../upload/uploadFileInfo.js"></script> -->
+<script src="dev_planwork/work/inline_editable.js"></script>
+<script src="dev_planwork/work/calendar.js"></script>
+<!-- <script src="dev_planwork/work/attendanceCalendar_add.js"></script> -->
+<script src="dev_planwork/work/attendanceCalendar_editable.js"></script>
+<script src="dev_planwork/work/planOutterPOP.js"></script>
+<script src="dev_planwork/work/planOutterAssociate.js"></script>
+
+</head>
+<body>
+<div class="main_iframe_con">
+<div class="wrapCal">
+<div class="popD">
+	<span class="arrow-up"></span>休息日无法报工!
+</div>
+<div id="attend_wrap" class="container">
+<a href="javascript:;" target="_self"  class="attendanceCalendarSider-btn" id="attendanceCalendarSider-btn-editable"></a>
+  <div id="attend_tab"> <a href="#">考勤签到</a> <a href="#" class="active">我的考勤</a> </div>
+  <div id="attend_a" class="hidden"></div>
+  <div id="attend_b" class="row">
+    <ul class="col-md-9 bor_r">
+      <table cellpadding="0" cellspacing="0">
+        
+      </table>
+      <li id="rili_wrap"></li>
+    </ul>
+    <ul class="col-md-3">
+      <li id="date_ch">
+        <p class="d_c_name">选择日期：</p>
+        <p class="d_c_form" id="rili_se"></p>
+      </li>
+    </ul>
+  </div>
+  <div class="operating-condition">
+  	<ul>
+  		<li><i style="background:#2f6de1"></i><span>已报工</span></li>
+  		<li><i style="background:#000"></i><span>未报工</span></li>
+  		<li><i style="background:#f29622"></i><span>休息日</span></li>
+  	</ul>
+  </div>
+</div>
+<!-- 右侧内容 -->
+		<div class="cont-right">
+		   <h3> <span>当前日期：</span>
+	        <span id = "currentTime">2016年11月24日</span>
+	        <span id = "currentTimeHidden" style=display:none></span>
+	        </h3>
+		<!-- <form action=""  class="form-inline">
+			<div class="ecitic-inquire ecitic-moreNo">
+		<div class="ecitic-table" id="ecitic-table">
+		<table id="attendanceCalendar_query" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">任务名称：</td>
+						<td><input type="text" name="plan_name" id="plan_name"/></td>
+						<td class="ecitic-right">任务类型：</td>
+						<td>
+						   <select id="task_type" name="task_type" style="width:100%;"></select>
+						</td>
+						</tr>
+				</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="search" value="查询" /></li>
+			<li><input type="button" class="btn btn-ecitic" id="reset2" value="重置" /></li>
+		</ul>
+	</div>
+	</form> -->
+		<div class="ecitic-operation">
+		    <h3>待办任务：</h3>
+			<button class="btn btn-ecitic" id="addTaskExt" >新增计划外任务</button>
+			<button class="btn btn-ecitic" id="taskEdit">编辑</button>
+			<button class="btn btn-ecitic" id="save">保存</button>
+		</div>
+		<div class="ecitic-new">
+			<table id="attendanceCalendarTable" class="table table-bordered table-hover"></table>
+		</div>
+			<div class="Bgdetalis">
+				<h3>任务详情：</h3>
+				<span class="BgdetalisTitle">项目名称：</span>
+	            <span id = "proName"></span>
+	            <span class="BgdetalisTitle">计划工作量：</span>
+	            <span id = "planWork"></span>
+	            <span class="BgdetalisTitle">工作量完成百分比：</span>
+	            <span id = "workPercentage"></span>
+	            <span class="BgdetalisTitle">任务状态：</span>
+	            <span id = "taskStatus"></span>
+				<table id="personTaskDetailsTable" class="table table-bordered table-hover"> </table>
+			</div>
+				</div>
+				<div class="clear"></div>
+				</div>
+			</div>
+<!-- 新建计划外报工任务POP框 -->
+<div id="myModal_planOutter" class="modal hide fade" style="top: 50%;margin-top: -285px; width:900px;" z-index="980" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<!-- <h5 id="myModalLabel2">个人报工明细页面</h5> -->
+		    <h3 class="header-h3">
+				新增计划外任务
+			</h3>
+	</div>
+	<div class="modal-body" style="max-height:400px;">
+			<form action="" class="form-inline" id="planOutter_form_add">
+			  <div class="ecitic-title-table tab-content bootstrapTabsCont" id="ecitic-table">
+				<table id="planOutter" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text planOutter">
+					<colgroup>
+						<col style="width: 15%">
+				        <col style="width: 35%">
+				        <col style="width: 15%">
+				        <col style="width: 35%">
+			        </colgroup>
+					<tr>
+						<td class="table-text">任务名称：</td>
+						<td colspan="3">
+							<div class="planOutter_form_add_position">
+								<input id="plan_name" name="plan_name" type="text"  validate="v.50_mzhi">
+								<input id="pkId" name="pkId" type="hidden"  >
+							</div>
+						</td>
+						
+					</tr>
+					<tr>
+					<td class="table-text">任务类型：</td>
+						<td>
+							<div class="planOutter_form_add_position">
+						  		<!-- <select id="plan_type_name" name="plan_type_name" ></select> -->
+						   		<select id="plan_type_code" name="plan_type_code" validate="v.required"></select>
+							</div>
+						</td>
+						<td class="table-text">是否确认完成：</td>
+						<td>
+						     <input type="radio" id="is_app0_applicationadd" name="is_sure" value="01" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        
+						          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						          <input type="radio" id="is_app1_applicationadd" name="is_sure" value="00" checked="checked"/>否
+							<!-- <select id="is_sure" name="is_sure" ></select> -->
+						</td>
+						
+					</tr>
+					<tr>
+					    <td class="table-text">关联类型：</td>
+						<td>
+						          <input type="radio" id="associate_type_app2" checked="checked" name="associate_type" value="02"/>无&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        
+						          &nbsp;&nbsp;
+						          <input type="radio" id="associate_type_app0" name="associate_type" value="00"/>项目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        
+						          &nbsp;&nbsp;
+						          <input type="radio" id="associate_type_app1" name="associate_type" value="01" />问题单任务
+						</td>
+						
+					<td class="table-text"><div>关联：</div></td>
+						<td>
+							<div style="max-height:26px;">
+								<input type="text" id="associate_name"  name="associate_name">
+								<input type="hidden" id="associate_code"  name="associate_code"> 
+								<input type="hidden" id="top_plan_id"  name="top_plan_id"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">计划开始时间：</td>
+						<td>
+							<div class="planOutter_form_add_position">
+								<input type="text" id="start_date" name="start_date" validate="v.required" readonly="readonly" onclick="initDate(this)">
+							</div>
+						</td>
+						<td class="table-text">计划完成时间：</td>
+						<td>
+							<div class="planOutter_form_add_position">
+								<input type="text" id="end_date" name="end_date" validate="v.required" readonly="readonly" onclick="initDate(this)">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">当日投入工作量：</td>
+						<td colspan="1">
+							<div class="planOutter_form_add_position">
+								<input type="text" id="work_load" name="work_load" validate="v.number50">
+							</div>
+						</td>
+						<td class="table-text">完成比例(%)：</td>
+						<td>
+							<div class="planOutter_form_add_position">
+								<input type="text" id="percentage" name="percentage" validate="v.number">
+							</div>
+							
+						</td>
+					</tr>
+					<tr>
+						<td class="table-text">说明：</td>
+						<td colspan="3">
+							<textarea width="100%" id="remark" name="remark"></textarea>
+						</td>
+					</tr>
+			   	 </table>	
+			   </div>
+			</form>
+	 <div class="ecitic-save">
+		<button class="btn btn-ecitic"  id="planOutter_save">确定</button>
+		<button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+	</div>
+  </div>
+  <div class="modal-footer"></div>
+ </div>
+ 
+ <!-- 计划外任务关联项目和问题单任务POP框 -->
+ <div id="myModal_associate" class="modal hide fade" style="top: 50%;margin-top: -285px; width:900px;" z-index="1000" tabindex="-1">
+	    <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+			<h5 id="myModalLabel">关联项目和任务</h5>
+		</div>
+	  <div>
+			<!-- <h3 class="header-h3">
+				关联项目和任务
+			</h3> -->
+	    <!--  <div class="ecitic-table" id="ecitic-table">
+				<table id="assoTypeTable" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+						
+					</tr>
+				</table>
+			</div> -->
+			  <div id="program_table" class="ecitic-title-table tab-content bootstrapTabsCont" >
+			    <form action="" class="form-inline" id="myModal_userForm1">
+					<div class="row">
+						<div class="span6 h50">
+							<label class="pl60">项目编号：</label>
+							<input type="text" id="project_num" name="project_num" placeholder="项目编号" />
+						</div>
+						<div class="span6 h50">
+							<label class="pl60">项目名称：</label>
+							<input type="text" id="project_name" name="project_name" placeholder="项目名称 " />
+						</div>
+					</div>
+				</form>
+			    <div class="ecitic-save">
+					<input class="btn btn-ecitic" value="查询" id="program_query" type="button" />
+					<input class="btn btn-ecitic" value="重置" id="program_reset" type="button" />
+				</div>
+				<div class="modal-body">
+					<div class="tz_btn" style="display:none;position: fixed;">
+						<button class="btn btn-ecitic" type="button" id="userPOPSureSelected">确认选择</button>
+					</div>
+					<table id="program_list_table" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text"> </table>
+				</div>
+					
+			   </div>
+			   
+			  <div id="problem_table" class="ecitic-title-table tab-content bootstrapTabsCont" >
+			      <form action="" class="form-inline" id="myModal_userForm2">
+						<div class="row">
+							<div class="span6 h50">
+								<label class="pl60">问题单任务名称：</label>
+								<input type="text" id="req_task_name" name="req_task_name" placeholder="问题单任务名称" />
+							</div>
+							<div class="span6 h50">
+								<label class="pl60">问题单编码：</label>
+								<input type="text" id="req_task_code" name="req_task_code" placeholder="问题单编码 " />
+							</div>
+						</div>
+					</form>
+	             <div class="ecitic-save">
+					<input class="btn btn-ecitic" value="查询" id="problem_query" type="button" />
+					<input class="btn btn-ecitic" value="重置" id="problem_reset" type="button" />
+				</div>
+				 <div class="modal-body">
+					<div class="tz_btn" style="display:none;position: fixed;">
+						<button class="btn btn-ecitic" type="button" id="userPOPSureSelected">确认选择</button>
+					</div>
+					<table id="problem_list_table" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text"> </table>
+				</div>
+					
+			   </div>
+		</div>	
+	<div class="modal-footer"></div>
+</div>
+
+
+<!-- 计划外任务关联项目和问题单任务POP框 -->
+  <div id="myModal_desc" class="modal hide fade" style="top: 50%;margin-top: -285px; width:500px;" z-index="1000" tabindex="-1">
+     <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" title="点击关闭">×</button>
+		<h5 id="myModalLabel">用户查询页面</h5>
+	</div>
+	<div id="program_table" class="ecitic-title-table tab-content bootstrapTabsCont" >
+        <form action="" class="form-inline" id="myModal_userForm3">
+			<div class="row">
+				<div class="span6 h50">
+					<!-- <label class="pl60">说明：</label> -->
+					<textarea width="100%" id="desc" name="desc"></textarea>
+				</div>
+			</div>
+		</form>
+	 <div class="ecitic-save">
+		<button class="btn btn-ecitic"  id="saveComment">确定</button>
+		<!-- <button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button> -->
+	</div> 
+	</div>  
+	<div class="modal-footer"></div>
+  </div>
+  
+  
+</body>
+</html>

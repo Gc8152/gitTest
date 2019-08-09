@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="dev_planwork/wbs/wbsPlan_public.css"/>
+</head>
+
+<body>
+<div class="ecitic-title">
+	<span id="wbsSpan">编辑项目WBS计划<em></em></span>
+	<i class='my'></i>
+</div> 
+<div>
+	<div class="ecitic-operation">
+		<!-- <a href="#"><button class="btn btn-ecitic" id="wbsPlan_addRoot"><i class="fa fa-indent"></i>新增根节点</button></a> -->
+		<a href="#"><button class="btn btn-ecitic" id="wbsPlan_add"><i class="fa fa-indent"></i>新增子节点</button></a>
+		<a href="#"><button class="btn btn-ecitic" id="wbsPlan_del"><i class="fa fa-trash"></i>删除</button></a>
+		<a href="#"><button class="btn btn-ecitic" id="wbsPlan_edit"><i class="fa fa-pencil"></i>编辑</button></a>
+		<!-- <a href="#"><button class="btn btn-ecitic" id="wbsPlan_edit_cancel">结束编辑</button></a> -->
+		<a href="#"><button class="btn btn-ecitic" id="wbsPlan_save">保存</button></a>
+		<a href="#"><button class="btn btn-ecitic" id="wbsPlan_release">发布</button></a>
+		<a href="#"><button class="btn btn-ecitic" id="wbsPlan_task_sync">同步任务</button></a>
+	</div>
+
+<!--     数据网格 -->  
+<table id="treegridTab_add" title="" style="width:100%;height:auto;margin:0 auto;">  
+</table> 
+</div>
+<!-- 导入wbs计划，上传文件 -->
+<form id="fileForm" action="" enctype="multipart/form-data" method="post" target="upload">  
+<input type="file" id="importFile" name="importFile" onchange="getFilePath()"   
+            style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;"/>
+<input type="hidden" name="project_id" value=""/>
+<input type="hidden" name="plan_id" value=""/>
+<input type="submit" id="submitFile" name="Submit" value="提交" style="display: none"> 
+</form>
+<iframe name="upload" style="display:none"></iframe>
+
+<!-- 获取人员的POP -->
+<input type="hidden" id="duty_man"/>
+<input type="hidden" id="duty_man_name"/>
+<div id="duty_man_pop"></div>
+
+</body>
+<script src="dev_planwork/wbs/wbsPlan_public.js"></script>
+<script src="dev_planwork/wbs/wbsPlan_edit.js"></script>
+<!-- <script src="dev_planwork/wbs/wbsPlan_edit2.js"></script> -->
+<script src="dev_planwork/wbs/suserPop.js"></script>
+</html>

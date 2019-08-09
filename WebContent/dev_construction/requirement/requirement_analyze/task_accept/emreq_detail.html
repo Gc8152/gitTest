@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>紧急需求详情</title>
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script type="text/javascript" src="dev_application/System_pop.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+		
+<form class="form-inline" id="g_emReqDetail">
+ <div class="ecitic-title">
+				<span>紧急需求详情<em></em></span>
+				<i></i>
+			</div>
+		<div class="ecitic-title-table">
+			<table class="table table-striped table-hover table-bordered tablr-input-text requirement-table"><!-- table-bor-paw-->
+				<colgroup>
+					<col style="width: 11%">
+			        <col style="width: 22%">
+			        <col style="width: 12%">
+			        <col style="width: 22%">
+			        <col style="width: 11%">
+			        <col style="width: 22%">
+		        </colgroup>
+				<tr>
+					<td class="table-text">需求名称：</td>
+					<td  colspan="5">
+						<div id="emreq_name" type="text" name="req_name" class="requirement-ele-width"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">提出部门：</td>
+					<td>
+				
+					<div type="text" id="req_put_dept_name" name="req_put_dept_name" class="requirement-ele-width"></div>
+					</td>
+					<td class="table-text">要求投产日期：</td>
+					<td >
+						<div type="text" id="req_operation_date" name="req_operation_date" class="requirement-ele-width"></div>
+						
+					</td>
+					<td class="table-text">所属应用：</td>
+					<td>
+					
+					<div type="text" id="system_id_name" name="system_id_name" class="requirement-ele-width"></div>
+					</td>
+				
+				</tr>
+				
+				<tr>
+					<td class="table-text" >紧急上线原因：</td>
+					<td colspan="5">
+						<div cols="90" rows="3" id="req_emupline_reason" name="req_emupline_reason"  class="requirement-ele-width" style="height:80px"></div>
+					</td>
+				</tr>
+			  </table>
+		   </div>
+		   <div class="ecitic-title">
+				<span>附件列表信息<em></em></span>
+				<i></i>
+			</div>
+			<div class="ecitic-title-table">
+				<table id="emreqdetail_filetable"  class="table table-bordered table-hover table-text-show"></table>
+			</div>
+		</form>
+		<div id="emreqdetail_fileview_modal"></div>
+	</div>
+</body>
+<script src="ztree3.5.22/js/jquery.ztree.core.min.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.excheck.min.js"></script>
+<script src="ztree3.5.22/js/jquery.ztree.exedit.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/select2.min.js"></script>
+<script type="text/javascript" src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="upload/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_input/select_orgPop.js"></script>
+<script src="pages/approvalflow/afcommons.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_input/input_flow/approval_content.js"></script>
+<script type="text/javascript" src="dev_construction/requirement/requirement_analyze/task_accept/emreq_detail.js"></script>
+</html>

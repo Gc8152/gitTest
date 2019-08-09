@@ -1,0 +1,11 @@
+/*背景图*/
+.ecitic-bg-circle ul li {border:1px solid #00893d;}
+	.ecitic-bg-circle .on {background:#00893d;}
+/*登录按钮*/
+.ecitic-user-password .ecitic-btn button {background-color:#00893d;border-color:#00893d;}
+	.ecitic-user-password .ecitic-btn button:hover {background-color:#006d30;border-color:#006d30;}
+/*错误提示*/
+.ecitic-user-password .ecitic-error, .ecitic-user-password .ecitic-error-prompt, .ecitic-user-password .ecitic-error-prompt a {color:#00893d;}
+	.ecitic-user-password .error-open input {border:1px solid #00893d;color:#00893d;}
+/*错误提示*/
+.ecitic-user-password .ecitic-error i {background-image:url(../images/nav03/icon_ecitic.png);}

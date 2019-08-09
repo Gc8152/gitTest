@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>  
+<script src="js/commons/commons.js"></script>
+<script src="dev_repository/repositoryConfig/category_manager.js"></script>
+</head>
+<body>
+<div class="container-fluid" id="category_mm" style="position:relative;">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="span6 citic-tree">
+				<div class="widget-box">
+					<div class="widget-title">
+						<span class="icon"><i class="icon-align-justify"></i></span>
+						<h5>类别管理</h5>
+						<button type="button" id="addCategory" class="btn btn-ecitic">添加知识类别</button>
+					</div>
+					<div class="controlsOverFlow">
+						<ul id="treeCategoryManager" class="ztree"></ul>
+					</div>
+				</div>
+			</div>
+			<div class="span6 citic-add">
+				<div class="widget-box">
+					<div class="widget-content nopadding">
+						<div class="control-group">
+							<div class="controls">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#menu_info" data-toggle="tab">类别属性</a></li>
+								</ul>
+								<div id="mymenuTabContent" class="tab-content">
+									<div class="tab-pane active" id="menu_info">
+										<div class="widget-content nopadding">
+											<form id="category_form" action="#" method="get" class="form-horizontal">
+												<div class="ecitic-title-table">
+													<table width="100%" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+														<tr>
+															<td class="ecitic-right">类别编号 :</td>
+															<td>
+																<input type="text" validate="v.required" valititle="类别编号必填" id="category_code" name="C.CATEGORY_CODE" placeholder="类别编号 " class="citic-ast"  />
+																
+																<input type="hidden" id="old_category_code" name="C.OLD_CATEGORY_CODE" />
+																
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">类别名称 :</td>
+															<td>
+																<input type="text" name="C.CATEGORY_NAME" valititle="类别名称必填" validate="v.required"  placeholder="类别名称" class="citic-ast" />
+																
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">父级类别名称:</td>
+															<td>
+																<input type="text" name="C.CATEGORY_NAME_TOP" id="category_name_top" placeholder="父级类别名称" class="citic-ast" />
+																<input type="hidden" name="C.CATEGORY_CODE_TOP" id="category_code_top" />
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">菜单图标 :</td>
+															<td>
+																<input type="text" name="C.MENU_ICON" placeholder="菜单图标" class="citic-ast" />
+															</td>
+														</tr>
+														<tr>
+															<td class="ecitic-right">排序序号:</td>
+															<td>
+																<input type="text" name="C.ORDER_NO" valititle="排序序号必填" validate="v.required"  placeholder="排序序号" class="citic-ast" />
+															</td>
+														</tr>
+														
+														<tr>
+															<td class="ecitic-right">类别说明:</td>
+															<td>
+																<textarea name="C.CATEGORY_EXPLAIN" class="citic-ast citic-textarea"></textarea>
+															</td>
+														</tr>
+													</table>
+												</div>
+												<div class="ecitic-save">
+													<input type="button" class="btn btn-ecitic" value="保存" id="saveCategory" />
+													<input type="button" class="btn btn-ecitic" value="删除" id="delCategory" />
+												</div>
+											</form>
+										</div>
+									</div>
+									<!-- <div class="tab-pane fade" id="menu_opt">
+										<button type="button" id="addButton" class="btn btn-ecitic btn-new-mb5" style="display:none;">新增</button>
+										<table id="buttonTableCategory" class="table table-bordered table-hover table-text-show"></table>
+									</div> -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+
+</html>

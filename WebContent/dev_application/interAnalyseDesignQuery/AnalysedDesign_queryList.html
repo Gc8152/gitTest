@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>分析设计清单</title>
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_application/interAnalyseDesignQuery/AnalysedDesign_queryList.js"></script>
+
+
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="AnalysedDesignQueryForm">
+				<table style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">申请编号：</td>
+						<td>
+							<input type="text" id="apply_id" name="apply_id"/>
+						</td>
+						<td class="ecitic-right">申请人：</td>
+						<td>
+							<input type="text" id="applicant" name="applicant"/>
+						</td>
+						<td class="ecitic-right">接口类型：</td>
+						<td>
+							<select type="text" id="app_type" name="app_type" style="width:100%;"></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">消费方应用名称：</td>
+						<td>
+							<input type="text" id="consumer_name" name="consumer_name" readonly/>
+						</td>
+						<td class="ecitic-right">服务方应用名称：</td>
+						<td>
+							<input type="text" id="ESBvice_name" name="ESBvice_name" readonly/>
+						</td>
+						<td class="ecitic-right">申请状态：</td>
+						<td>
+							<select type="text" id="inter_app_status" name="inter_app_status" style="width:100%;"></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">接口编号：</td>
+						<td>
+							<input type="text" id="inter_code" name="inter_code"/>
+						</td>
+						<td class="ecitic-right">接口名称：</td>
+						<td>
+							<input type="text" id="inter_name" name="inter_name"/>
+						</td>
+						<td class="ecitic-right" >要求完成日期：</td>
+						<td>
+							<div class="dateSelectZ_From">
+							<input type="text" id="req_finish_time_AnalysedDesign" name="req_finish_time" class="requirement-ele-width"  onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'req_finish_time1_AnalysedDesign\',{d:0});}'})" placeHolder="点击选择"   readonly/>
+							</div>
+							<div class="dateSelectZ_W">&nbsp至&nbsp</div>
+							<div class="dateSelectZ_From">
+							<input type="text" id="req_finish_time1_AnalysedDesign" name="req_finish_time1" class="requirement-ele-width" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'req_finish_time_AnalysedDesign\',{d:0});}'})" placeHolder="点击选择"  readonly/>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">接口交易码：</td>
+						<td>
+							<input type="text" id="trade_code" name="trade_code"/>
+						</td>
+						<td class="ecitic-right">关联任务编号：</td>
+						<td>
+							<input type="text" id="req_task_code" name="req_task_code"/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="queryAnalysedDesign" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" id="reset" value="重置"/></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="inter_Analyse_info">查看</button>
+	</div>
+	<div class="ecitic-new">
+		<table id="AnalysedDesignInfoTable" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+	<div mod="systemPop"></div>
+</div>
+</body>
+<script src="dev_application/useInterfaceApply/useInterfaceApply_systemPop.js"></script>
+</html>

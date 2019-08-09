@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.QApprovalDao">
+	<!-- 以下为查询操作 -->
+	
+	<!-- 查询所有审批记录  -->
+	<select id="queryApprovalList" parameterType="java.util.Map" resultType="java.util.Map">
+        select ad.biz_id,t.instance_id,af.af_id,af.af_name,t.state instance_state,
+		sd.item_name instance_statename,t.opt_person launch_person,
+		su.user_name launch_actorname,t.opt_time launch_time
+		from af_instance t
+		left join af_info af on af.af_id = t.af_id
+		left join af_flow_record ad on ad.instance_id = t.instance_id
+		left join (
+		    select st.item_code,st.item_name,st.dic_code,sd.dic_name 
+		    from s_dic_item st
+		    left join s_dic sd on sd.dic_code = st.dic_code
+		    where st.state = '00' and sd.state = '00'
+		    and sd.dic_code = 'AF_DIC_INSTANCE_STATE'
+		) sd on sd.item_code = t.state
+		left join s_user su on su.user_no = t.opt_person
+		where af.af_state = '00'
+		<if test="biz_id!=null and biz_id!=''">
+				and ad.biz_id = #{biz_id}
+		</if>
+		<if test="af_name!=null and af_name!=''">
+				and af.af_name like #{af_name}
+		</if>
+		<if test="instance_state!=null and instance_state!=''">
+				and t.state = #{instance_state}
+		</if>
+	</select>
+	<!-- 根据流程实例ID查询实例详情  -->
+	<select id="queryProcessDetail" parameterType="java.util.Map" resultType="java.util.Map">
+        select t.instance_id,de.n_id,n.n_type,tt.item_name n_typename,
+	    de.n_name node_name,de.app_person,su.user_name app_person_name,
+	    de.app_state,st.item_name app_statename,de.app_content,de.opt_time,
+	    (case when ap.order_id is null then '0' else ap.order_id end) order_id
+	    from af_instance t
+	    left join (
+	         select 
+	         fp.instance_id,fp.n_id,fp.n_name,fp.app_person,
+	         fp.app_state,fp.app_content,fp.opt_time
+	         from af_app_process fp
+	         union all
+	         select 
+	         fr.instance_id,fr.n_id,fr.n_name,fr.app_person,
+	         fr.app_state,fr.app_content,fr.opt_time 
+	         from af_app_record fr
+	    ) de on de.instance_id = t.instance_id
+	    left join af_process ap on ap.p_id = t.p_id and ap.n_id = de.n_id
+	    left join af_node_info n on n.n_id = de.n_id
+	    left join s_dic_item tt on tt.dic_code = 'AF_DIC_NODE_TYPE' and tt.item_code = n.n_type
+	    left join s_user su on su.user_no = de.app_person
+	    left join s_dic_item st on st.dic_code = 'AF_DIC_APP_STATE' and st.item_code = de.app_state
+	    where t.instance_id = #{instance_id}
+	    order by to_number(case when ap.order_id is null then '0' else ap.order_id end)
+	</select>
+</mapper>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>评审专家库管理</title> 
+    <!--  
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css"/>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/select2.css"/>	
+	<link rel="stylesheet" type="text/css" href="css/form.css"/>
+	
+	-->
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-table.min.css">
+	<link rel="stylesheet" type="text/css" href="css/form.css"/>
+
+	<script src="bootstrap/js/bootstrap-table.min.js"></script>
+	<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+	<script type="text/javascript" src="dev_construction/jury/experts/experts_queryList.js"></script>
+	<script src="pages/suser/suserPop.js"></script>
+	</head>
+<body>
+	<div class="ecitic-inquire ecitic-inquire-sec lessSearch""  id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td class="ecitic-right">评委名称:</td>
+					<td><input type="hidden" id="query_user_id" />
+					<input type="text" id="query_user_name" placeHolder="点击选择" readonly/>
+					</td>
+					<td class="ecitic-right">评委类型:</td>
+					<td>
+						<select id="type_key" class="citic-sele-ast" name="G.type_key" style="width:100%">
+							
+						</select>	
+					</td>
+					<td class="ecitic-right">评委等级:</td>
+					<td>
+						<select name="G.reviewer_grade" id="reviewer_grade" class="citic-sele-ast" style="width:100%">
+							
+						</select>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button class="btn btn-ecitic" id="queryExperts">查询</button></li>
+			<li><button class="btn btn-ecitic" id="reset_expertsQuery">重置</button></li>
+		</ul>
+	</div>
+	<div class="ecitic-operation">
+
+		<button class="btn btn-ecitic" onclick="pageDispatchGxperts(this,'GExpertAdd','')" >新建</button>
+		<button class="btn btn-ecitic" id="experts_edit">编辑</button>
+		<button class="btn btn-ecitic" id="experts_info">查看</button>
+		<button class="btn btn-ecitic" id="experts_delete">删除</button>
+	</div>
+	
+	<div class="ecitic-new">
+		<table id="expertsTableInfo" class="table table-bordered table-hover table-text-show" style="width:760px;"></table>
+	</div>
+	
+	<div id="queryDivExpert"></div>
+</body>
+
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>外包人员离场管理</title>
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+<script type="text/javascript" src="js/commons/dic_item.js"></script>
+<script type="text/javascript" src="dev_outsource/supplier/supplierInfo/supplierPop.js"></script>
+</head>
+<body>
+<form action="" id="staffInfoList">
+	<div class="ecitic-inquire" id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+					<tr>
+				<!-- 	<td class="ecitic-right">人员编号</td>
+					<td>
+						<input type="text" name="FD.op_code" id="op_code"/>
+					</td> -->
+					<td class="ecitic-right">人员采购类型</td>
+					<td>
+						<select class="requirement-ele-width"  name="FD.purch_type" id="purch_types" style="width: 100%"></select>
+					</td>
+					<td class="ecitic-right">人员名称</td>
+					<td>
+						<input type="text" name="FD.op_name" id="op_name"/>
+					</td>
+					<td class="ecitic-right">供应商名称</td>
+					<td>
+						<div class="ecitic-input-all">
+							<input type="hidden"  name="FD.supplier_id" id="supplier_id" />
+							<input type="text" placeholder="点击选择供应商" id="FDsupplier_name" readonly/>
+						</div>
+					</td>
+				</tr>
+				<tr>
+				 
+					<!-- <td class="ecitic-right">所属中心</td>
+					<td>
+						<div class="ecitic-input-all" style="position: static;">
+							<input type="hidden" name="FD.op_office" id="op_office"/>
+							<input type="text" placeholder="点击选择所属中心" name="FD.a" id="FD_op_office" readonly/>
+						</div>
+					</td> -->
+					<td class="ecitic-right">行内归属部门</td>
+					<td>
+						<div class="ecitic-input-all" style="position: static;">
+							<input type="hidden" name="FD.op_office" id="op_office"/>
+							<input type="text" placeholder="点击选择行内归属部门" name="FD.a" id="FD_op_office" readonly/>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><button type="button" class="btn btn-ecitic" id="queryOutPersonInfo2">查询</button></li>
+			<li><button type="button" class="btn btn-ecitic" id="resetOutPersonInfo2">重置</button></li>
+		</ul>
+	</div>
+</form>
+	<div class="ecitic-operation">
+		<button type="button" class="btn btn-ecitic" id="outperson_approve2">审批</button>
+	</div>
+	<div class="ecitic-new">
+		<input type="hidden" id="outpseron_workflowType" value="enterbank"/><!-- 区别流程，公用的js -->
+		<table class="table table-bordered table-hover" id="outpersonTableInfo"></table>
+	</div>
+	
+
+<div id="outperson_contractSupplier_Pop"></div>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="js/commons/ajaxfileupload.js"></script>
+<script src="dev_outsource/outsource/outpersonDeparture/outpersonDeparture_queryList.js"></script>
+</body>
+</html>

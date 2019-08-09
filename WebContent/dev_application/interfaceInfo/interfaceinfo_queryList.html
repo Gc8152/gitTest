@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+<link href="ztree3.5.22/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">	
+<div class="ecitic-inquire">
+	<div class="ecitic-table" id="ecitic-table">
+		<form action="" class="form-inline" id="interfaceinfo_querylist_f">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+				<tr>
+					<td width="11%" class="ecitic-right">接口编号：</td>
+					<td width="22.333%"><input type="text" name="inter_code" id="inter_code"/></td>
+					<td width="11%" class="ecitic-right">接口名称：</td>
+					<td width="22.333%"><input type="text" name="inter_name" id="inter_name"/></td>
+					<td width="11%" class="ecitic-right">接口状态：</td>
+					<td width="22.333%">
+					<select id="inter_status" name="inter_status" style="width:100%"></select>
+					</td>
+				</tr>
+				<tr>
+					<td class="ecitic-right">接口交易码：</td>
+					<td ><input type="text" name="trade_code" id="trade_code"/></td>
+					<td class="ecitic-right">服务方应用名称：</td>
+					<td><input type="text" name="ser_system_name" id="ser_system_name" readonly/></td>
+					<td class="ecitic-right">接口描述：</td>
+					<td><input type="text" name="inter_descr" id="inter_descr"/></td>
+				</tr>
+			</table>
+			</form>
+		</div>
+		<ul class="ecitic-btn-all">
+			<li><input type="button" class="btn btn-ecitic" id="interQuery" value="查询"/></li>
+			<li><input type="button" class="btn btn-ecitic" id="interReset" value="重置"/></li>
+		</ul>
+	</div>
+	
+	<div class="ecitic-operation">
+		<button class="btn btn-ecitic" id="inter360" >接口详情</button>
+		<button class="btn btn-ecitic" id="interChange" >发起变更</button>
+		<button class="btn btn-ecitic" id="interInvoking" >接口关系图</button>
+		<!-- <button class="btn-gray" type="button" id="synchronizationUser">同步OA用户</button> -->
+	</div>
+	<div class="ecitic-new">
+		<table id="interTableInfo" class="table table-bordered table-hover table-text-show"></table>
+	</div>
+	<div mod="systemPop"></div>
+
+<div id="sorgDivPermiss"></div>
+</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_application/interfaceInfo/interfaceinfo_queryList.js"></script>
+<script src="dev_application/useInterfaceApply/useInterfaceApply_systemPop.js"></script>
+</html>

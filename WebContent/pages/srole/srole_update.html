@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/form.css"/>
+<script src="bootstrap/js/select2.min.js"></script>
+<script src="js/commons/commons.js"></script>
+<script type="text/javascript" src="pages/srole/srole_update.js"></script>
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-title">
+		<span>修改角色信息<em></em></span>
+	</div>
+	<form action="" class="form-inline" id="updateuser_from">
+		<div class="ecitic-title-table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered tablr-input-text table-bor-paw">
+				<tr>
+					<td width="11%" class="table-text">角色编号</td>
+					<td width="22.333%">
+						<input type="text" name="R.role_no" id="role_no" readonly="readonly" class="citic-ast" />
+					</td>
+					<td width="11%" class="table-text">角色名称</td>
+					<td width="22.333%">
+						<input type="text" name="R.role_name" id="role_name" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+					</td>
+					<td width="11%" class="table-text">角色标记</td>
+					<td width="22.333%">
+						<select id="Uflag" name="R.flag"  validate="v.required" valititle="该项为必填项" class="citic-sele-ast"></select>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-text">角色序号</td>
+					<td>
+						<input type="text" name="R.order_no" id="order_no" validate="v.required" valititle="该项为必填项" class="citic-ast" />
+					</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="table-text">角色备注</td>
+					<td>
+						<textarea name="R.memo" placeholder="备注" id="memo" class="citic-text-ast"></textarea>
+					</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	</form>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="保存" id="updatesRole" />
+		<input type="button" class="btn btn-ecitic" name="closePageTabConfirm"  value="关闭"/>
+		<!-- <input type="button" class="btn btn-ecitic" value="返回" name="globeBack" /> -->
+	</div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+	initVlidate($("#update_from"));
+	hideVlidate();
+</script>

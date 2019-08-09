@@ -1,0 +1,189 @@
+
+<div class="controls modal hide fade pb50" id="tab_subject_add" style="width:800px;top: 5%">
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">分配机构角色</h3>
+	</div>
+	<div class="modal-body" style="max-height: 450px">
+		<div id="ms_context">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#org_info" data-toggle="tab">评审主题</a></li>
+				<li><a href="#org_position_div" data-toggle="tab">评审标准</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active" id="org_info">
+					<div class="widget-content nopadding">
+						<form id="" >
+							<div class="ecitic-title-table">
+								<table width="100%" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+									<tr>
+										<td class="ecitic-right">评审主题：</td>
+										<td colspan="3">
+											<input type="text" name="G.theme_name" id="theme_name" value="评审主题" placeholder=" " validate="v.required" valititle="该项为必填项" class="citic-ast" />
+											<input type="hidden" name="" id=""/>
+										</td>
+									</tr>
+									<tr>
+										<td class="ecitic-right">评审工作产品：</td>
+										<td colspan="3">
+											<textarea class="textarea3" placeholder="" name="G.jury_word_pro" id="jury_word_pro">《技术方案报告1》、《技术方案报告2》</textarea>
+										</td>
+									</tr>
+									<tr>
+										<td class="ecitic-right">评审级别要求：</td>
+										<td class="litterSelectsTD" colspan="3">
+											<div id="juryGrade"></div>
+											 
+										</td>
+									</tr>
+								</table>
+							</div>
+							<!-- 内嵌Tab -->
+							
+							<div class="tabWrap">
+								<ul class="tabD">
+									<li class="tabBtn tabBtn_Bg">一级评审</li>
+									<li class="tabBtn">二级评审</li>
+									<li class="tabBtn">三级评审</li>
+									<div class="clear"></div>
+								</ul>
+								<!--内容区域-->
+								<ul class="content">
+									<!--tab1-->
+									<li class="tabContListD on" style="display: list-item;">
+										<div class="ecitic-title-table">
+								<table width="100%" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+									<tr>
+										<td class="ecitic-right">评审负责人：</td>
+										<td><input type="text"></td>
+										<td class="ecitic-right2">评审主持人：</td>
+										<td><input type="text"></td>
+									</tr>
+									<tr>
+										<td class="ecitic-right">评审响应时间：</td>
+										<td><input type="text" class="shortInput">工作日</td>
+										<td class="ecitic-right2">问题验证完成时间：</td>
+										<td><input type="text" class="shortInput">工作日</td>
+									</tr>
+									<tr>
+										
+										<td class="ecitic-right">评委：</td>
+										<td><input type="text"></td>
+										<td class="ecitic-right2">评审方式：</td>
+										<td class="litterSelectsTD">
+
+										</td>
+									</tr>
+									<tr>
+										<td class="ecitic-right">评审时机：</td>
+										<td colspan="3"><input type="text" placeholder="" value="技术方案编制完成之后"></td>
+									</tr>
+									<tr>
+										<td class="ecitic-right">评审适用条件：</td>
+										<td colspan="3">
+											<textarea class="textarea3" placeholder="">1、新建系统项目（中型、小型）、2、现有系统改造项目（中型、小型）
+											</textarea>
+										</td>
+									</tr>
+									<tr>
+										<td class="ecitic-right">准入条件：</td>
+										<td colspan="3">
+											<textarea class="textarea3" placeholder="工作产品已完成">工作产品已完成</textarea>
+										</td>
+									</tr>
+									<tr>
+										<td class="ecitic-right">列席人员：</td>
+										<td colspan="3">
+											<textarea class="textarea3" placeholder="项目管理岗、需求提出人">项目管理岗、需求提出人</textarea>
+										</td>
+									</tr>
+									<tr>
+										<td class="ecitic-right">评审目的：</td>
+										<td colspan="3">
+											<textarea class="textarea3" placeholder="">检查技术方案研究报告：1、项目目标是否明确 2、实施技术方案是否清晰可行</textarea>
+										</td>
+									</tr>
+									<tr>
+										<td class="ecitic-right">评审级别要求：</td>
+										<td class="litterSelectsTD" colspan="3">
+											 
+										</td>
+									</tr>
+								</table>
+							</div>
+										
+									</li>
+									<!--tab2-->
+									<li class="tabContListD" style="display: none;">
+										内嵌tab2
+									</li>
+									<li class="tabContListD" style="display:none;">
+										内嵌tab3
+									</li>
+								</ul>
+								
+						</div>
+	
+						</form>
+					</div>
+					
+				</div>
+				<div class="tab-pane fade" id="org_position_div">
+					<div class="ecitic-operation">
+						<button type="button" id="add_normal" class="btn btn-ecitic">新增</button>
+						<button type="button" id="update_normal" class="btn btn-ecitic">修改</button>
+						<button type="button" id="delete_normal" class="btn btn-ecitic">删除</button>
+						<button type="button" id="view_normal" class="btn btn-ecitic">保存</button>
+					</div>
+					<div class="ecitic-new">
+						<table class="table table-bordered table-hover table-striped">
+							<tbody><tr>
+								<th width="24">
+									<div class="">
+										<span></span>
+									</div>
+								</th>
+								<th width="40">序号</th>
+								<th>评审标准项</th>
+								<th>适用评审级别</th>
+								<th>评审负责人</th>
+							</tr>
+							<tr>
+								<td>
+									<div class="">
+										<span><input type="checkbox" value=""></span>
+									</div>
+								</td>
+								<td>1</td>
+								<td>项目业务目标和技术目标是否明确可行</td>
+								<td>一级、二级、三级</td>
+								<td>所有评委</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="">
+										<span><input type="checkbox" value=""></span>
+									</div>
+								</td>
+								<td>2</td>
+								<td>项目实施工作内容范围是否完整明细，各关联方的实施内容是否已清晰确认</td>
+								<td>一级、二级、三级</td>
+								<td>所有评委</td>
+							</tr>
+						
+						</tbody></table>
+				
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="ecitic-save">
+		<input type="button" class="btn btn-ecitic" value="保存" id="themeSave" />
+
+		<button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+		
+	</div>
+</div>

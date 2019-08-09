@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=8"/>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+function getParamString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null)
+			return unescape(r[2]);
+		return null;
+}
+(function(){
+	var viewUrl="../sfile/filePreView.asp?id=";
+	var id=getParamString("p_id");
+	var isSvn=getParamString("isSvn");
+	if(isSvn){
+		viewUrl="../sfileSvn/filePreView.asp?id=";
+	}
+	document.getElementsByTagName("body")[0].innerHTML='<img src="'+viewUrl+id+'"/>';
+})();
+</script>

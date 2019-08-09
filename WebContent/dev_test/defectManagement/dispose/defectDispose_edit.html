@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>处理缺陷</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/form.css" />
+</head>
+<body>
+<div class="widget-box">
+		<div class="widget-content nopadding">
+			<div class="control-group">
+				<div class="controls">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#defect_info_dispose" data-toggle="tab" >缺陷信息</a></li>
+						<li><a href="#defect_history_dispose" data-toggle="tab" >操作历史</a></li>
+					</ul>
+		<div class="tab-content">
+		<!-- 	******缺陷详情******   -->
+		<div class="tab-pane active" id="defect_info_dispose" >
+	        <div class="ecitic-title">
+	            <span>基本信息</span><i></i>
+	        </div>
+	          <div class="ecitic-title-table">
+	        	<input type="hidden" name="IU.DEFECT_ID">
+	            <table class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+	             	<colgroup>
+						<col style="width: 20%">
+						<col style="width: 30%">
+						<col style="width: 20%">
+						<col style="width: 30%">
+					</colgroup>
+	                <tr>
+	                    <td class="table-text">摘要：</td>
+	                    <td colspan="4">
+	                    	<div id="SUMMARY"></div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="table-text">所属应用：</td>
+	                    <td >
+	                    	<div id="SYSTEM_NAME"></div>
+	                    </td>
+	                    <td class="table-text">所属模块：</td>
+	                    <td >
+	                    	<div id="MODULE_NAME"></div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                 	<td class="table-text">所属功能点：</td>
+	                    <td >
+	                    	<div id="FUNCPOINT_NAME"></div>
+	                    </td>
+	                    <td class="table-text">测试版本：</td>
+	                    <td >
+	                    	<div id="TEST_VERSION_NAME"></div>
+	                    </td>
+	                   
+	                </tr>
+	                <tr>
+	                    <td class="table-text">出现频率：</td>
+	                    <td >
+	                    	<div id="FREQUENCY_NAME"></div>
+	                    </td>
+	                    <td class="table-text">可否重现：</td>
+	                    <td >
+	                    	<div id="IS_REAPPEAR_NAME"></div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="table-text">缺陷等级：</td>
+	                    <td >
+	                    	<div id="SEVERITY_GRADE_NAME"></div>
+	                    </td>
+	                    <td class="table-text">缺陷优先级：</td>
+	                    <td >
+	                    	<div id="PRIORITY_LEVEL_NAME"></div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                	<td class="table-text">提出人：</td>
+	                    <td >
+	                    	<div id="CREATE_MAN_NAME"></div>
+	                    </td>
+	                    <td class="table-text">提出时间：</td>
+	                    <td >
+	                    	<div id="CREATE_TIME">--</div>
+	                    </td>
+	                    
+						
+	                </tr>
+	                 <tr>
+	                 	<td class="table-text">责任人：</td>
+	                    <td >
+	                    	<div id="DUTY_PERSON_NAME"></div>
+	                    </td>
+	                	<td class="table-text">要求完成时间：</td>
+	                    <td >
+	                    	<div id="COMPLETE_TIME"></div>
+	                    </td>
+						
+	                </tr>
+	                <tr>
+	                   	
+	                    <td class="table-text">缺陷描述：</td>
+	                    <td colspan="4">
+	                    	<div>
+	                    	<pre id="DEFECT_DESCRIPTION" style="border: none;background-color: white; font-family: '微软雅黑', arial;">--</pre>
+	                    	</div>
+	                    </td>
+	                </tr>
+	                <tr>
+		               <td class="table-text">附件：</td>
+		                  <td colspan="5">
+		               		<input type="hidden" value="上传附件" id="ETA_out_resume" class="btn btn-ecitic" /> 
+		           			<input type="hidden" name="IU.FILE_ID" id="ETA_out_resume_file" />
+		              	</td>
+                	 </tr>
+	                <tr class="hidden" style="display: none">
+	                    <td class="table-text">缺陷等级变更说明：</td>
+	                    <td colspan="4">
+	                    	<div id="CHANGE_GRADE_REASON"></div>
+	                    </td>
+	                </tr>	
+	                 <tr class="hid" style="display: none">
+	                    <td class="table-text">拒绝原因：</td>
+	                    <td colspan="4">
+	                    	<div id="DISPOSE_REASON" style="color: red"></div>
+	                    </td>
+	                </tr>
+	            </table>
+	        </div>
+       <div class="ecitic-title" id="defectAttr">
+            <span>自定义属性<em></em></span> <i></i>
+        </div>
+        <div class="ecitic-title-table" id="defectAttr_table">
+		<table tb="desigInfoAttrTable" class="table table-striped table-hover table-bordered tablr-input-text requirement-table">
+		<tbody>
+	   </tbody>
+	 </table>
+	 </div>
+	        <div class="ecitic-title">
+	            <span>实际操作步骤<em></em></span> <i></i>
+	        </div>
+	        <div class="ecitic-title-table">
+	            <table tb="realOptTable" class="table table-bordered table-hover table-text-show"></table>
+	        </div>
+	
+	       <!--  <div class="ecitic-title">
+	            <span>附件列表信息<em></em></span> <i></i>
+	        </div>
+	        <div class="ecitic-title-table">
+	            <table tb="disposeFileTable" class="table table-bordered table-hover table-text-show"></table>
+	        </div> -->
+	
+			
+	        <div class="ecitic-save">
+	           <!--  <input type="button"  class="btn btn-ecitic" btn="open_defect" value="打开缺陷" /> -->
+	            <input type="button"  class="btn btn-ecitic" btn="fix_defect" value="修复缺陷" />
+	            <input type="button"  class="btn btn-ecitic" btn="unbind_defect" value="延期缺陷" />
+	            <input type="button"  class="btn btn-ecitic" btn="refuse_defect" value="拒绝缺陷" />
+	          	<input type="button"  class="btn btn-ecitic" btn="dispose_defect" value="转交处理人" />
+	           <!--  <input type="button"  class="btn btn-ecitic" btn="return_defect" value="打回指派人" /> -->
+	           <!--  <input type="button"  class="btn btn-ecitic" btn="bind_defect" value="延期缺陷" /> -->
+	            <input type="button"  class="btn btn-ecitic" name="closePageTabConfirm" value="返回" />
+	        </div>
+       </div>
+         <!-- 	******操作历史记录******   -->
+		<div class="tab-pane fade" id="defect_history_dispose" >
+	        <div class="ecitic-title">
+	            <span>操作记录<em></em></span> <i></i>
+	        </div>
+	        <div class="ecitic-title-table">
+	            <table tb="optHistoryTable" class="table table-bordered table-hover table-text-show"></table>
+	        </div>
+	   </div>
+        
+       	
+        <!--     打开缺陷模态框  -->
+       <!--  <div id="openDefect_modal" class="modal hide fade" tabindex="-1" z-index="1060" aria-hidden="true">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="processModalLabel">打开缺陷</h3>
+            </div>
+            <div class="ecitic-title-table modal-body">
+                <table width="100%" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+                    <tbody>
+                        <tr>
+                            <td width="25%" class="table-text">缺陷优先级：</td>
+                            <td>
+                                <select name="IU.PRIORITY_LEVEL_OPEN" diccode="TM_DIC_PRIORITY_LEVEL" class="requirement-ele-width" style="width: 100%" validate="v.required" ></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table-text">备注：</td>
+                            <td>
+                                <textarea class="textarea3"  name="IU.OPEN_REMARK"></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="ecitic-save">
+                <input type="button" class="btn btn-ecitic" value="保存" btn="open_save">
+                <button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+            <div class="modal-footer"></div>
+        </div> -->
+
+
+        <!--     延期陷模态框  -->
+        <div id="unbindDefect_modal" class="modal hide fade" tabindex="-1" z-index="1060" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="processModalLabel">延期缺陷</h3>
+            </div>
+            <div class="ecitic-title-table modal-body">
+                <table width="100%" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+                    <tbody>
+                        <tr>
+                            <td class="table-text">延期原因：</td>
+                            <td>
+                                <textarea class="textarea3" name="IU.UNBIND_REASON" validate="v.200_mzhi" valititle="该项为必填项"></textarea>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="ecitic-save">
+                <button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <input type="button" class="btn btn-ecitic" value="保存" btn="unbind_save">
+            </div>
+
+
+            <div class="modal-footer"></div>
+        </div>
+
+        <!--     拒绝缺陷模态框  -->
+        <div id="refuseDefect_modal" class="modal hide fade" tabindex="-1" z-index="1060" aria-hidden="true">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="processModalLabel">拒绝缺陷</h3>
+            </div>
+            <div class="ecitic-title-table modal-body">
+                <table width="100%" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+                    <tbody>
+                        <tr>
+                            <td class="table-text" style="width: 180px">拒绝原因：</td>
+                            <td>
+                                <textarea class="textarea3" name="IU.REFUSE_REASON" validate="v.200_mzhi" valititle="该项为必填项"></textarea>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="ecitic-save">
+                <button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <input type="button" class="btn btn-ecitic" value="保存" btn="refuse_save">
+            </div>
+
+
+            <div class="modal-footer"></div>
+        </div>
+
+        <!--     打回指派人模态框  -->
+       <!--  <div id="returnDefect_modal" class="modal hide fade" tabindex="-1" z-index="1060" aria-hidden="true">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="processModalLabel">打回指派人</h3>
+            </div>
+            <div class="ecitic-title-table modal-body">
+                <table width="100%" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+                    <tbody>
+                        <tr>
+                            <td class="table-text">打回原因：</td>
+                            <td>
+                                <textarea class="textarea3" name="IU.RETURN_REASON" validate="v.required" valititle="该项为必填项"></textarea>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="ecitic-save">
+                <input type="button" class="btn btn-ecitic" value="保存" btn="return_save">
+                <button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+            <div class="modal-footer"></div>
+        </div> -->
+        
+         <!--     修复缺陷模态框  -->
+        <div id="fixDefect_modal" class="modal hide fade" tabindex="-1" z-index="1060" aria-hidden="true">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="processModalLabel">修复缺陷</h3>
+            </div>
+            <div class="ecitic-title-table modal-body">
+                <table width="100%" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+                    <tbody>
+                      	<tr>
+                            <td class="table-text" style="width: 180px">缺陷原因分析：</td>
+                            <td >
+                                <textarea class="textarea3" name="IU.DEFECT_ANALYZE" validate="v.200_mzhi" valititle="该项为必填项"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td  class="table-text">缺陷分类：</td>
+                            <td >
+                               <select name="IU.DEFECT_CLASS" diccode="TM_DIC_DEFECT_CLASS" class="requirement-ele-width" style="width: 100%" validate="v.required" valititle="该项为必填项"></select>
+                            </td> 
+                           	
+                        </tr>
+                       <!--  <tr>
+                         	<td class="table-text">处理时间：</td>
+	               	 		<td >
+								<input type="text"  name="IU.DISPOSE_TIME" class="requirement-ele-width" onfocus="WdatePicker({})" placeholder="点击选择时间" validate="v.required" valititle="该项为必填项" readonly="">	                    
+	                 		</td>  
+	                 	 </tr> -->
+                        <tr>
+                            <td class="table-text">解决方法：</td>
+                            <td >
+                                <textarea class="textarea3" name="IU.DEFECT_SOLUTION" validate="v.200_mzhi" valititle="该项为必填项"></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="ecitic-save">
+                <button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <input type="button" class="btn btn-ecitic" value="保存" btn="fix_save">
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+        
+         <!-- 转交处理人  -->
+        <div id="dispose_person" class="modal hide fade" tabindex="-1" z-index="1060" aria-hidden="true">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="processModalLabel">转交处理人</h3>
+            </div>
+            <div class="ecitic-title-table modal-body">
+                <table width="100%" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+                    <tbody>
+                      	<tr>
+                            <td class="table-text" style="width: 180px">选择处理人：</td>
+                            <td >
+							<input placeholder="请选择处理人" type="text" name="IU.DISPOSE_MAN_NAME" class="requirement-ele-width" validate="v.required" valititle="该项为必填项" readonly >
+	                    	<input type="hidden" name="IU.DISPOSE_MAN">                           
+	                    	</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="ecitic-save">
+                <button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <input type="button" class="btn btn-ecitic" value="保存" btn="dispose_save">
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+         <!--指派缺陷模态框  -->
+ 		<div mod="proManPop"></div>
+      
+        
+         <!--     解挂模态框  -->
+       <!--  <div id="bindDefect_modal" class="modal hide fade" tabindex="-1" z-index="1060" aria-hidden="true">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="processModalLabel">解挂缺陷</h3>
+            </div>
+            <div class="ecitic-title-table modal-body">
+                <table width="100%" cellspacing="0" cellpadding="0" class="table table-striped table-hover table-bordered tablr-input-text">
+                    <tbody>
+                        <tr>
+                            <td class="table-text">解挂原因：</td>
+                            <td>
+                                <textarea class="textarea3" name="IU.BIND_REASON" validate="v.required" valititle="该项为必填项"></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="ecitic-save">
+                <input type="button" class="btn btn-ecitic" value="保存" btn="bind_save">
+                <button class="btn btn-ecitic" data-dismiss="modal" aria-hidden="true">关闭</button>
+            </div>
+            <div class="modal-footer"></div>
+        </div> -->
+
+
+ 		  <!--上传附件模态框  -->
+		<div id="file_dispose_modal"></div>
+		
+				</div>
+			</div>
+		</div>
+	</div>
+</div>       
+</body>
+<script src="dev_test/defectManagement/dispose/defectDispose_edit.js"></script>
+<script type="text/javascript" src="upload/uploadFtpFileInfo.js"></script>
+<script src="upload/uploadFileInfo.js"></script>
+<script src="dev_test/defectManagement/dispose/designateManPop.js"></script>
+
+</html>

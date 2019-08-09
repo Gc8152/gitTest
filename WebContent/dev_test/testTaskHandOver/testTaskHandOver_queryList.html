@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>受理移交测试任务</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link href="css/form.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="main_iframe_con">
+	<div class="ecitic-inquire"  id="ecitic-inquire">
+		<div class="ecitic-table" id="ecitic-table">
+			<form id="HandOverQuerytForm">
+				<table id="HandOverQuery" style="align:center;width:100%; border:0; cellspacing:0; cellpadding:0;" class="table table-bordered table-bor-pad">
+					<tr>
+						<td class="ecitic-right">项目编号:</td>
+						<td><input type="text" id="PROJECT_NUM" name="PROJECT_NUM"/></td>
+						<td class="ecitic-right">项目名称:</td>
+						<td><input type="text" id="PROJECT_NAME" name="PROJECT_NAME"></td>
+						<td class="ecitic-right">应用名称:</td>
+						<td><input type="text" id="SYSTEM_NAME" name="SYSTEM_NAME"/> </td>
+					</tr>
+					<tr>
+						<td class="ecitic-right">测试版本号:</td>
+						<td><input type="text" id="TEST_VERSION" name="TEST_VERSION"/></td>
+						<td class="ecitic-right">版本发布日期:</td>
+						<td><input type="text" id="VERSION_DATE" name="VERSION_DATE"/></td>
+						<td class="ecitic-right">投产包名称:</td>
+						<td><input type="text" id="COM_PACKAGE_NAME" name="COM_PACKAGE_NAME"/></td>
+					</tr>
+				</table>
+			</form>	
+		</div>
+			<ul class="ecitic-btn-all">
+				<li><input type="button" class="btn btn-ecitic" name="queryHandOver" value="查询" /></li>
+				<li><input type="button" class="btn btn-ecitic" name="resetHandOver" value="重置" /></li>
+			</ul>
+		</div>
+		<div class="ecitic-operation">
+			<button class="btn btn-ecitic" id="accept_transfer_test_tasks" >受理移交测试任务</button>
+			<button class="btn btn-ecitic" id="view_details" >查看详情</button>
+		</div>
+		<div class="ecitic-new">
+			<table id="accepttable" class="table table-bordered table-hover table-text-show"></table>
+		</div>
+</div>
+</body>
+<script src="js/commons/commons.js"></script>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+<script src="dev_test/testTaskHandOver/testTaskHandOver_queryList.js"></script>
+</html>
+

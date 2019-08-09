@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>年度版本计划</title>
+<link rel="stylesheet" type="text/css" href="css/form.css" />
+
+<link type="text/css" href="bootstrap/css/bootstrap-table.min.css" rel="stylesheet"/>
+</head>
+<body><!-- 
+<div class="ecitic-inquire ecitic-moreNo ecitic-inquire-sec lessSearch"> -->
+
+	<div class="ecitic-inquire" id="ecitic-inquire">
+	<div class="ecitic-table" id="ecitic-table">
+		<table id="table_select" width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-bor-pad">
+			<tr>
+				<td class="ecitic-right">年度：</td>
+				<td>
+					<input type="text" name="versions_date" placeholder="点击选择年度" onclick="WdatePicker({dateFmt:'yyyy',minDate:'2000',maxDate:'2050'})"  readOnly="readonly"/>
+				</td>
+				<td class="ecitic-right">版本类型：</td>
+				<td>
+					<select name="versions_type" diccode="SYS_DIC_VERSION_PROJECT" ></select>
+				</td>
+				<td class="ecitic-right">版本名称：</td>
+				<td>
+					<input type="text" name = "versions_name"/>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<ul class="ecitic-btn-all">
+		<li><button class="btn btn-ecitic" id="select_version">查询</button></li>
+		<li><button class="btn btn-ecitic" id="reset_version">重置</button></li>
+	</ul>
+</div>
+<div class="ecitic-operation">
+	<button class="btn btn-ecitic" id="add_annual">新增年度版本计划</button>
+	<button class="btn btn-ecitic" id="update_annual">修改年度版本计划</button>
+	<button class="btn btn-ecitic" id="delete_annual">删除年度版本计划</button>
+	<button class="btn btn-ecitic" id="view_annual">查看年度版本计划</button>
+</div>
+<div class="ecitic-new ">
+	<table class="table table-bordered table-hover table-text-show" id="table_annualVersionPlan" style="min-width: 740px;"></table>
+</div>
+</body>
+<script src="bootstrap/js/bootstrap-table.min.js"></script>
+<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script> 
+<script type="text/javascript" src="dev_construction/versionManage/annualVersionManage/annualVersionPlan_queryList.js"></script>
+</html>
