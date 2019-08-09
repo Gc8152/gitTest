@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="warFile" name="yfglpt">
+    <property environment="env"/>
+    <property name="warFileName" value="dev_background"/>
+    <property name="tomcat6" value="C:\mySoft\apache-tomcat-6.0.9\lib"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="tomcat6">
+        <fileset dir="${tomcat6}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+    <path id="yfglpt.classpath">
+        <pathelement location="build/classes"/>
+        <path refid="tomcat6"/>
+        <fileset dir="${basedir}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+    <target depends="cleanall" name="init">
+        <mkdir dir="build/classes"/>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="httpProxy">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="importFile">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="repository">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="build/classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac fork="true" debuglevel="${debuglevel}" destdir="build/classes" executable="C:\Program Files\Java\jdk1.6.0_17\bin\javac" includeantruntime="on">
+            <compilerarg line="-encoding UTF-8 "/>
+            <src path="src"/>
+            <src path="httpProxy"/>
+            <src path="importFile"/>
+            <src path="repository"/>
+            <classpath refid="yfglpt.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+
+    <!-- 定义默认任务，将class文件集合成jar包。 --> 
+    <target name="warFile" depends="build"> 
+        <!--将lib文件夹下的jar打包到WEB-INF/lib下 -->
+        
+        <!-- <copy todir="${basedir}/WebContent/WEB-INF/lib">
+                            <fileset dir="${basedir}/lib">
+                            
+                            </fileset>
+        </copy> -->
+        <!-- 建立新war包。 -->  
+        <war destfile="${basedir}/${warFileName}.war" webxml="${basedir}/WebContent/WEB-INF/web.xml">  
+            <!-- 将非jar和非class文件拷贝到war包的对应路径下。 -->   
+                <fileset dir="${basedir}/WebContent">  
+                      <include name="**/**.*" />  
+                      <exclude name="**/*.jar"/>  
+                      <exclude name="**/*.class"/>  
+                </fileset>  
+            <!-- 将jar和class文件拷贝到war包的对应路径下。 -->  
+                <lib dir="${basedir}/WebContent/WEB-INF/lib" />  
+                <classes dir="${basedir}/build/classes" />
+        </war>  
+    </target>
+
+</project>
