@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.SRemindDao">
+   <!-- 根据人员查询我的提醒 -->
+  <select id="findMyRemindByUserid" parameterType="java.util.Map" resultType="java.util.Map">
+     select ptm.category_name as remind_type_name,t.remind_type,t.remind_num,t.remind_url,t.remind_explain,t.rcode from t_workbench_remind t 
+     left join PUB_T_MESSCATEGORY ptm on ptm.category_code = t.remind_type
+     where t.user_id=#{userid} and t.flag='00' and t.remind_type != 'PUB201701'
+     order by ptm.p_sort
+  </select>
+  <!-- 根据类型删除提醒 -->
+	<delete id="delRemindByType" parameterType="java.util.Map">
+	   delete from t_workbench_remind t where t.remind_type=#{remind_type} and t.user_id=#{user_id}
+	</delete>
+	
+	<!-- 删除提醒时根据类型和提醒人更新提醒数 -->
+	<update id="updateRemindNum" parameterType="java.util.Map">
+		update t_workbench_remind set remind_num = #{remind_num} 
+		where remind_type=#{remind_type} and user_id=#{user_id} 
+	</update>
+	
+	<!-- 查询提醒详情 -->
+	<select id="querySubRemindByType" resultType="java.util.Map" parameterType="java.util.Map">
+		select * from T_WORKBENCH_SUB_REMIND where remind_type=#{remind_type} and user_id=#{user_id} order by opt_time desc
+	</select>
+	<!-- 删除一条提醒详情 -->
+	<delete id="deleteSubRemind" parameterType="java.util.Map">
+		delete from T_WORKBENCH_SUB_REMIND where 1=1
+		<choose>
+			<when test="id!=null and id!=''">
+			and id=#{id}
+			</when>
+			<when test="remind_type!=null and remind_type!=''">
+			and remind_type=#{remind_type} and user_id=#{user_id}
+			</when>
+			<otherwise>
+			and 1=0
+			</otherwise>
+		</choose>
+	</delete>
+	
+	<!-- 统计提醒条数 -->
+	<select id="countRemindNum" resultType="java.util.Map" parameterType="java.util.Map">
+		select t.remind_type,t.user_id,count(t.remind_type) remind_num from T_WORKBENCH_SUB_REMIND t 
+        where remind_type=#{remind_type} and user_id=#{user_id}
+        group by t.remind_type,t.user_id
+	</select>
+</mapper>

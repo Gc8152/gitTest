@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.AFAppDao">
+	<!-- 查询信息操作 -->
+	
+	<!-- 根据具体审批流程p_id查询具体审批规则 -->
+	<select id="queryProcessByPID" parameterType="java.lang.String" resultType="java.util.Map">
+		select * from af_process p where p.p_id = #{p_id}
+	</select>
+    <!-- 查询流程矩阵 -->
+	<select id="queryAFMatrixByAFId" parameterType="java.lang.String" resultType="java.util.Map">
+		select wm.m_id,wm.af_id,wm.r_id,wm.af_sys_name,
+		(select r_exp from af_rule where r_id = wm.r_id) r_exp
+		from(
+		   select m.m_id,max(m.af_id) af_id,max(m.r_id) r_id,af.af_sys_name 
+		   from af_matrix m
+		   left join af_info af on af.af_id = m.af_id
+		   where m.af_id = #{af_id}
+		   and (m.m_state is null or m.m_state='00') 
+		   group by m_id,af.af_sys_name
+		) wm
+	</select>
+	<!-- 查询流程矩阵下的审批流配置 -->
+	<select id="queryAFProcessByMId" parameterType="java.lang.String" resultType="java.util.Map">
+		select p_id,m_id,r_id,
+		(select ru.r_exp from af_rule ru where ru.r_id = wfp.r_id) r_exp
+		from(
+		   select max(p_id) p_id,max(m_id) m_id,max(r_id) r_id 
+		   from af_process 
+		   where (state is null or state!='01') 
+		   and m_id=#{m_id} 
+		   group by p_id
+		) wfp
+	</select>
+	<!-- 查询流程所有审批节点 -->
+	<select id="queryProcNodePerson" parameterType="java.lang.String" resultType="java.util.Map">
+	    select p.*,n.n_type,n.n_value,n.n_role,n.n_person
+	    from af_process p
+		left join af_node_info n on n.n_id = p.n_id 
+		where p.p_id = #{p_id}
+		and p.state = '00'
+		order by to_number(nvl(p.order_id,0))
+	</select>
+	<!-- 查询流程未审批节点清单 -->
+	<select id="queryNoApprPerson" parameterType="java.lang.String" resultType="java.util.Map">
+		select p.* from AF_PROCESS p
+		where p.p_id = #{p_id}
+		and p.n_id not in(
+		    select d.n_id from AF_APP_RECORD d
+		    left join af_node_info n on n.n_id = d.n_id 
+		    where d.instance_id = #{instance_id}
+		    and n.n_id not in(
+		        select pro.n_id from af_app_process pro
+		        where pro.instance_id = #{instance_id}
+		    ) 
+		    and n.n_id is not null
+		)
+		order by p.order_id
+	</select>
+	<!-- 根据不同条件查询审批人 -->
+	<select id="queryApprPerson" parameterType="java.lang.String" resultType="java.util.Map">
+		select ap.*,n.n_type,n.af_id,n.n_role,user_name
+		from af_app_process ap
+		left join af_node_info n on n.n_id = ap.n_id  
+		left join s_user u on u.user_no = ap.app_person
+		where 1 = 1
+		<if test="n_id!=null and n_id!=''">
+ 			and ap.n_id = #{n_id} 
+ 		</if>
+ 		<if test="instance_id!=null and instance_id!=''">
+ 			and ap.instance_id = #{instance_id}
+ 		</if>
+ 		<if test="app_person!=null and app_person!=''">
+ 			and ap.app_person = #{app_person}
+ 		</if>
+ 		order by to_number(nvl(ap.order_id,0))
+	</select>
+	<!-- 查询流程实例基本信息 -->
+	<select id="queryInsByInstanceId" parameterType="java.lang.String" resultType="java.util.Map">
+		select * from af_instance where instance_id = #{instance_id}
+	</select>
+	<!-- 查询已审批过的审批信息 -->
+	<select id="queryAppedProcessInfo" parameterType="java.lang.String" resultType="java.util.Map">
+      	select ar.*,af.af_name,pr.order_id,sd.item_name state_name,
+      	(select user_name from s_user where user_no=ar.app_person) as app_person_name
+        from af_app_record ar
+      	left join af_instance t on t.instance_id = ar.instance_id
+      	left join af_process pr on pr.p_id = t.p_id and pr.n_id = ar.n_id
+      	left join af_info af on af.af_id = t.af_id
+      	left join af_node_info n on n.n_id = ar.n_id
+        left join s_dic_item sd on sd.dic_code = 'AF_DIC_APP_STATE' and sd.item_code = ar.app_state
+      	where ar.instance_id = #{instance_id}
+      	and pr.order_id is not null
+      	order by to_number(nvl(pr.order_id,0)),to_number(nvl(ar.order_id,0))
+	</select>
+	<!-- 查询流程实例ID在审批过程表中的审批信息 -->
+	<select id="queryAppingPersonInfo" parameterType="java.lang.String" resultType="java.util.Map">
+		select ap.*,af.af_name,pr.order_id,ssd.item_name state_name,
+		'apping' apping,t.opt_id,n.n_type,nsd.item_name n_type_name,afr.curr_actorno,
+		(select user_name from s_user where user_no=ap.app_person) as app_person_name
+		from af_app_process ap
+		left join af_instance t on t.instance_id = ap.instance_id
+		left join af_process pr on pr.p_id = t.p_id and pr.n_id = ap.n_id
+		left join af_info af on af.af_id = t.af_id
+		left join af_node_info n on n.n_id = ap.n_id 
+		left join s_dic_item nsd on nsd.dic_code = 'AF_DIC_NODE_TYPE' 
+		     and nsd.item_code = n.n_type
+		left join s_dic_item ssd on ssd.dic_code = 'AF_DIC_APP_STATE' 
+		     and ssd.item_code = ap.app_state
+		left join af_flow_record afr on afr.instance_id = ap.instance_id
+		where ap.instance_id = #{instance_id}
+		order by to_number(nvl(pr.order_id,0)),to_number(nvl(ap.order_id,0))
+	</select>
+	<!-- 根据流程实例ID查询发起人等相关信息 -->
+	<select id="queryInsOriginator" parameterType="java.lang.String" resultType="java.util.Map">
+		select d.*,af.af_name,pr.order_id,sd.item_name state_name,
+		(select user_name from s_user where user_no=d.app_person) as app_person_name
+	    from af_app_record d
+	    left join af_instance t on t.instance_id = d.instance_id
+	    left join af_process pr on pr.p_id = t.p_id and pr.n_id = d.n_id
+	    left join af_info af on af.af_id = t.af_id
+	    left join af_node_info n on n.n_id = d.n_id
+	    left join s_dic_item sd on sd.dic_code = 'AF_DIC_APP_STATE' and sd.item_code = d.app_state
+	    where d.instance_id = #{instance_id}
+	    and d.opt_time = (
+	        select min(d.opt_time) from af_app_record d 
+	        where d.instance_id = #{instance_id})
+	</select>
+	<!-- 根据节点ID查询节点基本信息 -->
+	<select id="queryNodeInfoByNid" parameterType="java.lang.String" resultType="java.util.Map">
+		select * from af_node_info n where n.n_id = #{n_id}
+	</select>
+	<!-- 根据员工工号查询所参与审批过的所有流程实例ID -->
+	<select id="queryAllInstByActorno" parameterType="java.lang.String" resultType="java.lang.String">
+		select d.instance_id from af_app_record d 
+		where d.app_person = #{app_person}
+		group by d.instance_id
+	</select>
+	<!-- 增加表数据操作 -->
+	
+	<!-- 增加审批实例 -->
+	<insert id="addAFInstance" parameterType="java.util.Map">
+		insert into af_instance(instance_id,state,p_id,opt_id,opt_person,opt_time,af_id)
+		values(#{instance_id},#{state},#{p_id},#{opt_id},#{opt_person},#{opt_time},#{af_id})
+	</insert>
+	<!-- 增加审批过程记录 -->
+	<insert id="addAFAppProcessRecord" parameterType="java.util.Map">
+		insert into af_app_process(id,n_id,app_person,app_state,
+			app_content,instance_id,opt_time,n_name,role_id,order_id)
+		values(#{id},#{n_id},#{app_person},#{app_state},#{app_content},
+		#{instance_id},#{opt_time},#{n_name},#{role_id},#{order_id})
+	</insert>
+	<!-- 增加审批通过审批记录 -->
+	<insert id="addAFAppRecordByProcess" parameterType="java.util.Map">
+		insert into af_app_record(id,n_id,app_person,app_state,
+			app_content,instance_id,opt_time,n_name,role_id,order_id)
+		(select id,n_id,app_person,#{app_state} app_state,
+			#{app_content} app_content,instance_id,#{opt_time} 
+			opt_time,n_name,role_id,order_id from af_app_process 
+			where instance_id=#{instance_id} 
+			and app_person=#{app_person})
+	</insert>
+	<!-- 增加流程发起审批记录 -->
+	<insert id="addAFAppRecord" parameterType="java.util.Map">
+		insert into af_app_record(id,n_id,app_person,app_state,
+			app_content,instance_id,opt_time,n_name,role_id,order_id)
+		values(#{id},#{n_id},#{app_person},#{app_state},#{app_content},
+			#{instance_id},#{opt_time},#{n_name},#{role_id},#{order_id})
+	</insert>	
+	<!-- 批量增加审批记录表数据 -->
+	<insert id="addBatchAFAppRecord" parameterType="java.util.List">
+		insert into af_app_record(id,n_id,app_person,app_state,
+			app_content,instance_id,opt_time,n_name,role_id)
+		<foreach collection="list" item="item" index="index"  separator="union all" >  
+        	select #{item.id},#{item.n_id},#{item.app_person},
+        	#{item.app_state},#{item.app_content},#{item.instance_id},
+        	#{item.opt_time},#{item.n_name},#{item.role_id}
+        	from dual
+    	</foreach>
+	</insert>
+	<!-- 删除审批过程记录 -->
+	<delete id="deleteAFAppProcessRecord"  parameterType="java.util.Map">
+		delete from af_app_process where instance_id = #{instance_id} 
+		<if test="app_person!=null and app_person!=''">
+			and app_person = #{app_person}
+ 		</if>
+ 		<if test="n_id!=null and n_id!=''">
+			and n_id = #{n_id}
+ 		</if>
+ 		<if test="nextPerson!=null and nextPerson!=''">
+ 			and app_person != #{nextPerson}
+ 		</if>
+	</delete>
+	<!-- 根据流程实例ID批量删除审批过程记录 -->
+	<delete id="delBatchProcessRecord" parameterType="java.util.List">
+		<![CDATA[  
+      		delete from af_app_process where instance_id in  
+    	]]>  
+     	<foreach collection="array" index="index" item="item" open="(" separator="," close=")">     
+      		#{item}     
+    	</foreach>  
+	</delete>
+	<!-- 插入流程审批业务模块与流程实例记录信息 -->
+	<insert id="insertAppFlowRecord" parameterType="java.util.Map">
+		insert into af_flow_record(record_id,biz_id,instance_id,
+			curr_actorno,system_flag,create_date,if_end,flag)
+		values(#{record_id},#{biz_id},#{instance_id},#{curr_actorno},
+			#{system_flag},#{create_date},#{if_end},#{flag})
+	</insert>
+	<update id="updateAppFlowRecord" parameterType="java.util.Map">
+		update af_flow_record set flag = '00' where biz_id = #{biz_id} and system_flag=#{system_flag}
+	</update>
+	<update id="updateNextAppPerson" parameterType="java.util.Map">
+		update af_flow_record set curr_actorno=#{NextAppPerson} where instance_id=#{instance_id}
+	</update>
+	<!-- 修改流程实例状态  -->
+	<update id="updateSate" parameterType="java.util.Map">
+	    update af_instance a set a.state=#{state}  where a.instance_id =#{instance_id}
+	</update>
+	<!-- 修改流程审批业务模块与流程实例记录表状态  -->
+	<update id="updateIfEnd">
+		update af_flow_record a set a.if_end=#{if_end} where a.instance_id =#{instance_id}
+	</update>
+	<!-- 批量修改流程实例状态  -->
+	<update id="updateSateBatch" parameterType="java.util.List">
+	    update af_instance a set a.state=#{state}  where a.instance_id in
+	    <foreach collection="array" index="index" item="item" open="(" separator="," close=")">     
+      		#{item}     
+    	</foreach>  
+	</update>
+	<!-- 修改流程节点审批人 -->
+	<update id="updateAppPerson" parameterType="java.util.Map">
+	    update af_app_process aap set aap.app_person=#{new_app_person} where 
+	    aap.instance_id=#{instance_id} and aap.n_id=#{n_id} and 
+	    aap.app_person=#{old_app_person}
+	</update>
+	<!-- 修改流程节点审批人排序字段值 -->
+	<update id="updateAFProcRecordSort" parameterType="java.util.Map">
+	    update af_app_process pro set pro.order_id = #{order_id}
+		where pro.instance_id=#{instance_id} 
+		and pro.n_id=#{n_id} 
+		and pro.app_person=#{app_person}
+	</update>
+	<!-- 添加流程节点审批人变更记录 -->
+	<insert id="addAppPersonChangeInfo" parameterType="java.util.Map">
+		insert into af_person_change(instance_id,n_id,old_app_person,
+			new_app_person,mark,opt_person,opt_time) 
+		values(#{instance_id},#{n_id},#{old_app_person},
+			#{new_app_person},#{mark},#{opt_person},#{opt_time})
+	</insert>
+	<!-- 根据流程实例id查询业务id -->
+	<select id="queryBizId" parameterType="java.lang.String" resultType="java.lang.String">
+		select t.biz_id from af_flow_record t where t.instance_id=#{instance_id}
+	</select>
+	<!-- 查询路由要素 -->
+	<select id="queryAllAFBySysCode" parameterType="java.lang.String" resultType="java.util.Map">
+		select 
+			t.b_code, 
+			t.b_name,
+			t.b_state,
+			t.b_type,
+			t.b_category,
+			t.system_code,
+			t.opt_person,t.opt_time,
+			t.memo
+		from af_factors t
+		where t.b_state = '00' and t.system_code = #{system_code}
+	</select>
+	<!-- 查询节点 -->
+	<select id="queryAllAFByAfId" parameterType="java.lang.String" resultType="java.util.Map">
+		select 
+			t.n_id,
+			t.af_id,
+			t.r_id,
+			t.n_name,
+			t.n_type,
+			t.n_rule_type,
+			t.n_state,
+			t.opt_person,
+			t.opt_time,
+			t.memo,
+			t.n_value,
+			t.n_role,
+			t.n_person
+		from af_node_info t
+		where t.n_state = '00' and t.af_id = #{af_id}
+	</select>
+	<!-- 查询发起人 -->
+	<select id="queryAppPerson" parameterType="java.lang.String" resultType="java.lang.String">
+		select t.app_person
+  		from af_app_record t
+ 		where t.instance_id = #{instance_id}
+   		and t.opt_time =
+	       (select min(opt_time)
+	          from af_app_record
+	         where instance_id = #{instance_id})
+	</select>
+	<!-- 查询上一节点审批人信息 -->
+	<select id="queryUpPerson" parameterType="java.util.Map" resultType="java.util.Map">
+		select t.* from af_app_record t
+ 		where t.instance_id = #{instance_id}
+   		and t.opt_time =
+	       (select max(opt_time)
+	          from af_app_record
+	          where instance_id = #{instance_id} 
+	          and app_state = '00' 
+	          and app_person != #{actor_no})
+	</select>
+</mapper>

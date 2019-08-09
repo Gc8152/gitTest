@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.application.applicationManager.dao.AppFuncDao">
+	<!-- 通过应用名称查询编号 -->
+	<select id="findSystemidByname" parameterType="java.lang.String" resultType="java.lang.String">
+        select system_id from g_system_info where system_name=#{system_name}
+	</select>
+	<!-- 查询模块信息id -->
+	<select id="findModalByname" parameterType="java.util.Map" resultType="java.lang.String">
+		select fi.func_no modal_id from g_system_info si
+         left join tm_system_func_info fi on si.system_id=fi.supfunc_no and fi.func_type='01'
+         where si.system_id=#{system_id} and fi.func_name=#{func_name}
+	</select>
+	 <!-- 新增测试要点-->
+	<insert id="addFuncPoint" parameterType="java.util.Map">
+		insert into TM_SYSTEM_FUNC_INFO (FUNC_NO,FUNC_NAME,SUPFUNC_NO,FUNC_REMARK,CREATE_NO,CREATE_TIME,FLAG,FUNC_TYPE,SYSTEM_ID,FUNC_SEQ)
+		values(
+			#{func_no},#{func_name},#{supfunc_no},#{func_remark},#{user_id},#{curr_time},'00',#{func_type},#{system_id},#{func_seq}
+		)
+	</insert>
+</mapper>

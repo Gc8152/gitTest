@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:cache="http://www.springframework.org/schema/cache" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+         http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+             http://www.springframework.org/schema/security
+             http://www.springframework.org/schema/security/spring-security-4.2.xsd 
+             http://www.springframework.org/schema/cache 
+             http://www.springframework.org/schema/cache/spring-cache.xsd">
+	<context:component-scan base-package="com.yusys.*">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.yusys.dao">
+		</property>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.yusys.*.*.dao"></property>
+	</bean>
+<!-- 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.yusys.importFile.*.dao">
+		</property>
+	</bean> -->
+	<!-- 工作台待办定时处理 -->
+	<!-- <bean id="workBench"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="durability" value="true" />
+		<property name="jobClass"
+			value="com.yusys.common.Timer.WorkBenchScheduledHandle"></property>
+		<property name="jobDataMap">
+			<map>
+				<entry key="scheduledDao" value-ref="scheduledDao"></entry>
+				<entry key="taskDBUtil" value-ref="taskDBUtil"></entry>
+			</map>
+		</property>
+	</bean>
+
+	工作台待办定时
+	<bean id="workBenchTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="workBench" />
+		<property name="cronExpression" value="0 0 23 * * ?" />
+	</bean> -->
+
+	<!-- 督办提醒定时处理 -->
+	<!-- <bean id="remindTime"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="durability" value="true" />
+		<property name="jobClass"
+			value="com.yusys.common.Timer.RemindMessageScheduledHandle"></property>
+		<property name="jobDataMap">
+			<map>
+				<entry key="msessageSendDispatch" value-ref="msessageSendDispatch"></entry>
+			</map>
+		</property> 
+	</bean> -->
+
+	<!-- 督办提醒定时 -->
+	<!-- <bean id="remindTimeTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="remindTime" />
+		<property name="cronExpression" value="0/300 * * * * ?" />
+	</bean> -->
+	<!-- 定义核心调度器 -->
+	<!-- <bean id="scheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="dataSource" ref="myDataSource"></property>  
+		<property name="configLocation" value="classpath:quartz.properties" />     
+		<property name="triggers">
+			<list>
+				<ref bean="workBenchTrigger" />
+				<ref bean="remindTimeTrigger" />
+			</list>
+		</property>
+	</bean> -->
+<import resource="spring-mvc.xml"/>
+<import resource="spring-mybatis.xml"/>
+<import resource="spring-redis.xml"/>
+</beans>

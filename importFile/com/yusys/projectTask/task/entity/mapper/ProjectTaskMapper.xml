@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.projectTask.task.dao.ProjectTaskDao">
+
+	<!-- 根据需求任务编号查询需求任务 -->
+	<select id="findTaskBycode" parameterType="java.lang.String" resultType="java.lang.String">
+		select system_no from G_REQUIREMENT_TASK where req_task_code=#{task_code}
+	</select>
+
+	<insert id="addTask" parameterType="java.util.Map">
+		insert into P_PROJECT_TASKS (P_TASK_ID,PROJECT_ID,REQ_TASK_ID,TASK_NAME,TASK_TYPE,TASK_STATE,TASK_DESC,TASK_LEVEL,EXECUTOR,PLAN_STARTTIME,PLAN_ENDTIME,ACTUAL_STARTTIME,ACTUAL_ENDTIME,DELAY_REASON,CREATOR,CREATE_TIME,UPDATE_PERSON,UPDATE_TIME)
+		values(
+			#{P_TASK_ID},#{PROJECT_ID},#{REQ_TASK_ID},#{TASK_NAME},#{TASK_TYPE},#{TASK_STATE},
+			#{TASK_DESC},#{TASK_LEVEL},#{EXECUTOR},#{PLAN_STARTTIME},#{PLAN_ENDTIME},#{ACTUAL_STARTTIME},
+			#{ACTUAL_ENDTIME},#{DELAY_REASON},#{CREATOR},#{CREATE_TIME},#{UPDATE_PERSON},#{UPDATE_TIME}
+		)
+	</insert>
+	
+	<select id="queryUsrForName" parameterType="java.util.Map" resultType="java.util.Map">
+		select u.user_no,u.user_name,u.login_name
+       from s_user u
+       where u.user_no = #{user_no}
+	</select>
+</mapper>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.serviceorder.personnelPrice.dao.PersonnelPriceDao">
+	<!--查询所有人员单价维护信息 -->
+	<select id="findOutPersonPriceByIdcard" parameterType="java.util.Map" resultType="java.util.Map">
+	     select p_id from c_personnel_type where supplier_id=#{sup_num} and contract=#{contract} 
+	</select>
+	<!--判断框架合同是否正确 -->
+	<select id="queryFrameContInfo" parameterType="java.util.Map" resultType="java.util.Map">
+	     select t.contract_code from c_contract_info t
+	      where t.contract_sort='C_DIC_CONTRACT_SORT_FRAME' 
+	     and t.contract_code=#{contract}  and t.supplier_ids=#{sup_num}
+	</select>
+	<!-- 插入人员单价类别信息 -->
+	<insert id="addPersonType" parameterType="com.yusys.serviceorder.personnelPrice.entity.PersonnelTypeInfo">
+		  insert into c_personnel_type ( 
+		  	p_id,supplier_id,contract,p_starttime,p_endtime,opt_person,opt_time,p_memo
+		  ) values(
+				#{p_id},#{supplier_id},#{contract},#{p_starttime},#{p_endtime},
+				#{opt_person},#{opt_time},#{p_memo,jdbcType=VARCHAR}
+		  )
+	  </insert>
+	<!-- 插入人员单价详细信息 -->
+	<insert id="addPersonPrice" parameterType="com.yusys.serviceorder.personnelPrice.entity.PersonnelPriceInfo">
+		  insert into c_personnel_price (
+			p_id,p_level,p_post,p_price_tax,p_price,p_memo,opt_person, opt_time
+		  ) values(
+		  	#{p_id},#{p_level},#{p_post},#{p_price_tax},#{p_price},#{p_memo,jdbcType=VARCHAR},#{opt_person},#{opt_time}
+		  )
+	  </insert>
+	  <!-- 根据资质级别和人员档次修改人员单价详情信息 -->
+	  <update id="updateOnePersonPrice" parameterType="com.yusys.serviceorder.personnelPrice.entity.PersonnelPriceInfo">
+		  update  c_personnel_price set p_price_tax=#{p_price_tax},p_memo=#{p_memo,jdbcType=VARCHAR},
+		  			opt_person=#{opt_person},opt_time=#{opt_time}
+	 		where p_level=#{p_level} and p_post=#{p_post}
+	  </update>
+	  <!--根据主键ID查询人员单价详情信息 -->
+	  <select id="findPPDetailById" parameterType="java.util.Map" resultType="java.util.Map">
+       select 
+           s1.item_code p_post,s.p_level,
+           s2.item_name p_post_level,
+              p_price_tax,s.p_price,s.p_memo,s1.item_name p_posts
+              from c_personnel_price s 
+              left join s_dic_item s1 on (s.p_post=s1.item_code and s1.dic_code=s.p_level)
+              left join s_dic_item s2 on (s2.dic_code = 'C_DIC_OUTPERSION_QULITY_LEVEL' and s2.item_code = s.p_LEVEL)
+              where s.p_id=#{p_id}
+	  </select>
+	  <!--根据资质级别和人员档次查询人员单价详情信息 -->
+	  <select id="findPPDetailByLevel" parameterType="java.util.Map" resultType="java.util.Map">
+       select  * from c_personnel_price s  where s.p_post=#{p_post} and s.p_level=#{p_level} and s.p_id = #{p_id}
+	  </select>
+	  <!--根据主键ID、修改人员单价类别信息 -->
+	  <update id="updatePersonPrice" parameterType="com.yusys.serviceorder.personnelPrice.entity.PersonnelTypeInfo">
+	  		update c_personnel_type c set 
+	  			c.supplier_id=#{supplier_id},c.contract=#{contract},c.p_starttime=#{p_starttime},
+	  			c.p_endtime=#{p_endtime},
+		     	c.opt_person=#{opt_person},c.opt_time =#{opt_time},c.p_memo =#{p_memo,jdbcType=VARCHAR}
+		     where c.p_id=#{p_id}
+	  </update>
+</mapper>

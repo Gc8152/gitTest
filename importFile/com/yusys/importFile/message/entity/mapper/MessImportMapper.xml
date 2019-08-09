@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.importFile.message.dao.MessImportDao">
+
+	<!-- 查询接口报文信息 -->
+	<select id="qContentList" parameterType="java.util.Map" resultType="java.util.Map">
+		select t1.*,
+		(select sdi.item_name from s_dic_item sdi where sdi.dic_code='I_DIC_INTER_DATA_TYPE' and sdi.item_code=t1.DATA_TYPE) DATA_TYPE_NAME,
+      	(select sdi.item_name from s_dic_item sdi where sdi.dic_code='T_DIC_YN' and sdi.item_code=t1.IS_NECESSARY) IS_NECESSARY_NAME,
+      	(select sdi.item_name from s_dic_item sdi where sdi.dic_code='C_DIC_WAY_TYPE' and sdi.item_code=t1.WAY_TYPE) IN_OUT_TYPE
+     	from I_INTER_DATA_INFO t1
+	    where 1=1
+	    <if test="APP_ID!=null and APP_ID !=''">
+	    	and APP_ID = #{APP_ID}
+	    </if>
+	    <if test="INTER_ID!=null and INTER_ID!=''">
+	    	and INTER_ID = #{INTER_ID}
+	    </if>
+	    <if test="INTER_VERSION!=null and INTER_VERSION!=''">
+	    	and INTER_VERSION = #{INTER_VERSION}
+	    </if>
+	    <if test="WAY_TYPE !=null and WAY_TYPE !=''">
+	    	and WAY_TYPE = #{WAY_TYPE}
+	    </if>
+	    order by WAY_TYPE
+	</select>
+	
+	
+	<!-- 接口申请信息 -->
+	<select id="qAnalyseList" parameterType="java.util.Map" resultType="java.util.Map">
+		select t1.*,t2.INTER_ID,t2.APP_ID,t2.APP_INTER_NUM,t2.APP_TYPE, t2.FILE_ID,t2.CURRENT_MAN2,
+      (select sdi.item_name from s_dic_item sdi where sdi.dic_code='I_DIC_INTER_APP_STATUS' and sdi.item_code=t2.INTER_APP_STATUS) INTER_APP_STATUS_NAME,
+      (select sdi.item_name from s_dic_item sdi where sdi.dic_code='I_DIC_INTER_APP_TYPE' and sdi.item_code=t2.APP_TYPE) APP_TYPE_NAME,
+      (select sdi.item_name from s_dic_item sdi where sdi.dic_code='I_DIC_INTER_OFFICE_TYPE' and sdi.item_code=t6.INTER_OFFICE_TYPE) INTER_OFFICE_TYPE_NAME,
+     	t3.system_name ser_system_name,t4.system_name con_system_name,t5.user_name app_user_name,
+     	t6.INTER_VERSION,t6.INTER_NAME,t6.INTER_DESCR,t6.INTER_OFFICE_TYPE,t6.INTER_STATUS,t6.INTER_CODE,t6.TRADE_CODE,
+     	t7.req_task_code,t7.req_task_name
+      from I_INTER_APP_ORDER t1
+      left join I_INTER_APP t2 on t1.RECORD_APP_NUM = t2.RECORD_APP_NUM
+      left join g_system_info t3 on t3.system_id = t1.ser_system_id
+      left join g_system_info t4 on t4.system_id = t1.con_system_id
+      left join s_user t5 on t5.user_no = t1.app_user
+      left join i_inter_basic_info t6 on t6.inter_id = t2.inter_id
+      left join g_requirement_task t7 on t7.req_task_id = t1.req_task_id
+	    where 1=1 
+	    and t2.INTER_APP_STATUS='06'
+	    
+	     <if test="apply_id!=null and  apply_id !=''">
+	    	and t2.APP_INTER_NUM like '%' || #{apply_id} || '%'
+	    </if>
+	     <if test="req_task_code !=null and  req_task_code !=''">
+	    	and t7.req_task_code like '%' || #{req_task_code} || '%'
+	    </if>
+	    <if test="applicant!=null and applicant !=''">
+	    	 and t5.user_name like '%' || #{applicant} || '%'
+	    </if>
+	    <if test="app_type!=null and  app_type !=''">
+	    	and t2.app_type = #{app_type}
+	    </if>
+	    <if test="consumer_name!=null and  consumer_name !=''">
+	    	and t4.system_name like '%' || #{consumer_name} || '%'
+	    </if>
+	    <if test="ESBvice_name!=null and ESBvice_name !=''">
+	    	and t3.system_name like '%' || #{ESBvice_name} || '%'
+	    </if>
+	     <if test="inter_name!=null and inter_name !=''">
+	    	and t6.inter_name like '%' || #{inter_name} || '%'
+	    </if>
+	     <if test="inter_code!=null and inter_code !=''">
+	    	and t6.inter_code like '%' || #{inter_code} || '%'
+	    </if>
+	     <if test="trade_code!=null and trade_code !=''">
+	    	and t6.trade_code like '%' || #{trade_code} || '%'
+	    </if>
+	    	<if test="req_finish_time!=null and req_finish_time!=''">
+				and to_date(t1.req_finish_time,'yyyy-mm-dd') &gt;= to_date(#{req_finish_time},'yyyy-mm-dd')
+		</if>
+		<if test="req_finish_time1!=null and req_finish_time1!=''">
+				and to_date(t1.req_finish_time,'yyyy-mm-dd')  &lt;= to_date(#{req_finish_time1},'yyyy-mm-dd')
+		</if>
+		order by t1.APP_TIME desc
+		
+	</select>
+	
+	
+</mapper>
+
+

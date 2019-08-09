@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.FactorsInfoDao">
+    <!-- 查询业务要素表所有信息 -->
+	<select id="queryAllFactorsInfo" parameterType="java.util.Map" resultType="java.util.Map">
+        select f.*,
+	    (select sd.item_name from s_dic_item sd where sd.dic_code = 'AF_DIC_STATE' and sd.item_code = f.b_state) as b_state_name,
+	    (select sd.item_name from s_dic_item sd where sd.dic_code = 'AF_DIC_SYSTEM' and sd.item_code = f.system_code) as a_sys_name,
+	    (select sd.item_name from s_dic_item sd where sd.dic_code = 'AF_DIC_FAC_CATEGORY' and sd.item_code = f.b_category) as b_category_name,
+	    (select sd.item_name from s_dic_item sd where sd.dic_code = 'AF_DIC_FAC_TYPE' and sd.item_code = f.b_type) as b_type_name,
+	    (select user_name from s_user where user_no=f.opt_person) as OPT_PERSONNAME
+	    from af_factors f
+	    where 1=1  
+		<if test="b_code!=null and b_code!=''">
+ 			and f.b_code = #{b_code} 
+ 		</if>
+		<if test="b_state!=null and b_state!=''">
+ 			and f.b_state = #{b_state}
+ 		</if>
+ 		<if test="system_code!=null and system_code!=''">
+ 			and f.system_code = #{system_code}
+ 		</if>
+ 		<if test="b_category!=null and b_category!=''">
+ 			and f.b_category = #{b_category}
+ 		</if>
+ 		<if test="b_name!=null and b_name!=''">
+ 			and f.b_name like #{b_name}
+ 		</if>
+ 		<if test="b_type!=null and b_type!=''">
+ 			and f.b_type like #{b_type}
+ 		</if>
+		order by f.system_code,f.b_type
+	</select>
+	<!-- 查询业务系统下所有流程 -->
+	<select id="queryAllAFByCode" parameterType="java.util.Map" resultType="java.util.Map">
+ 		select * from af_info where af_sys_name = #{system_code}
+	</select>
+	<!-- 查询要素变更待更新的所有节点信息 -->
+	<select id="queryAllWaitUpdNode" parameterType="java.util.Map" resultType="java.util.Map">
+ 		select af.af_id,n.n_value bef_code
+		from af_info af
+		left join af_node_info n on n.af_id = af.af_id
+		where af.af_sys_name = #{system_code}
+		and n.n_value = #{bef_code}
+	</select>
+    <!-- 向业务要素表中插入一条信息 -->
+    <insert id="addOneFactorsInfo" parameterType="java.util.Map">
+		insert into af_factors (b_code,b_name,b_state,b_type,b_category,
+			system_code,opt_person,opt_time,memo)  
+		values(#{b_code},#{b_name},#{b_state},#{b_type},#{b_category},
+			#{system_code},#{opt_person},#{opt_time},#{memo})
+	</insert>
+	<!-- 根据选择的id删除要素表中该信息 -->
+	<delete id="deleteOneFactorsInfo" parameterType="java.util.Map">
+		delete from af_factors where b_code = #{b_code} and system_code = #{system_code}
+	</delete>
+	<!--修改一条业务要素表信息 -->
+	<update id="updateOneFactorsInfo" parameterType="java.util.Map">
+		update af_factors set b_name = #{b_name},b_state = #{b_state},
+		b_type = #{b_type},b_category = #{b_category},opt_person = #{opt_person},
+		b_code = #{b_code},system_code = #{system_code},
+		opt_time = #{opt_time},memo = #{memo}
+		where b_code = #{v_b_code}
+		and system_code = #{v_system_code} 
+		and b_category = #{b_category}
+	</update>
+	<!-- 要素变更成功之后更新节点值 -->
+	<update id="updateNOfValueByCode" parameterType="java.util.Map">
+    	update af_node_info n 
+    	set n.n_value = #{af_code}
+		where n.af_id = #{af_id}
+		and n.n_value = #{bef_code}
+	</update>
+	<!-- 要素编号变更时批量修改节点基本信息表中的节点值 -->
+	<!-- <update id="batchUpdateNOfValue" parameterType="java.util.List">
+    	update af_node_info n set n.n_value = 
+	  	<foreach collection="list" item="item" index="index" separator=" " open="" close="">
+	    	#{item.af_code}
+	  	</foreach>
+	  	where n.af_id = 
+	  	<foreach collection="list" item="item" index="index" separator=" " open="" close="">
+	    	#{item.af_id}
+	  	</foreach>
+	  	and n.n_value = 
+	  	<foreach collection="list" item="item" index="index" separator=" " open="" close="">
+	    	#{item.bef_code}
+	  	</foreach>
+	</update>
+	<update id="" parameterType="java.util.Map">
+	 	update af_node_info n set n.n_value = #{af_code}
+		where 1=1 
+		<if test="pactitemIds != null">
+			and pactitem_id in
+			<foreach collection="pactitemIds" item="item" index="index" open="("
+				separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+	</update> -->
+</mapper>

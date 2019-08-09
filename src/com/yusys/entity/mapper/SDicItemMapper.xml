@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.SDicItemDao">
+	
+	<insert id="save" 		parameterType="java.util.Map">
+	insert into s_dic_item
+	 (item_code,item_name, dic_code,state,  is_default,order_id,memo,opt_no,opt_time)
+			
+		values (#{item_code},#{item_name},
+			#{dic_code},#{state},
+			#{is_default},#{order_id},#{memo},#{opt_no},#{opt_time})
+	</insert>
+	
+	<delete id = "delete"  parameterType="java.util.Map">  
+	   <![CDATA[  
+	    update s_dic_item set 		
+	       		state = '01'
+		where dic_code=#{dic_code}   and  item_code =#{item_code}
+	    ]]>  
+	</delete>
+  
+    <update id="update" parameterType="java.util.Map">
+		update s_dic_item set 		
+			item_name=#{item_name},
+			state=#{state},
+			is_default=#{is_default},
+			order_id=#{order_id},
+			memo=#{memo},
+			opt_no=#{opt_no},
+			opt_time=#{opt_time}
+		where item_code=#{item_code}   and dic_code=#{dic_code}
+	</update>	
+			
+	<select id="findById" parameterType="java.util.Map"	resultType="com.yusys.entity.SDicItem">
+		select * from s_dic_item  where item_code = #{item_code} 
+			<if test="null != dic_code and dic_code != ''">
+					and dic_code = #{dic_code}
+			</if>			
+			
+			
+	</select>
+	
+	<select id="findAll" 	parameterType="java.util.Map"	resultType="java.util.Map">
+			select sd.*,s.dic_name from s_dic_item sd  left join s_dic s  on  s.dic_code = sd.dic_code
+			where 1=1
+			<if test="null != dic_code and dic_code != ''">
+					and sd.dic_code = #{dic_code}
+			</if>			
+			<if test="null != item_code and item_code != ''">
+					and sd.item_code = #{item_code}
+			</if>
+			<if test="null != item_name and item_name != ''">
+					and sd.item_name = #{item_name}
+			</if>
+			order by  sd.item_code
+	</select>	
+	<!-- 根据字典项名称和类别编码查询字典编码 houhf添加  导入使用-->
+	<select id="findItemCode" parameterType="java.util.Map"	resultType="java.lang.String">
+			select s.item_code item_code from s_dic_item s
+                  where s.item_name = #{itemName} and s.dic_code =  #{diCode}
+	</select>
+	<!--根据字典项类别编码 查询字典性类别内容  houhf添加  人员单价维护使用-->
+	<select id="findItemContent" parameterType="java.lang.String" resultType="java.util.Map">
+			select s.item_code item_code,s.item_name item_name from s_dic_item s
+                  where  s.dic_code =  #{diCode}
+	</select>
+</mapper>

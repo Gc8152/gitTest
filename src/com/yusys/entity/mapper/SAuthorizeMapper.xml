@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.SAuthorizeDao">
+	
+	<insert id="save" 		parameterType="java.util.Map">
+		insert into s_authorize(id,auth_no,org_no,role_no,bauth_no,system_id,query_op,option_op,approve_op,
+			auth_type,auth_state,start_time,end_time,opt_no,opt_time)
+		 values(sequnce_auth.nextval,#{auth_no},#{org_no},#{role_no},#{bauth_no},#{system_id},#{query_op},#{option_op},#{approve_op},
+		 	#{auth_type},#{auth_state},#{start_time},#{end_time},#{opt_no},#{opt_time})
+	</insert>
+	
+	<delete id = "delete" parameterType="java.util.Map">  
+	   <![CDATA[  
+	      update  s_authorize set auth_state = '1' where id =#{id}  
+	    ]]>  
+	</delete>
+		
+    <update id="update" parameterType="java.util.Map">
+		update s_authorize set 		
+			auth_no= #{auth_no},org_no=#{org_no},role_no=#{role_no},bauth_no=#{bauth_no},system_id=#{system_id},query_op=#{query_op},
+			option_op=#{option_op},approve_op=#{approve_op},auth_type=#{auth_type},auth_state=#{auth_state},start_time=#{start_time},
+			end_time=#{end_time},opt_no=#{opt_no},opt_time=#{opt_time}
+		where id=#{id}  and auth_state = '0'
+	</update>	
+	
+	<select id="findById"   parameterType="java.util.Map"	 resultType="java.util.Map"	 >
+			select au.id,u1.user_no auth_no,u1.user_name auth_name,u2.user_no bauth_no,u2.user_name bauth_name,
+			       o.org_code,o.org_name,r.role_no,r.role_name,au.auth_type,au.query_op,au.option_op,au.approve_op,au.system_id,au.start_time,au.end_time 
+			from s_authorize  au
+			left join s_user u1 on au.auth_no = u1.user_no
+			left join s_user u2 on au.bauth_no = u2.user_no
+			left join s_org o on o.org_code = au.org_no
+			left join s_role r on r.role_no = au.ROLE_NO
+			
+			where  auth_state = '0'  and au.id = #{id}
+			order by au.id
+	</select>
+	
+	<select id="findAll"    parameterType="java.util.Map"	resultType="java.util.Map">
+			select au.id,u1.user_name  auth_name,u2.user_name bauth_name,o.org_name,r.role_name,au.auth_type,au.query_op,au.option_op,au.approve_op,au.system_id,au.start_time,au.end_time 
+			from s_authorize  au
+			left join s_user u1 on au.auth_no = u1.user_no
+			left join s_user u2 on au.bauth_no = u2.user_no
+			left join s_org o on o.org_code = au.org_no
+			left join s_role r on r.role_no = au.ROLE_NO
+			where  auth_state = '0'
+			<if test="null != auth_name and auth_name != ''">
+					and u1.user_name like #{auth_name}
+			</if>
+			<if test="null != bauth_name and bauth_name != ''">
+					and u2.user_name like  #{bauth_name}
+			</if>
+			<if test="null != role_name and role_name != ''">
+					and r.role_name like   #{role_name}
+			</if>		
+			<if test="null != org_name and org_name != ''">
+					and o.org_name like #{org_name}
+			</if>
+			<if test="null != auth_type and auth_type != ''">
+					and auth_type like #{auth_type}
+			</if>
+			<if test="null != query_op and query_op != ''">
+					and query_op = #{query_op}
+			</if>	
+			<if test="null != option_op and option_op != ''">
+					and option_op = #{option_op}
+			</if>	
+			<if test="null != approve_op and approve_op != ''">
+					and approve_op = #{approve_op}
+			</if>	
+			<if test="null == order_by or order_by != ''">
+					order by au.id
+			</if>	
+	</select>			
+</mapper>

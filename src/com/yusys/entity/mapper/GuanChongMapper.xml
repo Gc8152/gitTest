@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.GuanChongDao">
+
+	<!-- 新增需求 -->
+	<insert id="insertRequirements" parameterType="java.util.Map">
+		insert into G_c(
+			req_name,req_businesser,
+			req_business_phone,req_put_dept,
+			req_dept,req_operation_date,
+			req_description
+			)
+		values(
+			#{req_name},#{req_businesser},#{req_business_phone},
+			#{req_put_dept},#{req_dept},#{req_operation_date},#{req_description}
+			)
+	</insert>
+	
+	<!-- 修改需求 -->
+	<update id="updateRequirements" parameterType="java.util.Map">
+		UPDATE 
+			G_c
+		SET
+			req_businesser=#{req_businesser},
+			req_business_phone=#{req_business_phone},req_put_dept=#{req_put_dept},
+			req_dept=#{req_dept},req_operation_date=#{req_operation_date},
+			req_description=#{req_description}
+		WHERE
+			req_name=#{req_name}
+		
+	</update>
+	
+	
+	<!-- 查询数据 -->
+	<select id="queryAllUser"
+		parameterType="java.util.Map"
+		resultType="java.util.Map">
+        select
+         	REQ_BUSINESSER, REQ_NAME,REQ_BUSINESS_PHONE,
+        	REQ_PUT_DEPT,REQ_DEPT,REQ_DESCRIPTION,REQ_OPERATION_DATE
+        from 
+        	G_c
+        where 
+        	req_name=#{req_name}
+	</select>
+	
+	<!-- 删除数据 -->
+	<delete id="deleteRequirement" parameterType="java.util.Map">
+		delete from G_c where req_name=#{req_name}
+	</delete>
+		
+</mapper>

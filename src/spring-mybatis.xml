@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+         http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+             http://www.springframework.org/schema/security
+             http://www.springframework.org/schema/security/spring-security-4.2.xsd 
+             http://www.springframework.org/schema/cache 
+             http://www.springframework.org/schema/cache/spring-cache.xsd 
+             http://www.springframework.org/schema/tx
+             http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc-yxms.properties</value>
+            </list>
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+    </bean>
+    <!-- 数据库连接配置 -->
+	<bean id="myDataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="username" value="${jdbcYxms.username}" />
+		<property name="password" value="${jdbcYxms.password}" />
+		<property name="driverClassName" value="${jdbcYxms.driverClassName}" />
+		<property name="url" value="${jdbcYxms.url}" />
+		<property name="maxActive" value="100" />
+		<!-- 检查连接 -->
+		<property name="validationQuery">
+			<value>SELECT 1 from dual</value>
+		</property>
+		<property name="testOnBorrow">
+			<value>true</value>
+		</property>
+	</bean>
+	
+	<bean id="jdbcTemplate" 
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" 
+			ref="myDataSource">
+		</property>
+	</bean>
+	 
+	 <!-- mybatis相关配置 -->
+	 <bean id="sqlSessionFactory" 	 	class="org.mybatis.spring.SqlSessionFactoryBean">
+	 	<property name="dataSource" 		ref="myDataSource">
+	 	</property>
+	 	
+	 	<property name="mapperLocations">
+	 		<list>
+	 			<value>classpath*:com/yusys/**/entity/mapper/*.xml</value>
+	 			<value>classpath:com/yusys/supplier/*/entity/mapper/*.xml</value>
+	 		</list>
+	 	</property>
+	 	<property name="plugins">
+	 	<array>
+	 		<bean class="com.yusys.Utils.PageInterceptor"/>
+	 	</array>
+	 	</property>
+	 </bean>
+	 <!-- 配置事务管理器 -->
+	 <bean  id="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager" > 
+         <property name="dataSource" ref="myDataSource"></property>
+     </bean>
+     <!-- 启用事务注解  -->  
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>  
+ 
+</beans>

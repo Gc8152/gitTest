@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.SLogDao">
+	<!-- 创建日志 -->
+	<insert id="insertNewLog" parameterType="java.util.Map">
+		insert into s_log(login_name,user_no,opt_url,type,menu_no,state,ip_address,host_name,memo,opt_time,business_id)
+		values((select login_name from s_user where user_no=#{user_no}),#{user_no},#{opt_url},#{type},#{menu_no},#{state},#{ip_address},#{host_name},#{memo},#{opt_time},#{business_id})
+	</insert>
+	
+	<!-- 登陆日志查询页面  -->
+	<select id="queryLoginLog" parameterType="java.util.Map" resultType="java.util.Map">
+       select su.login_name,sl.ip_address,sl.host_name,sl.opt_time,sl.memo,su.user_name
+        from s_log sl,s_user su where sl.user_no = su.user_no and type='login'
+        <if test="login_name!=null and login_name!=''">
+				and sl.login_name like #{login_name}
+		</if>
+		<if test="user_name!=null and user_name!=''">
+				and su.user_name like #{user_name}
+		</if>
+		<if test="opt_time1!=null and opt_time1!=''">
+		<![CDATA[	and sl.opt_time >= #{opt_time1} ]]>
+		</if>
+		<if test="opt_time2!=null and opt_time2!=''">
+		<![CDATA[	and sl.opt_time <= #{opt_time2} ]]>
+		</if>
+		order by sl.opt_time desc
+	</select>
+	
+	<!-- 操作日志查询页面  -->
+	<select id="queryOperaLog" parameterType="java.util.Map" resultType="java.util.Map">
+        select su.login_name,sl.ip_address,sl.type,sl.opt_time,sl.memo,su.user_name,sl.business_id
+        from s_log sl,s_user su where sl.user_no = su.user_no and type='opt'
+        <if test="login_name!=null and login_name!=''">
+				and sl.login_name like #{login_name}
+		</if>
+		<if test="user_name!=null and user_name!=''">
+				and su.user_name like #{user_name}
+		</if>
+		<if test="business_id!=null and business_id!=''">
+			and sl.business_id like #{business_id}
+		</if>
+		<if test="opt_time1!=null and opt_time1!=''">
+		<![CDATA[	and sl.opt_time >= #{opt_time1} ]]>
+		</if>
+		<if test="opt_time2!=null and opt_time2!=''">
+		<![CDATA[	and sl.opt_time <= #{opt_time2} ]]>
+		</if>
+		order by sl.opt_time desc
+	</select>
+	<!-- 保存日志配置 -->
+	<insert id="savelogConfig" parameterType="java.util.Map">
+		insert into sys_cfg_log(loginlog_state,loginlog_timelimit,optlog_state,optlog_timelimit,errorlog_state,errorlog_timelimit,last_opt_person,last_opt_time,sendlog_state,sendlog_timelimit)
+		values(#{loginlog_state},#{loginlog_timelimit},#{optlog_state},#{optlog_timelimit},#{errorlog_state},#{errorlog_timelimit},#{last_opt_person},#{last_opt_time},#{sendlog_state}，#{sendlog_timelimit})
+	</insert>
+	<!-- 查询最后一次保存的日志配置 -->
+	<select id="queryLastLogConfig" resultType="java.util.Map">
+		select * from (select rownum as row_num,a.* from (select l.loginlog_state,l.loginlog_timelimit,l.optlog_state,l.optlog_timelimit,l.errorlog_state,l.errorlog_timelimit,l.sendlog_state,l.sendlog_timelimit,u.user_name as last_opt_person,l.last_opt_time from sys_cfg_log l,s_user u where l.last_opt_person=u.user_no order by last_opt_time desc) a) where row_num=1
+	</select>
+	<!-- 根据日志配置定时删除日志 -->
+	<delete id="deleteLogbylimittime" parameterType="java.util.Map">
+		delete from s_log where (sysdate-to_date(opt_time,'yyyy-MM-dd HH24:mi:ss')>#{loginlog_timelimit} and type='login')
+		or (sysdate-to_date(opt_time,'yyyy-MM-dd HH24:mi:ss')>#{optlog_timelimit} and type='opt')
+		or (sysdate-to_date(opt_time,'yyyy-MM-dd HH24:mi:ss')>#{errorlog_timelimit} and type='error')
+	</delete>
+</mapper>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.yusys.dao.SFileInfoDao">
+	<select id="getFilePathById"   parameterType="java.lang.String" resultType="java.util.Map">
+		select * from s_cfg_filepath where path_id=#{pathId}
+	</select>
+	
+	<!-- 增加附件信息  -->
+	<insert id="addFileInfo" parameterType="java.util.Map">
+		insert into s_fileinfo(id,path_id,file_name,file_type,file_count,file_id,is_view,opt_person,opt_time)
+		values(#{id},#{path_id},#{file_name},#{file_type},#{file_count},#{file_id},#{is_view},#{opt_person},#{opt_time})
+	</insert>
+	
+	<!-- 查询附件信息  -->
+	<select id="findFileInfo"   parameterType="java.util.Map" resultType="java.util.Map">
+		select sf.*,cf.path from s_fileinfo sf left join s_cfg_filepath cf on sf.path_id=cf.path_id
+		where 1=1
+		<if test="id!=null and id!=''">
+				and sf.id=#{id}
+		</if>
+		<if test="file_id!=null and file_id!=''">
+				and sf.file_id=#{file_id}
+		</if>
+		<if test="userid!=null and userid!=''">
+				and sf.opt_person=#{userid}
+		</if>
+		<if test="doc_id_isnull!=null and doc_id_isnull!=''">
+				and sf.doc_id is null
+		</if>
+		order by sf.opt_time desc
+	</select>
+	
+	<delete id = "delFildInfo"  parameterType="java.lang.String">  
+	   		delete from s_fileinfo where id in ${id}
+	</delete>
+	<delete id = "delFildInfoByFileId"  parameterType="java.lang.String">  
+	   <![CDATA[  
+	   		delete from s_fileinfo where file_id=#{file_id}
+	    ]]>  
+	</delete>
+	<!-- 设置附件可以预览 -->
+ 	<update id="setFileIsView" parameterType="java.lang.String">
+		update s_fileinfo set is_view='00' where id=#{id}
+	</update>
+	
+	<!-- 设置附件可以预览 -->
+ 	<update id="setContentManagerDocId" parameterType="java.util.Map">
+		update s_fileinfo set doc_id=#{doc_id} where id=#{id}
+	</update>
+	<!-- 查询附件信息 -->
+	<select id="getFileInfoByFId"   parameterType="java.lang.String" resultType="java.util.Map">
+			select * from s_fileinfo where file_id=#{file_id}
+	</select>
+	<!-- 查询附件信息 -->
+	<select id="getFileInfoById"   parameterType="java.lang.String" resultType="java.util.Map">
+			select * from s_fileinfo where id=#{id}
+	</select>
+		<!-- 查询附件信息  -->
+	<select id="queryFileInID"   parameterType="java.util.Map" resultType="java.util.Map">
+		select rownum rn,sf.*,cf.path from s_fileinfo sf left join s_cfg_filepath cf on sf.path_id=cf.path_id
+		where 1=1
+		<if test="id!=null and id!=''">
+				and sf.id in ${id}
+		</if>
+	</select>
+	
+	<select id="findFileInfoByName"   parameterType="java.util.Map" resultType="java.util.Map">
+		select  * from  s_fileinfo sf where sf.path_id= #{path_id} and sf.file_name= #{file_name}	
+	</select>
+</mapper>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.SDicDao">
+	
+	<insert id="save" parameterType="java.util.Map">
+ 		insert into s_dic (dic_code,dic_name,state,memo,opt_no,opt_time,menu_no,manager_role)
+		values (#{dic_code},#{dic_name},#{state},#{memo},#{opt_no},#{opt_time},#{menu_no},#{manager_role})
+	</insert>
+	
+	<delete id = "delete" parameterType="java.util.Map">  
+	   <![CDATA[  
+	    update s_dic set 		
+	       		state = '01'
+		where dic_code=#{dic_code}   
+	    ]]>  
+	</delete>
+	<delete id = "deleteitem" parameterType="java.util.Map">  
+	   <![CDATA[  
+	   	    update s_dic_item set 		
+	       		state = '01'
+			where dic_code=#{dic_code}
+	    ]]>  
+	</delete>
+		
+    <update id="update" parameterType="java.util.Map">
+		update s_dic set 		
+			dic_name=#{dic_name},state=#{state},memo=#{memo},opt_no=#{opt_no},opt_time=#{opt_time},menu_no=#{menu_no},manager_role=#{manager_role}
+		where dic_code=#{dic_code} 
+	</update>	
+	
+	<select id="findById" parameterType="java.util.Map"	resultType="java.util.Map">
+	  select s.dic_code,s.dic_name,s.state,s.memo,m.menu_name,m.menu_no,s.manager_role from s_dic s
+      left join s_menu m on s.menu_no = m.menu_no
+      where dic_code = #{dic_code}  
+	</select>
+	
+	<select id="findAll1"    parameterType="java.util.Map"	resultType="java.util.Map">
+		select s.dic_code,s.dic_name,s.state,s.memo,m.menu_name,
+		(select role_name from s_role where role_no=s.manager_role) as manager_role
+		 from s_dic s 
+		 left join s_menu m on s.menu_no = m.menu_no where 1 = 1
+			<if test="null != dic_code and dic_code != ''">
+					and dic_code like #{dic_code}
+			</if>
+			<if test="null != dic_name and dic_name != ''">
+					and dic_name like #{dic_name}
+			</if>
+			<if test="null != state and state != ''">
+					and state = #{state}
+			</if>		
+			<if test="null != menu_no and menu_no != ''">
+					and  m.menu_no = #{menu_no}
+			</if>
+		<!-- 	<if test="null!=role and role != ''">
+				and s.manager_role in ${role}
+			</if> -->
+			<if test="null!=manager_role and ''!=manager_role ">
+			    and s.manager_role=#{manager_role}
+			</if>
+			<if test="null == order_by or order_by == ''">
+					order by  dic_code
+			</if>	
+	</select>
+	
+	<!-- 查询字典数据 -->
+	<select id="findItemByDic" parameterType="java.util.Map"	resultType="java.util.Map">
+		select item_code,item_name,dic_code,is_default from s_dic_item 
+		where  state='00' and dic_code in(select dic_code from s_dic where state='00')
+			<if test="null != dic_code and dic_code != ''">
+					and dic_code=#{dic_code}   
+			</if>
+		order by dic_code,<!-- item_code, -->order_id
+	</select>
+</mapper>

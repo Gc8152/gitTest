@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.yusys.dao.SPathTagDao">
+	<!-- 查询所有标签 -->
+	<select id="queryListPathTag" resultType="java.util.Map">
+		select * from s_cfg_tag where flag = '00' order by to_number(tag_id)
+	</select>
+	
+	<!-- 增加自定义标签  -->
+	<insert id="addPathTag" parameterType="java.util.Map">
+		insert into s_cfg_tag(tag_id,tag_name,tag_type,flag,opt_id,opt_time)
+		values(#{tag_id},#{tag_name},#{tag_type},#{flag},#{opt_id},#{opt_time})
+	</insert>
+	
+	<!-- 删除自定义标签 -->
+	<update id="deletePathTag">
+		update s_cfg_tag set flag=#{flag},opt_id=#{opt_id},opt_time=#{opt_time}
+		where tag_id=#{tag_id}
+	</update>
+	
+	<!-- 根据标签ID查询 -->
+	<select id="queryOneTag" parameterType="java.lang.String" resultType="com.yusys.entity.SPathTag">
+		select * from s_cfg_tag where flag = '00' and tag_id=#{tag_id}
+	</select>
+	
+	<!-- 查询文件路径当前的标签 -->
+	<select id="queryFilePathTag" parameterType="java.util.Map" resultType="com.yusys.entity.SPathTag">
+		select items.tag_name,items.tag_id,items.tag_type,abb.order_id from s_cfg_pathtag abb,
+      		(select tag_id,tag_name,tag_type from s_cfg_tag where flag='00' and tag_id in
+            (select distinct tag_id from s_cfg_pathtag where path_id=#{path_id})) items 
+        	where path_id=#{path_id} and abb.tag_id = items.tag_id 
+        	order by to_number(abb.order_id)
+	</select>
+	
+	<!-- 查询文件路径当前没有的标签 -->
+	<select id="queryFilePathNoTag" parameterType="java.util.Map" resultType="com.yusys.entity.SPathTag">
+		select tag_id,tag_name,tag_type from s_cfg_tag where flag='00' and tag_id not in(
+			select distinct tag_id from s_cfg_pathtag where path_id=#{path_id})
+	</select>
+	
+	<!-- 增加文件路径标签-->
+	<insert id="addFilePathTag" parameterType="java.util.Map">
+		insert into s_cfg_pathtag(path_id,tag_id,opt_id,opt_time,order_id)
+		values(#{path_id},#{tag_id},#{opt_id},#{opt_time},#{order_id})
+	</insert>
+	
+	<!-- 移除文件路径标签-->
+	<delete id="deleteFilePathTag" parameterType="java.util.Map"> 
+		delete from s_cfg_pathtag where path_id=#{path_id}
+	</delete>
+	
+</mapper>

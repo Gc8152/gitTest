@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.WorkTimeDao">
+
+	<!-- 插入工作时间配置和报工期限配置 -->
+	<insert id="insert11111" parameterType="java.util.Map">
+		insert into work_time_config
+		(serno,
+		am_late_time,
+		am_work_up_time,
+		am_work_down_time,
+		pm_late_time,
+		pm_work_up_time,
+		pm_work_down_time,
+		ot_end_time,
+		ot_start_time,
+		leave_early_time,
+		is_allow,
+		deadline)
+		values(#{serNo,jdbcType=VARCHAR},#{am_late_time,jdbcType=VARCHAR},#{am_work_up_time,jdbcType=VARCHAR},#{am_work_down_time,jdbcType=VARCHAR},#{pm_late_time,jdbcType=VARCHAR},#{pm_work_up_time,jdbcType=VARCHAR},#{pm_work_down_time,jdbcType=VARCHAR},#{ot_end_time,jdbcType=VARCHAR},
+		#{ot_start_time,jdbcType=VARCHAR},#{leave_early_time,jdbcType=VARCHAR},#{is_allow,jdbcType=VARCHAR},#{deadline,jdbcType=VARCHAR})
+	</insert>
+	<select id="queryOne" parameterType="java.util.Map" resultType="com.yusys.entity.WorkTimePO">
+	   select c.serno serNo,
+		       c.am_late_time,
+		       c.am_work_up_time,
+		       c.am_work_down_time,
+		       c.pm_late_time,
+		       c.pm_work_up_time,
+		       c.pm_work_down_time,
+		       c.ot_end_time,
+		       c.ot_start_time,
+		       c.leave_early_time,
+		       c.is_allow,
+		       c.deadline
+		  from work_time_config c 
+		  <where>
+		    <if test="serNo !=null  and serNo!=''">
+		     c.serno=#{serNo}
+		    </if>
+		  </where>
+	</select>
+	<update id="update" parameterType="java.util.Map">
+		update work_time_config c
+		   set c.am_late_time      = #{am_late_time,jdbcType=VARCHAR},
+		       c.am_work_up_time   = #{am_work_up_time,jdbcType=VARCHAR},
+		       c.am_work_down_time = #{am_work_down_time,jdbcType=VARCHAR},
+		       c.pm_late_time      = #{pm_late_time,jdbcType=VARCHAR},
+		       c.pm_work_up_time   = #{pm_work_up_time,jdbcType=VARCHAR},
+		       c.pm_work_down_time = #{pm_work_down_time,jdbcType=VARCHAR},
+		       c.ot_end_time       = #{ot_end_time,jdbcType=VARCHAR},
+		       c.ot_start_time     = #{ot_start_time,jdbcType=VARCHAR},
+		       c.leave_early_time  = #{leave_early_time,jdbcType=VARCHAR},
+		       c.is_allow          = #{is_allow,jdbcType=VARCHAR},
+		       c.deadline          = #{deadline,jdbcType=VARCHAR}
+       <where>
+		 <if test="serNo != null and serNo!=''">
+			c.serno = #{serNo} 
+		 </if>
+       </where>
+	</update>
+</mapper>

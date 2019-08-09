@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.resources.outpersonattendance.dao.OptAttendanceDao">
+	<!--查询人员考勤列表信息 -->
+	<select id="queryOptAttendanceList" parameterType="java.lang.String" resultType="java.util.Map">
+    select c.*,u.user_name,s.sup_name,(select item_name from s_dic_item sd where sd.dic_code = 'C_DIC_ATTENDANCE_TYPE' and sd.item_code = c.acc_type) acc_type_name,
+      (select item_name from s_dic_item sd where sd.dic_code = 'C_DIC_ATTENDANCE_STATUS' and sd.item_code = c.acc_status) acc_status_name 
+        from c_personnel_attendance c left join c_outsource_person co on co.op_code = c.op_code left join s_user u on u.user_no=c.user_no
+        left join sup_basic_info s on s.sup_num = co.sup_num where 1=1
+		<if test="supplier_num !=null and supplier_num !=''">
+				and co.sup_num=#{supplier_num}
+		</if> 
+		<if test="op_name_like!=null and op_name_like!=''">
+				and u.user_name like #{op_name_like}
+		</if>   
+		<if test="berw_time !=null and berw_time !=''">
+				and c.berw_time=#{berw_time}
+		</if> 
+		<if test="aftw_time !=null and aftw_time !=''">
+				and c.aftw_time=#{aftw_time}
+		</if>  
+		<if test="acc_type !=null and acc_type !=''">
+				and c.acc_type=#{acc_type}
+		</if>
+		<if test="acc_status !=null and acc_status !=''">
+				and c.acc_status=#{acc_status}
+		</if>
+		<if test="berw_date !=null and berw_date !=''">
+				and c.work_date >=#{berw_date}
+		</if> 
+		<if test="aftw_date !=null and aftw_date !=''">
+				<![CDATA[and c.work_date <= #{aftw_date}]]>
+		</if>  
+		<if test="op_code !=null and op_code !=''">
+				and c.op_code=#{op_code}
+		</if>          
+	</select>
+	<!--  增加人员考勤信息-->
+	<insert id="addOptAttendance" parameterType="java.util.Map">
+		insert into c_personnel_attendance(acc_id,op_code,user_no,acc_type,berw_time,aftw_time,work_hours,work_overhours,memo,work_date,acc_status)
+   		values(#{acc_id},#{op_code},#{user_no},#{acc_type},#{berw_time},#{aftw_time},#{work_hours},#{work_overhours},#{memo},#{work_date},#{acc_status})
+	</insert>
+	<!-- 修改人员考勤信息-->
+	<update id="updateOptAttendance" parameterType="java.util.Map">
+		update c_personnel_attendance set 
+			op_code=#{op_code},user_no=#{user_no},acc_type=#{acc_type}, berw_time=#{berw_time}, aftw_time=#{aftw_time},
+			acc_status=#{acc_status},work_hours=#{work_hours},work_overhours=#{work_overhours},work_date = #{work_date},memo=#{memo} where acc_id=#{acc_id}
+	</update>
+	<!--查询人员考勤详情信息 -->
+	<select id="queryOptAttendanceDetail" parameterType="java.lang.String" resultType="java.util.Map">
+		select c.*,(select item_name from s_dic_item sd where sd.dic_code = 'C_DIC_ATTENDANCE_TYPE' and sd.item_code = c.acc_type) acc_type_name,
+		(select item_name from s_dic_item sd where sd.dic_code = 'C_DIC_ATTENDANCE_STATUS' and sd.item_code = c.acc_status) acc_status_name 
+        from c_personnel_attendance c where c.acc_id=#{acc_id}
+	</select>
+	<!--根据人员code跟日期查询人员考勤信息 -->
+	<select id="queryOptAttByCodeAndDate" parameterType="java.util.Map" resultType="java.util.Map">
+		select c.*,(select item_name from s_dic_item sd where sd.dic_code = 'C_DIC_ATTENDANCE_TYPE' and sd.item_code = c.acc_type) acc_type_name,
+		(select item_name from s_dic_item sd where sd.dic_code = 'C_DIC_ATTENDANCE_STATUS' and sd.item_code = c.acc_status) acc_status_name 
+        from c_personnel_attendance c where  c.op_code = #{op_code} and c.work_date = #{work_date}
+	</select>
+	<!--根据人员编号和身份证号查询人员信息 -->
+	<select id="queryOptAttByUserNoAndIdcard" parameterType="java.util.Map" resultType="java.util.Map">
+		select * from s_user s where s.user_no=#{user_no} and s.OUTPERSION_ID=#{op_code}
+	</select>
+</mapper>

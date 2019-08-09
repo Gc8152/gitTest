@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.SUserDao">
+	<select id="findByParam"
+	parameterType="java.util.Map"
+	resultType="com.yusys.entity.SUser">
+	select 
+	   u.user_no,
+       u.user_name,
+       u.login_name,
+       u.password,
+       u.nick_name,
+       u.state,
+       u.user_post,
+       u.user_level,
+       o.org_name org_no_name,
+       so.org_name org_name,
+       u.org_no,
+       u.user_mail,
+       u.user_mobile,
+       u.memo,
+       u.u_extend1,
+       u.u_extend2,
+       u.u_extend3,
+       u.create_no,
+       u.skin_type,
+       (select count(1) from s_roleuser where role_no in('004','admin') and user_no=u.user_no) iscreate,
+       u.create_time,
+       u.update_no,
+       u.update_time,
+       o.org_manager,
+       o.enable_flag,
+       u.is_banker,
+       u.work_no,
+       (select wm_concat(sru.role_no) from s_roleuser sru group by sru.user_no having sru.user_no = u.user_no) user_roles
+  from s_user u
+  left join s_org o
+    on SUBSTR(u.org_no,0,4) = o.org_code
+  left join s_org so
+  	on u.org_no = so.org_code
+		where 1=1
+		<if test="null != loginname and loginname != ''">
+				and u.login_name = #{loginname}
+		</if>
+		<if test="null != password and password != ''">
+				and u.password = #{password}
+		</if>
+		<if test="null != user_no and user_no != ''">
+				and u.user_no = #{user_no}
+		</if>
+		<if test="null != currentUserNo and currentUserNo != ''">
+		and u.org_no in(
+		(select org_code  from s_org t start with t.org_code in(
+					select org_code from s_org where org_manager=#{currentUserNo} or org_vp=#{currentUserNo}
+		) connect by prior t.org_code = t.suporg_code))
+		</if>
+		<if test="null != work_no and work_no != ''">
+				and u.work_no = #{work_no}
+		</if>
+	</select>
+	<!-- 查询所有用户信息  -->
+	<select id="queryAllUser" parameterType="java.util.Map" resultType="java.util.Map">
+		select su.user_no,su.user_name,su.login_name,su.user_mobile,su.is_banker,
+		(select sdi.item_name from s_dic_item sdi where sdi.dic_code='S_DIC_YN' and sdi.item_code=su.is_banker) as banker,
+		(select sdi.item_name from s_dic_item sdi where sdi.dic_code='S_DIC_USERSTATE' and sdi.item_code=su.state) as state,
+		so.org_name as org_no_name,su.user_mail,su.user_level,su.update_time
+		from s_user su,s_org so where su.org_no = so.org_code 
+		<if test="org_name!=null and org_name!=''">
+				and so.org_name like #{org_name}
+		</if>
+		<if test="user_no!=null and user_no!=''">
+				and su.user_no like #{user_no}
+		</if>
+		<if test="user_name!=null and user_name!=''">
+				and su.user_name like #{user_name}
+		</if>
+		<if test="login_name!=null and login_name!=''">
+				and su.login_name like #{login_name}
+		</if>
+		<if test="state!=null and state!=''">
+				and su.state = #{state}
+		</if>
+		<if test="is_banker!=null and is_banker!=''">
+				and su.is_banker = #{is_banker}
+		</if>
+		<if test="org_code!=null and org_code!=''">
+				and su.org_no in(select org_code  from s_org t start with t.org_code=#{org_code} connect by prior t.org_code = t.suporg_code)
+		</if>
+		<if test="order_by==null ">
+				order by su.user_no
+		</if>
+	</select>
+	
+	<!-- 查询单个用户详细信息  -->
+	<select id="queryOneUser" parameterType="java.lang.String" resultType="com.yusys.entity.SUser">
+         select su.work_no,su.user_no,su.user_name,su.login_name,
+       su.state,su.is_banker,su.work_no,
+       (select sd.item_name from s_dic_item sd where sd.item_code=su.state and sd.dic_code ='S_DIC_USERSTATE') state_name,
+       (select sd.item_name from s_dic_item sd where sd.item_code=su.is_banker and sd.dic_code ='S_DIC_YN') is_banker_name,
+       su.user_post,
+       (select sd.item_name from s_dic_item sd where sd.item_code=su.user_post and sd.dic_code ='S_DIC_USERPOST') user_post_name,
+      su.user_level,
+      (select sd.item_name from s_dic_item sd where sd.item_code=su.user_level and sd.dic_code ='S_DIC_USERLEVEL') user_level_name,
+      (select org_manager from s_org where org_code=su.org_no ) org_manager,
+     (select (case when length(org_code)=4 then Substr(org_name, 0, 4)    else org_name end) org_no_name from s_org where org_code=su.org_no) org_no_name
+      ,su.org_no as org_no_code,
+      su.org_no,
+      su.skin_type,
+      su.user_mail,su.nick_name,su.user_mobile,su.memo,
+      op.op_name op_name,
+      su.outpersion_id op_code
+      from s_user su
+      left join c_outsource_person op on su.outpersion_id=op.op_code
+
+      where user_no =#{user_no} 
+	</select>
+	
+	<!-- 插入用户信息  -->
+	<insert id="insertNewUser" parameterType="java.util.Map">
+	 insert into s_user(user_no,user_name,login_name,password,state,user_post,user_level,user_mobile,
+	 org_no,user_mail,nick_name,memo,create_no,create_time,is_banker,skin_type,work_no,outpersion_id) 
+	 values(#{user_no},#{user_name},#{login_name},#{password},#{state},#{user_post},#{user_level},#{user_mobile},
+	 #{org_no_code},#{user_mail},#{nick_name},#{memo},#{create_no},#{create_time},#{is_banker}, '00',#{work_no},#{outpersion_id})
+	</insert>
+	
+	<!-- 修改用户信息  -->
+	<update id="updateUser" parameterType="java.util.Map">
+	update s_user set user_name=#{user_name},user_mobile=#{user_mobile},state=#{state},
+	user_post=#{user_post},user_level=#{user_level},org_no=#{org_no_code},user_mail=#{user_mail},nick_name=#{nick_name},memo=#{memo},
+	update_no=#{update_no},update_time=#{update_time},is_banker=#{is_banker},work_no=#{work_no},outpersion_id=#{outpersion_id}
+	where user_no=#{user_no}
+	</update>
+	
+	<!-- 删除用户(标记位删除)  -->
+	<update id="delteUser" parameterType="java.util.Map">
+	update s_user set state='01',update_no=#{update_no},update_time=#{update_time} where user_no=#{user_no}
+	</update>
+	
+	<!-- 查询角色   -->
+	<select id="queryRoleuser" parameterType="java.util.Map" resultType="java.util.Map">
+		select role_no from s_roleuser where user_no = #{user_no} 
+	</select>
+	
+	<!-- 给员工生成角色  -->
+	<insert id="insertRoleuser" parameterType="java.util.Map">
+		insert into s_roleuser(user_no,role_no,opt_no,opt_time)
+		values(#{user_no},#{role_no},#{opt_no},#{opt_time})
+	</insert>
+	
+	<!-- POP框多条件查询用户 -->
+	<select id="popFindAllUser"    parameterType="java.util.Map"	resultType="java.util.Map">
+		select su.*,so.org_name org_no_name from s_user su 
+   		 left join s_org so on su.org_no = so.org_code
+   		 where 1=1 and su.state='00'
+   		 <!--select  t.role_no,t.user_no,
+         (select s.user_name from s_user s where s.user_no=t.user_no) user_name,
+         (select x.role_name from s_role x where x.role_no=t.role_no) role_name,
+         (select s.IS_BANKER from s_user s where s.user_no=t.user_no) is_banker,
+         (select s.LOGIN_NAME from s_user s where s.user_no=t.user_no) login_name
+         from g_system_persons t 
+         where system_id = (select system_id from p_project_basic_info where project_num=#{system_num})-->
+		<if test="user_no!=null and user_no!=''">
+				and user_no like #{user_no}
+		</if>
+		<if test="user_name!=null and user_name!=''">
+				and user_name like #{user_name}
+				<!--and t.user_no in (select user_no from s_user where user_name like #{user_name})-->
+		</if>
+		<if test="login_name!=null and login_name!=''">
+				and login_name like #{login_name}
+		</if>
+		<if test="state!=null and state!=''">
+				and su.state = #{state}
+		</if>
+		<!-- 查询限定部门人员 -->
+		<if test="org_nos!=null and org_nos!=''">
+				and su.org_no in (select distinct org_code from s_org start with org_code in ${org_nos} connect by prior org_code = suporg_code)
+		</if>
+		<if test="org_no!=null and org_no!=''">
+				and su.org_no in (select distinct org_code from s_org start with org_code=#{org_no} connect by prior org_code = suporg_code)
+		</if>
+		<!-- 查询限定岗位人员 -->
+		<if test="role!=null and role!=''">
+			and su.user_no in (select user_no from s_roleuser where role_no in ${role})
+		</if>
+		<!-- 登陆人所在部门及以下部门的人员； -->
+ 		<if test="login_no!=null and login_no!=''">
+ 			and
+		    su.org_no in 
+		    (select org_code from s_org start with org_code= (
+			 select  case when so.plevel='00' or so.clevel='01' then so.suporg_code else so.org_code end org_code
+ 				from (select so.org_code,so.org_level clevel,so.suporg_code,
+   				(select org_level from s_org where org_code=so.suporg_code) plevel
+  				from s_org so where so.org_code = (select org_no from s_user where user_no = #{login_no})) so
+		    )
+		    connect by prior org_code = suporg_code)
+		</if> 		
+			<!-- 选择非本人所在部门的人员 -->
+		<if test="notLoginNo_org!=null and notLoginNo_org!=''">
+    		and 
+   			su.org_no not in (select s.org_no from s_user s where s.user_no = #{notLoginNo_org})
+		</if>
+		<if test="role_name !=null and role_name !=''">
+				  and t.role_no in (select role_no from s_role where role_name like #{role_name})
+		</if>	
+  		order by user_no
+	</select>
+	<!-- 查询用户密码  -->
+	<select id="findUserPass" parameterType="java.lang.String" resultType="java.lang.String" >
+		select password from s_user where user_no = #{user_no}
+	</select>
+	
+	<!-- 修改用户密码 -->
+	<update id="updatePass" parameterType="java.util.Map">
+		update s_user set password = #{password} where user_no = #{user_no}
+		<if test="old_pwd!=null and old_pwd!=''">
+			and password=#{old_pwd}
+		</if>
+	</update>
+	<select id="queryUserByParam" parameterType="java.util.Map" resultType="java.lang.String">
+		select user_no from s_roleuser where 1=1
+		<if test="role!=null and role!=''">
+    		and role_no = #{role}
+		</if>
+		<if test="org!=null and org!=''">
+    		and org_code = #{org}
+		</if>	
+	</select>
+	<!-- 通过用户查外包人员关联的项目经理 -->
+	<select id="queryManagerByParam" parameterType="java.lang.String" resultType="java.lang.String">
+          select c.op_staff from s_user s
+          left join c_outsource_person c on s.outpersion_id=c.op_code where s.user_no =#{user_id}
+	</select>
+		<!-- 修改用户皮肤 -->
+	<update id="updateSkinType" parameterType="java.util.Map">
+		update s_user set skin_type = #{skin_type} where user_no = #{user_no}
+	</update>
+	<!-- 验证登录名是否存在 -->
+	<select id="queryLoginName" parameterType="java.util.Map" resultType="java.util.Map">
+	    select login_name from s_user where login_name=#{login_name}
+	</select>
+	
+	<!-- 查询一个用户的所有角色 -->
+	<select id="queryAllRoleByUser" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		select 
+	      sru.user_no,
+	      su.user_name,
+	      sru.org_code,
+	      so.org_name,
+	      sru.role_no,
+	      sr.role_name
+	    from S_ROLEUSER sru
+	    left join S_USER su  on su.user_no = sru.user_no
+	    left join S_ORG so  on so.org_code = sru.org_code
+	    left join S_ROLE sr on sr.role_no = sru.role_no
+		where sru.user_no = #{user_no}
+		<if test="org_code!=null and org_code!=''">
+			and sru.org_code = #{org_code} 
+		</if>
+		<if test="role_no!=null and role_no!=''">
+			and sru.role_no = #{role_no}
+		</if>
+		order by sru.org_code,sru.role_no desc
+	</select>
+		<!-- 维护用户信息 -->
+	<update id="maintain" parameterType="java.util.Map">
+		update s_user set user_mobile =#{user_mobile},user_mail=#{user_mail},memo=#{memo} where user_no =#{user_no}
+	</update>
+	
+	<!-- 添加人员 -->
+	<select id="popFindUser"    parameterType="java.util.Map"	resultType="java.util.Map">
+		select role_no||user_no user_role_no,t.role_no,t.user_no,
+         (select s.user_name from s_user s where s.user_no=t.user_no) user_name,
+         (select x.role_name from s_role x where x.role_no=t.role_no) role_name,
+         (select s.IS_BANKER from s_user s where s.user_no=t.user_no) is_banker,
+         (select s.LOGIN_NAME from s_user s where s.user_no=t.user_no) login_name
+         from g_system_persons t 
+         where system_id = (select system_id from p_project_basic_info where project_num=#{system_num})
+		<if test="user_no!=null and user_no!=''">
+				and user_no like #{user_no}
+		</if>
+		<if test="user_name!=null and user_name!=''">
+				and t.user_no in (select user_no from s_user where user_name like #{user_name})
+		</if>
+		<if test="login_name!=null and login_name!=''">
+				and login_name like #{login_name}
+		</if>
+		<if test="state!=null and state!=''">
+				and su.state = #{state}
+		</if>
+		<!-- 查询限定部门人员 -->
+		<if test="org_nos!=null and org_nos!=''">
+				and su.org_no in (select distinct org_code from s_org start with org_code in ${org_nos} connect by prior org_code = suporg_code)
+		</if>
+		<if test="org_no!=null and org_no!=''">
+				and su.org_no in (select distinct org_code from s_org start with org_code=#{org_no} connect by prior org_code = suporg_code)
+		</if>
+		<!-- 查询限定岗位人员 -->
+		<if test="role!=null and role!=''">
+			and su.user_no in (select user_no from s_roleuser where role_no in ${role})
+		</if>
+		<!-- 登陆人所在部门及以下部门的人员； -->
+ 		<if test="login_no!=null and login_no!=''">
+ 			and
+		    su.org_no in 
+		    (select org_code from s_org start with org_code= (
+			 select  case when so.plevel='00' or so.clevel='01' then so.suporg_code else so.org_code end org_code
+ 				from (select so.org_code,so.org_level clevel,so.suporg_code,
+   				(select org_level from s_org where org_code=so.suporg_code) plevel
+  				from s_org so where so.org_code = (select org_no from s_user where user_no = #{login_no})) so
+		    )
+		    connect by prior org_code = suporg_code)
+		</if> 		
+			<!-- 选择非本人所在部门的人员 -->
+		<if test="notLoginNo_org!=null and notLoginNo_org!=''">
+    		and 
+   			su.org_no not in (select s.org_no from s_user s where s.user_no = #{notLoginNo_org})
+		</if>
+		<if test="role_name !=null and role_name !=''">
+				  and t.role_no in (select role_no from s_role where role_name like #{role_name})
+		</if>	
+  		order by user_no
+	</select>
+</mapper>

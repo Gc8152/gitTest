@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.SAttachmentDao">
+	<insert id="insertAttachment" parameterType="java.util.Map">
+	insert into S_ATTACHMENT
+	(attachment_id,path_id,group_id,file_name,file_type,file_count,relation_table,opt_person,opt_time)
+	values
+	(#{attachment_id},#{path_id},#{group_id},#{file_name},#{fileExtName},#{file_count},#{relation_table},#{opt_person},#{opt_time})
+	</insert>
+	
+	
+</mapper>

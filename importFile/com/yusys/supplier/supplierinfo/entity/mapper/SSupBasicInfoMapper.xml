@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.supplier.supplierinfo.dao.SSupplierDao">
+	<!-- 导入供应商基本信息的插入语句 -->
+	<insert id="importSupplier" parameterType="java.util.Map">
+		insert into sup_basic_info 
+		(sup_num,sup_name,sup_simp_name,establish_time,registered_addr,business_registraion_num,sup_level,is_listed,listed_addr,company_address,
+		stock_code,address,register_money,tax_registration_addr,business_scope,sup_url,ordinary_vat_payr,core_business,
+		nature_business,representative,is_payer,market_share,tel,industry,sub_org_num,group_company,emp_num,
+		three_emp_num,input_id,input_date,efficient,sup_status)
+		values(#{sup_num},#{sup_name},#{sup_simp_name},#{establish_time},#{registered_addr},#{business_registraion_num},#{sup_level},#{is_listed},#{listed_addr},#{company_address},
+		#{stock_code},#{address},#{register_money},#{tax_registration_addr},#{business_scope},#{sup_url},#{ordinary_vat_payr},#{core_business},
+		#{nature_business},#{representative},#{is_payer},#{market_share},#{tel},#{industry},#{sub_org_num},#{group_company},#{emp_num},
+		#{three_emp_num},#{input_id},#{input_date},#{efficient},#{sup_status})
+	</insert>
+	<!-- 导入供应商联系人的插入语句 -->
+	<insert id="importSupplierLinkMan" parameterType="java.util.Map">
+		insert into sup_linkman_info(linkman_num,sup_num,linkman_type,name,post,tel,email,efficient,is_liasions,opt_time,opt_person)
+		values(#{linkman_num},#{sup_num},#{linkman_type},#{name},#{post},#{tel},#{email},'00',#{is_liasions},#{opt_time},#{opt_person})
+	</insert>
+	<!-- 导入供应商股权信息的插入语句 -->
+	<insert id="importSupplierOwnershipStructure" parameterType="java.util.Map">
+		insert into sup_ownership_structure(sup_num,shareholder_num,shareholder_name,amount,shareholding_ratio,updatetime,updateman,createtime,createman)
+		values(#{sup_num},#{shareholder_num},#{shareholder_name},#{amount},#{shareholding_ratio},#{updatetime},#{updateman},#{createtime},#{createman})
+	</insert>
+	<!-- 导入供应商财务信息的插入语句 -->
+	<insert id="importSupplierFinancialInfo" parameterType="java.util.Map">
+		insert into sup_financial_info(
+			sup_num,financial_num,year,total_assets,net_assets,sales_amount,net_profits,total_assets_rate,asset_liability_ratio,
+		    net_cash_flows,cash_equivalents,current_assets_ratio,updatetime,updateman,createtime,createman)
+		values(#{sup_num},#{financial_num},#{year},#{total_assets},#{net_assets},#{sales_amount},#{net_profits},#{total_assets_rate},#{asset_liability_ratio},
+		#{net_cash_flows},#{cash_equivalents},#{current_assets_ratio},#{updatetime},#{updateman},#{createtime},#{createman})
+	</insert>
+	<!-- 导入供应商签约信息的插入语句 -->
+	<insert id="importSupplierSignInfo" parameterType="java.util.Map">
+		insert into
+		sup_sign_info(sign_num,sup_num,sign_type,cus_name,product,sign_date,sign_money,linkman_name,link_tel,updatetime,updateman,createtime,createman)
+		values(#{sign_num},#{sup_num},#{sign_type},#{cus_name},#{product},#{sign_date},#{sign_money},#{linkman_name},#{link_tel},#{updatetime},#{updateman},#{createtime},#{createman})
+	</insert>
+	<!-- 导入供应商资质信息的插入语句 -->
+	<insert id="importSupplierEnclosureInfo" parameterType="java.util.Map">
+		insert into
+		sup_enclosure_info(encl_num,sup_num,encl_type,encl_name,issue_authority,efficient_time,end_time,updatetime,updateman,createtime,createman)
+		values(#{encl_num},#{sup_num},#{encl_type},#{encl_name},#{issue_authority},#{efficient_time},#{end_time},#{updatetime},#{updateman},#{createtime},#{createman})
+	</insert>
+	<!--查询尽职调查  -->
+	<select id="queryDuediligence" parameterType="java.util.Map" resultType="java.util.Map">
+		select s.SUP_CODE ,s.SPSTATE,s.IS_ACCESS from C_SUPPLIER_DUEDILIGENCE s where s.SUP_NAME=#{sup_name} 
+	</select>
+	<!-- 根据供应商编号查询联系人个数 -->
+	<select id="liasionsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count(*) from sup_linkman_info where sup_num =#{sup_num} and efficient='00'
+	</select>
+	<!-- 根据供应商编号查询常用联系人个数 -->
+	<select id="isLiasionsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count(*) from sup_linkman_info where sup_num = #{sup_num} and
+		is_liasions = '00' and efficient='00'
+		<if test="linkman_num!=null and linkman_num!=''">
+			and linkman_num != #{linkman_num}
+		</if>
+	</select>
+	<!-- 根据联系人编号删除联系人 -->
+	<update id="deleteLinkmanInfoByNum" parameterType="java.util.Map">
+		update sup_linkman_info set efficient = '01' where 1=1
+		<if test="linkman_num!=null and linkman_num!=''">
+			and linkman_num = #{linkman_num}
+		</if>
+		<if test="sup_num!=null and sup_num!=''">
+			and sup_num = #{sup_num}
+		</if>
+	</update>
+	<!-- 删除股东信息 -->
+	<delete id="deleteShareholder" parameterType="java.util.Map">
+		delete from sup_ownership_structure
+		where 1=1
+		<if test="shareholder_num!=null and shareholder_num!=''">
+			and shareholder_num = #{shareholder_num}
+		</if>
+		<if test="sup_num!=null and sup_num!=''">
+			and sup_num = #{sup_num}
+		</if>
+	</delete>
+	<!-- 删除财务信息 -->
+	<delete id="deleteFinancialInfo" parameterType="java.util.Map">
+		delete from sup_financial_info where 1=1
+		<if test="financial_num!=null and financial_num!=''">
+			and financial_num = #{financial_num}
+		</if>
+		<if test="sup_num!=null and sup_num!=''">
+			and sup_num = #{sup_num}
+		</if>
+	</delete>
+	<!-- 修改一条财务信息 -->
+	<update id="updateFinancialInfo" parameterType="java.util.Map">
+		update
+		sup_financial_info set year = #{year}, total_assets = #{total_assets},
+		net_assets = #{net_assets},
+		sales_amount = #{sales_amount}, net_profits = #{net_profits}, total_assets_rate =
+		#{total_assets_rate},
+		asset_liability_ratio = #{asset_liability_ratio}, net_cash_flows = #{net_cash_flows},
+		cash_equivalents = #{cash_equivalents}, current_assets_ratio =
+		#{current_assets_ratio},
+		updatetime=#{updateTime},updateman=#{userid}
+		where financial_num = #{financial_num}
+	</update>
+	<!-- 根据供应商编号查询签约情况 ：根据签约时间降序，生成时间降序 -->
+	<select id="querySignInfoByNum" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		select
+		sign_num,
+		cus_name,
+		product,
+		sign_date,
+		sign_money,
+		linkman_name,
+		link_tel,
+		sup_num,
+		(select sdi.item_name from s_dic_item sdi where
+		sdi.dic_code='SUP_DIC_SIGN_TYPE' and sdi.item_code=sign_type) as
+		sign_type
+		from sup_sign_info
+		where sup_num = #{sup_num}
+		order by sign_date desc,createtime desc
+	</select>
+	<!-- 增加一条签约信息 -->
+	<insert id="addSupplierSignInfo" parameterType="java.util.Map">
+		insert into
+		sup_sign_info (sign_num, cus_name, product, sign_date, sign_money,
+		linkman_name, link_tel, sup_num, sign_type,createtime,createman)
+		values ( #{sign_num}, #{cus_name}, #{product}, #{sign_date},
+		#{sign_money}, #{linkman_name}, #{link_tel}, #{sup_num},
+		#{sign_type},#{createTime},#{userid})
+	</insert>
+	<!-- 删除一条签约信息 -->
+	<delete id="deleteSignInfoByNum" parameterType="java.util.Map">
+		delete from sup_sign_info
+		where 1=1
+		<if test="sign_num!=null and sign_num!=''">
+			and sign_num = #{sign_num}
+		</if>
+		<if test="sup_num!=null and sup_num!=''">
+			and sup_num = #{sup_num}
+		</if>
+	</delete>
+	<!-- 导入供应商 -->
+	<insert id="importSuppliero" parameterType="java.util.Map">
+		insert into
+		sup_basic_info (
+		sup_name, sup_simp_name, <!-- organization_code, --> representative, establish_time,
+		business_registraion_num,
+		tax_registration_addr, tax_registration_num, ordinary_vat_payr, is_payer, market_share,
+		company_address, tel,
+		company_type, group_company, sup_attr, sup_impo_level, sup_serv_natu,
+		nature_business, apply_date, emp_num,
+		core_business, listed_addr, stock_code, registered_addr, register_money, sup_url,
+		fax_num, business_term,
+		industry, parent_company, parent_sup_num, three_emp_num, business_scope,
+		company_intro ,sup_serv_natu_name,
+		sup_num,sup_status, efficient,is_balck ,entry_data,sup_sort_one)
+		values (
+		#{sup_name}, #{sup_simp_name}, #{representative},
+		#{establish_time}, #{business_registraion_num},
+		#{tax_registration_addr}, #{tax_registration_num},
+		#{ordinary_vat_payr}, #{is_payer}, #{market_share},
+		#{company_address}, #{tel},
+		#{company_type}, #{group_company}, #{sup_attr}, #{sup_impo_level}, #{sup_serv_natu},
+		#{nature_business}, #{apply_date}, #{emp_num},
+		#{core_business}, #{listed_addr}, #{stock_code}, #{registered_addr}, #{register_money},
+		#{sup_url}, #{fax_num}, #{business_term},
+		#{industry}, #{parent_company}, #{parent_sup_num}, #{three_emp_num},
+		#{business_scope}, #{company_intro}, #{sup_serv_natu_name},
+		#{sup_num}, #{sup_status},'00','00',{entry_data},{sup_sort_one} )
+	</insert>
+	<!-- 导入供应商联络人 -->
+	<insert id="importPlierLinkList" parameterType="java.util.Map">
+		insert into
+		sup_linkman_info (linkman_num, name, post, address, email, tel,
+		sup_num, linkman_type, efficient,is_liasions)
+		values (
+		#{linkman_num} ,
+		#{name} , #{post} , #{address} , #{email} , #{tel} , #{sup_num} ,
+		#{linkman_type} ,'00', #{is_liasions})
+	</insert>
+	<!-- 导入股东信息 -->
+	<insert id="importSupOwnerList" parameterType="java.util.Map">
+		insert into
+		sup_ownership_structure (
+		shareholder_num, shareholder_name, amount, shareholding_ratio ,sup_num)
+		values(
+		#{shareholder_num}, #{shareholder_name}, #{amount},
+		#{shareholding_ratio}, #{sup_num}
+		)
+	</insert>
+	<!-- 导入财务信息 -->
+	<insert id="importFinancialList" parameterType="java.util.Map">
+		insert into
+		sup_financial_info (year, total_assets, net_assets, sales_amount,
+		net_profits,
+		total_assets_rate, asset_liability_ratio, net_cash_flows, cash_equivalents,
+		current_assets_ratio, sup_num, financial_num)
+		values(
+		#{year}, #{total_assets}, #{net_assets}, #{sales_amount}, #{net_profits},
+		#{total_assets_rate}, #{asset_liability_ratio}, #{net_cash_flows},
+		#{cash_equivalents},
+		#{current_assets_ratio}, #{sup_num}, #{financial_num}
+		)
+	</insert>
+	<!-- 增加供应商附件 -->
+	<insert id="importSupplierEncl" parameterType="java.util.Map">
+		insert into
+		sup_enclosure_info (
+		encl_num, sup_num, encl_name, encl_type, efficient_time, end_time,
+		issue_authority)
+		values (
+		#{encl_num}, #{sup_num}, #{encl_name}, #{encl_type}, #{efficient_time},
+		#{end_time}, #{issue_authority})
+	</insert>
+	<!-- 查询供应商的编号 -->
+	<select id="querySupplierNum" parameterType="java.util.Map" resultType="java.util.Map">
+		select sup_num,efficient from sup_basic_info where 1=1
+		<if test="sup_name!=null and sup_name!=''">
+			and sup_name=#{sup_name} 
+		</if>
+		<if test="sup_num!=null and sup_num!=''">
+			and sup_num=#{sup_num} 
+		</if>
+		 <if test="sup_simp_name!=null and sup_simp_name!=''">
+			and sup_simp_name=#{sup_simp_name} 
+		</if>
+	</select>
+	
+	<!-- 所属区域下拉树 -->
+	<select id="queryAlladdress" parameterType="java.util.Map" resultType="java.util.Map">
+		select city_name name,city_code id,F_ID pId from c_sup_city where state='0' order by name
+	</select>
+	<!-- 根据供应商sup_num修改供应商信息 -->
+	<update id="updateImportSupInfoByNum" parameterType="java.util.Map">
+		update
+		sup_basic_info set
+		business_scope=#{business_scope},tel=#{tel},input_id=#{input_id},
+		group_company=#{group_company}, input_date=#{input_date}, sup_url=#{sup_url},
+		stock_code=#{stock_code}, market_share=#{market_share},
+		core_business=#{core_business}, sup_simp_name=#{sup_simp_name},
+		tax_registration_addr=#{tax_registration_addr},tax_registration_num=#{tax_registration_num},
+		industry=#{industry}, sup_level=#{sup_level}, is_payer=#{is_payer}, sup_name=#{sup_name},
+		business_registraion_num=#{business_registraion_num},
+		company_address=#{company_address},
+		registered_addr=#{registered_addr},
+		sub_org_num=#{sub_org_num}, is_listed=#{is_listed}, listed_addr=#{listed_addr},
+		three_emp_num=#{three_emp_num},
+		ordinary_vat_payr=#{ordinary_vat_payr},
+		representative=#{representative},
+		emp_num=#{emp_num}, address=#{address} ,
+		establish_time=#{establish_time}, nature_business=#{nature_business}, register_money=#{register_money},
+		efficient='00'
+		where sup_num = #{sup_num}
+	</update>
+		<!-- 根据编号删除资质文件-->
+	<delete id="deleteEnclInfoByNum" parameterType="java.util.Map">
+		delete from sup_enclosure_info
+		where 1=1
+		<if test="encl_num!=null and encl_num!=''">
+			and encl_num = #{encl_num}
+		</if>
+		<if test="sup_num!=null and sup_num!=''">
+			and sup_num = #{sup_num}
+		</if>
+	</delete>
+</mapper>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.dao.SUtilDao">
+	<!-- 根据机构名称 查询机构编号  -->
+	<select id="findOrgCodeByName" parameterType="java.lang.String" resultType="java.lang.String">
+		select org_code from s_org where (org_name = #{org_name} or org_code = #{org_name})
+	</select>
+	<!-- 查询任务序列  -->
+	<select id="findSenqunceByName" parameterType="java.util.Map" resultType="string">
+	   	 select  ${name}.Nextval
+	   		<!--  <if test="null != name and name.indexOf('T_SEQ_ATTENTIONID') != -1">
+	   		 	T_SEQ_ATTENTIONID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('T_SEQ_TASKCODE') != -1">
+	   		 	T_SEQ_TASKCODE.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('T_SEQ_TASKID') != -1">
+	   		 	T_SEQ_TASKID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('T_SEQ_ASSCODE') != -1">
+	   		 	T_SEQ_ASSCODE.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('T_SEQ_FEEDBACKID') != -1">
+	   		 	T_SEQ_FEEDBACKID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('T_SEQ_APPROVALID') != -1">
+	   		 	T_SEQ_APPROVALID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('PUB_SEQ_MESSSTRATEGYID') != -1">
+	   		 	PUB_SEQ_MESSSTRATEGYID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('PUB_SEQ_ASSORTMENTID') != -1">
+	   		 	PUB_SEQ_ASSORTMENTID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('PUB_SEQ_MESSCATEGORYID') != -1">
+	   		 	PUB_SEQ_MESSCATEGORYID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('T_SEQ_WORKBENCHID') != -1">
+	   		 	T_SEQ_WORKBENCHID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('PUB_SEQ_MESSAGEPLAN') != -1">
+	   		 	PUB_SEQ_MESSAGEPLAN.Nextval
+	   		 </if>
+	   		  <if test="null != name and name.indexOf('C_SEQ_STAFFID') != -1">
+	   		 	C_SEQ_STAFFID.Nextval
+	   		 </if>									 
+	   		 <if test="null != name and name.indexOf('C_SEQ_ASSID') != -1">
+	   		 	C_SEQ_ASSID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('C_SEQ_CHILDID') != -1">
+	   		 	C_SEQ_STAFFID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('C_SEQ_PID') != -1">
+	   		 	C_SEQ_STAFFID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('C_SEQ_OUTPERSON_ID') != -1">
+	   		 	C_SEQ_OUTPERSON_ID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('C_SEQ_PROJECTINFO_ID') != -1">
+	   		 	C_SEQ_PROJECTINFO_ID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('C_SEQ_SUBPROJECT_ID') != -1">
+	   		 	C_SEQ_SUBPROJECT_ID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('S_SEQ_ASS_ID') != -1">
+	   		 	S_SEQ_ASS_ID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('C_SEQ_PP_ID') != -1">
+	   		 	C_SEQ_PP_ID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('C_SEQ_LEAVEID') != -1">
+	   		 	C_SEQ_LEAVEID.Nextval
+	   		 </if>
+	   		  <if test="null != name and name.indexOf('C_SEQ_WORKPLACE') != -1">
+	   		 	C_SEQ_WORKPLACE.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('C_SEQ_CHECKID') != -1">
+	   		 	C_SEQ_CHECKID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('C_SEQ_ATTENDID') != -1">
+	   		 	C_SEQ_ATTENDID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('C_SEQ_PHASEACCEPTAMCE_ID') != -1">
+	   		 	C_SEQ_PHASEACCEPTAMCE_ID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('C_SEQ_ORDER_ID') != -1">
+	   		 	C_SEQ_ORDER_ID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('C_SEQ_SO_DETAIL') != -1">
+	   		 	C_SEQ_SO_DETAIL.Nextval
+	   		 </if>
+	   		  <if test="null != name and name.indexOf('C_SEQ_PURCHASEINFO_ID') != -1">
+	   		 	C_SEQ_PURCHASEINFO_ID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('C_SEQ_PROJECTPACKAGE_ID') != -1">
+	   		 	C_SEQ_PROJECTPACKAGE_ID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('C_SEQ_TALKSCONTRACT_ID') != -1">
+	   		 	C_SEQ_TALKSCONTRACT_ID.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('S_SEQ_SUP_BASIC_INFO') != -1">
+	   		 	S_SEQ_SUP_BASIC_INFO.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('SUP_SEQ_SUP_LINKMAN_INFO') != -1">
+	   		 	SUP_SEQ_SUP_LINKMAN_INFO.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('S_SEQ_SUP_OWNERSHIP_STRUCTURE') != -1">
+	   		 	S_SEQ_SUP_OWNERSHIP_STRUCTURE.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('SUP_SEQ_SUP_FINANCIAL_INFO') != -1">
+	   		 	SUP_SEQ_SUP_FINANCIAL_INFO.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('S_SEQ_SUP_SIGN_INFO') != -1">
+	   		 	S_SEQ_SUP_SIGN_INFO.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('SUP_SEQ_SUP_ENCLOSURE_INFO') != -1">
+	   		 	SUP_SEQ_SUP_ENCLOSURE_INFO.Nextval
+	   		 </if>
+	   		 <if test="null != name and name.indexOf('C_SEQ_CONTRACTPHASE_CODE') != -1">
+	   		 	C_SEQ_CONTRACTPHASE_CODE.Nextval
+	   		 </if> -->
+	   	from dual
+	</select>
+	
+	<!-- 根据多个id 查询用户 -->
+	<select id="queryUsersByIds" parameterType="java.util.List" resultType="java.util.Map">
+		select * from s_user where user_no in
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item}
+		</foreach>
+	</select>
+		<!-- 删除页面按钮 -->
+	<delete id="utilDeleteTaskRemind" parameterType="java.util.Map">
+		delete from t_workbench where task_id=#{task_id} 
+	 	 <if test="null != send_person and send_person!=''">
+   		 	and send_person=#{send_person}
+   		 </if>
+   		 <if test="null != w_id and w_id!=''">
+   		 	 and w_id=${w_id}
+   		 </if>
+	</delete>
+	<!-- 查询任务名称任务执行人和创建人  -->
+	<select id="utilFindOneTaskById" parameterType="java.lang.String" resultType="java.util.Map">
+		select ti.task_name,ti.task_state,ti.task_executor,ti.task_creator,ti.task_coordinator ,ti.task_type from t_taskinfo ti where ti.task_id=#{task_id}
+	</select>
+	<!-- 插入消息提醒-->
+	<insert id="createWorkbenchRemind" parameterType="java.util.Map">
+       insert into t_workbench(id,w_id,task_id,req_name,flag,send_person,send_time)
+       values(#{id},#{w_id},#{task_id},#{req_name},#{flag},#{send_person},#{send_time})
+    </insert>
+   	<!-- 修改工作台接收人 -->
+    <update id="updateWorkBenchSendPerson" parameterType="java.lang.String">
+		update t_workbench set send_person=#{send_person},send_time=#{send_time} where task_id=#{task_id} 
+		 <if test="null != old_send_person and old_send_person!=''">
+			and send_person=#{old_send_person} 
+		 </if>
+	</update>
+	
+    <!-- 根据年月日 查询假期配置 -->
+	<select id="getCfgHoliDayByDate" parameterType="java.util.Map"	resultType="java.util.Map">
+		select * from s_cfg_holidays where s_date=#{date}
+	</select>
+	<!-- 根据字典类别和字段值获取字段编号  -->
+	<select id="findDicItemCode" parameterType="java.util.Map" resultType="java.lang.String">
+		select item_code from s_dic_item where dic_code=#{dic_code} and item_name=#{item_name}
+	</select>
+</mapper>

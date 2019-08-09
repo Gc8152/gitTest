@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.resources.optPersonCheck.dao.OptCheckDao">
+
+ <!-- 查询身份号对应的外包人员信息 -->
+ <select id="queryOutPersonInfoByCardNo" parameterType="java.util.Map" resultType="java.util.Map">
+    select cop.op_id,cop.op_name,cop.idcard_no from c_outsource_person cop where cop.idcard_no = #{card_no}
+ </select>
+ 
+ <!-- 新增人员考核 -->
+ <insert id="insertOptCheckInfo" parameterType="java.util.Map">
+  insert into c_outsource_check_info(check_id,op_id,check_starttime,check_endtime,check_score,opt_person,opt_time,check_type,specialtype,check_person,check_date)
+  values(#{check_id},#{op_id},#{check_starttime},#{check_endtime},#{check_score},#{opt_person},#{opt_time},
+        (select s.item_code from s_dic_item s where s.item_name like '%'||#{check_type}||'%' and s.dic_code='C_DIC_STAFF_CHECKTYPE'),
+        (select s.item_code from s_dic_item s where s.item_name like '%'||#{specialtype}||'%' and s.dic_code='C_DIC_OUTPERSION_PROFESSION'),#{check_person},#{check_date})
+ </insert>
+<!-- 查询考核是否重复 -->
+<select id="findCheckIsRepeat" parameterType="java.util.Map" resultType="java.util.Map">
+	select check_id from c_outsource_check_info co left join s_dic_item s on s.item_code = co.check_type 
+	where  co.op_id=#{op_id} and s.item_name like '%'||#{check_type}||'%'
+	<if test="check_starttime !=null and check_starttime !='' and check_endtime !=null and check_endtime !=''">
+		<![CDATA[
+			and (
+				(co.check_endtime>=#{check_starttime} and co.check_starttime<=#{check_starttime})
+				or 
+				(co.check_endtime>=#{check_endtime} and co.check_starttime<=#{check_endtime})
+				or
+				(co.check_endtime<=#{check_endtime} and co.check_starttime>=#{check_starttime})
+				or
+				(co.check_starttime>=#{check_starttime} and co.check_starttime<=#{check_endtime})
+			)
+		]]>
+	</if>  
+</select>
+	<!-- 修改行员考核信息 -->
+<update id="optCheckUpdate" parameterType="java.util.Map">
+	UPDATE c_outsource_check_info set 
+		check_type=#{check_type},specialtype=#{specialtype},check_score=#{check_score},opt_person=#{opt_person},opt_time=#{opt_time},
+		check_date=#{check_date},check_person = #{check_person},check_starttime = #{check_starttime},check_endtime = #{check_endtime}
+	WHERE check_id=#{check_id} 
+</update>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+</mapper>

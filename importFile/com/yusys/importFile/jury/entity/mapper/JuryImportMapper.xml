@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.yusys.importFile.jury.dao.JuryImportDao">
+	
+	<!-- 添加评审记录表 -->
+	<insert id="insertJuryInfo" parameterType="java.util.Map">
+		insert into g_jury_info (jury_id,jury_name,sponsor_time,at_jury_grade,end_time,jury_result,jury_desc,system_id,sponsor_id,jury_type,feedback_time,jury_status,compere_id,jury_principal_id,file_id)
+		values(
+			#{jury_id},#{jury_name},#{sponsor_time}, #{at_jury_grade}, #{end_time}, #{jury_result}, #{jury_desc}, #{system_id}, #{sponsor_id}, #{jury_type}, #{feedback_time}, #{jury_status},#{compere_id},#{jury_principal_id},#{file_id}
+		)
+	</insert>
+	<!-- 增加缺陷信息 -->
+	<insert id="insertJuryDefect" parameterType="java.util.Map">
+		insert into g_jury_task_defect (
+			jury_id,defect_id,defect_name,defect_state,defect_question_solve,sponsor_user_id,dispose_time,check_user_id,improve_desc,jury_grade_key,defect_desc)
+		values (
+			#{jury_id},#{defect_id},#{defect_name}, #{defect_state},#{defect_question_solve}, #{sponsor_user_id}, #{dispose_time}, #{check_user_id}, #{improve_desc},#{jury_grade_key},#{defect_desc})		
+	</insert>
+	
+	<!-- JURY_TASK_ID,TASK_ID,JURY_ID,REQ_TASK_STATE,JURY_GRADE,JURY_STATUS,ADD_TIME  -->
+	<!-- 添加评审任务 -->
+	<insert id="insertJuryTask" parameterType="java.util.Map">
+		insert into g_jury_task(jury_task_id,task_id,jury_id,req_task_state,jury_grade,jury_status,add_time)
+		select G_SEQ_JURY_TASK_ID.nextval,req_task_id,#{jury_id},#{req_task_state},#{jury_grade},#{jury_status},#{add_time} 
+		from g_requirement_task where sub_req_id = #{sub_req_id} and req_task_state in ('03','04','05','06','07','08','09','090','10','11','12','13')
+	</insert>
+	
+	<delete id="deleteJuryTask" parameterType="java.util.Map">
+		delete from G_JURY_TASK
+		where jury_id = #{jury_id}
+	</delete>
+	
+	<!-- 添加评委 -->
+	<insert id="insertJuryUser" parameterType="java.util.Map">
+		insert into g_jury_reviewer(reviewer_user_id,jury_id,jury_role,jury_grade,is_finish_jury,finish_time)
+		values(#{reviewer_user_id},#{jury_id},#{jury_role},#{jury_grade},#{is_finish_jury},#{finish_time})
+	</insert>
+	<select id="queryUsrForName" parameterType="java.util.Map" resultType="java.util.Map">
+		select u.user_no,u.user_name,u.login_name
+       from s_user u
+       where u.user_name = #{user_name}
+	</select>
+	
+	<!-- 修改任务阶段评审状态 -->
+	<insert id="updatePhasedReqTask" parameterType="java.util.Map">
+		update g_requirement_task
+	    set opt_person=#{opt_person},opt_time=#{opt_time}
+	    <if test="req_task_state=='03'">
+			,ANALYZE_STATE = #{phased_state}
+		</if>
+		<if test="req_task_state=='05'">
+			,TOTAL_DESIGN_STATE = #{phased_state}
+		</if>
+		<if test="req_task_state=='06'">
+			,DETAILED_DESIGN_STATE = #{phased_state}
+		</if>
+		<if test="req_task_state=='07'">
+			,CODING_STATE = #{phased_state}
+		</if>
+		<if test="req_task_state=='08'">
+			,JOIN_TEST_STATE = #{phased_state}
+		</if>
+		<if test="req_task_state=='09001'">
+			,SIT_STATE = #{phased_state}
+		</if>
+		<if test="req_task_state=='10'">
+			,UAT_STATE = #{phased_state}
+		</if>
+	    where sub_req_id = #{sub_req_id} and req_task_state in ('03','04','05','06','07','08','09','090','10','11','12','13')
+	
+	</insert>
+	
+	
+</mapper>

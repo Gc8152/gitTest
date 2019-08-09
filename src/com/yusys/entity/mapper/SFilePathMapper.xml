@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.yusys.dao.SFilePathDao">
+	<!-- 查询文件服务器信息 -->
+	<select id="getServerInfo" resultType="java.util.Map">
+		select * from s_cfg_server
+	</select>
+	
+	<!-- 增加文件服务器信息  -->
+	<insert id="addServerInfo" parameterType="java.util.Map">
+		insert into s_cfg_server(id,servername,username,password,port)
+		values(#{id},#{servername},#{username},#{password},#{port})
+	</insert>
+	
+	<!-- 更新文件服务器信息 -->
+	<update id="updateServerInfo">
+		update s_cfg_server set servername=#{servername},username=#{username},password=#{password},port=#{port}
+		where id=#{id}
+	</update>
+	
+	<!-- 查询所有路径 -->
+	<select id="queryListFilePath"  parameterType="java.util.Map"	resultType="java.util.Map">
+		select c.*,
+		(select user_name from s_user where user_no = opt_id) as OPT_USER_NAME,
+		(select item_name from s_dic_item where dic_code = 'S_DIC_FILEPATH_STATUS' and item_code = c.status) as STATUS_NAME,
+		(select item_name from s_dic_item where dic_code = 'S_DIC_PATH_TYPE' and item_code = c.path_type) as PATH_TYPE_NAME
+		from s_cfg_filepath c where flag = '00'
+		<if test="path_id!=null and path_id!=''">
+				and c.path_id like #{path_id}
+		</if>
+		<if test="status!=null and status!=''">
+				and c.status = #{status}
+		</if>
+		<if test="path_type!=null and path_type!=''">
+				and c.path_type = #{path_type}
+		</if>
+		order by c.opt_time desc,c.path_id desc
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="queryOneFilePath" parameterType="java.util.Map"	resultType="java.util.Map">
+		select * from s_cfg_filepath  where path_id = #{path_id} 
+	</select>
+	
+	<!-- 根据path_id查询关联的路径标签列表 -->
+	<select id="queryPathTagByPathId" parameterType="java.util.Map" resultType="java.util.Map">
+		select 
+			t.tag_id, t.tag_name, t.tag_type, t.tag_param
+		from 
+			s_cfg_tag t, s_cfg_pathtag cp  
+		where 
+			cp.path_id=#{PATH_ID} and cp.tag_id=t.tag_id and t.flag='00' 
+		order by cp.order_id
+	</select>
+	
+	<!-- 根据系统名称获取系统简称 -->
+	<select id="querySystemShortByName" parameterType="java.lang.String" resultType="java.lang.String">
+		select system_short from g_system_info where system_name = #{system_name}
+	</select>
+	<!-- 根据PATH_TYPE查询 -->
+	<select id="queryOneByType" parameterType="java.util.Map"	resultType="java.util.Map">
+		select * from s_cfg_filepath  where path_type = #{path_type} 
+	</select>
+	
+	<!-- 增加一条路径  -->
+	<insert id="addFilePath" parameterType="java.util.Map">
+		insert into s_cfg_filepath(path_id,status,path,path_type,opt_id,opt_time,flag)
+		values(#{path_id},#{status},#{path},#{path_type},#{opt_id},#{opt_time},#{flag})
+	</insert>
+	
+	<!-- 更新一条路径 -->
+	<update id="updateFilePath" parameterType="java.util.Map">
+		update s_cfg_filepath set status=#{status},path=#{path},path_type=#{path_type},opt_id=#{opt_id},opt_time=#{opt_time}
+		where path_id=#{path_id}
+	</update>
+	
+	<!-- 删除一条路径 -->
+	<update id="deleteFilePath" parameterType="java.util.Map">
+		update s_cfg_filepath set flag = '01' where path_id=#{path_id}
+	</update>
+	
+	<!-- 查询一条路径下的文件数 -->
+	<select id="queryFileNumById" parameterType="java.util.Map" resultType="java.lang.String">
+		select file_num from s_cfg_filepath where path_id=#{path_id}
+	</select>
+	
+	<!-- 更新一条路径下的文件数 -->
+	<update id="updateFileNum" parameterType="java.util.Map">
+		update s_cfg_filepath set file_num = #{file_num} where path_id=#{path_id}
+	</update>
+	
+	<!-- 根据FILE_FROM和PATH_TYPE查询一条路径包含的路径标签 -->
+	<select id="queryFilePath" parameterType="java.util.Map"	resultType="java.util.Map">
+		select 
+			p.*, tag.tag_name, tag.tag_type, tag.tag_param 
+		from 
+			s_cfg_filepath t, s_cfg_pathtag p 
+			left join s_cfg_tag tag on p.tag_id=tag.tag_id 
+		where 
+			t.path_type=#{path_type} and t.path_id=p.path_id
+		order by to_number(p.order_id)
+	</select>
+	
+	<!-- 根据需求任务编号查询系统名称跟版本名称 -->
+	<select id="getSystemNameAndVersionName" parameterType="java.util.Map" resultType="java.util.Map">
+		 select rt.system_no, rt.version_id, si.system_name, pa.versions_name,pa.versions_type
+			  from g_requirement_task rt 
+			  left join g_system_info si on rt.system_no=si.system_id
+			  left join p_annual_release_plan pa on rt.version_id=pa.versions_id
+		 where rt.req_task_code=#{req_task_code}
+	</select>
+	
+	<select id="getSystemNameAndVersionNameBySubReq" parameterType="java.util.Map" resultType="java.util.Map">
+		select 
+			si.system_name, arp.versions_name,rt.req_task_code
+		from 
+			g_requirement_subs ri, g_requirement_task rt, g_system_info si, p_annual_release_plan arp
+		where 
+			ri.sub_req_code=#{sub_req_code} and rt.sub_req_id=ri.sub_req_id and rt.req_task_relation='01' 
+			and rt.req_task_state not in ('14','15') and rt.system_no=si.system_id and rt.version_id=arp.versions_id
+	</select>
+</mapper>
