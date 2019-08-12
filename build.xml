@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project basedir="." default="warFile" name="yfglpt">
     <property environment="env"/>
-    <property name="warFileName" value="dev_background"/>
+    <property name="warFileName" value="dev_background1"/>
     <property name="tomcat6" value="C:\mySoft\apache-tomcat-6.0.9\lib"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
